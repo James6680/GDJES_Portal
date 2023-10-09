@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/address/{type}', function (String $type) {
+    $user = \File::json(resource_path('js/ph-json/' . $type . '.json'));
+    return response()->json($user);
+});

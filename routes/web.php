@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HelloWorld;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/helloworld', function () {
-    return view('helloworld');
+Route::get('helloworld', function () {
+    return view('HelloWorld');
 });
