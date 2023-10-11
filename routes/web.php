@@ -21,3 +21,8 @@ Route::get('/', function () {
 Route::get('helloworld', function () {
     return view('helloworld');
 });
+
+
+Route::get('enrollment', function () {
+    return view('enrollment.StudentportalRegistrationPage');
+});

@@ -6,9 +6,11 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/css/style.css',
                 'resources/js/app.js', 
                 'resources/js/ph-address-selector.js',
                 'resources/js/sample.js',
+                'resources/js/form.js', 
             ],
             refresh: true,
         }),

@@ -8,9 +8,11 @@
     Hello world!
   </h1>
 
+{{-- JS AND CSS FILES WILL BE STORED IN THE RESOURCES FOLDER AND WILL BY RUNNING NPM RUN BUILD OR DEV TO BE RUN --}}
+{{--  CALL ASSET FROM PUBLIC FOLDER--}}
       <img src="{{url('/images/pic.png')}}">
 
-      
+{{-- CHECK RESOURCES/JS/SAMPLE.JS FOR EXTERNAL CALLS --}}
 
 
 
