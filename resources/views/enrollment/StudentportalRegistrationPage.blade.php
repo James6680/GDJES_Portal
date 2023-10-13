@@ -17,7 +17,6 @@
 
     <section class="flex-1 flex flex-col items-center justify-center gap-[2.5rem] text-center text-[1.44rem] text-main-background font-heading-2 md:gap-[1.88rem]">
 
-    
     <!-- Logo Container -->
       <div class="h-[7.31rem] flex flex-col items-center justify-center gap-[0.5rem] cursor-pointer" id="logoContainer">
 
@@ -34,7 +33,9 @@
       </div>
 
       <!-- Student Registration Form -->
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[2.5rem] px-[2.5rem] gap-[.9rem] w-10/12 " id="balikAralInfo">
+      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[2.5rem] px-[2.5rem] gap-[.9rem] w-10/12 " id="balikAralInfo" method="post" action="{{route('post.enrollment')}}">
+        @csrf
+        @method('post')
 
         <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-bold font-heading-2-bold text-main-green-secondary-700 text-center md:text-2xl">Student Registration for First-time Enrollees</h1>
         
@@ -104,7 +105,7 @@
               
               <div class="flex items-center mb-4"> 
                 
-                <input type="radio" value="HINDI" name="aralStatus" id="balikAralNo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <input type="radio" value="0" name="aralStatus" id="balikAralNo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @if(isset($enrollment->aralStatus) && $enrollment->aralStatus == 0) checked @endif>
                 
                 <label for="balikAralNo" class="ml-2 text-[0.85rem] text-gray-900 dark:text-black">HINDI</label>
              
@@ -112,7 +113,7 @@
               
               <div class="flex items-center">
                 
-                <input type="radio" value="OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon" name="aralStatus" id="balikAralYes" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <input type="radio" value="1" name="aralStatus" id="balikAralYes" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"  @if(isset($enrollment->aralStatus) && $enrollment->aralStatus == 1) checked @endif>
                 
                 <label for="balikAralYes" class="ml-2 text-[0.85rem]  text-gray-900 dark:text-black">OO dahil sya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon</label>
              
@@ -125,8 +126,8 @@
           <!-- Next Button -->
           <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] px-[2.13rem] hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50">
             
-            <button type="button" id="nextButton"
-            class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block" onclick="showNextSet('enrollmentInfo')">next</button>
+            <button type="submit" id="nextButton"
+            class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block">next</button>
           
           </div>
           
@@ -154,4 +155,4 @@
   </div>  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>
-</html>
+</html> 

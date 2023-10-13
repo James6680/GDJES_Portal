@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+  @vite(['resources/js/app.js', 'resources/css/style.css'])
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Added initial-scale for responsiveness -->
   <title>Student Registration Page 2</title>
-  <link rel="stylesheet" href="style.css">
-
-  <link rel="icon" href="assets/frame-21@2x.png" type="image/x-icon"/>
-
+  <link rel="icon" href="{{url('assets/frame-21@2x.png')}}" type="image/x-icon"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Mulish:wght@400;700&display=swap" />
-  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
   <style>
     /* Additional CSS for responsiveness */
@@ -17,7 +14,6 @@
       .self-stretch {
         width: 100%;
       }
-      
       /* Add more responsive styles here */
     }
   </style>
@@ -32,7 +28,7 @@
     <!-- Logo Container -->
       <div class="h-[7.31rem] flex flex-col items-center justify-center gap-[0.5rem] cursor-pointer" id="logoContainer">
 
-        <img class="relative w-[3rem] h-[3rem] overflow-hidden shrink-0 object-cover" alt="" src="assets/frame-21@2x.png" />
+        <img class="relative w-[3rem] h-[3rem] overflow-hidden shrink-0 object-cover" alt="" src="{{url('assets/frame-21@2x.png')}}" />
 
         <div class="flex flex-col items-start justify-start ">
 
@@ -44,8 +40,9 @@
       </div>
 
       <!-- Student Registration Form -->
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center px-[2rem] py-[2.5rem] gap-[.9rem] w-10/12">
-
+      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center px-[2rem] py-[2.5rem] gap-[.9rem] w-10/12" method="post" action="{{route('post.enrollment1')}}">
+      @csrf
+      @method('post')
         <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-extrabold font-heading-2 text-main-green-secondary-700 text-center font-heading-2-bold">Student Registration for First-time Enrollees</h1>
 
         <div class="self-stretch flex flex-col items-center justify-start gap-[0.5rem">
@@ -113,15 +110,15 @@
               </div>
 
                <!-- Returnee -->
-              <select id="returnee" name="returnee" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  px-2.4 py-2.5 w-full">
-                <option value="0">KINDER</option>
-                <option value="1">Grade 1</option>
-                <option value="2">Grade 2</option>
-                <option value="3">Grade 3</option>
-                <option value="4">Grade 4</option>
-                <option value="5">Grade 5</option>
-                <option value="6">Grade 6</option>
-                <option value="7">ALS</option>
+              <select id="returnee" name="returnee" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  px-2.4 py-2.5 w-full" >
+                <option value="0" @if(isset($enrollment->returnee) && $enrollment->returnee == 0) selected @endif>KINDER</option>
+                <option value="1" @if(isset($enrollment->returnee) && $enrollment->returnee == 1) selected @endif>Grade 1</option>
+                <option value="2" @if(isset($enrollment->returnee) && $enrollment->returnee == 2) selected @endif>Grade 2</option>
+                <option value="3" @if(isset($enrollment->returnee) && $enrollment->returnee == 3) selected @endif>Grade 3</option>
+                <option value="4" @if(isset($enrollment->returnee) && $enrollment->returnee == 4) selected @endif>Grade 4</option>
+                <option value="5" @if(isset($enrollment->returnee) && $enrollment->returnee == 5) selected @endif>Grade 5</option>
+                <option value="6" @if(isset($enrollment->returnee) && $enrollment->returnee == 6) selected @endif>Grade 6</option>
+                <option value="7" @if(isset($enrollment->returnee) && $enrollment->returnee == 0) selected @endif>ALS</option>
               </select>
             
             </div>
@@ -129,7 +126,6 @@
           </div>
 
           <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[1.3rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
-            
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
@@ -141,11 +137,14 @@
 
               <!-- Last school attended -->
               <div class="mb-6">
-                <input required type="text" id="lastSchoolAttended" name="lastSchoolAttended" class=" text-[1rem] block w-full px-4 py-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                @if($errors->has('lastSchoolAttended'))
+                <div class="text-danger">{{ $errors->first('lastSchoolAttended') }}</div>
+            @endif
+                <input type="text" id="lastSchoolAttended" name="lastSchoolAttended" class=" text-[1rem] block w-full px-4 py-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->lastSchoolAttended)? $enrollment->lastSchoolAttended : old('lastSchoolAttended')}}">
               </div>
             
             </div>
-            
+
           </div>
 
           <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[1.3rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
@@ -161,7 +160,7 @@
               
               <!-- Last school year attended -->
               <div class="mb-6">
-                <input required type="text" id="lastSchoolYearAttended" name="lastSchoolYearAttended" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="lastSchoolYearAttended" name="lastSchoolYearAttended" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->lastSchoolYearAttended)? $enrollment->lastSchoolYearAttended : ''}}">
               </div>
             
             </div>
@@ -175,13 +174,13 @@
               <button class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" 
               type="button" 
               id="backBtn"
-              onclick="showPrevSet('balikAralInfo')">Back</button>
+              onclick="window.location = '{{URL::route('get.enrollment')}}'">Back</button>
             </div>
 
             <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] w-1/2  hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50"> 
 
               <button 
-              type="button" 
+              type="submit" 
               id="nextBtn" 
               onclick="showNextSet('enrollmentInfo')"
               class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block">next</button>
@@ -196,9 +195,6 @@
     </section>
   
   </div>
-
-  <script src="./assets/js/form.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   
   <script>

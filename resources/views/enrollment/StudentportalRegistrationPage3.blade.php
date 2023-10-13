@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+  @vite(['resources/js/app.js', 'resources/css/style.css'])
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Added initial-scale for responsiveness -->
   <title>Student Registration Page 1</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Mulish:wght@400;700&display=swap" />
   
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
 
-  <link rel="icon" href="assets/frame-21@2x.png" type="image/x-icon" />
+  <link rel="icon" href="{{url('assets/frame-21@2x.png')}}" type="image/x-icon" />
   <style>
     /* Additional CSS for responsiveness */
     @media (max-width: 768px) {
@@ -45,8 +45,9 @@
       </div>
 
       <!-- Student Registration Form -->
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12">
-
+      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12" method="post" action="{{route('post.enrollment3')}}">
+      @csrf
+      @method('post')
         <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-extrabold font-heading-2 text-main-green-secondary-700 text-center font-heading-2-bold">Student Registration for First-time Enrollees</h1>
 
         <div class="self-stretch flex flex-col items-center justify-start gap-[0.5rem]">
@@ -114,7 +115,7 @@
               <!-- Father's Information -->   
               <!-- Last Name -->
               <div class="mb-1">
-                <input required type="text" id="last_name" name="last_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="father_last_name" name="father_last_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
             
             </div>
@@ -133,7 +134,7 @@
               
               <!-- First Name -->
               <div class="mb-1">
-                <input required type="text" id="first_name" name="first_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="father_first_name" name="father_first_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
             
             </div>
@@ -152,7 +153,7 @@
               
               <!-- Middle Name -->
               <div class="mb-1">
-                <input required type="text" id="middle_name" name="middle_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="father_middle_name" name="father_middle_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
             
             </div>
@@ -170,7 +171,7 @@
               </div>
               
               <!-- Extension Name -->
-              <select id="extension_name" name="extension_name" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
+              <select id="father_extension_name" name="father_extension_name" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
                 <option value="wala">Wala</option>
                 <option value="jr">Jr</option>
                 <option value="1">I</option>
@@ -237,7 +238,7 @@
               <!-- Mother's Information --> 
               <!-- Lastname -->
               <div class="mb-1">
-                <input required type="text" id="last_name" name="last_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="mother_last_name" name="mother_last_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
             
             </div>
@@ -256,7 +257,7 @@
 
               <!-- Firstname -->
               <div class="mb-1">
-                <input required type="text" id="first_name" name="first_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="mother_first_name" name="mother_first_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
             
             </div>
@@ -275,7 +276,7 @@
               
               <!-- Middlename -->
               <div class="mb-1">
-                <input required type="text" id="middle_name" name="middle_name" class=" text-[.90rem] block w-full p-.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="mother_middle_name" name="mother_middle_name" class=" text-[.90rem] block w-full p-.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
             
             </div>
@@ -293,7 +294,7 @@
               </div>
               
               <!-- Extension Name -->
-              <select id="extension_name" name="extension_name" class="bg-main-background border border-gray-300 text-gray-900 text-[1rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
+              <select id="mother_extension_name" name="mother_extension_name" class="bg-main-background border border-gray-300 text-gray-900 text-[1rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
                 <option value="wala">Wala</option>
                 <option value="jr">Jr</option>
                 <option value="1">I</option>
@@ -359,7 +360,7 @@
               <!-- Guardian's Information --> 
               <!-- Lastname -->
               <div class="mb-1">
-                <input required type="text" id="last_name" name="last_name" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="guardian_last_name" name="guardian_last_name" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
             
             </div>
@@ -378,7 +379,7 @@
               
               <!-- Firstname -->
               <div class="mb-1">
-                <input required type="text" id="first_name" name="first_name" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="guardian_first_name" name="guardian_first_name" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
             
             </div>
@@ -397,7 +398,7 @@
               
               <!-- Middlename -->
               <div class="mb-1">
-                <input required type="text" id="middle_name" name="middle_name" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="guardian_middle_name" name="guardian_middle_name" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
             
             </div>
@@ -415,7 +416,7 @@
               </div>
               
               <!-- Extension Name -->
-              <select id="extension_name" name="extension_name" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 py-4 w-full">
+              <select id="guardian_extension_name" name="guardian_extension_name" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 py-4 w-full">
                 <option value="wala">Wala</option>
                 <option value="jr">Jr</option>
                 <option value="1">I</option>
@@ -541,13 +542,13 @@
               class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" 
               id="backBtn"
               type="button"
-              onclick="showPrevSet('enrollmentInfo')"
+              onclick="window.location = '{{URL::route('get.enrollment2')}}'"
               >Back</button>
             </div>
 
             <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] w-1/2  hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50"> 
               <button 
-              type="button" 
+              type="submit" 
               id="nextBtn" 
               class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block"
               onclick="showNextSet('learningInfo')"
@@ -564,8 +565,6 @@
     </section>
   
   </div>
-
-  <script src="./assets/js/form.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   

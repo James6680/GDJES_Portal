@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  @vite(['resources/js/app.js', 'resources/css/style.css'])
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Added initial-scale for responsiveness -->
   <title>Student Registration Page 1</title>
@@ -9,7 +10,7 @@
   
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
 
-  <link rel="icon" href="assets/frame-21@2x.png" type="image/x-icon" />
+  <link rel="icon" href="{{url('assets/frame-21@2x.png')}}" type="image/x-icon" />
   <style>
     /* Additional CSS for responsiveness */
     @media (max-width: 768px) {
@@ -44,7 +45,10 @@
 
       <!-- Student Registration Form -->
       <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12"
-      id="learningInfo">
+      id="learningInfo" method="post" action="{{route('post.enrollment4')}}">
+      @csrf
+      @method('post')
+
 
         <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-extrabold font-heading-2 text-main-green-secondary-700 text-center font-heading-2-bold">Student Registration for First-time Enrollees</h1>
 
@@ -220,7 +224,7 @@
               <button 
               class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" 
               id="backBtn"
-              onclick="showPrevSet('householdInfo')">Back</button>
+              onclick="window.location = '{{URL::route('get.enrollment3')}}'">Back</button>
             </div>
 
             <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] w-1/2  hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50"> 
@@ -240,8 +244,6 @@
     </section>
   
   </div>
-
-  <script src="./assets/js/form.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   

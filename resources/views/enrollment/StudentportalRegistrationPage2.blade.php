@@ -2,24 +2,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+  @vite(['resources/js/app.js', 'resources/css/style.css', 'resources/js/ph-address-selector.js',])
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Added initial-scale for responsiveness -->
   <title>Student Registration Page 3</title>
-  <link rel="stylesheet" href="style.css">
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Mulish:wght@400;700&display=swap" />
-  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
-
-  <link rel="icon" href="assets/frame-21@2x.png" type="image/x-icon" />
-
+  <link rel="icon" href="{{url('assets/frame-21@2x.png')}}" type="image/x-icon" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
     /* Additional CSS for responsiveness */
     @media (max-width: 768px) {
       .self-stretch {
         width: 100%;
       }
-      
       /* Add more responsive styles here */
     }
   </style>
@@ -47,8 +43,9 @@
       </div>
 
       <!-- Student Registration Form -->
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12">
-
+      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12" method="post" action="{{route('post.enrollment2')}}">
+      @csrf
+      @method('post')
         <h1 class="m-0 self-stretch relative text-[1.85rem] leading-[110%] font-extrabold font-heading-2 text-main-green-secondary-700 text-center font-heading-2-bold">Student Registration for First-time Enrollees</h1>
 
         <div class="self-stretch flex flex-col items-center justify-start gap-[0.5rem]">
@@ -116,14 +113,14 @@
 
               <!-- Grade Level -->
               <select id="grade_level" name="grade_level" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 py-2.5 w-full">
-                <option value="0">KINDER</option>
-                <option value="1">Grade 1</option>
-                <option value="2">Grade 2</option>
-                <option value="3">Grade 3</option>
-                <option value="4">Grade 4</option>
-                <option value="5">Grade 5</option>
-                <option value="6">Grade 6</option>
-                <option value="7">ALS</option>
+                <option value="0" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 0) selected @endif>KINDER</option>
+                <option value="1" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 1) selected @endif>Grade 1</option>
+                <option value="2" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 2) selected @endif>Grade 2</option>
+                <option value="3" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 3) selected @endif>Grade 3</option>
+                <option value="4" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 4) selected @endif>Grade 4</option>
+                <option value="5" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 5) selected @endif>Grade 5</option>
+                <option value="6" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 6) selected @endif>Grade 6</option>
+                <option value="7" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 7) selected @endif>ALS</option>
               </select>
             
             </div>
@@ -142,9 +139,9 @@
 
               <!-- School Year -->
               <div class="mb-1">
-                <input required type="text" id="school_year" name="school_year" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="school_year" name="school_year" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->school_year)? $enrollment->school_year : ''}}">
               </div>
-            
+      
             </div>
             
           </div>
@@ -162,7 +159,7 @@
               <!-- Learner Reference Number -->
               <div class="flex items-center mb-4">
 
-                <input required id="lrn_yes" type="radio" value="1" name="lrn_status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm()">
+                <input required id="lrn_yes" type="radio" value="1" name="lrn_status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm()" @if(isset($enrollment->lrn_status) && $enrollment->lrn_status == 1) checked @endif>
                 
                 <label for="default-radio-1" class="ml-2 text-[.90rem] font-light text-gray-900 dark:text-gray-300">Mayroon siyang LRN</label>
 
@@ -170,7 +167,7 @@
 
               <div class="flex items-center">
 
-                <input required id="lrn_no" type="radio" value="0" name="lrn_status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm()">
+                <input id="lrn_no" type="radio" value="0" name="lrn_status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm()" @if(isset($enrollment->lrn_status) && $enrollment->lrn_status == 0) checked @endif>
 
                 <label for="default-radio-2" class="ml-2 text-[.90rem] font-light text-gray-900 dark:text-gray-300">Wala siyang LRN dahil siya ay mag-kikinder pa lang</label>
               
@@ -193,7 +190,7 @@
               <!-- Learner Reference Number (LRN) -->
               <!--set this as if else statement then provide LRN-->
               <div class="mb-1">
-                <input required type="text" id="lrn_number" name="lrn_number" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="lrn_number" name="lrn_number" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->lrn_number)? $enrollment->lrn_number : ''}}">
               </div>
             
             </div>
@@ -225,7 +222,7 @@
               
               <!-- PSA Birth Certificate No. -->
               <div class="mb-1">
-                <input required type="text" id="psa_birth_cert" name="psa_birth_cert" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="psa_birth_cert" name="psa_birth_cert" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->psa_birth_cert)? $enrollment->psa_birth_cert : ''}}">
               </div>
             
             </div>
@@ -244,7 +241,7 @@
               
               <!-- Last Name -->
               <div class="mb-1">
-                <input required type="text" id="last_name" name="last_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="last_name" name="last_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->last_name)? $enrollment->last_name : ''}}">
               </div>
             
             </div>
@@ -263,7 +260,7 @@
 
               <!-- First Name -->
               <div class="mb-1">
-                <input required type="text" id="first_name" name="first_name" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="first_name" name="first_name" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->first_name)? $enrollment->first_name : ''}}">
               </div>
             
             </div>
@@ -283,7 +280,7 @@
 
               <!-- Middle Name -->
               <div class="mb-1">
-                <input required type="text" id="middle_name" name="middle_name" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" id="middle_name" name="middle_name" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->middle_name)? $enrollment->middle_name : ''}}">
               </div>
             
             </div>
@@ -303,14 +300,14 @@
               
               <!-- Extension Name -->
               <select id="extension_name" name="extension_name" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  p-2.5 w-full">
-                <option value="wala">Wala</option>
-                <option value="jr">Jr</option>
-                <option value="1">I</option>
-                <option value="2">II</option>
-                <option value="3">III</option>
-                <option value="4">IV</option>
-                <option value="5">V</option>
-                <option value="6">VI</option>
+                <option value="wala" @if(isset($enrollment->extension_name) && $enrollment->extension_name == "wala") selected @endif>Wala</option>
+                <option value="jr" @if(isset($enrollment->extension_name) && $enrollment->extension_name == "jr") selected @endif>Jr</option>
+                <option value="I" @if(isset($enrollment->extension_name) && $enrollment->extension_name == "I") selected @endif>I</option>
+                <option value="II" @if(isset($enrollment->extension_name) && $enrollment->extension_name == "II") selected @endif>II</option>
+                <option value="III" @if(isset($enrollment->extension_name) && $enrollment->extension_name == "III") selected @endif>III</option>
+                <option value="IV" @if(isset($enrollment->extension_name) && $enrollment->extension_name == "IV") selected @endif>IV</option>
+                <option value="V" @if(isset($enrollment->extension_name) && $enrollment->extension_name == "V") selected @endif>V</option>
+                <option value="VI" @if(isset($enrollment->extension_name) && $enrollment->extension_name == "VI") selected @endif>VI</option>
               </select>
             
             </div>
@@ -339,7 +336,7 @@
                 
                 </div>
                 
-                <input datepicker type="text" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-lg" placeholder="Select date">
+                <input datepicker type="text" name="birth_date" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-lg" placeholder="Select date">
               
               </div>
             
@@ -359,7 +356,7 @@
               
               <!-- Age on October 31, 2023 -->
               <div class="mb-1">
-                <input required type="text" id="age_on_oct_31" name="age_on_oct_31" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="age" name="age" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->age)? $enrollment->age : ''}}">
               </div>
             
             </div>
@@ -378,11 +375,11 @@
 
               <!-- Gender -->
               <div class="flex items-center mb-4">
-                <input required id="male" type="radio" value="male" name="gender" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <input required id="male" type="radio" value="male" name="gender" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @if(isset($enrollment->gender) && $enrollment->gender == "male") checked @endif>
                 <label for="default-radio-1" class="ml-2 text-[.90rem] font-light text-gray-900 dark:text-gray-300">Lalake</label>
               </div>
               <div class="flex items-center">
-                <input required id="female" type="radio" value="female" name="gender" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <input required id="female" type="radio" value="female" name="gender" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @if(isset($enrollment->gender) && $enrollment->gender == "female") checked @endif>
                 <label for="default-radio-2" class="ml-2 text-[.90rem] font-light text-gray-900 dark:text-gray-300">Babae</label>
               </div>
                           
@@ -402,7 +399,7 @@
 
               <!-- Indigenous Group -->
               <div class="flex items-center mb-4">
-                <input required id="indigenous_yes" type="radio" value="1" name="indigenous_group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm1()">
+                <input id="indigenous_yes" type="radio" value="1" name="indigenous_group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm1()" @if(isset($enrollment->indigenous_group) && $enrollment->indigenous_group == 1) checked @endif>
 
                 <label for="default-radio-1" class="ml-2 text-[0.90rem]  font-light text-gray-900 dark:text-gray-300">Oo</label>
 
@@ -410,7 +407,7 @@
 
               <div class="flex items-center">
 
-                <input id="indigenous_no" type="radio" value="0" name="indigenous_group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm1()">
+                <input id="indigenous_no" type="radio" value="0" name="indigenous_group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm1()" @if(isset($enrollment->indigenous_group) && $enrollment->indigenous_group == 0) checked @endif>
 
                 <label for="default-radio-2" class="ml-2 text-[0.90rem]  font-light text-gray-900 dark:text-gray-300">Hindi</label>
               </div>
@@ -432,7 +429,7 @@
               <!-- Indigenous Group -->   
               <!-- set this as if else statement -->
               <div class="mb-1">
-                <input required type="text" id="indigenous_group_name" name="indigenous_group_name" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="indigenous_group_name" name="indigenous_group_name" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->indigenous_group_name)? $enrollment->indigenous_group_name : ''}}">
               </div>
             
             </div>
@@ -464,21 +461,21 @@
 
               <!-- Primary Language -->
               <select id="primary_language" name="primary_language" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
-                <option value="filipino">Filipino</option>
-                <option value="bikolano">Bikolano</option>
-                <option value="cebuano">Cebuano</option>
-                <option value="chinese">Chinese</option>
-                <option value="english">English</option>
-                <option value="ilocano">Ilocano</option>
-                <option value="kapampangan">Kapampangan</option>
-                <option value="maguindanaoan">Maguindanaoan</option>
-                <option value="manobo">Manobo</option>
-                <option value="hihonggo">Hihonggo</option>
-                <option value="PSL">Philippine Sign Language</option>
-                <option value="tausug">Tausug</option>
-                <option value="waray">Waray</option>
-                <option value="ybanag">Ybanag</option>
-                <option value="others">Others</option>
+                <option value="filipino" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "filipino") selected @endif>Filipino</option>
+                <option value="bikolano" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "bikolano") selected @endif>Bikolano</option>
+                <option value="cebuano" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "cebuano") selected @endif>Cebuano</option>
+                <option value="chinese" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "chinese") selected @endif>Chinese</option>
+                <option value="english" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "english") selected @endif>English</option>
+                <option value="ilocano" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "ilocano") selected @endif>Ilocano</option>
+                <option value="kapampangan" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "kapampangan") selected @endif>Kapampangan</option>
+                <option value="maguindanaoan" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "maguindanaoan") selected @endif>Maguindanaoan</option>
+                <option value="manobo" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "manobo") selected @endif>Manobo</option>
+                <option value="hihonggo" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "hihonggo") selected @endif>Hihonggo</option>
+                <option value="PSL" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "PSL") selected @endif>Philippine Sign Language</option>
+                <option value="tausug" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "tausug") selected @endif>Tausug</option>
+                <option value="waray" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "waray") selected @endif>Waray</option>
+                <option value="ybanag" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "ybanag") selected @endif>Ybanag</option>
+                <option value="others" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "others") selected @endif>Others</option>
               </select>
             
             </div>
@@ -497,27 +494,27 @@
 
               <!-- Religion -->
               <select id="religion" name="religion" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full">
-                <option value="christianity">Christianity</option>
-                <option value="aglipayan">Aglipayan</option>
-                <option value="angelican">Angelican</option>
-                <option value="apostolic">Apostolic</option>
-                <option value="baptist">Baptist</option>
-                <option value="buddhism">Buddhism</option>
-                <option value="CLDS">Christ Latter Day Saints</option>
-                <option value="COGIJC">Church of God in Jesus Christ</option>
-                <option value="CODI">Church of God International</option>
-                <option value="dating daan">Dating Daan</option>
-                <option value="el shaddai">El Shaddai</option>
-                <option value="full gospel">Full Gospel</option>
-                <option value="hinduism">Hinduism</option>
-                <option value="INC">Iglesia ni Cristo</option>
-                <option value="IR">Indigenous Religion</option>
-                <option value="islam">Islam</option>
-                <option value="Saksi">Jehovah Witneses</option>
-                <option value="judaism">Judaism</option>
-                <option value="KOJC">Kingdom of Jesus Christ</option>
-                <option value="lutheran">Lutheran</option>
-                <option value="others">others</option>
+                <option value="christianity" @if(isset($enrollment->religion) && $enrollment->religion == "christianity") selected @endif>Christianity</option>
+                <option value="aglipayan" @if(isset($enrollment->religion) && $enrollment->religion == "aglipayan") selected @endif>Aglipayan</option>
+                <option value="angelican" @if(isset($enrollment->religion) && $enrollment->religion == "angelican") selected @endif>Angelican</option>
+                <option value="apostolic" @if(isset($enrollment->religion) && $enrollment->religion == "apostolic") selected @endif>Apostolic</option>
+                <option value="baptist" @if(isset($enrollment->religion) && $enrollment->religion == "baptist") selected @endif>Baptist</option>
+                <option value="buddhism" @if(isset($enrollment->religion) && $enrollment->religion == "buddhism") selected @endif>Buddhism</option>
+                <option value="CLDS" @if(isset($enrollment->religion) && $enrollment->religion == "CLDS") selected @endif>Christ Latter Day Saints</option>
+                <option value="COGIJC" @if(isset($enrollment->religion) && $enrollment->religion == "COGIJC") selected @endif>Church of God in Jesus Christ</option>
+                <option value="CODI" @if(isset($enrollment->religion) && $enrollment->religion == "CODI") selected @endif>Church of God International</option>
+                <option value="dating daan" @if(isset($enrollment->religion) && $enrollment->religion == "dating daan") selected @endif>Dating Daan</option>
+                <option value="el shaddai" @if(isset($enrollment->religion) && $enrollment->religion == "el shaddai") selected @endif>El Shaddai</option>
+                <option value="full gospel" @if(isset($enrollment->religion) && $enrollment->religion == "full gospel") selected @endif>Full Gospel</option>
+                <option value="hinduism" @if(isset($enrollment->religion) && $enrollment->religion == "hinduism") selected @endif>Hinduism</option>
+                <option value="INC" @if(isset($enrollment->religion) && $enrollment->religion == "INC") selected @endif>Iglesia ni Cristo</option>
+                <option value="IR" @if(isset($enrollment->religion) && $enrollment->religion == "IR") selected @endif>Indigenous Religion</option>
+                <option value="islam" @if(isset($enrollment->religion) && $enrollment->religion == "islam") selected @endif>Islam</option>
+                <option value="Saksi" @if(isset($enrollment->religion) && $enrollment->religion == "Saksi") selected @endif>Jehovah Witneses</option>
+                <option value="judaism" @if(isset($enrollment->religion) && $enrollment->religion == "judaism") selected @endif>Judaism</option>
+                <option value="KOJC" @if(isset($enrollment->religion) && $enrollment->religion == "KOJC") selected @endif>Kingdom of Jesus Christ</option>
+                <option value="lutheran" @if(isset($enrollment->religion) && $enrollment->religion == "lutheran") selected @endif>Lutheran</option>
+                <option value="others" @if(isset($enrollment->religion) && $enrollment->religion == "others") selected @endif>others</option>
               </select>
             
             </div>
@@ -537,14 +534,14 @@
               <!-- Special Needs -->
               <div class="flex items-center mb-4">
 
-                <input required id="special_needs_no" type="radio" value="0" name="special_needs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm2()">
+                <input required id="special_needs_no" type="radio" value="0" name="special_needs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm2()" @if(isset($enrollment->special_needs) && $enrollment->special_needs == 0) checked @endif>
 
                 <label for="default-radio-1" class="ml-2 text-[0.90rem] font-light text-gray-900 dark:text-gray-300">Wala</label>
 
               </div>
               <div class="flex items-center">
 
-                <input required id="special_needs_yes" type="radio" value="1" name="special_needs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm2()">
+                <input required id="special_needs_yes" type="radio" value="1" name="special_needs" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onchange="toggleForm2()" @if(isset($enrollment->special_needs) && $enrollment->special_needs == 1) checked @endif>
 
                 <label for="default-radio-2" class="ml-2 text-[0.90rem] font-light text-gray-900 dark:text-gray-300">Meron</label>
 
@@ -567,7 +564,7 @@
               <!-- Special Needs Description -->    
               <!-- if others is selected get user input-->
               <div class="mb-1">
-                <input required type="text" id="special_needs_description" name="special_needs_description" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="special_needs_description" name="special_needs_description" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->special_needs_description)? $enrollment->special_needs_description : ''}}">
               </div>
             
             </div>
@@ -599,7 +596,8 @@
               
               <!-- Region -->
               <div class="mb-1">
-                <input required type="hidden" id="region_text" name="region_text" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <select name="region" id="region" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"></select>
+                <input id="region_text" name="region_text" >
               </div>
             
             </div>
@@ -617,7 +615,8 @@
               </div>
             
               <div class="mb-1">
-                <input required type="hidden" id="province_text" name="province_text" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <select name="province" id="province" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"></select>
+                <input type="hidden" id="province_text" name="province_text">
               </div>
             
             </div>
@@ -635,7 +634,8 @@
               </div>
             
               <div class="mb-1">
-                <input required type="hidden" id="city_text" name="city_text" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <select name="city" id="city" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"></select>
+                <input type="hidden" id="city_text" name="city_text">
               </div>
             
             </div>
@@ -653,14 +653,14 @@
               </div>
             
               <div class="mb-1">
-                <input required type="hidden" id="barangay_text" name="barangay_text" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <select name="barangay" id="barangay" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"></select>
+                <input type="hidden" id="barangay_text" name="barangay_text">
               </div>
             
             </div>
             
           </div>
 
-          
           <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100 w-full">
             
             <div id="balikAralInfo" class="flex flex-col w-full">
@@ -673,7 +673,7 @@
               
               <!-- House Number -->
               <div class="mb-1">
-                <input required type="text" id="street_text" name="street_text" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="street_text" name="street_text" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->street_text)? $enrollment->street_text : ''}}">
               </div>
             
             </div>
@@ -692,7 +692,7 @@
               
               <!-- House Number -->
               <div class="mb-1">
-                <input required type="text" id="house_number" name="house_number" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="house_number" name="house_number" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->house_number)? $enrollment->house_number : ''}}">
               </div>
             
             </div>
@@ -705,15 +705,14 @@
               <button 
               id="backBtn"
               type="button"
-              onclick="showPrevSet('returnee')"
+              onclick="window.location = '{{URL::route('get.enrollment1')}}'"
               class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap">Back</button>
             </div>
 
             <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] w-1/2  hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50"> 
               <button 
-              type="button" 
+              type="submit" 
               id="nextBtn"
-              onclick="showNextSet('householdInfo')" 
               class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block">next</button>
             
             </div>
@@ -727,12 +726,7 @@
     </section>
   
   </div>
-
-  <script src="./assets/js/form.js"></script>
-  <script src="./assets/js/ph-address-selector.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/datepicker.min.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   
   <script>

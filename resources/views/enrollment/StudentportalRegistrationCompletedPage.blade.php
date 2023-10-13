@@ -2,14 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  @vite(['resources/js/app.js', 'resources/css/style.css'])
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, width=device-width" />
   <title>Student Registration Page 1</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank Ruhl Libre:wght@400;700&display=swap"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"  rel="stylesheet" />
-  <link rel="icon" href="assets/frame-21@2x.png" type="image/x-icon" />
+  <link rel="icon" href="{{url('assets/frame-21@2x.png')}}" type="image/x-icon" />
 </head>
 
 <body class="m-0 p-0">
