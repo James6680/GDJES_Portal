@@ -6,7 +6,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GDJES Landing Page</title>
-  <link rel="icon" href="/dist/assets/GDJES Logo.png" type="image/x-icon" />
+
+  <link rel="shortcut icon" href="{{ asset('assets/GDJES Logo.png') }}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,9 +16,13 @@
     rel="stylesheet" />
 
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+
+
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 </head>
   
 <body
@@ -69,6 +74,7 @@
   </nav>
 
   <!-- Hero section -->
+
   <section id="hero"
     class="w-screen z-0 flex-col justify-center items-center gap-3 lg:gap-10 flex h-4/6 lg:h-full pt-40 px-18 pb-24 lg:pt-80 lg:py-60 bg-no-repeat bg-cover bg-center bg-[url(../assets/content-schoolgrounds.jpg)]">
     <div class="h-auto p-2.5 justify-center items-center gap-2.5 inline-flex">
@@ -111,13 +117,13 @@
       </li>
     </ul>
 
-    <img src="assets/announcement-gradient-blob.svg" alt="SVG image"
+    <img src="{{ asset ('assets/announcement-gradient-blob.svg') }}" alt="SVG image"
       class="-z-10 w-2/3 lg:w-2/5 absolute bottom-0 right-0 h-auto" />
   </section>
 
   <!-- Mission and Vision section -->
   <section id="missionvision"
-    class="grid w-screen relative gap-6 h-auto p-8 md:p-16 lg:py-28 lg:px-60 lg:gap-12 bg-yellow-50 bg-no-repeat bg-cover bg-center bg-[url(../assets/content-teacher.jpg)]">
+    class="grid w-screen relative gap-6 h-auto p-8 md:p-16 lg:py-28 lg:px-60 lg:gap-12 bg-yellow-50 bg-no-repeat bg-cover bg-center  bg-[url(../assets/content-teacher.jpg)]">
     <h2 class="w-auto flex justify-center font-frl text-xl lg:text-3xl text-black font-bold">
       Mission and Vision
     </h2>
@@ -293,7 +299,8 @@
         </div>
       </div>
 
-      <img src="assets/faqs-gradient-blob.svg" alt="SVG image"
+
+      <img src="{{ asset ('assets/faqs-gradient-blob.svg') }}" alt="SVG image"
         class="-z-10 w-2/3 lg:w-2/5 absolute bottom-0 left-0 h-auto opacity-50" />
   </section>
 
@@ -328,7 +335,7 @@
         referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <img src="assets/contactus-gradient-blob.svg" alt="SVG image"
+    <img src="{{ asset ('assets/contactus-gradient-blob.svg') }}" alt="SVG image"
       class="-z-10 w-2/3 lg:w-2/5 absolute self-center h-auto opacity-40" />
   </section>
 
@@ -349,7 +356,7 @@
       Go to faculty and admin portal
     </button>
 
-    <img src="assets/facultyandadminaccess-gradient-blob.svg" alt="SVG image"
+    <img src="{{ asset ('assets/facultyandadminaccess-gradient-blob.svg') }}" alt="SVG image"
       class="-z-10 w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-30" />
   </section>
 
@@ -359,7 +366,8 @@
     <!-- Logo container -->
     <div class="md:col-span-1 flex-start items-center md:items-start gap-2 flex  w-auto">
       <img aria-label="GDJES Manila logo" class="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 relative"
-        src="./assets/GDJES Logo.png" />
+
+        src="{{ asset ('assets/GDJES Logo.png') }}" />
       <div class="flex-col justify-start items-start gap-0 inline-flex">
         <h2 class="font-frl text-sm md:text-base font-bold leading-none text-white">
           GREGORIA DE JESUS
