@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('helloworld', function () {
     return view('HelloWorld');
 });
+
+Route::get('landing', function () {
+    return view('landing');
+});
