@@ -53,7 +53,7 @@
     <h2>Modal Example</h2>
     <!-- Trigger/Open The Modal -->
     <button id="addEditButton" onclick="addEditButtonClick('add', this)">Add Section</button>
-    <input type="text" id="myInput" onkeyup="filter()" placeholder="Search for names.." title="Type in a name">
+    <input type="text" id="myInput" onkeyup="filter()" placeholder="Search section or grade level..." title="Type in a name">
     <table id="myTable">
         <tr class="header">
         <th style="width:30%;">Section Name</th>
@@ -179,7 +179,6 @@
 
         function submitForm(form){
             var formData = $(form).serialize();
-            console.log(formData);
             $.ajax({
                 url: "{{ route('admin.CRUDSection') }}",
                 type: "POST",
@@ -208,7 +207,7 @@
         }
 
         function filter() {
-            var input, filter, table, tr, td, i, txtValue;
+            var input, filter, table, tr, td, td1, i, txtValue, txtValue1;
             input = document.getElementById("myInput");
             filter = input.value.toUpperCase();
             table = document.getElementById("myTable");
@@ -216,10 +215,11 @@
 
             for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[0];
+                td1 = tr[i].getElementsByTagName("td")[3];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
-                    console.log(txtValue);
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    txtValue1 = td1.textContent || td1.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue1.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                     } else {
                     tr[i].style.display = "none";
