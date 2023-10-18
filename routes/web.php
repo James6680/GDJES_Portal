@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Enrollment;
-use App\Http\Controllers\EnrollmentController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\EnrollmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +40,15 @@ Route::get('enrollment4', [EnrollmentController::class, 'getEnrollment4'])->name
 Route::post('enrollment4', [EnrollmentController::class, 'postEnrollment4'])->name('post.enrollment4');
 
 Route::get('enrollmentComplete', [EnrollmentController::class, 'enrollmentComplete'])->name('enrollmentComplete');
+
+Route::get('sections', function () {
+    return view('admin.sections');
+});
+
+Route::post('settings/addSection', [SectionsController::class, 'CRUDSection'])->name('admin.CRUDSection');
+
+// Route::get('sample', function () {
+//     return view('admin.sampleform');
+// });
+
+// Route::post('ajax.store', [StudentController::class, 'index'])->name('ajax.store');
