@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class GradeLevel extends Model
 {
     use HasFactory;
-    protected $table = 'sections';
+    protected $table = 'grade_levels';
 
     
     public function section(): belongsTo{

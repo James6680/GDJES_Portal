@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\EnrollmentController;
-
+use App\Http\Controllers\SubjectsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,11 +41,32 @@ Route::post('enrollment4', [EnrollmentController::class, 'postEnrollment4'])->na
 
 Route::get('enrollmentComplete', [EnrollmentController::class, 'enrollmentComplete'])->name('enrollmentComplete');
 
+
+
+
+
+
+///////////ADMIN SIDE///////////////
 Route::get('sections', function () {
     return view('admin.sections');
 });
 
 Route::post('settings/addSection', [SectionsController::class, 'CRUDSection'])->name('admin.CRUDSection');
+
+Route::get('subjects', function () {
+    return view('admin.subjects');
+});
+
+Route::post('settings/addSubject', [SubjectsController::class, 'CRUDSubject'])->name('admin.CRUDSubject');
+
+// Route::post('settings/addSection', [SectionsController::class, 'CRUDSection'])->name('admin.CRUDSection');
+
+
+//////////////////////////////////////////////
+
+
+
+
 
 // Route::get('sample', function () {
 //     return view('admin.sampleform');

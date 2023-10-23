@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\CrudClassRequest;
+use App\Http\Requests\SectionRequest;
 use Illuminate\Database\Eloquent\Builder;
 
 class SectionsController extends Controller
@@ -22,7 +22,7 @@ class SectionsController extends Controller
         return $query;
     }
 
-    public function CRUDSection(CrudClassRequest $request){
+    public function CRUDSection(SectionRequest $request){
         if($request->formAction === "AddData"){
             $validated = $request->validated();
             $section = [];
