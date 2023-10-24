@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\SubjectsController;
+use App\Http\Controllers\SchoolYearController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,18 +48,14 @@ Route::get('enrollmentComplete', [EnrollmentController::class, 'enrollmentComple
 
 
 ///////////ADMIN SIDE///////////////
-Route::get('sections', function () {
-    return view('admin.sections');
-});
-
+Route::get('sections', function () {return view('admin.sections');});
 Route::post('settings/addSection', [SectionsController::class, 'CRUDSection'])->name('admin.CRUDSection');
 
-Route::get('subjects', function () {
-    return view('admin.subjects');
-});
-
+Route::get('subjects', function () {return view('admin.subjects');});
 Route::post('settings/addSubject', [SubjectsController::class, 'CRUDSubject'])->name('admin.CRUDSubject');
 
+Route::get('/school-year-start', [ SchoolYearController::class, 'getSchoolYearView'])->name('admin.SchoolYear');
+Route::post('/school-year-start', [ SchoolYearController::class, 'addSchoolYear'])->name('admin.addSchoolYear');
 // Route::post('settings/addSection', [SectionsController::class, 'CRUDSection'])->name('admin.CRUDSection');
 
 
