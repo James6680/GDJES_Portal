@@ -100,6 +100,7 @@
         
         function addEditButtonClick(mode, button) {
             modal.style.display = "block";
+            $('#subject_name-error').text("");
             const formAction = document.getElementById("formAction");
             if(mode === "edit"){
                 formAction.value = "EditData";
@@ -179,6 +180,8 @@
 
         function submitForm(form){
             var formData = $(form).serialize();
+            formdData = escape(formData);
+            console.log(formData);
             $.ajax({
                 url: "{{ route('admin.CRUDSubject') }}",
                 type: "POST",
