@@ -1,210 +1,207 @@
 <!DOCTYPE html>
 <html>
 <head>
-  @vite(['resources/js/app.js', 'resources/css/style.css'])
+  @vite(['resources/js/app.js', 'resources/css/style.css', 'resources/js/Enrollment_ValidationP1.js'])
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Added initial-scale for responsiveness -->
-  <title>Student Registration Page 2</title>
-  <link rel="icon" href="{{url('assets/frame-21@2x.png')}}" type="image/x-icon"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Mulish:wght@400;700&display=swap" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <title>Student Registration Page 1</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank Ruhl Libre:wght@400;700&display=swap"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
-  <style>
-    /* Additional CSS for responsiveness */
-    @media (max-width: 768px) {
-      .self-stretch {
-        width: 100%;
-      }
-      /* Add more responsive styles here */
-    }
-  </style>
+  <link rel="icon" href="{{url('assets/GDJES Logo.png')}}" type="image/x-icon" />
 </head>
 <body class="m-0 p-0">
 
   <!-- Form Background  -->
-  <div class="relative w-full h-full overflow-hidden flex flex-row items-center justify-center py-[3.5rem] px-[15rem] bg-[url('/assets/studentportalregistrationpage101@3x.png')] bg-cover bg-no-repeat lg:flex-row lg:gap-[0rem] lg:items-center lg:justify-center lg:py-[11.25rem] lg:px-[9.38rem] lg:box-border md:flex-row md:gap-[0rem] md:items-center md:justify-center md:py-[8.75rem] md:px-[4.38rem] md:box-border sm:flex-row sm:gap-[0rem] sm:items-center sm:justify-center sm:py-[14.38rem] sm:px-[3.13rem] sm:box-border">
+  <div class="relative w-full h-full overflow-hidden flex flex-row items-center justify-center py-[7.5rem] px-[15rem] box-border bg-[url('assets/bg_page.png')] bg-cover bg-no-repeat bg-center lg:flex-row lg:gap-[0rem] lg:items-center lg:justify-center lg:py-[11.25rem] lg:px-[9.38rem] lg:box-border md:flex-row md:gap-[0rem] md:items-center md:justify-center md:py-[8.75rem] md:px-[4.38rem] md:box-border sm:flex-row sm:gap-[0rem] sm:items-center sm:justify-center sm:py-[14.38rem] sm:px-[3.13rem] sm:box-border"
+  style="background-image: url('assets/bg_page.png');">
 
-    <section class="flex-1 flex flex-col items-center justify-center gap-[2.5rem] text-left text-[1.44rem] text-main-background font-heading-2 md:gap-[1.88rem]">
-    
-    <!-- Logo Container -->
+    <section class="flex-1 flex flex-col items-center justify-center gap-[2.5rem] text-center text-[1.44rem] text-main-background font-heading-2 md:gap-[1.88rem]">
+
+      <!-- Logo Container -->
       <div class="h-[7.31rem] flex flex-col items-center justify-center gap-[0.5rem] cursor-pointer" id="logoContainer">
 
-        <img class="relative w-[3rem] h-[3rem] overflow-hidden shrink-0 object-cover" alt="" src="{{url('assets/frame-21@2x.png')}}" />
+        <img class="relative w-[3rem] h-[3rem] overflow-hidden shrink-0 object-cover" alt="GDJES Logo" src="{{url('assets/GDJES Logo.png')}}" />
 
-        <div class="flex flex-col items-start justify-start ">
+        <div class="flex flex-col items-start justify-start">
 
-          <h2 class="m-0 relative text-inherit leading-[140%] font-bold font-heading-2-bold font-inherit overflow-hidden text-ellipsis whitespace-nowrap">GREGORIA DE JESUS</h2>
+          <h2 class="m-0 relative text-inherit leading-[140%] font-bold font-heading-2-bold overflow-hidden text-ellipsis whitespace-nowrap">
+            GREGORIA DE JESUS
+          </h2>
 
-          <div class="self-stretch relative text-[0.69rem] leading-[140%] text-center">ELEMENTARY SCHOOL - MANILA</div>
-        </div>
-
-      </div>
-
-      <!-- Student Registration Form -->
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center px-[2rem] py-[2.5rem] gap-[.9rem] w-10/12" method="post" action="{{route('post.enrollment1')}}">
-      @csrf
-      @method('post')
-        <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-extrabold font-heading-2 text-main-green-secondary-700 text-center font-heading-2-bold">Student Registration for First-time Enrollees</h1>
-
-        <div class="self-stretch flex flex-col items-center justify-start gap-[0.5rem">
-
-          <div class="self-stretch relative text-[1rem] leading-[140%] font-button text-main-brown-primary-500 text-center">Welcome to the student portal registration form</div>
-
-          <div class="self-stretch relative text-[0.81rem] leading-[140%] font-button text-main-green-secondary-700 text-center">Please fill out all the necessary information below.</div>
-
-        </div>
-
-        <!-- Progress Bar -->
-        <div class="self-stretch flex flex-row items-center justify-center py-[1.5rem] px-[4.44rem]">
-
-          <div class="rounded-481xl bg-main-green-secondary-500 h-[2.5rem] overflow-hidden flex flex-col items-center justify-center p-0">
-
-            <div class="relative text-[1.20rem] leading-[140%] font-heading-2 text-main-background text-left p-4">1</div>
-
-          </div>
-
-          <div class="flex-1 relative bg-main-green-secondary-500 h-[0.31rem] overflow-hidden mix-blend-lifont-light"></div>
-
-          <div class="rounded-481xl bg-main-green-secondary-500 h-[2.6rem] overflow-hidden flex flex-col items-center justify-center p-0">
-
-            <div class="relative text-[1.20rem] leading-[140%] font-heading-2 text-main-background text-left p-4">2</div>
-
-          </div>
-
-          <div class="flex-1 relative bg-main-green-secondary-200 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
-
-          <div class="rounded-481xl bg-main-green-secondary-200 h-[2.67rem] overflow-hidden flex flex-col items-center justify-center p-0">
-
-            <div class="relative text-[1.20rem] leading-[140%] font-heading-2 text-main-green-secondary-300 text-left p-4">3</div>
-
-          </div>
-
-          <div class="flex-1 relative bg-main-green-secondary-200 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
-
-          <div class="rounded-481xl bg-main-green-secondary-200 h-[2.65rem] overflow-hidden flex flex-col items-center justify-center p-0">
-
-            <div class="relative text-[1.25rem] leading-[140%] font-heading-2 text-main-green-secondary-300 text-left p-4">4</div>
-
-          </div>
-
-          <div class="flex-1 relative bg-main-green-secondary-200 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
-
-          <div class="rounded-481xl bg-main-green-secondary-200 h-[2.65rem] overflow-hidden flex flex-col items-center justify-center p-0">
-
-            <div class="relative text-[1.25rem] leading-[140%] font-heading-2 text-main-green-secondary-300 text-left p-4">5</div>
-
+          <div class="self-stretch  relative text-[0.69rem] leading-[140%] text-center">
+            ELEMENTARY SCHOOL - MANILA
           </div>
 
         </div>
 
+        </div>
 
-        <div class="self-stretch flex flex-col items-start justify-start gap-[1rem]">
+        <!-- Student Registration Form -->
+        <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[2.5rem] px-[2.5rem] gap-[.9rem] w-10/12" method="post" action="{{route('post.enrollment')}}">
+        @csrf
+        @method('post')
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[1.5rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100 w-full">
-            
-            <div id="balikAralInfo" class="flex flex-col w-full">
-             
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
-                
-                <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="balikAral">Ano ang huling baitang na natapos? <span class="text-red-600">*</span></b>
-              
-              </div>
+          <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-bold font-heading-2-bold text-main-green-secondary-700 text-center md:text-2xl">Student Registration for First-time Enrollees</h1>
+          
+          <div class="self-stretch flex flex-col items-center justify-start gap-[0.5rem]">
 
-               <!-- Returnee -->
-              <select id="returnee" name="returnee" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  px-2.4 py-2.5 w-full" >
-                <option value="0" @if(isset($enrollment->returnee) && $enrollment->returnee == 0) selected @endif>KINDER</option>
-                <option value="1" @if(isset($enrollment->returnee) && $enrollment->returnee == 1) selected @endif>Grade 1</option>
-                <option value="2" @if(isset($enrollment->returnee) && $enrollment->returnee == 2) selected @endif>Grade 2</option>
-                <option value="3" @if(isset($enrollment->returnee) && $enrollment->returnee == 3) selected @endif>Grade 3</option>
-                <option value="4" @if(isset($enrollment->returnee) && $enrollment->returnee == 4) selected @endif>Grade 4</option>
-                <option value="5" @if(isset($enrollment->returnee) && $enrollment->returnee == 5) selected @endif>Grade 5</option>
-                <option value="6" @if(isset($enrollment->returnee) && $enrollment->returnee == 6) selected @endif>Grade 6</option>
-                <option value="7" @if(isset($enrollment->returnee) && $enrollment->returnee == 0) selected @endif>ALS</option>
-              </select>
-            
-            </div>
-            
-          </div>
+            <div class="self-stretch relative text-[1rem] leading-[140%] font-button text-main-brown-primary-500 text-center">Welcome to the student portal registration form</div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[1.3rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
-            
-            <div id="paaralanInfo" class="flex flex-col w-full">
-             
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
-                
-                <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Ano ang huling paaralan na pinasukan? <span class="text-red-600">*</span></b>
-              
-              </div>
-
-              <!-- Last school attended -->
-              <div class="mb-6">
-                @if($errors->has('lastSchoolAttended'))
-                <div class="text-danger">{{ $errors->first('lastSchoolAttended') }}</div>
-            @endif
-                <input type="text" id="lastSchoolAttended" name="lastSchoolAttended" class=" text-[1rem] block w-full px-4 py-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->lastSchoolAttended)? $enrollment->lastSchoolAttended : old('lastSchoolAttended')}}">
-              </div>
-            
-            </div>
+            <div class="self-stretch relative text-[0.81rem] leading-[140%] font-button text-main-green-secondary-700 text-center">Please fill out all the necessary information below.</div>
 
           </div>
+          
+          <!-- Progress Bar -->
+          <div class="self-stretch flex flex-row items-center justify-center py-[1.5rem] px-[4.44rem]">
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[1.3rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
-            
-            <!-- 3rd Part -->
-            <div id="panuruangTao" class="flex flex-col w-full">
-             
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
-                
-                <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="panuruangTao">Anong panuruang taon ang natapos ng mag-aaral? <span class="text-red-600">*</span></b>
-              
+            <!-- Progress #1 -->
+            <div class="rounded-481xl bg-main-green-secondary-500 h-[2.5rem] overflow-hidden flex flex-col items-center justify-center p-0">
+
+              <div class="relative text-[1.20rem] leading-[140%] font-heading-2 text-main-background text-left p-4">
+                1
               </div>
-              
-              <!-- Last school year attended -->
-              <div class="mb-6">
-                <input type="text" id="lastSchoolYearAttended" name="lastSchoolYearAttended" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" value="{{isset($enrollment->lastSchoolYearAttended)? $enrollment->lastSchoolYearAttended : ''}}">
-              </div>
-            
+
             </div>
-            
+
+            <div class="flex-1 relative bg-main-green-secondary-200 h-[0.31rem] overflow-hidden mix-blend-lifont-light"></div>
+
+            <!-- Progress #2 -->
+            <div class="rounded-481xl bg-main-green-secondary-200 h-[2.6rem] overflow-hidden flex flex-col items-center justify-center p-0">
+
+              <div class="relative text-[1.20rem] leading-[140%] font-heading-2 text-main-green-secondary-300 text-left p-4">
+                2
+              </div>
+
+            </div>
+
+            <div class="flex-1 relative bg-main-green-secondary-200 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
+
+            <!-- Progress #3 -->
+            <div class="rounded-481xl bg-main-green-secondary-200 h-[2.67rem] overflow-hidden flex flex-col items-center justify-center p-0">
+
+              <div class="relative text-[1.20rem] leading-[140%] font-heading-2 text-main-green-secondary-300 text-left p-4">
+                3
+              </div>
+
+            </div>
+
+            <div class="flex-1 relative bg-main-green-secondary-200 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
+
+            <!-- Progress #4 -->
+            <div class="rounded-481xl bg-main-green-secondary-200 h-[2.65rem] overflow-hidden flex flex-col items-center justify-center p-0">
+
+              <div class="relative text-[1.25rem] leading-[140%] font-heading-2 text-main-green-secondary-300 text-left p-4">
+                4
+              </div>
+
+            </div>
+
+            <div class="flex-1 relative bg-main-green-secondary-200 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
+
+            <!-- Progress #5 -->
+            <div class="rounded-481xl bg-main-green-secondary-200 h-[2.65rem] overflow-hidden flex flex-col items-center justify-center p-0">
+
+              <div class="relative text-[1.25rem] leading-[140%] font-heading-2 text-main-green-secondary-300 text-left p-4">
+                5
+              </div>
+
+            </div>
+
           </div>
 
-          <div class="flex gap-2 w-full">  
+          <!-- Enrollment Form #1 -->
+          <div class="self-stretch flex flex-col items-start justify-start gap-[1rem]">
 
-            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] w-1/2 border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100">
+            <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-start p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100 redBorder">
               
-              <button class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" 
-              type="button" 
-              id="backBtn"
-              onclick="window.location = '{{URL::route('get.enrollment')}}'">Back</button>
+            <!--Radio Button Balik Aral -->
+              <div id="balikAralInfo" class="self-stretch relative flex-col items-start justify-start">
+              
+                <div class="self-stretch flex flex-col items-start justify-start pb-4">
+                  
+                  <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="balikAral">Balik-aral ba ang batang ipapalista? <span class="text-red-600">*</span></b>
+                
+                </div>
+                
+                <div class="flex items-center mb-4"> 
+                  
+                  <input 
+                  type="radio" 
+                  value="HINDI" 
+                  name="aralStatus" 
+                  id="balikAralNo"
+                  class="w-4 h-4 text-green-800 border-gray-300 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  >
+                  
+                  <label for="balikAralNo" class="ml-2 text-[0.85rem] text-gray-900 dark:text-black">HINDI</label>
+              
+                </div>
+                
+                <div class="flex items-start">
+                  
+                  <input 
+                  type="radio" 
+                  value="OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon" name="aralStatus" id="balikAralYes" 
+                  class="w-4 h-4 text-green-800 border-gray-300 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring- dark:bg-gray-100 dark:border-gray-600"
+                  >
+                  
+                  <label for="balikAralYes" class="ml-2  text-[0.85rem]  text-gray-900 dark:text-black">OO dahil sya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon</label>
+              
+                </div>
+
+                <div class="flex items-start">
+
+                  <span   
+                    id="input-error" 
+                    class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                    ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
+                  
+                  </span>
+
+              </div>
+
+              </div>
+              
             </div>
 
-            <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] w-1/2  hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50"> 
-
+            <!-- Next Button -->
+            <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] px-[2.13rem] hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50">
+              
               <button 
-              type="submit" 
-              id="nextBtn" 
-              onclick="showNextSet('enrollmentInfo')"
-              class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block">next</button>
+              type="button" 
+              id="nextButton"
+              class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block" 
+              onclick="showNextSet()">
+              next
+              </button>
+            
             </div>
-
+            
           </div>
+        
+          <div class="self-stretch relative bg-main-brown-primary-300 h-[0.13rem] overflow-hidden shrink-0"></div>  
+        
+          <div class="self-stretch flex flex-col items-start justify-start gap-[1rem]">
+            
+            <div class="self-stretch relative text-[0.81rem] leading-[140%] font-button text-main-brown-primary-500 text-center overflow-hidden text-ellipsis whitespace-nowrap">Already have an account?</div>
+            
+            <!-- Login Button -->
+            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] px-[2.13rem] border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100 cursor-pointer">
 
-        </div>
-
-      </form>
+              <button id="loginButton"  class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap">login here</button>
+            
+            </div>
+          
+          </div>
+      
+        </form>
     
     </section>
   
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
-  
-  <script>
-    var logoContainer = document.getElementById("logoContainer");
-    if (logoContainer) {
-      logoContainer.addEventListener("click", function (e) {
-        // Please sync "landing-page" to the project
-      });
-    }
-  </script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>
-</html>
+
+</html> 

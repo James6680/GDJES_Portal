@@ -11,7 +11,7 @@ class EnrollmentController extends Controller
     public function getEnrollment(Request $request)
     {
         $enrollment = $request->session()->get('enrollment');
-        return view('enrollment.StudentportalRegistrationPage',compact('enrollment'));
+        return view('enrollment.StudentportalRegistrationPage1',compact('enrollment'));
     }
 
     public function postEnrollment(Request $request)
@@ -35,7 +35,7 @@ class EnrollmentController extends Controller
     public function getEnrollment1(Request $request)
     {
         $enrollment = $request->session()->get('enrollment');
-        return view('enrollment.StudentportalRegistrationPage1',compact('enrollment'));
+        return view('enrollment.StudentportalRegistrationPage2',compact('enrollment'));
     }
 
     public function postEnrollment1(Request $request)
@@ -60,7 +60,7 @@ class EnrollmentController extends Controller
     public function getEnrollment2(Request $request)
     {
         $enrollment = $request->session()->get('enrollment');
-        return view('enrollment.StudentportalRegistrationPage2',compact('enrollment'));
+        return view('enrollment.StudentportalRegistrationPage3',compact('enrollment'));
     }
 
     public function postEnrollment2(Request $request)
@@ -106,7 +106,7 @@ class EnrollmentController extends Controller
     public function getEnrollment3(Request $request)
     {
         $enrollment = $request->session()->get('enrollment');
-        return view('enrollment.StudentportalRegistrationPage3',compact('enrollment'));
+        return view('enrollment.StudentportalRegistrationPage4',compact('enrollment'));
     }
 
     public function postEnrollment3(Request $request)
@@ -128,7 +128,7 @@ class EnrollmentController extends Controller
     public function getEnrollment4(Request $request)
     {
         $enrollment = $request->session()->get('enrollment');
-        return view('enrollment.StudentportalRegistrationPage4',compact('enrollment'));
+        return view('enrollment.StudentportalRegistrationPage5',compact('enrollment'));
     }
 
     public function postEnrollment4(Request $request)
@@ -144,7 +144,7 @@ class EnrollmentController extends Controller
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }
-        return redirect()->route('get.enrollment4');
+        return redirect()->route('get.enrollment5');
     }
     public function enrollmentComplete(Request $request)
     {

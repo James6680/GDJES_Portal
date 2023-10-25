@@ -40,3 +40,12 @@ Route::get('enrollment4', [EnrollmentController::class, 'getEnrollment4'])->name
 Route::post('enrollment4', [EnrollmentController::class, 'postEnrollment4'])->name('post.enrollment4');
 
 Route::get('enrollmentComplete', [EnrollmentController::class, 'enrollmentComplete'])->name('enrollmentComplete');
+
+
+Route::get('/StudentLoginPage', function(){
+    return view('login.StudentLoginPage');
+});
+
+Route::get('/FacultyTeacherLoginPage', function(){
+    return view('login.FacultyTeacherLoginPage');
+});
