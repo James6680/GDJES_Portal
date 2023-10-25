@@ -56,6 +56,7 @@ Route::post('settings/addSubject', [SubjectsController::class, 'CRUDSubject'])->
 
 Route::get('/school-year-start', [ SchoolYearController::class, 'getSchoolYearView'])->name('admin.SchoolYear');
 Route::post('/school-year-start', [ SchoolYearController::class, 'addSchoolYear'])->name('admin.addSchoolYear');
+Route::post('/school-year-end', [ SchoolYearController::class, 'endSchoolYear'])->name('admin.endSchoolYear');
 // Route::post('settings/addSection', [SectionsController::class, 'CRUDSection'])->name('admin.CRUDSection');
 
 

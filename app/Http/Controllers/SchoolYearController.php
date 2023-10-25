@@ -22,4 +22,10 @@ class SchoolYearController extends Controller
         $school_year['active'] = 1;
         SchoolYear::create($school_year);
     }
+
+    public function endSchoolYear(Request $request){
+        DB::table('school_years')
+            ->where('school_year', $request->school_year)
+            ->update(['active' => false]);
+    }
 }
