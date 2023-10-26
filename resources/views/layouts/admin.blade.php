@@ -25,9 +25,9 @@
 
 </head>
   
-<body class="container overflow-x-hidden w-screen container-fluid flex flex-col justify-start h-screen m-0 pt-16 bg-black">
+<body class="container overflow-x-hidden w-screen container-fluid flex flex-col justify-start h-screen m-0 pt-16 bg-yellow-50">
   <x-sidebar />
-  
+
   
 </body>
 </html>
