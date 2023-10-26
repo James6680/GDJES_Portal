@@ -22,6 +22,10 @@ Route::get('helloworld', function () {
     return view('HelloWorld');
 });
 
-Route::get('landing', function () {
-    return view('landing');
+Route::get('layouts.landing', function () {
+    return view('layouts.landing');
+});
+
+Route::get('layouts.admin', function () {
+    return view('layouts.admin');
 });
