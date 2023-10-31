@@ -66,7 +66,6 @@ function validateForm() {
 
 // Admin Contact Button & Forgot Password Link
 var adminContactBtn = document.getElementById("adminContact");
-var forgotPassword = document.getElementById("forgotPasword_link")
 
 adminContactBtn.addEventListener("click", function(event) {
 
@@ -78,14 +77,5 @@ adminContactBtn.addEventListener("click", function(event) {
 
 });
 
-forgotPassword.addEventListener("click", function(event) {
 
-  event.preventDefault(); 
-
-  var forgotPassLink = "www.facebook.com";
-  
-  // Navigate to the new URL
-  window.location.href = forgotPassLink;
-
-});
 

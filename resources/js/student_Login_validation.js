@@ -62,7 +62,6 @@ loginPasswordInput.addEventListener("input", () => hideErrorAndRemoveClass(login
 
 // Create Account  Button & Forgot Password Link
 var createAccountBtn = document.getElementById("createAccount");
-var forgotPassword = document.getElementById("forgotPasword_link")
 
 createAccountBtn.addEventListener("click", function(event) {
   event.preventDefault(); 
@@ -71,14 +70,6 @@ createAccountBtn.addEventListener("click", function(event) {
   window.location.href = newURL;
 
 });
-
-forgotPassword.addEventListener("click", function(event) {
-  event.preventDefault(); 
-  var newURL = "www.facebook.com";
-  
-  // Navigate to the new URL
-  window.location.href = newURL;
-
-});
+;
 
 

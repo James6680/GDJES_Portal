@@ -49,3 +49,7 @@ Route::get('/StudentLoginPage', function(){
 Route::get('/FacultyTeacherLoginPage', function(){
     return view('login.FacultyTeacherLoginPage');
 });
+
+Route::get('/forgotPasswordForm', function(){
+    return view('login.forgotPasswordForm');
+});

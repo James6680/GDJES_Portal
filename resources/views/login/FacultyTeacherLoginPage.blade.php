@@ -5,17 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <title>Faculty/Teacher Login Page</title>
-    <link rel="stylesheet" href="./css/style.css"/>
-    <link rel="icon" href="./assets/GDJES Logo.png" type="image/x-icon" />
+    <link rel="icon" href="{{url('assets/GDJES Logo.png')}}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank Ruhl Libre:wght@400;700&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"/>
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Frank Ruhl Libre:wght@400;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"
-    />
+    <style>
+      .background-effect {
+        filter: blur(4px) brightness(75%);
+        margin: -3px;
+      }
+    </style>
+
   </head>
 
   <body class="m-0 p-0">
@@ -187,7 +187,8 @@
           
           <a
             class="[text-decoration:none] self-stretch relative text-[0.81rem] leading-[100%] text-main-green-secondary-500 text-center"
-            href="#">
+            id="myBtn"
+          >
 
             <span class="font-button">Forgot your password? </span>
 
@@ -234,7 +235,105 @@
 
     </main>
 
-    <script src="./js/teacher_login_validation.js"></script>
+    <div id="myModal" class="hidden fixed top-0 left-0 right-0 z-50  w-full p-3 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full items-center justify-center drop-shadow-2xl">
+
+      <form
+      class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center p-[2.5rem] gap-[1rem] z-[2] lg:w-auto lg:pl-[2.5rem] md:w-auto md:h-auto md:pl-[2.5rem] md:pr-[2.5rem] sm:pl-[2rem] sm:box-border"
+      novalidate
+      style="width: 30%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 400px;">
+
+          <h1
+          class="m-0 self-stretch relative text-[1.75rem] leading-[110%] font-bold font-heading-2-bold text-main-green-secondary-700 text-center">
+          Forgot Password?
+          </h1>
+
+          <div class="self-stretch flex-col items-center justify-center gap-[0.5rem]">
+
+              <h3
+                  class="m-0 relative text-[1rem] leading-[140%] font-normal font-button text-main-green-secondary-700 text-center  items-center self-stretch">
+                  Enter your email address, and we'll send you an email with a unique link to reset your password.
+              </h3>
+          
+          </div>
+
+          <div class="self-stretch flex flex-col items-start justify-start gap-[1.5rem]">
+          
+          <div class="self-stretch relative bg-main-green-secondary-500 h-[0.13rem] overflow-hidden shrink-0"></div>
+
+          <div class="self-stretch flex flex-col items-start justify-start gap-[1.3rem]">
+
+              <div class="self-stretch flex flex-col items-start justify-start gap-[1.3rem] ">
+
+                  <b 
+                      class="self-stretch relative text-[0.81rem] leading-[140%] flex font-button text-main-green-secondary-700 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap h-[1.19rem] shrink-0">
+                      EMAIL ADDRESS
+                  </b>
+              
+                  <div class="flex flex-col self-stretch input-container relative">
+
+                      <input
+                      class="font-button text-sm bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] border-solid focus:border-[1px] mb-1"
+                      placeholder="juandelacruz@gmail.com"
+                      type="text" 
+                      required=""
+                      pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                      autocomplete="off"
+                      id="email"
+                      />
+
+                  </div>
+
+              </div>
+          
+          </div>
+
+          <button
+              id="RequestPassword"
+              type="button"
+              class="cursor-pointer py-[1rem] px-[2.13rem] bg-main-brown-primary-500 self-stretch rounded-lg flex flex-row items-center justify-center relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-50  hover:bg-gray-200"
+              style="border: none;">
+              Request New Password
+          </button>
+
+          
+          </div>
+
+          
+          <div class="self-stretch flex flex-col items-start justify-start">
+
+          <button
+              class="cursor-pointer py-[1rem] px-[2.13rem] bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-main-brown-primary-500 hover:border-[2px] hover:border-solid hover:border-darkolivegreen flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center"
+              data-modal-hide="default-modal"
+              type="button">
+              Sign in
+          </button>
+
+          </div>
+
+      </form>
+
+    </div>
+
+    <script>
+      var modal = document.getElementById("myModal");
+      var btn = document.getElementById("myBtn");
+      var backgroundContent = document.querySelector("body > :not(#myModal)");
+
+      // When the user clicks the button, open the modal and add the blur class to the background content
+      btn.onclick = function() {
+        modal.style.display = "block";
+        backgroundContent.classList.add("background-effect"); // Add the blur class to the background content
+      }
+
+      // When the user clicks anywhere outside of the modal, close it and remove the blur class from the background content
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          backgroundContent.classList.remove("background-effect"); // Remove the blur class from the background content
+        }
+      }
+    </script>
+
   </body>
 
 </html>
