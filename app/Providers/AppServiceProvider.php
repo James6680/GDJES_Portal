@@ -21,5 +21,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Blade::component('x-sidebar', Sidebar::class);
+        Blade::component('x-sidebar-button', SidebarButton::class);
     }
 }
