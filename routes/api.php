@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\AnnouncementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,4 @@ Route::get('/address/{type}', function (String $type) {
 
 Route::get('GetSections', [SectionsController::class, 'getSection']);
 Route::get('GetSubjects', [SubjectsController::class, 'getSubject']);
+Route::get('GetAnnouncements', [AnnouncementController::class, 'getAnnouncement']);

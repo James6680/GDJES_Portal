@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\EnrollmentController;
@@ -57,6 +58,10 @@ Route::post('settings/addSubject', [SubjectsController::class, 'CRUDSubject'])->
 Route::get('/school-year-start', [ SchoolYearController::class, 'getSchoolYearView'])->name('admin.SchoolYear');
 Route::post('/school-year-start', [ SchoolYearController::class, 'addSchoolYear'])->name('admin.addSchoolYear');
 Route::post('/school-year-end', [ SchoolYearController::class, 'endSchoolYear'])->name('admin.endSchoolYear');
+
+Route::get('/announcements', function () {return view('admin.announcement');})->name('admin.announcements');
+Route::post('settings/addAnnouncement', [ AnnouncementController::class, 'CRUDAnnouncement'])->name('admin.CRUDAnnouncement');
+
 // Route::post('settings/addSection', [SectionsController::class, 'CRUDSection'])->name('admin.CRUDSection');
 
 
