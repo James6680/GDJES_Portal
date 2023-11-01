@@ -13,13 +13,15 @@ class SidebarButton extends Component
     public $svg;
     public $badge;
     public $notification;
+    public $isActive;
     
-    public function __construct($href, $svg, $badge = null, $notification = null)
+    public function __construct($href, $svg, $badge = null, $notification = null, $isActive = false)
     {
         $this->href = $href;
         $this->svg = $svg;
         $this->badge = $badge;
         $this->notification = $notification;
+        $this->isActive = $isActive;
     }
 
     /**
