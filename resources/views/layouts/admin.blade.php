@@ -25,9 +25,8 @@
 
 </head>
   
-<body class="container w-full container-fluid flex flex-col justify-start h-screen m-0 pt-16 bg-yellow-50">
+<body class="container w-full container-fluid flex flex-col justify-start h-screen m-0 pt-16 bg-brown-50">
   <x-sidebar />
-
-  
+  <x-content-section />  
 </body>
 </html>
