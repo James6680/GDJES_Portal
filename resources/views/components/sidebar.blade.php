@@ -1,6 +1,6 @@
 
 <nav class="fixed top-0 z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-  <div class="px-3 py-3 lg:px-5 lg:pl-3">
+  <div class="px-3 py-3 lg:px-5 lg:pl-3 w-full">
     <div class="flex items-center justify-between md:pl-72 p-0">
 
       <!-- Welcome text -->
@@ -60,9 +60,9 @@
   </div>
 </nav>
 
-<aside id="logo-sidebar" class=" fixed top-0 left-0 z-40 w-64 h-screen pt-3 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
-  <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
-      <ul class="space-y-2 font-medium">
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-full pt-3 transition-transform -translate-x-full bg-white border-r border-green-50 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+  <div class="fixed h-full  md:w-full w-auto px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+      <ul class="space-y-2 w-auto font-medium">
         <a href="https://www.facebook.com/gregoriadejesuselementaryschoolmanila" class="flex flex-row ml-1 w-full mb-10">
           <img src="./assets/GDJES Logo.png" class="w-11 h-11 mt-1 mr-3 relative" aria-label="GDJES Manila logo" alt="GDJES Manila Logo" />
             <div class="flex flex-col justify-center items-start gap-0 text-black">
