@@ -7,11 +7,11 @@
     <span class="flex-1 ml-3 whitespace-nowrap {{ $isActive ? 'text-green-50 hover:text-white ': 'text-green-400 group-hover:text-green-700 ' }}">{{ $slot }}</span>
     
     @if($badge != "")
-        <span class="inline-flex items-center justify-center px-2 ml-3 rounded-full text-xsx font-medium outline outline-offset-1 outline-1 text-gray-800 bg-gray-100  ">{{ $badge }}</span>
+        <span class="inline-flex items-center justify-center px-2 ml-3 rounded-full text-xs font-medium outline outline-offset-1 outline-1 text-gray-800 bg-gray-100  ">{{ $badge }}</span>
     @endif
     
     @if($notification != "")
-      <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-xs rounded-full font-medium outline outline-offset-1 outline-1 {{ $isActive ? 'outline-yellow-100 text-yellow-700 bg-yellow-50' : 'outline-yellow-800 text-yellow-900 bg-yellow-100'}} ">
+      <span class="inline-flex items-center justify-center w-2 h-2 p-2 ml-3 text-xs rounded-full font-medium outline outline-offset-1 outline-1 group-hover:outline-2 {{ $isActive ? 'outline-yellow-100 text-yellow-700 bg-yellow-50' : 'outline-green-600 text-green-600 bg-green-50'}} ">
       {{ $notification ?? '' }}
       </span>
     @endif
