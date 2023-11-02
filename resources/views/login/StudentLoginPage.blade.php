@@ -8,7 +8,6 @@
     <link rel="icon" href="{{url('assets/GDJES Logo.png')}}" type="image/x-icon" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank Ruhl Libre:wght@400;700&display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"/>
-
     <style>
       .background-effect {
         filter: blur(4px) brightness(75%);
@@ -63,7 +62,7 @@
 
       <!-- Right Section (Login Form) -->
       <section
-        class="self-stretch bg-main-green-secondary-700 w-[46rem] overflow-hidden shrink-0 flex flex-col items-center justify-center py-10 px-[8.25rem] box-border relative gap-[3rem] ml-[-2.25rem] text-left text-[1.44rem] text-main-background font-heading-2-bold lg:w-auto lg:[align-self:unset] lg:pl-[3.75rem] lg:pr-[3.75rem] lg:box-border md:self-stretch md:w-auto md:flex-1 md:gap-[3rem] md:items-center md:justify-center md:pl-[4.69rem] md:pt-[7.25rem] md:pr-[2.5rem] md:box-border sm:self-stretch sm:w-auto sm:items-center sm:justify-center sm:py-[6.25rem] sm:pr-[1.56rem] sm:pl-[3.75rem] sm:box-border"
+        class="self-stretch bg-green-700 w-[46rem] overflow-hidden shrink-0 flex flex-col items-center justify-center py-10 px-[8.25rem] box-border relative gap-[3rem] ml-[-2.25rem] text-left text-[1.44rem] text-main-background font-heading-2-bold lg:w-auto lg:[align-self:unset] lg:pl-[3.75rem] lg:pr-[3.75rem] lg:box-border md:self-stretch md:w-auto md:flex-1 md:gap-[3rem] md:items-center md:justify-center md:pl-[4.69rem] md:pt-[7.25rem] md:pr-[2.5rem] md:box-border sm:self-stretch sm:w-auto sm:items-center sm:justify-center sm:py-[6.25rem] sm:pr-[1.56rem] sm:pl-[3.75rem] sm:box-border"
       >
   
         <div class="flex flex-col items-center justify-center gap-[0.5rem] cursor-pointer z-[1]" >
@@ -89,23 +88,23 @@
         </div>
 
         <form
-          class="self-stretch rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center p-[2.1rem] gap-[1.5rem] z-[2] lg:self-stretch lg:w-auto lg:pl-[2.5rem] md:self-stretch md:w-auto md:h-auto md:pl-[2.5rem] md:pr-[2.5rem] sm:pl-[2rem] sm:box-border"
+          class="self-stretch rounded-lg bg-green-50 flex flex-col items-center justify-center p-[2.1rem] gap-[1.5rem] z-[2] lg:self-stretch lg:w-auto lg:pl-[2.5rem] md:self-stretch md:w-auto md:h-auto md:pl-[2.5rem] md:pr-[2.5rem] sm:pl-[2rem] sm:box-border"
           novalidate>
 
           <h1
-            class="m-0 self-stretch relative text-[1.75rem] leading-[110%] font-bold font-heading-2-bold text-main-green-secondary-700 text-center">
+            class="m-0 self-stretch relative text-[1.75rem] leading-[110%] font-bold font-heading-2-bold text-green-800 text-center">
             Student Portal Login
           </h1>
 
           <div class="self-stretch flex flex-col items-start justify-start gap-[0.5rem]">
 
             <h3
-              class="m-0 relative text-[1rem] leading-[140%] font-normal font-button text-main-brown-primary-500 text-left flex items-center w-[19.13rem]">
+              class="m-0 relative text-[1rem] leading-[140%] font-normal font-button text-brown-600 text-left flex items-center w-[19.13rem]">
               Welcome back!
             </h3>
 
             <h4 
-              class="m-0 self-stretch relative text-[0.81rem] leading-[140%] font-normal font-button text-main-green-secondary-700 text-left"> 
+              class="m-0 self-stretch relative text-[0.81rem] leading-[140%] font-normal font-button text-green-800 text-left"> 
               Login to access your student portal 
             </h4>
           
@@ -114,7 +113,7 @@
           <!-- Login Form -->
           <div class="self-stretch flex flex-col items-start justify-start gap-[1rem]">
             
-            <div class="self-stretch relative bg-main-brown-primary-300 h-[0.13rem] overflow-hidden shrink-0"></div>
+            <div class="self-stretch relative bg-brown-400 h-[0.13rem] overflow-hidden shrink-0"></div>
   
             <div class="self-stretch flex flex-col items-start justify-start gap-[1rem]">
 
@@ -122,15 +121,15 @@
               <div class="self-stretch flex flex-col items-start justify-start gap-[1rem] ">
 
                 <b 
-                  class="self-stretch relative text-[0.81rem] leading-[140%] flex font-button text-main-green-secondary-700 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap h-[1.19rem] shrink-0">
+                  class="self-stretch relative text-[0.81rem] leading-[140%] flex font-button text-green-800 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap h-[1.19rem] shrink-0">
                   EMAIL ADDRESS
                 </b>
             
                 <div class="flex flex-col self-stretch input-container relative">
 
                   <input
-                    class="font-button text-[0.81rem] bg-main-green-secondary-50 self-stretch rounded-lg flex items-center justify-start p-[1rem] border-[1px] focus:border-[1px] text-gray-900"
-                    placeholder="juandelacruz@gmail.com"
+                    class="font-button text-[0.81rem] bg-green-50 self-stretch rounded-lg flex items-center justify-start p-[1rem] border-[1px] focus:border-[1px] focus:ring-green-700 focus:border-green-700 text-gray-900"
+                    placeholder="juandelacruz@gmail.com" 
                     type="text"
                     required
                     pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
@@ -153,14 +152,14 @@
               <div class="relative self-stretch flex flex-col items-start justify-start gap-[1rem]">
                 
                 <b 
-                  class="self-stretch relative text-[0.81rem] leading-[140%] flex font-button text-main-green-secondary-700 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap h-[0.81rem] shrink-0">
+                  class="self-stretch relative text-[0.81rem] leading-[140%] flex font-button text-green-800 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap h-[0.81rem] shrink-0">
                   PASSWORD
                 </b>
             
                 <div class="flex flex-col self-stretch relative">
 
                   <input
-                    class="font-button text-[0.81rem] bg-main-green-secondary-50 self-stretch rounded-lg flex flex-row items-center justify-start p-[1rem] border-[1px] focus:border-[1px] text-gray-900"
+                    class="font-button text-[0.81rem] bg-green-50 self-stretch rounded-lg flex flex-row items-center justify-start p-[1rem] border-[1px] focus:border-[1px] focus:ring-green-700 focus:border-green-700 text-gray-900"
                     placeholder="Enter your password"
                     type="password"
                     :type="show ? 'password' : 'text'"
@@ -192,14 +191,14 @@
             </div>
             
             <a
-              class="[text-decoration:none] self-stretch relative text-[0.81rem] leading-[100%] text-main-green-secondary-500 text-center"
+              class="[text-decoration:none] self-stretch relative text-[0.81rem] leading-[100%] text-green-500 text-center"
               id="myBtn"
             >
               <span class="font-button">Forgot your password? </span>
 
               <b class="font-button" id="forgotPasword_link">
                 
-                <span class="[text-decoration:underline] hover:text-gray-200 cursor-pointer">Click here</span>.
+                <span class="[text-decoration:underline] hover:text-green-900 cursor-pointer">Click here</span>.
               
               </b>
             </a>
@@ -207,20 +206,20 @@
             <button
               id="loginBtn"
               type="submit"
-              class="cursor-pointer [border:none] py-[1rem] px-[2.13rem] bg-main-green-secondary-500 self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-gray-200 ">
+              class="cursor-pointer [border:none] py-[1rem] px-[2.13rem] bg-green-500 self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-green-900">
               
-              <div class="relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-50 text-left">Login</div>
+              <div class="relative text-[1rem] leading-[140%] uppercase font-button text-brown-50 text-left">Login</div>
 
             </button>
           
           </div>
 
-          <div class="self-stretch relative bg-main-brown-primary-300 h-[0.13rem] overflow-hidden shrink-0"></div>
+          <div class="self-stretch relative bg-brown-400 h-[0.13rem] overflow-hidden shrink-0"></div>
           
           <div class="self-stretch flex flex-col items-start justify-start gap-[1rem]">
             
             <div
-              class="self-stretch relative text-[0.81rem] leading-[140%] font-button text-main-brown-primary-500 text-center">
+              class="self-stretch relative text-[0.81rem] leading-[140%] font-button text-brown-500 text-center">
 
               <p class="m-0">Are you a first-time enrollee?</p>
               <p class="m-0"> Click the button below to register and enroll at GDJES.</p>
@@ -228,10 +227,10 @@
             </div>
 
             <button
-              class="cursor-pointer py-[1rem] px-[2.13rem] bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-main-brown-primary-500 hover:border-[2px] hover:border-solid hover:border-darkolivegreen"
+              class="cursor-pointer py-[1rem] px-[2.13rem] bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-700"
             >
               <div
-                class="flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center"
+                class="flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-brown-500 text-center"
                 id="createAccount">
                 create your student account here
               </div>
@@ -283,7 +282,7 @@
                   <div class="flex flex-col self-stretch input-container relative">
 
                       <input
-                      class="font-button text-sm bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] border-solid focus:border-[1px] mb-1"
+                      class="font-button text-sm bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] border-solid focus:border-[1px] mb-1  focus:ring-green-700 focus:border-green-700 "
                       placeholder="juandelacruz@gmail.com"
                       type="text" 
                       required=""
@@ -301,7 +300,7 @@
           <button
               id="RequestPassword"
               type="button"
-              class="cursor-pointer py-[1rem] px-[2.13rem] bg-main-green-secondary-500 self-stretch rounded-lg flex flex-row items-center justify-center relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-50  hover:bg-gray-200"
+              class="cursor-pointer py-[1rem] px-[2.13rem] bg-green-500 self-stretch rounded-lg flex flex-row items-center justify-center relative text-[1rem] leading-[140%] uppercase font-button text-brown-50  hover:bg-green-900"
               style="border: none;">
               Request New Password
           </button>
@@ -313,7 +312,7 @@
           <div class="self-stretch flex flex-col items-start justify-start">
 
           <button
-              class="cursor-pointer py-[1rem] px-[2.13rem] bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-main-brown-primary-500 hover:border-[2px] hover:border-solid hover:border-darkolivegreen flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center"
+              class="cursor-pointer py-[1rem] px-[2.13rem] bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-darkolivegreen flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-brown-500 text-center"
               data-modal-hide="default-modal"
               type="button">
               Sign in

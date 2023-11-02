@@ -53,3 +53,7 @@ Route::get('/FacultyTeacherLoginPage', function(){
 Route::get('/forgotPasswordForm', function(){
     return view('login.forgotPasswordForm');
 });
+
+Route::get('/Dummy', function(){
+    return view('login.dummyBladeComponents');
+});
