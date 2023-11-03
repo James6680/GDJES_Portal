@@ -11,7 +11,7 @@
     <h1 class="w-full px-5 py-7 font-mulish font-semibold text-lg sm:text-2xl text-white">Academic Year 2024 - 2025 Data</h1>
     
     <!--  Statistics Container -->
-    <div class="sm:m-4 gap-4 grid grid-cols-1 md:grid-cols-2 ">
+    <div class="sm:m-4 gap-4 grid grid-cols-1 lg:grid-cols-2 ">
       
       <div class="gap-4 grid grid-cols-3">
         <a href="#" class="outline outline-1 outline-green-100 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full px-5 py-5 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
