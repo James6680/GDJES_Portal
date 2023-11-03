@@ -2,7 +2,7 @@
 <div class="container container-fluid sm:pl-64 w:full min-h:full">
 
   <!-- Top Bar Dark Green Decor-->
-  <div class="fixed top-0 -z-50 bg-green-600 min-w-full h-80">
+  <div class="fixed top-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 min-w-full h-80">
     Empty
   </div>
 
