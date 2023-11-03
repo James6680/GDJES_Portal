@@ -1,5 +1,5 @@
 <div>
-<a href="{{ $href }}" class="group flex font-mulish text-sm items-center p-2 rounded-lg {{ $isActive ? 'text-brown-50 font-bold bg-gradient-to-t from-green-500 to-slate-900 hover:shadow-lg hover:shadow-neutral-200 group hover:outline hover:outline-1 hover:outline-offset-1 hover:outline-green-900' : 'text-green-500 hover:outline hover:outline-1 hover:outline-offset-1 hover:outline-green-200 hover:bg-green-50 hover:shadow-lg hover:shadow-neutral-200' }}">
+<a href="{{ $href }}" class="group flex font-mulish text-sm items-center p-2 rounded-lg {{ $isActive ? 'text-brown-50 font-bold bg-gradient-to-t from-green-500 to-slate-900 hover:shadow-lg hover:shadow-neutral-200 group hover:outline hover:outline-1 hover:outline-green-900' : 'text-green-500 hover:outline hover:outline-1 hover:outline-green-200 hover:bg-green-50 hover:shadow-lg hover:shadow-neutral-200' }}">
   <div class="flex items-center justify-center flex-shrink-0 w-7 h-7 transition duration-75 {{ $isActive ? 'fill-green-50 group-hover:fill-white' : 'fill-green-300 group-hover:fill-green-600'}}">
     {!! $svg !!}
   </div>
