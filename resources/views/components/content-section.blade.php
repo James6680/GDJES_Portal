@@ -133,6 +133,26 @@
                   height: 400,
                   width: "100%",
                   type: "pie",
+                  toolbar: {
+                    show: true,
+                    export: {
+                      csv: {
+                        filename: "GDJES Students' Preferred Mode of Learning Data",
+                        columnDelimiter: ',',
+                        headerCategory: 'Preferred MOL',
+                        headerValue: 'No. of Students',
+                        dateFormatter(timestamp) {
+                          return new Date(timestamp).toDateString()
+                        }
+                      },
+                      svg: {
+                        filename: "GDJES Students' Preferred Mode of Learning Data",
+                      },
+                      png: {
+                        filename: "GDJES Students' Preferred Mode of Learning Data",
+                      }
+                    },
+                  },
                 },
                 stroke: {
                   colors: ["white"],
@@ -276,6 +296,26 @@
                   height: 400,
                   width: "100%",
                   type: "pie",
+                  toolbar: {
+                    show: true,
+                    export: {
+                      csv: {
+                        filename: 'GDJES Enrollees Mother Tongue Data',
+                        columnDelimiter: ',',
+                        headerCategory: 'Enrollees Mother Tongue',
+                        headerValue: 'No. of Students',
+                        dateFormatter(timestamp) {
+                          return new Date(timestamp).toDateString()
+                        }
+                      },
+                      svg: {
+                        filename: 'GDJES Enrollees Mother Tongue Data',
+                      },
+                      png: {
+                        filename: 'GDJES Enrollees Mother Tongue Data',
+                      }
+                    },
+                  },
                 },
                 stroke: {
                   colors: ["white"],
@@ -381,29 +421,23 @@
                 colors: ["#1A56DB", "#FDBA8C"],
                 series: [
                   {
-                    name: "Organic",
-                    color: "#1A56DB",
+                    name: "Male",
+                    color: "#93733e",
                     data: [
-                      { x: "Mon", y: 231 },
-                      { x: "Tue", y: 122 },
-                      { x: "Wed", y: 63 },
-                      { x: "Thu", y: 421 },
-                      { x: "Fri", y: 122 },
-                      { x: "Sat", y: 323 },
-                      { x: "Sun", y: 111 },
+                      { x: "2019 - 2020", y: 231 },
+                      { x: "2020 - 2021", y: 122 },
+                      { x: "2021 - 2022", y: 63 },
+                      { x: "2022 - 2023", y: 421 },
                     ],
                   },
                   {
-                    name: "Social media",
-                    color: "#FDBA8C",
+                    name: "Female",
+                    color: "#586d58",
                     data: [
-                      { x: "Mon", y: 232 },
-                      { x: "Tue", y: 113 },
-                      { x: "Wed", y: 341 },
-                      { x: "Thu", y: 224 },
-                      { x: "Fri", y: 522 },
-                      { x: "Sat", y: 411 },
-                      { x: "Sun", y: 243 },
+                      { x: "2019 - 2020", y: 232 },
+                      { x: "2020 - 2021", y: 113 },
+                      { x: "2021 - 2022", y: 341 },
+                      { x: "2022 - 2023", y: 224 },
                     ],
                   },
                 ],
@@ -411,9 +445,26 @@
                   type: "bar",
                   stacked: "true",
                   height: "320px",
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "Mulish, Inter, sans-serif",
                   toolbar: {
-                    show: false,
+                    show: true,
+                    export: {
+                      csv: {
+                        filename: 'GDJES Historical Student Enrollment Data',
+                        columnDelimiter: ',',
+                        headerCategory: 'Academic Year',
+                        headerValue: 'No. of Students',
+                        dateFormatter(timestamp) {
+                          return new Date(timestamp).toDateString()
+                        }
+                      },
+                      svg: {
+                        filename: 'GDJES Historical Student Enrollment Data',
+                      },
+                      png: {
+                        filename: 'GDJES Historical Student Enrollment Data',
+                      }
+                    },
                   },
                 },
                 plotOptions: {
@@ -428,7 +479,7 @@
                   shared: true,
                   intersect: false,
                   style: {
-                    fontFamily: "Inter, sans-serif",
+                    fontFamily: "Mulish, Inter, sans-serif",
                   },
                 },
                 states: {
@@ -454,17 +505,17 @@
                   },
                 },
                 dataLabels: {
-                  enabled: false,
+                  enabled: true,
                 },
                 legend: {
-                  show: false,
+                  show: true,
                 },
                 xaxis: {
                   floating: false,
                   labels: {
                     show: true,
                     style: {
-                      fontFamily: "Inter, sans-serif",
+                      fontFamily: "Mulish, Inter, sans-serif",
                       cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
                     }
                   },
