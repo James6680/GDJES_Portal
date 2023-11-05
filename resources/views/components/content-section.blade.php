@@ -8,7 +8,7 @@
 
   <!--  Main Content Container -->
   <div class="w-full min-h-full gap-4 container container-fluid p-4 grid grid-cols-1">
-    <h1 class="w-full mx-4 my-5 font-mulish font-semibold text-lg sm:text-2xl text-white">ACADEMIC YEAR 2024 - 2025 DATA</h1>
+    <h1 class="text-center w-full mx-4 mt-5 mb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">ACADEMIC YEAR 2024 - 2025 DATA</h1>
     
     <!--  Statistics Container -->
     <div class="sm:mx-4 gap-4 grid grid-cols-1 lg:grid-cols-2 h-auto">
@@ -55,7 +55,7 @@
       </div>   
     </div> <!-- End of Statistics Container -->
 
-    <!-- Charts Container -->
+    <!-- Charts Container for Current School Year -->
     <div class="sm:mx-4 h-full gap-4 grid grid-cols-1 lg:grid-cols-2 ">
 
       <!-- Preferred Mode of Learning Section -->
@@ -145,7 +145,7 @@
                     },
                     size: "100%",
                     dataLabels: {
-                      offset: -35,
+                      offset: -5,
                     }
                   },
                 },
@@ -288,7 +288,7 @@
                     },
                     size: "100%",
                     dataLabels: {
-                      offset: -35,
+                      offset: -5,
                     },
                   },
                 },
@@ -332,13 +332,169 @@
         });
         </script> <!-- Script End of Pie Chart Enrollees Mother Tongue -->
       </div> <!-- End of Enrollees Mother Tongue Section -->
+    </div> <!-- End of Charts Container for Current School Year -->
 
 
-      <!-- Start of GDJES Historical Data -->
+    <!-- Charts Container for Current School Year -->
+    <div class="sm:mx-4 h-full gap-4 grid grid-cols-1 lg:grid-cols-2 ">
 
-      
+      <!-- Historical Student Enrollment Data Section -->
+      <div class="w-full font-mulish bg-white rounded-lg shadow p-4 md:p-6 outline outline-1 outline-green-50">
+        <div class="flex justify-between pb-4 mb-4 border-b border-green-200 dark:border-gray-700">
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-lg bg-green-300 dark:bg-green-700 flex items-center justify-center mr-3">
+              <svg class="w-6 h-6 text-white dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 19">
+                <path d="M14.5 0A3.987 3.987 0 0 0 11 2.1a4.977 4.977 0 0 1 3.9 5.858A3.989 3.989 0 0 0 14.5 0ZM9 13h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z"/>
+                <path d="M5 19h10v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2ZM5 7a5.008 5.008 0 0 1 4-4.9 3.988 3.988 0 1 0-3.9 5.859A4.974 4.974 0 0 1 5 7Zm5 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm5-1h-.424a5.016 5.016 0 0 1-1.942 2.232A6.007 6.007 0 0 1 17 17h2a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5ZM5.424 9H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h2a6.007 6.007 0 0 1 4.366-5.768A5.016 5.016 0 0 1 5.424 9Z"/>
+              </svg>
+            </div>
+            <div>
+              <h5 class="leading-none text-2xl font-bold text-black dark:text-white pb-1">3.4k</h5>
+              <p class="text-sm font-normal text-black-500 dark:text-black">Enrolled students per year</p>
+            </div>
+          </div>
 
-    </div> <!-- End of Charts Container -->
+          <!-- Add here an if-else statement. If currentSY enrollees are greater than previousSY enrollees, then show the green arrow. Otherwise, show the red arrow. -->
+          <div>
+            <span class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" viewBox="0 0 256 256"><path d="M240,56v64a8,8,0,0,1-13.66,5.66L200,99.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31,29.66,189.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0L136,140.69,188.69,88,162.34,61.66A8,8,0,0,1,168,48h64A8,8,0,0,1,240,56Z"></path></svg>
+              42.5%
+            </span>
+          </div>
+          <!-- Downtrend 
+          <div>
+            <span class="bg-red-100 text-red-800 text-xs font-medium items-center px-2.5 py-1 rounded-md dark:bg-red-900 dark:text-red-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" viewBox="0 0 256 256"><path d="M240,136v64a8,8,0,0,1-8,8H168a8,8,0,0,1-5.66-13.66L188.69,168,136,115.31l-34.34,34.35a8,8,0,0,1-11.32,0l-72-72A8,8,0,0,1,29.66,66.34L96,132.69l34.34-34.35a8,8,0,0,1,11.32,0L200,156.69l26.34-26.35A8,8,0,0,1,240,136Z"></path></svg>
+              42.5%
+            </span>
+          </div>
+          -->
+        </div>
+
+        <div id="hsed-column-chart"></div>
+      </div>
+
+      <script>
+        // ApexCharts options and config
+        window.addEventListener("load", function() {
+          const options = {
+                colors: ["#1A56DB", "#FDBA8C"],
+                series: [
+                  {
+                    name: "Organic",
+                    color: "#1A56DB",
+                    data: [
+                      { x: "Mon", y: 231 },
+                      { x: "Tue", y: 122 },
+                      { x: "Wed", y: 63 },
+                      { x: "Thu", y: 421 },
+                      { x: "Fri", y: 122 },
+                      { x: "Sat", y: 323 },
+                      { x: "Sun", y: 111 },
+                    ],
+                  },
+                  {
+                    name: "Social media",
+                    color: "#FDBA8C",
+                    data: [
+                      { x: "Mon", y: 232 },
+                      { x: "Tue", y: 113 },
+                      { x: "Wed", y: 341 },
+                      { x: "Thu", y: 224 },
+                      { x: "Fri", y: 522 },
+                      { x: "Sat", y: 411 },
+                      { x: "Sun", y: 243 },
+                    ],
+                  },
+                ],
+                chart: {
+                  type: "bar",
+                  stacked: "true",
+                  height: "320px",
+                  fontFamily: "Inter, sans-serif",
+                  toolbar: {
+                    show: false,
+                  },
+                },
+                plotOptions: {
+                  bar: {
+                    horizontal: false,
+                    columnWidth: "70%",
+                    borderRadiusApplication: "end",
+                    borderRadius: 8,
+                  },
+                },
+                tooltip: {
+                  shared: true,
+                  intersect: false,
+                  style: {
+                    fontFamily: "Inter, sans-serif",
+                  },
+                },
+                states: {
+                  hover: {
+                    filter: {
+                      type: "darken",
+                      value: 1,
+                    },
+                  },
+                },
+                stroke: {
+                  show: true,
+                  width: 0,
+                  colors: ["transparent"],
+                },
+                grid: {
+                  show: false,
+                  strokeDashArray: 4,
+                  padding: {
+                    left: 2,
+                    right: 2,
+                    top: -14
+                  },
+                },
+                dataLabels: {
+                  enabled: false,
+                },
+                legend: {
+                  show: false,
+                },
+                xaxis: {
+                  floating: false,
+                  labels: {
+                    show: true,
+                    style: {
+                      fontFamily: "Inter, sans-serif",
+                      cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                    }
+                  },
+                  axisBorder: {
+                    show: false,
+                  },
+                  axisTicks: {
+                    show: false,
+                  },
+                },
+                yaxis: {
+                  show: false,
+                },
+                fill: {
+                  opacity: 1,
+                },
+              }
+
+              if(document.getElementById("hsed-column-chart") && typeof ApexCharts !== 'undefined') {
+                const chart = new ApexCharts(document.getElementById("hsed-column-chart"), options);
+                chart.render();
+              }
+        });
+      </script>
+
+    
+    </div> <!-- End of Charts Container for Current School Year -->
+
+
+
   </div> <!-- End of Main Content Container -->
   
 
