@@ -342,8 +342,7 @@
                 legend: {
                   position: "right",
                   fontFamily: "Mulish, Inter, sans-serif",
-                  
-                  },
+                },
                 yaxis: {
                   labels: {
                     formatter: function (value) {
@@ -380,7 +379,7 @@
 
       <!-- Historical Student Enrollment Data Section -->
       <div class="w-full font-mulish bg-white rounded-lg shadow p-4 md:p-6 outline outline-1 outline-green-50">
-        <div class="flex justify-between pb-4 mb-4 border-b border-green-200 dark:border-gray-700">
+        <div class="flex justify-between pb-5 mb-4 border-b border-green-200 dark:border-gray-700">
           <div class="flex items-center">
             <div class="w-12 h-12 rounded-lg bg-green-300 dark:bg-green-700 flex items-center justify-center mr-3">
               <svg class="w-6 h-6 text-white dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 19">
@@ -409,35 +408,38 @@
             </span>
           </div>
           -->
+          
         </div>
-
+        <div>
+          <h5 class="leading-none text-xl font-bold text-black dark:text-white pb-1">HISTORICAL STUDENT ENROLLMENT DATA</h5>
+        </div>
         <div id="hsed-column-chart"></div>
       </div>
 
       <script>
         // ApexCharts options and config
         window.addEventListener("load", function() {
-          const options = {
-                colors: ["#1A56DB", "#FDBA8C"],
+          const options = {   
+                colors: ["#798a79", "#a98f65"],
                 series: [
                   {
                     name: "Male",
                     color: "#93733e",
                     data: [
-                      { x: "2019 - 2020", y: 231 },
-                      { x: "2020 - 2021", y: 122 },
-                      { x: "2021 - 2022", y: 63 },
-                      { x: "2022 - 2023", y: 421 },
+                      { x: "2019 - 2020", y: 804 },
+                      { x: "2020 - 2021", y: 772 },
+                      { x: "2021 - 2022", y: 847 },
+                      { x: "2022 - 2023", y: 736 },
                     ],
                   },
                   {
                     name: "Female",
                     color: "#586d58",
                     data: [
-                      { x: "2019 - 2020", y: 232 },
-                      { x: "2020 - 2021", y: 113 },
-                      { x: "2021 - 2022", y: 341 },
-                      { x: "2022 - 2023", y: 224 },
+                      { x: "2019 - 2020", y: 689 },
+                      { x: "2020 - 2021", y: 675 },
+                      { x: "2021 - 2022", y: 728 },
+                      { x: "2022 - 2023", y: 615 },
                     ],
                   },
                 ],
@@ -473,6 +475,11 @@
                     columnWidth: "70%",
                     borderRadiusApplication: "end",
                     borderRadius: 8,
+                    dataLabels: {
+                      total: {
+                        enabled: true,
+                      }
+                    }
                   },
                 },
                 tooltip: {
@@ -496,12 +503,12 @@
                   colors: ["transparent"],
                 },
                 grid: {
-                  show: false,
+                  show: true,
                   strokeDashArray: 4,
                   padding: {
                     left: 2,
                     right: 2,
-                    top: -14
+                    top: 20,
                   },
                 },
                 dataLabels: {
@@ -527,7 +534,7 @@
                   },
                 },
                 yaxis: {
-                  show: false,
+                  show: true,
                 },
                 fill: {
                   opacity: 1,
