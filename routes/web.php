@@ -29,3 +29,7 @@ Route::get('layouts.landing', function () {
 Route::get('layouts.admin', function () {
     return view('layouts.admin');
 });
+
+Route::get('layouts.student', function () {
+    return view('layouts.student');
+});
