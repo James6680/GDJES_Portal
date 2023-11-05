@@ -395,7 +395,7 @@
             update the text of the div that displays the average below --> 
             <div>
               <h5 class="leading-none text-2xl font-bold text-black dark:text-white pb-1">3.4k</h5>
-              <p class="text-sm font-normal text-black-500 dark:text-black">Enrolled students per year</p>
+              <p class="text-sm font-normal text-black-500 dark:text-black">Average no. of enrollees per year</p>
             </div>
           </div>
 
@@ -625,48 +625,38 @@
                 colors: ["#798a79", "#a98f65"],
                 series: [
                   {
-                    name: "Male",
-                    color: "#93733e",
+                    name: "Completion Rate",
+                    color: "#798a79",
                     data: [
-                      { x: "2019 - 2020", y: 804 },
-                      { x: "2020 - 2021", y: 772 },
-                      { x: "2021 - 2022", y: 847 },
-                      { x: "2022 - 2023", y: 736 },
-                    ],
-                  },
-                  {
-                    name: "Female",
-                    color: "#586d58",
-                    data: [
-                      { x: "2019 - 2020", y: 689 },
-                      { x: "2020 - 2021", y: 675 },
-                      { x: "2021 - 2022", y: 728 },
-                      { x: "2022 - 2023", y: 615 },
+                      { x: "2019 - 2020", y: 95 },
+                      { x: "2020 - 2021", y: 85 },
+                      { x: "2021 - 2022", y: 92 },
+                      { x: "2022 - 2023", y: 93 },
                     ],
                   },
                 ],
                 chart: {
                   type: "bar",
-                  stacked: "true",
+                  stacked: "false",
                   height: "320px",
                   fontFamily: "Mulish, Inter, sans-serif",
                   toolbar: {
                     show: true,
                     export: {
                       csv: {
-                        filename: 'GDJES Historical Student Enrollment Data',
+                        filename: 'GDJES Historical Completion Rate Data',
                         columnDelimiter: ',',
                         headerCategory: 'Academic Year',
-                        headerValue: 'No. of Students',
+                        headerValue: 'Percentage',
                         dateFormatter(timestamp) {
                           return new Date(timestamp).toDateString()
                         }
                       },
                       svg: {
-                        filename: 'GDJES Historical Student Enrollment Data',
+                        filename: 'GDJES Historical Completion Rate Data',
                       },
                       png: {
-                        filename: 'GDJES Historical Student Enrollment Data',
+                        filename: 'GDJES Historical Completion Rate Data',
                       }
                     },
                   },
@@ -677,11 +667,6 @@
                     columnWidth: "70%",
                     borderRadiusApplication: "end",
                     borderRadius: 8,
-                    dataLabels: {
-                      total: {
-                        enabled: true,
-                      }
-                    }
                   },
                 },
                 tooltip: {
@@ -715,9 +700,13 @@
                 },
                 dataLabels: {
                   enabled: true,
+                  formatter: function (value) {
+                    return value + "%";
+                  },
                 },
                 legend: {
                   show: true,
+                  showForSingleSeries: true,
                 },
                 xaxis: {
                   floating: false,
@@ -726,7 +715,7 @@
                     style: {
                       fontFamily: "Mulish, Inter, sans-serif",
                       cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-                    }
+                    },
                   },
                   axisBorder: {
                     show: false,
@@ -737,6 +726,11 @@
                 },
                 yaxis: {
                   show: true,
+                  labels: {
+                    formatter: function (value) {
+                      return value + "%";
+                    },
+                  },
                 },
                 fill: {
                   opacity: 1,
