@@ -1,7 +1,7 @@
 <!-- Content Section -->
 <div class="flex flex-col md:pl-64 w-full min-h-full">
 
-  <!-- Top Bar Dark Green Decor-->
+  <!-- Top Bar Dark Green Decor -->
   <div class="absolute top-0 right-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 min-w-full h-80">
     Empty
   </div>
@@ -105,7 +105,7 @@
 
         <!-- Pie Chart - Preferred Mode of Learning -->
         <div class="py-6" id="pmol-pie-chart"></div>
-        
+    
         <script>
         // ApexCharts options and config
         window.addEventListener("load", function() {
