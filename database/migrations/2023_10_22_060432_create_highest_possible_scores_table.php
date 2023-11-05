@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grading_sheet', function (Blueprint $table) {
+        Schema::create('highest_possible_scores', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
-            $table->unsignedBigInteger('class_id');
-            $table->foreign('class_id')->references('id')->on('classes');
-            $table->unsignedBigInteger('highest_possible_score_id');
-            $table->foreign('highest_possible_score_id')->references('id')->on('highest_possible_scores');
-            $table->integer('querter');
             $table->float('ww1')->nullable();
             $table->float('ww2')->nullable();
             $table->float('ww3')->nullable();
@@ -55,6 +48,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('grading_sheet');
+        Schema::dropIfExists('highest_possible_scores');
     }
 };
