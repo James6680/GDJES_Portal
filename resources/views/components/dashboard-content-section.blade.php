@@ -14,23 +14,23 @@
     <div class="sm:mx-4 gap-4 grid grid-cols-1 lg:grid-cols-2 h-auto">
       
       <div class="gap-4 grid grid-cols-3 h-auto">
-        <a href="#" class="h-auto outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="text-base font-normal tracking-tight text-black dark:text-white">ENROLLEES</h5>
             <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
         </a>
 
         <div class="grid md:grid-rows-2 gap-4  ">
-          <a href="#" class="outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="text-base font-normal tracking-tight text-black dark:text-white">MALE</h5>
               <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
           </a>
-          <a href="#" class="outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="text-base font-normal tracking-tight text-black dark:text-white">FEMALE</h5>
               <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
           </a>
         </div>
 
-        <a href="#" class="outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="text-base font-normal tracking-tight text-black dark:text-white">CUSTOMIZED AID STUDENTS</h5>
             <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
         </a>
@@ -38,17 +38,17 @@
       
       <div class="gap-4 grid grid-rows-2">
         <div class="grid grid-cols-2 gap-4  ">
-          <a href="#" class="outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="text-base font-normal tracking-tight text-black dark:text-white">TRANSFERRED IN</h5>
               <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
           </a>
-          <a href="#" class="outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="text-base font-normal tracking-tight text-black dark:text-white">TRANSFERRED OUT</h5>
               <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
           </a>
         </div>
 
-        <a href="#" class="outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <a href="#" class="shadowoutline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="text-base font-regular tracking-tight text-black dark:text-white">DROPOUTS</h5>
               <p class="font-semibold text-2xl text-black-700 dark:text-gray-400">1351</p>
         </a>
@@ -59,7 +59,7 @@
     <div class="sm:mx-4 h-full gap-4 grid grid-cols-1 lg:grid-cols-2 ">
 
       <!-- Preferred Mode of Learning Section -->
-      <div class="w-full h-auto font-mulish bg-white rounded-lg outline outline-1 outline-green-50 p-4 md:p-6">
+      <div class="w-full h-auto shadow font-mulish bg-white rounded-lg outline outline-1 outline-green-50 p-4 md:p-6">
         <div class="flex justify-between items-start w-full">
           <div class="flex-col items-center">
             <div class="flex items-center mb-1">
@@ -210,7 +210,7 @@
       </div> <!-- End of Preferred Mode of Learning Section -->
 
       <!-- Enrollees Mother Tongue Section -->
-      <div class="w-full font-mulish bg-white rounded-lg outline outline-1 outline-green-50 p-4 md:p-6">
+      <div class="w-full shadow font-mulish bg-white rounded-lg outline outline-1 outline-green-50 p-4 md:p-6">
         <div class="flex justify-between items-start w-full">
           <div class="flex-col items-center">
             <div class="flex items-center mb-1">

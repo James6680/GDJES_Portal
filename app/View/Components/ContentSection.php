@@ -21,6 +21,6 @@ class ContentSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.content-section');
+        return view('components.dashboard-content-section');
     }
 }
