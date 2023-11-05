@@ -57,7 +57,7 @@
   </div>
 </nav>
 
-<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-full pt-3 transition-transform -translate-x-full bg-white border-r border-green-50 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-full pt-3 transition-transform -translate-x-full bg-white border-r border-green-50 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
   <div class="fixed h-full  md:w-full w-auto px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
       <ul class="space-y-2 w-auto font-medium">
         <a href="https://www.facebook.com/gregoriadejesuselementaryschoolmanila" class="flex flex-row ml-1 w-full mb-10">
