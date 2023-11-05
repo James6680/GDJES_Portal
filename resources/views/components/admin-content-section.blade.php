@@ -1,14 +1,14 @@
 <!-- Content Section -->
-<div class="container container-fluid sm:pl-64 w:full min-h:full">
+<div class="flex flex-col md:pl-64 w-full min-h-full">
 
   <!-- Top Bar Dark Green Decor-->
-  <div class="absolute top-0 right-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 w-full h-80">
+  <div class="absolute top-0 right-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 min-w-full h-80">
     Empty
   </div>
 
   <!--  Main Content Container -->
-  <div class="w-full min-h-full gap-4 container container-fluid p-4 grid grid-cols-1">
-    <h1 class="text-center w-full mx-4 mt-5 mb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">ACADEMIC YEAR 2024 - 2025 DATA</h1>
+  <div class="min-w-full min-h-full gap-4 container container-fluid p-4 grid grid-cols-1">
+    <h1 class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">ACADEMIC YEAR 2024 - 2025 DATA</h1>
     
     <!--  Statistics Container -->
     <div class="sm:mx-4 gap-4 grid grid-cols-1 lg:grid-cols-2 h-auto">
@@ -375,7 +375,7 @@
 
 
     <!-- Charts Container for Current School Year -->
-    <div class="sm:mx-4 h-full gap-4 grid grid-cols-1 lg:grid-cols-2 ">
+    <div class="sm:mx-4 h-full pb-8 gap-4 grid grid-cols-1 lg:grid-cols-2 ">
 
       <!-- Historical Student Enrollment Data Section -->
       <div class="w-full font-mulish bg-white rounded-lg shadow p-4 md:p-6 outline outline-1 outline-green-50">
