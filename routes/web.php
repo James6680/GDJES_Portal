@@ -29,3 +29,11 @@ Route::get('layouts.landing', function () {
 Route::get('layouts.admin', function () {
     return view('layouts.admin');
 });
+
+Route::get('teacher.grading-sheet', function () {
+    return view('layouts.gradingsheet');
+});
+
+Route::post('teacher.grading-sheet', function () {
+    return view('layouts.gradingsheet');
+});
