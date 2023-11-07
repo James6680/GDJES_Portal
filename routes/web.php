@@ -3,17 +3,6 @@
 use App\Http\Controllers\HelloWorld;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,10 +15,87 @@ Route::get('layouts.landing', function () {
     return view('layouts.landing');
 });
 
-Route::get('layouts.admin', function () {
+
+
+
+
+// Admin Routes
+Route::get('admin.dashboard', function () {
     return view('layouts.admin');
 });
 
-Route::get('layouts.student', function () {
+Route::get('admin.announcements', function () {
+    return view('layouts.admin');
+});
+
+Route::get('admin.accounts', function () {
+    return view('layouts.admin');
+});
+
+Route::get('admin.document-request', function () {
+    return view('layouts.admin');
+});
+Route::get('admin.teacher-management', function () {
+    return view('layouts.admin');
+});
+
+Route::get('admin.enrollment-management', function () {
+    return view('layouts.admin');
+});
+
+Route::get('admin.school-information', function () {
+    return view('layouts.admin');
+});
+//End of Admin Routes
+
+
+
+
+
+//Student Routes
+Route::get('student.announcements', function () {
     return view('layouts.student');
 });
+
+Route::get('student.grades', function () {
+    return view('layouts.student');
+});
+
+Route::get('student.class-schedule', function () {
+    return view('layouts.student');
+});
+
+Route::get('student.enrollment-status', function () {
+    return view('layouts.student');
+});
+
+Route::get('student.request-documents', function () {
+    return view('layouts.student');
+});
+
+Route::get('student.student-information', function () {
+    return view('layouts.student');
+});
+//End of Student Routes
+
+
+
+
+
+// Faculty Routes
+Route::get('faculty.announcements', function () {
+    return view('layouts.faculty');
+});
+
+Route::get('faculty.my-students', function () {
+    return view('layouts.faculty');
+});
+
+Route::get('faculty.enrollments', function () {
+    return view('layouts.faculty');
+});
+
+Route::get('faculty.grades', function () {
+    return view('layouts.faculty');
+});
+// End of Faculty Routes
