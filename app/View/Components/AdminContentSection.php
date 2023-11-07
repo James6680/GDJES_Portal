@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ContentSection extends Component
+class AdminContentSection extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class ContentSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.content-section');
+        return view('components.admin-content-section');
     }
 }
