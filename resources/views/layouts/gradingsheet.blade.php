@@ -14,117 +14,73 @@
                 type: 'GET', // Replace `GET` with the HTTP method of the route
                 success: function(response) {
                     response.forEach(element => {
-                        generateStudentRow();
+                      generateGradingSheetTable(response);
                     });
                 }
             });
         });
 
-        function generateStudentRow() {
+        function generateGradingSheetTable(data) {
   const tableBody = document.getElementById('grading_sheet_table_body');
-  const tableRow = document.createElement('tr');
-  const formElement = document.createElement('form');
-  formElement.action = '';
-  formElement.method = 'post';
 
-  const submitButton = document.createElement('input');
-  submitButton.type = 'submit';
-  submitButton.value = 'Submit';
+  data.forEach(studentData => {
+    const tableRow = $('<tr>');
 
-  const nameInput = document.createElement('input');
-  nameInput.type = 'text';
-  nameInput.name = 'name';
+    const sectionNameCell = $('<<td>').text(studentData.section_name);
+    const gradeLevelIdCell = $('<<td>').text(studentData.grade_level_id).attr('hidden', true);
+    const idCell = $('<<td>').text(studentData.id).attr('hidden', true);
+    const gradeLevelCell = $('<<td>').text(studentData.grade_level);
 
-  const wwInputs = [];
-  for (let i = 1; i <= 10; i++) {
-    const wwInput = document.createElement('input');
-    wwInput.type = 'text';
-    wwInput.name = `ww${i}`;
-    wwInputs.push(wwInput);
-  }
+    const wwInputs = [];
+    for (let i = 1; i <= 10; i++) {
+      const wwInput = $('<input>').type('text').name(`ww${i}`).attr('value', studentData[`ww${i}`]);
+      wwInputs.push(wwInput);
+    }
 
-  const wwTotalInput = document.createElement('input');
-  wwTotalInput.type = 'text';
-  wwTotalInput.name = 'ww_total';
-  wwTotalInput.disabled = true;
+    const wwTotalInput = $('<input>').type('text').name('ww_total').attr('disabled', true).val(studentData.ww_total);
+    const wwPercentInput = $('<input>').type('text').name('ww_percent').attr('disabled', true).val(studentData.ww_percent);
+    const wwWeightedScoreInput = $('<input>').type('text').name('ww_weighted_score').attr('disabled', true).val(studentData.ww_weighted_score);
 
-  const wwPercentInput = document.createElement('input');
-  wwPercentInput.type = 'text';
-  wwPercentInput.name = 'ww_percent';
-  wwPercentInput.disabled = true;
+    const ptInputs = [];
+    for (let i = 1; i <= 10; i++) {
+      const ptInput = $('<input>').type('text').name(`pt${i}`).attr('value', studentData[`pt${i}`]);
+      ptInputs.push(ptInput);
+    }
 
-  const wwWeightedScoreInput = document.createElement('input');
-  wwWeightedScoreInput.type = 'text';
-  wwWeightedScoreInput.name = 'ww_weighted_score';
-  wwWeightedScoreInput.disabled = true;
+    const ptTotalInput = $('<input>').type('text').name('pt_total').attr('disabled', true).val(studentData.pt_total);
+    const ptPercentInput = $('<input>').type('text').name('pt_percent').attr('disabled', true).val(studentData.pt_percent);
+    const ptWeightedScoreInput = $('<input>').type('text').name('pt_weighted_score').attr('disabled', true).val(studentData.pt_weighted_score);
 
-  const ptInputs = [];
-  for (let i = 1; i <= 10; i++) {
-    const ptInput = document.createElement('input');
-    ptInput.type = 'text';
-    ptInput.name = `pt${i}`;
-    ptInputs.push(ptInput);
-  }
+    const qaInput = $('<input>').type('text').name('qa').attr('value', studentData.qa);
+    const qaPercentInput = $('<input>').type('text').name('qa_percent').attr('disabled', true).val(studentData.qa_percent);
+    const qaWeightedScoreInput = $('<input>').type('text').name('qa_weighted_score').attr('disabled', true).val(studentData.qa_weighted_score);
 
-  const ptTotalInput = document.createElement('input');
-  ptTotalInput.type = 'text';
-  ptTotalInput.name = 'pt_total';
-  ptTotalInput.disabled = true;
+    const initialGradeInput = $('<input>').type('text').name('initial_grade').attr('disabled', true).val(studentData.initial_grade);
+    const quarterlyGradeInput = $('<input>').type('text').name('quarterly_grade').attr('disabled', true).val(studentData.quarterly_grade);
 
-  const ptPercentInput = document.createElement('input');
-  ptPercentInput.type = 'text';
-  ptPercentInput.name = 'pt_percent';
-  ptPercentInput.disabled = true;
+    tableRow.prepend(quarterlyGradeInput);
+    tableRow.prepend(initialGradeInput);
+    tableRow.prepend(qaWeightedScoreInput);
+    tableRow.prepend(qaPercentInput);
+    tableRow.prepend(qaInput);
 
-  const ptWeightedScoreInput = document.createElement('input');
-  ptWeightedScoreInput.type = 'text';
-  ptWeightedScoreInput.name = 'pt_weighted_score';
-  ptWeightedScoreInput.disabled = true;
+    ptWeightedScoreInput.forEach(input => tableRow.prepend(input));
+    tableRow.prepend(ptPercentInput);
+    tableRow.prepend(ptTotalInput);
+    ptInputs.forEach(input => tableRow.prepend(input));
 
-  const qaInput = document.createElement('input');
-  qaInput.type = 'text';
-  qaInput.name = 'qa';
+    wwWeightedScoreInput.forEach(input => tableRow.prepend(input));
+    tableRow.prepend(wwPercentInput);
+    tableRow.prepend(wwTotalInput);
+    wwInputs.forEach(input => tableRow.prepend(input));
 
-  const qaPercentInput = document.createElement('input');
-  qaPercentInput.type = 'text';
-  qaPercentInput.name = 'qa_percent';
-  qaPercentInput.disabled = true;
+    tableRow.prepend(gradeLevelCell);
+    tableRow.prepend(idCell);
+    tableRow.prepend(gradeLevelIdCell);
+    tableRow.prepend(sectionNameCell);
 
-  const qaWeightedScoreInput = document.createElement('input');
-  qaWeightedScoreInput.type = 'text';
-  qaWeightedScoreInput.name = 'qa_weighted_score';
-  qaPercentInput.disabled = true;
-
-  const initialGradeInput = document.createElement('input');
-  initialGradeInput.type = 'text';
-  initialGradeInput.name = 'initial_grade';
-  initialGradeInput.disabled = true;
-
-  const quarterlyGradeInput = document.createElement('input');
-  quarterlyGradeInput.type = 'text';
-  quarterlyGradeInput.name = 'quarterly_grade';
-  quarterlyGradeInput.disabled = true;
-
-  tableRow.appendChild(submitButton);
-  tableRow.appendChild(nameInput);
-
-  wwInputs.forEach(input => tableRow.appendChild(input));
-  tableRow.appendChild(wwTotalInput);
-  tableRow.appendChild(wwPercentInput);
-  tableRow.appendChild(wwWeightedScoreInput);
-
-  ptInputs.forEach(input => tableRow.appendChild(input));
-  tableRow.appendChild(ptTotalInput);
-  tableRow.appendChild(ptPercentInput);
-  tableRow.appendChild(ptWeightedScoreInput);
-
-  tableRow.appendChild(qaInput);
-  tableRow.appendChild(qaPercentInput);
-  tableRow.appendChild(qaWeightedScoreInput);
-
-  tableRow.appendChild(initialGradeInput);
-  tableRow.appendChild(quarterlyGradeInput);
-  tableBody.appendChild(tableRow);
+    tableBody.append(tableRow);
+  });
 }
 
     </script>
