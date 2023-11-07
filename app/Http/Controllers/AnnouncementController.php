@@ -12,6 +12,7 @@ class AnnouncementController extends Controller
     public function getAnnouncement(){
         $announcements = DB::table('announcements')
         ->select('*')
+        ->orderBy('created_at', 'desc')
         ->get();
         return $announcements;
     }
