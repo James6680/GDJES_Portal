@@ -95,7 +95,7 @@
       Announcements
     </h2>
     <hr class="bg-green-500 flex h-1 border-0 my-6 relative" />
-    <ul class="m-o p-0 w-full h-auto">
+    <ul class="m-o p-0 w-full h-auto" id="announcement_list">
       <li class="py-5 border-b border-black">
         <a href="https://www.facebook.com/photo?fbid=772548511547342&set=a.481770427291820"
           class="flex flex-col justify-between align-middle">
@@ -417,6 +417,10 @@
       navLinks.classList.toggle("top-[100%]");
     }
 
+    $(document).ready(function() {
+            getTableData();
+        });
+
     function getTableData(){
             const url = '/api/GetAnnouncements';
             const table = $('#myTable');
@@ -426,48 +430,6 @@
                 console.log(data);
                 // Iterate over the JSON data and create a new row in the table for each entry.
                 $.each(data, function(index, entry) {
-                    const row = $('<tr>');
-              
-                    const editButtonCell = $('<td>');
-                    const deleteButtonCell = $('<td>');
-                    const announcementCell = $('<td>');
-                    var created_at = new Date(entry.created_at);
-                    var updated_at = new Date(entry.updated_at);
-
-                    const formatted_created_at = created_at.toLocaleDateString("en-US", {
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                        hour: "numeric",
-                        minute: "numeric",
-                        hour12: true,
-                    });
-
-                    const formatted_updated_at = updated_at.toLocaleDateString("en-US", {
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                        hour: "numeric",
-                        minute: "numeric",
-                        hour12: true,
-                    });
-
-                    announcementCell.append($('<p>').text(entry.announcement_title));
-                    announcementCell.append($('<p>').text("Posted: " + formatted_created_at ));
-                    if(entry.created_at !== entry.updated_at){
-                        announcementCell.append($('<p>').text("Updated: " + formatted_updated_at));                        
-                    }
-                    editButtonCell.append($('<button>').attr('id', 'addEditButton').attr('type', 'button').text('Edit').attr('onclick', 'addEditButtonClick("edit", this)'));
-                    deleteButtonCell.append($('<button>').attr('id', 'deleteButton').attr('type', 'button').text('Delete').attr('onclick', 'deleteButtonClick("DeleteData", this)'));
-    
-                    // Append the cells to the row.
-                    row.append($('<td>').text(entry.id).attr('hidden', true));
-                    row.append(editButtonCell);
-                    row.append(deleteButtonCell);
-                    row.append(announcementCell);
-                    row.append($('<td>').text(entry.announcement_url).attr('hidden', true));
-                    // Append the row to the table.
-                    table.append(row);
                 });
             });
         }
