@@ -15,7 +15,11 @@ Route::get('layouts.landing', function () {
     return view('layouts.landing');
 });
 
-///////////////////////////////////////////////////////ALL ADMIN/////////////////////////////////////
+
+
+
+
+// Admin Routes
 Route::get('admin.dashboard', function () {
     return view('layouts.admin');
 });
@@ -42,4 +46,56 @@ Route::get('admin.enrollment-management', function () {
 Route::get('admin.school-information', function () {
     return view('layouts.admin');
 });
-///////////////////////////////////////////////////////////////////////////////////////////////
+//End of Admin Routes
+
+
+
+
+
+//Student Routes
+Route::get('student.announcements', function () {
+    return view('layouts.student');
+});
+
+Route::get('student.grades', function () {
+    return view('layouts.student');
+});
+
+Route::get('student.class-schedule', function () {
+    return view('layouts.student');
+});
+
+Route::get('student.enrollment-status', function () {
+    return view('layouts.student');
+});
+
+Route::get('student.request-documents', function () {
+    return view('layouts.student');
+});
+
+Route::get('student.student-information', function () {
+    return view('layouts.student');
+});
+//End of Student Routes
+
+
+
+
+
+// Faculty Routes
+Route::get('faculty.announcements', function () {
+    return view('layouts.faculty');
+});
+
+Route::get('faculty.my-students', function () {
+    return view('layouts.faculty');
+});
+
+Route::get('faculty.enrollments', function () {
+    return view('layouts.faculty');
+});
+
+Route::get('faculty.grades', function () {
+    return view('layouts.faculty');
+});
+// End of Faculty Routes
