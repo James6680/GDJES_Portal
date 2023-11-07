@@ -416,6 +416,61 @@
       e.name = e.name === "menu" ? "close" : "menu";
       navLinks.classList.toggle("top-[100%]");
     }
+
+    function getTableData(){
+            const url = '/api/GetAnnouncements';
+            const table = $('#myTable');
+            table.find("tr").remove();
+          // Populate dropdown with list of regions
+            $.getJSON(url, function(data) {
+                console.log(data);
+                // Iterate over the JSON data and create a new row in the table for each entry.
+                $.each(data, function(index, entry) {
+                    const row = $('<tr>');
+              
+                    const editButtonCell = $('<td>');
+                    const deleteButtonCell = $('<td>');
+                    const announcementCell = $('<td>');
+                    var created_at = new Date(entry.created_at);
+                    var updated_at = new Date(entry.updated_at);
+
+                    const formatted_created_at = created_at.toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: true,
+                    });
+
+                    const formatted_updated_at = updated_at.toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: true,
+                    });
+
+                    announcementCell.append($('<p>').text(entry.announcement_title));
+                    announcementCell.append($('<p>').text("Posted: " + formatted_created_at ));
+                    if(entry.created_at !== entry.updated_at){
+                        announcementCell.append($('<p>').text("Updated: " + formatted_updated_at));                        
+                    }
+                    editButtonCell.append($('<button>').attr('id', 'addEditButton').attr('type', 'button').text('Edit').attr('onclick', 'addEditButtonClick("edit", this)'));
+                    deleteButtonCell.append($('<button>').attr('id', 'deleteButton').attr('type', 'button').text('Delete').attr('onclick', 'deleteButtonClick("DeleteData", this)'));
+    
+                    // Append the cells to the row.
+                    row.append($('<td>').text(entry.id).attr('hidden', true));
+                    row.append(editButtonCell);
+                    row.append(deleteButtonCell);
+                    row.append(announcementCell);
+                    row.append($('<td>').text(entry.announcement_url).attr('hidden', true));
+                    // Append the row to the table.
+                    table.append(row);
+                });
+            });
+        }
   </script>
 
 </body>
