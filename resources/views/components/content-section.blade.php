@@ -80,21 +80,21 @@
 
     @elseif (request()->is('student.grades') )
     <!-- Grade Viewing Section -->
-    <div class="flex flex-col md:pl-64 w-full min-h-full bg-gray-200">
+    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
 
-        <section class="container container-fluid p-4 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white ">
+        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
-            <div class="flex w-full flex-col gap-6">
+            <div class="grid w-full grid-cols-1 gap-6">
 
                 <div class="flex md:flex-row gap-3 flex-col justify-between md:items-start items-end">
 
                     <div class="flex flex-col gap-3 md:w-[80%] lg:text-base md:text-sm text-xs text-justify">
 
-                        <p class=" font-normal font-frl text-black">
+                        <p class=" font-normal font-mulish text-black">
                             Dear Parent,
                         </p>
 
-                        <p class=" font-normal font-frl text-black indent-7">
+                        <p class=" font-normal font-mulish text-black indent-7">
                         The information provided here shows the ability and progress your child has made in the different learning areas as well as their core values. The school welcomes you should you desire to know more about your child’s progress. 
                         </p>
 
@@ -102,7 +102,7 @@
 
                     <div>
                         
-                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 hover:bg-green-700 text-white font-mulish font-bold rounded-lg focus:bg-green-700 inline-flex w-full px-3 py-2 lg:text-sm dark:focus:bg-green-900 items-center justify-center focus:ring-green-500 focus:border-green-500 lg:px-6 lg:py-3 text-[10px]" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-gradient-to-t from-green-500 to-slate-900 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 group hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full px-3 py-2 lg:text-sm items-center justify-center lg:px-6 lg:py-3 text-[10px]" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                         </svg>
                         </button>
@@ -139,7 +139,7 @@
 
                 </div>
 
-                <h2 class=" font-frl lg:text-2xl text-gray-950 font-bold -mb-3 text-lg ">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold -mb-3 text-lg ">
                     Learning Progress and Achievement
                 </h2>
     
@@ -147,30 +147,30 @@
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-frl bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight">
+                        <thead class=" text-white font-normal font-mulish items-start justify-start lg:text-sm text-[12px] leading-tight">
                             <tr>
-                                <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-gray-500 bg-green-500 ">
+                                <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     Subjects
                                 </th>
-                                <th scope="col" class="md:px-0 px-4 border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4 border-collapse border-r border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     Teacher
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse   bg-gradient-to-t from-green-500 to-slate-900">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse  bg-gradient-to-t from-green-500 to-slate-900">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse  bg-gradient-to-t from-green-500 to-slate-900">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse bg-gradient-to-t from-green-500 to-slate-900">
                                     
                                 </th>
-                                <th scope="col" class="w-[12%] md:px-0 px-3  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[12%] md:px-0 px-3  border-collapse border-x border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     Final Grade
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border-l border-green-500 bg-gradient-to-t from-green-500 to-slate-900">
                                     Remarks
                                 </th>
                             </tr>
@@ -178,187 +178,187 @@
 
                         <tbody>
 
-                            <tr class="bg-white text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class="  font-normal font-frl text-white whitespace-nowrap dark:text-white border-collapse border border-gray-500 bg-green-500  lg:py-8 sm:py-5 py-5">
+                            <tr class="bg-white text-white border-b lg:text-sm md:text-[10px] text-[10px] leading-tight">
+                                <th scope="row" class="  font-normal font-mulish text-white whitespace-nowrap dark:text-white border-collapse border-r border-green-600 bg-green-500 lg:py-8 sm:py-5 py-5">
 
                                 </th>
-                                <td class=" border-collapse border border-gray-500 bg-green-500">
+                                <td class=" border-collapse border-r border-green-600 bg-green-500">
 
                                 </td>
-                                <td class=" px-3 border-collapse border border-gray-500 bg-green-500">
+                                <td class=" px-3 border-collapse border-r border-t border-green-600 bg-green-500">
                                     1
                                 </td>
-                                <td class=" px-3 border-collapse border border-gray-500 bg-green-500">
+                                <td class=" px-3 border-collapse border-r border-t border-green-600 bg-green-500">
                                     2
                                 </td>
-                                <td class=" px-3 border-collapse border border-gray-500 bg-green-500">
+                                <td class=" px-3 border-collapse border-r border-t border-green-600 bg-green-500">
                                     3
                                 </td>
-                                <td class="border-collapse border border-gray-500 bg-green-500">
+                                <td class="border-collapse border-r border-t border-green-600 bg-green-500">
                                     4    
                                 </td>
-                                <td class="border-collapse border border-gray-500 bg-green-500">
+                                <td class="border-collapse border-r border-green-600 bg-green-500">
 
                                 </td>
-                                <td class="border-collapse border border-gray-500 bg-green-500">
+                                <td class="border-collapse border-l border-green-600 bg-green-500">
 
                                 </td>
                             </tr>
 
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
 
-                                <th scope="row" class="font-normal font-frl text-black whitespace-nowrap border-collapse border border-gray-500 lg:py-6 sm:py-3 py-3 mt-3 text-start pl-4">
+                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap border-collapse border border-green-600 lg:py-6 sm:py-3 py-3 mt-3 text-start pl-4">
                                     Filipino
                                 </th>
-                                <td class=" border-collapse border border-gray-500 text-start pl-4">
+                                <td class=" border-collapse border border-green-600 text-start pl-4">
                                     Juan Dela Cruz
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     87
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     87
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     89
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                         
                                 </td>
-                                <td class=" border-collapse border border-gray-500 bg-green-200/50">
+                                <td class=" border-collapse border border-green-600 bg-green-200/50">
                                     
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
                                     English
                                 </th>
-                                <td class=" border-collapse border border-gray-500 text-start pl-4">
+                                <td class=" border-collapse border border-green-600 text-start pl-4">
                                     Adrian Fabonan
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     88
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     90   
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     90  
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                         
                                 </td>
-                                <td class=" border-collapse border border-gray-500 bg-green-200/50">
+                                <td class=" border-collapse border border-green-600 bg-green-200/50">
 
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
 
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
                                     Mathematics
                                 </th>
-                                <td class=" border-collapse border border-gray-500 text-start pl-4">
+                                <td class=" border-collapse border border-green-600 text-start pl-4">
                                     Karen Tiro
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     82  
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     78    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     78    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                             
                                 </td>
-                                <td class=" border-collapse border border-gray-500 bg-green-200/50">
+                                <td class=" border-collapse border border-green-600 bg-green-200/50">
 
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
 
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
                                     Makabansa
                                 </th>
-                                <td class="border-collapse border border-gray-500 text-start pl-4">
+                                <td class="border-collapse border border-green-600 text-start pl-4">
                                     Alex Reyes
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     88  
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     88
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     88   
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                         
                                 </td>
-                                <td class=" border-collapse border border-gray-500 bg-green-200/50">
+                                <td class=" border-collapse border border-green-600 bg-green-200/50">
 
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
 
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
                                     GMRC
                                 </th>
-                                <td class="border-collapse border border-gray-500 text-start pl-4">
+                                <td class="border-collapse border border-green-600 text-start pl-4">
                                     Anne Curtis
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     79
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     81   
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     77   
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                         
                                 </td>
-                                <td class=" border-collapse border border-gray-500 bg-green-200/50">
+                                <td class=" border-collapse border border-green-600 bg-green-200/50">
 
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
 
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-7 sm:py-5 py-5">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-7 sm:py-5 py-5">
                                     
                                 </th>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     
                                 </td>
-                                <td class=" border-collapse border border-gray-500 ">
+                                <td class=" border-collapse border border-green-600 ">
                                     GWA
                                 </td>
-                                <td class=" border-collapse border border-gray-500 bg-green-200/50">
+                                <td class=" border-collapse border border-green-600 bg-green-200/50">
 
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
 
                                 </td>
                             </tr>
@@ -366,7 +366,7 @@
                     </table>
                 </div>
 
-                <h2 class=" font-frl lg:text-2xl text-gray-950 font-bold -mb-3 mt-3 text-lg ">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 mt-3 text-lg ">
                     Learner's Observed Values
                 </h2>
     
@@ -374,24 +374,24 @@
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-frl bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight ">
+                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight ">
                             <tr>
-                                <th scope="col" class="w-[25%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-gray-500 bg-green-500 ">
+                                <th scope="col" class="w-[25%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     Core Values
                                 </th>
-                                <th scope="col" class="w-[43%] md:px-0 px-4 border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[43%] md:px-0 px-4 border-collapse border-r border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     Behaviour Statement
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse border-l border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse bg-gradient-to-t from-green-500 to-slate-900">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse bg-gradient-to-t from-green-500 to-slate-900">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[8%] md:px-0 px-5  border-collapse  bg-gradient-to-t from-green-500 to-slate-900">
                                     
                                 </th>
                             </tr>
@@ -400,162 +400,162 @@
                         <tbody>
 
                             <tr class="bg-white text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class="  font-normal font-frl text-white whitespace-nowrap dark:text-white border-collapse border border-gray-500 bg-green-500  lg:py-8 sm:py-5 py-5">
+                                <th scope="row" class="  font-normal font-mulish text-white whitespace-nowrap dark:text-white border-collapse border-r border-green-600 bg-green-500  lg:py-8 sm:py-5 py-5">
                                 </th>
-                                <td class=" border-collapse border border-gray-500 bg-green-500">
+                                <td class=" border-collapse border-r  border-green-600 bg-green-500">
 
                                 </td>
-                                <td class=" px-3 border-collapse border border-gray-500 bg-green-500">
+                                <td class=" px-3 border-collapse border-x border-t border-green-600 bg-green-500">
                                     1
                                 </td>
-                                <td class=" px-3 border-collapse border border-gray-500 bg-green-500">
+                                <td class=" px-3 border-collapse border-x border-t border-green-600 bg-green-500">
                                     2
                                 </td>
-                                <td class=" px-3 border-collapse border border-gray-500 bg-green-500">
+                                <td class=" px-3 border-collapse border-x border-t border-green-600 bg-green-500">
                                     3
                                 </td>
-                                <td class="border-collapse border border-gray-500 bg-green-500">
+                                <td class="border-collapse border-l border-t border-green-600 bg-green-500">
                                     4    
                             </tr>
 
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class="font-normal font-frl text-black whitespace-nowrap border-collapse border border-gray-500 lg:py-6 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap border-collapse border border-green-600 lg:py-6 sm:py-3 py-3 text-start pl-4">
                                     x
                                 </th>
-                                <td class=" border-collapse border border-gray-500 text-start pl-4">
+                                <td class=" border-collapse border border-green-600 text-start pl-4">
                                     x
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
                                     x
                                 </th>
-                                <td class=" border-collapse border border-gray-500 text-start pl-4">
+                                <td class=" border-collapse border border-green-600 text-start pl-4">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x   
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x  
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     x     
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
                                     x
                                 </th>
-                                <td class=" border-collapse border border-gray-500 text-start pl-4">
+                                <td class=" border-collapse border border-green-600 text-start pl-4">
                                     x
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     x  
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x         
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
                                 x
                                 </th>
-                                <td class="border-collapse border border-gray-500 text-start pl-4">
+                                <td class="border-collapse border border-green-600 text-start pl-4">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x  
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x   
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x       
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
                                     x
                                 </th>
-                                <td class="border-collapse border border-gray-500 text-start pl-4">
+                                <td class="border-collapse border border-green-600 text-start pl-4">
                                 x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x   
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x   
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     x       
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-7 sm:py-5 py-5 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-7 sm:py-5 py-5 text-start pl-4">
                                     x
                                 </th>
-                                <td class=" border-collapse border border-gray-500 text-start pl-4">
+                                <td class=" border-collapse border border-green-600 text-start pl-4">
                                     x
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500 ">
+                                <td class=" border-collapse border border-green-600 ">
                                     x
                                 </td>
 
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-7 sm:py-5 py-5 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-7 sm:py-5 py-5 text-start pl-4">
                                     x
                                 </th>
-                                <td class=" border-collapse border border-gray-500 text-start pl-3">
+                                <td class=" border-collapse border border-green-600 text-start pl-3">
                                     x
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500 ">
+                                <td class=" border-collapse border border-green-600 ">
                                     x
                                 </td>
 
@@ -564,7 +564,7 @@
                     </table>
                 </div>
 
-                <h2 class=" font-frl lg:text-2xl text-gray-950 font-bold -mb-3 text-lg mt-3">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 text-lg mt-3">
                     Student's Attendance
                 </h2>
     
@@ -572,48 +572,48 @@
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-frl bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight">
+                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight">
                             <tr>
-                                <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-gray-500 bg-green-500 ">
+                                <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600  bg-gradient-to-t from-green-500 to-slate-900">
                                     Attendance
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     AUG
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     SEP
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     OCT
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     NOV
                                 </th>   
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     DEC
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     JAN
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     FEB
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     MAR
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     APR
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     MAY
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     JUN
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     JLY
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     TOTAL
                                 </th>
                             </tr>
@@ -621,134 +621,134 @@
 
                         <tbody>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3">
                                     Days of School
                                 </th>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     x  
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x        
                                 </td>
-                                <td class=" border-collapse border border-gray-500 ">
+                                <td class=" border-collapse border border-green-600 ">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3">
                                     Days of Present
                                 </th>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                 x   
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                 x     
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                 x     
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                 x     
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                 x     
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                 x     
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x        
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3">
                                     Days of Absent
                                 </th>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     x  
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x
                                 </td>
                             </tr>
@@ -756,7 +756,7 @@
                     </table>
                 </div>
 
-                <h2 class=" font-frl lg:text-2xl text-gray-950 font-bold -mb-3 text-lg mt-3">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 text-lg mt-3">
                     Mode of Learning
                 </h2>
     
@@ -764,21 +764,21 @@
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-frl bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight">
+                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight">
                             <tr>
-                                <th scope="col" class="w-[28%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-gray-500 bg-green-500 ">
+                                <th scope="col" class="w-[28%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900 ">
                                     Modality
                                 </th>
-                                <th scope="col" class=" w-[18%] md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class=" w-[18%] md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     1st Quarter
                                 </th>
-                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     2nd Quarter
                                 </th>
-                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     3rd Quarter
                                 </th>
-                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     4th Quarter
                                 </th>   
                             </tr>
@@ -786,18 +786,18 @@
 
                         <tbody>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-3 py-3 bg-green-500">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 bg-green-500">
                                 </th>
-                                <td class=" border-collapse border border-gray-500 ">
+                                <td class=" border-collapse border border-green-600 ">
                                     x
                                 </td>
-                                <td class="border-collapse border border-gray-500">
+                                <td class="border-collapse border border-green-600">
                                     x  
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
-                                <td class=" border-collapse border border-gray-500">
+                                <td class=" border-collapse border border-green-600">
                                     x    
                                 </td>
                             </tr>
@@ -818,7 +818,7 @@
 
             <div class="flex w-full flex-col gap-6">
 
-                <h2 class=" font-frl lg:text-2xl text-gray-950 font-bold -mb-3 text-sm text-center">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 text-sm text-center">
                     Enrollment Status content
                 </h2>
 
@@ -831,7 +831,7 @@
 
             <div class="flex w-full flex-col gap-6">
 
-                <h2 class=" font-frl lg:text-2xl text-gray-950 font-bold -mb-3 text-sm ">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 text-sm ">
                     Dela Cruz, Juan Reyes ( xxxx-xxxx-xxxx )
                 </h2>
 
@@ -841,18 +841,18 @@
 
                         <thead>
 
-                            <tr class="bg-green-500 text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base md:text-[10px] text-[10px] leading-tight text-start">
+                            <tr class="bg-gradient-to-t from-green-500 to-slate-900 text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base md:text-[10px] text-[10px] leading-tight text-start">
 
-                                <th scope="col" class="w-[5%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-gray-500 bg-green-500">
+                                <th scope="col" class="w-[5%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
                                     #
                                 </th>
-                                <th scope="col" class="w-[25%] border-collapse border border-gray-500 bg-green-500 text-start md:pl-4 pl-2">
+                                <th scope="col" class="w-[25%] border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900 text-start md:pl-4 pl-2">
                                     Subject
                                 </th>
-                                <th scope="col" class="w-[35%] border-collapse border border-gray-500 bg-green-500 text-start md:pl-4 pl-2">
+                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900 text-start md:pl-4 pl-2">
                                     Teacher
                                 </th>
-                                <th scope="col" class="w-[35%] border-collapse border border-gray-500 bg-green-500 text-start md:pl-4 pl-2">
+                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900 text-start md:pl-4 pl-2">
                                     Time Schedule
                                 </th>
                             </tr>
@@ -863,93 +863,93 @@
 
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
 
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
                                     1
                                 </th>
                                 
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                     Filipino
                                 </td>
-                                <td class="border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
                                     Juan Dela Cruz
                                 </td>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                     12:30 PM - 3:00 PM
                                 </td>
                             </tr>
 
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
 
-                                <th scope="row" class="font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
                                     x
                                 </th>
-                                <td class=" border-collapse border border-gray-500  md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600  md:pl-4 pl-2">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                     x
                                 </td>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                     x   
                                 </td>
                             </tr>
 
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class="  font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                                <th scope="row" class="  font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
                                 x 
                                 </th>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                     x
                                 </td>
-                                <td class="border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
                                 x   
                                 </td>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                 x     
                                 </td>
                             </tr>
 
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class="font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
                                 x 
                                 </th>
-                                <td class="border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
                                 x 
                                 </td>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                 x   
                                 </td>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                 x 
                                 </td>
                             </tr>
 
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
                                 x 
                                 </th>
-                                <td class="border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
                                 x 
                                 </td>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                 x 
                                 </td>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                 x    
                                 </td>
                             </tr>
 
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
                                 x 
                                 </th>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                 x  
                                 </td>
-                                <td class="border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
                                 x  
                                 </td>
-                                <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
                                 x  
                                 </td>
                             </tr>
