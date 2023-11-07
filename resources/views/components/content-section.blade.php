@@ -1,5 +1,6 @@
 <!-- Content Section -->
-<div class="p-4 sm:ml-64 w-full h-auto hidden">
+<!-- Announcement Section -->
+<div class="p-4 sm:ml-64 w-full h-auto ">
   <!-- Dashed outline -->
   <!-- <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14"> 
     <div class="grid grid-cols-3 gap-4 mb-4">
@@ -67,8 +68,8 @@
   <!-- Announcement section -->
   <section 
     id="announcement"
-    class="z-0 w-[84%] flex relative flex-col rounded-md justify-start gap-1 h-auto p-8 md:p-16 lg:py-7 lg:px-10 bg-green-600 shadow-lg"
-    style="margin-left: 15px; margin-top: 20px;">
+    class="z-0 w-full flex relative flex-col rounded-md justify-start gap-1 h-auto p-8 md:p-16 lg:py-7 lg:px-10 bg-green-600 shadow-lg"
+    style=" margin-top: 20px;">
 
     <h2 class="w-auto flex font-frl text-lg lg:text-3xl text-white font-bold">
       Announcements
@@ -99,8 +100,8 @@
 
   <section 
     id="announcement"
-    class="z-0 w-[84%] flex relative flex-col rounded-md justify-start gap-1 h-auto p-8 md:p-16 lg:py-7 lg:px-10 bg-white shadow-md"
-    style="margin-left: 15px; margin-top: 30px; margin-bottom: 20px;">
+    class="z-0 w-full flex relative flex-col rounded-md justify-start gap-1 h-auto p-8 md:p-16 lg:py-7 lg:px-10 bg-white shadow-md"
+    style="margin-top: 20px;">
 
     <h2 class="w-auto flex font-frl text-lg lg:text-3xl text-green-900 font-bold">
       Contact us
@@ -129,10 +130,10 @@
   </section>
 </div>
 
-<div class="p-4 sm:ml-64 w-full h-auto ">
-    <section 
-    id="announcement"
-    class="z-0 w-full flex relative flex-col rounded-md justify-start gap-1 h-auto p-5 md:p-8 lg:py-7 lg:px-10 bg-white shadow-md shrink-0"
+<!-- Grade Viewing Section -->
+<div class="p-4 sm:ml-64 w-full h-auto hidden">
+
+    <section id="announcement" class="z-0 w-full flex relative flex-col rounded-md justify-start gap-1 h-auto p-5 md:p-8 lg:py-7 lg:px-10 bg-white shadow-md shrink-0"
     style=" margin-top: 10px;">
 
         <div class="flex w-full flex-col gap-6">
@@ -859,3 +860,160 @@
 
   </section>
 </div>
+
+<!-- Class Schedule Section -->
+<div class="p-4 sm:ml-64 w-full h-auto hidden">
+    
+    <section id="announcement" class="z-0 w-full flex relative flex-col rounded-md justify-start gap-1 h-auto p-5 md:p-8 lg:py-7 lg:px-10 bg-white shadow-md shrink-0"
+    style=" margin-top: 10px; margin-bottom: 10px;">
+
+        <div class="flex w-full flex-col gap-6">
+
+            <h2 class=" font-frl lg:text-2xl text-gray-950 font-bold -mb-3 text-sm text-center">
+                Enrollment Status content
+            </h2>
+
+        </div>
+
+    </section>
+
+    <section id="announcement" class="z-0 w-full flex relative flex-col rounded-md justify-start gap-1 h-auto p-5 md:p-8 lg:py-7 lg:px-10 bg-white shadow-md shrink-0"
+    style=" margin-top: 10px; margin-bottom: 10px;">
+
+        <div class="flex w-full flex-col gap-6">
+
+            <h2 class=" font-frl lg:text-2xl text-gray-950 font-bold -mb-3 text-sm ">
+                Dela Cruz, Juan Reyes ( xxxx-xxxx-xxxx )
+            </h2>
+
+            <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
+
+                <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
+
+                    <thead>
+
+                        <tr class="bg-green-500 text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base md:text-[10px] text-[10px] leading-tight text-start">
+
+                            <th scope="col" class="w-[5%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-gray-500 bg-green-500">
+                                #
+                            </th>
+                            <th scope="col" class="w-[25%] border-collapse border border-gray-500 bg-green-500 text-start md:pl-4 pl-2">
+                                Subject
+                            </th>
+                            <th scope="col" class="w-[35%] border-collapse border border-gray-500 bg-green-500 text-start md:pl-4 pl-2">
+                                Teacher
+                            </th>
+                            <th scope="col" class="w-[35%] border-collapse border border-gray-500 bg-green-500 text-start md:pl-4 pl-2">
+                                Time Schedule
+                            </th>
+                        </tr>
+                        
+                    </thead>
+
+                    <tbody>
+
+                        <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
+
+                            <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                                1
+                            </th>
+                            
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                Filipino
+                            </td>
+                            <td class="border-collapse border border-gray-500 md:pl-4 pl-2">
+                                Juan Dela Cruz
+                            </td>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                12:30 PM - 3:00 PM
+                            </td>
+                        </tr>
+
+                        <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
+
+                            <th scope="row" class="font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                                x
+                            </th>
+                            <td class=" border-collapse border border-gray-500  md:pl-4 pl-2">
+                                x
+                            </td>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                x
+                            </td>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                x   
+                            </td>
+                        </tr>
+
+                        <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
+                            <th scope="row" class="  font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                               x 
+                            </th>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                                x
+                            </td>
+                            <td class="border-collapse border border-gray-500 md:pl-4 pl-2">
+                               x   
+                            </td>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                               x     
+                            </td>
+                        </tr>
+
+                        <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
+                            <th scope="row" class="font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                               x 
+                            </th>
+                            <td class="border-collapse border border-gray-500 md:pl-4 pl-2">
+                               x 
+                            </td>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                               x   
+                            </td>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                               x 
+                            </td>
+                        </tr>
+
+                        <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
+                            <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                               x 
+                            </th>
+                            <td class="border-collapse border border-gray-500 md:pl-4 pl-2">
+                               x 
+                            </td>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                               x 
+                            </td>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                               x    
+                            </td>
+                        </tr>
+
+                        <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
+                            <th scope="row" class=" font-normal font-frl text-black whitespace-nowrap dark:text-white border-collapse border border-gray-500 lg:py-5 sm:py-5 py-2.5">
+                               x 
+                            </th>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                              x  
+                            </td>
+                            <td class="border-collapse border border-gray-500 md:pl-4 pl-2">
+                              x  
+                            </td>
+                            <td class=" border-collapse border border-gray-500 md:pl-4 pl-2">
+                              x  
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+<!-- Requests Document Section -->
+
+<!-- Student Information Section -->
