@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('grading_sheet', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+            // $table->foreign('student_id')->references('id')->on('students');
             $table->unsignedBigInteger('class_id');
-            $table->foreign('class_id')->references('id')->on('classes');
+            $table->index('class_id');
+            // $table->foreign('class_id')->references('id')->on('classes');
             $table->unsignedBigInteger('highest_possible_score_id');
-            $table->foreign('highest_possible_score_id')->references('id')->on('highest_possible_scores');
-            $table->integer('querter');
+            // $table->foreign('highest_possible_score_id')->references('id')->on('highest_possible_scores');
+            $table->integer('quarter');
             $table->float('ww1')->nullable();
             $table->float('ww2')->nullable();
             $table->float('ww3')->nullable();
@@ -42,12 +43,14 @@ return new class extends Migration
             $table->float('pt9')->nullable();
             $table->float('pt10')->nullable();
             $table->float('pp_weighted_score')->nullable();     
-            $table->float('qa10')->nullable();
+            $table->float('qa')->nullable();
             $table->float('qa_weighted_score')->nullable();     
             $table->float('initial_grade')->nullable();
             $table->integer('quarterly_grade')->nullable();
             $table->timestamps();
         });
+
+        Schema::disableForeignKeyConstraints();
     }
 
     /**

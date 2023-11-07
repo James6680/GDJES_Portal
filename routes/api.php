@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GradingSheetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,5 @@ Route::get('/address/{type}', function (String $type) {
     $user = \File::json(resource_path('js/ph-json/' . $type . '.json'));
     return response()->json($user);
 });
+
+Route::get('getGradingSheet', [GradingSheetController::class, 'getGradingSheet']);
