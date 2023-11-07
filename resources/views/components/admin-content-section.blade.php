@@ -1,11 +1,19 @@
 <!-- Content Section -->
 <div class="flex flex-col md:pl-64 w-full min-h-full">
 
+
+
+
+
+
+  <!-- Admin Dashboard -->
+  @if (request()->is('admin.dashboard') )
+
   <!-- Top Bar Dark Green Decor -->
   <div class="absolute top-0 right-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 min-w-full h-80">
     Empty
   </div>
-  @if (request()->is('admin.dashboard') )
+
   <!--  Main Content Container -->
   <div class="min-w-full min-h-full gap-4 container container-fluid p-4 grid grid-cols-1">
     <h1 class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">ACADEMIC YEAR 2024 - 2025 DATA</h1>
@@ -744,25 +752,55 @@
         });
 
       </script> <!-- End of Script for Historical Completion Rate Data Section -->
-    
     </div> <!-- End of Charts Container for Current School Year -->
-
-
-
   </div> <!-- End of Main Content Container -->
+
+
+
+
+
   @elseif(request()->is('admin.announcements') )
   <p>sample lang ito</p>
-  @elseif(request()->is('admin.announcements') )
+
+
+
+
+
+
+  @elseif(request()->is('admin.user-accounts') )
   <p>sample lang ito</p>
-  @elseif(request()->is('admin.accounts') )
-  <p>sample lang ito</p>
+
+
+
+
+
   @elseif(request()->is('admin.document-request') )
   <p>sample lang ito</p>
+
+
+
+
+
   @elseif(request()->is('admin.teacher-management') )
   <p>sample lang ito</p>
+
+
+
+
+
   @elseif(request()->is('admin.enrollment-management') )
   <p>sample lang ito</p>
+
+
+
+
+
   @elseif(request()->is('admin.school-information') )
   <p>sample lang ito</p>
+
+
+
+
+
   @endif
 </div>
