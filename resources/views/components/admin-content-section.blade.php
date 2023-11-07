@@ -21,12 +21,11 @@
   @if (request()->is('admin.dashboard') )
 
   <!-- Top Bar Dark Green Decor -->
-  <div class="absolute top-0 right-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 min-w-full h-80">
-    Empty
-  </div>
+  <section class="absolute top-0 right-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 min-w-full h-80">
+  </section>
 
-  <!--  Main Content Container -->
-  <div class="min-w-full min-h-full gap-4 container container-fluid p-4 grid grid-cols-1">
+  <!--  Admin Dashboard Main Content Container -->
+  <section class="min-w-full min-h-full gap-4 p-4 grid grid-cols-1">
     <h1 class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">ACADEMIC YEAR {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} DATA</h1>
     
     <!--  Statistics Container -->
@@ -780,15 +779,79 @@
 
       </script> <!-- End of Script for Historical Completion Rate Data Section -->
     </div> <!-- End of Charts Container for Current School Year -->
-  </div> <!-- End of Main Content Container -->
+  </section> <!-- End of Admin Dashboard Main Content Container -->
 
 
 
 
 
   @elseif(request()->is('admin.announcements') )
-  <p>announcements</p>
+  <!-- Admin Announcements Main Content Container -->
+  <section class="min-w-full min-h-full gap-4 p-4 pt-8 grid grid-cols-1">
+    <div class="sm:mx-4 gap-4 flex flex-col h-auto bg-white p-4">
+      <h3 class="col-span-3 text-2xl font-bold text-black dark:text-white">Announcements Editor</h3>
+      
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                      <th scope="col" class="p-4">
+                          <div class="flex items-center">
+                              <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                              <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                          </div>
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                          Post Description
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                          Action
+                      </th>
+                  </tr>
+              </thead>
 
+              <tbody>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                      <td class="w-4 p-4">
+                          <div class="flex items-center">
+                              <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                              <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                          </div>
+                      </td>
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        Looking for eligible supplier for the Computer Parts and Accessories
+                        Posted: August 16, 2023
+                      </th>
+                      <td class="flex items-center px-6 py-4 space-x-3">
+                          <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                          <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                      </td>
+                  </tr>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                      <td class="w-4 p-4">
+                          <div class="flex items-center">
+                              <input id="checkbox-table-search-2" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                              <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
+                          </div>
+                      </td>
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        Looking for eligible supplier for the Computer Parts and Accessories
+                        Posted: August 16, 2023
+                      </th>
+                      <td class="flex items-center px-6 py-4 space-x-3">
+                          <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                          <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+
+      
+
+    </div> <!-- End of Statistics Container -->
+  </section>
 
 
 
