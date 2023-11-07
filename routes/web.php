@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\HelloWorld;
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +13,11 @@ Route::get('helloworld', function () {
 });
 
 Route::get('layouts.landing', function () {
-    return view('layouts.landing');
+    $announcements = DB::table('announcements')
+    ->select('*')
+    ->orderBy('created_at', 'desc')
+    ->get();
+    return view('layouts.landing', ['announcements' => $announcements]);
 });
 
 

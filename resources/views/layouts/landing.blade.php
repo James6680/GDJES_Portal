@@ -1,3 +1,6 @@
+@php
+  use Carbon\Carbon;
+@endphp
 <!doctype html>
 <html lang="en">
 
@@ -96,25 +99,18 @@
     </h2>
     <hr class="bg-green-500 flex h-1 border-0 my-6 relative" />
     <ul class="m-o p-0 w-full h-auto" id="announcement_list">
-      <li class="py-5 border-b border-black">
-        <a href="https://www.facebook.com/photo?fbid=772548511547342&set=a.481770427291820"
-          class="flex flex-col justify-between align-middle">
-          <span class="font-mulish font-semibold text-xs md:text-sm lg:text-base">Title of Announcement 1</span>
-          <span class="font-mulish font-normal text-xs md:text-sm lg:text-base">Date Published 1</span>
-        </a>
-      </li>
-      <li class="py-5 border-b border-black">
-        <a href="https://www.youtube.com/watch?v=rKWLpH1fLMI" class="flex flex-col justify-between align-middle">
-          <span class="font-mulish font-semibold text-xs md:text-sm lg:text-base">Title of Announcement 2</span>
-          <span class="font-mulish font-normal text-xs md:text-sm lg:text-base">Date Published 2</span>
-        </a>
-      </li>
-      <li class="py-5 border-b border-black">
-        <a href="https://tailwindcss.com/docs/height" class="flex flex-col justify-between align-middle">
-          <span class="font-mulish font-semibold text-xs md:text-sm lg:text-base">Title of Announcement 3</span>
-          <span class="font-mulish font-normal text-xs md:text-sm lg:text-base">Date Published 3</span>
-        </a>
-      </li>
+      @if ($announcements->isNotEmpty())
+      @foreach ($announcements->slice(0, 3) as $announcement)
+          <li class="py-5 border-b border-black">
+              <a href="{{$announcement->announcement_url}}" class="flex flex-col justify-between align-middle">
+                  <span class="font-mulish font-semibold text-xs md:text-sm lg:text-base">{{$announcement->announcement_title}}</span>
+                  <span class="font-mulish font-normal text-xs md:text-sm lg:text-base">{{ Carbon::parse($announcement->created_at)->format('F j, Y g:i A') }}</span>
+              </a>
+          </li>
+      @endforeach
+      @else
+        <p>hello world na wlaang value</p>
+      @endif
     </ul>
 
     <img src="{{ asset ('assets/announcement-gradient-blob.svg') }}" alt="SVG image"
@@ -417,22 +413,22 @@
       navLinks.classList.toggle("top-[100%]");
     }
 
-    $(document).ready(function() {
-            getTableData();
-        });
+    // $(document).ready(function() {
+    //         getTableData();
+    //     });
 
-    function getTableData(){
-            const url = '/api/GetAnnouncements';
-            const table = $('#myTable');
-            table.find("tr").remove();
-          // Populate dropdown with list of regions
-            $.getJSON(url, function(data) {
-                console.log(data);
-                // Iterate over the JSON data and create a new row in the table for each entry.
-                $.each(data, function(index, entry) {
-                });
-            });
-        }
+    // function getTableData(){
+    //         const url = '/api/GetAnnouncements';
+    //         const table = $('#myTable');
+    //         table.find("tr").remove();
+    //       // Populate dropdown with list of regions
+    //         $.getJSON(url, function(data) {
+    //             console.log(data);
+    //             // Iterate over the JSON data and create a new row in the table for each entry.
+    //             $.each(data, function(index, entry) {
+    //             });
+    //         });
+    //     }
   </script>
 
 </body>
