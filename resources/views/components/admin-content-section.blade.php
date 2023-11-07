@@ -15,23 +15,23 @@
       
       <div class="gap-4 grid grid-cols-3 h-auto">
         <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="text-base font-normal tracking-tight text-black dark:text-white">ENROLLEES</h5>
+            <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">ENROLLEES</h5>
             <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
         </a>
 
         <div class="grid md:grid-rows-2 gap-4  ">
           <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-              <h5 class="text-base font-normal tracking-tight text-black dark:text-white">MALE</h5>
+              <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">MALE</h5>
               <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
           </a>
           <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-              <h5 class="text-base font-normal tracking-tight text-black dark:text-white">FEMALE</h5>
+              <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">FEMALE</h5>
               <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
           </a>
         </div>
 
         <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="text-base font-normal tracking-tight text-black dark:text-white">CUSTOMIZED AID STUDENTS</h5>
+            <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">CUSTOMIZED AID STUDENTS</h5>
             <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
         </a>
       </div>
@@ -39,17 +39,17 @@
       <div class="gap-4 grid grid-rows-2">
         <div class="grid grid-cols-2 gap-4  ">
           <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-              <h5 class="text-base font-normal tracking-tight text-black dark:text-white">TRANSFERRED IN</h5>
+              <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">TRANSFERRED IN</h5>
               <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
           </a>
           <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-              <h5 class="text-base font-normal tracking-tight text-black dark:text-white">TRANSFERRED OUT</h5>
+              <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">TRANSFERRED OUT</h5>
               <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
           </a>
         </div>
 
         <a href="#" class="shadowoutline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-              <h5 class="text-base font-regular tracking-tight text-black dark:text-white">DROPOUTS</h5>
+              <h5 class="text-xs md:text-base font-regular tracking-tight text-black dark:text-white">DROPOUTS</h5>
               <p class="font-semibold text-2xl text-black-700 dark:text-gray-400">1351</p>
         </a>
       </div>   
