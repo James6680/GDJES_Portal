@@ -35,6 +35,11 @@ Route::get('admin.user-accounts', function () {
 Route::get('admin.document-request', function () {
     return view('layouts.admin');
 });
+
+Route::get('admin.student-management', function () {
+    return view('layouts.admin');
+});
+
 Route::get('admin.teacher-management', function () {
     return view('layouts.admin');
 });
