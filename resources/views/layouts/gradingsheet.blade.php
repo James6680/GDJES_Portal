@@ -14,7 +14,7 @@
                 type: 'GET', // Replace `GET` with the HTTP method of the route
                 success: function(response) {
                     response.forEach(element => {
-                      generateGradingSheetTable(response);
+                      console.log(response);
                     });
                 }
             });
