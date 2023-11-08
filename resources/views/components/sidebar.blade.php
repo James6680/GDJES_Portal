@@ -1,21 +1,32 @@
 
 @php
-  $user = 'Teacher';
+  $user = 'Student';
 @endphp
 
 <nav class="fixed top-0 z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
   <div class="px-3 py-3 lg:px-5 lg:pl-3 w-full">
-    <div class="flex items-center justify-between md:pl-72 p-0">
+    <div class="flex items-center justify-between lg:pl-72 md:pl-64 p-0">
 
       <!-- Welcome text -->
-        <div class="hidden sm:flex flex-col justify-center sm:-p-20 p-0 items-start pt-2 gap-0 text-black">
-          <p class="self-stretch font-mulish text-sm font-normal leading-none">
+        <div class="hidden sm:flex flex-col justify-center p-0 items-start pt-2 gap-0 text-black">
+          <p class="self-stretch font-mulish text-sm font-normal leading-none9">
             Mabuhay!
           </p>
-          <h2 class="font-frl text-lg font-bold leading-none ">
+          <h2 class="font-frl lg:text-lg text-md font-bold leading-none ">
             Hello, {{ $user }} Alex.
           </h2>
         </div>
+
+        @if($user == 'Student')
+        <div class="hidden sm:flex flex-col justify-center p-0 items-start pt-2 xl:pl-36  gap-0 text-black">
+          <p class="font-frl lg:text-lg text-md font-bold leading-none ">
+            Grade # - Section
+          </p>
+          <h2 class="self-stretch font-mulish text-sm font-normal leading-none"> 
+            Class Adviser: Fullname
+          </h2>
+        </div>
+        @endif
         
       <!-- Sidebar Logo -->
       <div class="flex items-center justify-start ">
@@ -117,7 +128,7 @@
               </p>
             </div>
         </a>
-        <x-sidebar-button href="student.announcement" isActive="{{ request()->is('student.announcement') }}" badge="" notification="5" svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M24.75,115.54A102.31,102.31,0,0,1,48.06,61.78a16,16,0,0,1,23.63-1.1L99.36,88.94a15.87,15.87,0,0,1,1.69,20.48h0a25.59,25.59,0,0,0-3.7,7.75A4,4,0,0,1,93.53,120H28.73A4,4,0,0,1,24.75,115.54ZM137.39,24.06A16,16,0,0,0,120,40V80.67a15.86,15.86,0,0,0,13.25,15.76,32,32,0,0,1,5.41,61.76A4.06,4.06,0,0,0,136,162v65.23a4,4,0,0,0,4.46,4A104.34,104.34,0,0,0,232,129.48C232.75,75.19,191.19,28.88,137.39,24.06Zm-20.14,134.1a32,32,0,0,1-19.4-19.42,4.06,4.06,0,0,0-3.8-2.74H28.72a4,4,0,0,0-4,4.45,104.1,104.1,0,0,0,90.82,90.82,4,4,0,0,0,4.45-4V162A4.05,4.05,0,0,0,117.25,158.16Z"></path></svg></path></svg>'>
+        <x-sidebar-button href="student.announcements" isActive="{{ request()->is('student.announcements') }}" badge="" notification="5" svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M24.75,115.54A102.31,102.31,0,0,1,48.06,61.78a16,16,0,0,1,23.63-1.1L99.36,88.94a15.87,15.87,0,0,1,1.69,20.48h0a25.59,25.59,0,0,0-3.7,7.75A4,4,0,0,1,93.53,120H28.73A4,4,0,0,1,24.75,115.54ZM137.39,24.06A16,16,0,0,0,120,40V80.67a15.86,15.86,0,0,0,13.25,15.76,32,32,0,0,1,5.41,61.76A4.06,4.06,0,0,0,136,162v65.23a4,4,0,0,0,4.46,4A104.34,104.34,0,0,0,232,129.48C232.75,75.19,191.19,28.88,137.39,24.06Zm-20.14,134.1a32,32,0,0,1-19.4-19.42,4.06,4.06,0,0,0-3.8-2.74H28.72a4,4,0,0,0-4,4.45,104.1,104.1,0,0,0,90.82,90.82,4,4,0,0,0,4.45-4V162A4.05,4.05,0,0,0,117.25,158.16Z"></path></svg></path></svg>'>
           Announcements
         </x-sidebar-button>
         <x-sidebar-button href="student.grades" isActive="{{ request()->is('student.grades') }}" badge="" notification="" svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M192,72H152.2c-2.91-.17-53.62-3.74-101.91-44.24A16,16,0,0,0,24,40V200a16,16,0,0,0,26.29,12.25c37.77-31.68,77-40.76,93.71-43.3v31.72A16,16,0,0,0,151.12,214l11,7.33A16,16,0,0,0,186.5,212l11.77-44.36A48,48,0,0,0,192,72ZM171,207.89l0,.11-11-7.33V168h21.6ZM192,152H160V88h32a32,32,0,1,1,0,64Z"></path></svg>'>
