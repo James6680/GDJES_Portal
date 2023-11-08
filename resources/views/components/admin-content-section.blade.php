@@ -1,14 +1,32 @@
+@php
+  $currentSchoolYearStart = '2023';
+  $currentSchoolYearEnd = '2024';
+@endphp
+
+
+
+
+
+
+
 <!-- Content Section -->
 <div class="flex flex-col md:pl-64 w-full min-h-full">
 
-  <!-- Top Bar Dark Green Decor -->
-  <div class="absolute top-0 right-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 min-w-full h-80">
-    Empty
-  </div>
+
+
+
+
+
+  <!-- Admin Dashboard -->
   @if (request()->is('admin.dashboard') )
-  <!--  Main Content Container -->
-  <div class="min-w-full min-h-full gap-4 container container-fluid p-4 grid grid-cols-1">
-    <h1 class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">ACADEMIC YEAR 2024 - 2025 DATA</h1>
+
+  <!-- Top Bar Dark Green Decor -->
+  <section class="absolute top-0 right-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 min-w-full h-80">
+  </section>
+
+  <!--  Admin Dashboard Main Content Container -->
+  <section class="min-w-full min-h-full gap-4 p-4 grid grid-cols-1">
+    <h1 class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">ACADEMIC YEAR {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} DATA</h1>
     
     <!--  Statistics Container -->
     <div class="sm:mx-4 gap-4 grid grid-cols-1 lg:grid-cols-2 h-auto">
@@ -63,50 +81,58 @@
         <div class="flex justify-between items-start w-full">
           <div class="flex-col items-center">
             <div class="flex items-center mb-1">
-                <h5 class="text-xl font-semibold leading-none text-black dark:text-white mr-1">PREFERRED MODE OF LEARNING</h5>
-                <svg data-popover-target="pmol-chart-info" data-popover-placement="bottom" class="w-4 h-4 text-green-300 dark:text-gray-400 hover:text-black dark:hover:text-white cursor-pointer ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z"/>
-                </svg>
-                <div data-popover id="pmol-chart-info" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
-                  <div class="p-4 space-y-2">
-                    <h3 class="font-semibold text-black dark:text-white">DEPED's Learning Modalities</h3>
-                    <p>The different learning strategies and modalities were devised as part of the Basic Education - Learning Continuity Plan which covers essential
-                      requirements of education in the time of COVID-19. The modalities adopted by the schools since SY 2020-2021 depended on the local COVID-19
-                      situation and access to the learning platforms. </p>
-                    <a href="https://www.deped.gov.ph/wp-content/uploads/2022/08/7-Databits-Learning-Delivery-Modalities-Jul.pdf" class="flex items-center font-semibold text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-600 hover:text-yellow-700 hover:underline">Read more <svg class="w-2 h-2 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                      </svg>
-                    </a>
-                  </div>
-                  <div data-popper-arrow>
-                  </div>
-                </div>
-            </div>
-            <button id="dateRangeButton" data-dropdown-toggle="dateRangeDropdown" data-dropdown-ignore-click-outside-class="datepicker" type="button" class="inline-flex items-center text-yellow-700 dark:text-yellow-600 font-medium hover:underline">31 Nov - 31 Dev <svg class="w-3 h-3 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+              <h5 class="text-xl font-semibold leading-none text-black dark:text-white mr-1">PREFERRED MODE OF LEARNING</h5>
+              <svg data-popover-target="pmol-chart-info" data-popover-placement="bottom" class="w-4 h-4 text-green-300 dark:text-gray-400 hover:text-black dark:hover:text-white cursor-pointer ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z"/>
               </svg>
-            </button>
-            <div id="dateRangeDropdown" class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-80 lg:w-96 dark:bg-gray-700 dark:divide-gray-600">
-              <div class="p-3" aria-labelledby="dateRangeButton">
-                <div date-rangepicker datepicker-autohide class="flex w-auto items-center">
-                  <span class="mx-2 text-gray-500 dark:text-gray-400">from</span>
-                  <div class="relative">
-                    <input name="start" type="date" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Start date">
-                  </div>
-                  <span class="mx-2 text-gray-500 dark:text-gray-400">to</span>
-                  <div class="relative">
-                    <input name="end" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="End date">
-                  </div>
+              <div data-popover id="pmol-chart-info" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
+                <div class="p-4 space-y-2">
+                  <h3 class="font-semibold text-black dark:text-white">DEPED's Learning Modalities</h3>
+                  <p>The different learning strategies and modalities were devised as part of the Basic Education - Learning Continuity Plan which covers essential
+                    requirements of education in the time of COVID-19. The modalities adopted by the schools since SY 2020-2021 depended on the local COVID-19
+                    situation and access to the learning platforms. </p>
+                  <a href="https://www.deped.gov.ph/wp-content/uploads/2022/08/7-Databits-Learning-Delivery-Modalities-Jul.pdf" class="flex items-center font-semibold text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-600 hover:text-yellow-700 hover:underline">Read more <svg class="w-2 h-2 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                    </svg>
+                  </a>
+                </div>
+                <div data-popper-arrow>
                 </div>
               </div>
             </div>
+
+            <!-- Dropdown SY Button for Preferred Mode of Learning -->
+            <button id="dropdownSYHoverButton-pmol" data-dropdown-toggle="dropdownSYHover-pmol" data-dropdown-trigger="hover" class="text-green-600 bg-green-50 hover:bg-green-100 hover:text-green-900 focus:ring-2 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">School Year: {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+              </svg>
+            </button>
+
+            <!-- Dropdown menu for Preferred Mode of Learning -->
+            <div id="dropdownSYHover-pmol" class="z-10 w-52 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2019 - 2020</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2020 - 2021</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2021 - 2022</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2022 - 2023</a>
+                  </li>
+                </ul>
+            </div>
+            
           </div>          
         </div>
 
         <!-- Pie Chart - Preferred Mode of Learning -->
         <div class="py-6" id="pmol-pie-chart"></div>
-    
-        <script>
+
+        <!-- Script Start of Pie Chart Preferred Mode of Learning -->
+        <script> 
         // ApexCharts options and config
         window.addEventListener("load", function() {
           const getChartOptions = () => {
@@ -232,24 +258,32 @@
                   </div>
                 </div>
             </div>
-            <button id="dateRangeButton" data-dropdown-toggle="dateRangeDropdown" data-dropdown-ignore-click-outside-class="datepicker" type="button" class="inline-flex items-center text-yellow-700 dark:text-yellow-600 font-medium hover:underline">31 Nov - 31 Dev <svg class="w-3 h-3 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+
+            <!-- Dropdown SY Button for Enrollees Mother Tongue -->
+            <button id="dropdownSYHoverButton-emt" data-dropdown-toggle="dropdownSYHover-emt" data-dropdown-trigger="hover" class="text-green-600 bg-green-50 hover:bg-green-100 hover:text-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">School Year: {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
               </svg>
             </button>
-            <div id="dateRangeDropdown" class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-80 lg:w-96 dark:bg-gray-700 dark:divide-gray-600">
-              <div class="p-3" aria-labelledby="dateRangeButton">
-                <div date-rangepicker datepicker-autohide class="flex w-auto items-center">
-                  <span class="mx-2 text-gray-500 dark:text-gray-400">from</span>
-                  <div class="relative">
-                    <input name="start" type="date" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Start date">
-                  </div>
-                  <span class="mx-2 text-gray-500 dark:text-gray-400">to</span>
-                  <div class="relative">
-                    <input name="end" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="End date">
-                  </div>
-                </div>
-              </div>
+
+            <!-- Dropdown menu for Enrollees Mother Tongue -->
+            <div id="dropdownSYHover-emt" class="z-10 w-52 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2019 - 2020</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2020 - 2021</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2021 - 2022</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2022 - 2023</a>
+                  </li>
+                </ul>
             </div>
+
+            
           </div>          
         </div>
 
@@ -374,7 +408,7 @@
     </div> <!-- End of Charts Container for Current School Year -->
 
 
-    <!-- Charts Container for Current School Year -->
+    <!-- Charts Container for Historical Data -->
     <div class="sm:mx-4 h-full pb-8 gap-4 grid grid-cols-1 lg:grid-cols-2 ">
 
       <!-- Historical Student Enrollment Data Section -->
@@ -744,25 +778,126 @@
         });
 
       </script> <!-- End of Script for Historical Completion Rate Data Section -->
-    
     </div> <!-- End of Charts Container for Current School Year -->
+  </section> <!-- End of Admin Dashboard Main Content Container -->
 
 
 
-  </div> <!-- End of Main Content Container -->
+
+
   @elseif(request()->is('admin.announcements') )
-  <p>sample lang ito</p>
-  @elseif(request()->is('admin.announcements') )
-  <p>sample lang ito</p>
-  @elseif(request()->is('admin.accounts') )
-  <p>sample lang ito</p>
+  <!-- Admin Announcements Main Content Container -->
+  <section class="min-w-full min-h-full gap-4 p-4 pt-8 grid grid-cols-1">
+    <div class="sm:mx-4 gap-4 flex flex-col h-auto bg-white p-4">
+      <h3 class="col-span-3 text-2xl font-bold text-black dark:text-white">Announcements Editor</h3>
+      
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                      <th scope="col" class="p-4">
+                          <div class="flex items-center">
+                              <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                              <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                          </div>
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                          Post Description
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                          Action
+                      </th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                      <td class="w-4 p-4">
+                          <div class="flex items-center">
+                              <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                              <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                          </div>
+                      </td>
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        Looking for eligible supplier for the Computer Parts and Accessories
+                        Posted: August 16, 2023
+                      </th>
+                      <td class="flex items-center px-6 py-4 space-x-3">
+                          <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                          <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                      </td>
+                  </tr>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                      <td class="w-4 p-4">
+                          <div class="flex items-center">
+                              <input id="checkbox-table-search-2" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                              <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
+                          </div>
+                      </td>
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        Looking for eligible supplier for the Computer Parts and Accessories
+                        Posted: August 16, 2023
+                      </th>
+                      <td class="flex items-center px-6 py-4 space-x-3">
+                          <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                          <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+
+      
+
+    </div> <!-- End of Statistics Container -->
+  </section>
+
+
+
+
+
+  @elseif(request()->is('admin.user-accounts') )
+  <p>user-accounts</p>
+
+
+
+
+
   @elseif(request()->is('admin.document-request') )
-  <p>sample lang ito</p>
+  <p>document-</p>
+
+
+
+
+
+  @elseif(request()->is('admin.student-management') )
+  <p>student-management</p>
+
+
+
+
+
   @elseif(request()->is('admin.teacher-management') )
-  <p>sample lang ito</p>
+  <p>teacher-management</p>
+
+
+
+
+
   @elseif(request()->is('admin.enrollment-management') )
-  <p>sample lang ito</p>
+  <p>enrollment-management</p>
+
+
+
+
+
   @elseif(request()->is('admin.school-information') )
-  <p>sample lang ito</p>
+  <p>school-information</p>
+
+
+
+
+
   @endif
 </div>
