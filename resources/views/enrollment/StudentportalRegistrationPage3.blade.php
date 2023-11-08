@@ -185,7 +185,7 @@
               <div class="flex items-center mb-4">
 
                 <input 
-                required 
+                
                 id="lrn_yes" 
                 type="radio" 
                 value="1" 
@@ -236,7 +236,9 @@
               <!-- Learner Reference Number (LRN) -->
               <!--set this as if else statement then provide LRN-->
               <div class="mb-1">
-                <input required type="text" id="lrn_number" name="lrn_number" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <!-- removed required in lrn number must address this with acceptable input parameters-->
+                <input 
+                 type="text" id="lrn_number" name="lrn_number" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
 
               <!-- Error Message for Learners Reference Number (LRN) -->
@@ -568,7 +570,8 @@
               <!-- Indigenous Group -->   
               <!-- set this as if else statement -->
               <div class="mb-1">
-                <input required type="text" id="indigenous_group_name" name="indigenous_group_name" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <!-- removed the required in Indigenous Group -->   
+                <input type="text" id="indigenous_group_name" name="indigenous_group_name" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
 
               <span   
@@ -743,7 +746,8 @@
               <!-- Special Needs Description -->    
               <!-- if others is selected get user input-->
               <div class="mb-1">
-                <input required type="text" id="special_needs_description" name="special_needs_description" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <!--removed required here-->
+                <input type="text" id="special_needs_description" name="special_needs_description" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
               </div>
 
               <span   

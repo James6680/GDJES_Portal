@@ -42,6 +42,39 @@ Route::post('enrollment4', [EnrollmentController::class, 'postEnrollment4'])->na
 Route::get('enrollmentComplete', [EnrollmentController::class, 'enrollmentComplete'])->name('enrollmentComplete');
 
 
+
+
+/*Added*/
+
+Route::get('/student-registration-2', function () {
+    return view('enrollment.StudentportalRegistrationPage2');
+});
+
+Route::get('/student-registration-3', function () {
+    return view('enrollment.StudentportalRegistrationPage3');
+});
+
+Route::get('/student-login', function () {
+    return view('enrollment.StudentLoginPage');
+});
+
+
+Route::get('/student-registration-1', function () {
+    return view('enrollment.StudentportalRegistrationPage1');
+});
+
+
+Route::get('/student-registration-4', function () {
+    return view('enrollment.StudentportalRegistrationPage4');
+});
+
+
+Route::get('/student-registration-completed', function () {
+    return view('enrollment.StudentportalRegistrationCompletedPage');
+});
+
+/*Added*/
+
 Route::get('/StudentLoginPage', function(){
     return view('login.StudentLoginPage');
 });

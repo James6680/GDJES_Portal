@@ -4,7 +4,8 @@
 // Validation for Input and Select fields
 document.addEventListener("DOMContentLoaded", function () {
     const elements = [
-        "grade_level", "school_year", "psa_birth_cert", "lastName_ng_bata","firstName_ng_bata", "middleName_ng_bata", "extensionName_ng_bata", "birth_date", "age_on_oct_31", "primary_language", "religion", "region", "province", "city", "barangay", "street_text", "house_number",
+        "grade_level", 
+        "school_year", "psa_birth_cert", "lastName_ng_bata","firstName_ng_bata", "middleName_ng_bata", "extensionName_ng_bata", "birth_date", "age_on_oct_31", "primary_language", "religion", "region", "province", "city", "barangay", "street_text", "house_number",
     ];
 
     const errorContainers = Array.from(
@@ -104,10 +105,9 @@ nextButton.addEventListener("click", function (e) {
     const isRadioGroupsValid = validateRadioGroups();
 
     if (isTextElementsValid && isRadioGroupsValid) {
-        window.location.href = "StudentportalRegistrationPage3.html";
+        window.location.href = "/student-registration-3";
     }
 });
-
 // -----------------------------------------------------------------|
 // Back button function
 var navigateButton = document.getElementById("backBtn");
@@ -115,7 +115,7 @@ var navigateButton = document.getElementById("backBtn");
 // Add click event listeners to the buttons
 navigateButton.addEventListener("click", function() {
     // Set the new URL to navigate to for the "Back" button
-    var newURL = "StudentportalRegistrationPage1.html"; // Replace with the desired URL
+    var newURL = "/student-registration-1"; // Replace with the desired URL
 
     // Navigate to the new URL
     window.location.href = newURL;

@@ -23,9 +23,9 @@ function showNextSet() {
     errorContainer.classList.remove("border-red-400");
 
     if (balikAralYes.checked) {
-      window.location.href = "StudentportalRegistrationPage2.html";
+      window.location.href = "/student-registration-2";
     } else {
-      window.location.href = "StudentportalRegistrationPage3.html";
+      window.location.href = "/student-registration-3";
     }
   }
 }
@@ -53,7 +53,7 @@ function showNextSet() {
   loginButton.addEventListener("click", function(event) {
       
     event.preventDefault();
-      // Set the new URL to navigate to
-      window.location.href = "StudentLoginPage.html"; // Replace with the desired URL
+    // Set the new URL to navigate to
+    window.location.href = "/student-login"; // Replace with the desired URL
+
   });
-  

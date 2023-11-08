@@ -40,9 +40,8 @@ nextButton.addEventListener("click", function (e) {
 
   // If all error containers are hidden (i.e., all inputs are valid), redirect to a new page
   if (errorContainers.every(container => container.style.display === "none")) {
-    window.location.href = "StudentportalRegistrationPage3.html";
+    window.location.href = "/student-registration-3";
   }
-
 });
 
 // Add input event listeners to form elements to hide error messages when the user starts typing
@@ -57,17 +56,16 @@ nextButton.addEventListener("click", function (e) {
 });
 
 // --------------------------------------------------------|
-
 // BACK BUTTON SECTION
 var navigateButton = document.getElementById("backBtn");
 
 // Add click event listeners to the buttons
 navigateButton.addEventListener("click", function(event) {
 
-    EventTarget.preventDefault
-    // Set the new URL to navigate to for the "Back" button
-    var newURL = "StudentportalRegistrationPage1.html"; // Replace with the desired URL
+  event.preventDefault();
+  // Set the new URL to navigate to for the "Back" button
+  var newURL = "/student-registration-1"; // Replace with the desired URL
 
-    // Navigate to the new URL
-    window.location.href = newURL;
+  // Navigate to the new URL
+  window.location.href = newURL;
 });

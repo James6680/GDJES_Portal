@@ -27,7 +27,7 @@ nextButton.addEventListener("click", function (e) {
     });
 
     if (errorContainers.every(container => container.style.display === "none") && isRadioSelected) {
-        window.location.href = "StudentportalRegistrationPage4.html"; // Change the URL as needed
+        window.location.href = "/student-registration-4"; // Change the URL as needed
     }
 });
 
@@ -53,9 +53,8 @@ var navigateButton = document.getElementById("backBtn");
 // Add click event listeners to the buttons
 navigateButton.addEventListener("click", function() {
     // Set the new URL to navigate to for the "Back" button
-    var newURL = "StudentportalRegistrationPage3.html"; // Replace with the desired URL
+    var newURL = "/student-registration-3"; // Replace with the desired URL
 
     // Navigate to the new URL
     window.location.href = newURL;
 });
-
