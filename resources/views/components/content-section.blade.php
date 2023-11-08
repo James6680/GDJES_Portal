@@ -7,7 +7,7 @@
         <section class="min-w-full min-h-full relative grid grid-cols-1 sm:gap-6 gap-5 marker: md:ml-5 items-center">
 
             <!-- Announcement Main Container -->
-            <div class="rounded-md w-auto h-auto relative container lg:p-9 p-6 grid grid-cols-1 bg-gradient-to-t from-green-500 to-slate-900">
+            <div class="rounded-md w-auto h-auto relative container lg:p-9 p-6 grid grid-cols-1 bg-green-500">
 
                 <ul class="m-o p-0 text-white">
 
@@ -102,7 +102,7 @@
 
                     <div>
                         
-                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-gradient-to-t from-green-500 to-slate-900 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 group hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full px-3 py-2 lg:text-sm items-center justify-center lg:px-6 lg:py-3 text-[10px]" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 group hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full px-3 py-2 lg:text-sm items-center justify-center lg:px-6 lg:py-3 text-[10px]" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                         </svg>
                         </button>
@@ -149,28 +149,28 @@
 
                         <thead class=" text-white font-normal font-mulish items-start justify-start lg:text-sm text-[12px] leading-tight">
                             <tr>
-                                <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
                                     Subjects
                                 </th>
-                                <th scope="col" class="md:px-0 px-4 border-collapse border-r border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
                                     Teacher
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse   bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse   bg-green-500">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse  bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse  bg-green-500">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse  bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse  bg-green-500">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse bg-green-500">
                                     
                                 </th>
-                                <th scope="col" class="w-[12%] md:px-0 px-3  border-collapse border-x border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[12%] md:px-0 px-3  border-collapse border-x border-green-600 bg-green-500">
                                     Final Grade
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border-l border-green-500 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border-l border-green-500 bg-green-500">
                                     Remarks
                                 </th>
                             </tr>
@@ -376,22 +376,22 @@
 
                         <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight ">
                             <tr>
-                                <th scope="col" class="w-[25%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[25%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
                                     Core Values
                                 </th>
-                                <th scope="col" class="w-[43%] md:px-0 px-4 border-collapse border-r border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[43%] md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
                                     Behaviour Statement
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse border-l border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse border-l border-green-600 bg-green-500">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse bg-green-500">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[8%] md:px-0 px-5 border-collapse bg-green-500">
                                     
                                 </th>
-                                <th scope="col" class="w-[8%] md:px-0 px-5  border-collapse  bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[8%] md:px-0 px-5  border-collapse  bg-green-500">
                                     
                                 </th>
                             </tr>
@@ -574,46 +574,46 @@
 
                         <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight">
                             <tr>
-                                <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600  bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600  bg-green-500">
                                     Attendance
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     AUG
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     SEP
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     OCT
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     NOV
                                 </th>   
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     DEC
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     JAN
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     FEB
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     MAR
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     APR
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     MAY
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     JUN
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     JLY
                                 </th>
-                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
                                     TOTAL
                                 </th>
                             </tr>
@@ -766,19 +766,19 @@
 
                         <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight">
                             <tr>
-                                <th scope="col" class="w-[28%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900 ">
+                                <th scope="col" class="w-[28%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500 ">
                                     Modality
                                 </th>
-                                <th scope="col" class=" w-[18%] md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class=" w-[18%] md:px-0 px-4  border-collapse border-r border-green-600 bg-green-500">
                                     1st Quarter
                                 </th>
-                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border-r border-green-600 bg-green-500">
                                     2nd Quarter
                                 </th>
-                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border-r border-green-600 bg-green-500">
                                     3rd Quarter
                                 </th>
-                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[18%] md:px-0 px-4  border-collapse border-l border-green-600 bg-green-500">
                                     4th Quarter
                                 </th>   
                             </tr>
@@ -786,7 +786,7 @@
 
                         <tbody>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 bg-green-500">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border-r border-green-600 lg:py-5 sm:py-3 py-3 bg-green-500">
                                 </th>
                                 <td class=" border-collapse border border-green-600 ">
                                     x
@@ -841,18 +841,18 @@
 
                         <thead>
 
-                            <tr class="bg-gradient-to-t from-green-500 to-slate-900 text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base md:text-[10px] text-[10px] leading-tight text-start">
+                            <tr class="bg-green-500 text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base md:text-[10px] text-[10px] leading-tight text-start">
 
-                                <th scope="col" class="w-[5%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900">
+                                <th scope="col" class="w-[5%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600 bg-green-500">
                                     #
                                 </th>
-                                <th scope="col" class="w-[25%] border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900 text-start md:pl-4 pl-2">
+                                <th scope="col" class="w-[25%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
                                     Subject
                                 </th>
-                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900 text-start md:pl-4 pl-2">
+                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
                                     Teacher
                                 </th>
-                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-gradient-to-t from-green-500 to-slate-900 text-start md:pl-4 pl-2">
+                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
                                     Time Schedule
                                 </th>
                             </tr>
