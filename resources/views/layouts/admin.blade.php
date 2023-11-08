@@ -25,8 +25,9 @@
 
 </head>
   
-<body class="container w-full container-fluid flex flex-col justify-start h-screen m-0 pt-16 bg-brown-50">
+<body class="min-w-full grid grid-flow-col justify-start h-screen pt-16 bg-green-50">
   <x-sidebar />
-  <x-content-section />  
+  <x-admin-content-section/> 
+
 </body>
 </html>
