@@ -1,4 +1,4 @@
-<!-- Content Section -->,
+<!-- Content Section -->
 <div>   
     <!-- Announcement Section -->
     @if (request()->is('student.announcements') )
