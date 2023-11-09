@@ -37,7 +37,9 @@
     </div>
 
 
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[2.5rem] px-[2.5rem] gap-[1.4rem] w-10/12 ">
+      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[2.5rem] px-[2.5rem] gap-[1.4rem] w-10/12 
+            "
+            action="StudentportalRegistrationCompletedPage">
 
         <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-bold font-heading-2-bold text-main-green-secondary-700 text-center md:text-2xl">Pagbati!</h1>
         

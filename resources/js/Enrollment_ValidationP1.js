@@ -23,9 +23,9 @@ function showNextSet() {
     errorContainer.classList.remove("border-red-400");
 
     if (balikAralYes.checked) {
-      window.location.href = "/student-registration-2";
+      window.location.href = "/StudentportalRegistrationPage2";
     } else {
-      window.location.href = "/student-registration-3";
+      window.location.href = "/StudentportalRegistrationPage3";
     }
   }
 }

@@ -7,7 +7,7 @@ var navigateButton = document.getElementById("backBtn");
 // Add click event listeners to the buttons
 navigateButton.addEventListener("click", function() {
   // Set the new URL to navigate to for the "Back" button
-  var newURL = "/student-registration-4"; // Replace with the desired URL
+  var newURL = "/StudentportalRegistrationPage4"; // Replace with the desired URL
 
   // Navigate to the new URL
   window.location.href = newURL;
@@ -50,7 +50,7 @@ function submitForm() {
 
   // If both requirements are met, submit the form and redirect
   if (isCheckboxChecked && isRadioButtonSelected) {
-    window.location.href = "/student-registration-completed"; // Redirect to the next page
+    window.location.href = "/StudentportalRegistrationCompletedPage"; // Redirect to the next page
   } 
   else {
     if (!isCheckboxChecked) {

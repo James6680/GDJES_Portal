@@ -7,7 +7,7 @@ const elements = [
     "lastName_ng_guardian", "firstName_ng_guardian", "middleName_ng_guardian", "extensionName_ng_guardian", "guardian_phone", "email_ng_guardian"
 ];
 
-const radioButtons = document.querySelectorAll('input[name="4ps"]');
+const radioButtons = document.querySelectorAll('input[name="fourps"]');
 const radioErrorContainer = document.getElementById("input_error19");
 const errorContainers = Array.from({ length: 18 }, (_, i) => document.getElementById(`input_error${i + 1}`));
 
@@ -27,7 +27,7 @@ nextButton.addEventListener("click", function (e) {
     });
 
     if (errorContainers.every(container => container.style.display === "none") && isRadioSelected) {
-        window.location.href = "/student-registration-4"; // Change the URL as needed
+        window.location.href = "/StudentportalRegistrationPage5"; // Change the URL as needed
     }
 });
 
@@ -53,7 +53,7 @@ var navigateButton = document.getElementById("backBtn");
 // Add click event listeners to the buttons
 navigateButton.addEventListener("click", function() {
     // Set the new URL to navigate to for the "Back" button
-    var newURL = "/student-registration-3"; // Replace with the desired URL
+    var newURL = "/StudentportalRegistrationPage3"; // Replace with the desired URL
 
     // Navigate to the new URL
     window.location.href = newURL;

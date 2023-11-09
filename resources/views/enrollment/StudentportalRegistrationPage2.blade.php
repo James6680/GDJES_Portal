@@ -48,7 +48,9 @@
     </div>
 
       <!-- Student Registration Form -->
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center px-[2rem] py-[2.5rem] gap-[.9rem] w-10/12" method="post" action="{{route('post.enrollment2')}}">
+      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center px-[2rem] py-[2.5rem] gap-[.9rem] w-10/12" 
+      method="post" 
+      action="{{route('enrollment.StudentportalRegistrationPage2.post')}}">
       @csrf
       @method('post')
 
@@ -135,17 +137,19 @@
               
               </div>
 
-               <!-- Returnee -->
-              <select id="returnee" name="returnee" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  px-2.4 py-2.5 w-full">
+              <!-- Returnee -->
+              <select id="returnee" 
+                name="returnee" 
+                class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  px-2.4 py-2.5 w-full">
                 <option value="0"></option>
-                <option value="1">KINDER</option>
-                <option value="2">Grade 1</option>
-                <option value="3">Grade 2</option>
-                <option value="4">Grade 3</option>
-                <option value="5">Grade 4</option>
-                <option value="6">Grade 5</option>
-                <option value="7">Grade 6</option>
-                <option value="8">ALS</option>
+                <option value="1" @if(isset($enrollment->returnee) && $enrollment->returnee == 1) selected @endif>KINDER</option>
+                <option value="2" @if(isset($enrollment->returnee) && $enrollment->returnee == 2) selected @endif>Grade 1</option>
+                <option value="3" @if(isset($enrollment->returnee) && $enrollment->returnee == 3) selected @endif>Grade 2</option>
+                <option value="4" @if(isset($enrollment->returnee) && $enrollment->returnee == 4) selected @endif>Grade 3</option>
+                <option value="5" @if(isset($enrollment->returnee) && $enrollment->returnee == 5) selected @endif>Grade 4</option>
+                <option value="6" @if(isset($enrollment->returnee) && $enrollment->returnee == 6) selected @endif>Grade 5</option>
+                <option value="7" @if(isset($enrollment->returnee) && $enrollment->returnee == 7) selected @endif>Grade 6</option>
+                <option value="8" @if(isset($enrollment->returnee) && $enrollment->returnee == 8) selected @endif>ALS</option>
               </select>
 
               <!-- Error Message for Ano ang huling baitang na natapos? -->
@@ -172,8 +176,13 @@
               <!-- Last school attended -->
               <div class="mb-2">
                 
-                <input required type="text" id="lastSchoolAttended" name="lastSchoolAttended" class=" text-[1rem] block w-full px-4 py-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-                
+                <input required 
+                  type="text" 
+                  id="lastSchoolAttended" 
+                  name="lastSchoolAttended" 
+                  class=" text-[1rem] block w-full px-4 py-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->lastSchoolAttended) ? $enrollment->lastSchoolAttended : old('lastSchoolAttended') }}"
+                >
                 <!-- Error Message for Ano ang huling paaralan na pinasukan? -->
                 <span   
                   id="email-error2" 
@@ -201,8 +210,14 @@
               <!-- Last school year attended -->
               <div class="mb-2">
                 
-                <input required type="text" id="lastSchoolYearAttended" name="lastSchoolYearAttended" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-                
+                <input 
+                  required 
+                  type="text" 
+                  id="lastSchoolYearAttended" 
+                  name="lastSchoolYearAttended" 
+                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->lastSchoolYearAttended) ? $enrollment->lastSchoolYearAttended : old('lastSchoolYearAttended') }}"
+                >
                 <!-- Error Message for Anong panuruang taon ang natapos ng mag-aaral? -->
                 <span   
                   id="email-error3" 

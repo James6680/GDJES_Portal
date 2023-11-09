@@ -52,7 +52,9 @@
       </div>
 
       <!-- Student Registration Form -->
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12" method="post" action="{{route('post.enrollment2')}}">
+      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12" 
+      method="post" 
+      action="{{route('enrollment.StudentportalRegistrationPage3.post')}}">
       @csrf
       @method('post')
 
@@ -122,18 +124,19 @@
               </div>
 
               <!-- Grade Level -->
-              <select id="grade_level" name="grade_level" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 py-2.5 w-full">
+              <select id="grade_level" 
+                name="grade_level" 
+                class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 py-2.5 w-full">
                 <option value="">Pumili ng huling baitang na natapos</option>
-                <option value="0">KINDER</option>
-                <option value="1">Grade 1</option>
-                <option value="2">Grade 2</option>
-                <option value="3">Grade 3</option>
-                <option value="4">Grade 4</option>
-                <option value="5">Grade 5</option>
-                <option value="6">Grade 6</option>
-                <option value="7">ALS</option>
+                <option value="0" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 0) selected @endif>KINDER</option>
+                <option value="1" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 1) selected @endif>Grade 1</option>
+                <option value="2" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 2) selected @endif>Grade 2</option>
+                <option value="3" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 3) selected @endif>Grade 3</option>
+                <option value="4" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 4) selected @endif>Grade 4</option>
+                <option value="5" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 5) selected @endif>Grade 5</option>
+                <option value="6" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 6) selected @endif>Grade 6</option>
+                <option value="7" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 7) selected @endif>ALS</option>
               </select>
-
               <!-- Error Message for Ano ang huling baitang na natapos? -->
               <span   
                 id="input-error1" 
@@ -157,8 +160,14 @@
 
               <!-- School Year -->
               <div class="mb-1">
-                <input required type="text" id="school_year" name="school_year" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  required 
+                  type="text" 
+                  id="school_year" 
+                  name="school_year" 
+                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->school_year) ? $enrollment->school_year : old('school_year') }}"
+                >></div>
 
               <!-- Error Message for School Year -->
               <span   
@@ -183,35 +192,31 @@
 
               <!-- Learner Reference Number -->
               <div class="flex items-center mb-4">
-
                 <input 
-                
-                id="lrn_yes" 
-                type="radio" 
-                value="1" 
-                name="lrn_status" 
-                class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
-                onchange="lrnForm()">
-                
+                  id="lrn_yes" 
+                  type="radio" 
+                  value="1" 
+                  name="lrn_status" 
+                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  onchange="lrnForm()"
+                  @if(isset($enrollment->lrn_status) && $enrollment->lrn_status == 1) checked @endif
+                >
                 <label for="default-radio-1" class="font-normal ml-2 text-[.90rem] text-gray-900 dark:text-gray-900">Mayroon siyang LRN</label>
-
               </div>
 
               <div class="flex items-center">
-
                 <input 
-                required 
-                id="lrn_no" 
-                type="radio" 
-                value="0" 
-                name="lrn_status" 
-                class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
-                onchange="lrnForm()">
-
+                  required 
+                  id="lrn_no" 
+                  type="radio" 
+                  value="0" 
+                  name="lrn_status" 
+                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  onchange="lrnForm()"
+                  @if(isset($enrollment->lrn_status) && $enrollment->lrn_status == 0) checked @endif
+                >
                 <label for="default-radio-2" class="font-normal ml-2 text-[.90rem] text-gray-900 dark:text-gray-900">Wala siyang LRN dahil siya ay mag-kikinder pa lang</label>
-              
               </div>
-
                <!-- Error Message for May LRN (Learner Reference Number) ba ang inyong anak? -->
               <span   
                 id="input-error1r" 
@@ -238,8 +243,13 @@
               <div class="mb-1">
                 <!-- removed required in lrn number must address this with acceptable input parameters-->
                 <input 
-                 type="text" id="lrn_number" name="lrn_number" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                type="text" 
+                id="lrn_number" 
+                name="lrn_number" 
+                class="text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                value="{{ isset($enrollment->lrn_number) ? $enrollment->lrn_number : old('lrn_number', '') }}"
+            >
+            </div>
 
               <!-- Error Message for Learners Reference Number (LRN) -->
               <span   
@@ -277,8 +287,13 @@
               
               <!-- PSA Birth Certificate No. -->
               <div class="mb-1">
-                <input required type="text" id="psa_birth_cert" name="psa_birth_cert" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input required 
+                        type="text" 
+                        id="psa_birth_cert" 
+                        name="psa_birth_cert" 
+                        class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                        value="{{ isset($enrollment->psa_birth_cert) ? $enrollment->psa_birth_cert : old('psa_birth_cert') }}"
+                      ></div>
 
               <span   
                 id="input-error3" 
@@ -302,8 +317,13 @@
               
               <!-- Last Name -->
               <div class="mb-1">
-                <input required type="text" id="lastName_ng_bata" name="lastName_ng_bata" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input required
+                      type="text"
+                      id="lastName_ng_bata"
+                      name="lastName_ng_bata"
+                      class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                      value="{{ isset($enrollment->lastName_ng_bata) ? $enrollment->lastName_ng_bata : old('lastName_ng_bata') }}"
+                ></div>
 
               <span   
                 id="input-error4" 
@@ -327,8 +347,13 @@
 
               <!-- First Name -->
               <div class="mb-1">
-                <input required type="text" id="firstName_ng_bata" name="firstName_ng_bata" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input required 
+                        type="text" 
+                        id="firstName_ng_bata" 
+                        name="firstName_ng_bata" 
+                        class="text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                        value="{{ isset($enrollment->firstName_ng_bata) ? $enrollment->firstName_ng_bata : old('firstName_ng_bata') }}"
+                  ></div>
 
               <span   
                 id="input-error5" 
@@ -353,8 +378,13 @@
 
               <!-- Middle Name -->
               <div class="mb-1">
-                <input required type="text" id="middleName_ng_bata" name="middleName_ng_bata" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input required 
+                  type="text" 
+                  id="middleName_ng_bata" 
+                  name="middleName_ng_bata" 
+                  class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->middleName_ng_bata) ? $enrollment->middleName_ng_bata : old('middleName_ng_bata') }}"
+                ></div>
 
               <span   
                 id="input-error6" 
@@ -377,16 +407,16 @@
               
               </div>
               
-              <!-- Extension Name -->
               <select id="extensionName_ng_bata" name="extensionName_ng_bata" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  p-2.5 w-full">
                 <option value=""></option>
-                <option value="1">Jr</option>
-                <option value="2">I</option>
-                <option value="3">II</option>
-                <option value="4">III</option>
-                <option value="5">IV</option>
-                <option value="6">V</option>
-                <option value="7">VI</option>
+                <option value="0" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 0) selected @endif>None</option>
+                <option value="1" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 1) selected @endif>Jr</option>
+                <option value="2" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 2) selected @endif>I</option>
+                <option value="3" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 3) selected @endif>II</option>
+                <option value="4" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 4) selected @endif>III</option>
+                <option value="5" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 5) selected @endif>IV</option>
+                <option value="6" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 6) selected @endif>V</option>
+                <option value="7" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 7) selected @endif>VI</option>
               </select>
 
               <span   
@@ -421,8 +451,12 @@
                 
                 </div>
                 
-                <input datepicker type="text" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-lg" placeholder="Select date" id="birth_date">
-              
+                <input datepicker type="text" 
+                  class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-lg" 
+                  placeholder="Select date" 
+                  id="birth_date"
+                  value="{{ isset($enrollment->birth_date) ? $enrollment->birth_date : '' }}"
+                >
               </div>
 
               <span   
@@ -447,8 +481,13 @@
               
               <!-- Age on October 31, 2023 -->
               <div class="mb-1">
-                <input required type="text" id="age_on_oct_31" name="age_on_oct_31" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input required 
+                  type="text" 
+                  id="age_on_oct_31" 
+                  name="age_on_oct_31" 
+                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->age_on_oct_31) ? $enrollment->age_on_oct_31 : old('age_on_oct_31') }}"
+                ></div>
 
               <span   
                 id="input-error9" 
@@ -475,26 +514,27 @@
               <div class="flex items-center mb-4">
                 
                 <input 
-                required 
-                id="male" 
-                type="radio" 
-                value="male" 
-                name="gender" 
-                class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-                
-                <label for="default-radio-1" class="ml-2 text-[.90rem] font-normal text-gray-900 dark:text-gray-900">Lalake</label>
+                  required 
+                  id="male" 
+                  type="radio" 
+                  value="male" 
+                  name="gender" 
+                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  {{ isset($enrollment->gender) && $enrollment->gender == 'male' ? 'checked' : '' }}
+                ><label for="default-radio-1" class="ml-2 text-[.90rem] font-normal text-gray-900 dark:text-gray-900">Lalake</label>
               </div>
 
               <div class="flex items-center">   
 
                 <input 
-                required 
-                id="female" 
-                type="radio" 
-                value="female" 
-                name="gender" 
-                class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-                
+                  required 
+                  id="female" 
+                  type="radio" 
+                  value="female" 
+                  name="gender" 
+                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  {{ isset($enrollment->gender) && $enrollment->gender == 'female' ? 'checked' : '' }}
+                >
                 <label for="default-radio-2" class="ml-2 text-[.90rem] font-normal text-gray-900 dark:text-gray-900">Babae</label>
               
               </div>
@@ -522,14 +562,15 @@
               <!-- Indigenous Group -->
               <div class="flex items-center mb-4">
                 <input 
-                required 
-                id="indigenous_yes" 
-                type="radio"
-                value="1" 
-                name="indigenous_group" 
-                class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
-                onchange="indiGroupForm()">
-
+                  required 
+                  id="indigenous_yes" 
+                  type="radio"
+                  value="1" 
+                  name="indigenous_group" 
+                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  onchange="indiGroupForm()"
+                  {{ isset($enrollment->indigenous_group) && $enrollment->indigenous_group == 1 ? 'checked' : '' }}
+                >
                 <label for="default-radio-1" class="ml-2 text-[0.90rem]  font-normal text-gray-900 dark:text-gray-900">Oo</label>
 
               </div>
@@ -537,13 +578,14 @@
               <div class="flex items-center">
 
                 <input 
-                id="indigenous_no" 
-                type="radio" 
-                value="0" 
-                name="indigenous_group" 
-                class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600" 
-                onchange="indiGroupForm()">
-
+                  id="indigenous_no" 
+                  type="radio" 
+                  value="0" 
+                  name="indigenous_group" 
+                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600" 
+                  onchange="indiGroupForm()"
+                  {{ isset($enrollment->indigenous_group) && $enrollment->indigenous_group == 0 ? 'checked' : '' }}
+                >
                 <label for="default-radio-2" class="ml-2 text-[0.90rem]  font-normal text-gray-900 dark:text-gray-900">Hindi</label>
               </div>
 
@@ -571,8 +613,13 @@
               <!-- set this as if else statement -->
               <div class="mb-1">
                 <!-- removed the required in Indigenous Group -->   
-                <input type="text" id="indigenous_group_name" name="indigenous_group_name" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  type="text" 
+                  id="indigenous_group_name" 
+                  name="indigenous_group_name" 
+                  class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->indigenous_group_name) ? $enrollment->indigenous_group_name : old('indigenous_group_name') }}"
+                ></div>
 
               <span   
                 id="input-error6r" 
@@ -607,26 +654,24 @@
               
               </div>
 
-              <!-- Primary Language -->
               <select id="primary_language" name="primary_language" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
                 <option value="">Pumili ng kinagisnang wika</option>
-                <option value="1">Filipino</option>
-                <option value="2">Bikolano</option>
-                <option value="3">Cebuano</option>
-                <option value="4">Chinese</option>
-                <option value="5">English</option>
-                <option value="6">Ilocano</option>
-                <option value="7">Kapampangan</option>
-                <option value="8">Maguindanaoan</option>
-                <option value="9">Manobo</option>
-                <option value="10">Hihonggo</option>
-                <option value="11">Philippine Sign Language</option>
-                <option value="12">Tausug</option>
-                <option value="13">Waray</option>
-                <option value="14">Ybanag</option>
-                <option value="15">Others</option>
+                <option value="1" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 1) selected @endif>Filipino</option>
+                <option value="2" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 2) selected @endif>Bikolano</option>
+                <option value="3" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 3) selected @endif>Cebuano</option>
+                <option value="4" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 4) selected @endif>Chinese</option>
+                <option value="5" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 5) selected @endif>English</option>
+                <option value="6" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 6) selected @endif>Ilocano</option>
+                <option value="7" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 7) selected @endif>Kapampangan</option>
+                <option value="8" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 8) selected @endif>Maguindanaoan</option>
+                <option value="9" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 9) selected @endif>Manobo</option>
+                <option value="10" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 10) selected @endif>Hihonggo</option>
+                <option value="11" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 11) selected @endif>Philippine Sign Language</option>
+                <option value="12" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 12) selected @endif>Tausug</option>
+                <option value="13" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 13) selected @endif>Waray</option>
+                <option value="14" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 14) selected @endif>Ybanag</option>
+                <option value="15" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 15) selected @endif>Others</option>
               </select>
-
               <span   
                 id="input-error10" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
@@ -647,30 +692,29 @@
               
               </div>
 
-              <!-- Religion -->
               <select id="religion" name="religion" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full">
                 <option value="">Pumili ng Relihiyon</option>
-                <option value="1">Christianity</option>
-                <option value="2">Aglipayan</option>
-                <option value="3">Angelican</option>
-                <option value="4">Apostolic</option>
-                <option value="5">Baptist</option>
-                <option value="6">Buddhism</option>
-                <option value="7">Christ Latter Day Saints</option>
-                <option value="8">Church of God in Jesus Christ</option>
-                <option value="9">Church of God International</option>
-                <option value="10">Dating Daan</option>
-                <option value="11">El Shaddai</option>
-                <option value="12">Full Gospel</option>
-                <option value="13">Hinduism</option>
-                <option value="14">Iglesia ni Cristo</option>
-                <option value="15">Indigenous Religion</option>
-                <option value="16">Islam</option>
-                <option value="17">Jehovah Witneses</option>
-                <option value="18">Judaism</option>
-                <option value="19">Kingdom of Jesus Christ</option>
-                <option value="20">Lutheran</option>
-                <option value="21">others</option>
+                <option value="1" @if(isset($enrollment->religion) && $enrollment->religion == 1) selected @endif>Christianity</option>
+                <option value="2" @if(isset($enrollment->religion) && $enrollment->religion == 2) selected @endif>Aglipayan</option>
+                <option value="3" @if(isset($enrollment->religion) && $enrollment->religion == 3) selected @endif>Angelican</option>
+                <option value="4" @if(isset($enrollment->religion) && $enrollment->religion == 4) selected @endif>Apostolic</option>
+                <option value="5" @if(isset($enrollment->religion) && $enrollment->religion == 5) selected @endif>Baptist</option>
+                <option value="6" @if(isset($enrollment->religion) && $enrollment->religion == 6) selected @endif>Buddhism</option>
+                <option value="7" @if(isset($enrollment->religion) && $enrollment->religion == 7) selected @endif>Christ Latter Day Saints</option>
+                <option value="8" @if(isset($enrollment->religion) && $enrollment->religion == 8) selected @endif>Church of God in Jesus Christ</option>
+                <option value="9" @if(isset($enrollment->religion) && $enrollment->religion == 9) selected @endif>Church of God International</option>
+                <option value="10" @if(isset($enrollment->religion) && $enrollment->religion == 10) selected @endif>Dating Daan</option>
+                <option value="11" @if(isset($enrollment->religion) && $enrollment->religion == 11) selected @endif>El Shaddai</option>
+                <option value="12" @if(isset($enrollment->religion) && $enrollment->religion == 12) selected @endif>Full Gospel</option>
+                <option value="13" @if(isset($enrollment->religion) && $enrollment->religion == 13) selected @endif>Hinduism</option>
+                <option value="14" @if(isset($enrollment->religion) && $enrollment->religion == 14) selected @endif>Iglesia ni Cristo</option>
+                <option value="15" @if(isset($enrollment->religion) && $enrollment->religion == 15) selected @endif>Indigenous Religion</option>
+                <option value="16" @if(isset($enrollment->religion) && $enrollment->religion == 16) selected @endif>Islam</option>
+                <option value="17" @if(isset($enrollment->religion) && $enrollment->religion == 17) selected @endif>Jehovah Witneses</option>
+                <option value="18" @if(isset($enrollment->religion) && $enrollment->religion == 18) selected @endif>Judaism</option>
+                <option value="19" @if(isset($enrollment->religion) && $enrollment->religion == 19) selected @endif>Kingdom of Jesus Christ</option>
+                <option value="20" @if(isset($enrollment->religion) && $enrollment->religion == 20) selected @endif>Lutheran</option>
+                <option value="21" @if(isset($enrollment->religion) && $enrollment->religion == 21) selected @endif>others</option>
               </select>
 
               <span   
@@ -697,28 +741,30 @@
               <div class="flex items-center mb-4">
 
                 <input 
-                required 
-                id="special_needs_no" 
-                type="radio" 
-                value="0" 
-                name="special_needs" 
-                class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
-                onchange="specialNeedsForm()">
-
+                  required 
+                  id="special_needs_no" 
+                  type="radio" 
+                  value="0" 
+                  name="special_needs" 
+                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  onchange="specialNeedsForm()"
+                  @if(isset($enrollment->special_needs) && $enrollment->special_needs == 0) checked @endif
+                >
                 <label for="default-radio-1" class="ml-2 text-[0.90rem] font-normal text-gray-900 dark:text-gray-900">Wala</label>
 
               </div>
               <div class="flex items-center">
 
                 <input 
-                required 
-                id="special_needs_yes" 
-                type="radio" 
-                value="1" 
-                name="special_needs" 
-                class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
-                onchange="specialNeedsForm()">
-
+                  required 
+                  id="special_needs_yes" 
+                  type="radio" 
+                  value="1" 
+                  name="special_needs" 
+                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  onchange="specialNeedsForm()"
+                  @if(isset($enrollment->special_needs) && $enrollment->special_needs == 1) checked @endif
+                >
                 <label for="default-radio-2" class="ml-2 text-[0.90rem] font-normal text-gray-900 dark:text-gray-900">Meron</label>
 
               </div>
@@ -747,7 +793,13 @@
               <!-- if others is selected get user input-->
               <div class="mb-1">
                 <!--removed required here-->
-                <input type="text" id="special_needs_description" name="special_needs_description" class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input 
+                  type="text" 
+                  id="special_needs_description" 
+                  name="special_needs_description" 
+                  class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->special_needs_description) ? $enrollment->special_needs_description : old('special_needs_description') }}"
+                > 
               </div>
 
               <span   
@@ -785,8 +837,12 @@
               
               <!-- Region -->
               <div class="mb-1">
-                <select name="region" id="region" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full"></select>
-                <input type="hidden" id="region_text" name="region_text" >
+                <select name="region" 
+                        id="region" 
+                        class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full"></select>
+                <input type="hidden" 
+                        id="region_text" 
+                        name="region_text" >
               </div>
 
               <span   
@@ -886,8 +942,14 @@
               
               <!-- Street Text -->
               <div class="mb-1">
-                <input required type="text" id="street_text" name="street_text" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  required 
+                  type="text" 
+                  id="street_text" 
+                  name="street_text" 
+                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->street_text) ? $enrollment->street_text : old('street_text') }}"
+                ></div>
 
               <span   
                 id="input-error16" 
@@ -911,8 +973,14 @@
               
               <!-- House Number -->
               <div class="mb-1">
-                <input required type="text" id="house_number" name="house_number" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  required 
+                  type="text" 
+                  id="house_number" 
+                  name="house_number" 
+                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->house_number) ? $enrollment->house_number : old('house_number') }}"
+                ></div>
 
               <span   
                 id="input-error17" 

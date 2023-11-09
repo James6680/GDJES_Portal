@@ -49,7 +49,9 @@
       </div>
 
       <!-- Student Registration Form -->
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12" method="post" action="{{route('post.enrollment4')}}">
+      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12" 
+      method="post" 
+      action="{{route('enrollment.StudentportalRegistrationPage4.post')}}">
       @csrf
       @method('post')
 
@@ -120,8 +122,14 @@
               <!-- Father's Information -->   
               <!-- Last Name -->
               <div class="mb-1">
-                <input required type="text" id="lastName_ng_ama" name="last_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  required 
+                  type="text" 
+                  id="lastName_ng_ama" 
+                  name="last_name" 
+                  class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->last_name) ? $enrollment->last_name : old('last_name') }}"
+              ></div>
 
               <span   
                 id="input_error1" 
@@ -145,8 +153,14 @@
               
               <!-- First Name -->
               <div class="mb-1">
-                <input required type="text" id="firstName_ng_ama" name="first_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  required 
+                  type="text" 
+                  id="firstName_ng_ama" 
+                  name="first_name" 
+                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->first_name) ? $enrollment->first_name : old('first_name') }}"
+                ></div>
 
               <span   
                 id="input_error2" 
@@ -170,8 +184,14 @@
               
               <!-- Middle Name -->
               <div class="mb-1">
-                <input required type="text" id="middleName_ng_ama" name="middle_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  required 
+                  type="text" 
+                  id="middleName_ng_ama" 
+                  name="middle_name" 
+                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->middle_name) ? $enrollment->middle_name : old('middle_name') }}"
+                ></div>
 
               <span   
                 id="input_error3" 
@@ -193,16 +213,16 @@
               
               </div>
               
-              <!-- Extension Name -->
               <select id="extensionName_ng_ama" name="extensionName_ng_ama" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
                 <option value=""></option>
-                <option value="1">Jr</option>
-                <option value="2">I</option>
-                <option value="3">II</option>
-                <option value="4">III</option>
-                <option value="5">IV</option>
-                <option value="6">V</option>
-                <option value="7">VI</option>
+                <option value="0" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 0) selected @endif>None</option>
+                <option value="1" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 1) selected @endif>Jr</option>
+                <option value="2" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 2) selected @endif>I</option>
+                <option value="3" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 3) selected @endif>II</option>
+                <option value="4" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 4) selected @endif>III</option>
+                <option value="5" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 5) selected @endif>IV</option>
+                <option value="6" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 6) selected @endif>V</option>
+                <option value="7" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 7) selected @endif>VI</option>
               </select>
 
               <span   
@@ -228,8 +248,14 @@
               
               <!-- Tel Number -->
               <div class="mb-1">
-                <input required type="text" id="father_phone" name="father_phone" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  required 
+                  type="text" 
+                  id="father_phone" 
+                  name="father_phone" 
+                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->father_phone) ? $enrollment->father_phone : old('father_phone') }}"
+                ></div>
 
               <span   
                 id="input_error5" 
@@ -253,8 +279,12 @@
               
               <!-- Email -->
               <div class="mb-1">
-                <input required type="email" id="email_ng_ama" name="email" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input required type="email" 
+                id="email_ng_ama" 
+                name="email" 
+                class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                value="{{ isset($enrollment->email) ? $enrollment->email : old('email') }}"
+                ></div>
 
               <span   
                 id="input_error6" 
@@ -279,8 +309,14 @@
               <!-- Mother's Information --> 
               <!-- Lastname -->
               <div class="mb-1">
-                <input required type="text" id="lastName_ng_ina" name="last_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  required 
+                  type="text" 
+                  id="lastName_ng_ina"  
+                  name="last_name" 
+                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->last_name) ? $enrollment->last_name : old('last_name') }}"
+                ></div>
 
               <span   
                 id="input_error7" 
@@ -304,8 +340,14 @@
 
               <!-- Firstname -->
               <div class="mb-1">
-                <input required type="text" id="firstName_ng_ina" name="first_name" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  required 
+                  type="text" 
+                  id="firstName_ng_ina" 
+                  name="first_name" 
+                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->first_name) ? $enrollment->first_name : old('first_name') }}"
+                ></div>
 
               <span   
                 id="input_error8" 
@@ -329,8 +371,14 @@
               
               <!-- Middlename -->
               <div class="mb-1">
-                <input required type="text" id="middleName_ng_ina" name="middle_name" class=" text-[.90rem] block w-full p-.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input 
+                  required 
+                  type="text" 
+                  id="middleName_ng_ina" 
+                  name="middle_name" 
+                  class=" text-[.90rem] block w-full p-.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  value="{{ isset($enrollment->middle_name) ? $enrollment->middle_name : old('middle_name') }}"
+                ></div>
 
               <span   
                 id="input_error9" 
@@ -354,7 +402,8 @@
               
               <!-- Extension Name -->
               <select id="extensionName_ng_ina" name="extensionName_ng_ina" class="bg-main-background border border-gray-300 text-gray-900 text-[1rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full">
-                <option value=""></option>
+                <option value="">----</option>
+                <option value="0">None</option>
                 <option value="1">Jr</option>
                 <option value="2">I</option>
                 <option value="3">II</option>
@@ -385,9 +434,12 @@
               </div>
               
               <!-- Tel Number -->
-              <div class="mb-1">
-                <input required type="text" id="mother_phone" name="mother_phone" class=" text-[.94rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input required type="text" 
+                    id="mother_phone" 
+                    name="mother_phone" 
+                    class="text-[.94rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                    value="{{ isset($enrollment->mother_phone) ? $enrollment->mother_phone : old('mother_phone') }}"
+                  ></div>
 
               <span   
                 id="input_error11" 
@@ -411,8 +463,12 @@
               
               <!-- Email -->
               <div class="mb-1">
-                <input required type="email" id="email_ng_ina" name="email" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input required type="email" 
+                  id="email_ng_ina" 
+                  name="email" 
+                  class="text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                  value="{{ isset($enrollment->email) ? $enrollment->email : old('email') }}"
+                  ></div>
 
               <span   
                 id="input_error12" 
@@ -437,8 +493,12 @@
               <!-- Guardian's Information --> 
               <!-- Lastname -->
               <div class="mb-1">
-                <input required type="text" id="lastName_ng_guardian" name="lastName_ng_guardian" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
-              </div>
+                <input required type="text"
+                                id="lastName_ng_guardian"
+                                name="lastName_ng_guardian"
+                                class="text-[.90rem] block w-full p-25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                                value="{{ isset($enrollment) ? $enrollment->lastName_ng_guardian : old('lastName_ng_guardian') }}"
+                                >
 
               <span   
                 id="input_error13" 
@@ -462,7 +522,11 @@
               
               <!-- Firstname -->
               <div class="mb-1">
-                <input required type="text" id="firstName_ng_guardian" name="firstName_ng_guardian" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" 
+                id="firstName_ng_guardian" 
+                name="firstName_ng_guardian" 
+                class="text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                value="{{ isset($enrollment->firstName_ng_guardian) ? $enrollment->firstName_ng_guardian : old('firstName_ng_guardian') }}">
               </div>
 
               <span   
@@ -487,7 +551,11 @@
               
               <!-- Middlename -->
               <div class="mb-1">
-                <input required type="text" id="middleName_ng_guardian" name="middleName_ng_guardian" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" 
+                id="middleName_ng_guardian" 
+                name="middleName_ng_guardian" 
+                class="text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                value="{{ isset($enrollment->middleName_ng_guardian) ? $enrollment->middleName_ng_guardian : old('middleName_ng_guardian') }}">
               </div>
 
               <span   
@@ -510,16 +578,16 @@
               
               </div>
               
-              <!-- Extension Name -->
               <select id="extensionName_ng_guardian" name="extensionName_ng_guardian" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
                 <option value=""></option>
-                <option value="1">Jr</option>
-                <option value="2">I</option>
-                <option value="3">II</option>
-                <option value="4">III</option>
-                <option value="5">IV</option>
-                <option value="6">V</option>
-                <option value="7">VI</option>
+                <option value="0" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 0 ? 'selected' : '' }}>None</option>
+                <option value="1" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 1 ? 'selected' : '' }}>Jr</option>
+                <option value="2" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 2 ? 'selected' : '' }}>I</option>
+                <option value="3" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 3 ? 'selected' : '' }}>II</option>
+                <option value="4" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 4 ? 'selected' : '' }}>III</option>
+                <option value="5" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 5 ? 'selected' : '' }}>IV</option>
+                <option value="6" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 6 ? 'selected' : '' }}>V</option>
+                <option value="7" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 7 ? 'selected' : '' }}>VI</option>
               </select>
 
               <span   
@@ -545,7 +613,11 @@
               
               <!-- Tel Number -->
               <div class="mb-1">
-                <input required type="text" id="guardian_phone" name="guardian_phone" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" 
+                id="guardian_phone" 
+                name="guardian_phone" 
+                class="text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                value="{{ isset($enrollment->guardian_phone) ? $enrollment->guardian_phone : old('guardian_phone') }}">
               </div>
 
               <span   
@@ -570,7 +642,11 @@
               
               <!-- Email -->
               <div class="mb-1">
-                <input required type="email" id="email_ng_guardian" name="email_ng_guardian" class=" text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="email" 
+                id="email_ng_guardian" 
+                name="email_ng_guardian" 
+                class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                value="{{ isset($enrollment->email_ng_guardian) ? $enrollment->email_ng_guardian : old('email_ng_guardian') }}">
               </div>
 
               <span   
@@ -598,13 +674,15 @@
               <div class="flex items-center mb-4">
 
                 <input 
-                required 
-                id="4ps_yes" 
-                type="radio" 
-                value="1" 
-                name="4ps" 
-                class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
-                onchange="fourPsForm()">
+                  required 
+                  id="4ps_yes" 
+                  type="radio" 
+                  value="1" 
+                  name="fourps" 
+                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  onchange="fourPsForm()"
+                  {{ isset($enrollment->fourps) && $enrollment->fourps == 1 ? 'checked' : '' }}
+                >
                 
                 <label for="default-radio-1" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Oo</label>
               
@@ -613,13 +691,15 @@
               <div class="flex items-center">
               
                 <input 
-                required 
-                id="4ps_no" 
-                type="radio" 
-                value="0" 
-                name="4ps" 
-                class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
-                onchange="fourPsForm()">
+                  required 
+                  id="4ps_no" 
+                  type="radio" 
+                  value="0" 
+                  name="fourps" 
+                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  onchange="fourPsForm()"
+                  {{ isset($enrollment->fourps) && $enrollment->fourps == 0 ? 'checked' : '' }}
+                >
               
                 <label for="default-radio-2" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Hindi</label>
               
@@ -648,7 +728,11 @@
               <!-- 4ps Household ID --> 
               <!-- if others is selected get user input--> 
               <div class="mb-1">
-                <input required type="text" id="4ps_id" name="4ps_id" class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500">
+                <input required type="text" 
+                id="4ps_yes" 
+                name="fourps_id" 
+                class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                value="{{ isset($enrollment->fourps_id) ? $enrollment->fourps_id : old('fourps_id') }}">
               </div>
 
               <span   

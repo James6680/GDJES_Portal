@@ -54,7 +54,9 @@
     </div>
 
       <!-- Student Registration Form -->
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12">
+      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12"
+            method="post"
+            action="{{ route('enrollment.StudentportalRegistrationPage5.post')}}">
 
         <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-extrabold font-heading-2 text-main-green-secondary-700 text-center font-heading-2-bold">Student Registration for First-time Enrollees</h1>
 
@@ -123,39 +125,76 @@
               
               <!-- Learning Information --> 
               <div class="flex items-center mb-2">
-
-                <input required id="cellphone_tablet" name="learning_info[]"  type="checkbox" value="cellphone/tablet" class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-
-                <label for="default-checkbox" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May sariling Cellphone/Tablet ang Bata</label>
-
+                <input 
+                  required 
+                  id="cellphone_tablet" 
+                  name="learning_info[]"  
+                  type="checkbox" 
+                  value="cellphone/tablet" 
+                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->learning_info) && in_array('cellphone/tablet', $enrollment->learning_info)) checked @endif
+                >
+                <label for="cellphone_tablet" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May sariling Cellphone/Tablet ang Bata</label>
               </div>
 
               <div class="flex items-center mb-2">
-
-                <input id="computer" name="learning_info[]" type="checkbox" value="Computer" class="w-4 h-4 text-green-800  border-gray-300 border-2 rounded focus:ring-green-800  dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-                
-                <label for="checked-checkbox" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May computer sa bahay</label>
-              
+                <input 
+                  id="computer" 
+                  name="learning_info[]"  
+                  type="checkbox" 
+                  value="Computer" 
+                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->learning_info) && in_array('Computer', $enrollment->learning_info)) checked @endif
+                >
+                <label for="computer" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May computer sa bahay</label>
               </div>
 
               <div class="flex items-center mb-2">
-                <input id="no_gadget" name="learning_info[]" type="checkbox" value="No_gadget" class="w-4 h-4 text-green-800  border-gray-300 border-2 rounded focus:ring-green-800  dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-                <label for="default-checkbox" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Walang sariling gadget ang bata</label>
+                <input 
+                  id="no_gadget" 
+                  name="learning_info[]"  
+                  type="checkbox" 
+                  value="No_gadget" 
+                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->learning_info) && in_array('No_gadget', $enrollment->learning_info)) checked @endif
+                >
+                <label for="no_gadget" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Walang sariling gadget ang bata</label>
               </div>
 
               <div class="flex items-center mb-2">
-                <input  id="tv" name="learning_info[]" type="checkbox" value="Tv" class="w-4 h-4 text-green-800  border-gray-300 rounded focus:ring-green-800 border-2  dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-                <label for="checked-checkbox" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May tv sa bahay</label>
+                <input 
+                  id="tv" 
+                  name="learning_info[]"  
+                  type="checkbox" 
+                  value="Tv" 
+                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->learning_info) && in_array('Tv', $enrollment->learning_info)) checked @endif
+                >
+                <label for="tv" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May tv sa bahay</label>
               </div>
 
               <div class="flex items-center mb-2">
-                <input  id="internet" name="learning_info[]" type="checkbox" value="Internet" class="w-4 h-4 text-green-800  border-gray-300 rounded border-2 focus:ring-green-800  dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-                <label for="default-checkbox" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May internet connection sa bahay</label>
+                <input 
+                  id="internet" 
+                  name="learning_info[]"  
+                  type="checkbox" 
+                  value="Internet" 
+                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->learning_info) && in_array('Internet', $enrollment->learning_info)) checked @endif
+                >
+                <label for="internet" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May internet connection sa bahay</label>
               </div>
 
               <div class="flex items-center">
-                <input   id="mobile_data" name="learning_info[]" type="checkbox" value="Mobile_data" class="w-4 h-4 text-green-800  border-gray-300 rounded border-2 focus:ring-green-800  dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-                <label for="checked-checkbox" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Mobile data lamang ang gamit para makaconnect sa internet</label>
+                <input 
+                  id="mobile_data" 
+                  name="learning_info[]"  
+                  type="checkbox" 
+                  value="Mobile_data" 
+                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->learning_info) && in_array('Mobile_data', $enrollment->learning_info)) checked @endif
+                >
+                <label for="mobile_data" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Mobile data lamang ang gamit para makaconnect sa internet</label>
               </div>
 
               <span   
@@ -180,51 +219,75 @@
               
               <!-- Distance Learning Preference -->
               <div class="flex items-center mb-2">
-
-                <input id="4ps_yes" type="radio" value="1" name="distance_learning" class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-                
-                <label for="default-radio-1" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Modular Printed</label>
-              
+                <input 
+                  id="4ps_yes" 
+                  type="radio" 
+                  value="1" 
+                  name="distance_learning" 
+                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == '1') checked @endif
+                >
+                <label for="4ps_yes" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Modular Printed</label>
               </div>
               
               <div class="flex items-center mb-2">
-              
-                <input id="modular_printed" type="radio" value="Modular_printed" name="distance_learning" class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-              
-                <label for="default-radio-2" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Modular Digital</label>
-              
+                <input 
+                  id="modular_printed" 
+                  type="radio" 
+                  value="Modular_printed" 
+                  name="distance_learning" 
+                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Modular_printed') checked @endif
+                >
+                <label for="modular_printed" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Modular Digital</label>
               </div>
 
               <div class="flex items-center mb-2">
-
-                <input id="online" type="radio" value="Online" name="distance_learning" class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-                
-                <label for="default-radio-1" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Online</label>
-              
+                <input 
+                  id="online" 
+                  type="radio" 
+                  value="Online" 
+                  name="distance_learning" 
+                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Online') checked @endif
+                >
+                <label for="online" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Online</label>
               </div>
               
               <div class="flex items-center mb-2">
-              
-                <input id="educational_television" type="radio" value="Educational_television" name="distance_learning" class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-              
-                <label for="default-radio-2" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Educational Television</label>
-              
+                <input 
+                  id="educational_television" 
+                  type="radio" 
+                  value="Educational_television" 
+                  name="distance_learning" 
+                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Educational_television') checked @endif
+                >
+                <label for="educational_television" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Educational Television</label>
               </div>
 
               <div class="flex items-center mb-2">
-
-                <input id="homeschooling" type="radio" value="Homeschooling" name="distance_learning" class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-                
-                <label for="default-radio-1" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Homeschooling</label>
-              
+                <input 
+                  id="homeschooling" 
+                  type="radio" 
+                  value="Homeschooling" 
+                  name="distance_learning" 
+                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Homeschooling') checked @endif
+                >
+                <label for="homeschooling" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Homeschooling</label>
               </div>
               
               <div class="flex items-center">
-              
-                <input  id="blended" type="radio" value="Blended" name="distance_learning" class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600">
-              
-                <label for="default-radio-2" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Blended</label>
-              
+                <input 
+                  id="blended" 
+                  type="radio" 
+                  value="Blended" 
+                  name="distance_learning" 
+                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Blended') checked @endif
+                >
+                <label for="blended" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Blended</label>
               </div>
 
               <span   

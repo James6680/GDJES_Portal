@@ -38,9 +38,11 @@
         </div>
 
         <!-- Student Registration Form -->
-        <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[2.5rem] px-[2.5rem] gap-[.9rem] w-10/12" method="post" action="{{route('post.enrollment')}}">
-        @csrf
-        @method('post')
+        <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[2.5rem] px-[2.5rem] gap-[.9rem] w-10/12"
+         method="post" 
+         action="{{route('enrollment.StudentportalRegistrationPage1.post')}}">
+            @csrf
+            @method('post')
 
           <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-bold font-heading-2-bold text-main-green-secondary-700 text-center md:text-2xl">Student Registration for First-time Enrollees</h1>
           
@@ -127,11 +129,12 @@
                 <div class="flex items-center mb-4"> 
                   
                   <input 
-                  type="radio" 
-                  value="HINDI" 
-                  name="aralStatus" 
-                  id="balikAralNo"
-                  class="w-4 h-4 text-green-800 border-gray-300 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                    type="radio" 
+                    value="HINDI" 
+                    name="aralStatus" 
+                    id="balikAralNo"
+                    class="w-4 h-4 text-green-800 border-gray-300 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                    @if(isset($enrollment->aralStatus) && $enrollment->aralStatus == 'HINDI') checked @endif
                   >
                   
                   <label for="balikAralNo" class="ml-2 text-[0.85rem] text-gray-900 dark:text-black">HINDI</label>
@@ -141,11 +144,13 @@
                 <div class="flex items-start">
                   
                   <input 
-                  type="radio" 
-                  value="OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon" name="aralStatus" id="balikAralYes" 
-                  class="w-4 h-4 text-green-800 border-gray-300 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring- dark:bg-gray-100 dark:border-gray-600"
+                    type="radio" 
+                    value="OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon" 
+                    name="aralStatus" 
+                    id="balikAralYes"
+                    class="w-4 h-4 text-green-800 border-gray-300 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                    @if(isset($enrollment->aralStatus) && $enrollment->aralStatus == 'OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon') checked @endif
                   >
-                  
                   <label for="balikAralYes" class="ml-2  text-[0.85rem]  text-gray-900 dark:text-black">OO dahil sya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon</label>
               
                 </div>

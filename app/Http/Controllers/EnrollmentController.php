@@ -22,14 +22,16 @@ class EnrollmentController extends Controller
 
         if(empty($request->session()->get('enrollment'))){
             $enrollment = new enrollment();
+
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
+            
         }else{
             $enrollment = $request->session()->get('enrollment');
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }
-        return redirect()->route('get.enrollment1');
+        return redirect()->route('enrollment.StudentportalRegistrationPage2');
     }
 
     public function getEnrollment1(Request $request)
@@ -54,7 +56,7 @@ class EnrollmentController extends Controller
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }
-        return redirect()->route('get.enrollment2');
+        return redirect()->route('enrollment.StudentportalRegistrationPage3');
     }
 
     public function getEnrollment2(Request $request)
@@ -100,7 +102,7 @@ class EnrollmentController extends Controller
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }
-        return redirect()->route('get.enrollment3');
+        return redirect()->route('enrollment.StudentportalRegistrationPage4');
     }
 
     public function getEnrollment3(Request $request)
@@ -122,7 +124,7 @@ class EnrollmentController extends Controller
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }
-        return redirect()->route('get.enrollment4');
+        return redirect()->route('enrollment.StudentportalRegistrationPage5');
     }
 
     public function getEnrollment4(Request $request)
@@ -144,7 +146,7 @@ class EnrollmentController extends Controller
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }
-        return redirect()->route('get.enrollment5');
+        return redirect()->route('enrollment.StudentportalRegistrationCompletedPage');
     }
     public function enrollmentComplete(Request $request)
     {
