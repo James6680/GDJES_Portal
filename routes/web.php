@@ -24,32 +24,32 @@ Route::get('helloworld', function () {
 });
 
 
-Route::get('StudentportalRegistrationPage1', [EnrollmentController::class, 'getEnrollment'])
+Route::get('student-registration-1', [EnrollmentController::class, 'getEnrollment'])
     ->name('enrollment.StudentportalRegistrationPage1');
-Route::post('StudentportalRegistrationPage1', [EnrollmentController::class, 'postEnrollment'])
+Route::post('student-registration-1', [EnrollmentController::class, 'postEnrollment'])
     ->name('enrollment.StudentportalRegistrationPage1.post');
 
-Route::get('StudentportalRegistrationPage2', [EnrollmentController::class, 'getEnrollment1'])
+Route::get('student-registration-2', [EnrollmentController::class, 'getEnrollment1'])
     ->name('enrollment.StudentportalRegistrationPage2');
-Route::post('StudentportalRegistrationPage2', [EnrollmentController::class, 'postEnrollment1'])
+Route::post('student-registration-2', [EnrollmentController::class, 'postEnrollment1'])
     ->name('enrollment.StudentportalRegistrationPage2.post');
 
-Route::get('StudentportalRegistrationPage3', [EnrollmentController::class, 'getEnrollment2'])
+Route::get('student-registration-3', [EnrollmentController::class, 'getEnrollment2'])
     ->name('enrollment.StudentportalRegistrationPage3');
-Route::post('StudentportalRegistrationPage3', [EnrollmentController::class, 'postEnrollment2'])
+Route::post('student-registration-3', [EnrollmentController::class, 'postEnrollment2'])
     ->name('enrollment.StudentportalRegistrationPage3.post');
 
-Route::get('StudentportalRegistrationPage4', [EnrollmentController::class, 'getEnrollment3'])
+Route::get('student-registration-4', [EnrollmentController::class, 'getEnrollment3'])
     ->name('enrollment.StudentportalRegistrationPage4');
-Route::post('StudentportalRegistrationPage4', [EnrollmentController::class, 'postEnrollment3'])
+Route::post('student-registration-4', [EnrollmentController::class, 'postEnrollment3'])
     ->name('enrollment.StudentportalRegistrationPage4.post');
 
-Route::get('StudentportalRegistrationPage5', [EnrollmentController::class, 'getEnrollment4'])
+Route::get('student-registration-5', [EnrollmentController::class, 'getEnrollment4'])
     ->name('enrollment.StudentportalRegistrationPage5');
-Route::post('StudentportalRegistrationPage5', [EnrollmentController::class, 'postEnrollment4'])
+Route::post('student-registration-5', [EnrollmentController::class, 'postEnrollment4'])
     ->name('enrollment.StudentportalRegistrationPage5.post');
 
-Route::get('StudentportalRegistrationCompletedPage', [EnrollmentController::class, 'enrollmentComplete'])
+Route::get('student-registration-Completed', [EnrollmentController::class, 'enrollmentComplete'])
     ->name('enrollment.StudentportalRegistrationCompletedPage');
 
 

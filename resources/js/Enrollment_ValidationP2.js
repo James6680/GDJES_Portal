@@ -40,7 +40,7 @@ nextButton.addEventListener("click", function (e) {
 
   // If all error containers are hidden (i.e., all inputs are valid), redirect to a new page
   if (errorContainers.every(container => container.style.display === "none")) {
-    window.location.href = "/StudentportalRegistrationPage3";
+    document.getElementById("enrollment-page-2").submit();
   }
 });
 
@@ -64,7 +64,7 @@ navigateButton.addEventListener("click", function(event) {
 
   event.preventDefault();
   // Set the new URL to navigate to for the "Back" button
-  var newURL = "/StudentportalRegistrationPage1"; // Replace with the desired URL
+  var newURL = "/student-registration-1"; // Replace with the desired URL
 
   // Navigate to the new URL
   window.location.href = newURL;

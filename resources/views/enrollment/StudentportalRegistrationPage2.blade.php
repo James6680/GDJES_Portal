@@ -49,6 +49,7 @@
 
       <!-- Student Registration Form -->
       <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center px-[2rem] py-[2.5rem] gap-[.9rem] w-10/12" 
+      id="enrollment-page-2" 
       method="post" 
       action="{{route('enrollment.StudentportalRegistrationPage2.post')}}">
       @csrf

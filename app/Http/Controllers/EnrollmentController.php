@@ -31,13 +31,25 @@ class EnrollmentController extends Controller
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }
-        return redirect()->route('enrollment.StudentportalRegistrationPage2');
+
+        if($enrollment->aralStatus == "OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon"){
+            return redirect()->route('enrollment.StudentportalRegistrationPage2');
+        }else{
+            return redirect()->route('enrollment.StudentportalRegistrationPage3');
+        }
+
     }
 
     public function getEnrollment1(Request $request)
     {
         $enrollment = $request->session()->get('enrollment');
-        return view('enrollment.StudentportalRegistrationPage2',compact('enrollment'));
+
+        if($request->session()->get('enrollment')->aralStatus == "OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon"){
+            return view('enrollment.StudentportalRegistrationPage2',compact('enrollment'));
+        }else{
+            return redirect()->route('enrollment.StudentportalRegistrationPage3');
+        }
+
     }
 
     public function postEnrollment1(Request $request)
@@ -62,36 +74,36 @@ class EnrollmentController extends Controller
     public function getEnrollment2(Request $request)
     {
         $enrollment = $request->session()->get('enrollment');
+
         return view('enrollment.StudentportalRegistrationPage3',compact('enrollment'));
     }
 
     public function postEnrollment2(Request $request)
     {
         $validatedData = $request->validate([
-            'grade_level' => 'required',
-            'school_year' => 'required',
-            'lrn_status' => 'required',
-            //'lrn_number' => 'required',
-            'psa_birth_cert' => 'required',
-            'last_name' => 'required',
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'extension_name' => 'required',
-            'birth_date' => 'required',
-            'age' => 'required',
-            'gender' => 'required',
-            'indigenous_group' => 'required',
-           // 'indigenous_group_name' => 'required',
-            'primary_language'=>'required',
-            'religion' => 'required',
-            'special_needs' => 'required',
-            //'special_needs_description' => 'required',
-            'region' => 'required',
-            'province'  => 'required',
-            'city'  => 'required',
-            'barangay'  => 'required',
-            'street_text' => 'required',
-
+        //     'grade_level' => 'required',
+        //     'school_year' => 'required',
+        //     'lrn_status' => 'required',
+        //     //'lrn_number' => 'required',
+        //     'psa_birth_cert' => 'required',
+        //     'last_name' => 'required',
+        //     'first_name' => 'required',
+        //     'middle_name' => 'required',
+        //     'extension_name' => 'required',
+        //     'birth_date' => 'required',
+        //     'age' => 'required',
+        //     'gender' => 'required',
+        //     'indigenous_group' => 'required',
+        //    // 'indigenous_group_name' => 'required',
+        //     'primary_language'=>'required',
+        //     'religion' => 'required',
+        //     'special_needs' => 'required',
+        //     //'special_needs_description' => 'required',
+        //     'region' => 'required',
+        //     'province'  => 'required',
+        //     'city'  => 'required',
+        //     'barangay'  => 'required',
+        //     'street_text' => 'required',
         ]);
         if(empty($request->session()->get('enrollment'))){
             $enrollment = new enrollment();

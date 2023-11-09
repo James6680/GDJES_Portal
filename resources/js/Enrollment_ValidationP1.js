@@ -22,11 +22,7 @@ function showNextSet() {
     errorContainer.style.borderWidth = "2px"; // Set the border width to 2px
     errorContainer.classList.remove("border-red-400");
 
-    if (balikAralYes.checked) {
-      window.location.href = "/StudentportalRegistrationPage2";
-    } else {
-      window.location.href = "/StudentportalRegistrationPage3";
-    }
+    document.getElementById("enrollment-page-1").submit();    
   }
 }
   
