@@ -106,8 +106,8 @@
 
                     <div>
                         
-                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full xl:text-sm md:text-[13px] text-xs md:py-4 leading-none items-center px-7 py-0 -mb-3" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full xl:text-sm md:text-[13px] text-xs md:py-3 leading-none items-center px-7 py-0 -mb-3" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> 
                         </svg>
                         </button>
 
@@ -815,69 +815,33 @@
 
     @elseif (request()->is('student.class-schedule') )
     <!-- Class Schedule Section -->
-    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
+    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8 sm:pb-5 py-7 sm:px-10 px-6 sm:pr-[-10rem] mb-0">
+        
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
-            <h2 class="text-3xl -mt-5 mb-1 -ml-6 text-green-900/60">Class Schedule</h2>
+            <h2 class="text-3xl -mt-5 mb-1 lg:-ml-6 md:-ml-2 -ml-1 text-green-900/60">Class Schedule</h2>
 
-            <div class="border-b p-[1px] bg-gray-200  mx-[-2.3rem]"></div>
+            <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
 
-            <div class="grid w-full grid-cols-1 gap-6">
+            <div class="grid w-full grid-cols-1 gap-6 mt-8">
 
-                <div class="flex gap-6 flex-col justify-between items-end">
+                <div id="alert-2" class="flex items-start lg:p-4 lg:py-8 p-5 mb-4 text-yellow-600 rounded-md bg-yellow-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 
-                    <div class="flex flex-col gap-3 lg:text-lg text-sm text-justify mt-6">
-
-                        <p class=" font-normal font-mulish text-black">
-                            Dear Parent,
-                        </p>
-
-                        <p class=" font-normal font-mulish text-black indent-7 leading-tight">
-                        The information provided here shows the ability and progress your child has made in the different learning areas as well as their core values. The school welcomes you should you desire to know more about your child’s progress. 
-                        </p>
-
-                    </div>
-
-                    <div>
+                    <svg class="flex-shrink-0 lg:w-6 lg:h-6 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         
-                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full xl:text-sm md:text-[13px] text-xs md:py-4 leading-none items-center px-7 py-0 -mb-3" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                        </svg>
-                        </button>
-
-                        <!-- Dropdown menu -->
-                        <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 font-mulish" aria-labelledby="dropdownHoverButton">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 2</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 3</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 4</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 5</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 6</a>
-                            </li>
-
-                            </ul>
-                        </div>
-
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    
+                    </svg>
+                    
+                    <span class="sr-only">Info</span>
+                    
+                    <div class="ml-3 lg:text-base text-sm font-medium font-mulish text-justify pr-2.5 leading-5 ">
+                        Uh-oh! It seems there might be a missing piece in your class schedule puzzle. As we approach the opening day, it's vital to have everything in place. If your schedule is still incomplete tomorrow, kindly contact the school management. Your education is important, and we want to ensure a seamless start. Reach out and let's get this sorted out together!
                     </div>
+                    
+                </div>    
 
-                </div>
-
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold -mb-3 text-lg ">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold -mt-6 -mb-3 text-lg ">
                     Dela Cruz, Juan Reyes ( xxxx-xxxx-xxxx )
                 </h2>
 
@@ -1005,343 +969,136 @@
                     
                 </div>
             </div>
+
             
-        </section>
-    </div>
-
-    <div class="md:pl-64 w-full min-h-full sm:py-8 sm:pb-[-10rem] sm:pr-[-10rem] py-7 sm:px-10 px-6 bg-gray-200">
-
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
-
-            <div class="flex w-full flex-col gap-6">
-
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 text-sm ">
-                    Dela Cruz, Juan Reyes ( xxxx-xxxx-xxxx )
-                </h2>
-
-                <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
-
-                    <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
-
-                        <thead>
-
-                            <tr class="bg-green-500 text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base md:text-[10px] text-[10px] leading-tight text-start">
-
-                                <th scope="col" class="w-[5%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600 bg-green-500">
-                                    #
-                                </th>
-                                <th scope="col" class="w-[25%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
-                                    Subject
-                                </th>
-                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
-                                    Teacher
-                                </th>
-                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
-                                    Time Schedule
-                                </th>
-                            </tr>
-                            
-                        </thead>
-
-                        <tbody>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                    1
-                                </th>
-                                
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    Filipino
-                                </td>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                    Juan Dela Cruz
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    12:30 PM - 3:00 PM
-                                </td>
-                            </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-
-                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                    x
-                                </th>
-                                <td class=" border-collapse border border-green-600  md:pl-4 pl-2">
-                                    x
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    x
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    x   
-                                </td>
-                            </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class="  font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
-                                </th>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    x
-                                </td>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x   
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x     
-                                </td>
-                            </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
-                                </th>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x   
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
-                                </td>
-                            </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
-                                </th>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x    
-                                </td>
-                            </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
-                                </th>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x  
-                                </td>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x  
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x  
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
         </section>
     </div>
 
     @elseif (request()->is('student.enrollment-status') )
     <!-- Student Enrollment Status Section -->
-    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
+    <div class=" md:pl-64 sm:w-screen min-h-full bg-gray-200 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
 
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
+        <section class=" self-stretch container lg:p-9 p-6 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
-            <h2 class="text-[38px] -mt-6 -ml-6 text-green-900/60">Enrollment Status</h2>
+            <h2 class="text-3xl -mt-5 mb-1 -ml-6 text-green-900/60">Enrollment Status</h2>
 
-            <div class="border-b p-[1px] bg-gray-200  mx-[-2.3rem]"></div>
+            <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
 
-            <div class="grid w-full grid-cols-1 gap-6">
+            <!-- Officially Enrolled Container -->
+            <div class="flex w-full flex-col gap-6 items-center self-stretch" 
+            style="margin-top: 108px; margin-bottom: 108px">
 
-                <div class="flex gap-6 flex-col justify-between items-end mt-6">
-
-                    <div class="flex flex-col gap-3 lg:text-lg text-sm text-justify">
-
-                        <p class=" font-normal font-mulish text-black">
-                            Dear Parent,
-                        </p>
-
-                        <p class=" font-normal font-mulish text-black indent-7 leading-tight">
-                        The information provided here shows the ability and progress your child has made in the different learning areas as well as their core values. The school welcomes you should you desire to know more about your child’s progress. 
-                        </p>
-
-                    </div>
-
-                    <div>
-                        
-                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full xl:text-sm md:text-[13px] text-xs md:py-4 leading-none items-center px-7 py-0 -mb-3" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                        </svg>
-                        </button>
-
-                        <!-- Dropdown menu -->
-                        <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 font-mulish" aria-labelledby="dropdownHoverButton">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 2</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 3</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 4</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 5</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 6</a>
-                            </li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold -mb-3 text-lg ">
-                    Dela Cruz, Juan Reyes ( xxxx-xxxx-xxxx )
-                </h2>
-
-                <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
-
-                    <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
-
-                        <thead>
-
-                            <tr class="bg-green-500 text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base md:text-[10px] text-[10px] leading-tight text-start">
-
-                                <th scope="col" class="w-[5%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600 bg-green-500">
-                                    #
-                                </th>
-                                <th scope="col" class="w-[25%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
-                                    Subject
-                                </th>
-                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
-                                    Teacher
-                                </th>
-                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
-                                    Time Schedule
-                                </th>
-                            </tr>
-                            
-                        </thead>
-
-                        <tbody>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                    1
-                                </th>
-                                
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    Filipino
-                                </td>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                    Juan Dela Cruz
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    12:30 PM - 3:00 PM
-                                </td>
-                            </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-
-                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                    x
-                                </th>
-                                <td class=" border-collapse border border-green-600  md:pl-4 pl-2">
-                                    x
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    x
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    x   
-                                </td>
-                            </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class="  font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
-                                </th>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    x
-                                </td>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x   
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x     
-                                </td>
-                            </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
-                                </th>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x   
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
-                                </td>
-                            </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
-                                </th>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x    
-                                </td>
-                            </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
-                                </th>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x  
-                                </td>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x  
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x  
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
+                <div 
+                class="flex flex-col lg:p-10 lg:py-18 py-8 mb-4  text-green-500 border-4 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 items-center justify-center font-mulish" 
+                role="alert"
+                style="max-width: 500px;">
                     
+                    <div class="flex items-center justify-center text-center hover:text-green-900" data-tooltip-target="tooltip-no-arrow">   
+                        <svg xmlns="http://www.w3.org/2000/svg" width="115" height="115" fill="currentColor" viewBox="0 0 256 256" class="w-40  h-40 ">
+                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path>
+                        </svg>
+                    </div>
+
+                    <div id="tooltip-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-md font-semibold font-mulish text-green-700 bg-green-100 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        You've completed all the required credentials needed for enrolling in GDJES!
+                    </div>
+
+                    <div class="mt-2 mb-4 lg:text-xl text-sm text-center font-semibold self-stretch">
+                        "Congratulations! 🎉 You've successfully enrolled in GDJES! 📚 Get ready for an exciting learning journey. Should you have any questions or need assistance, feel free to reach out. Happy studying!"
+                    </div>
                 </div>
+
+            </div>
+            
+            <!-- Temporarily Enrolled Container -->
+            <div class="w-full grid-cols-1 gap-6 place-items-center h-auto p-5 hidden">
+
+                <div 
+                class="flex flex-col p-7 py-6 mb-4 w-auto text-yellow-500 border-2 border-yellow-300 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 items-center justify-start  font-mulish shadow-md" 
+                role="alert">
+
+                    <div class="w-full flex justify-end mb-5">
+                        <button 
+                            type="button" 
+                            class="focus:outline-none font-mulish text-white bg-yellow-500 font-semibold rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 cursor-not-allowed shadow" 
+                            disabled>
+                            Temporary Enrolled
+                        </button>
+                    </div>
+
+                    <div 
+                    class="flex items-start pl-4 p-6 mb-4 text-md font-mulish text-gray-800 border-2 border-blue-400 rounded-lg bg-white dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800" 
+                    role="alert">
+                        <svg 
+                        class="flex-shrink-0 inline w-5 h-5 mr-3" 
+                        aria-hidden="true" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="#0096c7" 
+                        viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div>
+                            <p class="text-md font-mulish font-medium">
+                                To complete the process, make sure to submit all necessary requirements below. All the unchecked items below are the things you need to submit to complete your enrollment.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="w-full flex items-center pl-4 border-b border-yellow-400 rounded-lg dark:border-gray-700">
+
+                        <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-yellow-500 bg-white border-white rounded-xl focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+
+                        <label for="bordered-checkbox-1" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-yellow-500 dark:text-gray-300">Needed Requirements #1</label>
+
+                    </div>
+
+                    <div class="w-full flex items-center pl-4 border-b border-yellow-400 rounded-lg dark:border-gray-700">
+
+                        <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-yellow-500 bg-white border-white rounded-xl focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+
+                        <label for="bordered-checkbox-2" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-yellow-500 dark:text-gray-300">Needed Requirements #2</label>
+
+                    </div>
+
+                    <div class="w-full flex items-center pl-4 border-b border-yellow-400 rounded-lg dark:border-gray-700">
+
+                        <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-yellow-500 bg-white border-white rounded-xl focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+
+                        <label for="bordered-checkbox-3" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-yellow-500 dark:text-gray-300">Needed Requirements #3</label>
+
+                    </div>
+
+                    <div class="w-full flex items-center pl-4 border-b border-yellow-400 rounded-lg dark:border-gray-700">
+
+                        <input id="bordered-checkbox-4" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-yellow-500 bg-white border-white rounded-xl focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+
+                        <label for="bordered-checkbox-4" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-yellow-500 dark:text-gray-300">Needed Requirements #4</label>
+
+                    </div>
+
+                    <div class="w-full flex items-center pl-4 border-b border-yellow-400 rounded-lg dark:border-gray-700">
+
+                        <input id="bordered-checkbox-5" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-yellow-500 bg-white border-white rounded-xl focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+
+                        <label for="bordered-checkbox-5" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-yellow-500 dark:text-gray-300">Needed Requirements #5</label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
             </div>
             
         </section>
+
     </div>
 
     @elseif (request()->is('student.request-documents') )
