@@ -815,7 +815,7 @@
 
     @elseif (request()->is('student.class-schedule') )
     <!-- Class Schedule Section -->
-    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8 sm:pb-5 py-7 sm:px-10 px-6 sm:pr-[-10rem] mb-0">
+    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8 sm:pb- sm:pb-[-10rem]  py-7 sm:px-10 px-6 sm:pr-[-10rem] mb-0">
         
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
@@ -980,21 +980,21 @@
 
         <section class=" self-stretch container lg:p-9 p-6 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
-            <h2 class="text-3xl -mt-5 mb-1 -ml-6 text-green-900/60">Enrollment Status</h2>
+            <h2 class="text-3xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Enrollment Status</h2>
 
             <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
 
             <!-- Officially Enrolled Container -->
-            <div class="flex w-full flex-col gap-6 items-center self-stretch" 
-            style="margin-top: 108px; margin-bottom: 108px">
+            <div class="flex w-full flex-col gap-6 items-center self-stretch hidden" 
+            style="margin-top: 108px; margin-bottom: 98px">
 
                 <div 
-                class="flex flex-col lg:p-10 lg:py-18 py-8 mb-4  text-green-500 border-4 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 items-center justify-center font-mulish" 
+                class="flex flex-col lg:p-10 lg:py-18 py-8 mb-4 md:w-[20rem] md:h-[15rem] text-green-500 border-4 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 items-center justify-center font-mulish" 
                 role="alert"
                 style="max-width: 500px;">
                     
                     <div class="flex items-center justify-center text-center hover:text-green-900" data-tooltip-target="tooltip-no-arrow">   
-                        <svg xmlns="http://www.w3.org/2000/svg" width="115" height="115" fill="currentColor" viewBox="0 0 256 256" class="w-40  h-40 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="115" height="115" fill="currentColor" viewBox="0 0 256 256" class="lg:w-40  lg:h-40 sm:w-28   sm:h-28">
                             <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path>
                         </svg>
                     </div>
@@ -1003,37 +1003,37 @@
                         You've completed all the required credentials needed for enrolling in GDJES!
                     </div>
 
-                    <div class="mt-2 mb-4 lg:text-xl text-sm text-center font-semibold self-stretch">
-                        "Congratulations! 🎉 You've successfully enrolled in GDJES! 📚 Get ready for an exciting learning journey. Should you have any questions or need assistance, feel free to reach out. Happy studying!"
+                    <div class="px-2 mt-2 mb-4 lg:text-xl text-xs text-center font-semibold self-stretch">
+                        Congratulations! 🎉 You've successfully enrolled in GDJES! 📚 Get ready for an exciting learning journey. Should you have any questions or need assistance, feel free to reach out.
                     </div>
                 </div>
 
             </div>
             
             <!-- Temporarily Enrolled Container -->
-            <div class="w-full grid-cols-1 gap-6 place-items-center h-auto p-5 hidden">
+            <div class="h-auto p-5 px-4 flex w-full flex-col gap-6 items-center self-stretch my-12 mb-7">
 
                 <div 
-                class="flex flex-col p-7 py-6 mb-4 w-auto text-yellow-500 border-2 border-yellow-300 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 items-center justify-start  font-mulish shadow-md" 
+                class="flex flex-col p-7 w-auto text-yellow-500 border-2 border-green-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 items-center justify-start  font-mulish shadow-md" 
                 role="alert">
 
                     <div class="w-full flex justify-end mb-5">
                         <button 
                             type="button" 
-                            class="focus:outline-none font-mulish text-white bg-yellow-500 font-semibold rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 cursor-not-allowed shadow" 
+                            class="focus:outline-none font-mulish text-yellow-400 border-2 border-yellow-400 font-semibold rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 cursor-not-allowed shadow-transparent" 
                             disabled>
                             Temporary Enrolled
                         </button>
                     </div>
 
                     <div 
-                    class="flex items-start pl-4 p-6 mb-4 text-md font-mulish text-gray-800 border-2 border-blue-400 rounded-lg bg-white dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800" 
+                    class="flex items-start pl-4 p-4 mb-4 text-md font-mulish text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800" 
                     role="alert">
                         <svg 
                         class="flex-shrink-0 inline w-5 h-5 mr-3" 
                         aria-hidden="true" 
                         xmlns="http://www.w3.org/2000/svg" 
-                        fill="#0096c7" 
+                        fill="currentColor" 
                         viewBox="0 0 20 20">
                             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
                         </svg>
@@ -1045,51 +1045,50 @@
                         </div>
                     </div>
 
-                    <div class="w-full flex items-center pl-4 border-b border-yellow-400 rounded-lg dark:border-gray-700">
+                    <div class="w-full self-stretch">
 
-                        <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-yellow-500 bg-white border-white rounded-xl focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
+
+                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
 
 
-                        <label for="bordered-checkbox-1" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-yellow-500 dark:text-gray-300">Needed Requirements #1</label>
+                            <label for="bordered-checkbox-1" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #1</label>
+
+                        </div>
+
+                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
+
+                            <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+                            <label for="bordered-checkbox-2" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #2</label>
+
+                        </div>
+
+                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
+
+                            <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+                            <label for="bordered-checkbox-3" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #3</label>
+
+                        </div>
+
+                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
+
+                            <input id="bordered-checkbox-4" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+                            <label for="bordered-checkbox-4" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #4</label>
+
+                        </div>
+
+                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
+
+                            <input id="bordered-checkbox-5" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+                            <label for="bordered-checkbox-5" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #5</label>
+
+                        </div>
 
                     </div>
-
-                    <div class="w-full flex items-center pl-4 border-b border-yellow-400 rounded-lg dark:border-gray-700">
-
-                        <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-yellow-500 bg-white border-white rounded-xl focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-
-
-                        <label for="bordered-checkbox-2" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-yellow-500 dark:text-gray-300">Needed Requirements #2</label>
-
-                    </div>
-
-                    <div class="w-full flex items-center pl-4 border-b border-yellow-400 rounded-lg dark:border-gray-700">
-
-                        <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-yellow-500 bg-white border-white rounded-xl focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-
-
-                        <label for="bordered-checkbox-3" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-yellow-500 dark:text-gray-300">Needed Requirements #3</label>
-
-                    </div>
-
-                    <div class="w-full flex items-center pl-4 border-b border-yellow-400 rounded-lg dark:border-gray-700">
-
-                        <input id="bordered-checkbox-4" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-yellow-500 bg-white border-white rounded-xl focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-
-
-                        <label for="bordered-checkbox-4" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-yellow-500 dark:text-gray-300">Needed Requirements #4</label>
-
-                    </div>
-
-                    <div class="w-full flex items-center pl-4 border-b border-yellow-400 rounded-lg dark:border-gray-700">
-
-                        <input id="bordered-checkbox-5" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-yellow-500 bg-white border-white rounded-xl focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-
-
-                        <label for="bordered-checkbox-5" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-yellow-500 dark:text-gray-300">Needed Requirements #5</label>
-
-                    </div>
-
                 </div>
 
             </div>
