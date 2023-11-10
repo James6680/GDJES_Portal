@@ -1049,7 +1049,7 @@
 
                         <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
 
-                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
 
 
                             <label for="bordered-checkbox-1" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #1</label>
@@ -1058,7 +1058,7 @@
 
                         <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
 
-                            <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
 
                             <label for="bordered-checkbox-2" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #2</label>
 
@@ -1066,15 +1066,15 @@
 
                         <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
 
-                            <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
 
                             <label for="bordered-checkbox-3" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #3</label>
 
                         </div>
 
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
+                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow" disabled checked>
 
-                            <input id="bordered-checkbox-4" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input id="bordered-checkbox-4" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
 
                             <label for="bordered-checkbox-4" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #4</label>
 
@@ -1082,7 +1082,7 @@
 
                         <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
 
-                            <input id="bordered-checkbox-5" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input id="bordered-checkbox-5" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled >
 
                             <label for="bordered-checkbox-5" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #5</label>
 
