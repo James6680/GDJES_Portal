@@ -157,7 +157,6 @@
               <span   
                 id="input-error" 
                 class="hidden p-1 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
             
             </div>
@@ -188,7 +187,6 @@
                 <span   
                   id="input-error" 
                   class="hidden p-1 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                  ❌ Maari bang pumili muna sa mga pagpipilian bago lumipat sa sunod na pahina.
                 </span> 
 
               </div>

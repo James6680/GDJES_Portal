@@ -20,6 +20,7 @@ nextButton.addEventListener("click", function (e) {
   // Iterate through each error container and corresponding form element
   errorContainers.forEach((container, index) => 
   {
+    var validated = true;
     isValid = 1; 
 
     if(elements[index].tagName === "INPUT"){
@@ -39,12 +40,12 @@ nextButton.addEventListener("click", function (e) {
 
   });
   console.log(errorContainers);
+  let errorContainersArray = Array.from(errorContainers)
   // If all error containers are hidden (i.e., all inputs are valid), redirect to a new page
-  if (errorContainers.forEach(container => container.style.display === "none")) {
+  if (errorContainersArray.every(container => container.style.display === "none")) {
     document.getElementById("enrollment-page-2").submit();
   }
 });
-
 // Add input event listeners to form elements to hide error messages when the user starts typing
 [returnee, lastSchoolAttended, lastSchoolYearAttended].forEach((element, index) => 
 {

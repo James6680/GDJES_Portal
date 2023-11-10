@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const elements = [
         "grade_level", 
         "school_year",
+        'lrn_status',
         "psa_birth_cert",
         "lastName_ng_bata",
         "firstName_ng_bata",
@@ -23,11 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "house_number",
     ];
 
-    const errorContainers = Array.from(
-        { length: 17 },
-        (_, i) => document.getElementById(`input-error${i + 1}`)
-    );
-
+    const errorContainers = document.querySelectorAll('#input-error');
+    console.log(errorContainers.length);
     function updateElementValidation(element, index) {
         const value = element.value.trim();
         const isValid = index === 0 ? value !== "" : value !== "";

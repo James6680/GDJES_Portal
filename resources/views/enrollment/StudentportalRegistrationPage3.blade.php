@@ -140,7 +140,7 @@
               </select>
               <!-- Error Message for Ano ang huling baitang na natapos? -->
               <span   
-                id="input-error1" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -172,7 +172,7 @@
 
               <!-- Error Message for School Year -->
               <span   
-                id="input-error2" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -220,7 +220,7 @@
               </div>
                <!-- Error Message for May LRN (Learner Reference Number) ba ang inyong anak? -->
               <span   
-                id="input-error1r" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -254,7 +254,7 @@
 
               <!-- Error Message for Learners Reference Number (LRN) -->
               <span   
-                id="input-error5r" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -297,7 +297,7 @@
                       ></div>
 
               <span   
-                id="input-error3" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium  text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -320,14 +320,14 @@
               <div class="mb-1">
                 <input required
                       type="text"
-                      id="lastName_ng_bata"
-                      name="lastName_ng_bata"
+                      id="student_last_name"
+                      name="student_last_name"
                       class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
                       value="{{ isset($enrollment->lastName_ng_bata) ? $enrollment->lastName_ng_bata : old('lastName_ng_bata') }}"
                 ></div>
 
               <span   
-                id="input-error4" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -350,14 +350,14 @@
               <div class="mb-1">
                 <input required 
                         type="text" 
-                        id="firstName_ng_bata" 
-                        name="firstName_ng_bata" 
+                        id="student_first_name" 
+                        name="student_first_name" 
                         class="text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
                         value="{{ isset($enrollment->firstName_ng_bata) ? $enrollment->firstName_ng_bata : old('firstName_ng_bata') }}"
                   ></div>
 
               <span   
-                id="input-error5" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -388,7 +388,7 @@
                 ></div>
 
               <span   
-                id="input-error6" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -421,7 +421,7 @@
               </select>
 
               <span   
-                id="input-error7" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -461,7 +461,7 @@
               </div>
 
               <span   
-                id="input-error8" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -491,7 +491,7 @@
                 ></div>
 
               <span   
-                id="input-error9" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -541,7 +541,7 @@
               </div>
 
               <span   
-                id="input-error2r" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -591,7 +591,7 @@
               </div>
 
               <span   
-                id="input-error3r" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -623,7 +623,7 @@
                 ></div>
 
               <span   
-                id="input-error6r" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -674,7 +674,7 @@
                 <option value="15" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 15) selected @endif>Others</option>
               </select>
               <span   
-                id="input-error10" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -719,7 +719,7 @@
               </select>
 
               <span   
-                id="input-error11" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -771,7 +771,7 @@
               </div>
 
               <span   
-                id="input-error4r" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -804,7 +804,7 @@
               </div>
 
               <span   
-                id="input-error7r" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -847,7 +847,7 @@
               </div>
 
               <span   
-                id="input-error12" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -872,7 +872,7 @@
               </div>
 
               <span   
-                id="input-error13" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -897,7 +897,7 @@
               </div>
 
               <span   
-                id="input-error14" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -922,7 +922,7 @@
               </div>
 
               <span   
-                id="input-error15" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -953,7 +953,7 @@
                 ></div>
 
               <span   
-                id="input-error16" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -984,7 +984,7 @@
                 ></div>
 
               <span   
-                id="input-error17" 
+                id="input-error" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
