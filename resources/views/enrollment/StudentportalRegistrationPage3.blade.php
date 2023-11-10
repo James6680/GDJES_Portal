@@ -381,8 +381,8 @@
               <div class="mb-1">
                 <input required 
                   type="text" 
-                  id="middleName_ng_bata" 
-                  name="middleName_ng_bata" 
+                  id="student_middle_name" 
+                  name="student_middle_name" 
                   class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
                   value="{{ isset($enrollment->middleName_ng_bata) ? $enrollment->middleName_ng_bata : old('middleName_ng_bata') }}"
                 ></div>
@@ -408,7 +408,7 @@
               
               </div>
               
-              <select id="extensionName_ng_bata" name="extensionName_ng_bata" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  p-2.5 w-full">
+              <select id="student_extension_name" name="extensionName_ng_bata" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  p-2.5 w-full">
                 <option value=""></option>
                 <option value="0" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 0) selected @endif>None</option>
                 <option value="1" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 1) selected @endif>Jr</option>
@@ -456,6 +456,7 @@
                   class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-lg" 
                   placeholder="Select date" 
                   id="birth_date"
+                  name="birth_date"
                   value="{{ isset($enrollment->birth_date) ? $enrollment->birth_date : '' }}"
                 >
               </div>
@@ -482,7 +483,7 @@
               
               <!-- Age on October 31, 2023 -->
               <div class="mb-1">
-                <input required 
+                <input 
                   type="text" 
                   id="age_on_oct_31" 
                   name="age_on_oct_31" 
@@ -841,9 +842,6 @@
                 <select name="region" 
                         id="region" 
                         class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full"></select>
-                <input type="hidden" 
-                        id="region_text" 
-                        name="region_text" >
               </div>
 
               <span   
@@ -868,7 +866,6 @@
             
               <div class="mb-1">
                 <select name="province" id="province" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full"></select>
-                <input type="hidden" id="province_text" name="province_text">
               </div>
 
               <span   
@@ -918,7 +915,6 @@
             
               <div class="mb-1">
                 <select name="barangay" id="barangay" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full"></select>
-                <input type="hidden" id="barangay_text" name="barangay_text">
               </div>
 
               <span   
@@ -946,8 +942,8 @@
                 <input 
                   required 
                   type="text" 
-                  id="street_text" 
-                  name="street_text" 
+                  id="street" 
+                  name="street" 
                   class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
                   value="{{ isset($enrollment->street_text) ? $enrollment->street_text : old('street_text') }}"
                 ></div>

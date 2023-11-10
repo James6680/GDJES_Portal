@@ -1,33 +1,50 @@
 //                                          -- STUDENT REGISTRATION PAGE #3 --
 
-
+var isValid = 1;
 // Validation for Input and Select fields
 document.addEventListener("DOMContentLoaded", function () {
     const elements = [
         "grade_level", 
         "school_year",
         'lrn_status',
+        'lrn_number',
         "psa_birth_cert",
-        "lastName_ng_bata",
-        "firstName_ng_bata",
-        "middleName_ng_bata",
-        "extensionName_ng_bata",
+        "student_last_name",
+        "student_first_name",
+        "student_middle_name",
+        "student_extension_name",
         "birth_date",
         "age_on_oct_31",
+        'gender',
+        'indigenous_group',
+        'indigenous_group_name',
         "primary_language",
         "religion",
+        'special_needs',
+        'special_needs_description',
         "region",
         "province",
         "city",
         "barangay",
-        "street_text",
+        "street",
         "house_number",
     ];
 
     const errorContainers = document.querySelectorAll('#input-error');
-    console.log(errorContainers.length);
     function updateElementValidation(element, index) {
         const value = element.value.trim();
+
+       errorContainers.forEach(container, index => {
+            if((element[index] == 'lrn_status' && value[index] == '0') || (element[index] == 'indigenous_group' && value[index] == '1' ) || (element[index] == 'special_needs' && value[index] == '1')){
+                console.log('click');
+            }
+            if(value[index].tagName === 'INPUT') {
+            }
+            
+            if(value[index].tagName === 'SELECT') {
+            }
+        });
+
         const isValid = index === 0 ? value !== "" : value !== "";
         errorContainers[index].style.display = isValid ? "none" : "block";
         element.style.border = isValid ? "1px solid #e5e7eb" : "2px solid #ff4d6d";
