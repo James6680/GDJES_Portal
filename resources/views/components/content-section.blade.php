@@ -985,13 +985,12 @@
             <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
 
             <!-- Officially Enrolled Container -->
-            <div class="flex w-full flex-col gap-6 items-center self-stretch hidden" 
+            <div class="flex w-full flex-col gap-6 items-center self-stretch" 
             style="margin-top: 108px; margin-bottom: 98px">
 
                 <div 
-                class="flex flex-col lg:p-10 lg:py-18 py-8 mb-4 md:w-[20rem] md:h-[15rem] text-green-500 border-4 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 items-center justify-center font-mulish" 
-                role="alert"
-                style="max-width: 500px;">
+                class="flex flex-col lg:px-10 xl:py-16 py-2 mb-4 px-2 lg:w-[30rem] w-[20rem] text-green-500 border-4 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 items-center justify-center font-mulish" 
+                role="alert">
                     
                     <div class="flex items-center justify-center text-center hover:text-green-900" data-tooltip-target="tooltip-no-arrow">   
                         <svg xmlns="http://www.w3.org/2000/svg" width="115" height="115" fill="currentColor" viewBox="0 0 256 256" class="lg:w-40  lg:h-40 sm:w-28   sm:h-28">
@@ -1011,7 +1010,7 @@
             </div>
             
             <!-- Temporarily Enrolled Container -->
-            <div class="h-auto p-5 px-4 flex w-full flex-col gap-6 items-center self-stretch my-12 mb-7">
+            <div class="h-auto p-5 px-4 flex w-full flex-col gap-6 items-center self-stretch my-12 mb-7 hidden">
 
                 <div 
                 class="flex flex-col p-7 w-auto text-yellow-500 border-2 border-green-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 items-center justify-start  font-mulish shadow-md" 
