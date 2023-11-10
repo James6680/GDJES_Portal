@@ -155,7 +155,7 @@
 
               <!-- Error Message for Ano ang huling baitang na natapos? -->
               <span   
-                id="email-error1" 
+                id="input-error" 
                 class="hidden p-1 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -186,9 +186,9 @@
                 >
                 <!-- Error Message for Ano ang huling paaralan na pinasukan? -->
                 <span   
-                  id="email-error2" 
+                  id="input-error" 
                   class="hidden p-1 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                  ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
+                  ❌ Maari bang pumili muna sa mga pagpipilian bago lumipat sa sunod na pahina.
                 </span> 
 
               </div>
@@ -221,9 +221,9 @@
                 >
                 <!-- Error Message for Anong panuruang taon ang natapos ng mag-aaral? -->
                 <span   
-                  id="email-error3" 
+                  id="input-error" 
                   class="hidden p-1 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                  ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
+
                 </span> 
 
               </div>

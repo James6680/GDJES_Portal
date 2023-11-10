@@ -1,18 +1,13 @@
 //                                      -- STUDENT REGISTRATION PAGE #1 -- 
-
-function isRadioButtonSelected() {
-  const balikAralNo = document.getElementById("balikAralNo");
-  const balikAralYes = document.getElementById("balikAralYes");
-  return balikAralNo.checked || balikAralYes.checked;
-}
-
 // Function to handle the "Next" button click
 function showNextSet() {
+  const radioButton = document.querySelectorAll("input[name='aralStatus']:checked");
   const errorMessage = document.getElementById("input-error");
   const errorContainer = document.querySelector(".redBorder");
-  const balikAralYes = document.getElementById("balikAralYes");
+  var isValid = checkEmptyRadio(radioButton, errorContainer);
 
-  if (!isRadioButtonSelected()) {
+  
+  if (!isValid) {
     errorMessage.classList.remove("hidden");
     errorContainer.style.borderWidth = "2px"; // Set the border width to 2px
     errorContainer.classList.remove("border-main-green-secondary-100");
@@ -21,7 +16,6 @@ function showNextSet() {
     errorMessage.classList.add("hidden");
     errorContainer.style.borderWidth = "2px"; // Set the border width to 2px
     errorContainer.classList.remove("border-red-400");
-
     document.getElementById("enrollment-page-1").submit();    
   }
 }
@@ -53,3 +47,11 @@ function showNextSet() {
     window.location.href = "/student-login"; // Replace with the desired URL
 
   });
+
+  /////VALIDATORS/////
+function checkEmptyRadio(value, container){
+  if(value.length ===0){
+    return 0;
+  } 
+  return 1;
+}

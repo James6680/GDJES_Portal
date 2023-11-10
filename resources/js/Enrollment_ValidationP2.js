@@ -7,39 +7,40 @@ const lastSchoolYearAttended = document.getElementById("lastSchoolYearAttended")
 const returnee = document.getElementById("returnee");
 
 // Create an array of error containers for displaying validation errors
-const errorContainers = 
-[
-  document.getElementById("email-error1"),
-  document.getElementById("email-error2"),
-  document.getElementById("email-error3")
-];
-
+const errorContainers = document.querySelectorAll('#input-error');
 // Get a reference to the "Next" button
 const nextButton = document.getElementById("nextBtn");
-
+var isValid;
 // Add a click event listener to the "Next" button
 nextButton.addEventListener("click", function (e) {
   e.preventDefault(); // Prevent the default form submission behavior
 
+  const elements = [returnee, lastSchoolAttended, lastSchoolYearAttended];
+  const values = [returnee.value, lastSchoolAttended.value.trim(), lastSchoolYearAttended.value.trim()];
   // Iterate through each error container and corresponding form element
   errorContainers.forEach((container, index) => 
   {
-    // Create arrays of form elements and their values
-    const elements = [returnee, lastSchoolAttended, lastSchoolYearAttended];
-    const values = [returnee.value, lastSchoolAttended.value.trim(), lastSchoolYearAttended.value.trim()];
+    isValid = 1; 
 
-    // Check if the input is valid based on specific conditions
-    const isValid = index === 0 ? values[index] !== "0" : values[index] !== "";
+    if(elements[index].tagName === "INPUT"){
+      checkEmptyInput(values[index], container );
+      checkLength(values[index], container);
+    }
 
-    // Display the error container if the input is not valid
+    if(elements[index].tagName === "SELECT"){
+      checkEmptySelect(values[index], container);
+    }
     container.style.display = isValid ? "none" : "block";
+    // container.innerHTML = ""
 
     // Change the border color of the form element based on validity
     elements[index].style.border = isValid ? "1px solid #e5e7eb" : "2px solid #ff4d6d";
-  });
+    // Display the error container if the input is not valid
 
+  });
+  console.log(errorContainers);
   // If all error containers are hidden (i.e., all inputs are valid), redirect to a new page
-  if (errorContainers.every(container => container.style.display === "none")) {
+  if (errorContainers.forEach(container => container.style.display === "none")) {
     document.getElementById("enrollment-page-2").submit();
   }
 });
@@ -55,6 +56,36 @@ nextButton.addEventListener("click", function (e) {
   });
 });
 
+
+
+////////VALIDATORS//////////
+function checkLength(value, container){
+    if(value.length > 100 && value !== ""){
+      container.textContent = "❌ Maaari lamang maglagay ng 100 na letra";
+      isValid = 0;
+    }
+  }
+  
+function checkEmptySelect(value, container){
+  if(value === "0"){
+    container.textContent = "❌ Pumili muna sa mga pagpipilian bago lumipat sa sunod na pahina.";
+    isValid = 0;
+  }
+}
+
+function checkEmptyInput(value, container){
+  if(value === ""){
+    container.textContent = "❌ Punan muna ang katanungan bago lumipat sa sunod na pahina.";
+    isValid = 0;
+  }
+}
+
+
+
+
+
+
+
 // --------------------------------------------------------|
 // BACK BUTTON SECTION
 var navigateButton = document.getElementById("backBtn");
@@ -69,3 +100,4 @@ navigateButton.addEventListener("click", function(event) {
   // Navigate to the new URL
   window.location.href = newURL;
 });
+

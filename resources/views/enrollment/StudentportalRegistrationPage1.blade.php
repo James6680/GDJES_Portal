@@ -162,7 +162,7 @@
                     id="input-error" 
                     class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                     ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
-                  
+                    
                   </span>
 
               </div>
@@ -179,7 +179,7 @@
               id="nextButton"
               class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block" 
               onclick="showNextSet()">
-              next
+              Next
               </button>
             
             </div>
