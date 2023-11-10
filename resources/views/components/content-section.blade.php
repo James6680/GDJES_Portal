@@ -815,7 +815,7 @@
 
     @elseif (request()->is('student.class-schedule') )
     <!-- Class Schedule Section -->
-    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8 sm:pb- sm:pb-[-10rem]  py-7 sm:px-10 px-6 sm:pr-[-10rem] mb-0">
+    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8  sm:pb-[-10rem]  py-7 sm:px-10 px-6 sm:pr-[-10rem] mb-0">
         
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
@@ -976,11 +976,11 @@
 
     @elseif (request()->is('student.enrollment-status') )
     <!-- Student Enrollment Status Section -->
-    <div class=" md:pl-64 sm:w-screen min-h-full bg-gray-200 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
+    <div class=" md:pl-64 sm:w-screen min-h-full bg-gray-200 sm:py-8 py-7 sm:pb-[20px] sm:px-11 px-6">
 
-        <section class=" self-stretch container lg:p-9 p-6 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
+        <section class="self-stretch container lg:p-8 p-7 px-12 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
-            <h2 class="text-3xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Enrollment Status</h2>
+            <h2 class="lg:text-3xl text-xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Enrollment Status</h2>
 
             <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
 
@@ -989,11 +989,11 @@
             style="margin-top: 108px; margin-bottom: 98px">
 
                 <div 
-                class="flex flex-col lg:px-10 xl:py-16 py-2 mb-4 px-2 lg:w-[30rem] w-[20rem] text-green-500 border-4 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 items-center justify-center font-mulish" 
+                class="flex flex-col lg:px-10 xl:py-16 py-2 mb-4 px-2 lg:w-[30rem] sm:w-[20rem] w-[18rem]  text-green-500 border-4 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 items-center justify-center font-mulish" 
                 role="alert">
                     
                     <div class="flex items-center justify-center text-center hover:text-green-900" data-tooltip-target="tooltip-no-arrow">   
-                        <svg xmlns="http://www.w3.org/2000/svg" width="115" height="115" fill="currentColor" viewBox="0 0 256 256" class="lg:w-40  lg:h-40 sm:w-28   sm:h-28">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="115" height="115" fill="currentColor" viewBox="0 0 256 256" class="lg:w-40 lg:h-40 sm:w-28 sm:h-28 w-16 h-16">
                             <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path>
                         </svg>
                     </div>
@@ -1105,9 +1105,9 @@
 
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
-        <h2 class="text-[38px] -mt-6 -ml-6 text-green-900/60">Document Requests</h2>
+        <h2 class="text-3xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Document Requests</h2>
 
-        <div class="border-b p-[1px] bg-gray-200  mx-[-2.3rem]"></div>
+        <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
 
             <div class="grid w-full grid-cols-1 gap-6">
 
