@@ -980,9 +980,9 @@
 
         <section class="self-stretch container lg:p-8 p-7 px-12 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
-            <h2 class="lg:text-3xl text-xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Enrollment Status</h2>
+            <h2 class="lg:text-3xl text-xl -mt-5 mb-1 lg:-ml-3 -ml-6 text-green-900/60">Enrollment Status</h2>
 
-            <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
+            <div class="border-b p-[1px] bg-gray-200 lg:mx-[-2.3rem] mx-[-3rem]"></div>
 
             <!-- Officially Enrolled Container -->
             <div class="flex w-full flex-col gap-6 items-center self-stretch" 
