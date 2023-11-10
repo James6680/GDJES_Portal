@@ -140,7 +140,7 @@
               </select>
               <!-- Error Message for Ano ang huling baitang na natapos? -->
               <span   
-                id="input-error" 
+                id="input-error1" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -172,7 +172,7 @@
 
               <!-- Error Message for School Year -->
               <span   
-                id="input-error" 
+                id="input-error2" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -220,7 +220,7 @@
               </div>
                <!-- Error Message for May LRN (Learner Reference Number) ba ang inyong anak? -->
               <span   
-                id="input-error" 
+                id="input-error1r" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -254,7 +254,7 @@
 
               <!-- Error Message for Learners Reference Number (LRN) -->
               <span   
-                id="input-error" 
+                id="input-error5r" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -297,7 +297,7 @@
                       ></div>
 
               <span   
-                id="input-error" 
+                id="input-error3" 
                 class="hidden pt-2 pl-0 text-sm font-medium  text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -320,14 +320,14 @@
               <div class="mb-1">
                 <input required
                       type="text"
-                      id="student_last_name"
-                      name="student_last_name"
+                      id="lastName_ng_bata"
+                      name="lastName_ng_bata"
                       class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
                       value="{{ isset($enrollment->lastName_ng_bata) ? $enrollment->lastName_ng_bata : old('lastName_ng_bata') }}"
                 ></div>
 
               <span   
-                id="input-error" 
+                id="input-error4" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -350,14 +350,14 @@
               <div class="mb-1">
                 <input required 
                         type="text" 
-                        id="student_first_name" 
-                        name="student_first_name" 
+                        id="firstName_ng_bata" 
+                        name="firstName_ng_bata" 
                         class="text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
                         value="{{ isset($enrollment->firstName_ng_bata) ? $enrollment->firstName_ng_bata : old('firstName_ng_bata') }}"
                   ></div>
 
               <span   
-                id="input-error" 
+                id="input-error5" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -381,14 +381,14 @@
               <div class="mb-1">
                 <input required 
                   type="text" 
-                  id="student_middle_name" 
-                  name="student_middle_name" 
+                  id="middleName_ng_bata" 
+                  name="middleName_ng_bata" 
                   class=" text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
                   value="{{ isset($enrollment->middleName_ng_bata) ? $enrollment->middleName_ng_bata : old('middleName_ng_bata') }}"
                 ></div>
 
               <span   
-                id="input-error" 
+                id="input-error6" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -408,7 +408,7 @@
               
               </div>
               
-              <select id="student_extension_name" name="extensionName_ng_bata" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  p-2.5 w-full">
+              <select id="extensionName_ng_bata" name="extensionName_ng_bata" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  p-2.5 w-full">
                 <option value=""></option>
                 <option value="0" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 0) selected @endif>None</option>
                 <option value="1" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 1) selected @endif>Jr</option>
@@ -421,7 +421,7 @@
               </select>
 
               <span   
-                id="input-error" 
+                id="input-error7" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -456,13 +456,12 @@
                   class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-lg" 
                   placeholder="Select date" 
                   id="birth_date"
-                  name="birth_date"
                   value="{{ isset($enrollment->birth_date) ? $enrollment->birth_date : '' }}"
                 >
               </div>
 
               <span   
-                id="input-error" 
+                id="input-error8" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -483,7 +482,7 @@
               
               <!-- Age on October 31, 2023 -->
               <div class="mb-1">
-                <input 
+                <input required 
                   type="text" 
                   id="age_on_oct_31" 
                   name="age_on_oct_31" 
@@ -492,7 +491,7 @@
                 ></div>
 
               <span   
-                id="input-error" 
+                id="input-error9" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -542,7 +541,7 @@
               </div>
 
               <span   
-                id="input-error" 
+                id="input-error2r" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -592,7 +591,7 @@
               </div>
 
               <span   
-                id="input-error" 
+                id="input-error3r" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -624,7 +623,7 @@
                 ></div>
 
               <span   
-                id="input-error" 
+                id="input-error6r" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -675,7 +674,7 @@
                 <option value="15" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 15) selected @endif>Others</option>
               </select>
               <span   
-                id="input-error" 
+                id="input-error10" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -720,7 +719,7 @@
               </select>
 
               <span   
-                id="input-error" 
+                id="input-error11" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -772,7 +771,7 @@
               </div>
 
               <span   
-                id="input-error" 
+                id="input-error4r" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -805,7 +804,7 @@
               </div>
 
               <span   
-                id="input-error" 
+                id="input-error7r" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -842,10 +841,13 @@
                 <select name="region" 
                         id="region" 
                         class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full"></select>
+                <input type="hidden" 
+                        id="region_text" 
+                        name="region_text" >
               </div>
 
               <span   
-                id="input-error" 
+                id="input-error12" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -866,10 +868,11 @@
             
               <div class="mb-1">
                 <select name="province" id="province" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full"></select>
+                <input type="hidden" id="province_text" name="province_text">
               </div>
 
               <span   
-                id="input-error" 
+                id="input-error13" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -894,7 +897,7 @@
               </div>
 
               <span   
-                id="input-error" 
+                id="input-error14" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -915,10 +918,11 @@
             
               <div class="mb-1">
                 <select name="barangay" id="barangay" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full"></select>
+                <input type="hidden" id="barangay_text" name="barangay_text">
               </div>
 
               <span   
-                id="input-error" 
+                id="input-error15" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -942,14 +946,14 @@
                 <input 
                   required 
                   type="text" 
-                  id="street" 
-                  name="street" 
+                  id="street_text" 
+                  name="street_text" 
                   class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
                   value="{{ isset($enrollment->street_text) ? $enrollment->street_text : old('street_text') }}"
                 ></div>
 
               <span   
-                id="input-error" 
+                id="input-error16" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -980,7 +984,7 @@
                 ></div>
 
               <span   
-                id="input-error" 
+                id="input-error17" 
                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>

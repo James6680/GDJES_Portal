@@ -1,50 +1,20 @@
 //                                          -- STUDENT REGISTRATION PAGE #3 --
 
-var isValid = 1;
+
 // Validation for Input and Select fields
 document.addEventListener("DOMContentLoaded", function () {
     const elements = [
         "grade_level", 
-        "school_year",
-        'lrn_status',
-        'lrn_number',
-        "psa_birth_cert",
-        "student_last_name",
-        "student_first_name",
-        "student_middle_name",
-        "student_extension_name",
-        "birth_date",
-        "age_on_oct_31",
-        'gender',
-        'indigenous_group',
-        'indigenous_group_name',
-        "primary_language",
-        "religion",
-        'special_needs',
-        'special_needs_description',
-        "region",
-        "province",
-        "city",
-        "barangay",
-        "street",
-        "house_number",
+        "school_year", "psa_birth_cert", "lastName_ng_bata","firstName_ng_bata", "middleName_ng_bata", "extensionName_ng_bata", "birth_date", "age_on_oct_31", "primary_language", "religion", "region", "province", "city", "barangay", "street_text", "house_number",
     ];
 
-    const errorContainers = document.querySelectorAll('#input-error');
+    const errorContainers = Array.from(
+        { length: 17 },
+        (_, i) => document.getElementById(`input-error${i + 1}`)
+    );
+
     function updateElementValidation(element, index) {
         const value = element.value.trim();
-
-       errorContainers.forEach(container, index => {
-            if((element[index] == 'lrn_status' && value[index] == '0') || (element[index] == 'indigenous_group' && value[index] == '1' ) || (element[index] == 'special_needs' && value[index] == '1')){
-                console.log('click');
-            }
-            if(value[index].tagName === 'INPUT') {
-            }
-            
-            if(value[index].tagName === 'SELECT') {
-            }
-        });
-
         const isValid = index === 0 ? value !== "" : value !== "";
         errorContainers[index].style.display = isValid ? "none" : "block";
         element.style.border = isValid ? "1px solid #e5e7eb" : "2px solid #ff4d6d";
@@ -53,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     elements.forEach((element, index) => {
         const inputElement = document.getElementById(element);
         
-        inputElement.addEventListener("input", () => {
+        inputElement.addEventListener("input",( ) => {
             updateElementValidation(inputElement, index);
         });
 
@@ -82,10 +52,18 @@ document.addEventListener("DOMContentLoaded", function () {
 // Validation for radio button fields
 const radioGroups = [
     { name: 'lrn_status', errorContainer: 'input-error1r' },
-    { name: 'gender', errorContainer: 'input-error2r' },
     { name: 'indigenous_group', errorContainer: 'input-error3r' },
-    { name: 'special_needs', errorContainer: 'input-error4r' }
+    { name: 'special_needs', errorContainer: 'input-error4r' },
+    { name: 'gender', errorContainer: 'input-error2r' }
 ];
+
+const radioGroupOptionals = [
+    { name: 'lrn_number', errorContainer: 'input-error5r' },
+    { name: 'indigenous_group_name', errorContainer: 'input-error6r' },
+    { name: 'special_needs_description', errorContainer: 'input-error7r'}
+];
+
+
 
 radioGroups.forEach(group => {
     const radioButtons = document.querySelectorAll(`input[name="${group.name}"]`);
@@ -99,6 +77,47 @@ radioGroups.forEach(group => {
         });
     });
 });
+
+radioGroupOptionals.forEach(field =>{
+    const radioButtonOptionalField = document.querySelector(`input[name="${field.name}"]`);
+    const errorContainer = document.getElementById(field.errorContainer);
+
+    radioButtonOptionalField.addEventListener("change", () => {
+        errorContainer.style.display = "none";
+        const redBorderElement = document.querySelector(`.redBorder[data-for="${field.name}"]`);
+        redBorderElement.style.border = "none"; // Remove the red border on interaction
+    });
+});
+
+function validateRadioOptionals() {
+    let valid = true;
+
+    radioGroupOptionals.forEach((field, index) => {  
+        const radioButtonOptionalField = document.querySelector(`input[name="${field.name}"]`);
+        const errorContainer = document.getElementById(field.errorContainer);
+        const radioButtons = document.querySelectorAll(`input[name="${radioGroups[index].name}"]`);
+        const radioButtonsArray = Array.from(radioButtons)
+        var checkedValue;
+        try{
+            checkedValue = radioButtonsArray.find(radio => radio.checked).value;
+        }catch{
+            checkedValue = null;
+        }
+        if(checkedValue === "1" && radioButtonOptionalField.value === ""){
+
+            valid = false;
+            errorContainer.style.display = "block";
+            radioButtonOptionalField.style.border = "2px solid #ff4d6d";
+        }else{
+            radioButtonOptionalField.style.border = "1px solid #e5e7eb";
+            errorContainer.style.display = "none";
+        }
+    });
+
+    return valid;
+}
+
+window.validateRadioOptionals = validateRadioOptionals;
 
 function validateRadioGroups() {
     let valid = true;
@@ -133,12 +152,20 @@ nextButton.addEventListener("click", function (e) {
 
     const isTextElementsValid = validateTextElements();
     const isRadioGroupsValid = validateRadioGroups();
-
-    if (isTextElementsValid && isRadioGroupsValid) {
-        document.getElementById("enrollment-page-3").submit();
+    const isRadioGroupOptionalValid = validateRadioOptionals();
+    if (isTextElementsValid && isRadioGroupsValid && isRadioGroupOptionalValid) {
+        document.getElementById("enrollment-page-3").submit();      
     }
 });
 // -----------------------------------------------------------------|
 // Back button function
 var navigateButton = document.getElementById("backBtn");
 
+// Add click event listeners to the buttons
+navigateButton.addEventListener("click", function() {
+    // Set the new URL to navigate to for the "Back" button
+    var newURL = "/student-enrollment-18"; // Replace with the desired URL
+
+    // Navigate to the new URL
+    window.location.href = newURL;
+});
