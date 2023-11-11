@@ -7,6 +7,7 @@
         <section class="min-w-full min-h-full relative grid grid-cols-1 sm:gap-6 gap-5 marker: md:ml-5 items-center">
 
             <!-- Announcement Main Container -->
+            <!-- Backend side: need to connect para magreflect ung icrcreate na announcement ng admin -->
             <div class="rounded-md w-auto h-auto relative container lg:p-9 p-6 grid grid-cols-1 bg-green-500">
 
                 <ul class="m-o p-0 text-white">
@@ -146,7 +147,9 @@
                 <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold -mb-3 text-lg ">
                     Learning Progress and Achievement
                 </h2>
-    
+
+                <!-- Learning Progress and Achievement Section -->
+                <!-- Backend side: Need to connect this table which consists of (Subjects/Teacher/1-4 grade/Final grade/ remarks)  -->
                 <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
@@ -373,7 +376,9 @@
                 <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 mt-3 text-lg ">
                     Learner's Observed Values
                 </h2>
-    
+
+                <!-- Learner's Oberserved Values -->
+                <!-- Backend Side: Need to connect this table which consists of (Core Values/Behaviour Statement/1-4 mark (SO/AO/--))) -->
                 <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
@@ -571,7 +576,9 @@
                 <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 text-lg mt-3">
                     Student's Attendance
                 </h2>
-    
+
+                <!-- Student's Attendance Section -->
+                <!-- Backend Side: Need to connect this table which consists of (Col=Attendance/12 months: Row=Days of school/ Days of present/ Days of absent) -->
                 <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
@@ -763,7 +770,9 @@
                 <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 text-lg mt-3">
                     Mode of Learning
                 </h2>
-    
+                
+                <!-- MOL Section -->
+                <!-- Backend side: Need to connect this table which consists of (Type of modality/1 to 4 quarter) -->
                 <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
@@ -841,12 +850,15 @@
                     
                 </div>    
 
+                <!-- Backend Side: Need to configure para magreflect ung student name and lrn no. in this part per student -->
                 <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold -mt-6 -mb-3 text-lg ">
                     Dela Cruz, Juan Reyes ( xxxx-xxxx-xxxx )
                 </h2>
 
                 <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
 
+                    <!-- Class Schedule Section -->
+                    <!-- Backend side: Need to connect this table which consists of (Subject/Teacher/Time sched) to know their class sched per student -->
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
                         <thead>
@@ -985,7 +997,8 @@
             <div class="border-b p-[1px] bg-gray-200 lg:mx-[-2.3rem] mx-[-3rem]"></div>
 
             <!-- Officially Enrolled Container -->
-            <div class="flex w-full flex-col gap-6 items-center self-stretch" 
+            <!-- Backend Side: Need to configure for validation if the student really meet the requirement to become officially enrolled and if so is eto lalabas -->
+            <div class="flex w-full flex-col gap-6 items-center self-stretch "  
             style="margin-top: 108px; margin-bottom: 98px">
 
                 <div 
@@ -1010,6 +1023,7 @@
             </div>
             
             <!-- Temporarily Enrolled Container -->
+            <!-- Backend Side: Need to configure this part to update the students whether the list of requirements for enrolling is nasubmit na lahat. checkbox element pala yung list dito and initially is nakadisabled sila para hindi macontrol ni students since for viewing purpose lng dapat sa kanila -->
             <div class="h-auto p-5 px-4 flex w-full flex-col gap-6 items-center self-stretch my-12 mb-7 hidden">
 
                 <div 
@@ -1177,6 +1191,7 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
+                                <!-- backend Side: Need to connect this table which consists of (Lists of requests/Status of requests (pending/approved/disapproved)) to update the student about their requests -->
                                 <div class="relative overflow-x-auto sm:rounded-lg m-4 pb-4">
 
                                     <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-200">
@@ -1329,6 +1344,7 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
+                                <!-- Backend Side: Need to connect para pumasok ung data from the input of students (purpose and type documents) -->
                                 <form action="#" class="p-4 md:p-5">
 
                                     <div class="grid gap-1 mb-1 grid-cols-1 rounded-md p-1 shadow-md shadow-gray-300">
