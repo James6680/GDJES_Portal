@@ -1109,15 +1109,53 @@
 
         <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
 
-        <div class="p-5 mx-32 px-4 flex min-w-screen flex-col gap-6 items-center self-stretch my-12">
+        <div class=" flex min-w-screen flex-col gap-6 items-center self-stretch my-10 ">
 
-            <div class="flex flex-col p-7 w-full text-yellow-500 border-2 border-green-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 items-center justify-start font-mulish shadow-md">
+            <div class="flex flex-col mx-11 p-4 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish ">
 
                 <!-- My Requests Button Section -->
-                <div class="w-full flex justify-end mb-5">
-                    
+                <div class="w-full flex flex-row justify-between mb-5 gap-20">
+
+                    <div class="w-full flex items-start p-6 text-md font-mulish text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
+                        <svg 
+                            class="flex-shrink-0 inline w-7 h-7 mr-3" 
+                            aria-hidden="true" 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            fill="currentColor" 
+                            viewBox="0 0 20 20">    
+                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+
+                        <div>
+                            
+                            <h2 class="mb-2 -mt-1 text-2xl font-semibold text-yellow-800  dark:text-white">
+                                Reminders
+                            </h2>
+                            <ul class="space-y-2 -ml-3 text-yellow-500  list-decimal">
+                                <li>
+                                    See the available documents to request from the school below.
+                                </li>
+                                <li>
+                                    Click the "Request Document" button to start the process of document request.
+                                </li>
+                                <li>
+                                    Answer the necessary information needed for document request in order to effectively process your request.
+                                </li>
+                                <li>
+                                    Click the "My Request" button to know the status of your request.
+                                </li>
+                                <li>
+                                    Then wait for 1-3 working days to process your request by the school management.
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+
                     <!-- Modal toggle -->
-                    <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block focus:outline-none font-mulish text-white bg-green-500 font-semibold text-lg px-7 py-2.5 mr-2 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600" type="button">
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal" class=" block focus:outline-none font-mulish text-white bg-green-500 font-semibold text-lg px-9 py-2.5 
+                    mb-2  rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 w-[20%] h-11" type="button">
                     My Requests
                     </button>
 
@@ -1244,9 +1282,9 @@
                 </div>
 
                 <!-- Document Section Body -->
-                <div class="flex flex-row w-full gap-4 ">
+                <div class="w-full flex flex-row justify-between mb-5 gap-7">
 
-                    <div class="w-[50%] flex flex-col items-start justify-center pl-4 p-4 mb-4 text-md font-mulish text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800 ">  
+                    <div class="w-full flex flex-col items-start justify-center pl-4 p-4 mb-4 text-md font-mulish text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800 ">  
                         <h2 class="mb-2 text-2xl font-semibold dark:text-white self-stretch text-center">Lists of Document</h2>
                         <ul class="max-w-md space-y-2 text-md list-disc list-inside dark:text-gray-400">
                             <li>
@@ -1268,44 +1306,8 @@
 
                     </div>
 
-                    <div class="w-[50%] flex items-start pl-4 p-4 mb-4 text-md font-mulish text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800" 
-                    role="alert">
-                        <svg 
-                        class="flex-shrink-0 inline w-5 h-5 mr-3" 
-                        aria-hidden="true" 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        fill="currentColor" 
-                        viewBox="0 0 20 20">
-                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                        </svg>
-                        
-                        <span class="sr-only">Info</span>
-                        
-                        <div>
-                            
-                            <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Password requirements:</h2>
-                            <ul class="space-y-4 text-gray-500 list-disc list-inside dark:text-gray-400">
-                                <li>
-                                    List item one
-                                    <ol class="ps-5 mt-2 space-y-1 list-decimal list-inside">
-                                        <li>You might feel like you are being really "organized" o</li>
-                                        <li>Nested navigation in UIs is a bad idea too, keep things as flat as possible.</li>
-                                        <li>Nesting tons of folders in your source code is also not helpful.</li>
-                                    </ol>
-                                </li>
-                            </ul>
-
-                        </div>
-                    
-                    </div>
-                
-                </div>
-
-                <!-- Request Document Section -->
-                <div class="w-full flex justify-start mb-5">
-
                     <!-- Modal toggle -->
-                    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="focus:outline-none font-mulish text-white bg-green-500 font-semibold text-lg px-7 py-2.5 mr-2 mb-2 rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600" type="button">
+                    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="focus:outline-none font-mulish text-white bg-green-500 font-semibold text-lg px-7 py-2.5 mr-2 mb-2 rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 h-11 w-[25%]" type="button">
                     Request Document
                     </button>
 
@@ -1396,7 +1398,7 @@
                         </div>
 
                     </div> 
-
+                
                 </div>
 
             </div>
