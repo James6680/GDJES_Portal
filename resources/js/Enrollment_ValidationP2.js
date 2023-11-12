@@ -24,8 +24,11 @@ nextButton.addEventListener("click", function (e) {
     isValid = 1; 
 
     if(elements[index].tagName === "INPUT"){
-      checkEmptyInput(values[index], container );
+      checkEmptyInput(values[index], container);
       checkLength(values[index], container);
+      if(index === 2){
+        checkYear(values[index], container );
+      }
     }
 
     if(elements[index].tagName === "SELECT"){
@@ -39,7 +42,6 @@ nextButton.addEventListener("click", function (e) {
     // Display the error container if the input is not valid
 
   });
-  console.log(errorContainers);
   let errorContainersArray = Array.from(errorContainers)
   // If all error containers are hidden (i.e., all inputs are valid), redirect to a new page
   if (errorContainersArray.every(container => container.style.display === "none")) {
@@ -78,6 +80,14 @@ function checkEmptyInput(value, container){
   if(value === ""){
     container.textContent = "❌ Punan muna ang katanungan bago lumipat sa sunod na pahina.";
     isValid = 0;
+  }
+}
+
+function checkYear(value, container){
+  const regex = /^(19|20)\d{2}\b$/;
+  if(value.match(regex) === false || value.match(regex) === null){
+    isValid = 0;
+    container.textContent = "❌ Ang format ng ilalagay ay dapat taon";
   }
 }
 

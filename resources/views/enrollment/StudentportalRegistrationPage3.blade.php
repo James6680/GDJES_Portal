@@ -128,7 +128,7 @@
               <select id="grade_level" 
                 name="grade_level" 
                 class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 py-2.5 w-full">
-                <option value="">Pumili ng huling baitang na natapos</option>
+                <option value=""  @if(isset($enrollment->grade_level) && $enrollment->grade_level == null) selected @endif>Pumili ng huling baitang na natapos</option>
                 <option value="0" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 0) selected @endif>KINDER</option>
                 <option value="1" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 1) selected @endif>Grade 1</option>
                 <option value="2" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 2) selected @endif>Grade 2</option>
@@ -164,6 +164,7 @@
                 <input 
                   required 
                   type="text" 
+                  placeholder="{{date("Y")}}"
                   id="school_year" 
                   name="school_year" 
                   class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
@@ -245,6 +246,7 @@
                 <!-- removed required in lrn number must address this with acceptable input parameters-->
                 <input 
                 type="text" 
+                placeholder="123456789010"
                 id="lrn_number" 
                 name="lrn_number" 
                 class="text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
@@ -289,7 +291,8 @@
               <!-- PSA Birth Certificate No. -->
               <div class="mb-1">
                 <input required 
-                        type="text" 
+                        type="text"
+                        placeholder="2023-12312" 
                         id="psa_birth_cert" 
                         name="psa_birth_cert" 
                         class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
@@ -315,7 +318,9 @@
                 <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Lastname ng bata (Apelyido) <span class="text-red-600">*</span></b>
               
               </div>
-              
+              <script>
+                console.log('{{$enrollment}}')
+              </script>
               <!-- Last Name -->
               <div class="mb-1">
                 <input required
@@ -452,9 +457,11 @@
                 
                 </div>
                 
-                <input datepicker type="text" 
-                  class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-lg" 
+                <input datepicker type="text"
+                  readonly 
+                  class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-100 dark:border-gray-300 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-lg" 
                   placeholder="Select date" 
+                  name="birth_date"
                   id="birth_date"
                   value="{{ isset($enrollment->birth_date) ? $enrollment->birth_date : '' }}"
                 >
@@ -476,8 +483,7 @@
              
               <div class="self-stretch flex flex-col items-start justify-start pb-4">
                 
-                <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Ilang taon ang bata sa October 31, 2023? <span class="text-red-600">*</span></b>
-              
+                <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Ilang taon ang batang irerehistro? <span class="text-red-600">*</span></b>
               </div>
               
               <!-- Age on October 31, 2023 -->
@@ -996,12 +1002,17 @@
           <div class="flex gap-2 w-full">  
 
             <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] w-1/2 border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100">
-              <button id="backBtn" 
+        
+              
+              <button id="backBtn"
+              @if(isset($enrollment->aralStatus))
                 @if($enrollment->aralStatus == 'OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon')
                   onclick="window.location = '{{URL::route('enrollment.StudentportalRegistrationPage2')}}'"
                 @else
                   onclick="window.location = '{{URL::route('enrollment.StudentportalRegistrationPage1')}}'"
                 @endif
+              @endif      
+
                 class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap">Back</button>
             </div>
 

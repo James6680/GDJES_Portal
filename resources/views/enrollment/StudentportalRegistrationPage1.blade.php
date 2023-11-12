@@ -11,7 +11,6 @@
   <link rel="icon" href="{{url('assets/GDJES Logo.png')}}" type="image/x-icon" />
 </head>
 <body class="m-0 p-0">
-
   <!-- Form Background  -->
   <div class="relative w-full h-full overflow-hidden flex flex-row items-center justify-center py-[7.5rem] px-[15rem] box-border bg-[url('assets/bg_page.png')] bg-cover bg-no-repeat bg-center lg:flex-row lg:gap-[0rem] lg:items-center lg:justify-center lg:py-[11.25rem] lg:px-[9.38rem] lg:box-border md:flex-row md:gap-[0rem] md:items-center md:justify-center md:py-[8.75rem] md:px-[4.38rem] md:box-border sm:flex-row sm:gap-[0rem] sm:items-center sm:justify-center sm:py-[14.38rem] sm:px-[3.13rem] sm:box-border"
   style="background-image: url('assets/bg_page.png');">

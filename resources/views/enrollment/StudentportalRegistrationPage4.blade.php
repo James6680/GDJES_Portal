@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Added initial-scale for responsiveness -->
   <title>Student Registration Page 4</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Mulish:wght@400;700&display=swap" />
-  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
 
   <link rel="icon" href="{{url('assets/GDJES Logo.png')}}" type="image/x-icon" />
@@ -50,6 +49,7 @@
 
       <!-- Student Registration Form -->
       <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12" 
+      id="enrollment-page-4";
       method="post" 
       action="{{route('enrollment.StudentportalRegistrationPage4.post')}}">
       @csrf
@@ -402,7 +402,7 @@
               
               <!-- Extension Name -->
               <select id="extensionName_ng_ina" name="extensionName_ng_ina" class="bg-main-background border border-gray-300 text-gray-900 text-[1rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full">
-                <option value="">----</option>
+                <option value=""></option>
                 <option value="0">None</option>
                 <option value="1">Jr</option>
                 <option value="2">I</option>
@@ -706,7 +706,7 @@
               </div>
 
               <span   
-                id="input_error19" 
+                id="input_error-radio" 
                 class="hidden pt-2 pl-0 font-medium text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -728,15 +728,15 @@
               <!-- 4ps Household ID --> 
               <!-- if others is selected get user input--> 
               <div class="mb-1">
-                <input required type="text" 
-                id="4ps_yes" 
+                <input type="text" 
+                id="fourps_id" 
                 name="fourps_id" 
                 class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
                 value="{{ isset($enrollment->fourps_id) ? $enrollment->fourps_id : old('fourps_id') }}">
               </div>
 
               <span   
-                id="distance-error" 
+                id="input_error19" 
                 class="hidden pt-2 pl-0 font-medium text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 ❌ Maari bang punan muna ang katanungan bago lumipat sa sunod na pahina.
               </span>
@@ -780,6 +780,10 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>  
-
+  <script>
+    $(document).ready(function(e) {
+        e.preventDefault();
+    });
+  </script>
 </body>
 </html>

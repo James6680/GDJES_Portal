@@ -213,7 +213,8 @@
                   required 
                   type="text" 
                   id="lastSchoolYearAttended" 
-                  name="lastSchoolYearAttended" 
+                  name="lastSchoolYearAttended"
+                  placeholder="{{date('Y')}}" 
                   class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
                   value="{{ isset($enrollment->lastSchoolYearAttended) ? $enrollment->lastSchoolYearAttended : old('lastSchoolYearAttended') }}"
                 >
@@ -237,7 +238,8 @@
               <button 
               class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" 
               type="button" 
-              id="backBtn">
+              id="backBtn"
+              >
               Back
               </button>
 
