@@ -1243,6 +1243,7 @@
               <input type="text" id="table-search-users" class="sm:w-max-64 block ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search for users">
             </div>
           </div> <!-- End of Search bar -->
+          
 
         </div> <!-- End of Table functions - search and sort -->
         <!-- Table functions - add user -->
@@ -1251,7 +1252,7 @@
             <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
               <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
             </svg>
-            Add User
+            Add Teacher Account
           </button>
         </div> <!-- End of Table functions - add user -->
       </div> <!-- End of Table functions - all -->
@@ -1263,12 +1264,6 @@
 
           <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="p-4">
-                <div class="flex items-center">
-                  <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                </div>
-              </th>
               <th scope="col" class="px-6 py-3">
                   FULL NAME
               </th>
@@ -1282,9 +1277,6 @@
                   STATUS
               </th>
               <th scope="col" class="px-6 py-3">
-                  ROLE
-              </th>
-              <th scope="col" class="px-6 py-3">
                   DATE CREATED
               </th>
               <th scope="col" class="px-6 py-3">
@@ -1295,12 +1287,6 @@
 
           <tbody>
             <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
-              <td class="w-4 p-4">
-                <div class="flex items-center">
-                  <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                </div>
-              </td>
               <td class="px-6 py-4">
                 Last Name, First Name Middle Name
               </td>
@@ -1314,23 +1300,15 @@
                 Active
               </td>
               <td class="px-6 py-4">
-                Student
-              </td>
-              <td class="px-6 py-4">
                 August 23, 2023
               </td>
               <td class="px-6 py-4">
                 <!-- Modal toggle -->
-                <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <a href="#" type="button" data-modal-target="archiveUserModal" data-modal-show="archiveUserModal" class="font-medium text-gray-600 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
             <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
-              <td class="w-4 p-4">
-                <div class="flex items-center">
-                  <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                </div>
-              </td>
               <td class="px-6 py-4">
                 Reyes, Alex Pajarellano
               </td>
@@ -1344,14 +1322,12 @@
                 Active
               </td>
               <td class="px-6 py-4">
-                Student
-              </td>
-              <td class="px-6 py-4">
                 August 23, 2023
               </td>
               <td class="px-6 py-4">
                 <!-- Modal toggle -->
-                <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <a href="#" type="button" data-modal-target="archiveUserModal" data-modal-show="archiveUserModal" class="font-medium text-gray-600 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
           </tbody>
