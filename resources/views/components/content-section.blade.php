@@ -1123,12 +1123,39 @@
 
         <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
 
-        <div class=" flex min-w-screen flex-col gap-6 items-center self-stretch my-10 ">
+        <div class=" flex min-w-screen flex-col gap-6 items-center mt-6">
 
-            <div class="flex flex-col mx-11 p-4 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish ">
+            <!-- Document Requests Main Body -->
+            <div id="mainBody" class="flex flex-col mx-40 p-4 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish hidden">
 
                 <!-- My Requests Button Section -->
-                <div class="w-full flex flex-row justify-between mb-5 gap-20">
+                <div class="w-full flex flex-col items-end mb-5 gap-1">
+
+                    <button
+                    id="myRequestBtn" 
+                    class="block focus:outline-none font-mulish text-white bg-yellow-500 font-semibold text-xl px-12  py-3 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 w-fit" 
+                    type="button">
+                    My Requests
+                    </button>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            // Get references to the button and the div elements
+                            const myRequestBtn = document.getElementById("myRequestBtn");
+                            const myRequestBody = document.getElementById("myRequestBody");
+                            const mainBody = document.getElementById("mainBody");
+
+                            // Add a click event listener to the button
+                            myRequestBtn.addEventListener("click", function () {
+                            // Show the myRequestBody div
+                            myRequestBody.style.display = "flex";
+
+                            // Hide the mainBody div
+                            mainBody.style.display = "none";
+                            });
+                        });
+                    </script>
+
 
                     <div class="w-full flex items-start p-6 text-md font-mulish text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
                         <svg 
@@ -1167,137 +1194,10 @@
 
                     </div>
 
-                    <!-- Modal toggle -->
-                    <button data-modal-target="default-modal" data-modal-toggle="default-modal" class=" block focus:outline-none font-mulish text-white bg-green-500 font-semibold text-lg px-9 py-2.5 
-                    mb-2  rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 w-[20%] h-11" type="button">
-                    My Requests
-                    </button>
-
-                    <!-- Main modal -->
-                    <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                        <div class="relative p-4 w-full max-w-3xl max-h-full">
-                            <!-- Modal content -->
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                <!-- Modal header -->
-                                <div class="flex items-center justify-between p-4 md:p-2 border-b rounded-t dark:border-gray-600 bg-green-500">
-                                    <h3 class="text-xl font-semibold font-mulish text-white dark:text-white">
-                                        My Requests
-                                    </h3>
-                                    <button type="button" class="text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
-                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                        </svg>
-                                        <span class="sr-only">Close modal</span>
-                                    </button>
-                                </div>
-                                <!-- Modal body -->
-                                <!-- backend Side: Need to connect this table which consists of (Lists of requests/Status of requests (pending/approved/disapproved)) to update the student about their requests -->
-                                <div class="relative overflow-x-auto sm:rounded-lg m-4 pb-4">
-
-                                    <table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-200">
-                                        <thead class="text-md text-white uppercase bg-green-500 dark:bg-gray-700 dark:text-gray-400">
-                                            <tr>
-                                                <th scope="col" class="px-6 py-4">
-                                                    Lists
-                                                </th>
-                                                <th scope="col" class="px-6 py-4">
-                                                    Status
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="bg-green-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default1">
-                                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    X
-                                                </th>
-                                                <td class="px-6 py-4">
-                                                    X
-                                                </td>
-                                            </tr>
-
-                                            <div data-popover id="popover-default1" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2">
-                                                    <p>h-mm AM/PM mm-dd-yyyy</p>
-                                                </div>
-                                                <div data-popper-arrow></div>
-                                            </div>
-
-                                            <tr class="bg-green-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default2">
-                                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    X
-                                                </th>
-                                                <td class="px-6 py-4">
-                                                    X
-                                                </td>
-                                            </tr>
-
-                                            <div data-popover id="popover-default2" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2" >
-                                                    <p>h-mm AM/PM mm-dd-yyyy</p>
-                                                </div>
-                                                <div data-popper-arrow></div>
-                                            </div>
-
-                                            <tr class="bg-green-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default3">
-                                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
-                                                    X
-                                                </th>
-                                                <td class="px-6 py-4">
-                                                    X
-                                                </td>
-                                            </tr>
-
-                                            <div data-popover id="popover-default3" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2">
-                                                    <p>h-mm AM/PM mm-dd-yyyy</p>
-                                                </div>
-                                                <div data-popper-arrow></div>
-                                            </div>
-
-                                            <tr class="bg-green-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default4">
-                                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
-                                                    X
-                                                </th>
-                                                <td class="px-6 py-4">
-                                                    X
-                                                </td>
-                                            </tr>
-
-                                            <div data-popover id="popover-default4" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2">
-                                                    <p>h-mm AM/PM mm-dd-yyyy</p>
-                                                </div>
-                                                <div data-popper-arrow></div>
-                                            </div>
-
-                                            <tr class="bg-green-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default5">
-                                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    X
-                                                </th>
-                                                <td class="px-6 py-4">
-                                                    X
-                                                </td>
-                                            </tr>
-
-                                            <div data-popover id="popover-default5" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2">
-                                                    <p>h-mm AM/PM mm-dd-yyyy</p>
-                                                </div>
-                                                <div data-popper-arrow></div>
-                                            </div>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
                 <!-- Document Section Body -->
-                <div class="w-full flex flex-row justify-between mb-5 gap-7">
+                <div class="w-full flex flex-col justify-between gap-1">
 
                     <div class="w-full flex flex-col items-start justify-center pl-4 p-4 mb-4 text-md font-mulish text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800 ">  
                         <h2 class="mb-2 text-2xl font-semibold dark:text-white self-stretch text-center">Lists of Document</h2>
@@ -1322,7 +1222,10 @@
                     </div>
 
                     <!-- Modal toggle -->
-                    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="focus:outline-none font-mulish text-white bg-green-500 font-semibold text-lg px-7 py-2.5 mr-2 mb-2 rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 h-11 w-[25%]" type="button">
+                    <button 
+                    data-modal-target="crud-modal" 
+                    data-modal-toggle="crud-modal" 
+                    class="focus:outline-none font-mulish text-white bg-green-500 font-semibold text-xl px-7 py-3 rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
                     Request Document
                     </button>
 
@@ -1415,6 +1318,143 @@
 
                     </div> 
                 
+                </div>
+
+            </div>
+
+            <!-- My Request body section -->
+            <div id="myRequestBody" class="flex mx-[100vw] p-5 flex-col w-full h-auto text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 font-mulish ">
+
+                <!-- My Requests Body Section -->
+                <div class="w-full flex flex-col items-center justify-center py-5">
+
+                    <div class="justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+
+                        <div class="relative overflow-x-auto sm:rounded-lg my-8">
+
+                            <table class="w-full text-sm text-left rtl:text-right text-green-900 dark:text-gray-400">
+                                <thead class="text-lg text-white bg-green-500 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-5">
+                                            Lists
+                                        </th>
+                                        <th scope="col" class="px-6 py-5">
+                                            Status
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-green-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default1" >
+                                        <th scope="row" class="px-6 py-5 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            X
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            X
+                                        </td>
+                                    </tr>
+
+                                    <div data-popover id="popover-default1" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                        <div class="px-3 py-2">
+                                            <p>h-mm AM/PM mm-dd-yyyy</p>
+                                        </div>
+                                        <div data-popper-arrow></div>
+                                    </div>
+
+                                    <tr class="bg-green-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default2">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            X
+                                        </th>
+                                        <td class="px-6 py-5">
+                                            X
+                                        </td>
+                                    </tr>
+
+                                    <div data-popover id="popover-default2" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                        <div class="px-3 py-2" >
+                                            <p>h-mm AM/PM mm-dd-yyyy</p>
+                                        </div>
+                                        <div data-popper-arrow></div>
+                                    </div>
+
+                                    <tr class="bg-green-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default3">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+                                            X
+                                        </th>
+                                        <td class="px-6 py-5">
+                                            X
+                                        </td>
+                                    </tr>
+
+                                    <div data-popover id="popover-default3" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                        <div class="px-3 py-2">
+                                            <p>h-mm AM/PM mm-dd-yyyy</p>
+                                        </div>
+                                        <div data-popper-arrow></div>
+                                    </div>
+
+                                    <tr class="bg-green-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default4">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+                                            X
+                                        </th>
+                                        <td class="px-6 py-5">
+                                            X
+                                        </td>
+                                    </tr>
+
+                                    <div data-popover id="popover-default4" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                        <div class="px-3 py-2">
+                                            <p>h-mm AM/PM mm-dd-yyyy</p>
+                                        </div>
+                                        <div data-popper-arrow></div>
+                                    </div>
+
+                                    <tr class="bg-green-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default5">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            X
+                                        </th>
+                                        <td class="px-6 py-5">
+                                            X
+                                        </td>
+                                    </tr>
+
+                                    <div data-popover id="popover-default5" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                        <div class="px-3 py-2">
+                                            <p>h-mm AM/PM mm-dd-yyyy</p>
+                                        </div>
+                                        <div data-popper-arrow></div>
+                                    </div>
+
+                                </tbody>
+                            </table>
+                        </div>
+                            
+                    </div>
+
+                    <button
+                    id="myRequestBckBtn" 
+                    class="block focus:outline-none font-mulish text-green-600 font-bold border border-green-500 text-xl px-12 py-3 rounded-xl hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 w-fit" 
+                    type="button">
+                    <
+                    </button>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            // Get references to the button and the div elements
+                            const myRequestBckBtn = document.getElementById("myRequestBckBtn");
+                            const myRequestBody = document.getElementById("myRequestBody");
+                            const mainBody = document.getElementById("mainBody");
+
+                            // Add a click event listener to the button
+                            myRequestBckBtn.addEventListener("click", function () {
+                            // Show the myRequestBody div
+                            mainBody.style.display = "flex";
+
+                            // Hide the mainBody div
+                            myRequestBody.style.display = "none";
+                            });
+                        });
+                    </script>
+
                 </div>
 
             </div>
