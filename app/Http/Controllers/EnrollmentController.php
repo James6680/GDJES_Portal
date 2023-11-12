@@ -175,8 +175,9 @@ class EnrollmentController extends Controller
             "guardian_phone" => 'required', 
             "email_ng_guardian" => 'required',
             "fourps" => 'required',
-            "fourps_id" => 'required',
+            "fourps_id" => 'nullable',
         ]);
+
         if(empty($request->session()->get('enrollment'))){
             $enrollment = new enrollment();
             $enrollment->fill($validatedData);
@@ -190,14 +191,25 @@ class EnrollmentController extends Controller
     }
 
     public function getEnrollment4(Request $request)
-    {
+    {   
         $enrollment = $request->session()->get('enrollment');
-        return view('enrollment.StudentportalRegistrationPage5',compact('enrollment'));
+        $pageSpecificField = null;
+        try{
+            $pageSpecificField = $request->session()->get('enrollment')->last_name;
+        }catch(ErrorException $e){
+        }
+        if(!is_null($pageSpecificField)){    
+            return view('enrollment.StudentportalRegistrationPage5',compact('enrollment'));
+        }else{
+            return redirect()->route('enrollment.StudentportalRegistrationPage1');
+        }
     }
 
     public function postEnrollment4(Request $request)
     {
         $validatedData = $request->validate([
+            "learning_info" => 'required',
+            "distance_learning" => 'required',    
         ]);
         if(empty($request->session()->get('enrollment'))){
             $enrollment = new enrollment();
@@ -208,10 +220,29 @@ class EnrollmentController extends Controller
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }
+
+
+    //////////////////process of ENROLLMENT////////////////////////////////
+    // $student_table = 
+
+
+
+
+
+
         return redirect()->route('enrollment.StudentportalRegistrationCompletedPage');
     }
     public function enrollmentComplete(Request $request)
     {
-        return view('enrollment.StudentportalRegistrationCompletedPage');
+        $pageSpecificField = null;
+        try{
+            $pageSpecificField = $request->session()->get('enrollment')->distance_learning;
+        }catch(ErrorException $e){
+        }
+        if(!is_null($pageSpecificField)){    
+            return view('enrollment.StudentportalRegistrationCompletedPage');
+        }else{
+            return redirect()->route('enrollment.StudentportalRegistrationPage1');
+        }
     }
 }

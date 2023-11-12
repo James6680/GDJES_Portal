@@ -55,8 +55,10 @@
       <!-- Student Registration Form -->
       <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12"
             method="post"
+            id="enrollment-page-5"
             action="{{ route('enrollment.StudentportalRegistrationPage5.post')}}">
-
+    @csrf
+    @method('post')
         <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-extrabold font-heading-2 text-main-green-secondary-700 text-center font-heading-2-bold">Student Registration for First-time Enrollees</h1>
 
         <div class="self-stretch flex flex-col items-center justify-start gap-[0.5rem]">

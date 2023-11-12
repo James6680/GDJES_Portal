@@ -25,7 +25,9 @@
 </head>
 
 <body class="m-0 p-0">
-
+  <script>
+    console.log('{{$enrollment}}');
+  </script>
   <!-- Form Background  -->
   <div class="relative w-full h-full overflow-hidden flex flex-row items-center justify-center py-[5.5rem] px-[15rem] bg-cover bg-repeat-y bg-topz lg:flex-row lg:gap-[0rem] lg:items-center lg:justify-center lg:py-[11.25rem] lg:px-[9.38rem] lg:box-border md:flex-row md:gap-[0rem] md:items-center md:justify-center md:py-[8.75rem] md:px-[4.38rem] md:box-border sm:flex-row sm:gap-[0rem] sm:items-center sm:justify-center sm:py-[14.38rem] sm:px-[3.13rem] sm:box-border"
   style="background-image: url('./assets/bg_page.png');">
@@ -126,9 +128,9 @@
                   required 
                   type="text" 
                   id="lastName_ng_ama" 
-                  name="last_name" 
+                  name="lastName_ng_ama" 
                   class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
-                  value="{{ isset($enrollment->last_name) ? $enrollment->last_name : old('last_name') }}"
+                  value="{{ isset($enrollment->lastName_ng_ama) ? $enrollment->lastName_ng_ama : old('lastName_ng_ama') }}"
               ></div>
 
               <span   
@@ -157,9 +159,9 @@
                   required 
                   type="text" 
                   id="firstName_ng_ama" 
-                  name="first_name" 
+                  name="firstName_ng_ama" 
                   class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
-                  value="{{ isset($enrollment->first_name) ? $enrollment->first_name : old('first_name') }}"
+                  value="{{ isset($enrollment->firstName_ng_ama) ? $enrollment->firstName_ng_ama : old('firstName_ng_ama') }}"
                 ></div>
 
               <span   
@@ -188,9 +190,9 @@
                   required 
                   type="text" 
                   id="middleName_ng_ama" 
-                  name="middle_name" 
+                  name="middleName_ng_ama" 
                   class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
-                  value="{{ isset($enrollment->middle_name) ? $enrollment->middle_name : old('middle_name') }}"
+                  value="{{ isset($enrollment->middleName_ng_ama) ? $enrollment->middleName_ng_ama : old('middleName_ng_ama') }}"
                 ></div>
 
               <span   
@@ -281,9 +283,9 @@
               <div class="mb-1">
                 <input required type="email" 
                 id="email_ng_ama" 
-                name="email" 
+                name="email_ng_ama" 
                 class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
-                value="{{ isset($enrollment->email) ? $enrollment->email : old('email') }}"
+                value="{{ isset($enrollment->email_ng_ama) ? $enrollment->email_ng_ama : old('email_ng_ama') }}"
                 ></div>
 
               <span   
@@ -313,9 +315,9 @@
                   required 
                   type="text" 
                   id="lastName_ng_ina"  
-                  name="last_name" 
+                  name="lastName_ng_ina" 
                   class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
-                  value="{{ isset($enrollment->last_name) ? $enrollment->last_name : old('last_name') }}"
+                  value="{{ isset($enrollment->lastName_ng_ina) ? $enrollment->lastName_ng_ina : old('lastName_ng_ina') }}"
                 ></div>
 
               <span   
@@ -344,9 +346,9 @@
                   required 
                   type="text" 
                   id="firstName_ng_ina" 
-                  name="first_name" 
+                  name="firstName_ng_ina" 
                   class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
-                  value="{{ isset($enrollment->first_name) ? $enrollment->first_name : old('first_name') }}"
+                  value="{{ isset($enrollment->firstName_ng_ina) ? $enrollment->firstName_ng_ina : old('firstName_ng_ina') }}"
                 ></div>
 
               <span   
@@ -375,9 +377,9 @@
                   required 
                   type="text" 
                   id="middleName_ng_ina" 
-                  name="middle_name" 
+                  name="middleName_ng_ina" 
                   class=" text-[.90rem] block w-full p-.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
-                  value="{{ isset($enrollment->middle_name) ? $enrollment->middle_name : old('middle_name') }}"
+                  value="{{ isset($enrollment->middleName_ng_ina) ? $enrollment->middleName_ng_ina : old('middleName_ng_ina') }}"
                 ></div>
 
               <span   
@@ -403,14 +405,14 @@
               <!-- Extension Name -->
               <select id="extensionName_ng_ina" name="extensionName_ng_ina" class="bg-main-background border border-gray-300 text-gray-900 text-[1rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full">
                 <option value=""></option>
-                <option value="0">None</option>
-                <option value="1">Jr</option>
-                <option value="2">I</option>
-                <option value="3">II</option>
-                <option value="4">III</option>
-                <option value="5">IV</option>
-                <option value="6">V</option>
-                <option value="7">VI</option>
+                <option value="0" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 0) selected @endif>None</option>
+                <option value="1" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 1) selected @endif>Jr</option>
+                <option value="2" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 2) selected @endif>I</option>
+                <option value="3" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 3) selected @endif>II</option>
+                <option value="4" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 4) selected @endif>III</option>
+                <option value="5" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 5) selected @endif>IV</option>
+                <option value="6" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 6) selected @endif>V</option>
+                <option value="7" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 7) selected @endif>VI</option>
               </select>
 
               <span   
@@ -465,9 +467,9 @@
               <div class="mb-1">
                 <input required type="email" 
                   id="email_ng_ina" 
-                  name="email" 
+                  name="email_ng_ina" 
                   class="text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
-                  value="{{ isset($enrollment->email) ? $enrollment->email : old('email') }}"
+                  value="{{ isset($enrollment->email_ng_ina) ? $enrollment->email_ng_ina : old('email_ng_ina') }}"
                   ></div>
 
               <span   
@@ -780,10 +782,5 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>  
-  <script>
-    $(document).ready(function(e) {
-        e.preventDefault();
-    });
-  </script>
 </body>
 </html>

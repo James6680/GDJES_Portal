@@ -7,7 +7,7 @@ var navigateButton = document.getElementById("backBtn");
 // Add click event listeners to the buttons
 navigateButton.addEventListener("click", function() {
   // Set the new URL to navigate to for the "Back" button
-  var newURL = "/StudentportalRegistrationPage4"; // Replace with the desired URL
+  var newURL = "/student-registration-4"; // Replace with the desired URL
 
   // Navigate to the new URL
   window.location.href = newURL;
@@ -50,7 +50,7 @@ function submitForm() {
 
   // If both requirements are met, submit the form and redirect
   if (isCheckboxChecked && isRadioButtonSelected) {
-    window.location.href = "/StudentportalRegistrationCompletedPage"; // Redirect to the next page
+    document.getElementById("enrollment-page-5").submit() // Redirect to the next page
   } 
   else {
     if (!isCheckboxChecked) {
@@ -67,10 +67,9 @@ function submitForm() {
       hideDistanceError(); // Hide the radio button error message
     }
   }
-
+}
 // Add click event listener to the submit button
 submitButton.addEventListener("click", function (e) {
-  e.preventDefault(); // Prevent the default form submission
   submitForm();
 });
 
@@ -82,5 +81,3 @@ learningCheckboxes.forEach(function (checkbox) {
 distanceRadioButtons.forEach(function (radio) {
   radio.addEventListener("change", hideDistanceError);
 });
-
-}
