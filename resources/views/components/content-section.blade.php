@@ -2,13 +2,13 @@
 <div>   
     <!-- Announcement Section -->
     @if (request()->is('student.announcements') )
-    <div class="md:pl-64 w-full min-h-full sm:py-8 sm:pb-[-10rem] sm:pr-[-10rem] py-7 sm:px-10 px-6 bg-yellow-50">
+    <div class="md:pl-64 w-full min-h-full sm:py-12 sm:pb-9 sm:pr-[-10rem] py-7 sm:px-16 px-6 bg-yellow-50">
 
-        <section class="min-w-full min-h-full relative grid grid-cols-1 sm:gap-6 gap-5 marker: md:ml-5 items-center">
+        <section class="min-w-full min-h-full relative grid grid-cols-1 sm:gap-7 gap-5 marker: md:ml-8  items-center">
 
             <!-- Announcement Main Container -->
             <!-- Backend side: need to connect para magreflect ung icrcreate na announcement ng admin -->
-            <div class="rounded-md w-auto h-auto relative container lg:p-9 p-6 grid grid-cols-1 bg-green-500">
+            <div class="rounded-md w-auto h-auto relative container lg:p-9 p-6 grid grid-cols-1 bg-green-500 shadow shadow-green-500">
 
                 <ul class="m-o p-0 text-white">
 
@@ -43,7 +43,7 @@
             </div>
 
             <!-- Contact Us Main Container -->
-            <div class="rounded-md h-auto w-full container lg:p-9 p-6 grid grid-cols-1 bg-white">
+            <div class="rounded-md h-auto w-full container lg:p-9 p-6 grid grid-cols-1 bg-white shadow shadow-brown-100">
 
                 <h2 class="w-full flex font-mulish text-2xl sm:text-3xl text-green-900 font-bold">
                 Contact us
@@ -81,13 +81,13 @@
 
     @elseif (request()->is('student.grades') )
     <!-- Grade Viewing Section -->
-    <div class="md:pl-64 w-full min-h-full bg-yellow-50 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
+    <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 sm:pb-9 md:px-16 px-12">
 
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5 shadow shadow-brown-100">
+        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white lg:ml-8 ml-6 shadow shadow-brown-100">
 
-            <h2 class="text-3xl -mt-5 mb-1 -ml-6 text-green-900/60">Grades</h2>
+            <h2 class="lg:text-3xl text-2xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Grades</h2>
 
-            <div class="border-b p-[1px] bg-gray-200  mx-[-2.3rem]"></div>
+            <div class="border-b p-[1px] bg-gray-200  lg:mx-[-2.3rem] mx-[-1.5rem]"></div>
 
             <div class="grid w-full grid-cols-1 gap-6 ">
 
@@ -107,13 +107,13 @@
 
                     <div>
                         
-                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full xl:text-sm md:text-[13px] text-xs md:py-3 leading-none items-center px-7 py-0 -mb-3" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full lg:text-base text-sm lg:py-3 py-2.5 leading-none items-center lg:px-7 px-4 -mb-3" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> 
                         </svg>
                         </button>
 
                         <!-- Dropdown menu -->
-                        <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700">
+                        <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow lg:w-40 w-32 dark:bg-gray-700">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 font-mulish" aria-labelledby="dropdownHoverButton">
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
@@ -150,13 +150,13 @@
 
                 <!-- Learning Progress and Achievement Section -->
                 <!-- Backend side: Need to connect this table which consists of (Subjects/Teacher/1-4 grade/Final grade/ remarks)  -->
-                <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
+                <div class="relative overflow-x-auto rounded">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal ">
 
-                        <thead class=" text-white font-normal font-mulish items-start justify-start lg:text-sm text-[12px] leading-tight uppercase">
+                        <thead class=" text-white font-normal font-mulish items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
                             <tr>
-                                <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
+                                <th scope="col" class="py-5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
                                     Subjects
                                 </th>
                                 <th scope="col" class="md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
@@ -185,8 +185,8 @@
 
                         <tbody>
 
-                            <tr class="bg-white text-white border-b lg:text-sm md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class="  font-normal font-mulish text-white whitespace-nowrap dark:text-white border-collapse border-r border-green-600 bg-green-500 lg:py-8 sm:py-5 py-5">
+                            <tr class="bg-white text-white border-b lg:text-sm text-[10px] leading-tight">
+                                <th scope="row" class=" font-normal font-mulish text-white whitespace-nowrap dark:text-white border-collapse border-r border-green-600 bg-green-500 py-6">
 
                                 </th>
                                 <td class=" border-collapse border-r border-green-600 bg-green-500">
@@ -214,7 +214,7 @@
 
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
 
-                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap border-collapse border border-green-600 lg:py-6 sm:py-3 py-3 mt-3 text-start pl-4">
+                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap border-collapse border border-green-600 py-4 mt-3 text-start pl-4">
                                     Filipino
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-4">
@@ -240,7 +240,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
                                     English
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-4">
@@ -266,7 +266,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
                                     Mathematics
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-4">
@@ -292,7 +292,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
                                     Makabansa
                                 </th>
                                 <td class="border-collapse border border-green-600 text-start pl-4">
@@ -318,7 +318,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
                                     GMRC
                                 </th>
                                 <td class="border-collapse border border-green-600 text-start pl-4">
@@ -344,7 +344,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-7 sm:py-5 py-5">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-6">
                                     
                                 </th>
                                 <td class=" border-collapse border border-green-600">
@@ -379,13 +379,13 @@
 
                 <!-- Learner's Oberserved Values -->
                 <!-- Backend Side: Need to connect this table which consists of (Core Values/Behaviour Statement/1-4 mark (SO/AO/--))) -->
-                <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
+                <div class="relative overflow-x-auto rounded">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight uppercase">
+                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
                             <tr>
-                                <th scope="col" class="w-[25%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
+                                <th scope="col" class="w-[25%] py-4 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
                                     Core Values
                                 </th>
                                 <th scope="col" class="w-[43%] md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
@@ -409,7 +409,7 @@
                         <tbody>
 
                             <tr class="bg-white text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class="  font-normal font-mulish text-white whitespace-nowrap dark:text-white border-collapse border-r border-green-600 bg-green-500  lg:py-8 sm:py-5 py-5">
+                                <th scope="row" class="  font-normal font-mulish text-white whitespace-nowrap dark:text-white border-collapse border-r border-green-600 bg-green-500 py-6">
                                 </th>
                                 <td class=" border-collapse border-r  border-green-600 bg-green-500">
 
@@ -428,7 +428,7 @@
                             </tr>
 
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap border-collapse border border-green-600 lg:py-6 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap border-collapse border border-green-600 py-4 text-start pl-4">
                                     x
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-4">
@@ -448,7 +448,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
                                     x
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-4">
@@ -468,7 +468,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
                                     x
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-4">
@@ -488,7 +488,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
                                 x
                                 </th>
                                 <td class="border-collapse border border-green-600 text-start pl-4">
@@ -508,7 +508,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
                                     x
                                 </th>
                                 <td class="border-collapse border border-green-600 text-start pl-4">
@@ -528,7 +528,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-7 sm:py-5 py-5 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
                                     x
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-4">
@@ -549,7 +549,7 @@
 
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-7 sm:py-5 py-5 text-start pl-4">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
                                     x
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-3">
@@ -579,13 +579,13 @@
 
                 <!-- Student's Attendance Section -->
                 <!-- Backend Side: Need to connect this table which consists of (Col=Attendance/12 months: Row=Days of school/ Days of present/ Days of absent) -->
-                <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
+                <div class="relative overflow-x-auto rounded">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight uppercase">
+                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
                             <tr>
-                                <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600  bg-green-500">
+                                <th scope="col" class="py-4 md:px-0 px-4 border-collapse border border-green-600  bg-green-500">
                                     Attendance
                                 </th>
                                 <th scope="col" class="md:px-0 px-4  border-collapse border border-green-600 bg-green-500">
@@ -632,7 +632,7 @@
 
                         <tbody>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4">
                                     Days of School
                                 </th>
                                 <td class=" border-collapse border border-green-600">
@@ -676,7 +676,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4">
                                     Days of Present
                                 </th>
                                 <td class=" border-collapse border border-green-600">
@@ -720,7 +720,7 @@
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-3 py-3">
+                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4">
                                     Days of Absent
                                 </th>
                                 <td class=" border-collapse border border-green-600">
@@ -773,13 +773,13 @@
                 
                 <!-- MOL Section -->
                 <!-- Backend side: Need to connect this table which consists of (Type of modality/1 to 4 quarter) -->
-                <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
+                <div class="relative overflow-x-auto rounded">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight uppercase">
+                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
                             <tr>
-                                <th scope="col" class="w-[28%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500 ">
+                                <th scope="col" class="w-[28%] py-4 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500 ">
                                     Modality
                                 </th>
                                 <th scope="col" class=" w-[18%] md:px-0 px-4  border-collapse border-r border-green-600 bg-green-500">
@@ -824,17 +824,17 @@
 
     @elseif (request()->is('student.class-schedule') )
     <!-- Class Schedule Section -->
-    <div class="md:pl-64 w-full min-h-full bg-yellow-50 sm:py-8 sm:pb-[-10rem] py-7 sm:px-10 px-6 sm:pr-[-10rem] mb-0">
+    <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
         
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5 shadow shadow-brown-100">
+        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-100">
 
-            <h2 class="text-3xl -mt-5 mb-1 lg:-ml-6 md:-ml-2 -ml-1 text-green-900/60">Class Schedule</h2>
+            <h2 class="lg:text-3xl text-2xl -mt-5 mb-1 lg:-ml-6 -ml-2 text-green-900/60">Class Schedule</h2>
 
-            <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
+            <div class="border-b p-[1px] bg-gray-200 lg:mx-[-2.3rem] mx-[-1.5rem]"></div>
 
-            <div class="grid w-full grid-cols-1 gap-6 mt-8">
+            <div class="grid w-full grid-cols-1 lg:gap-6 gap-2 mt-8">
 
-                <div id="alert-2" class="flex items-start lg:p-4 lg:py-8 p-5 mb-4 text-yellow-600 rounded-md bg-yellow-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <div id="alert-2" class="flex items-start lg:p-4 lg:py-8 p-5 mb-4 text-brown-600 rounded-md bg-brown-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 
                     <svg class="flex-shrink-0 lg:w-6 lg:h-6 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         
@@ -844,142 +844,100 @@
                     
                     <span class="sr-only">Info</span>
                     
-                    <div class="ml-3 lg:text-base text-sm font-medium font-mulish text-justify pr-2.5 leading-5 ">
+                    <div class="ml-3 lg:text-base text-xs font-medium font-mulish text-justify pr-2.5 leading-5 ">
                         Uh-oh! It seems there might be a missing piece in your class schedule puzzle. As we approach the opening day, it's vital to have everything in place. If your schedule is still incomplete tomorrow, kindly contact the school management. Your education is important, and we want to ensure a seamless start. Reach out and let's get this sorted out together!
                     </div>
                     
                 </div>    
 
                 <!-- Backend Side: Need to configure para magreflect ung student name and lrn no. in this part per student -->
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold -mt-6 -mb-3 text-lg ">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold text-base ">
                     Dela Cruz, Juan Reyes ( xxxx-xxxx-xxxx )
                 </h2>
 
-                <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
+                <div class="relative overflow-x-auto rounded">
 
-                    <!-- Class Schedule Section -->
-                    <!-- Backend side: Need to connect this table which consists of (Subject/Teacher/Time sched) to know their class sched per student -->
-                    <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
+                    <table class="w-full lg:text-base text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-200">
 
-                        <thead class="uppercase">
-
-                            <tr class="bg-green-500 text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base md:text-[10px] text-[10px] leading-tight text-start">
-
-                                <th scope="col" class="w-[5%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600 bg-green-500">
-                                    #
-                                </th>
-                                <th scope="col" class="w-[25%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
+                        <thead class="lg:text-base md:text-sm text-xs text-white uppercase bg-green-500">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
                                     Subject
                                 </th>
-                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
+                                <th scope="col" class="px-6 py-3">
                                     Teacher
                                 </th>
-                                <th scope="col" class="w-[35%] border-collapse border border-green-600 bg-green-500 text-start md:pl-4 pl-2">
+                                <th scope="col" class="px-6 py-3">
                                     Time Schedule
                                 </th>
                             </tr>
-                            
                         </thead>
-
                         <tbody>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                    1
-                                </th>
-                                
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
+                                <th scope="row" class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
                                     Filipino
-                                </td>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
+                                </th>
+                                <td class="px-6 py-4">
                                     Juan Dela Cruz
                                 </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
+                                <td class="px-6 py-4">
                                     12:30 PM - 3:00 PM
                                 </td>
+
                             </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-
-                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                    x
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
+                                    X
                                 </th>
-                                <td class=" border-collapse border border-green-600  md:pl-4 pl-2">
-                                    x
+                                <td class="px-6 py-4">
+                                    X
                                 </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    x
+                                <td class="px-6 py-4">
+                                    X
                                 </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    x   
-                                </td>
-                            </tr>
 
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class="  font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
-                                </th>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                    x
-                                </td>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x   
-                                </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x     
-                                </td>
                             </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
+                            <tr class="bg-white border-b dark:bg-gray-800">
+                                <th scope="row" class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
+                                    X
                                 </th>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
+                                <td class="px-6 py-4">
+                                    X
                                 </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x   
+                                <td class="px-6 py-4">
+                                    X
                                 </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
-                                </td>
+   
                             </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
+                            <tr class="bg-white border-b dark:bg-gray-800">
+                                <th scope="row" class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
+                                    X
                                 </th>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
+                                <td class="px-6 py-4">
+                                    X
                                 </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x 
+                                <td class="px-6 py-4">
+                                    X
                                 </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x    
-                                </td>
+   
                             </tr>
-
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base  md:text-[10px] text-[10px] leading-tight text-start">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 lg:py-5 sm:py-5 py-2.5">
-                                x 
+                            <tr class="bg-white border-b dark:bg-gray-800">
+                                <th scope="row" class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
+                                    X
                                 </th>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x  
+                                <td class="px-6 py-4">
+                                    X
                                 </td>
-                                <td class="border-collapse border border-green-600 md:pl-4 pl-2">
-                                x  
+                                <td class="px-6 py-4">
+                                    X
                                 </td>
-                                <td class=" border-collapse border border-green-600 md:pl-4 pl-2">
-                                x  
-                                </td>
+   
                             </tr>
-                            
                         </tbody>
                     </table>
-                    
                 </div>
+
+
             </div>
 
             
@@ -988,9 +946,9 @@
 
     @elseif (request()->is('student.enrollment-status') )
     <!-- Student Enrollment Status Section -->
-    <div class=" md:pl-64 min-h-full bg-yellow-50 sm:py-8 py-7 sm:pb-[20px] sm:px-11 px-6">
+    <div class="md:pl-64 pl-0 min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
 
-        <section class="self-stretch container lg:p-8 p-7 px-8 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5 shadow shadow-brown-200">
+        <section class="self-stretch container lg:p-8 p-7 px-8 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
 
             <h2 class="lg:text-3xl text-xl -mt-5 mb-1 lg:-ml-3 -ml-6 text-green-900/60">Enrollment Status</h2>
 
@@ -1029,7 +987,7 @@
                     <div class="w-full flex justify-end">
                         <button 
                             type="button" 
-                            class="focus:outline-none font-mulish text-white border-2 bg-brown-500 font-semibold rounded-lg lg:text-lg text-base px-5 py-2.5 cursor-not-allowed shadow-transparent" 
+                            class="focus:outline-none font-mulish text-white border-2 bg-brown-500 font-semibold rounded-lg lg:text-lg text-base xl:w-[20%] lg:w-[40%] w-full py-2.5 cursor-not-allowed shadow-transparent" 
                             disabled>
                             Temporary Enrolled
                         </button>
@@ -1108,9 +1066,9 @@
 
     @elseif (request()->is('student.request-documents') )
     <!-- Student Requests Document Section -->
-    <div class="md:pl-64 w-full min-h-full bg-yellow-50 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
+    <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12 ">
 
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
+        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
 
         <h2 class="lg:text-3xl text-2xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Document Requests</h2>
 
@@ -1126,7 +1084,7 @@
 
                     <button
                     id="myRequestBtn" 
-                    class="block focus:outline-none font-mulish text-white bg-brown-500 font-semibold lg:text-lg text-sm lg:px-12 px-10 lg:py-2.5 py-2.5 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 w-fit" 
+                    class="block focus:outline-none font-mulish text-white bg-brown-500 font-semibold lg:text-lg text-sm xl:w-[25%] lg:w-[40%] w-full lg:py-2.5 py-2.5 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 " 
                     type="button">
                     My Requests
                     </button>
@@ -1323,22 +1281,22 @@
 
                     <div class="justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
 
-                        <div class="relative overflow-x-auto rounded-lg my-8">
+                        <div class="relative overflow-x-auto rounded my-8">
 
                             <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-green-900 dark:text-gray-400">
                                 <thead class="lg:text-lg text-sm text-white bg-green-500 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th scope="col" class="px-6 py-5">
+                                        <th scope="col" class="px-6 py-4">
                                             Lists
                                         </th>
-                                        <th scope="col" class="px-6 py-5">
+                                        <th scope="col" class="px-6 py-4">
                                             Status
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="bg-green-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default1" >
-                                        <th scope="row" class="px-6 py-5 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default1" >
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             X
                                         </th>
                                         <td class="px-6 py-4">
@@ -1353,7 +1311,7 @@
                                         <div data-popper-arrow></div>
                                     </div>
 
-                                    <tr class="bg-green-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default2">
+                                    <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default2">
                                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             X
                                         </th>
@@ -1369,7 +1327,7 @@
                                         <div data-popper-arrow></div>
                                     </div>
 
-                                    <tr class="bg-green-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default3">
+                                    <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default3">
                                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
                                             X
                                         </th>
@@ -1385,7 +1343,7 @@
                                         <div data-popper-arrow></div>
                                     </div>
 
-                                    <tr class="bg-green-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default4">
+                                    <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default4">
                                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
                                             X
                                         </th>
@@ -1401,7 +1359,7 @@
                                         <div data-popper-arrow></div>
                                     </div>
 
-                                    <tr class="bg-green-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default5">
+                                    <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-gray-600" data-popover-target="popover-default5">
                                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             X
                                         </th>
