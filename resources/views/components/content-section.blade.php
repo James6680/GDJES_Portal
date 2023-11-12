@@ -1119,7 +1119,7 @@
 
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
-        <h2 class="text-3xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Document Requests</h2>
+        <h2 class="lg:text-3xl text-2xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Document Requests</h2>
 
         <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
 
@@ -1129,11 +1129,11 @@
             <div id="mainBody" class="flex flex-col mx-40 p-4 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish hidden">
 
                 <!-- My Requests Button Section -->
-                <div class="w-full flex flex-col items-end mb-5 gap-1">
+                <div class="w-full flex flex-col items-end mb-4 gap-1">
 
                     <button
                     id="myRequestBtn" 
-                    class="block focus:outline-none font-mulish text-white bg-yellow-500 font-semibold text-xl px-12  py-3 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 w-fit" 
+                    class="block focus:outline-none font-mulish text-white bg-yellow-500 font-semibold lg:text-xl text-sm lg:px-12 px-10 lg:py-3 py-2.5 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 w-fit" 
                     type="button">
                     My Requests
                     </button>
@@ -1157,9 +1157,9 @@
                     </script>
 
 
-                    <div class="w-full flex items-start p-6 text-md font-mulish text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
+                    <div class="w-full flex items-start p-6 lg:text-lg text-xs  font-mulish text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
                         <svg 
-                            class="flex-shrink-0 inline w-7 h-7 mr-3" 
+                            class="flex-shrink-0 inline lg:w-7 lg:h-7 w-5 h-5 mr-3" 
                             aria-hidden="true" 
                             xmlns="http://www.w3.org/2000/svg" 
                             fill="currentColor" 
@@ -1169,7 +1169,7 @@
 
                         <div>
                             
-                            <h2 class="mb-2 -mt-1 text-2xl font-semibold text-yellow-800  dark:text-white">
+                            <h2 class="mb-2 -mt-1 lg:text-2xl text-lg font-semibold text-yellow-800  dark:text-white">
                                 Reminders
                             </h2>
                             <ul class="space-y-2 -ml-3 text-yellow-500  list-decimal">
@@ -1199,9 +1199,9 @@
                 <!-- Document Section Body -->
                 <div class="w-full flex flex-col justify-between gap-1">
 
-                    <div class="w-full flex flex-col items-start justify-center pl-4 p-4 mb-4 text-md font-mulish text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800 ">  
-                        <h2 class="mb-2 text-2xl font-semibold dark:text-white self-stretch text-center">Lists of Document</h2>
-                        <ul class="max-w-md space-y-2 text-md list-disc list-inside dark:text-gray-400">
+                    <div class="w-full flex flex-col items-start justify-center pl-4 p-4 mb-3 text-md font-mulish text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800 ">  
+                        <h2 class="mb-2 lg:text-2xl text-lg font-semibold dark:text-white self-stretch text-center">Lists of Document</h2>
+                        <ul class="max-w-md ml-4 space-y-2 lg:text-lg text-xs list-disc list-inside text-green-900">
                             <li>
                                 Document Requirement #1
                             </li>
@@ -1225,7 +1225,7 @@
                     <button 
                     data-modal-target="crud-modal" 
                     data-modal-toggle="crud-modal" 
-                    class="focus:outline-none font-mulish text-white bg-green-500 font-semibold text-xl px-7 py-3 rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
+                    class="focus:outline-none font-mulish text-white bg-green-500 font-semibold lg:text-xl text-sm px-7 lg:py-3 py-2.5 rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
                     Request Document
                     </button>
 
@@ -1330,10 +1330,10 @@
 
                     <div class="justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
 
-                        <div class="relative overflow-x-auto sm:rounded-lg my-8">
+                        <div class="relative overflow-x-auto rounded-lg my-8">
 
-                            <table class="w-full text-sm text-left rtl:text-right text-green-900 dark:text-gray-400">
-                                <thead class="text-lg text-white bg-green-500 dark:bg-gray-700 dark:text-gray-400">
+                            <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-green-900 dark:text-gray-400">
+                                <thead class="lg:text-lg text-sm text-white bg-green-500 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th scope="col" class="px-6 py-5">
                                             Lists
