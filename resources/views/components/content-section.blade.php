@@ -2,7 +2,7 @@
 <div>   
     <!-- Announcement Section -->
     @if (request()->is('student.announcements') )
-    <div class="md:pl-64 w-full min-h-full sm:py-8 sm:pb-[-10rem] sm:pr-[-10rem] py-7 sm:px-10 px-6 bg-gray-200">
+    <div class="md:pl-64 w-full min-h-full sm:py-8 sm:pb-[-10rem] sm:pr-[-10rem] py-7 sm:px-10 px-6 bg-yellow-50">
 
         <section class="min-w-full min-h-full relative grid grid-cols-1 sm:gap-6 gap-5 marker: md:ml-5 items-center">
 
@@ -81,9 +81,9 @@
 
     @elseif (request()->is('student.grades') )
     <!-- Grade Viewing Section -->
-    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
+    <div class="md:pl-64 w-full min-h-full bg-yellow-50 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
 
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
+        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5 shadow shadow-brown-100">
 
             <h2 class="text-3xl -mt-5 mb-1 -ml-6 text-green-900/60">Grades</h2>
 
@@ -152,9 +152,9 @@
                 <!-- Backend side: Need to connect this table which consists of (Subjects/Teacher/1-4 grade/Final grade/ remarks)  -->
                 <div class="relative overflow-x-auto lg:rounded-xl rounded-md">
 
-                    <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
+                    <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal ">
 
-                        <thead class=" text-white font-normal font-mulish items-start justify-start lg:text-sm text-[12px] leading-tight">
+                        <thead class=" text-white font-normal font-mulish items-start justify-start lg:text-sm text-[12px] leading-tight uppercase">
                             <tr>
                                 <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
                                     Subjects
@@ -383,7 +383,7 @@
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight ">
+                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight uppercase">
                             <tr>
                                 <th scope="col" class="w-[25%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
                                     Core Values
@@ -583,7 +583,7 @@
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight">
+                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight uppercase">
                             <tr>
                                 <th scope="col" class="lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border border-green-600  bg-green-500">
                                     Attendance
@@ -777,7 +777,7 @@
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight">
+                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[12px] leading-tight uppercase">
                             <tr>
                                 <th scope="col" class="w-[28%] lg:py-6 sm:py-3 py-3.5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500 ">
                                     Modality
@@ -824,9 +824,9 @@
 
     @elseif (request()->is('student.class-schedule') )
     <!-- Class Schedule Section -->
-    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8  sm:pb-[-10rem]  py-7 sm:px-10 px-6 sm:pr-[-10rem] mb-0">
+    <div class="md:pl-64 w-full min-h-full bg-yellow-50 sm:py-8 sm:pb-[-10rem] py-7 sm:px-10 px-6 sm:pr-[-10rem] mb-0">
         
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
+        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5 shadow shadow-brown-100">
 
             <h2 class="text-3xl -mt-5 mb-1 lg:-ml-6 md:-ml-2 -ml-1 text-green-900/60">Class Schedule</h2>
 
@@ -861,7 +861,7 @@
                     <!-- Backend side: Need to connect this table which consists of (Subject/Teacher/Time sched) to know their class sched per student -->
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead>
+                        <thead class="uppercase">
 
                             <tr class="bg-green-500 text-white border-b dark:bg-gray-800 dark:border-gray-700 lg:text-base md:text-[10px] text-[10px] leading-tight text-start">
 
@@ -988,22 +988,20 @@
 
     @elseif (request()->is('student.enrollment-status') )
     <!-- Student Enrollment Status Section -->
-    <div class=" md:pl-64 sm:w-screen min-h-full bg-gray-200 sm:py-8 py-7 sm:pb-[20px] sm:px-11 px-6">
+    <div class=" md:pl-64 min-h-full bg-yellow-50 sm:py-8 py-7 sm:pb-[20px] sm:px-11 px-6">
 
-        <section class="self-stretch container lg:p-8 p-7 px-12 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
+        <section class="self-stretch container lg:p-8 p-7 px-8 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5 shadow shadow-brown-200">
 
             <h2 class="lg:text-3xl text-xl -mt-5 mb-1 lg:-ml-3 -ml-6 text-green-900/60">Enrollment Status</h2>
 
-            <div class="border-b p-[1px] bg-gray-200 lg:mx-[-2.3rem] mx-[-3rem]"></div>
+            <div class="border-b p-[1px] bg-gray-200 mx-[-2rem]"></div>
 
             <!-- Officially Enrolled Container -->
             <!-- Backend Side: Need to configure for validation if the student really meet the requirement to become officially enrolled and if so is eto lalabas -->
-            <div class="flex w-full flex-col gap-6 items-center self-stretch "  
-            style="margin-top: 108px; margin-bottom: 98px">
+            <div class="flex w-full flex-col gap-6 items-center justify-center mt-8 sm:mb-0 mb-6 hidden">
 
                 <div 
-                class="flex flex-col lg:px-10 xl:py-16 py-2 mb-4 px-2 lg:w-[30rem] sm:w-[20rem] w-[18rem]  text-green-500 border-4 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 items-center justify-center font-mulish" 
-                role="alert">
+                class="flex flex-col lg:px-10 xl:py-16 py-2 sm:mx-[100vw] my-[10vh] px-2 lg:w-[30rem] sm:w-[20rem] w-[18rem] text-green-500 border-4 border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800 items-center justify-center font-mulish">
                     
                     <div class="flex items-center justify-center text-center hover:text-green-900" data-tooltip-target="tooltip-no-arrow">   
                         <svg xmlns="http://www.w3.org/2000/svg" width="115" height="115" fill="currentColor" viewBox="0 0 256 256" class="lg:w-40 lg:h-40 sm:w-28 sm:h-28 w-16 h-16">
@@ -1024,26 +1022,23 @@
             
             <!-- Temporarily Enrolled Container -->
             <!-- Backend Side: Need to configure this part to update the students whether the list of requirements for enrolling is nasubmit na lahat. checkbox element pala yung list dito and initially is nakadisabled sila para hindi macontrol ni students since for viewing purpose lng dapat sa kanila -->
-            <div class="h-auto p-5 px-4 flex w-full flex-col gap-6 items-center self-stretch my-12 mb-7 hidden">
+            <div class="h-auto p-5 lg:px-4 px-0 flex w-full flex-col items-center lg:my-7 my-5">
 
-                <div 
-                class="flex flex-col p-7 w-auto text-yellow-500 border-2 border-green-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 items-center justify-start  font-mulish shadow-md" 
-                role="alert">
+                <div class="flex flex-col w-auto text-yellow-500 rounded-lg dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 items-center justify-start font-mulish gap-5">
 
-                    <div class="w-full flex justify-end mb-5">
+                    <div class="w-full flex justify-end">
                         <button 
                             type="button" 
-                            class="focus:outline-none font-mulish text-yellow-400 border-2 border-yellow-400 font-semibold rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 cursor-not-allowed shadow-transparent" 
+                            class="focus:outline-none font-mulish text-white border-2 bg-brown-500 font-semibold rounded-lg lg:text-lg text-base px-5 py-2.5 cursor-not-allowed shadow-transparent" 
                             disabled>
                             Temporary Enrolled
                         </button>
                     </div>
 
                     <div 
-                    class="flex items-start pl-4 p-4 mb-4 text-md font-mulish text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800" 
-                    role="alert">
+                    class="flex items-start pl-4 p-6 text-md font-mulish text-brown-600 rounded-lg bg-brown-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
                         <svg 
-                        class="flex-shrink-0 inline w-5 h-5 mr-3" 
+                        class="flex-shrink-0 inline w-6 h-6 mr-3" 
                         aria-hidden="true" 
                         xmlns="http://www.w3.org/2000/svg" 
                         fill="currentColor" 
@@ -1052,7 +1047,8 @@
                         </svg>
                         <span class="sr-only">Info</span>
                         <div>
-                            <p class="text-md font-mulish font-medium">
+                            <h2 class="lg:text-xl text-base font-semibold">Reminder</h2>
+                            <p class="lg:text-base text-sm font-mulish font-medium">
                                 To complete the process, make sure to submit all necessary requirements below. All the unchecked items below are the things you need to submit to complete your enrollment.
                             </p>
                         </div>
@@ -1065,7 +1061,7 @@
                             <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
 
 
-                            <label for="bordered-checkbox-1" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #1</label>
+                            <label for="bordered-checkbox-1" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg text-base font-semibold text-green-500 dark:text-gray-300">Needed Requirements #1</label>
 
                         </div>
 
@@ -1073,7 +1069,7 @@
 
                             <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
 
-                            <label for="bordered-checkbox-2" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #2</label>
+                            <label for="bordered-checkbox-2" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #2</label>
 
                         </div>
 
@@ -1081,7 +1077,7 @@
 
                             <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
 
-                            <label for="bordered-checkbox-3" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #3</label>
+                            <label for="bordered-checkbox-3" class="w-full font-mulishlg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #3</label>
 
                         </div>
 
@@ -1089,7 +1085,7 @@
 
                             <input id="bordered-checkbox-4" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
 
-                            <label for="bordered-checkbox-4" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #4</label>
+                            <label for="bordered-checkbox-4" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #4</label>
 
                         </div>
 
@@ -1097,15 +1093,12 @@
 
                             <input id="bordered-checkbox-5" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled >
 
-                            <label for="bordered-checkbox-5" class="w-full font-mulish py-4 ml-2 text-lg font-semibold text-green-500 dark:text-gray-300">Needed Requirements #5</label>
+                            <label for="bordered-checkbox-5" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #5</label>
 
                         </div>
 
                     </div>
                 </div>
-
-            </div>
-
 
             </div>
             
@@ -1115,7 +1108,7 @@
 
     @elseif (request()->is('student.request-documents') )
     <!-- Student Requests Document Section -->
-    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
+    <div class="md:pl-64 w-full min-h-full bg-yellow-50 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
 
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
@@ -1133,7 +1126,7 @@
 
                     <button
                     id="myRequestBtn" 
-                    class="block focus:outline-none font-mulish text-white bg-yellow-500 font-semibold lg:text-xl text-sm lg:px-12 px-10 lg:py-3 py-2.5 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 w-fit" 
+                    class="block focus:outline-none font-mulish text-white bg-brown-500 font-semibold lg:text-lg text-sm lg:px-12 px-10 lg:py-2.5 py-2.5 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 w-fit" 
                     type="button">
                     My Requests
                     </button>
@@ -1225,7 +1218,7 @@
                     <button 
                     data-modal-target="crud-modal" 
                     data-modal-toggle="crud-modal" 
-                    class="focus:outline-none font-mulish text-white bg-green-500 font-semibold lg:text-xl text-sm px-7 lg:py-3 py-2.5 rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
+                    class="focus:outline-none font-mulish text-white bg-green-500 font-semibold lg:text-lg text-sm px-7 lg:py-2.5 py-2.5 rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
                     Request Document
                     </button>
 
@@ -1432,7 +1425,7 @@
 
                     <button
                     id="myRequestBckBtn" 
-                    class="block focus:outline-none font-mulish text-green-600 font-bold border border-green-500 text-xl px-12 py-3 rounded-xl hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 w-fit" 
+                    class="block focus:outline-none font-mulish text-green-600 font-bold border border-green-500 lg:text-xl text-sm px-12 py-3 rounded-xl hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 w-fit" 
                     type="button">
                     <
                     </button>
@@ -1467,13 +1460,13 @@
 
     @elseif (request()->is('student.student-information') )
     <!-- Student Information Section -->
-    <div class="md:pl-64 w-full min-h-full bg-gray-200 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
+    <div class="md:pl-64 w-full min-h-full bg-yellow-50 sm:py-8 py-7 sm:pb-[-10rem] sm:px-10 px-6 sm:pr-[-10rem]">
         
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-5">
 
-            <h2 class="text-[38px] -mt-6 -ml-6 text-green-900/60">Student Information</h2>
+            <h2 class="lg:text-3xl text-2xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Student Information</h2>
 
-            <div class="border-b p-[1px] bg-gray-200  mx-[-2.3rem]"></div>
+            <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
 
             <div class="grid w-full grid-cols-1 gap-6">
 
