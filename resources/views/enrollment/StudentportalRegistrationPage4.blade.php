@@ -732,7 +732,8 @@
               <div class="mb-1">
                 <input type="text" 
                 id="fourps_id" 
-                name="fourps_id" 
+                name="fourps_id"
+                placeholder="123456789-1234-1234"
                 class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
                 value="{{ isset($enrollment->fourps_id) ? $enrollment->fourps_id : old('fourps_id') }}">
               </div>

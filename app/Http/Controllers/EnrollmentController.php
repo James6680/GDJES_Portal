@@ -123,7 +123,7 @@ class EnrollmentController extends Controller
             'province'  => 'required',
             'city'  => 'required',
             'barangay'  => 'nullable',
-            'street_text' => 'nullable',
+            'street_text' => 'required',
             'house_number' => 'nullable',
         ]);
         if(empty($request->session()->get('enrollment'))){
@@ -195,7 +195,7 @@ class EnrollmentController extends Controller
         $enrollment = $request->session()->get('enrollment');
         $pageSpecificField = null;
         try{
-            $pageSpecificField = $request->session()->get('enrollment')->last_name;
+            $pageSpecificField = $request->session()->get('enrollment')->fourps;
         }catch(ErrorException $e){
         }
         if(!is_null($pageSpecificField)){    

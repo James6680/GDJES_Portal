@@ -318,9 +318,6 @@
                 <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Lastname ng bata (Apelyido) <span class="text-red-600">*</span></b>
               
               </div>
-              <script>
-                console.log('{{$enrollment}}')
-              </script>
               <!-- Last Name -->
               <div class="mb-1">
                 <input required

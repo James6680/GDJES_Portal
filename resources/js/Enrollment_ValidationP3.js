@@ -14,9 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
         (_, i) => document.getElementById(`input-error${i + 1}`)
     );
     var valid;
+    var validForAll;
     function updateElementValidation(element, index) {
-        const value = element.value.trim();
-
         validateCustom(element, index);
         errorContainers[index].style.display = valid ? "none" : "block";
         element.style.border = valid ? "1px solid #e5e7eb" : "2px solid #ff4d6d";
@@ -36,16 +35,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //GLOBAL VARIABLE VALID FOR VALIDATION
     function validateTextElements() {
-
+        validForAll = true;
         elements.forEach((element, index) => {
             updateElementValidation(document.getElementById(element), index);
         });
-        return valid;
+        return validForAll;
     }
     window.validateTextElements = validateTextElements;
 
     function validateCustom(element, index){
         valid = true;
+        checkEmptyInput(element, index);
+        checkLength(element, index);
         if(element.tagName == "INPUT"){
             if(element.name == 'school_year'){
                 checkSchoolYear(element, index);
@@ -55,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }if(element.name == 'age_on_oct_31'){
                 checkAge(element, index);
             }
-            checkEmptyInput(element, index);
-            checkLength(element, index);
         }else if(element.tagName == "SELECT"){
             checkEmptySelect(element, index);
         }
@@ -67,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if(element.value === ""){
           errorContainers[index].textContent = "❌ Pumili muna sa mga pagpipilian bago lumipat sa sunod na pahina.";
           valid = false;
+          validForAll = false;
         }
       }
       
@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if(element.value === ""){
             errorContainers[index].textContent = "❌ Punan muna ang katanungan bago lumipat sa sunod na pahina.";
             valid = false;
+            validForAll = false;
           }
       }
   
@@ -81,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if(element.value.length > 100 && element.value !== ""){
           errorContainers[index].textContent = "❌ Maaari lamang maglagay ng 100 na  o numero";
           valid = false;
+          validForAll = false;
         }
       }
 
@@ -93,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const match = part.match(regex);
           if (!match) {
             valid=false;
+            validForAll = false;
             errorContainers[index].textContent = "❌ Ang format ng ilalagay ay dapat taon"; 
           }
         
@@ -105,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if(!match){
         valid=false;
+        validForAll = false;
         errorContainers[index].textContent = '❌ Ang format ng ilalagay dapat nasa format na "2014 - 12345"';    
         }
       }
@@ -123,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if(!match){
         valid=false;
+        validForAll = false;
         errorContainers[index].textContent = '❌ Ang format ng ilalagay dapat nasa format na edad';    
         }
       }
