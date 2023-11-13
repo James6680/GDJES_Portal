@@ -23,7 +23,7 @@
   </section> <!-- End of Top Bar Dark Green Decor -->
   <!--  Admin Dashboard Main Content Container -->
   <section class="w-full min-h-full gap-4 p-4 grid grid-cols-1">
-    <h1 class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">ACADEMIC YEAR {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} DATA</h1>
+    <h1 class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">Academic Year {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} Data</h1>
     
     <!--  Statistics Container -->
     <div class="sm:mx-4 gap-4 grid grid-cols-1 lg:grid-cols-2 h-auto">
