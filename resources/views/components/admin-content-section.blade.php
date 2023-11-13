@@ -18,11 +18,9 @@
 
   <!-- Admin Dashboard -->
   @if (request()->is('admin.dashboard') )
-
   <!-- Top Bar Dark Green Decor -->
   <section class="absolute top-0 right-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 w-full h-80">
   </section> <!-- End of Top Bar Dark Green Decor -->
-
   <!--  Admin Dashboard Main Content Container -->
   <section class="w-full min-h-full gap-4 p-4 grid grid-cols-1">
     <h1 class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">ACADEMIC YEAR {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} DATA</h1>
@@ -784,7 +782,6 @@
 
   <!-- Admin Announcements -->
   @elseif(request()->is('admin.announcements') )
-
   <!-- Admin Announcements Main Content Container -->
   <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
     <div class="w-full h-full gap-4 md:gap-8 lg:gap-12 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
@@ -969,6 +966,7 @@
 
   <!-- Admin Student Management -->
   @elseif(request()->is('admin.student-management') )
+  <!-- Admin Student Management Main Content Container -->
   <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
 
     <div class="w-full h-full gap-2 md:gap-3 lg:gap-4 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
@@ -1573,9 +1571,13 @@
 
 
 
-
+  <!-- Admin Enrollment Management -->
   @elseif(request()->is('admin.enrollment-management') )
-  <p>enrollment-management</p>
+  <!-- Admin Enrollment Management Main Content Container -->
+  <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
+    <div class="w-full h-full gap-2 md:gap-3 lg:gap-4 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">  
+    </div>
+  </section> <!-- End of Admin Enrollment Management Main Content Container -->
 
 
 
