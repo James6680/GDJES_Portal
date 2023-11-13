@@ -33,10 +33,6 @@ Route::get('admin.announcements', function () {
     return view('layouts.admin');
 });
 
-Route::get('admin.user-accounts', function () {
-    return view('layouts.admin');
-});
-
 Route::get('admin.document-request', function () {
     return view('layouts.admin');
 });
