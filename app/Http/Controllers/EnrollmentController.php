@@ -221,7 +221,7 @@ class EnrollmentController extends Controller
             $request->session()->put('enrollment', $enrollment);
         }
 
-        createStudentInDatabase($enrollment);
+        $this->createStudentInDatabase($enrollment);
         return redirect()->route('enrollment.StudentportalRegistrationCompletedPage');
     }
     public function enrollmentComplete(Request $request)
