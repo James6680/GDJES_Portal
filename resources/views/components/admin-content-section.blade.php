@@ -819,8 +819,8 @@
           </div> <!-- End of Buttons Container -->
           <!-- Announcement Texts Container -->
           <div class="flex flex-col flex-wrap"> 
-            <h3 class="font-semibold text-sm sm:text-base text-black">##Announcement Title (Looking for eligible supplier for the Computer Parts and Accessories)</h3>
-            <p class="font-regular text-sm sm:text-base text-black">##Date Posted (Posted: August 16, 2023 or kung ano format keribels)</p>
+            <h3 class="font-semibold text-sm text-black">##Announcement Title (Looking for eligible supplier for the Computer Parts and Accessories)</h3>
+            <p class="font-regular text-sm text-black">##Date Posted (Posted: August 16, 2023 or kung ano format keribels)</p>
           </div> <!-- End of Announcement Texts Container -->
         </div>
         <!-- End of Individual Post Container -->
@@ -844,8 +844,8 @@
           </div> <!-- End of Buttons Container -->
           <!-- Announcement Texts Container -->
           <div class="flex flex-col flex-wrap"> 
-            <h3 class="font-semibold text-sm sm:text-base text-black">##Announcement Title (Looking for eligible supplier for the Computer Parts and Accessories)</h3>
-            <p class="font-regular text-sm sm:text-base text-black">##Date Posted (Posted: August 16, 2023 or kung ano format keribels)</p>
+            <h3 class="font-semibold text-sm text-black">##Announcement Title (Looking for eligible supplier for the Computer Parts and Accessories)</h3>
+            <p class="font-regular text-sm text-black">##Date Posted (Posted: August 16, 2023 or kung ano format keribels)</p>
           </div> <!-- End of Announcement Texts Container -->
         </div>
         <!-- End of Individual Post Container -->
