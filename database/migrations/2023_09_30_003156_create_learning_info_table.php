@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('learning_info', function (Blueprint $table) {
             $table->id();
+            $table->string('distance_learning', 30);
             $table->boolean('may_sariling_tablet_ang_bata');
             $table->boolean('may_computer_sa_bahay');
             $table->boolean('walang_sariling_gadget_ang_bata');

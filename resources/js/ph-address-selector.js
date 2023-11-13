@@ -181,7 +181,7 @@ $(function() {
     // load region
     let dropdown = $('#region');
     dropdown.empty();
-    dropdown.append('<option selected="true" disabled>Choose Region</option>');
+    dropdown.append('<option value="" selected="true" disabled>Choose Region</option>');
     dropdown.prop('selectedIndex', 0);
     const url = '/api/address/region';
     // Populate dropdown with list of regions

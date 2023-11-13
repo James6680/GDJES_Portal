@@ -5,7 +5,7 @@
   @vite(['resources/css/app.css','resources/js/app.js', 'resources/js/ph-address-selector.js'])
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GDJES Landing Page</title>
+  <title>GDJES Admin Portal</title>
 
   <link rel="shortcut icon" href="{{ asset('assets/GDJES Logo.png') }}">
 
@@ -25,9 +25,9 @@
 
 </head>
   
-<body class="min-w-full grid grid-flow-col justify-start h-screen pt-16 bg-green-50">
+<body class="w-full grid grid-cols-1 justify-start h-full pt-16 bg-yellow-50">
   <x-sidebar />
-  <x-admin-content-section/> 
+  <x-admin-content-section /> 
 
 </body>
 </html>

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->foreign('school_year')->references('id')->on('school_years');
             $table->unsignedBigInteger('section_id');
             $table->foreign('section_id')->references('id')->on('sections');
+            $table->unsignedBigInteger('learning_info_id');
+            $table->foreign('learning_info_id')->references('id')->on('learning_info');
             $table->string('enrollment_status', 20)->nullable();
             $table->timestamps();   
         });

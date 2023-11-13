@@ -38,9 +38,6 @@ return new class extends Migration
             $table->foreign('relatives_id')->references('id')->on('relatives');
             $table->unsignedBigInteger('household_id');
             $table->foreign('household_id')->references('id')->on('households');
-            $table->unsignedBigInteger('learning_info_id');
-            $table->foreign('learning_info_id')->references('id')->on('learning_info');
-            $table->string('distance_learning', 30);
             $table->string('status', 15);
             $table->timestamps();
         });
