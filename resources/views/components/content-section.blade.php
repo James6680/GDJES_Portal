@@ -1429,52 +1429,129 @@
         <div class=" flex min-w-screen flex-col gap-6 items-center mt-6">
 
             <!-- Document Requests Main Body -->
-            <div id="mainBody" class="flex flex-col mx-40 p-4 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish">
+            <div id="mainBody" class="flex flex-col px-5 mx-40 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish">
 
                 <!-- My Requests Button Section -->
-                <div class="w-full flex flex-row items-center justify-center mb-4 gap-2">
+                <div class="w-full flex flex-row  justify-start gap-36 border border-red-500">
                     
                     <div class=" overflow-x-auto">
                         <table class="w-auto text-lg font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                             <tbody>
                                 <tr class="bg-white">
-                                    <th scope="row" class="px-6 py-3 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                    <th scope="row" class="px-6 py-2.5 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                         Lrn Number
                                     </th>
-                                    <td class="px-6 py-3">
+                                    <td class="px-6 py-2.5">
                                         114743070020
                                     </td>
                                 </tr>
                                 <tr class="bg-white ">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                         Name
                                     </th>
-                                    <td class="px-6 py-3 uppercase">
+                                    <td class="px-6 py-2.5 uppercase">
                                         Motus, James Prado
                                     </td>
                                 </tr>
                                 <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                         Age
                                     </th>
-                                    <td class="px-6 py-3">
+                                    <td class="px-6 py-2.5">
                                         21
                                     </td>
                                 </tr>
                                 <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                         Gender
                                     </th>
-                                    <td class="px-6 py-3">
+                                    <td class="px-6 py-2.5">
                                         Male
                                     </td>
                                 </tr>
                                 <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                         Date of Birth
                                     </th>
-                                    <td class="px-6 py-3">
+                                    <td class="px-6 py-2.5">
                                         October 26, 2001
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        Religion
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        Roman Catholic
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        Indigenous Group
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        Pogi
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        Primary Language
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        Hiligaynon
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800 text-end">
+                                    <th scope="row" class="px-6 py-2.5 font-semibold text-green-500 whitespace-nowrap dark:text-white uppercase">
+                                        Address
+                                    </th>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        Region
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        IV-4 (Calabarzon)
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        Province
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        Rizal
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        City
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        San Mateo
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        Barangay
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        Guitnang Bayan 2
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        Street
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        Di makita
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        House number
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        001100
                                     </td>
                                 </tr>
                             </tbody>
@@ -1485,43 +1562,75 @@
                         <table class="w-auto text-lg font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                             <tbody>
                                 <tr class="bg-white">
-                                    <th scope="row" class="px-6 py-3 font-normal text-gray-500 whitespace-nowrap dark:text-white">
-                                        Lrn Number
+                                    <th scope="row" class="px-6 py-2.5 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        Father's Name
                                     </th>
-                                    <td class="px-6 py-3">
-                                        114743070020
-                                    </td>
-                                </tr>
-                                <tr class="bg-white ">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Name
-                                    </th>
-                                    <td class="px-6 py-3 uppercase">
+                                    <td class="px-6 py-2.5 uppercase">
                                         Motus, James Prado
                                     </td>
                                 </tr>
-                                <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Age
+                                <tr class="bg-white">
+                                    <th scope="row" class="px-6 py-2.5 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        Mobile No.
                                     </th>
-                                    <td class="px-6 py-3">
-                                        21
+                                    <td class="px-6 py-2.5">
+                                        114743070020
+                                    </td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <th scope="row" class="px-6 py-2.5 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        Email
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        father@gmail.com
+                                    </td>
+                                </tr>
+                                <tr class="bg-white ">
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        Mother's Name
+                                    </th>
+                                    <td class="px-6 py-2.5 uppercase">
+                                        Motus, James Prado
+                                    </td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <th scope="row" class="px-6 py-2.5 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        Mobile No.
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        114743070020
+                                    </td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <th scope="row" class="px-6 py-2.5 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        Email
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        Mother@gmail.com
                                     </td>
                                 </tr>
                                 <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Gender
+                                    <th scope="row" class="px-6 py-2.5 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                        Guardian's Name
                                     </th>
-                                    <td class="px-6 py-3">
-                                        Male
+                                    <td class="px-6 py-2.5 uppercase">
+                                        Motus, James Prado
                                     </td>
                                 </tr>
-                                <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Date of Birth
+                                <tr class="bg-white">
+                                    <th scope="row" class="px-6 py-2.5 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        Mobile No.
                                     </th>
-                                    <td class="px-6 py-3">
-                                        October 26, 2001
+                                    <td class="px-6 py-2.5">
+                                        114743070020
+                                    </td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <th scope="row" class="px-6 py-2.5 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        Email
+                                    </th>
+                                    <td class="px-6 py-2.5">
+                                        Guardian@gmail.com
                                     </td>
                                 </tr>
                             </tbody>
