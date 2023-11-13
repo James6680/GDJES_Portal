@@ -154,3 +154,16 @@ Route::get('student-registration-Completed', [EnrollmentController::class, 'enro
     });
     
     require __DIR__.'/auth.php';
+
+    
+Route::get('/student.login', function(){
+    return view('login.StudentLoginPage');
+});
+
+Route::get('/faculty.login', function(){
+    return view('login.FacultyTeacherLoginPage');
+});
+
+Route::get('/forget-password', function(){
+    return view('login.forgotPasswordForm');
+});
