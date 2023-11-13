@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('birth_date');
             $table->float('age');
             $table->string('gender', 10);
-            $table->string('indigeneous_group', 50);
+            $table->string('indigenous_group', 50);
             $table->string('mother_tongue', 50);
             $table->string('religion', 50);
             $table->string('special_assistance_needs');
