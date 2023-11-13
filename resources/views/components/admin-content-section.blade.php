@@ -787,7 +787,7 @@
     <div class="w-full h-full gap-4 md:gap-8 lg:gap-12 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
       <!-- Header Content -->
       <div class="w-full h-auto flex flex-col md:flex-row gap-4 justify-left  md:justify-between md:items-center">
-        <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">ANNOUNCEMENTS EDITOR</h3>
+        <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Announcements Editor</h3>
         <button data-modal-target="create-post-modal" data-modal-toggle="create-post-modal" type="button" class="text-white bg-brown-500 hover:bg-brown-700 focus:ring-4 focus:outline-none focus:ring-brown-300 font-medium rounded-lg text-md lg:text-lg p-4 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
           <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
             <path d="M224,120v88a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32h88a8,8,0,0,1,0,16H48V208H208V120a8,8,0,0,1,16,0Zm5.66-50.34-96,96A8,8,0,0,1,128,168H96a8,8,0,0,1-8-8V128a8,8,0,0,1,2.34-5.66l96-96a8,8,0,0,1,11.32,0l32,32A8,8,0,0,1,229.66,69.66Zm-17-5.66L192,43.31,179.31,56,200,76.69Z"></path>
