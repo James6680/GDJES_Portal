@@ -1,6 +1,11 @@
 import './bootstrap';
+import './bootstrap';
 import 'flowbite';
 import '../css/app.css';
-import ApexCharts from 'apexcharts'; // import apex chart
-window.ApexCharts = ApexCharts; // return apex chart 
+import Alpine from 'alpinejs';
+import ApexCharts from 'apexcharts';
 
+window.ApexCharts = ApexCharts
+window.Alpine = Alpine;
+
+Alpine.start();

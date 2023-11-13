@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -138,73 +139,18 @@ Route::post('student-registration-5', [EnrollmentController::class, 'postEnrollm
 Route::get('student-registration-Completed', [EnrollmentController::class, 'enrollmentComplete'])
     ->name('enrollment.StudentportalRegistrationCompletedPage');
 
-
-/*
-Route::get('enrollment1', [EnrollmentController::class, 'getEnrollment1'])
-    ->name('get.enrollment1');
-Route::post('enrollment1', [EnrollmentController::class, 'postEnrollment1'])
-    ->name('post.enrollment1');
-
-Route::get('enrollment2', [EnrollmentController::class, 'getEnrollment2'])
-    ->name('get.enrollment2');
-Route::post('enrollment2', [EnrollmentController::class, 'postEnrollment2'])
-    ->name('post.enrollment2');
-
-Route::get('enrollment3', [EnrollmentController::class, 'getEnrollment3'])
-    ->name('get.enrollment3');
-Route::post('enrollment3', [EnrollmentController::class, 'postEnrollment3'])
-    ->name('post.enrollment3');
-
-Route::get('enrollment4', [EnrollmentController::class, 'getEnrollment4'])
-    ->name('get.enrollment4');
-Route::post('enrollment4', [EnrollmentController::class, 'postEnrollment4'])
-    ->name('post.enrollment4');
-
-Route::get('enrollmentComplete', [EnrollmentController::class, 'enrollmentComplete'])
-->name('enrollmentComplete');
-*/
-
-
-
-/*Added
-
-Route::get('/student-registration-1', function () {
-    return view('enrollment.StudentportalRegistrationPage1');
-});
-
-Route::get('/student-registration-2', function () {
-    return view('enrollment.StudentportalRegistrationPage2');
-});
-
-Route::get('/student-registration-3', function () {
-    return view('enrollment.StudentportalRegistrationPage3');
-});
-
-Route::get('/student-registration-4', function () {
-    return view('enrollment.StudentportalRegistrationPage4');
-});
-Route::get('/student-login', function () {
-    return view('enrollment.StudentLoginPage');
-});
-
-Route::get('/student-registration-completed', function () {
-    return view('enrollment.StudentportalRegistrationCompletedPage');
-});
-
-Added*/
-
-Route::get('/StudentLoginPage', function(){
-    return view('login.StudentLoginPage');
-});
-
-Route::get('/FacultyTeacherLoginPage', function(){
-    return view('login.FacultyTeacherLoginPage');
-});
-
-Route::get('/forgotPasswordForm', function(){
-    return view('login.forgotPasswordForm');
-});
-
-Route::get('/Dummy', function(){
-    return view('login.dummyBladeComponents');
-});
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+    
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
+    
+    require __DIR__.'/auth.php';
