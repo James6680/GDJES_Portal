@@ -784,7 +784,7 @@
   @elseif(request()->is('admin.announcements') )
   <!-- Admin Announcements Main Content Container -->
   <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
-    <div class="w-full h-full gap-4 md:gap-8 lg:gap-12 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
+    <div class="w-full h-full gap-4 md:gap-5 lg:gap-6 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
       <!-- Header Content -->
       <div class="flex flex-col gap-2">
         <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Announcements Editor</h3>
