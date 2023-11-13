@@ -221,15 +221,7 @@ class EnrollmentController extends Controller
             $request->session()->put('enrollment', $enrollment);
         }
 
-
-    //////////////////process of ENROLLMENT////////////////////////////////
-    // $student_table = 
-
-
-
-
-
-
+        createStudentInDatabase($enrollment);
         return redirect()->route('enrollment.StudentportalRegistrationCompletedPage');
     }
     public function enrollmentComplete(Request $request)
@@ -245,4 +237,10 @@ class EnrollmentController extends Controller
             return redirect()->route('enrollment.StudentportalRegistrationPage1');
         }
     }
+
+    private function createStudentInDatabase(Enrollment $enrollment){
+        
+    }
 }
+
+
