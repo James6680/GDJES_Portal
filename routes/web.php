@@ -193,18 +193,14 @@ Route::get('/student-registration-completed', function () {
 
 Added*/
 
-Route::get('/StudentLoginPage', function(){
+Route::get('/student.login', function(){
     return view('login.StudentLoginPage');
 });
 
-Route::get('/FacultyTeacherLoginPage', function(){
+Route::get('/faculty.login', function(){
     return view('login.FacultyTeacherLoginPage');
 });
 
-Route::get('/forgotPasswordForm', function(){
+Route::get('/forget-password', function(){
     return view('login.forgotPasswordForm');
-});
-
-Route::get('/Dummy', function(){
-    return view('login.dummyBladeComponents');
 });
