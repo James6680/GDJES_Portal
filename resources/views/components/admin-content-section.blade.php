@@ -786,23 +786,24 @@
   <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
     <div class="w-full h-full gap-4 md:gap-8 lg:gap-12 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
       <!-- Header Content -->
-      <div class="w-full h-auto flex flex-col md:flex-row gap-4 justify-left  md:justify-between md:items-center">
+      <div class="flex flex-col gap-2">
         <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Announcements Editor</h3>
-        <button data-modal-target="create-post-modal" data-modal-toggle="create-post-modal" type="button" class="h-auto py-2 text-white bg-green-500 hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Empower your administrative communication. This section allows seamless creation, modification, and removal of announcements. Utilize the CRUD operations to keep the school community informed and engaged. Craft timely updates, important notices, and relevant information effortlessly.</p>
+      </div> <!-- End of Header Content -->
+      
+      <button data-modal-target="create-post-modal" data-modal-toggle="create-post-modal" type="button" class="h-auto w-auto py-2 text-white bg-green-500 hover:bg-green-700 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-3 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
             <path d="M224,120v88a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32h88a8,8,0,0,1,0,16H48V208H208V120a8,8,0,0,1,16,0Zm5.66-50.34-96,96A8,8,0,0,1,128,168H96a8,8,0,0,1-8-8V128a8,8,0,0,1,2.34-5.66l96-96a8,8,0,0,1,11.32,0l32,32A8,8,0,0,1,229.66,69.66Zm-17-5.66L192,43.31,179.31,56,200,76.69Z"></path>
           </svg>
           Create an announcement
-        </button>
-      </div> <!-- End of Header Content -->
-      
+      </button>
 
       <!-- All Posts Container -->
       <div class="gap-4 flex flex-col divide-y divide-brown-100">
         <!-- Individual Post Container -->
         <div class="w-full h-auto gap-8 pt-4 flex flex-col sm:flex-row">
           <!-- Buttons Container -->
-          <div class="max-h-[36px] w-auto flex gap-4 flex-row">
+          <div class="max-h-[36px] w-auto flex gap-2 flex-row">
             <button data-modal-target="edit-post-modal" data-modal-toggle="edit-post-modal" type="button" class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path>
@@ -827,7 +828,7 @@
         <!-- Individual Post Container -->
         <div class="w-full h-auto gap-8 pt-8 flex flex-col sm:flex-row">
           <!-- Buttons Container -->
-          <div class="max-h-[36px] w-auto flex gap-4 flex-row">
+          <div class="max-h-[36px] w-auto flex gap-2 flex-row">
             <button type="button" class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path>
