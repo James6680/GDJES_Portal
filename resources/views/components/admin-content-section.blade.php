@@ -2,7 +2,7 @@
   $currentSchoolYearStart = '2023';
   $currentSchoolYearEnd = '2024';
   $schoolYear = '2023 - 2024';
-  $enrollmentPhase = 'Official';
+  $enrollmentPhase = 'Pre-enrollment';
   $enrollmentStatus = 'Open';
 @endphp
 
@@ -1614,31 +1614,37 @@
       
       <!-- Enrollment SY Management -->
       <div class="w-full flex flex-col pt-4">
-        @if (is_null($schoolYear))
-            <h3 class="text-md font-semibold text-red-500">No school year selected to manage.</h3>
-            <h4 class="text-base font-regular text-gray-500">Choose from the dropdown to manage an existing one or add a new school year using the button.</h4>
-        @else
+        @if (!is_null($schoolYear) && $enrollmentStatus == 'Closed')
+            <h3 class="text-md font-bold text-black">Managing school year: {{ $schoolYear }}</h3>
+            <h4 class="text-base font-semibold text-emerald-700">Enrollment status: {{ $enrollmentStatus }}</h4>
+        @elseif (!is_null($schoolYear) && $enrollmentStatus == 'Open')
             <h3 class="text-md font-bold text-black">Managing school year: {{ $schoolYear }}</h3>
             <h4 class="text-base font-semibold text-emerald-700">Enrollment status: {{ $enrollmentStatus }}</h4>
             <h4 class="text-base font-regular text-gray-500">Enrollment phase: {{ $enrollmentPhase }}</h4>
+        @else
+            <h3 class="text-md font-semibold text-red-500">No school year selected to manage.</h3>
+            <h4 class="text-base font-regular text-gray-500">Choose from the dropdown to manage an existing one or add a new school year using the button.</h4>
         @endif
         
         <!-- Main functions for SY Management -->
         <div class="flex flex-col sm:flex-row w-full h-auto gap-4 pt-4 sm:justify-between">
-            @if ($enrollmentStatus == 'Open')
-              @if ($enrollmentPhase == 'Official')
-              <a href="#" data-modal-target="closeOfficialEnrollmentModal" data-modal-show="closeOfficialEnrollmentModal" id="closeOfficialEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-200 hover:bg-red-300 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
-                Close enrollment
-              </a>
-              @else
-              <a href="#" data-modal-target="closePreEnrollmentModal" data-modal-show="closePreEnrollmentModal" id="closePreEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-200 hover:bg-red-300 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
-                Close enrollment
-              </a>    
-              @endif          
+            @if (is_null($schoolYear))
             @else
-            <button id="openEnrollmentButton" class="text-white bg-green-500 hover:bg-green-600 focus:ring-2 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">
-              Open enrollment
-            </button>
+              @if ($enrollmentStatus == 'Open')
+                @if ($enrollmentPhase == 'Official')
+                <a href="#" data-modal-target="closeOfficialEnrollmentModal" data-modal-show="closeOfficialEnrollmentModal" id="closeOfficialEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-200 hover:bg-red-300 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
+                  Close enrollment
+                </a>
+                @else
+                <a href="#" data-modal-target="closePreEnrollmentModal" data-modal-show="closePreEnrollmentModal" id="closePreEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-200 hover:bg-red-300 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
+                  Close enrollment
+                </a>    
+                @endif          
+              @else
+              <a href="#" data-modal-target="closeOfficialEnrollmentModal" data-modal-show="closeOfficialEnrollmentModal" id="openEnrollmentButton" class="text-white bg-green-500 hover:bg-green-600 focus:ring-2 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">
+                Open enrollment
+              </a>
+              @endif
             @endif
 
             <!-- Close Pre-enrollment Modal -->
