@@ -27,7 +27,7 @@
   
 <body class="min-w-full grid grid-flow-col justify-start h-screen pt-16 bg-green-50">
   <x-sidebar />
-  <x-admin-content-section/> 
+  <x-faculty-content-section/> 
 
 </body>
 </html>
