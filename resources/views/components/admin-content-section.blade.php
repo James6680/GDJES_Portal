@@ -1,6 +1,9 @@
 @php
   $currentSchoolYearStart = '2023';
   $currentSchoolYearEnd = '2024';
+  $schoolYear = 'change this 2022 - 2023';
+  $enrollmentPhase = 'Official';
+  $enrollmentStatus = 'Open';
 @endphp
 
 
@@ -1588,12 +1591,18 @@
       
       <!-- Enrollment Management -->
       <div class="w-full flex flex-col pt-4">
-        <h3 class="text-md font-semibold text-red-500">No school year selected to manage.</h3>
-        <h4 class="text-base font-regular text-gray-500">Choose from the dropdown to manage an existing one or add a new school year using the button.</h3>
-
+        @if (is_null($schoolYear))
+            <h3 class="text-md font-semibold text-red-500">No school year selected to manage.</h3>
+            <h4 class="text-base font-regular text-gray-500">Choose from the dropdown to manage an existing one or add a new school year using the button.</h4>
+        @else
+            <h3 class="text-md font-bold text-black">Managing school year: {{ $schoolYear }}</h3>
+            <h4 class="text-base font-semibold text-emerald-700">Enrollment status: {{ $enrollmentStatus }}</h4>
+            <h4 class="text-base font-regular text-gray-500">Enrollment phase: {{ $enrollmentPhase }}</h4>
+        @endif
         
         <!-- Main functions for SY Management -->
         <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+
           <!-- Dropdown SY Button for Select a SY to Manage -->
           <button id="dropdownSYHoverButton-ocl" data-dropdown-toggle="dropdownSYHover-ocl" data-dropdown-trigger="hover" class="text-white bg-brown-500 hover:bg-brown-600 focus:ring-2 focus:outline-none focus:ring-brown-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800" type="button">Choose a school year to manage<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -1625,66 +1634,68 @@
             Add a School Year
           </button> <!-- End of Add School Year Button -->
 
+          <!-- Create SY modal -->
+          <div id="createSYModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-2xl max-h-full">
+              <!-- Modal content -->
+              <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Add a school year
+                  </h3>
+                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="createSYModal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-6">
+                  <div class="grid grid-cols-2 gap-4">
+
+                    <div class="flex flex-col">
+                      <label for="startYearOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
+                      <input type="number" name="startYearOfSY" id="startYearOfSY" min="2022" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="20XX" required="">
+                    </div>
+
+                    <div class="flex flex-col">
+                      <label for="dropdownEnrollmentPhase" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
+                      <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+                        <!-- Dropdown SY Button for Open and Close Enrollment -->
+                        <button id="dropdownEnrollmentPhaseButton" data-dropdown-toggle="dropdownEnrollmentPhase" data-dropdown-trigger="hover" class="justify-between pr-4 text-black w-full border border-gray-300 bg-gray-50  focus:ring-green-600 focus:border-green-600 rounded-lg text-sm p-2.5 text-left inline-flex items-center dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"" type="button">Enrollment Phase<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                          </svg>
+                        </button>
+
+                        <!-- Dropdown menu for Open and Close Enrollment -->
+                        <div id="dropdownEnrollmentPhase" class="relative z-50 w-52 hidden bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                          <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                            <li>
+                              <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Pre-enrollment</a>
+                            </li>
+                            <li>
+                              <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Official</a>
+                            </li>
+                        </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
+
+                      </div>  
+                    </div>    
+
+                  </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
+                </div>
+              </form>
+            </div>
+          </div> <!-- End of Create SY modal -->
+
         </div>  
 
-        <!-- Create SY modal -->
-        <div id="createSYModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-          <div class="relative w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <!-- Modal header -->
-              <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  Add a school year
-                </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="createSYModal">
-                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                  </svg>
-                  <span class="sr-only">Close modal</span>
-              </button>
-              </div>
-              <!-- Modal body -->
-              <div class="p-6 space-y-6">
-                <div class="grid grid-cols-2 gap-4">
-
-                  <div class="flex flex-col">
-                    <label for="startYearOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
-                    <input type="number" name="startYearOfSY" id="startYearOfSY" min="2022" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="20XX" required="">
-                  </div>
-
-                  <div class="flex flex-col">
-                    <label for="dropdownEnrollmentPhase" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
-                    <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
-                      <!-- Dropdown SY Button for Open and Close Enrollment -->
-                      <button id="dropdownEnrollmentPhaseButton" data-dropdown-toggle="dropdownEnrollmentPhase" data-dropdown-trigger="hover" class="justify-between pr-4 text-black w-full border border-gray-300 bg-gray-50  focus:ring-green-600 focus:border-green-600 rounded-lg text-sm p-2.5 text-left inline-flex items-center dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"" type="button">Enrollment Phase<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                        </svg>
-                      </button>
-
-                      <!-- Dropdown menu for Open and Close Enrollment -->
-                      <div id="dropdownEnrollmentPhase" class="relative z-50 w-52 hidden bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-                        <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                          <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Pre-enrollment</a>
-                          </li>
-                          <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Official</a>
-                          </li>
-                      </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
-
-                    </div>  
-                  </div>    
-
-                </div>
-              </div>
-              <!-- Modal footer -->
-              <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                  <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
-              </div>
-            </form>
-          </div>
-        </div> <!-- End of Create SY modal -->
+        
 
       </div>
 
