@@ -303,7 +303,6 @@
 
           <button
               class="cursor-pointer py-[1rem] px-[2.13rem] bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-700 flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-brown-500 text-center"
-              data-modal-hide="default-modal"
               type="button">
               Sign in
           </button>
