@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Enrollment;
+use App\Models\EnrollmentForm;
 use ErrorException;
 use Illuminate\Http\Request;
 
@@ -22,7 +22,7 @@ class EnrollmentController extends Controller
         ]);
 
         if(empty($request->session()->get('enrollment'))){
-            $enrollment = new enrollment();
+            $enrollment = new EnrollmentForm();
 
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
@@ -67,7 +67,7 @@ class EnrollmentController extends Controller
             'lastSchoolYearAttended' => 'required',
         ]);
         if(empty($request->session()->get('enrollment'))){
-            $enrollment = new enrollment();
+            $enrollment = new EnrollmentForm();
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }else{
@@ -127,7 +127,7 @@ class EnrollmentController extends Controller
             'house_number' => 'nullable',
         ]);
         if(empty($request->session()->get('enrollment'))){
-            $enrollment = new enrollment();
+            $enrollment = new EnrollmentForm();
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }else{
@@ -179,7 +179,7 @@ class EnrollmentController extends Controller
         ]);
 
         if(empty($request->session()->get('enrollment'))){
-            $enrollment = new enrollment();
+            $enrollment = new EnrollmentForm();
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }else{
@@ -212,7 +212,7 @@ class EnrollmentController extends Controller
             "distance_learning" => 'required',    
         ]);
         if(empty($request->session()->get('enrollment'))){
-            $enrollment = new enrollment();
+            $enrollment = new EnrollmentForm();
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }else{
