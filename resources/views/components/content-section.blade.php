@@ -2,7 +2,7 @@
 <div>   
     <!-- Announcement Section -->
     @if (request()->is('student.announcements') )
-    <div class="md:pl-64 w-full min-h-full sm:py-12 sm:pb-9 sm:pr-[-10rem] py-7 sm:px-16 px-4 bg-yellow-50">
+    <div class="md:pl-64 w-full min-h-full sm:py-12 sm:pb-9 sm:pr-[-10rem] py-7 sm:px-16 px-6 bg-yellow-50">
 
         <section class="min-w-full min-h-full relative grid grid-cols-1 sm:gap-7 gap-5 marker: md:ml-8  items-center">
 
@@ -1406,148 +1406,143 @@
     </div>
 
     @elseif (request()->is('student.student-information') )
-    <!-- Student Information Section -->
+    <!-- Student Information Section Container-->
     <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
 
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
-
+            
+            <!-- Header Content -->
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Student Information</h3>
                 <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h2 class="mt-2 uppercase font-semibold text-lg sm:text-xl lg:text-3xl text-brown-600">motus, James P. (114743070020)</h2>
             </div> <!-- End of Header Content -->
 
             <div class=" flex min-w-screen flex-col gap-6 items-center mt-6">
 
-                <!-- Document Requests Main Body -->
+                
                 <div id="mainBody" class="flex flex-col mx-40 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish">
 
                     <!-- My Requests Button Section -->
-                    <div class="w-full flex flex-row justify-between">
+                    <div class="w-full flex flex-row justify-center gap-20 ">
                         
                         <div class=" overflow-x-auto">
-                            <table class="w-auto lg:text-base text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold border-l-2 border-green-500">
+                            <table class="bg-white lg:text-lg rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold ">
                                 <tbody>
-                                    <tr class="bg-white ">
-                                        <th scope="row" class="px-4 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white ">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white ">
                                             Lrn Number
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-white ">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Name
                                         </th>
-                                        <td class="px-4 py-2 uppercase">
+                                        <td class="px-10 py-2 uppercase">
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-white ">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Age
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             21
                                         </td>
                                     </tr>
-                                    <tr class="bg-white ">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Gender
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             Male
                                         </td>
                                     </tr>
-                                    <tr class="bg-white ">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Date of Birth
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             October 26, 2001
                                         </td>
                                     </tr>
-                                    <tr class="bg-white ">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Religion
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             Roman Catholic
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Indigenous Group
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             Pogi
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Primary Language
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             Hiligaynon
                                         </td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class=" overflow-x-auto">
-                            <table class="w-auto lg:text-base text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
-                                <tbody>
-                                    <tr class="bg-white dark:bg-gray-800 border-l-2 border-green-500">
-                                        <th scope="row" class="px-4 py-2 font-semibold text-green-500 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-2 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
                                             Address
                                         </th>
                                     </tr>
-                                    <tr class="bg-white border-l-2 border-green-500">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Region
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             IV-4 (Calabarzon)
                                         </td>
                                     </tr>
-                                    <tr class="bg-white border-l-2 border-green-500">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Province
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             Rizal
                                         </td>
                                     </tr>
-                                    <tr class="bg-white border-l-2 border-green-500">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             City
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             San Mateo
                                         </td>
                                     </tr>
-                                    <tr class="bg-white border-l-2 border-green-500">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Barangay
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             Guitnang Bayan 2
                                         </td>
                                     </tr>
-                                    <tr class="bg-white border-l-2 border-green-500">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Street
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             Di makita
                                         </td>
                                     </tr>
-                                    <tr class="bg-white border-l-2 border-green-500">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             House number
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             001100
                                         </td>
                                     </tr>
@@ -1556,84 +1551,83 @@
                         </div>
 
                         <div class=" overflow-x-auto">
-                            <table class="w-auto lg:text-base text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold  border-l-2 border-green-500">
+                            <table class="w-auto lg:text-lg text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold border-l-4 border-green-500">
                                 <tbody>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-4 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50">
+                                        <th scope="row" class="px-7 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Father's Name
                                         </th>
-                                        <td class="px-4 py-2 uppercase">
+                                        <td class="px-10 py-2 uppercase">
                                             Motus, James Prado
                                         </td>
                                     </tr>
                                     <tr class="bg-white">
-                                        <th scope="row" class="px-4 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-4 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             father@gmail.com
                                         </td>
                                     </tr>
-                                    <tr class="bg-white ">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Mother's Name
                                         </th>
-                                        <td class="px-4 py-2 uppercase">
+                                        <td class="px-10 py-2 uppercase">
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-4 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             114743070020
                                         </td>
                                     </tr>
                                     <tr class="bg-white">
-                                        <th scope="row" class="px-4 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             Mother@gmail.com
                                         </td>
                                     </tr>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <th scope="row" class="px-4 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Guardian's Name
                                         </th>
-                                        <td class="px-4 py-2 uppercase">
+                                        <td class="px-10 py-2 uppercase">
                                             Motus, James Prado
                                         </td>
                                     </tr>
                                     <tr class="bg-white">
-                                        <th scope="row" class="px-4 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
-                                        <th scope="row" class="px-4 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-gray-50">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
-                                        <td class="px-4 py-2">
+                                        <td class="px-10 py-2">
                                             Guardian@gmail.com
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-
 
                     </div>
 
