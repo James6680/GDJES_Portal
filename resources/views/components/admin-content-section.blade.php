@@ -1586,21 +1586,21 @@
         <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Effortlessly oversee and control the enrollment process. This section empowers administrators to open or close enrollment based on the school year, ensuring timely and organized admissions. Additionally, manage the enrollees' requirements checklist efficiently. Perform CRUD operations for section management, enabling the configuration of section details such as number, section name, and available slots. The Student Record Management feature facilitates the removal of student records for those who choose not to continue their enrollment.</p>
       </div> <!-- End of Header Content -->
       
-      <!-- Open and Close Enrollment -->
+      <!-- Enrollment Management -->
       <div class="w-full flex flex-col pt-4">
         <h3 class="text-md font-semibold text-red-500">No school year selected to manage.</h3>
         <h4 class="text-base font-regular text-gray-500">Choose from the dropdown to manage an existing one or add a new school year using the button.</h3>
 
         
-
+        <!-- Main functions for SY Management -->
         <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
-          <!-- Dropdown SY Button for Open and Close Enrollment -->
+          <!-- Dropdown SY Button for Select a SY to Manage -->
           <button id="dropdownSYHoverButton-ocl" data-dropdown-toggle="dropdownSYHover-ocl" data-dropdown-trigger="hover" class="text-white bg-brown-500 hover:bg-brown-600 focus:ring-2 focus:outline-none focus:ring-brown-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800" type="button">Choose a school year to manage<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
             </svg>
           </button>
 
-          <!-- Dropdown menu for Open and Close Enrollment -->
+          <!-- Dropdown menu for Select a SY to Manage -->
           <div id="dropdownSYHover-ocl" class="z-10 w-52 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
             <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
               <li>
