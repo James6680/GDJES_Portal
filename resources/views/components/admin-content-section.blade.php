@@ -1603,7 +1603,7 @@
   @elseif(request()->is('admin.enrollment-management') )
   <!-- Admin Enrollment Management Main Content Container -->
   <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
-    <div class="w-full divide-y divide-gray-100 h-full gap-2 md:gap-3 lg:gap-4 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">  
+    <div class="w-full divide-y divide-gray-200 h-full gap-2 md:gap-3 lg:gap-4 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">  
     
       <!-- Header Content -->
       <div class="flex flex-col gap-2">
@@ -1628,7 +1628,7 @@
         @endif
         
         <!-- Main functions for SY Management -->
-        <div class="flex flex-col sm:flex-row w-full h-auto gap-4 pt-4 sm:justify-between">
+        <div class="flex flex-col sm:flex-row w-full h-auto gap-4 pt-1 sm:justify-between">
             @if (is_null($schoolYear))
             @else
               @if ($enrollmentStatus == 'Open')
@@ -2073,11 +2073,11 @@
                 <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                   <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
                 </svg>
-                <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to archive the account of *insert full name*?</h3>
+                <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to archive the section called *insert section name*?</h3>
                   <button data-modal-hide="archiveSectionModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                     Yes, I'm sure
                   </button>
-                  <button data-modal-hide="archiveSectionModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+                  <button data-modal-hide="archiveSectionModal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
               </div>
             </div>
           </div>
@@ -2094,11 +2094,11 @@
                 <span class="sr-only">Close modal</span>
               </button>
               <div class="p-6 pt-8 text-center">
-                <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                <svg class="mx-auto mb-4 text-red-500 w-12 h-12 dark:text-red-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                   <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
                 </svg>
                 <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to PERMANENTLY DELETE the section *insert section name*?</h3>
-                  <button data-modal-hide="deleteSectionModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                  <button data-modal-hide="deleteSectionModal" type="button" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                     Yes, I'm sure
                   </button>
                   <button data-modal-hide="deleteSectionModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
