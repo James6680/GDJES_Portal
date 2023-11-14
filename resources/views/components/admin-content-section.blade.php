@@ -1604,11 +1604,11 @@
         <div class="flex flex-col sm:flex-row w-full h-auto gap-4 pt-4 sm:justify-between">
             @if ($enrollmentStatus == 'Open')
               @if ($enrollmentPhase == 'Official')
-              <a href="#closeOfficialEnrollmentModal" data-modal-target="closeOfficialEnrollmentModal" data-modal-show="closeOfficialEnrollmentModal" id="closeEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-200 hover:bg-red-300 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
+              <a href="#" data-modal-target="closeOfficialEnrollmentModal" data-modal-show="closeOfficialEnrollmentModal" id="closeEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-200 hover:bg-red-300 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
                 Close enrollment
               </a>
               @else
-              <a href="#closePreEnrollmentModal" data-modal-target="closePreEnrollmentModal" data-modal-show="closePreEnrollmentModal" id="closeEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-200 hover:bg-red-300 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
+              <a href="#" data-modal-target="closePreEnrollmentModal" data-modal-show="closePreEnrollmentModal" id="closePreEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-200 hover:bg-red-300 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
                 Close enrollment
               </a>    
               @endif          
@@ -1858,11 +1858,11 @@
 
           <!-- Table functions - create section -->
           <div class="grid justify-items-center sm:justify-items-end gap-4 w-full pb-4 sm:py-4 ">
-            <a href="#createSection" type="button" class="h-full text-white bg-brown-500 hover:bg-brown-700 focus:ring-2 focus:outline-none focus:ring-brown-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
+            <a href="#createSection" type="button" class="h-full text-black bg-green-50 hover:text-white hover:bg-green-300 focus:ring-2 focus:outline-none focus:ring-brown-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
               <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"  viewBox="0 0 256 256">
                 <path d="M64.12,147.8a4,4,0,0,1-4,4.2H16a8,8,0,0,1-7.8-6.17,8.35,8.35,0,0,1,1.62-6.93A67.79,67.79,0,0,1,37,117.51a40,40,0,1,1,66.46-35.8,3.94,3.94,0,0,1-2.27,4.18A64.08,64.08,0,0,0,64,144C64,145.28,64,146.54,64.12,147.8Zm182-8.91A67.76,67.76,0,0,0,219,117.51a40,40,0,1,0-66.46-35.8,3.94,3.94,0,0,0,2.27,4.18A64.08,64.08,0,0,1,192,144c0,1.28,0,2.54-.12,3.8a4,4,0,0,0,4,4.2H240a8,8,0,0,0,7.8-6.17A8.33,8.33,0,0,0,246.17,138.89Zm-89,43.18a48,48,0,1,0-58.37,0A72.13,72.13,0,0,0,65.07,212,8,8,0,0,0,72,224H184a8,8,0,0,0,6.93-12A72.15,72.15,0,0,0,157.19,182.07Z"></path>
               </svg>
-              Create section
+              Create a section
             </a>
           </div> <!-- End of Table functions - add user -->
 
@@ -1876,19 +1876,16 @@
             <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" class="px-6 py-3">
-                    FULL NAME
+                    NUMBER
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    USERNAME
+                    SECTION NAME
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    ADDRESS
+                    GRADE LEVEL
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    STATUS
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    DATE CREATED
+                    SLOTS
                 </th>
                 <th scope="col" class="px-6 py-3">
                     ACTION
@@ -1899,46 +1896,42 @@
             <tbody>
               <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">
-                  Last Name, First Name Middle Name
+                  1
                 </td>
                 <td class="px-6 py-4">
-                  lnfnmn001
+                  Halimuyak
                 </td>
                 <td class="px-6 py-4">
-                  9th Avenue W, Grace Park West, Caloocan, Metro Manila
+                  Kinder
                 </td>
                 <td class="px-6 py-4">
-                  Active
-                </td>
-                <td class="px-6 py-4">
-                  August 23, 2023
+                  12/40
                 </td>
                 <td class="px-6 py-4 gap-2">
                   <!-- Modal toggle -->
-                  <a href="#editUserModal" data-modal-target="editUserModal" data-modal-show="editUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                  <a href="#archiveUserModal" data-modal-target="archiveUserModal" data-modal-show="archiveUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                  <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                  <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                  <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                 </td>
               </tr>
               <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">
-                  Reyes, Alex Pajarellano
+                  2
                 </td>
                 <td class="px-6 py-4">
-                  lxxsinigang
+                  Mabantut
                 </td>
                 <td class="px-6 py-4">
-                  Magsaysay Blvd, Corner Santol St, Santa Mesa, Manila, 1008 Metro Manila
+                  Kinder
                 </td>
                 <td class="px-6 py-4">
-                  Active
+                  40/40
                 </td>
                 <td class="px-6 py-4">
-                  August 23, 2023
-                </td>
-                <td class="px-6 py-4 gap-2">
                   <!-- Modal toggle -->
-                  <a href="#" data-modal-target="editUserModal" data-modal-show="editUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                  <a href="#" data-modal-target="archiveUserModal" data-modal-show="archiveUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                  <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                  <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                  <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                 </td>
               </tr>
             </tbody>
@@ -1975,17 +1968,17 @@
             </ul>
         </nav> <!-- End of Pagination -->
 
-        <!-- Edit user modal -->
-        <div id="editUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <!-- Edit section modal -->
+        <div id="editSectionModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
                 <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                            Edit user
+                            Edit section
                         </h3>
-                      <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editUserModal">
+                      <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editSectionModal">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                         </svg>
@@ -2036,10 +2029,10 @@
                 </form>
             </div>
           </div>
-        </div> <!-- End of Edit user modal -->
+        </div> <!-- End of Edit section modal -->
 
-        <!-- Archive User Modal -->
-        <div id="archiveUserModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <!-- Archive section Modal -->
+        <div id="archiveSectionModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-md max-h-full">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
               <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="archiveUserModal">
@@ -2057,6 +2050,29 @@
                     Yes, I'm sure
                   </button>
                   <button data-modal-hide="archiveUserModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+              </div>
+            </div>
+        </div>
+
+        <!-- Delete section Modal -->
+        <div id="deleteSectionModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+          <div class="relative w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="deleteSectionModal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+              <div class="p-6 pt-8 text-center">
+                <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
+                </svg>
+                <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to PERMANENTLY DELETE the section *insert section name*?</h3>
+                  <button data-modal-hide="deleteSectionModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                    Yes, I'm sure
+                  </button>
+                  <button data-modal-hide="deleteSectionModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
               </div>
             </div>
         </div>
