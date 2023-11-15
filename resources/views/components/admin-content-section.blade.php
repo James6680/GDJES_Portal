@@ -1054,26 +1054,101 @@
       <!-- Table -->
       <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
       
-        <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
+        <table class="w-full text-xs text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
 
-          <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
+          <thead class="text-2xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">
-                  FULL NAME
+              <th scope="col" class="px-3 py-3">
+                  LAST NAME
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-3 py-3">
+                  FIRST NAME
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  MIDDLE NAME
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  NAME EXTENSION
+              </th>
+              <th scope="col" class="px-3 py-3">
                   USERNAME
               </th>
-              <th scope="col" class="px-6 py-3">
-                  ADDRESS
+              <th scope="col" class="px-3 py-3">
+                  RETURNEE
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-3 py-3">
+                  GRADE LEVEL
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  LRN
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  DATE OF BIRTH
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  AGE
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  INDEGENOUS GROUP
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  MOTHER TONGUE
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  RELIGION
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  SPECIAL ASSISTANCE
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  DISABILITY
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  HOUSE NUMBER, AND STREET
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  BARANGAY
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  CITY
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  FATHER'S FULL NAME
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  FATHER'S CONTACT NUMBER
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  MOTHER'S MAIDEN NAME
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  MOTHER'S CONTACT NUMBER
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  GUARDIAN'S FULL NAME
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  GUARDIAN'S CONTACT NUMBER
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  4P'S BENEFICIARY
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  4P'S HOUSEHOLD ID NO.
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  ACCESS TO TECHNOLOGY
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  PREFFERRED MODE OF LEARNING
+              </th>
+              <th scope="col" class="px-3 py-3">
                   STATUS
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-3 py-3">
                   DATE CREATED
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-3 py-3">
                   ACTION
               </th>
             </tr>
@@ -1081,49 +1156,101 @@
 
           <tbody>
             <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
-              <td class="px-6 py-4">
-                Last Name, First Name Middle Name
+              <td class="px-3 py-3">
+                Reyes
               </td>
-              <td class="px-6 py-4">
-                lnfnmn001
+              <td class="px-3 py-3">
+                Alex
               </td>
-              <td class="px-6 py-4">
-                9th Avenue W, Grace Park West, Caloocan, Metro Manila
+              <td class="px-3 py-3">
+                Pajarellano
               </td>
-              <td class="px-6 py-4">
+              <td class="px-3 py-3">
+                None
+              </td>
+              <td class="px-3 py-3">
+                lxxMeow
+              </td>
+              <td class="px-3 py-3">
+                No
+              </td>
+              <td class="px-3 py-3">
+                Kinder
+              </td>
+              <td class="px-3 py-3">
+                158514070128
+              </td>
+              <td class="px-3 py-3">
+                09/17/2003
+              </td>
+              <td class="px-3 py-3">
+                20
+              </td>
+              <td class="px-3 py-3">
+                No
+              </td>
+              <td class="px-3 py-3">
+                Tagalog
+              </td>
+              <td class="px-3 py-3">
+                Agnostic
+              </td>
+              <td class="px-3 py-3">
+                No
+              </td>
+              <td class="px-3 py-3">
+                Psychosocial
+              </td>
+              <td class="px-3 py-3">
+                B11, L12
+              </td>
+              <td class="px-3 py-3">
+                Loma de Gato
+              </td>
+              <td class="px-3 py-3">
+                Marilao
+              </td>
+              <td class="px-3 py-3">
+                Lawrence Reyes
+              </td>
+              <td class="px-3 py-3">
+                None
+              </td>
+              <td class="px-3 py-3">
+                Mary Jane Pajarellano
+              </td>
+              <td class="px-3 py-3">
+                None
+              </td>
+              <td class="px-3 py-3">
+                Angelita Pajarellano
+              </td>
+              <td class="px-3 py-3">
+                09154456155
+              </td>
+              <td class="px-3 py-3">
+                No
+              </td>
+              <td class="px-3 py-3">
+                N/A
+              </td>
+              <td class="px-3 py-3">
+                Own phone/tablet, own computer/laptop, own internet connection
+              </td>
+              <td class="px-3 py-3">
+                Modular
+              </td>
+              <td class="px-3 py-3">
                 Active
               </td>
-              <td class="px-6 py-4">
+              <td class="px-3 py-3">
                 August 23, 2023
               </td>
-              <td class="px-6 py-4 gap-2">
+              <td class="px-3 py-3 gap-2">
                 <!-- Modal toggle -->
-                <a href="#" data-modal-target="editUserModal" data-modal-show="editUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                <a href="#" data-modal-target="archiveUserModal" data-modal-show="archiveUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                <a href="#" data-modal-target="editStudentUserModal" data-modal-show="editStudentUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <a href="#" data-modal-target="archiveStudentUserModal" data-modal-show="archiveStudentUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
-              <td class="px-6 py-4">
-                Reyes, Alex Pajarellano
-              </td>
-              <td class="px-6 py-4">
-                lxxsinigang
-              </td>
-              <td class="px-6 py-4">
-                Magsaysay Blvd, Corner Santol St, Santa Mesa, Manila, 1008 Metro Manila
-              </td>
-              <td class="px-6 py-4">
-                Active
-              </td>
-              <td class="px-6 py-4">
-                August 23, 2023
-              </td>
-              <td class="px-6 py-4 gap-2">
-                <!-- Modal toggle -->
-                <a href="#" data-modal-target="editUserModal" data-modal-show="editUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                <a href="#" data-modal-target="archiveUserModal" data-modal-show="archiveUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
-              </td>
-            </tr>
           </tbody>
 
         </table>
