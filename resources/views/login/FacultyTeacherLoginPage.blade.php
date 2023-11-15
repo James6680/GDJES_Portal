@@ -223,7 +223,7 @@
 
                                         <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
                                         
-                                        <label class="hover:text-gray-200 rounded font-heading-2-bold px-2 py-1 text-xs text-main-green-secondary-500 cursor-pointer js-password-label " for="toggle">Show</label>
+                                        <label class="hover:text-gray-400 rounded font-heading-2-bold px-2 py-1 text-xs text-main-green-secondary-500 cursor-pointer js-password-label " for="toggle">Show</label>
                                     
                                     </div>
                                 
