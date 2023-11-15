@@ -19,7 +19,7 @@ passwordToggle.addEventListener('change', function() {
 
 // ---------------------------------------------------------------------|
 
-// Teacher Login Form Vaidation
+// Admin Login Form Vaidation
 const usernameInput = document.getElementById("username");
 const passwordnput = document.getElementById("password");
 const usernameError = document.getElementById("username-error");
@@ -56,26 +56,13 @@ function validateForm() {
     passwordnput.classList.add("border-red-500");
   }
 
-  if (usernameInput.checkValidity() && passwordnput.checkValidity()) {
-    // If both username and password are valid, redirect the user to the desired link
-    window.location.href = "StudentPortalRegistrationPage1.html";
-  }
-}
+  if (usernameInput.checkValidity() && passwordInput.checkValidity()) {
+    // If both username and password are valid, redirect the user to the admin dashboard
+    window.location.href = dashboardUrl;  }
 
 //-------------------------------------------------------------------|
 
-// Admin Contact Button & Forgot Password Link
-var adminContactBtn = document.getElementById("adminContact");
-
-adminContactBtn.addEventListener("click", function(event) {
-
-  event.preventDefault(); 
-
-  var adminContactLink = "StudentPortalRegistrationPage1.html";
-  
-  window.location.href = adminContactLink;
-
-});
 
 
 
+}

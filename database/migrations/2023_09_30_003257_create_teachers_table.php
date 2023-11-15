@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('first_name', 50);
             $table->string('middle_name', 50);
             $table->string('extension_name', 5);
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('profile_picture');
             $table->date('birth_date');
             $table->float('age');
@@ -30,6 +30,12 @@ return new class extends Migration
             $table->string('province', 50);
             $table->string('region', 50);
             $table->string('facebook_link');
+
+            //added columns for admin
+            $table->string('username', 50)->unique();
+            $table->string('password');
+            $table->tinyInteger('status')->default(1);
+            //end of added columns for admin
             $table->timestamps();
         });
     }

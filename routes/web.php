@@ -5,6 +5,11 @@ use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TeacherController;
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,38 +26,46 @@ Route::get('layouts.landing', function () {
     return view('layouts.landing', ['announcements' => $announcements]);
 });
 
-
-
+/*----------------Added Admin Routes-----------------------*/
+Route::prefix('admin')->group(function(){
+    Route::get('/login',[AdminController::class, 'Index'])->name('login_from');
+    Route::post('/login/owner',[AdminController::class, 'Login'])->name('admin.login');
+    Route::get('/signout',[AdminController::class, 'Signout'])->name('admin.signout');
+    
+});
+/*----------------End Added Admin Routes-----------------------*/
+//R: FIX THE ADMIN ROUTES AND ADD THE OTHER ROUTES FOR THE OTHER USERS
+//- :ADD EMAIL FOR RESETTIN PASSWORD IN DATABASE TABLE
 
 
 // Admin Routes
 Route::get('admin.dashboard', function () {
     return view('layouts.admin');
-});
+})->middleware('admin')->name('admin.dashboard');
 
 Route::get('admin.announcements', function () {
     return view('layouts.admin');
-});
+})->middleware('admin')->name('admin.announcements');
 
 Route::get('admin.document-request', function () {
     return view('layouts.admin');
-});
+})->middleware('admin')->name('admin.document-request');
 
 Route::get('admin.student-management', function () {
     return view('layouts.admin');
-});
+})->middleware('admin')->name('admin.student-management');
 
 Route::get('admin.teacher-management', function () {
     return view('layouts.admin');
-});
+})->middleware('admin')->name('admin.teacher-management');
 
 Route::get('admin.enrollment-management', function () {
     return view('layouts.admin');
-});
+})->middleware('admin')->name('admin.enrollment-management');
 
 Route::get('admin.school-information', function () {
     return view('layouts.admin');
-});
+})->middleware('admin')->name('admin.school-information');
 //End of Admin Routes
 
 
@@ -86,25 +99,33 @@ Route::get('student.student-information', function () {
 //End of Student Routes
 
 
-
-
+/*----------------Added Faculty Routes-----------------------*/
+Route::prefix('teacher')->group(function(){
+    Route::get('/login',[TeacherController::class, 'IndexTeacher'])->name('teacher_login_from');
+    Route::post('/login/owner',[TeacherController::class, 'LoginTeacher'])->name('login.FacultyTeacherLoginPage');
+    Route::get('/signout',[TeacherController::class, 'SignoutTeacher'])->name('teacher.signout');
+    
+});
+/*----------------End Added Faculty Routes-----------------------*/
+//R: FIX THE FACuLTY ROUTES AND ADD THE OTHER ROUTES FOR THE OTHER USERS
+//- :FIX THE LOGIN ROUTE
 
 // Faculty Routes
 Route::get('faculty.announcements', function () {
     return view('layouts.faculty');
-});
+})->middleware('teachers')->name('faculty.announcements');
 
 Route::get('faculty.my-students', function () {
     return view('layouts.faculty');
-});
+})->middleware('teachers')->name('faculty.my-students');
 
 Route::get('faculty.enrollments', function () {
     return view('layouts.faculty');
-});
+})->middleware('teachers')->name('faculty.enrollments');
 
 Route::get('faculty.grades', function () {
     return view('layouts.faculty');
-});
+})->middleware('teachers')->name('faculty.grades');
 // End of Faculty Routes
 
 Route::get('student-registration-1', [EnrollmentController::class, 'getEnrollment'])

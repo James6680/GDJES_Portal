@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  @vite(['resources/js/app.js', 'resources/css/style.css', 'resources/js/teacher_Login_validation.js'])
+  @vite(['resources/js/app.js', 'resources/css/style.css', 'resources/js/admin_Login_validation.js'])
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <title>Faculty/Teacher Login Page</title>
+    <title>Admin Login Page</title>
     <link rel="icon" href="{{url('assets/GDJES Logo.png')}}" type="image/x-icon" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank Ruhl Libre:wght@400;700&display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"/>
@@ -73,7 +73,7 @@
         <img
           class="relative w-[3rem] h-[3rem] overflow-hidden shrink-0 object-cover"
           alt=""
-          src="./assets/GDJES Logo.png"
+          src="{{ asset('./assets/GDJES Logo.png') }}"
         />
 
         <div class="flex flex-col items-start justify-start ">
@@ -90,19 +90,20 @@
 
       </div>
 
-    <!--Added Access Error Message-->
-    @if (Session::has('error'))
-    <div class="flex items-center p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
-      <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-      </svg>
-      <span class="sr-only">Info</span>
-      <div>
-        <span class="font-medium">{{ Session::get('error') }}</span> 
-      </div>
-    </div>
-    @endif
-    <!--End Added Access Error Message-->
+      <!--Added Access Error Message-->
+        @if (Session::has('error'))
+        <div class="flex items-center p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+          <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <span class="sr-only">Info</span>
+          <div>
+            <span class="font-medium">{{ Session::get('error') }}</span> 
+          </div>
+        </div>
+        @endif
+      <!--End Added Access Error Message-->
+
 
 
 
@@ -110,16 +111,16 @@
 
       <form
         class="self-stretch rounded-lg bg-green-50 flex flex-col items-center justify-center p-[2.1rem] gap-[1.5rem] z-[2] lg:self-stretch lg:w-auto lg:pl-[2.5rem] md:self-stretch md:w-auto md:h-auto md:pl-[2.5rem] md:pr-[2.5rem] sm:pl-[2rem] sm:box-border"
-        action="{{ route('login.FacultyTeacherLoginPage') }}"
+        action="{{ route('admin.login') }}"
         method="post"
         novalidate>
 
         @csrf
 
+
         <h1
           class="m-0 self-stretch relative text-[1.75rem] leading-[110%] font-bold font-heading-2-bold text-green-800 text-center">
-        
-          <p class="m-0">Faculty Portal Login</p>
+          <p class="m-0">Admin Portal Login</p>
         </h1>
 
         <div class="self-stretch flex flex-col items-start justify-start gap-[0.5rem]">
@@ -130,7 +131,7 @@
 
           <h4 
             class="m-0 self-stretch relative text-[0.81rem] leading-[140%] font-normal font-button text-green-800 text-left"> 
-            Login to access your student portal 
+            Login to access admin portal 
           </h4>
         
         </div>
@@ -222,7 +223,7 @@
 
           </a>
 
-          <!--id="login-button"-->
+          <!--button id removed id="login-button"-->
           <button
             
             type="submit"
@@ -235,31 +236,7 @@
 
         <div class="self-stretch relative bg-brown-300 h-[0.13rem] overflow-hidden shrink-0"></div>
         
-        <div class="self-stretch flex flex-col items-start justify-start gap-[.9rem]">
-          
-          <div
-            class="self-stretch relative text-[0.81rem] leading-[140%] font-button text-brown-500 text-center">
-            <p class="m-0">
-              If you encounter any problem or don't have an account yet, 
-              <br>please contact the admin at 
-              <a href="mailto:admin@example.com" style="color: blue;">
-                admin@example.com
-              </a>.
-            </p>
-          </div>
-
-          <!--<button
-            class="cursor-pointer py-[1rem] px-[2.13rem] bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-900"
-            id="adminContact">
-            <div
-              class="flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-brown-500 text-center">
-              contact our admin here
-            </div>
-
-          </button>
-          -->
-
-        </div>
+        
 
       </form>
 
@@ -365,6 +342,10 @@
         }
       }
     </script>
+
+<script>
+  var dashboardUrl = "{{ url('admin.dashboard') }}";
+</script>
 
   </body>
 
