@@ -70,7 +70,7 @@ function checkLength(value, container){
   }
   
 function checkEmptySelect(value, container){
-  if(value === "0"){
+  if(value === ""){
     container.textContent = "❌ Pumili muna sa mga pagpipilian bago lumipat sa sunod na pahina.";
     isValid = 0;
   }

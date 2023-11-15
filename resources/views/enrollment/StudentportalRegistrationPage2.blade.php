@@ -142,15 +142,13 @@
               <select id="returnee" 
                 name="returnee" 
                 class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  px-2.4 py-2.5 w-full">
-                <option value="0"></option>
-                <option value="1" @if(isset($enrollment->returnee) && $enrollment->returnee == 1) selected @endif>KINDER</option>
-                <option value="2" @if(isset($enrollment->returnee) && $enrollment->returnee == 2) selected @endif>Grade 1</option>
-                <option value="3" @if(isset($enrollment->returnee) && $enrollment->returnee == 3) selected @endif>Grade 2</option>
-                <option value="4" @if(isset($enrollment->returnee) && $enrollment->returnee == 4) selected @endif>Grade 3</option>
-                <option value="5" @if(isset($enrollment->returnee) && $enrollment->returnee == 5) selected @endif>Grade 4</option>
-                <option value="6" @if(isset($enrollment->returnee) && $enrollment->returnee == 6) selected @endif>Grade 5</option>
-                <option value="7" @if(isset($enrollment->returnee) && $enrollment->returnee == 7) selected @endif>Grade 6</option>
-                <option value="8" @if(isset($enrollment->returnee) && $enrollment->returnee == 8) selected @endif>ALS</option>
+                <option value=""></option>
+                <option value="0" @if(isset($enrollment->returnee) && $enrollment->returnee == 1) selected @endif>KINDER</option>
+                <option value="1" @if(isset($enrollment->returnee) && $enrollment->returnee == 2) selected @endif>Grade 1</option>
+                <option value="2" @if(isset($enrollment->returnee) && $enrollment->returnee == 3) selected @endif>Grade 2</option>
+                <option value="3" @if(isset($enrollment->returnee) && $enrollment->returnee == 4) selected @endif>Grade 3</option>
+                <option value="4" @if(isset($enrollment->returnee) && $enrollment->returnee == 5) selected @endif>Grade 4</option>
+                <option value="5" @if(isset($enrollment->returnee) && $enrollment->returnee == 6) selected @endif>Grade 5</option>
               </select>
 
               <!-- Error Message for Ano ang huling baitang na natapos? -->

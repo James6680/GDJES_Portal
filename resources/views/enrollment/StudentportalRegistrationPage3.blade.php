@@ -120,23 +120,21 @@
              
               <div class="self-stretch flex flex-col items-start justify-start pb-4">
                 
-                <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="balikAral">Ano ang huling baitang na natapos? <span class="text-red-600">*</span></b>
+                <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="balikAral">Ano ang Baitang na nais pasukan?<span class="text-red-600">*</span></b>
               
               </div>
-
               <!-- Grade Level -->
-              <select id="grade_level" 
+              <select id="grade_level" @if($enrollment->aralStatus != "HINDI") disabled @endif
                 name="grade_level" 
                 class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 py-2.5 w-full">
-                <option value=""  @if(isset($enrollment->grade_level) && $enrollment->grade_level == null) selected @endif>Pumili ng huling baitang na natapos</option>
-                <option value="0" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 0) selected @endif>KINDER</option>
-                <option value="1" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 1) selected @endif>Grade 1</option>
-                <option value="2" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 2) selected @endif>Grade 2</option>
-                <option value="3" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 3) selected @endif>Grade 3</option>
-                <option value="4" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 4) selected @endif>Grade 4</option>
-                <option value="5" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 5) selected @endif>Grade 5</option>
-                <option value="6" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 6) selected @endif>Grade 6</option>
-                <option value="7" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 7) selected @endif>ALS</option>
+                <option value=""  @if(isset($enrollment->grade_level) && $enrollment->grade_level == null) selected @endif>Pumili ng huling baitang na nais pasukan</option>
+                <option value="0" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 0 ) selected @endif>KINDER</option>
+                <option value="1" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 1 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 1) selected @endif>Grade 1</option>
+                <option value="2" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 2 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 2) selected @endif>Grade 2</option>
+                <option value="3" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 3 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 3) selected @endif>Grade 3</option>
+                <option value="4" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 4 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 4) selected @endif>Grade 4</option>
+                <option value="5" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 5 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 5) selected @endif>Grade 5</option>
+                <option value="6" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 6 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 6) selected @endif>Grade 6</option>
               </select>
               <!-- Error Message for Ano ang huling baitang na natapos? -->
               <span   
@@ -660,21 +658,21 @@
 
               <select id="primary_language" name="primary_language" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
                 <option value="">Pumili ng kinagisnang wika</option>
-                <option value="1" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 1) selected @endif>Filipino</option>
-                <option value="2" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 2) selected @endif>Bikolano</option>
-                <option value="3" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 3) selected @endif>Cebuano</option>
-                <option value="4" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 4) selected @endif>Chinese</option>
-                <option value="5" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 5) selected @endif>English</option>
-                <option value="6" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 6) selected @endif>Ilocano</option>
-                <option value="7" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 7) selected @endif>Kapampangan</option>
-                <option value="8" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 8) selected @endif>Maguindanaoan</option>
-                <option value="9" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 9) selected @endif>Manobo</option>
-                <option value="10" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 10) selected @endif>Hihonggo</option>
-                <option value="11" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 11) selected @endif>Philippine Sign Language</option>
-                <option value="12" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 12) selected @endif>Tausug</option>
-                <option value="13" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 13) selected @endif>Waray</option>
-                <option value="14" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 14) selected @endif>Ybanag</option>
-                <option value="15" @if(isset($enrollment->primary_language) && $enrollment->primary_language == 15) selected @endif>Others</option>
+                <option value="Filipino " @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Filipino") selected @endif>Filipino</option>
+                <option value="Bikolano" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Bikolano") selected @endif>Bikolano</option>
+                <option value="Cebuano" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Cebuano") selected @endif>Cebuano</option>
+                <option value="Chinese" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Chinese") selected @endif>Chinese</option>
+                <option value="English" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "English") selected @endif>English</option>
+                <option value="Ilocano" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Ilocano") selected @endif>Ilocano</option>
+                <option value="Kapampangan" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Kapampangan") selected @endif>Kapampangan</option>
+                <option value="Maguindanaoan" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Maguindanaoan") selected @endif>Maguindanaoan</option>
+                <option value="Manobo" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Manobo") selected @endif>Manobo</option>
+                <option value="Hihonggo" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Hihonggo") selected @endif>Hihonggo</option>
+                <option value="Philippine Sign Language" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Philippine Sign Language") selected @endif>Philippine Sign Language</option>
+                <option value="Tausug" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Tausug") selected @endif>Tausug</option>
+                <option value="Waray" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Waray") selected @endif>Waray</option>
+                <option value="Ybanag" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Ybanag") selected @endif>Ybanag</option>
+                <option value="Others" @if(isset($enrollment->primary_language) && $enrollment->primary_language == "Others") selected @endif>Others</option>
               </select>
               <span   
                 id="input-error10" 
@@ -698,27 +696,27 @@
 
               <select id="religion" name="religion" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5  w-full">
                 <option value="">Pumili ng Relihiyon</option>
-                <option value="1" @if(isset($enrollment->religion) && $enrollment->religion == 1) selected @endif>Christianity</option>
-                <option value="2" @if(isset($enrollment->religion) && $enrollment->religion == 2) selected @endif>Aglipayan</option>
-                <option value="3" @if(isset($enrollment->religion) && $enrollment->religion == 3) selected @endif>Angelican</option>
-                <option value="4" @if(isset($enrollment->religion) && $enrollment->religion == 4) selected @endif>Apostolic</option>
-                <option value="5" @if(isset($enrollment->religion) && $enrollment->religion == 5) selected @endif>Baptist</option>
-                <option value="6" @if(isset($enrollment->religion) && $enrollment->religion == 6) selected @endif>Buddhism</option>
-                <option value="7" @if(isset($enrollment->religion) && $enrollment->religion == 7) selected @endif>Christ Latter Day Saints</option>
-                <option value="8" @if(isset($enrollment->religion) && $enrollment->religion == 8) selected @endif>Church of God in Jesus Christ</option>
-                <option value="9" @if(isset($enrollment->religion) && $enrollment->religion == 9) selected @endif>Church of God International</option>
-                <option value="10" @if(isset($enrollment->religion) && $enrollment->religion == 10) selected @endif>Dating Daan</option>
-                <option value="11" @if(isset($enrollment->religion) && $enrollment->religion == 11) selected @endif>El Shaddai</option>
-                <option value="12" @if(isset($enrollment->religion) && $enrollment->religion == 12) selected @endif>Full Gospel</option>
-                <option value="13" @if(isset($enrollment->religion) && $enrollment->religion == 13) selected @endif>Hinduism</option>
-                <option value="14" @if(isset($enrollment->religion) && $enrollment->religion == 14) selected @endif>Iglesia ni Cristo</option>
-                <option value="15" @if(isset($enrollment->religion) && $enrollment->religion == 15) selected @endif>Indigenous Religion</option>
-                <option value="16" @if(isset($enrollment->religion) && $enrollment->religion == 16) selected @endif>Islam</option>
-                <option value="17" @if(isset($enrollment->religion) && $enrollment->religion == 17) selected @endif>Jehovah Witneses</option>
-                <option value="18" @if(isset($enrollment->religion) && $enrollment->religion == 18) selected @endif>Judaism</option>
-                <option value="19" @if(isset($enrollment->religion) && $enrollment->religion == 19) selected @endif>Kingdom of Jesus Christ</option>
-                <option value="20" @if(isset($enrollment->religion) && $enrollment->religion == 20) selected @endif>Lutheran</option>
-                <option value="21" @if(isset($enrollment->religion) && $enrollment->religion == 21) selected @endif>others</option>
+                <option value="Christianity" @if(isset($enrollment->religion) && $enrollment->religion == "Christianity") selected @endif>Christianity</option>
+                <option value="Aglipayan" @if(isset($enrollment->religion) && $enrollment->religion == "Aglipayan") selected @endif>Aglipayan</option>
+                <option value="Angelican" @if(isset($enrollment->religion) && $enrollment->religion == "Angelican") selected @endif>Angelican</option>
+                <option value="Apostolic" @if(isset($enrollment->religion) && $enrollment->religion == "Apostolic") selected @endif>Apostolic</option>
+                <option value="Baptist" @if(isset($enrollment->religion) && $enrollment->religion == "Baptist") selected @endif>Baptist</option>
+                <option value="Buddhism" @if(isset($enrollment->religion) && $enrollment->religion == "Buddhism") selected @endif>Buddhism</option>
+                <option value="Christ Latter Day Saints" @if(isset($enrollment->religion) && $enrollment->religion == "Christ Latter Day Saints") selected @endif>Christ Latter Day Saints</option>
+                <option value="Church of God in Jesus Christ" @if(isset($enrollment->religion) && $enrollment->religion == "Church of God in Jesus Christ") selected @endif>Church of God in Jesus Christ</option>
+                <option value="Church of God International" @if(isset($enrollment->religion) && $enrollment->religion == "Church of God International") selected @endif>Church of God International</option>
+                <option value="Dating Daan" @if(isset($enrollment->religion) && $enrollment->religion == "Dating Daan") selected @endif>Dating Daan</option>
+                <option value="El Shaddai" @if(isset($enrollment->religion) && $enrollment->religion == "El Shaddai") selected @endif>El Shaddai</option>
+                <option value="Full Gospel" @if(isset($enrollment->religion) && $enrollment->religion == "Full Gospel") selected @endif>Full Gospel</option>
+                <option value="Hinduism" @if(isset($enrollment->religion) && $enrollment->religion == "Hinduism") selected @endif>Hinduism</option>
+                <option value="Iglesia ni Cristo" @if(isset($enrollment->religion) && $enrollment->religion == "Iglesia ni Cristo") selected @endif>Iglesia ni Cristo</option>
+                <option value="Indigenous Religion" @if(isset($enrollment->religion) && $enrollment->religion == "Indigenous Religion") selected @endif>Indigenous Religion</option>
+                <option value="Islam" @if(isset($enrollment->religion) && $enrollment->religion == "Islam") selected @endif>Islam</option>
+                <option value="Jehovah Witneses" @if(isset($enrollment->religion) && $enrollment->religion == "Jehovah Witneses") selected @endif>Jehovah Witneses</option>
+                <option value="Judaism" @if(isset($enrollment->religion) && $enrollment->religion == "Judaism") selected @endif>Judaism</option>
+                <option value="Kingdom of Jesus Christ" @if(isset($enrollment->religion) && $enrollment->religion == "Kingdom of Jesus Christ") selected @endif>Kingdom of Jesus Christ</option>
+                <option value="Lutheran" @if(isset($enrollment->religion) && $enrollment->religion == "Lutheran") selected @endif>Lutheran</option>
+                <option value="others" @if(isset($enrollment->religion) && $enrollment->religion == "others") selected @endif>others</option>
               </select>
 
               <span   
@@ -999,14 +997,16 @@
           <div class="flex gap-2 w-full">  
 
             <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] w-1/2 border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100">
-        
+        <script>
+          console.log('{{$enrollment->aralStatus}}');
+        </script>
               
-              <button id="backBtn"
+              <button type ="button" id="backBtn"
               @if(isset($enrollment->aralStatus))
                 @if($enrollment->aralStatus == 'OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon')
-                  onclick="window.location = '{{URL::route('enrollment.StudentportalRegistrationPage2')}}'"
+                  onclick="document.location.href = '{{URL::route('enrollment.StudentportalRegistrationPage2')}}'"
                 @else
-                  onclick="window.location = '{{URL::route('enrollment.StudentportalRegistrationPage1')}}'"
+                  onclick="document.location.href = '{{URL::route('enrollment.StudentportalRegistrationPage1')}}'"
                 @endif
               @endif      
 

@@ -12,7 +12,6 @@ class Student extends Model
     protected $table = 'students';
 
     protected $fillable = [
-        'email',
         'school_year',
         'psa,birthcert_no',
         'lrn',
@@ -34,7 +33,7 @@ class Student extends Model
         'province',
         'region',
         'relatives_id',
-        'household_id',
+        'household_4ps_id',
         'status',
     ];
 }

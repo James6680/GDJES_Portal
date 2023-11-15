@@ -2,9 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EnrollmentForm;
 use ErrorException;
 use Illuminate\Http\Request;
+use App\Models\Father;
+use App\Models\Mother;
+use App\Models\Student;
+use App\Models\Guardian;
+use App\Models\Returnee;
+use App\Models\Relatives;
+use App\Models\Enrollment;
+use App\Models\LearningInfo;
+use App\Models\EnrollmentForm;
+use App\Models\DocumentRequirements;
 
 class EnrollmentController extends Controller
 {
@@ -198,7 +207,8 @@ class EnrollmentController extends Controller
             $pageSpecificField = $request->session()->get('enrollment')->fourps;
         }catch(ErrorException $e){
         }
-        if(!is_null($pageSpecificField)){    
+        // if(!is_null($pageSpecificField)){    //CHANGED FOR TESTING
+        if(true){ 
             return view('enrollment.StudentportalRegistrationPage5',compact('enrollment'));
         }else{
             return redirect()->route('enrollment.StudentportalRegistrationPage1');
@@ -221,8 +231,10 @@ class EnrollmentController extends Controller
             $request->session()->put('enrollment', $enrollment);
         }
 
+        $returnval = '';
         $this->createStudentInDatabase($enrollment);
-        return redirect()->route('enrollment.StudentportalRegistrationCompletedPage');
+        //  return view('checking',compact('returnval')) ////FOR CHECKING;
+        return redirect()->route('enrollment.StudentportalRegistrationCompletedPage'); 
     }
     public function enrollmentComplete(Request $request)
     {
@@ -238,8 +250,168 @@ class EnrollmentController extends Controller
         }
     }
 
-    private function createStudentInDatabase(Enrollment $enrollment){
+    public function createStudentInDatabase(EnrollmentForm $enrollmentForm){
+        // if($enrollmentForm->lrn_status == '1'){
+        //     $student = Student::where('lrn', $enrollmentForm->lrn_number)->first();
+        // }else{
+        //     $student = new Student(); 
+        // }
+
+        $enrollment = new Enrollment;
+        $student = Student::where('lrn', $enrollmentForm->lrn_number)->first();
+        $father = Father::where('last_name', $enrollmentForm->lastName_ng_ama)->where('first_name', $enrollmentForm->firstName_ng_ama)->where('middle_name', $enrollmentForm->middleName_ng_ama)->first();
+        $mother = Mother::where('last_name', $enrollmentForm->lastName_ng_ina)->where('first_name', $enrollmentForm->firstName_ng_ina)->where('middle_name', $enrollmentForm->middleName_ng_ina)->first();
+        $guardian = Guardian::where('last_name', $enrollmentForm->lastName_ng_guardian)->where('first_name', $enrollmentForm->firstName_ng_guardian)->where('middle_name', $enrollmentForm->middleName_ng_guardian)->first();
+        $relatives = new Relatives();
+        $returnee = new Returnee();
+        $learningInfo = new LearningInfo();
+
+        //////DECLARING LEARNING INFO;
+        $learningInfo->distance_learning = $enrollmentForm->distance_learning;
+        foreach($enrollmentForm->learning_info as $learning_info){
+            if($learning_info == "cellphoneVtablet"){
+                $learningInfo->may_sariling_tablet_ang_bata = 1;
+            }
+            if($learning_info == "Computer"){
+                $learningInfo->may_computer_sa_bahay = 1;
+            }
+            if($learning_info == "No_gadget"){
+                $learningInfo->walang_sariling_gadget_ang_bata = 1;
+            }
+            if($learning_info == "Tv"){
+                $learningInfo->may_tv_sa_bahay = 1;
+            }
+            if($learning_info == "Tv"){
+                $learningInfo->may_tv_sa_bahay = 1;
+            }
+            if($learning_info == "Internet"){
+                $learningInfo->may_internet_sa_bahay = 1;
+            }
+            if($learning_info == "Mobile_data"){
+                $learningInfo->mobile_data_lang_ang_gamit = 1;
+            }
+        }
+                $learningInfo->save();  
+        ////////////////////////////////////////////////////////
+
+        ////////////////////Mother FATHER GUARDIAN//////////////
+        if($mother == null){
+            $mother = new Mother();
+            $mother->last_name = $enrollmentForm->lastName_ng_ina;
+            $mother->first_name = $enrollmentForm->firstName_ng_ina;
+            $mother->middle_name = $enrollmentForm->middleName_ng_ina;
+            $mother->extension_name = $enrollmentForm->extensionName_ng_ina;
+            $mother->phone_number = $enrollmentForm->mother_phone;
+            $mother->email_address = $enrollmentForm->email_ng_ina;
+
+            $mother->save();
+        }
+
+        if($father ==  null){
+            $father = new Father();
+            $father->last_name = $enrollmentForm->lastName_ng_ama;
+            $father->first_name = $enrollmentForm->firstName_ng_ama;
+            $father->middle_name = $enrollmentForm->middleName_ng_ama;
+            $father->extension_name = $enrollmentForm->extensionName_ng_ama;
+            $father->phone_number = $enrollmentForm->father_phone;
+            $father->email_address = $enrollmentForm->email_ng_ama;
+
+            $father->save();
+        }
+        if($guardian  == null){
+            $guardian = new Guardian();
+            $guardian->last_name = $enrollmentForm->lastName_ng_guardian;
+            $guardian->first_name = $enrollmentForm->firstName_ng_guardian;
+            $guardian->middle_name = $enrollmentForm->middleName_ng_guardian;
+            $guardian->extension_name = $enrollmentForm->extensionName_ng_guardian;
+            $guardian->phone_number = $enrollmentForm->guardian_phone;
+            $guardian->email_address = $enrollmentForm->email_ng_guardian;
+
+            $guardian->save();
+        }
+        ////////////////////////////////////////////
+        /////////////////RELATIVES///////////////////
+        $relatives->mother_id = $mother->id;
+        $relatives->father_id = $father->id;
+        $relatives->guardian_id = $guardian->id;
+        ///////////////////////////////////////////
         
+        ////////////////////////////////Student/////////////////////////////
+        if($student == null){
+            $relatives->save();
+
+            $student = new Student();
+            $student->first_name = $enrollmentForm->firstName_ng_bata;
+            $student->middle_name = $enrollmentForm->middleName_ng_bata;
+            $student->last_name = $enrollmentForm->lastName_ng_bata;
+            $student->extension_name = $enrollmentForm->extensionName_ng_bata;
+            $student->birth_date = date('Y-m-d', strtotime($enrollmentForm->birth_date));
+            $student->gender = $enrollmentForm->gender;
+            $student->mother_tongue = $enrollmentForm->primary_language;
+            $student->relatives_id = $relatives->id;
+            $student->school_year = 2023;
+        }
+        if($enrollmentForm->lrn_status == 1){
+            $student->lrn = $enrollmentForm->lrn_number;
+        } 
+        $student->psa_birthcert_no = $enrollmentForm->psa_birth_cert;    
+        $student->age = $enrollmentForm->age_on_oct_31;
+        $student->indigenous_group = $enrollmentForm->indigenous_group_name;
+        $student->religion = $enrollmentForm->religion;
+        $student->special_assistance_needs = $enrollmentForm->special_needs_description;
+        $student->house_number = $enrollmentForm->house_number;
+        $student->street = $enrollmentForm->street_text;
+        $student->barangay = $enrollmentForm->barangay;
+        $student->municipality = $enrollmentForm->city;
+        $student->province = $enrollmentForm->province;
+        $student->region = $enrollmentForm->region;
+        $student->household_4ps_id = $enrollmentForm->fourps_id;
+        $student->status = 'active';
+
+        $student->save();
+        ///////////////////////////////////////////////////////////////////
+
+
+
+        //////////////////RETURNEE//////////////////
+        if($enrollmentForm->aralStatus == "OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon"){
+            $returnee->student_id = $student->id;
+            $returnee->school_year_id = 1;
+            $returnee->last_school_year_finished = $enrollmentForm->lastSchoolYearAttended;
+            $returnee->last_grade_attended = $enrollmentForm->returnee;
+            $returnee->last_school_attended = $enrollmentForm->lastSchoolAttended;
+            $returnee->save();
+        }
+        /////////////////////////////////////////////////
+
+        $documentRequirements = DocumentRequirements::where('student_id', $student->id)->first();
+        ////////////////DOCUMENT REQUIREMENTS///////////////
+        $documentrequest = [];
+        $checklist = [];
+        if($documentRequirements == null){
+            $documentRequirements = new DocumentRequirements();
+        }
+        if($enrollmentForm->lrn_status == "0"){
+            array_push($documentrequest, 'Birth Certificate');
+        }
+        if($enrollmentForm->lrn_status == "1" && $enrollmentForm->grade_level == "0"){
+            array_push($documentrequest, 'ECCD');
+            array_push($documentrequest, 'Birth Certificate');
+        }
+        if($enrollmentForm->lrn_status == "1" && $enrollmentForm->grade_level != "0"){
+            array_push($documentrequest, 'Report Card');
+        }
+
+        for($i = 0; $i < count($documentrequest); $i++){
+            array_push($checklist, "0");
+        }
+
+        $documentRequirements->student_id = $student->id;
+        $documentRequirements->checklist = json_encode($checklist);
+        $documentRequirements-> requirements = json_encode($documentrequest);
+        $documentRequirements-> submission_deadline = date_add(date_create(date("Y-m-d")),date_interval_create_from_date_string("40 days"));
+        $documentRequirements->save();
+        /////////////////////
     }
 }
 
