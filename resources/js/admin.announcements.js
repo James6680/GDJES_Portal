@@ -12,9 +12,7 @@ $(document).ready(function(e) {
     });
     
     $('#Edit').click(function(e) {
-      formData['announcement_title'] = announcementTitleInput.value;
-      formData['announcement_url'] = announcementUrlInput.value;
-      formData['id'] = announcementIdInput.value;    
+      forData = FormData(editForm.serialize());
       console.log(formData);
         $.ajax({
           url: "/admin.announcements.edit",
