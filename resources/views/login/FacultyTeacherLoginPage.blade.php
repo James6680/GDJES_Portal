@@ -4,7 +4,7 @@
     @vite(['resources/js/app.js', 'resources/css/style.css', 'resources/js/teacher_login_validation.js'])
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <title>Student Login Page</title>
+    <title>Faculty Login Page</title>
     <link rel="icon" href="{{url('assets/GDJES Logo.png')}}" type="image/x-icon" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank Ruhl Libre:wght@400;700&display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"/>
@@ -25,7 +25,7 @@
       }
     }
   </style>
-    </style>
+  
 
   </head>
 
@@ -34,7 +34,7 @@
     <div class="bg-white min-w-full min-h-full flex flex-row shrink-0 overflow-hidden">
     
         <!-- Left section container -->
-        <div class="relative basis-auto h-auto shrink-0 flex-1 overflow-hidden flex flex-col items-start justify-center text-left text-xl gap-16 pl-7 -mb-2" style="background-image: url('./assets/leftdiv1@3x.png'); background-size: cover; background-repeat: no-repeat;" id="leftSection">
+        <div class="relative basis-auto h-auto shrink-0 flex-1 overflow-hidden flex flex-col items-start justify-center text-left text-xl gap-16 pl-7 -mb-2" style="background-image: url({{ asset('./assets/leftdiv1@3x.png')}}); background-size: cover; background-repeat: no-repeat;" id="leftSection">
 
             <div class="flex flex-row items-center justify-center z-[0]">
 
@@ -49,8 +49,8 @@
             
                 <img
                 class="relative w-[4rem] h-[4rem] overflow-hidden shrink-0 object-cover"
-                alt=""
-                src="./assets/GDJES Logo.png"
+                alt="Gregoria de Jesus Elementary School logo"
+                src="{{ asset('./assets/GDJES Logo.png')}}"
                 />
 
                 <div class="flex-1 flex flex-col items-start justify-start">
@@ -100,7 +100,7 @@
                     <img
                         class="relative w-[3rem] h-[3rem] overflow-hidden shrink-0 object-cover"
                         alt=""
-                        src="./assets/GDJES Logo.png"
+                        src="{{ asset('./assets/GDJES Logo.png')}}"
                     />
 
                     <div class="flex flex-col items-center justify-start font-frl">
@@ -117,11 +117,34 @@
                     
                 </div>
 
-                <form class="rounded-lg bg-green-50 flex font-frl flex-col items-center justify-center p-8 gap-4" novalidate>
+                
+      <!--Added Access Error Message-->
+        @if (Session::has('error'))
+        <div class="flex items-center p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+          <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <span class="sr-only">Info</span>
+          <div>
+            <span class="font-medium">{{ Session::get('error') }}</span> 
+          </div>
+        </div>
+        @endif
+      <!--End Added Access Error Message-->
+
+
+
+
+                <form class="rounded-lg bg-green-50 flex font-frl flex-col items-center justify-center p-8 gap-4" 
+                      action="{{ route('login.FacultyTeacherLoginPage') }}"
+                      method="post"
+                      novalidate>
+
+                      @csrf
+
 
                     <h1 class="relative text-3xl font-bold text-green-800 text-center">
-                        <p>Admin and Faculty</p>
-                        <p>Portal Login</p>
+                        <p>Faculty Portal Login</p>
                     </h1>
 
                     <div class="self-stretch flex flex-col font-mulish items-start justify-start gap-2">
@@ -150,26 +173,27 @@
 
                                 <b 
                                 class="self-stretch relative text-xs flex font-mulish text-green-800 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap shrink-0">
-                                EMAIL ADDRESS
+                                    USERNAME
                                 </b>
                             
                                 <div class="flex flex-col self-stretch input-container relative">
 
                                     <input
                                         class="font-button text-xs bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] focus:border-[1px]  border-brown-400 text-gray-900 focus:border-brown-700 focus:ring-brown-700 "
-                                        placeholder="juandelacruz@gmail.com" 
+                                        placeholder="Enter your username"
                                         type="text"
                                         required
-                                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                                        pattern="^[a-zA-Z]+\.[a-zA-Z]+\.2023$"
                                         autocomplete="off"
-                                        id="email"
+                                        id="username"
+                                        name="username"
                                     />
                                     
                                     <!-- The Error Message for Email input -->
                                     <span 
                                         id="email-error" 
                                         class="hidden mt-1 text-sm font-medium text-red-600 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                                        ❌ Maari bang maglagay ka ng wastong email address
+                                        ❌ Maari bang maglagay ka ng wastong username 
                                     </span>
 
                                 </div>
@@ -194,6 +218,7 @@
                                         required
                                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                                         id="password"
+                                        name="password"
                                         autocomplete="off"
                                     />
                                     
@@ -228,8 +253,9 @@
                             </b>
                         </a>
 
+                        <!--Button id removed id="login-button"-->
                         <button
-                        id="login-button"
+                        
                         type="submit"
                         class="cursor-pointer [border:none] py-4 px-8 bg-brown-500 self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-yellow-400">
                         
@@ -245,11 +271,18 @@
                         
                         <div class="self-stretch relative text-xs font-button text-brown-500 text-center">
 
-                            <p class="m-0">Don't have an account yet?</p>
+                            <p class="m-0">
+                                If you encounter any problems logging in or don't have an account yet,
+                                <br>please contact the admin at
+                                <a href="mailto:admin@example.com" 
+                                   style="text-decoration: underline;">
+                                    admin@example.com
+                                </a>
+                            </p>
                         
                         </div>
 
-                        <button
+                       <!-- <button
                         class="cursor-pointer py-4 md:px-20 bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-900"
                         >
                           <div
@@ -259,6 +292,7 @@
                           </div>
 
                         </button>
+                    -->
 
                     </div>
 
@@ -273,8 +307,14 @@
     <div id="myModal" class="hidden fixed top-0 left-0 right-0 z-50 w-full p-3 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full items-center justify-center drop-shadow-2xl">
 
         <form
-        class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center w-auto h-auto justify-center md:p-10 p-7 md:gap-4 gap-2 z-[2] " novalidate style="width: 30%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 400px">
+        class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center w-auto h-auto justify-center md:p-10 p-7 md:gap-4 gap-2 z-[2] " 
+        novalidate
+        method="post"
+        action="#"
 
+        style="width: 30%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 400px">
+
+        @csrf
             <h1
             class=" self-stretch relative md:text-3xl text-2xl font-bold font-frl text-main-green-secondary-700 text-center">
             Forgot Password?
@@ -351,8 +391,11 @@
       <form
       class=" rounded-lg bg-green-50 flex flex-col items-center justify-center p-[2.5rem] gap-[1rem] z-[2] lg:w-auto lg:pl-[2.5rem] md:w-auto md:h-auto md:pl-[2.5rem] md:pr-[2.5rem] sm:pl-[2rem] sm:box-border"
       novalidate
+      method="post"
+      action="#"
       style="width: 30%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 400px;">
 
+      @csrf
           <h1
           class="m-0 self-stretch relative text-[1.75rem] leading-[110%] font-bold font-heading-2-bold text-green-800 text-center">
           Forgot Password?

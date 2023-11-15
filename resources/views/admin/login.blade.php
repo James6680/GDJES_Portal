@@ -165,7 +165,7 @@
                 <span 
                   id="username-error" 
                   class="hidden mt-1 text-sm text-red-600 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                  ❌ Maari bang maglagay ka ng wastong email address
+                  ❌ Maari bang maglagay ka ng wastong username
                 </span>
 
               </div>
