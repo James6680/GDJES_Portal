@@ -1051,7 +1051,7 @@
         </div> <!-- End of Table functions - add user -->
       </div> <!-- End of Table functions - all -->
 
-      <!-- Table -->
+      <!-- Table Student User Management -->
       <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
       
         <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
@@ -1130,7 +1130,7 @@
 
         </table>
 
-      </div> <!-- End of Table -->
+      </div> <!-- End of Table Student User Management -->
 
       <!-- Pagination -->
       <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
