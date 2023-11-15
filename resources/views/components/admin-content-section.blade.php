@@ -2315,7 +2315,7 @@
       <!-- Sections to Manage for the Current SY -->
       <div class="w-full flex flex-col">
         <h3 class="mt-8 text-lg font-semibold text-gray-900 dark:text-white">Section Management for SY *insert selected SY*</h3>
-        <p class="mt-1 mb-4 text-sm text-gray-600 dark:text-gray-400">Streamline your administrative tasks by editing, archiving, or deleting sections for the selected school year. Manage section details with ease to optimize student enrollment and class organization.</p>
+        <p class="mt-1 mb-4 text-sm text-gray-500 dark:text-gray-400">Streamline your administrative tasks by editing, archiving, or deleting sections for the selected school year. Manage section details with ease to optimize student enrollment and class organization.</p>
         
         <!-- Sections Table functions - all -->
         <div class="grid grid-cols-1 sm:grid-cols-2">
@@ -2723,7 +2723,7 @@
       <!-- Student Records Management for the Current SY -->
       <div class="w-full flex flex-col">
         <h3 class="mt-8 text-lg font-semibold text-gray-900 dark:text-white">Student Records Management for SY *insert selected SY*</h3>
-        <p class="mt-1 mb-4 text-sm text-gray-600 dark:text-gray-400">Effortlessly view, edit, archive, or remove student records for the chosen school year. This section puts comprehensive student information at your fingertips.</p>
+        <p class="mt-1 mb-4 text-sm text-gray-500 dark:text-gray-400">Effortlessly view, edit, archive, or remove student records for the chosen school year. This section puts comprehensive student information at your fingertips.</p>
         <!-- Table functions - all -->
         <div class="grid grid-cols-1 sm:grid-cols-2">
           <!-- Table functions - search and sort -->
