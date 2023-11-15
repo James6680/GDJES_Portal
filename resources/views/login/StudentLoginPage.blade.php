@@ -9,23 +9,22 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank Ruhl Libre:wght@400;700&display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"/>
     <style>
-        body{
+        body {
             margin: 0;
             padding: 0;
         }
 
         .background-effect {
-        filter: blur(4px) brightness(75%);
-        margin: -3px;
-      }
+            filter: blur(4px) brightness(75%);
+            margin: -3px;
+        }
 
-      @media screen and (max-width: 1024px) {
-      #leftSection {
-        display: none; /* Hide when screen width is 768px or less */
-      }
-    }
+        @media screen and (max-width: 1024px) {
+            #leftSection {
+                display: none; /* Hide when screen width is 768px or less */
+            }
+        }
   </style>
-    </style>
 
   </head>
 
@@ -88,8 +87,7 @@
             // Attach the toggleLeftSection function to the window resize event
             window.addEventListener('resize', toggleLeftSection);
         </script>
-
-
+        
         <!-- Right section container -->
         <div class="relative basis-2/6 p-[1rem] min-h-full shrink-0 flex-1 bg-green-700 text-white overflow-hidden items-center justify-center font-frl text-left text-2xl">
 

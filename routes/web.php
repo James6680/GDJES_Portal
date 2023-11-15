@@ -210,3 +210,7 @@ Route::get('/faculty.login', function(){
 Route::get('/forget-password', function(){
     return view('login.forgotPasswordForm');
 });
+
+Route::get('/Admin.login', function(){
+    return view('admin.login');
+});
