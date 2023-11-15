@@ -33,7 +33,7 @@
     <div class="bg-white min-w-full min-h-full flex flex-row shrink-0 overflow-hidden">
 
       <!-- Left section corner -->
-      <div class="srelative basis-auto h-auto shrink-0 flex-1 overflow-hidden flex flex-col items-start justify-center text-left text-xl gap-16 pl-7 -mb-2" style="background-image: url({{ asset('./assets/leftdiv1@3x.png')}}); background-size: cover; background-repeat: no-repeat;" id="leftSection">
+      <div class="srelative basis-auto h-auto shrink-0 flex-1 overflow-hidden flex flex-col items-start justify-center text-left text-xl gap-16 pl-7 -mb-2" style="background-image: url({{ asset('./assets/leftdiv@3x.png')}}); background-size: cover; background-repeat: no-repeat;" id="leftSection">
 
         <div class="flex flex-row items-center justify-center z-[0]">
 
@@ -93,7 +93,7 @@
       </script>
 
       <!-- Right section container -->
-      <div class="relative basis-3/12    p-4 min-h-full shrink-0 flex-1 bg-yellow-400 text-white overflow-hidden items-center justify-center font-frl text-left text-2xl">
+      <div class="relative basis-3/12 p-4 min-h-full shrink-0 flex-1 bg-gradient-to-t from-green-500 to-slate-900 text-white overflow-hidden items-center justify-center font-frl text-left text-2xl">
 
         <div class="w-auto p-2 flex flex-col mx-auto gap-5 items-center my-20 justify-center">
               
@@ -152,7 +152,7 @@
 
             <div class="self-stretch flex flex-col items-start justify-start gap-4">
               
-              <div class="self-stretch relative bg-brown-400 h-[0.13rem] overflow-hidden shrink-0"></div>
+              <div class="self-stretch relative bg-green-500 h-[0.13rem] overflow-hidden shrink-0"></div>
 
               <div class="self-stretch flex flex-col items-start justify-start gap-4 >
 
@@ -166,7 +166,7 @@
                   <div class="flex flex-col self-stretch input-container relative">
 
                     <input
-                    class="font-button text-xs bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] focus:border-[1px]  border-brown-400 text-gray-900 focus:border-brown-700 focus:ring-brown-700 "
+                    class="font-button text-xs bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] focus:border-[1px]  border-green-400 text-gray-900 focus:border-green-700 focus:ring-green-700 "
                     placeholder="Enter your username"
                     type="text"
                     required
@@ -196,7 +196,7 @@
                   <div class="flex flex-col self-stretch relative">
 
                     <input
-                      class="font-button text-xs bg-green-50 self-stretch rounded-lg flex flex-row items-center justify-start p-4 border-[1px] focus:border-[1px]  border-brown-400 text-gray-900 focus:border-brown-700 focus:ring-brown-700 "
+                      class="font-button text-xs bg-green-50 self-stretch rounded-lg flex flex-row items-center justify-start p-4 border-[1px] focus:border-[1px]  border-green-400 text-gray-900 focus:border-green-700 focus:ring-green-700 "
                       placeholder="Enter your password"
                       type="password"
                       :type="show ? 'password' : 'text'"
@@ -235,13 +235,13 @@
               </a>
 
               <!--button id removed id="login-button"-->
-              <button type="submit" class="cursor-pointer [border:none] py-4 px-8 bg-brown-500 self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-yellow-400">
+              <button type="submit" class="cursor-pointer [border:none] py-4 px-8 bg-gradient-to-t from-green-500 to-slate-900 self-stretch rounded-lg flex flex-row items-center justify-center hover:shadow-lg hover:shadow-neutral-200 group hover:outline hover:outline-1 hover:outline-green-900">
                 <div class="relative text-base uppercase font-button text-brown-50 text-left">Login</div>
               </button>
+
+              <div class="self-stretch relative bg-green-500 h-[0.13rem] overflow-hidden shrink-0 "></div>
             
             </div>
-
-            <div class="self-stretch relative bg-brown-300 h-[0.13rem] overflow-hidden shrink-0 "></div>
 
           </form>
 
