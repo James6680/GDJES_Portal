@@ -1,6 +1,6 @@
 
 @php
-  $user = 'Student';
+  $user = 'Faculty';
 @endphp
 
 <nav class="fixed top-0 z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
