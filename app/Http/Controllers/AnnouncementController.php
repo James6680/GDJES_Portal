@@ -17,7 +17,7 @@ class AnnouncementController extends Controller
         return $announcements;
     }
 
-    public function CRUDAnnouncement(Request $request){
+    public function POSTAnnouncementController(Request $request){
         if($request->formAction === "AddData" || $request->formAction === "EditData"){
             $request->validate([
                 'announcement_title' => 'required|max:200',
@@ -36,5 +36,12 @@ class AnnouncementController extends Controller
         }else if($request->formAction === "DeleteData"){
             DB::table('announcements')->where('id', '=', $request->announcement_id)->delete();
         }
+    }
+
+    public function editAnnouncement(Request $request){
+        DB::table('announcements')
+        ->where('id', $request->announcement_id)
+        ->update(['announcement_title' => $request->announcement_title, 'announcement_url' => $request->announcement_url, 'updated_at' => DB::raw('NOW()')]);
+        return $request;
     }
 }
