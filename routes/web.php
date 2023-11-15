@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\EnrollmentController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\AnnouncementController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +34,8 @@ Route::get('admin.dashboard', function () {
 Route::get('admin.announcements', function () {
     return view('layouts.admin');
 });
+Route::post('admin.announcements', [AnnouncementController::class, 'POSTAnnouncementController'])
+    ->name('admin.announcements.post');
 
 Route::get('admin.document-request', function () {
     return view('layouts.admin');
