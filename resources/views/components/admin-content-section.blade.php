@@ -2326,7 +2326,7 @@
             <!-- Sort Dropdown for Grade Level -->
             <div class="flex h-full">
 
-              <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:ring-2 focus:outline-none hover:bg-gray-100 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+              <button id="dropdownGradeLevelRadioButton" data-dropdown-toggle="dropdownGradeLevelRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:ring-2 focus:outline-none hover:bg-gray-100 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path>
                 </svg>
@@ -2337,54 +2337,54 @@
               </button>
 
               <!-- Dropdown menu -->
-              <div id="dropdownRadio" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
-                <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioButton">
+              <div id="dropdownGradeLevelRadio" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
+                <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownGradeLevelRadio">
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input id="filter-radio-example-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="filter-radio-example-1" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">All</label>
+                      <input id="filter-radio-example-1" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-1" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">All</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input checked="" id="filter-radio-example-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="filter-radio-example-2" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Kinder</label>
+                      <input checked="" id="dropdownGradeLevelRadio-example-2" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-2" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Kinder</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input id="filter-radio-example-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="filter-radio-example-3" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 1</label>
+                      <input id="dropdownGradeLevelRadio-example-3" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-3" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 1</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input checked="" id="filter-radio-example-4" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="filter-radio-example-4" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 2</label>
+                      <input checked="" id="dropdownGradeLevelRadio-example-4" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-4" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 2</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input id="filter-radio-example-5" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="filter-radio-example-5" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 3</label>
+                      <input id="dropdownGradeLevelRadio-example-5" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-5" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 3</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input checked="" id="filter-radio-example-6" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="filter-radio-example-6" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 4</label>
+                      <input checked="" id="dropdownGradeLevelRadio-example-6" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-6" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 4</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input id="filter-radio-example-7" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="filter-radio-example-7" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 5</label>
+                      <input id="dropdownGradeLevelRadio-example-7" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-7" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 5</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input id="filter-radio-example-8" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="filter-radio-example-8" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 6</label>
+                      <input id="dropdownGradeLevelRadio-example-8" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-8" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 6</label>
                     </div>
                   </li>
                 </ul>
