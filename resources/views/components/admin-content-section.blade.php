@@ -1160,13 +1160,13 @@
           </ul>
       </nav> <!-- End of Pagination -->
 
-      <!-- View user modal -->
+      <!-- View student user modal -->
       <div id="viewStudentUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
           <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-              <h3 class="text-xl font-semibold text-black dark:text-white">
+              <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
                 View student user 
               </h3>
               <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="viewStudentUserModal">
@@ -1177,14 +1177,69 @@
               </button>
             </div>
             <!-- Modal body -->
-            <div class="p-6 space-y-3">
+            <div class="p-6 space-y-3 divide-y divide-gray-200">
+              <h3 class="text-md font-semibold text-black dark:text-white">*Insert Student Name here*</h3>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Last Name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">First Name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Middle Name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Name Extension: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Username: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Returnee: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">LRN (Learner's Refenrece Number): </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Date of Birth: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Age: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Nabibilang sa indegenous group: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Indegenous group na kinabibilangan: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother tongue: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Religion: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Nangangailangan ng special assistance?  </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Disability: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">House no. and street: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Barangay: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">City: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's full name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's contact number: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother maiden name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother's contact number: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's full name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's contact number: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's beneficiary? </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's Household ID No.: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Access to technology: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Preferred mode of learning: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Account status: </p>
+              </div>
 
+              <!-- BACKEND: Just add conditional statements kapag meron na laman si returnee. If returnee == yes -->
+              <div class="pt-4 hidden">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling baitang na natapos: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling paaralan na pinasukan: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Panuruang taon na natapos ng mag-aaral: </p>
+              </div>
             </div>
           </div>  
         </div>
       </div>
 
-      <!-- Edit user modal -->
+      <!-- Edit student user modal -->
       <div id="editStudentUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
           <!-- Modal content -->
@@ -1678,6 +1733,19 @@
                       </li>
                     </ul>
                   </div>
+                </div>
+
+                
+                <div class="col-span-6">
+                  <label for="last-grade-finished" class="block mb-2 text-sm font-medium text-black dark:text-white">Last grade finished</label>
+                  <input type="text" name="last-grade-finished" id="last-grade-finished" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6">
+                  <label for="last-school-enrolled-in" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school enrolled in</label>
+                  <input type="text" name="last-school-enrolled-in" id="last-school-enrolled-in" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div><div class="col-span-6">
+                  <label for="last-sy-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school year attended</label>
+                  <input type="text" name="last-sy-attended" id="last-sy-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="">
                 </div>
                 
               </div>
