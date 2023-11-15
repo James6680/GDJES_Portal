@@ -1754,32 +1754,8 @@
                         <label for="startYearOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
                         <input type="number" name="startYearOfSY" id="startYearOfSY" min="2022" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="20XX" required="">
                       </div>
-
                       <div class="flex flex-col">
-                        <label for="dropdownEnrollmentPhase" class="block mb-2 text-sm font-medium text-black dark:text-white">Choose enrollment phase</label>
-                        <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
-                          <!-- Dropdown SY Button for Open and Close Enrollment -->
-                          <button id="dropdownEnrollmentPhaseButton" data-dropdown-toggle="dropdownEnrollmentPhase" data-dropdown-trigger="hover" class="justify-between pr-4 text-black w-full border border-gray-300 bg-gray-50  focus:ring-green-600 focus:border-green-600 rounded-lg text-sm p-2.5 text-left inline-flex items-center dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"" type="button">Enrollment Phase<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                            </svg>
-                          </button>
-
-                          <!-- Dropdown menu for Open and Close Enrollment -->
-                          <div id="dropdownEnrollmentPhase" class="relative z-50 w-52 hidden bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-                            <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                              <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Pre-enrollment</a>
-                              </li>
-                              <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Official</a>
-                              </li>
-                          </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
-
-                        </div>  
-                      </div>    
-
-                      <div class="flex flex-col">
-                        <label for="requiredDaysOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
+                        <label for="requiredDaysOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Required days of SY as per DepEd order</label>
                         <input type="number" name="requiredDaysOfSY" id="requiredDaysOfSY" min="200" max="300" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="200" required="">
                       </div>
 
