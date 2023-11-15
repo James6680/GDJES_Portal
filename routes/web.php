@@ -128,6 +128,9 @@ Route::get('faculty.grades', function () {
 })->middleware('teachers')->name('faculty.grades');
 // End of Faculty Routes
 
+
+
+
 Route::get('student-registration-1', [EnrollmentController::class, 'getEnrollment'])
     ->name('enrollment.StudentportalRegistrationPage1');
 Route::post('student-registration-1', [EnrollmentController::class, 'postEnrollment'])
@@ -156,6 +159,29 @@ Route::post('student-registration-5', [EnrollmentController::class, 'postEnrollm
 Route::get('student-registration-Completed', [EnrollmentController::class, 'enrollmentComplete'])
     ->name('enrollment.StudentportalRegistrationCompletedPage');
 
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
     Route::get('/', function () {
         return view('welcome');
     });

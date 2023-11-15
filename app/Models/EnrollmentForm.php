@@ -16,7 +16,7 @@ class EnrollmentForm extends Model
         'lastSchoolYearAttended',
 
         'grade_level',
-        'school_year',
+        'school_year_id', //chaange from school_year to school_year_id
         'lrn_status',
         'lrn_number',
         'psa_birth_cert',

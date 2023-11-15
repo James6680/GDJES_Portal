@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->year('school_year');  //QUESTION ABOUT THIS: DI BA DAPAT ITO SY LIKE 2014 - 2016
+            //$table->year('school_year');  //QUESTION ABOUT THIS: DI BA DAPAT ITO SY LIKE 2014 - 2016
+            $table->unsignedBigInteger('school_year_id'); // Foreign key field
+
             $table->string('psa_birthcert_no', 50);
             $table->bigInteger('lrn')->nullable();   //QUESTION: POSSIBLE BA NA ANG LRN AY MAGSIMULA SA 0? KASI MAG EERROR SIYA PAG PWEDE SINCE NUMBER YUNG DATATYPE
             $table->string('last_name', 50);
@@ -38,6 +40,13 @@ return new class extends Migration
             $table->string('household_4ps_id', 30)->nullable();
             $table->string('status', 15);
             $table->timestamps();
+
+
+
+            $table->foreign('school_year_id') // Specify the foreign key
+            ->references('id') // The field in the 'school_years' table it relates to
+            ->on('school_years') // The table it relates to
+            ->onDelete('cascade'); // What to do if the related record is deleted
         });
     }
 
