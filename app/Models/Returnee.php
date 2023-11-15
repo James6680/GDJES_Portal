@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Enrollment extends Model
+class Returnee extends Model
 {
     use HasFactory;
 
-    protected $table = 'enrollment';
+    protected $table = 'returnees';
 
     protected $fillable = [
         'student_id',
-        'grade_level_id',
         'school_year_id',
-        'section_id',
-        'learning_info_id',
-        'enrollment_status',
+        'last_school_year_finished',
+        'last_grade_attended',
     ];
 }

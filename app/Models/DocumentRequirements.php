@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Enrollment extends Model
+class DocumentRequirements extends Model
 {
     use HasFactory;
-
-    protected $table = 'enrollment';
+    
+    protected $table = 'document_requirements';
 
     protected $fillable = [
         'student_id',
-        'grade_level_id',
-        'school_year_id',
-        'section_id',
-        'learning_info_id',
-        'enrollment_status',
+        'requirements',
+        'checklist',
+        'submission_deadline'
     ];
 }

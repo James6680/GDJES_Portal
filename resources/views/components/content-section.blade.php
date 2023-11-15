@@ -8,7 +8,7 @@
 
             <!-- Announcement Main Container -->
             <!-- Backend side: need to connect para magreflect ung icrcreate na announcement ng admin -->
-            <div class="rounded-md w-auto h-auto relative container lg:p-9 p-6 grid grid-cols-1 bg-green-500 shadow shadow-green-500">
+            <div class="rounded-md w-auto h-auto relative container p-6 grid grid-cols-1 bg-green-500 shadow shadow-green-500">
 
                 <ul class="m-o p-0 text-white">
 
@@ -43,7 +43,7 @@
             </div>
 
             <!-- Contact Us Main Container -->
-            <div class="rounded-md h-auto w-full container lg:p-9 p-6 grid grid-cols-1 bg-white shadow shadow-brown-100">
+            <div class="rounded-md h-auto w-full container  p-6 grid grid-cols-1 bg-white shadow shadow-brown-100">
 
                 <h2 class="w-full flex font-mulish text-2xl sm:text-3xl text-green-900 font-bold">
                 Contact us
@@ -83,68 +83,53 @@
     <!-- Grade Viewing Section -->
     <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 sm:pb-9 md:px-16 px-12">
 
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white lg:ml-8 ml-6 shadow shadow-brown-100">
+        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-4 lg:py-7 bg-white lg:ml-8 ml-6 shadow shadow-brown-100">
 
-            <h2 class="lg:text-3xl text-2xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Grades</h2>
+            <div class="flex flex-col gap-2">
+                <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Student Grades</h3>
+                <p class="mt-1 lg:text-base text-sm text-justify text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div> <!-- End of Header Content -->
 
-            <div class="border-b p-[1px] bg-gray-200  lg:mx-[-2.3rem] mx-[-1.5rem]"></div>
+            <div class="grid w-full grid-cols-1 gap-2">
 
-            <div class="grid w-full grid-cols-1 gap-6 ">
+                <div class="w-auto justify-self-end">
 
-                <div class="flex gap-6 flex-col justify-between items-end">
+                    <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full lg:text-base text-sm py-2.5 leading-none items-center lg:px-7 px-4" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> 
+                    </svg>
+                    </button>
 
-                    <div class="flex flex-col gap-3 lg:text-lg text-sm text-justify mt-6">
+                    <!-- Dropdown menu -->
+                    <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow lg:w-40 w-32 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 font-mulish" aria-labelledby="dropdownHoverButton">
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 1</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 2</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 3</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 4</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 5</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 6</a>
+                        </li>
 
-                        <p class=" font-normal font-mulish text-black">
-                            Dear Parent,
-                        </p>
-
-                        <p class=" font-normal font-mulish text-black indent-7 leading-tight">
-                        The information provided here shows the ability and progress your child has made in the different learning areas as well as their core values. The school welcomes you should you desire to know more about your child’s progress. 
-                        </p>
-
-                    </div>
-
-                    <div>
-                        
-                        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full lg:text-base text-sm lg:py-3 py-2.5 leading-none items-center lg:px-7 px-4 -mb-3" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> 
-                        </svg>
-                        </button>
-
-                        <!-- Dropdown menu -->
-                        <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow lg:w-40 w-32 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 font-mulish" aria-labelledby="dropdownHoverButton">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 2</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 3</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 4</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 5</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 6</a>
-                            </li>
-
-                            </ul>
-                        </div>
-
+                        </ul>
                     </div>
 
                 </div>
 
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold -mb-3 text-lg ">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold text-lg ">
                     Learning Progress and Achievement
                 </h2>
 
@@ -373,7 +358,7 @@
                     </table>
                 </div>
 
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 mt-3 text-lg ">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold mt-3 text-lg ">
                     Learner's Observed Values
                 </h2>
 
@@ -573,7 +558,7 @@
                     </table>
                 </div>
 
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 text-lg mt-3">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold  text-lg mt-3">
                     Student's Attendance
                 </h2>
 
@@ -767,7 +752,7 @@
                     </table>
                 </div>
 
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold -mb-3 text-lg mt-3">
+                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold text-lg mt-3">
                     Mode of Learning
                 </h2>
                 
@@ -828,13 +813,14 @@
         
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-100">
 
-            <h2 class="lg:text-3xl text-2xl -mt-5 mb-1 lg:-ml-6 -ml-2 text-green-900/60">Class Schedule</h2>
+            <div class="flex flex-col gap-2">
+                <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Class Schedule</h3>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div> <!-- End of Header Content -->
 
-            <div class="border-b p-[1px] bg-gray-200 lg:mx-[-2.3rem] mx-[-1.5rem]"></div>
+            <div class="grid w-full grid-cols-1 lg:gap-4 gap-2 mt-8">
 
-            <div class="grid w-full grid-cols-1 lg:gap-6 gap-2 mt-8">
-
-                <div id="alert-2" class="flex items-start lg:p-4 lg:py-8 p-5 mb-4 text-brown-600 rounded-md bg-brown-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <div id="alert-2" class="flex items-start lg:p-4 lg:py-6 p-5 mb-4 text-brown-600 rounded-md bg-brown-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 
                     <svg class="flex-shrink-0 lg:w-6 lg:h-6 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         
@@ -845,7 +831,7 @@
                     <span class="sr-only">Info</span>
                     
                     <div class="ml-3 lg:text-base text-xs font-medium font-mulish text-justify pr-2.5 leading-5 ">
-                        Uh-oh! It seems there might be a missing piece in your class schedule puzzle. As we approach the opening day, it's vital to have everything in place. If your schedule is still incomplete tomorrow, kindly contact the school management. Your education is important, and we want to ensure a seamless start. Reach out and let's get this sorted out together!
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </div>
                     
                 </div>    
@@ -950,9 +936,10 @@
 
         <section class="self-stretch container lg:p-8 p-7 px-8 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
 
-            <h2 class="lg:text-3xl text-xl -mt-5 mb-1 lg:-ml-3 -ml-6 text-green-900/60">Enrollment Status</h2>
-
-            <div class="border-b p-[1px] bg-gray-200 mx-[-2rem]"></div>
+            <div class="flex flex-col gap-2">
+                <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Enrollment Status</h3>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div> <!-- End of Header Content -->
 
             <!-- Officially Enrolled Container -->
             <!-- Backend Side: Need to configure for validation if the student really meet the requirement to become officially enrolled and if so is eto lalabas -->
@@ -980,7 +967,7 @@
             
             <!-- Temporarily Enrolled Container -->
             <!-- Backend Side: Need to configure this part to update the students whether the list of requirements for enrolling is nasubmit na lahat. checkbox element pala yung list dito and initially is nakadisabled sila para hindi macontrol ni students since for viewing purpose lng dapat sa kanila -->
-            <div class="h-auto p-5 lg:px-4 px-0 flex w-full flex-col items-center lg:my-7 my-5">
+            <div class="h-auto p-5 lg:px-4 px-0 flex w-full flex-col items-center my-3">
 
                 <div class="flex flex-col w-auto text-yellow-500 rounded-lg dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 items-center justify-start font-mulish gap-5">
 
@@ -994,7 +981,7 @@
                     </div>
 
                     <div 
-                    class="flex items-start pl-4 p-6 text-md font-mulish text-brown-600 rounded-lg bg-brown-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
+                    class="flex items-start pl-4 p-5 text-md font-mulish text-brown-600 rounded-lg bg-brown-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
                         <svg 
                         class="flex-shrink-0 inline w-6 h-6 mr-3" 
                         aria-hidden="true" 
@@ -1070,470 +1057,583 @@
 
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
 
-        <h2 class="lg:text-3xl text-2xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Document Requests</h2>
+            <div class="flex flex-col gap-2">
+                <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Request Document</h3>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div> <!-- End of Header Content -->
 
-        <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
+            <div class=" flex min-w-screen flex-col gap-6 items-center ">
 
-        <div class=" flex min-w-screen flex-col gap-6 items-center mt-6">
+                <!-- Document Requests Main Body -->
+                <div id="mainBody" class="flex flex-col mx-40 p-4 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish hidden">
 
-            <!-- Document Requests Main Body -->
-            <div id="mainBody" class="flex flex-col mx-40 p-4 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish hidden">
+                    <!-- My Requests Button Section -->
+                    <div class="w-full flex flex-col items-end mb-4 gap-1">
 
-                <!-- My Requests Button Section -->
-                <div class="w-full flex flex-col items-end mb-4 gap-1">
+                        <button
+                        id="myRequestBtn" 
+                        class="block focus:outline-none font-mulish text-white bg-brown-500 font-semibold lg:text-lg text-sm xl:w-[20%] lg:w-[40%] w-full lg:py-2.5 py-2.5 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 " 
+                        type="button">
+                        My Requests
+                        </button>
 
-                    <button
-                    id="myRequestBtn" 
-                    class="block focus:outline-none font-mulish text-white bg-brown-500 font-semibold lg:text-lg text-sm xl:w-[25%] lg:w-[40%] w-full lg:py-2.5 py-2.5 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 " 
-                    type="button">
-                    My Requests
-                    </button>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                // Get references to the button and the div elements
+                                const myRequestBtn = document.getElementById("myRequestBtn");
+                                const myRequestBody = document.getElementById("myRequestBody");
+                                const mainBody = document.getElementById("mainBody");
 
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function () {
-                            // Get references to the button and the div elements
-                            const myRequestBtn = document.getElementById("myRequestBtn");
-                            const myRequestBody = document.getElementById("myRequestBody");
-                            const mainBody = document.getElementById("mainBody");
+                                // Add a click event listener to the button
+                                myRequestBtn.addEventListener("click", function () {
+                                // Show the myRequestBody div
+                                myRequestBody.style.display = "flex";
 
-                            // Add a click event listener to the button
-                            myRequestBtn.addEventListener("click", function () {
-                            // Show the myRequestBody div
-                            myRequestBody.style.display = "flex";
-
-                            // Hide the mainBody div
-                            mainBody.style.display = "none";
+                                // Hide the mainBody div
+                                mainBody.style.display = "none";
+                                });
                             });
-                        });
-                    </script>
+                        </script>
 
 
-                    <div class="w-full flex items-start p-6 lg:text-lg text-xs font-mulish text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
-                        <svg 
-                            class="flex-shrink-0 inline lg:w-7 lg:h-7 w-5 h-5 mr-3" 
-                            aria-hidden="true" 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            fill="currentColor" 
-                            viewBox="0 0 20 20">    
-                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                        </svg>
+                        <div class="w-full flex items-start p-5 lg:text-base text-xs font-mulish text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
+                            <svg 
+                                class="flex-shrink-0 inline lg:w-5 lg:h-5 w-4 h-4 mr-3" 
+                                aria-hidden="true" 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                fill="currentColor" 
+                                viewBox="0 0 20 20">    
+                                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                            </svg>
 
-                        <div>
-                            
-                            <h2 class="mb-2 -mt-1 lg:text-2xl text-lg font-semibold text-yellow-800  dark:text-white">
-                                Reminders
-                            </h2>
-                            <ul class="space-y-2 -ml-3 text-yellow-500  list-decimal">
-                                <li>
-                                    See the available documents to request from the school below.
-                                </li>
-                                <li>
-                                    Click the "Request Document" button to start the process of document request.
-                                </li>
-                                <li>
-                                    Answer the necessary information needed for document request in order to effectively process your request.
-                                </li>
-                                <li>
-                                    Click the "My Request" button to know the status of your request.
-                                </li>
-                                <li>
-                                    Then wait for 1-3 working days to process your request by the school management.
-                                </li>
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Document Section Body -->
-                <div class="w-full flex flex-col justify-between gap-1">
-
-                    <div class="w-full flex flex-col items-start justify-center pl-4 p-4 mb-3 text-md font-mulish text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800 ">  
-                        <h2 class="mb-2 lg:text-2xl text-lg font-semibold dark:text-white self-stretch text-center">Lists of Document</h2>
-                        <ul class="max-w-md ml-4 space-y-2 lg:text-lg text-xs list-disc list-inside text-green-900">
-                            <li>
-                                Document Requirement #1
-                            </li>
-                            <li>
-                                Document Requirement #2
-                            </li>
-                            <li>
-                                Document Requirement #3
-                            </li>
-                            <li>
-                                Document Requirement #4
-                            </li>
-                            <li>
-                                Document Requirement #5
-                            </li>
-                        </ul>
-
-                    </div>
-
-                    <!-- Modal toggle -->
-                    <button 
-                    data-modal-target="crud-modal" 
-                    data-modal-toggle="crud-modal" 
-                    class="focus:outline-none font-mulish text-white bg-green-500 font-semibold lg:text-lg text-sm px-7 lg:py-2.5 py-2.5 rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
-                    Request Document
-                    </button>
-
-                    <!-- Main modal -->
-                    <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                        <div class="relative p-4 w-full max-w-md max-h-full">
-                            <!-- Modal content -->
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 font-mulish">
-                                <!-- Modal header -->
-                                <div class="flex items-center justify-between p-4 md:p-3 border-b rounded-t dark:border-gray-600 bg-green-500">
-                                    <h3 class="text-xl font-semibold text-white dark:text-white">
-                                        Request Document
-                                    </h3>
-                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-green-50 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
-                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                        </svg>
-                                        <span class="sr-only">Close modal</span>
-                                    </button>
-                                </div>
-                                <!-- Modal body -->
-                                <!-- Backend Side: Need to connect para pumasok ung data from the input of students (purpose and type documents) -->
-                                <form action="#" class="p-4 md:p-5">
-
-                                    <div class="grid gap-1 mb-1 grid-cols-1 rounded-md p-1 shadow-md shadow-gray-300">
-                                        
-                                        <div class="flex items-center gap-2 p-4 ">
-                                            
-                                            <label for="purpose" class="font-mulish mb-2 text-md font-semibold text-green-900 dark:text-white flex">Purpose:</label>
-
-                                            <select id="purpose" class="font-mulish flex-initial bg-white border border-gray-300 text-green-900 text-md  rounded-lg focus:ring-green-500 focus:border-green-500  w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 gap-2">
-                                                <option selected="0">Select purpose</option>
-                                                <option value="1">Purpose #1</option>
-                                                <option value="2">Purpose #2</option>
-                                                <option value="3">Purpose #3</option>
-                                                <option value="4">Purpose #4</option>
-                                                <option value="5">Purpose #5</option>
-                                            </select>
-
-                                        </div>
-
-                                        <div class="flex flex-col items-start gap-2 p-2">
-                                            
-                                            <label for="purpose" class="font-mulish mb-2 text-md font-semibold  text-green-900 dark:text-white flex">Document:</label>
-
-                                            <div class="pl-2">
-                                                <div class="flex items-center mb-4">
-                                                    <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #1</label>
-                                                </div>
-
-                                                <div class="flex items-center mb-4">
-                                                    <input id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #2</label>
-                                                </div>
-
-                                                <div class="flex items-center mb-4">
-                                                    <input id="default-radio-3" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #3</label>
-                                                </div>
-
-                                                <div class="flex items-center mb-4">
-                                                    <input id="default-radio-4" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #4</label>
-                                                </div>
-
-                                                <div class="flex items-center mb-4">
-                                                    <input id="default-radio-5" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #5</label>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-
-                                        <div class="w-full flex justify-end">
-                                            <button 
-                                                type="button" 
-                                                class="focus:outline-none font-mulish text-white bg-green-500 font-semibold text-lg px-14 py-2.5 mr-2 mb-2 rounded-lg  hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600">
-                                                Submit
-                                            </button>
-                                        </div>
-
-                                    </div>
-
-                                </form>
+                            <div>
+                                
+                                <h2 class="mb-2 -mt-1 lg:text-xl text-lg font-semibold text-yellow-800  dark:text-white">
+                                    Reminders
+                                </h2>
+                                <ul class="space-y-1 -ml-3 text-yellow-500  list-decimal">
+                                    <li>
+                                        See the available documents to request from the school below.
+                                    </li>
+                                    <li>
+                                        Click the "Request Document" button to start the process of document request.
+                                    </li>
+                                    <li>
+                                        Answer the necessary information needed for document request in order to effectively process your request.
+                                    </li>
+                                    <li>
+                                        Click the "My Request" button to know the status of your request.
+                                    </li>
+                                    <li>
+                                        Then wait for 1-3 working days to process your request by the school management.
+                                    </li>
+                                </ul>
 
                             </div>
 
                         </div>
 
-                    </div> 
-                
-                </div>
-
-            </div>
-
-            <!-- My Request body section -->
-            <div id="myRequestBody" class="flex mx-[100vw] p-5 flex-col w-full h-auto text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 font-mulish ">
-
-                <!-- My Requests Body Section -->
-                <div class="w-full flex flex-col items-center justify-center py-5">
-
-                    <div class="justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-
-                        <div class="relative overflow-x-auto rounded my-8">
-
-                            <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-green-900 dark:text-gray-400">
-                                <thead class="lg:text-base text-sm text-white bg-green-500 dark:bg-gray-700 dark:text-gray-400 uppercase">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3">
-                                            Lists
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Status
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default1" >
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            X
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            X
-                                        </td>
-                                    </tr>
-
-                                    <div data-popover id="popover-default1" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                        <div class="px-3 py-2">
-                                            <p>h-mm AM/PM mm-dd-yyyy</p>
-                                        </div>
-                                        <div data-popper-arrow></div>
-                                    </div>
-
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default2">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            X
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            X
-                                        </td>
-                                    </tr>
-
-                                    <div data-popover id="popover-default2" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                        <div class="px-3 py-2" >
-                                            <p>h-mm AM/PM mm-dd-yyyy</p>
-                                        </div>
-                                        <div data-popper-arrow></div>
-                                    </div>
-
-                                    <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default3">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
-                                            X
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            X
-                                        </td>
-                                    </tr>
-
-                                    <div data-popover id="popover-default3" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                        <div class="px-3 py-2">
-                                            <p>h-mm AM/PM mm-dd-yyyy</p>
-                                        </div>
-                                        <div data-popper-arrow></div>
-                                    </div>
-
-                                    <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default4">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
-                                            X
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            X
-                                        </td>
-                                    </tr>
-
-                                    <div data-popover id="popover-default4" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                        <div class="px-3 py-2">
-                                            <p>h-mm AM/PM mm-dd-yyyy</p>
-                                        </div>
-                                        <div data-popper-arrow></div>
-                                    </div>
-
-                                    <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default5">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            X
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            X
-                                        </td>
-                                    </tr>
-
-                                    <div data-popover id="popover-default5" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                        <div class="px-3 py-2">
-                                            <p>h-mm AM/PM mm-dd-yyyy</p>
-                                        </div>
-                                        <div data-popper-arrow></div>
-                                    </div>
-
-                                </tbody>
-                            </table>
-                        </div>
-                            
                     </div>
 
-                    <button
-                    id="myRequestBckBtn" 
-                    class="block focus:outline-none font-mulish text-green-600 font-bold border border-green-500 lg:text-base text-sm px-12 py-2.5 rounded-xl hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 w-fit" 
-                    type="button">
-                    <
-                    </button>
+                    <!-- Document Section Body -->
+                    <div class="w-full flex flex-col justify-between gap-1">
 
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function () {
-                            // Get references to the button and the div elements
-                            const myRequestBckBtn = document.getElementById("myRequestBckBtn");
-                            const myRequestBody = document.getElementById("myRequestBody");
-                            const mainBody = document.getElementById("mainBody");
+                        <div class="w-full flex flex-col items-start justify-center pl-4 p-4 mb-3 text-md font-mulish text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800 ">  
+                            <h2 class="mb-2 lg:text-2xl text-lg font-semibold dark:text-white self-stretch text-center">Lists of Document</h2>
+                            <ul class="max-w-md ml-4 space-y-2 lg:text-base text-xs list-disc list-inside text-green-900">
+                                <li>
+                                    Document Requirement #1
+                                </li>
+                                <li>
+                                    Document Requirement #2
+                                </li>
+                                <li>
+                                    Document Requirement #3
+                                </li>
+                                <li>
+                                    Document Requirement #4
+                                </li>
+                                <li>
+                                    Document Requirement #5
+                                </li>
+                            </ul>
 
-                            // Add a click event listener to the button
-                            myRequestBckBtn.addEventListener("click", function () {
-                            // Show the myRequestBody div
-                            mainBody.style.display = "flex";
+                        </div>
 
-                            // Hide the mainBody div
-                            myRequestBody.style.display = "none";
+                        <!-- Modal toggle -->
+                        <button 
+                        data-modal-target="crud-modal" 
+                        data-modal-toggle="crud-modal" 
+                        class="focus:outline-none font-mulish text-white bg-green-500 font-semibold lg:text-lg text-sm px-7 lg:py-2.5 py-2.5 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
+                        Request Document
+                        </button>
+
+                        <!-- Main modal -->
+                        <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-md max-h-full">
+                                <!-- Modal content -->
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 font-mulish">
+                                    <!-- Modal header -->
+                                    <div class="flex items-center justify-between p-4 md:p-3 border-b rounded-t dark:border-gray-600 bg-green-500">
+                                        <h3 class="text-xl font-semibold text-white dark:text-white">
+                                            Request Document
+                                        </h3>
+                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-green-50 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <!-- Backend Side: Need to connect para pumasok ung data from the input of students (purpose and type documents) -->
+                                    <form action="#" class="p-4 md:p-5">
+
+                                        <div class="grid gap-1 mb-1 grid-cols-1 rounded-md p-1 shadow-md shadow-gray-300">
+                                            
+                                            <div class="flex items-center gap-2 p-4 ">
+                                                
+                                                <label for="purpose" class="font-mulish mb-2 text-md font-semibold text-green-900 dark:text-white flex">Purpose:</label>
+
+                                                <select id="purpose" class="font-mulish flex-initial bg-white border border-gray-300 text-green-900 text-md  rounded-lg focus:ring-green-500 focus:border-green-500  w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 gap-2">
+                                                    <option selected="0">Select purpose</option>
+                                                    <option value="1">Purpose #1</option>
+                                                    <option value="2">Purpose #2</option>
+                                                    <option value="3">Purpose #3</option>
+                                                    <option value="4">Purpose #4</option>
+                                                    <option value="5">Purpose #5</option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="flex flex-col items-start gap-2 p-2">
+                                                
+                                                <label for="purpose" class="font-mulish mb-2 text-md font-semibold  text-green-900 dark:text-white flex">Document:</label>
+
+                                                <div class="pl-2">
+                                                    <div class="flex items-center mb-4">
+                                                        <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #1</label>
+                                                    </div>
+
+                                                    <div class="flex items-center mb-4">
+                                                        <input id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #2</label>
+                                                    </div>
+
+                                                    <div class="flex items-center mb-4">
+                                                        <input id="default-radio-3" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #3</label>
+                                                    </div>
+
+                                                    <div class="flex items-center mb-4">
+                                                        <input id="default-radio-4" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #4</label>
+                                                    </div>
+
+                                                    <div class="flex items-center mb-4">
+                                                        <input id="default-radio-5" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #5</label>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+
+                                            <div class="w-full flex justify-end">
+                                                <button 
+                                                    type="button" 
+                                                    class="focus:outline-none font-mulish text-white bg-green-500 font-semibold text-lg px-14 py-2.5 mr-2 mb-2 rounded-lg  hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600">
+                                                    Submit
+                                                </button>
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div> 
+                    
+                    </div>
+
+                </div>
+
+                <!-- My Request body section -->
+                <div id="myRequestBody" class="flex mx-[100vw] py-5 p-0 flex-col w-full h-auto text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 font-mulish ">
+
+                    <!-- My Requests Body Section -->
+                    <div class="w-full flex flex-col items-center justify-center">
+
+                        <div class="justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+
+                            <div class="relative overflow-x-auto rounded">
+
+                                <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-green-900 dark:text-gray-400">
+                                    <thead class="lg:text-base text-sm text-white bg-green-500 dark:bg-gray-700 dark:text-gray-400 uppercase">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3">
+                                                Lists
+                                            </th>
+                                            <th scope="col" class="px-6 py-3">
+                                                Status
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default1" >
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                X
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                X
+                                            </td>
+                                        </tr>
+
+                                        <div data-popover id="popover-default1" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                            <div class="px-3 py-2">
+                                                <p>h-mm AM/PM mm-dd-yyyy</p>
+                                            </div>
+                                            <div data-popper-arrow></div>
+                                        </div>
+
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default2">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                X
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                X
+                                            </td>
+                                        </tr>
+
+                                        <div data-popover id="popover-default2" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                            <div class="px-3 py-2" >
+                                                <p>h-mm AM/PM mm-dd-yyyy</p>
+                                            </div>
+                                            <div data-popper-arrow></div>
+                                        </div>
+
+                                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default3">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+                                                X
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                X
+                                            </td>
+                                        </tr>
+
+                                        <div data-popover id="popover-default3" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                            <div class="px-3 py-2">
+                                                <p>h-mm AM/PM mm-dd-yyyy</p>
+                                            </div>
+                                            <div data-popper-arrow></div>
+                                        </div>
+
+                                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default4">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+                                                X
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                X
+                                            </td>
+                                        </tr>
+
+                                        <div data-popover id="popover-default4" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                            <div class="px-3 py-2">
+                                                <p>h-mm AM/PM mm-dd-yyyy</p>
+                                            </div>
+                                            <div data-popper-arrow></div>
+                                        </div>
+
+                                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default5">
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                X
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                X
+                                            </td>
+                                        </tr>
+
+                                        <div data-popover id="popover-default5" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                            <div class="px-3 py-2">
+                                                <p>h-mm AM/PM mm-dd-yyyy</p>
+                                            </div>
+                                            <div data-popper-arrow></div>
+                                        </div>
+
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                                
+                        </div>
+
+                        <button
+                        id="myRequestBckBtn" 
+                        class="block focus:outline-none font-mulish text-green-600 font-bold border border-green-500 lg:text-base mt-4 text-sm px-12 py-2.5 rounded-xl hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 w-fit" 
+                        type="button">
+                        <
+                        </button>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                // Get references to the button and the div elements
+                                const myRequestBckBtn = document.getElementById("myRequestBckBtn");
+                                const myRequestBody = document.getElementById("myRequestBody");
+                                const mainBody = document.getElementById("mainBody");
+
+                                // Add a click event listener to the button
+                                myRequestBckBtn.addEventListener("click", function () {
+                                // Show the myRequestBody div
+                                mainBody.style.display = "flex";
+
+                                // Hide the mainBody div
+                                myRequestBody.style.display = "none";
+                                });
                             });
-                        });
-                    </script>
+                        </script>
+
+                    </div>
 
                 </div>
 
             </div>
-
-        </div>
             
         </section>
 
     </div>
 
     @elseif (request()->is('student.student-information') )
-    <!-- Student Information Section -->
+    <!-- Student Information Section Container-->
     <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
 
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
+            
+            <!-- Header Content -->
+            <div class="flex flex-col gap-2">
+                <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Student Information</h3>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h2 class="mt-2 uppercase font-semibold text-lg sm:text-xl lg:text-3xl text-brown-600">motus, James P. (114743070020)</h2>
+            </div> <!-- End of Header Content -->
 
-        <h2 class="lg:text-3xl text-2xl -mt-5 mb-1 lg:-ml-6 -ml-3 text-green-900/60">Student Information</h2>
+            <div class=" flex min-w-screen flex-col gap-6 items-center mt-6">
 
-        <div class="border-b p-[1px] bg-gray-200 mx-[-2.3rem]"></div>
+                
+                <div id="mainBody" class="flex flex-col mx-40 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish">
 
-        <div class=" flex min-w-screen flex-col gap-6 items-center mt-6">
+                    <!-- My Requests Button Section -->
+                    <div class="w-full flex flex-row justify-center gap-20 ">
+                        
+                        <div class=" overflow-x-auto">
+                            <table class="bg-white lg:text-lg rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold ">
+                                <tbody>
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white ">
+                                            Lrn Number
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            114743070020
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Name
+                                        </th>
+                                        <td class="px-10 py-2 uppercase">
+                                            Motus, James Prado
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Age
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            21
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Gender
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            Male
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Date of Birth
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            October 26, 2001
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Religion
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            Roman Catholic
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Indigenous Group
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            Pogi
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Primary Language
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            Hiligaynon
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-2 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
+                                            Address
+                                        </th>
+                                    </tr>
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Region
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            IV-4 (Calabarzon)
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Province
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            Rizal
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            City
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            San Mateo
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Barangay
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            Guitnang Bayan 2
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Street
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            Di makita
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            House number
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            001100
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-            <!-- Document Requests Main Body -->
-            <div id="mainBody" class="flex flex-col mx-40 p-4 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish">
+                        <div class=" overflow-x-auto">
+                            <table class="w-auto lg:text-lg text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold border-l-4 border-green-500">
+                                <tbody>
+                                    <tr class="bg-gray-50">
+                                        <th scope="row" class="px-7 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            Father's Name
+                                        </th>
+                                        <td class="px-10 py-2 uppercase">
+                                            Motus, James Prado
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            Mobile No.
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            114743070020
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            Email
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            father@gmail.com
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Mother's Name
+                                        </th>
+                                        <td class="px-10 py-2 uppercase">
+                                            Motus, James Prado
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            Mobile No.
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            114743070020
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            Email
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            Mother@gmail.com
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                            Guardian's Name
+                                        </th>
+                                        <td class="px-10 py-2 uppercase">
+                                            Motus, James Prado
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            Mobile No.
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            114743070020
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                            Email
+                                        </th>
+                                        <td class="px-10 py-2">
+                                            Guardian@gmail.com
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                <!-- My Requests Button Section -->
-                <div class="w-full flex flex-row items-center justify-center mb-4 gap-2">
-                    
-                    <div class=" overflow-x-auto">
-                        <table class="w-auto text-lg font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
-                            <tbody>
-                                <tr class="bg-white">
-                                    <th scope="row" class="px-6 py-3 font-normal text-gray-500 whitespace-nowrap dark:text-white">
-                                        Lrn Number
-                                    </th>
-                                    <td class="px-6 py-3">
-                                        114743070020
-                                    </td>
-                                </tr>
-                                <tr class="bg-white ">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Name
-                                    </th>
-                                    <td class="px-6 py-3 uppercase">
-                                        Motus, James Prado
-                                    </td>
-                                </tr>
-                                <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Age
-                                    </th>
-                                    <td class="px-6 py-3">
-                                        21
-                                    </td>
-                                </tr>
-                                <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Gender
-                                    </th>
-                                    <td class="px-6 py-3">
-                                        Male
-                                    </td>
-                                </tr>
-                                <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Date of Birth
-                                    </th>
-                                    <td class="px-6 py-3">
-                                        October 26, 2001
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
-
-                    <div class=" overflow-x-auto">
-                        <table class="w-auto text-lg font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
-                            <tbody>
-                                <tr class="bg-white">
-                                    <th scope="row" class="px-6 py-3 font-normal text-gray-500 whitespace-nowrap dark:text-white">
-                                        Lrn Number
-                                    </th>
-                                    <td class="px-6 py-3">
-                                        114743070020
-                                    </td>
-                                </tr>
-                                <tr class="bg-white ">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Name
-                                    </th>
-                                    <td class="px-6 py-3 uppercase">
-                                        Motus, James Prado
-                                    </td>
-                                </tr>
-                                <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Age
-                                    </th>
-                                    <td class="px-6 py-3">
-                                        21
-                                    </td>
-                                </tr>
-                                <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Gender
-                                    </th>
-                                    <td class="px-6 py-3">
-                                        Male
-                                    </td>
-                                </tr>
-                                <tr class="bg-white dark:bg-gray-800">
-                                    <th scope="row" class="px-6 py-3 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                        Date of Birth
-                                    </th>
-                                    <td class="px-6 py-3">
-                                        October 26, 2001
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
 
                 </div>
 
             </div>
-
-        </div>
             
         </section>
 
