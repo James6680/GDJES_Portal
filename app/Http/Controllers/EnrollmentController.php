@@ -196,7 +196,7 @@ class EnrollmentController extends Controller
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
         }
-        return redirect()->route('enrollment.StudentportalRegistrationPage5');
+        return redirect()->route('enrollment.StudentportalRegistrationPage4');
     }
 
     public function getEnrollment4(Request $request)
