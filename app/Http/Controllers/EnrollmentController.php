@@ -207,8 +207,8 @@ class EnrollmentController extends Controller
             $pageSpecificField = $request->session()->get('enrollment')->fourps;
         }catch(ErrorException $e){
         }
-        // if(!is_null($pageSpecificField)){    //CHANGED FOR TESTING
-        if(true){ 
+        if(!is_null($pageSpecificField)){    //CHANGED FOR TESTING
+        // if(true){ 
             return view('enrollment.StudentportalRegistrationPage5',compact('enrollment'));
         }else{
             return redirect()->route('enrollment.StudentportalRegistrationPage1');
