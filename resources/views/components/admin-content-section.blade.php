@@ -1748,7 +1748,7 @@
                   </div>
                   <!-- Modal body -->
                   <div class="p-6 space-y-6">
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-4">
 
                       <div class="flex flex-col">
                         <label for="startYearOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
@@ -1756,7 +1756,7 @@
                       </div>
 
                       <div class="flex flex-col">
-                        <label for="dropdownEnrollmentPhase" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
+                        <label for="dropdownEnrollmentPhase" class="block mb-2 text-sm font-medium text-black dark:text-white">Choose enrollment phase</label>
                         <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
                           <!-- Dropdown SY Button for Open and Close Enrollment -->
                           <button id="dropdownEnrollmentPhaseButton" data-dropdown-toggle="dropdownEnrollmentPhase" data-dropdown-trigger="hover" class="justify-between pr-4 text-black w-full border border-gray-300 bg-gray-50  focus:ring-green-600 focus:border-green-600 rounded-lg text-sm p-2.5 text-left inline-flex items-center dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"" type="button">Enrollment Phase<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -1777,6 +1777,11 @@
 
                         </div>  
                       </div>    
+
+                      <div class="flex flex-col">
+                        <label for="requiredDaysOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
+                        <input type="number" name="requiredDaysOfSY" id="requiredDaysOfSY" min="200" max="300" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="200" required="">
+                      </div>
 
                     </div>
                   </div>
