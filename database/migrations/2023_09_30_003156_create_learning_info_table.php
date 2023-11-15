@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('learning_info', function (Blueprint $table) {
             $table->id();
             $table->string('distance_learning', 30);
-            $table->boolean('may_sariling_tablet_ang_bata');
-            $table->boolean('may_computer_sa_bahay');
-            $table->boolean('walang_sariling_gadget_ang_bata');
-            $table->boolean('may_tv_sa_bahay');
-            $table->boolean('may_internet_sa_bahay');
-            $table->boolean('mobile_data_lang_ang_gamit');
+            $table->boolean('may_sariling_tablet_ang_bata')->default(0);
+            $table->boolean('may_computer_sa_bahay')->default(0);
+            $table->boolean('walang_sariling_gadget_ang_bata')->default(0);
+            $table->boolean('may_tv_sa_bahay')->default(0);
+            $table->boolean('may_internet_sa_bahay')->default(0);
+            $table->boolean('mobile_data_lang_ang_gamit')->default(0);
             $table->timestamps();
         });
     }
