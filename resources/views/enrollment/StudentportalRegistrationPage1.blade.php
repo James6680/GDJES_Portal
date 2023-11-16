@@ -194,7 +194,12 @@
             <!-- Login Button -->
             <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] px-[2.13rem] border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100 cursor-pointer">
 
-              <button id="loginButton"  class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap">login here</button>
+              <!--id="loginButton"  -->
+              <a href="{{ route('students_login_from') }}"
+                
+                class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap">
+                login here
+              </a>
             
             </div>
           

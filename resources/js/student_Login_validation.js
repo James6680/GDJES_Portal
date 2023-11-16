@@ -2,10 +2,10 @@
 
 //Show & hide password condition.....
 const passwordToggle = document.querySelector('#toggle');
-const passwordInput = document.getElementById('loginPassword');
+const passwordInput = document.getElementById('password');
 const passwordLabel = document.querySelector('.js-password-label');
 
-passwordToggle.addEventListener('change', function() {
+passwordToggle.addEventListener('change', function() {x
 
     if (passwordInput.type === 'password') {
       passwordInput.type = 'text';
@@ -21,9 +21,9 @@ passwordToggle.addEventListener('change', function() {
 //---------------------------------------------------------------------|
 
 // Student Login validation
-const loginEmailInput = document.getElementById("loginEmail");
-const loginPasswordInput = document.getElementById("loginPassword");
-const loginEmailError = document.getElementById("email-error");
+const loginUsernameInput = document.getElementById("username");
+const loginPasswordInput = document.getElementById("password");
+const loginUsernameError = document.getElementById("username-error");
 const loginPasswordError = document.getElementById("password-error");
 const loginButton = document.getElementById("loginBtn");
 
@@ -34,12 +34,12 @@ function hideErrorAndRemoveClass(inputElement, errorElement) {
 
 function validateForm(event) {
   event.preventDefault();
-  hideErrorAndRemoveClass(loginEmailInput, loginEmailError);
+  hideErrorAndRemoveClass(loginUsernameInput, loginUsernameError);
   hideErrorAndRemoveClass(loginPasswordInput, loginPasswordError);
 
-  if (!loginEmailInput.checkValidity()) {
-    loginEmailError.style.display = "block";
-    loginEmailInput.classList.add("border-red-500");
+  if (!loginUsernameInput.checkValidity()) {
+    loginUsernameError.style.display = "block";
+    loginUsernameInput.classList.add("border-red-500");
   }
 
   if (!loginPasswordInput.checkValidity()) {
@@ -47,7 +47,7 @@ function validateForm(event) {
     loginPasswordInput.classList.add("border-red-500");
   }
 
-  if (loginEmailInput.checkValidity() && loginPasswordInput.checkValidity()) {
+  if (loginUsernameInput.checkValidity() && loginPasswordInput.checkValidity()) {
     // If both email and password are valid, redirect the user to the desired link
     window.location.href = "StudentPortalRegistrationPage1.html";
   }
@@ -55,7 +55,7 @@ function validateForm(event) {
 
 loginButton.addEventListener("click", validateForm);
 
-loginEmailInput.addEventListener("input", () => hideErrorAndRemoveClass(loginEmailInput, loginEmailError));
+loginUsernameInput.addEventListener("input", () => hideErrorAndRemoveClass(loginUsernameInput, loginEmailError));
 loginPasswordInput.addEventListener("input", () => hideErrorAndRemoveClass(loginPasswordInput, loginPasswordError));
 
 //---------------------------------------------------------------------|
