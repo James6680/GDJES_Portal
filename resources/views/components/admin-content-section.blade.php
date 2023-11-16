@@ -782,6 +782,7 @@
 
   <!-- Admin Announcements -->
   @elseif(request()->is('admin.announcements') )
+  
   @vite(['resources/js/admin.announcements.js'])
   <!-- Admin Announcements Main Content Container -->
   <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
@@ -851,15 +852,15 @@
             <!-- Modal body -->
             <div class="p-6 space-y-6">
               <div>
-                <form action="" method="post" id="create-form">
+                <form action="" method="post" id="Create-form">
                   @csrf
                   @method('post')
                   <label for="announcement-title" class="block mb-2 text-sm md:text-base lg:text-md font-medium text-gray-900 dark:text-white">Announcement Title</label>
-                  <input type="text" id="announcement-title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-brown-500" placeholder="Looking for eligible supplier for the Computer Parts and Accessories" required>
+                  <input type="text" id="announcement-title" name="announcement_title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-brown-500" placeholder="Looking for eligible supplier for the Computer Parts and Accessories" required maxlength="300">
               </div>
               <div>
                   <label for="announcement-link" class="block mb-2 text-sm md:text-base lg:text-md font-medium text-gray-900 dark:text-white">Announcement Link</label>
-                  <input type="text" id="announcement-link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-brown-500" placeholder="facebook.com" required>
+                  <input type="text" id="announcement-link" name="announcement_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-brown-500" placeholder="facebook.com" required maxlength="300">
               </div>
             </div>
             <!-- Modal footer -->
@@ -897,11 +898,11 @@
                       <input type="hidden" value ="" name="id">
                     <div>
                         <label for="announcement-title" class="block mb-2 text-sm md:text-base lg:text-md font-medium text-gray-900 dark:text-white">Announcement Title</label>
-                        <input name="announcement_title" type="text" id="announcement-title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Looking for eligible supplier for the Computer Parts and Accessories" required>
+                        <input name="announcement_title" type="text" id="announcement-title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Looking for eligible supplier for the Computer Parts and Accessories" required maxlength="300">
                     </div>
                     <div>
                         <label for="announcement-link" class="block mb-2 text-sm md:text-base lg:text-md font-medium text-gray-900 dark:text-white">Announcement Link</label>
-                        <input name="announcement_url" type="text" id="announcement-link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="facebook.com" required>
+                        <input name="announcement_url" type="text" id="announcement-link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="facebook.com" required maxlength="300">
                     </div>
                   </div>
                   <!-- Modal footer -->
@@ -928,11 +929,16 @@
               <svg class="mx-auto mb-4 text-red-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
               </svg>
+              <form action="" method="post" id="delete-form">
+                @csrf
+                @method("post")
+                <input type="hidden" value ="" name="id">
               <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this announcement post called *insert announcement post title*?</h3>
-                <button data-modal-hide="delete-post-modal" type="button" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm md:text-base lg:text-md inline-flex items-center px-5 py-2.5 text-center mr-2">
+                <button id="Delete" data-modal-hide="delete-post-modal" type="button" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm md:text-base lg:text-md inline-flex items-center px-5 py-2.5 text-center mr-2">
                   Yes, I'm sure
                 </button>
               <button data-modal-hide="delete-post-modal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm md:text-base lg:text-md font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+            </form>
             </div>
           </div>
       </div>

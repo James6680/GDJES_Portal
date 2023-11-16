@@ -36,9 +36,9 @@ Route::get('admin.announcements', function () {
 });
 Route::post('admin.announcements.edit', [AnnouncementController::class, 'editAnnouncement'])
     ->name('admin.announcements.edit');
-Route::post('admin.announcements.create', [AnnouncementController::class, 'POSTAnnouncementController'])
+Route::post('admin.announcements.create', [AnnouncementController::class, 'addAnnouncement'])
     ->name('admin.announcements.create');
-Route::post('admin.announcements.delete', [AnnouncementController::class, 'POSTAnnouncementController'])
+Route::post('admin.announcements.delete', [AnnouncementController::class, 'deleteAnnouncement'])
     ->name('admin.announcements.delete');
 
 Route::get('admin.document-request', function () {
