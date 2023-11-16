@@ -8,7 +8,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Student;
-use App\Models\Relative;
+use App\Models\Relatives;
+
 
 
 class StudentSeeder extends Seeder
@@ -18,8 +19,8 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-         /*
-         DB::table('students')->insert([
+    /*
+     DB::table('students')->insert([
           
        
             'school_year' => '2023',
@@ -31,7 +32,7 @@ class StudentSeeder extends Seeder
             'middle_name' => 'Protacio',
             'extension_name' => 'Sr',
 
-            'birth_date' => '1995-01-01',
+            'birth_date' => '2018-01-01',
             'age' => '5' ,
             'gender' => 'Male',
             'indigenous_group' => 'Tagalog',
@@ -45,7 +46,7 @@ class StudentSeeder extends Seeder
             'municipality' => 'Tondo',
             'province' => 'Manila',
             'region' =>'NCR',
-            'relatives_id' => '1',
+            'relatives_id' => '',
             'household_4ps_id' => '1',
 
             'username' => 'Rizal.Jose.2023',
@@ -54,11 +55,10 @@ class StudentSeeder extends Seeder
             'status' => '2',
             // Add the rest of the fields here.
         ]);
-
         */
-    
-        Student::factory(5)->create();
         
+
+        Student::factory(1)->create();
     
     }
 }

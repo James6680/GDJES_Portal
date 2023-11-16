@@ -15,8 +15,13 @@ use Illuminate\Support\Facades\Hash;
 
 class Relatives extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $table = 'relatives';
 
     protected $fillable = [

@@ -48,9 +48,7 @@ class StudentFactory extends Factory
             'region' => fake()->state,
 
             
-            'relatives_id' => function () {
-                return Relatives::factory()->create()->id;
-            },
+            'relatives_id' => Relatives::factory(),
             'household_4ps_id' => $this->faker->randomNumber(),
 
             
