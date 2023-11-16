@@ -3757,13 +3757,34 @@
   @elseif(request()->is('admin.school-information') )
   <!-- Admin School Information Main Content Container -->
   <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
-    <div class="w-full h-full gap-4 md:gap-5 lg:gap-6 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
+    <form action="#" class="w-full h-full divide-y divide-gray-200 gap-4 md:gap-5 lg:gap-6 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
       <!-- Header Content -->
-      <div class="flex flex-col gap-2">
-        <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Announcements Editor</h3>
-        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Empower your administrative communication. This section allows seamless creation, modification, and removal of announcements. Utilize the CRUD operations to keep the school community informed and engaged. Craft timely updates, important notices, and relevant information effortlessly.</p>
+      <div class="flex flex-col gap-2 pt-4">
+        <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">School Information Editor</h3>
+        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Effortlessly update essential school details. Ensure accurate and up-to-date information is readily available for effective communication.</p>
       </div> <!-- End of Header Content -->
-    </div>
+      
+      <!-- School Information Editor -->
+      <div class="flex flex-col pt-4 gap-2">
+        <div class="flex flex-col">
+          <label for="school-address" class="block mb-2 text-sm font-medium text-black dark:text-white">School Address</label>
+          <input type="text" name="school-address" id="school-address" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Enter complete school address" value="" required="">
+        </div>
+        <div class="flex flex-col">
+          <label for="school-contact-num" class="block mb-2 text-sm font-medium text-black dark:text-white">School Contact Number</label>
+          <input type="tel" name="school-contact-num" id="school-contact-num" pattern="[0-9]{11}" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="09XXXXXXXX" value="" required="">
+        </div>
+        <div class="flex flex-col">
+          <label for="school-email" class="block mb-2 text-sm font-medium text-black dark:text-white">School Email Address</label>
+          <input type="email" name="school-email" id="school-email" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="juanschool@gmail.com" value="" required="">
+        </div>
+      </div> <!-- End of School Information Editor -->
+
+      <!-- Footer -->
+      <div class="flex items-center pt-4 gap-2 border-gray-200 rounded-b dark:border-gray-600">
+        <button type="submit" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm md:text-base lg:text-md px-5 py-2.5 text-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">Save changes</button>  
+      </div> <!-- End of Footer -->
+    </form>
   </section> <!-- End of Admin School Information Main Content Container -->
 
 
