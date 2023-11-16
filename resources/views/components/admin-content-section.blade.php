@@ -2146,12 +2146,17 @@
       <!-- Enrollment SY Management -->
       <div class="w-full flex flex-col pt-4">
         @if (!is_null($schoolYear) && $enrollmentStatus == 'Closed')
-            <h3 class="text-md font-bold text-black">Managing school year: {{ $schoolYear }}</h3>
-            <h4 class="text-base font-semibold text-emerald-700">Enrollment status: {{ $enrollmentStatus }}</h4>
+            <h3 class="text-md font-bold text-black">Managing school year: 
+              {{ $schoolYear }}</h3>
+            <h4 class="text-base font-semibold text-emerald-700">Enrollment status:
+               {{ $enrollmentStatus }}</h4>
         @elseif (!is_null($schoolYear) && $enrollmentStatus == 'Open')
-            <h3 class="text-md font-bold text-black">Managing school year: {{ $schoolYear }}</h3>
-            <h4 class="text-base font-semibold text-emerald-700">Enrollment status: {{ $enrollmentStatus }}</h4>
-            <h4 class="text-base font-regular text-gray-500">Enrollment phase: {{ $enrollmentPhase }}</h4>
+            <h3 class="text-md font-bold text-black">Managing school year: 
+              {{ $schoolYear }}</h3>
+            <h4 class="text-base font-semibold text-emerald-700">Enrollment status: 
+              {{ $enrollmentStatus }}</h4>
+            <h4 class="text-base font-regular text-gray-500">Enrollment phase: 
+              {{ $enrollmentPhase }}</h4>
         @else
             <h3 class="text-md font-semibold text-red-500">No school year selected to manage.</h3>
             <h4 class="text-base font-regular text-gray-500">Choose from the dropdown to manage an existing one or add a new school year using the button.</h4>
