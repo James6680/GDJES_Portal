@@ -11,30 +11,12 @@
             <!-- Backend side: need to connect para magreflect ung icrcreate na announcement ng admin -->
             <div class="rounded-md w-auto h-auto relative container p-6 grid grid-cols-1 bg-yellow-600 shadow shadow-green-500">
 
-                <ul class="m-o p-0 text-white">
+                <ul class="m-o p-0 text-white" id="announcement-list">
 
                     <li class="p-0 m-0">
                         <span class="font-mulish font-semibold text-2xl sm:text-3xl ">Announcements</span>
                     </li>
-
-
-
-                    <li class="py-5 border-b-2 border-white hover:border-b-2 hover:border-brown-200 hover:text-brown-200">
-                        <a href="https://www.youtube.com/watch?v=rKWLpH1fLMI" class="flex flex-col justify-between align-middle">
-                        <span class="font-mulish font-semibold text-base sm:text-lg">Title of Announcement 2</span>
-                        <span class="font-mulish font-normal text-base sm:text-lg">Date Published 2</span>
-                        </a>
-                    </li>
-
-                    <li class="py-5 hover:text-brown-200">
-                        <a href="https://tailwindcss.com/docs/height" class="flex flex-col justify-between align-middle">
-                        <span class="font-mulish font-semibold text-base sm:text-lg">Title of Announcement 3</span>
-                        <span class="font-mulish font-normal text-base sm:text-lg">Date Published 3</span>
-                        </a>
-                    </li>
-
                 </ul>
-
             </div>
 
             <!-- Contact Us Main Container -->
