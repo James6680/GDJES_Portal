@@ -96,7 +96,7 @@
 
                 <div class="relative overflow-x-auto font-mulish">
 
-                    <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-200">
+                    <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-200" >
 
                         <thead class="lg:text-sm text-xs text-white uppercase bg-yellow-600 ">
                             <tr>
@@ -117,7 +117,7 @@
                         <tbody>
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Apple MacBook Pro 17"
+                                    Juan Dela Cruz
                                 </th>
                                 <td class="px-6 py-4">
                                     Silver
@@ -143,7 +143,7 @@
                                     $1999
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     Magic Mouse 2
                                 </th>
@@ -157,7 +157,7 @@
                                     $99
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     Magic Mouse 2
                                 </th>
@@ -171,7 +171,7 @@
                                     $99
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     Magic Mouse 2
                                 </th>
@@ -185,7 +185,7 @@
                                     $99
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     Magic Mouse 2
                                 </th>
@@ -226,7 +226,7 @@
                                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                                             </svg>
                                         </div>
-                                        <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full pl-10 p-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-primary-500" placeholder="Search" required="">
+                                        <input type="text" id="myInput" onkeyup="myFunction()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full pl-10 p-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-primary-500" placeholder="Search" required="">
                                     </div>
                                 </form>
 
@@ -295,10 +295,10 @@
 
                         <div class="overflow-x-auto">
 
-                            <table class="w-full lg:text-sm text-xs text-left text-gray-500 border border-gray-200">
+                            <table class="w-full lg:text-sm text-xs text-left text-gray-500 border border-gray-200" id="myTable">
                                 <thead class="lg:text-sm text-xs text-white uppercase bg-yellow-600 ">
-                                    <tr>
-                                        <th scope="col" class="px-4 py-3">Product name</th>
+                                    <tr class="header">
+                                        <th scope="col" class="px-4 py-3">Student Name</th>
                                         <th scope="col" class="px-4 py-3">Category</th>
                                         <th scope="col" class="px-4 py-3">Brand</th>
                                         <th scope="col" class="px-4 py-3">Description</th>
@@ -308,7 +308,7 @@
 
                                 <tbody>
                                     <tr class="border-b dark:border-gray-700">
-                                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iMac 27&#34;</th>
+                                        <td class="px-4 py-3">Mark Dela Cruz</td>                         
                                         <td class="px-4 py-3">PC</td>
                                         <td class="px-4 py-3">Apple</td>
                                         <td class="px-4 py-3">300</td>
@@ -316,7 +316,7 @@
 
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iMac 20&#34;</th>
+                                        <td class="px-4 py-3">Allen Dela CruzA</td>  
                                         <td class="px-4 py-3">PC</td>
                                         <td class="px-4 py-3">Apple</td>
                                         <td class="px-4 py-3">200</td>
@@ -324,7 +324,7 @@
 
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iPhone 14</th>
+                                        <td class="px-4 py-3">Janus Dela Cruz</td>  
                                         <td class="px-4 py-3">Phone</td>
                                         <td class="px-4 py-3">Apple</td>
                                         <td class="px-4 py-3">1237</td>
@@ -332,7 +332,7 @@
 
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iPad Air</th>
+                                        <td class="px-4 py-3">George Dela Cruz</td>  
                                         <td class="px-4 py-3">Tablet</td>
                                         <td class="px-4 py-3">Apple</td>
                                         <td class="px-4 py-3">4578</td>
@@ -340,7 +340,7 @@
 
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Xbox Series S</th>
+                                        <td class="px-4 py-3">James Dela Cruz</td>  
                                         <td class="px-4 py-3">Gaming/Console</td>
                                         <td class="px-4 py-3">Microsoft</td>
                                         <td class="px-4 py-3">56</td>
@@ -348,7 +348,7 @@
 
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">PlayStation 5</th>
+                                        <td class="px-4 py-3">Juan Dela Cruz</td>  
                                         <td class="px-4 py-3">Gaming/Console</td>
                                         <td class="px-4 py-3">Sony</td>
                                         <td class="px-4 py-3">78</td>
@@ -356,6 +356,30 @@
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <script>
+                                function myFunction() {
+                                // Declare variables
+                                var input, filter, table, tr, td, i, txtValue;
+                                input = document.getElementById("myInput");
+                                filter = input.value.toUpperCase();
+                                table = document.getElementById("myTable");
+                                tr = table.getElementsByTagName("tr");
+
+                                // Loop through all table rows, and hide those who don't match the search query
+                                for (i = 0; i < tr.length; i++) {
+                                    td = tr[i].getElementsByTagName("td")[0];
+                                    if (td) {
+                                    txtValue = td.textContent || td.innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        tr[i].style.display = "";
+                                    } else {
+                                        tr[i].style.display = "none";
+                                    }
+                                    }
+                                }
+                                }
+                            </script>
                         </div>
                         
                     </div>

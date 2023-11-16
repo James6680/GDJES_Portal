@@ -1,6 +1,9 @@
 @php
   $currentSchoolYearStart = '2023';
   $currentSchoolYearEnd = '2024';
+  $schoolYear = '2023 - 2024';
+  $enrollmentPhase = 'Pre-enrollment';
+  $enrollmentStatus = 'Open';
 @endphp
 
 
@@ -1040,29 +1043,41 @@
         </div> <!-- End of Table functions - add user -->
       </div> <!-- End of Table functions - all -->
 
-      <!-- Table -->
+      <!-- Table Student User Management -->
       <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
       
         <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
 
           <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">
-                  FULL NAME
+              <th scope="col" class="px-3 py-3">
+                  LAST NAME
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-3 py-3">
+                  FIRST NAME
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  MIDDLE NAME
+              </th>
+              <th scope="col" class="px-3 py-3">
+                  NAME EXTENSION
+              </th>
+              <th scope="col" class="px-3 py-3">
                   USERNAME
               </th>
-              <th scope="col" class="px-6 py-3">
-                  ADDRESS
+              <th scope="col" class="px-3 py-3">
+                  GRADE LEVEL
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-3 py-3">
+                  LRN
+              </th>
+              <th scope="col" class="px-3 py-3">
                   STATUS
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-3 py-3">
                   DATE CREATED
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-3 py-3">
                   ACTION
               </th>
             </tr>
@@ -1070,54 +1085,44 @@
 
           <tbody>
             <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
-              <td class="px-6 py-4">
-                Last Name, First Name Middle Name
+              <td class="px-3 py-3">
+                Reyes
               </td>
-              <td class="px-6 py-4">
-                lnfnmn001
+              <td class="px-3 py-3">
+                Alex
               </td>
-              <td class="px-6 py-4">
-                9th Avenue W, Grace Park West, Caloocan, Metro Manila
+              <td class="px-3 py-3">
+                Pajarellano
               </td>
-              <td class="px-6 py-4">
+              <td class="px-3 py-3">
+                N/A
+              </td>
+              <td class="px-3 py-3">
+                lxxMeow
+              </td>
+              <td class="px-3 py-3">
+                Kinder
+              </td>
+              <td class="px-3 py-3">
+                158514070128
+              </td>
+              <td class="px-3 py-3">
                 Active
               </td>
-              <td class="px-6 py-4">
+              <td class="px-3 py-3">
                 August 23, 2023
               </td>
-              <td class="px-6 py-4 gap-2">
+              <td class="px-3 py-3 gap-2">
                 <!-- Modal toggle -->
-                <a href="#editUserModal" data-modal-target="editUserModal" data-modal-show="editUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                <a href="#archiveUserModal" data-modal-target="archiveUserModal" data-modal-show="archiveUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                <a href="#" data-modal-target="viewStudentUserModal" data-modal-show="viewStudentUserModal" type="button" class="font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View</a>
+                <a href="#" data-modal-target="editStudentUserModal" data-modal-show="editStudentUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <a href="#" data-modal-target="archiveStudentUserModal" data-modal-show="archiveStudentUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
-              <td class="px-6 py-4">
-                Reyes, Alex Pajarellano
-              </td>
-              <td class="px-6 py-4">
-                lxxsinigang
-              </td>
-              <td class="px-6 py-4">
-                Magsaysay Blvd, Corner Santol St, Santa Mesa, Manila, 1008 Metro Manila
-              </td>
-              <td class="px-6 py-4">
-                Active
-              </td>
-              <td class="px-6 py-4">
-                August 23, 2023
-              </td>
-              <td class="px-6 py-4 gap-2">
-                <!-- Modal toggle -->
-                <a href="#" data-modal-target="editUserModal" data-modal-show="editUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                <a href="#" data-modal-target="archiveUserModal" data-modal-show="archiveUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
-              </td>
-            </tr>
           </tbody>
 
         </table>
 
-      </div> <!-- End of Table -->
+      </div> <!-- End of Table Student User Management -->
 
       <!-- Pagination -->
       <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
@@ -1147,74 +1152,609 @@
           </ul>
       </nav> <!-- End of Pagination -->
 
-      <!-- Edit user modal -->
-      <div id="editUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-          <div class="relative w-full max-w-2xl max-h-full">
-              <!-- Modal content -->
-              <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                  <!-- Modal header -->
-                  <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                      <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                          Edit user
-                      </h3>
-                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editUserModal">
-                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                      </svg>
-                      <span class="sr-only">Close modal</span>
-                  </button>
-                  </div>
-                  <!-- Modal body -->
-                  <div class="p-6 space-y-6">
-                      <div class="grid grid-cols-6 gap-6">
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
-                              <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bonnie" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
-                              <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Green" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                              <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="example@company.com" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
-                              <input type="number" name="phone-number" id="phone-number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="e.g. +(12)3456 789" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
-                              <input type="text" name="department" id="department" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Development" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company</label>
-                              <input type="number" name="company" id="company" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123456" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="current-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Current Password</label>
-                              <input type="password" name="current-password" id="current-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="new-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
-                              <input type="password" name="new-password" id="new-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required="">
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Modal footer -->
-                  <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save all</button>
-                  </div>
-              </form>
-          </div>
-        </div>
-      </div> <!-- End of Edit user modal -->
+      <!-- View student user modal -->
+      <div id="viewStudentUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full">
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+              <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
+                View student user 
+              </h3>
+              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="viewStudentUserModal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-3 divide-y divide-gray-200">
+              <h3 class="text-md font-semibold text-black dark:text-white">*Insert Student Name here*</h3>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Last Name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">First Name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Middle Name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Name Extension: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Username: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Returnee: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">LRN (Learner's Refenrece Number): </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Date of Birth: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Age: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Nabibilang sa indegenous group: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Indegenous group na kinabibilangan: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother tongue: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Religion: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Nangangailangan ng special assistance?  </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Disability: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">House no. and street: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Barangay: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">City: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's full name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's contact number: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother maiden name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother's contact number: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's full name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's contact number: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's beneficiary? </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's Household ID No.: </p>
+              </div>
+              <div class="pt-4">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Access to technology: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Preferred mode of learning: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Account status: </p>
+              </div>
 
-      <!-- Archive User Modal -->
-      <div id="archiveUserModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+              <!-- BACKEND: Just add conditional statements kapag meron na laman si returnee. If returnee == yes -->
+              <div class="pt-4 hidden">
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling baitang na natapos: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling paaralan na pinasukan: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Panuruang taon na natapos ng mag-aaral: </p>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+
+      <!-- Edit student user modal -->
+      <div id="editStudentUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full">
+          <!-- Modal content -->
+          <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+              <h3 class="text-xl font-semibold text-black dark:text-white">
+                Edit student user 
+              </h3>
+              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editStudentUserModal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-3">
+              <div class="grid grid-cols-6 gap-6">
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="last-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Last Name</label>
+                  <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="first-name" class="block mb-2 text-sm font-medium text-black dark:text-white">First Name</label>
+                  <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="middle-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Middle Name</label>
+                  <input type="text" name="middle-name" id="middle-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="dropdownNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">Name Extension</label>
+                  <button id="dropdownNameExtensionlButton" data-dropdown-toggle="dropdownNameExtension" class="text-black w-full justify-between border border-gray-300 bg-gray-50 focus:ring-green-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">*Name Extension* <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+                  </button>
+                  <!-- Dropdown Name Extension menu -->
+                  <div id="dropdownNameExtension" class="z-10 hidden bg-gray-50 border border-gray-300 divide-y divide-gray-100 rounded-lg shadow w-48 dark:bg-gray-700">
+                      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownNameExtension">
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">N/A</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Junior</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">I</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">II</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">III</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">IV</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">V</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">VI</a>
+                        </li>
+                      </ul>
+                  </div>
+                
+                </div>
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="username" class="block mb-2 text-sm font-medium text-black dark:text-white">Username</label>
+                  <input type="text" name="username" id="username" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6">
+                  <label for="returnee" class="block mb-2 text-sm font-medium text-black dark:text-white">Returnee</label>
+                  <div id="returnee" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="returnee">
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">HINDI</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-2" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">OO dahil sya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="dropdownGradeLevelButton" class="block mb-2 text-sm font-medium text-black dark:text-white">Grade Level</label>
+                  <button id="dropdownGradeLevelButton" data-dropdown-toggle="dropdownGradeLevel" class="text-black w-full justify-between border border-gray-300 bg-gray-50 focus:ring-green-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">*Grade level* <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+                  </button>
+                  <!-- Dropdown Grade Level menu -->
+                  <div id="dropdownGradeLevel" class="z-10 hidden bg-gray-50 border border-gray-300 divide-y divide-gray-100 rounded-lg shadow w-72 dark:bg-gray-700">
+                      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownGradeLevel">
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 1</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 2</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 3</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 4</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 5</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 6</a>
+                        </li>
+                      </ul>
+                  </div>          
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="lrn" class="block mb-2 text-sm font-medium text-black dark:text-white">LRN</label>
+                  <input type="number" name="lrn" id="lrn" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="date-of-birth" class="block mb-2 text-sm font-medium text-black dark:text-white">Date of Birth</label>
+                  <input type="date" name="date-of-birth" id="date-of-birth" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="age" class="block mb-2 text-sm font-medium text-black dark:text-white">Age</label>
+                  <input type="number" name="age" id="age" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6">
+                  <label for="indigenous-group" class="block mb-2 text-sm font-medium text-black dark:text-white">Nabibilang sa indegenous group</label>
+                  <div id="indigenous-group" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="returnee">
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="radio" name="indigenous-group" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-2" type="radio" name="indigenous-group" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-span-6">
+                  <label for="indigenous-group-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Indegenous group (optional)</label>
+                  <input type="text" name="indigenous-group" id="indigenous-group" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="dropdownMotherTongueButton" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother Tongue</label>
+                  <button id="dropdownMotherTongueButton" data-dropdown-toggle="dropdownMotherTongue" class="text-black w-full justify-between border border-gray-300 bg-gray-50 focus:ring-green-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">*Mother tongue* <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+                  </button>
+                  <!-- Dropdown Mother Tongue menu -->
+                  <div id="dropdownMotherTongue" class="z-10 hidden bg-gray-50 border border-gray-300 divide-y divide-gray-100 rounded-lg shadow w-80 dark:bg-gray-700">
+                      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMotherTongue">
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Filipino</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Bicolano</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cebuano</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chinese</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">English</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ilocano</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kapampangan</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Maguindanaoan</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Manobo</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nihonggo</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Philippine Sign Language</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tausug</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Waray</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ybanag</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Others</a>
+                        </li>
+                      </ul>
+                  </div> 
+                </div>
+
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="dropdownReligionButton" class="block mb-2 text-sm font-medium text-black dark:text-white">Religion</label>
+                  <button id="dropdownReligionButton" data-dropdown-toggle="dropdownReligion" class="text-black w-full justify-between border border-gray-300 bg-gray-50 focus:ring-green-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">*Religion* <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+                  </button>
+                  <!-- Dropdown Grade Level menu -->
+                  <div id="dropdownReligion" class="z-10 hidden bg-gray-50 border border-gray-300 divide-y divide-gray-100 rounded-lg shadow w-72 dark:bg-gray-700">
+                      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownReligion">
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Christianity</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Aglipayan</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Angelican</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Apostolic</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Baptist</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Buddhism</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Christ Latter Day Saints</a>
+                        </li>
+
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Church of God in Jesus Christ</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Church of God International</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dating Daan</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">El Shaddai</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Full Gospel</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hinduism</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Iglesia ni Cristo</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Indigenous Religion</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Islam</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Jehovah Witneses</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Judaism</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kingdom of Jesus Christ</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Lutheran</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Methodist</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Orthodox Church</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pentecostal</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Presbyterian</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Seventh Day Adventist</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sikhism</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Taoism</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">No Religion</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Others</a>
+                        </li>
+                      </ul>
+                  </div>          
+                </div>
+
+                <div class="col-span-6">
+                  <label for="special-assistance" class="block mb-2 text-sm font-medium text-black dark:text-white">Kailangan ng special assistance?</label>
+                  <div id="special-assistance" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="special-assistance">
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="radio" name="special-assistance" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-2" type="radio" name="special-assistance" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                
+                
+                
+                </div>
+                <div class="col-span-6 ">
+                  <label for="disability" class="block mb-2 text-sm font-medium text-black dark:text-white">Disability (Optional)</label>
+                  <input type="text" name="disability" id="disability" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="">
+                </div>
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="house-no-street" class="block mb-2 text-sm font-medium text-black dark:text-white">House No. and Street</label>
+                  <input type="text" name="house-no-street" id="house-no-street" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="barangay" class="block mb-2 text-sm font-medium text-black dark:text-white">Barangay</label>
+                  <input type="text" name="barangay" id="barangay" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="city" class="block mb-2 text-sm font-medium text-black dark:text-white">City</label>
+                  <input type="text" name="city" id="city" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="father-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Full Name</label>
+                  <input type="text" name="father-name" id="father-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="father-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Contact Number</label>
+                  <input type="number" name="father-num" id="father-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="mother-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Maiden Name</label>
+                  <input type="text" name="mother-name" id="mother-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="mother-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Contact Number</label>
+                  <input type="number" name="mother-num" id="mother-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="guardian-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Full Name</label>
+                  <input type="text" name="guardian-name" id="guardian-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="guardian-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Contact Number</label>
+                  <input type="number" name="guardian-num" id="guardian-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="4ps" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Beneficiary?</label>
+                  <input type="text" name="4ps" id="4ps" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="4ps-no" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Household ID No.</label>
+                  <input type="text" name="4ps-no" id="4ps-no" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6">
+                  <label for="accessToTechnologyButton" class="block text-sm font-medium text-black dark:text-white">Access to Technology</p>
+                  <!-- Checkbox  for Access to technology-->
+                  <div id="accessToTechnologyCheckbox" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="accessToTechnologyCheckbox">
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May sariling Cellphone/Tablet ang Bata</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May computer sa bahay</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Walang sariling gadget ang bata</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May tv sa bahay</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May internet connection sa bahay</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Mobile data lamang ang gamit para makaconnect sa internet</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-span-6">
+                  <label for="pmol" class="block mb-2 text-sm font-medium text-black dark:text-white">Preferred Mode of Learning</label>
+                  <div id="pmol" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="pmol">
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Printed</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-2" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Digital</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-3" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Online</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-4" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Educational Television</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-5" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-5" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Homeschooling</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-6" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-6" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Blended</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-span-6">
+                  <label for="status" class="block mb-2 text-sm font-medium text-black dark:text-white">Account Status</label>
+                  <div id="status" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="status">
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-1" type="radio" name="status" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Active</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="checkbox-item-2" type="radio" name="status" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Inactive</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                
+                <div class="col-span-6">
+                  <label for="last-grade-finished" class="block mb-2 text-sm font-medium text-black dark:text-white">Last grade finished</label>
+                  <input type="text" name="last-grade-finished" id="last-grade-finished" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div>
+                <div class="col-span-6">
+                  <label for="last-school-enrolled-in" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school enrolled in</label>
+                  <input type="text" name="last-school-enrolled-in" id="last-school-enrolled-in" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                </div><div class="col-span-6">
+                  <label for="last-sy-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school year attended</label>
+                  <input type="text" name="last-sy-attended" id="last-sy-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="">
+                </div>
+                
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+              <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
+            </div>
+          </form>
+        </div> 
+      </div> <!-- End of Edit Student User Modal -->
+
+      <!-- Archive Student User Modal -->
+      <div id="archiveStudentUserModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-md max-h-full">
           <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="archiveUserModal">
+            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="archiveStudentUserModal">
               <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
               </svg>
@@ -1224,13 +1764,14 @@
               <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
               </svg>
-              <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to archive the account of *insert full name*?</h3>
-                <button data-modal-hide="archiveUserModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                  Yes, I'm sure
-                </button>
-                <button data-modal-hide="archiveUserModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+              <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to ARCHIVE the student account of *insert full name*?</h3>
+              <button data-modal-hide="archiveStudentUserModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                Yes, I'm sure
+              </button>
+              <button data-modal-hide="archiveStudentUserModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
             </div>
           </div>
+        </div>
       </div>
       
     </div>
@@ -1371,8 +1912,8 @@
               </td>
               <td class="px-6 py-4">
                 <!-- Modal toggle -->
-                <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                <a href="#" type="button" data-modal-target="archiveUserModal" data-modal-show="archiveUserModal" class="font-medium text-gray-600 dark:text-gray-500 hover:underline">Archive</a>
+                <a href="#" type="button" data-modal-target="editTeacherUserModal" data-modal-show="editTeacherUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <a href="#" type="button" data-modal-target="archiveTeacherUserModal" data-modal-show="archiveTeacherUserModal" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
             <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
@@ -1393,8 +1934,8 @@
               </td>
               <td class="px-6 py-4">
                 <!-- Modal toggle -->
-                <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                <a href="#" type="button" data-modal-target="archiveUserModal" data-modal-show="archiveUserModal" class="font-medium text-gray-600 dark:text-gray-500 hover:underline">Archive</a>
+                <a href="#" type="button" data-modal-target="editTeacherUserModal" data-modal-show="editTeacherUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <a href="#" type="button" data-modal-target="archiveTeacherUserModal" data-modal-show="archiveTeacherUserModal" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
           </tbody>
@@ -1431,8 +1972,8 @@
           </ul>
       </nav> <!-- End of Pagination -->
       
-      <!-- Create user modal -->
-      <div id="createUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <!-- Create teacher user modal -->
+      <div id="createTeacherUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-2xl max-h-full">
               <!-- Modal content -->
               <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -1494,17 +2035,17 @@
         </div>
       </div> <!-- End of Create user modal -->
 
-      <!-- Edit user modal -->
-      <div id="editUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <!-- Edit teacher user modal -->
+      <div id="editTeacherUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-2xl max-h-full">
               <!-- Modal content -->
               <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                   <!-- Modal header -->
                   <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                       <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                          Edit user
+                          Edit teacher user
                       </h3>
-                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editUserModal">
+                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editTeacherUserModal">
                       <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                       </svg>
@@ -1550,12 +2091,36 @@
                   </div>
                   <!-- Modal footer -->
                   <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save all</button>
+                      <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
                   </div>
               </form>
           </div>
         </div>
-      </div> <!-- End of Edit user modal -->
+      </div> <!-- End of Edit teacher user modal -->
+
+      <!-- Archive User Modal -->
+      <div id="archiveTeacherUserModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-md max-h-full">
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="archiveTeacherUserModal">
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+            <div class="p-6 pt-8 text-center">
+              <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
+              </svg>
+              <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to ARCHIVE the TEACHER ACCOUNT of *insert full name*?</h3>
+              <button data-modal-hide="archiveUserModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                Yes, I'm sure
+              </button>
+              <button data-modal-hide="archiveTeacherUserModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
       
     </div>
   
@@ -1568,7 +2133,7 @@
   @elseif(request()->is('admin.enrollment-management') )
   <!-- Admin Enrollment Management Main Content Container -->
   <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
-    <div class="w-full divide-y divide-brown-100 h-full gap-2 md:gap-3 lg:gap-4 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">  
+    <div class="w-full divide-y divide-gray-200 h-full gap-2 md:gap-3 lg:gap-4 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">  
     
       <!-- Header Content -->
       <div class="flex flex-col gap-2">
@@ -1578,109 +2143,1378 @@
         <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Effortlessly oversee and control the enrollment process. This section empowers administrators to open or close enrollment based on the school year, ensuring timely and organized admissions. Additionally, manage the enrollees' requirements checklist efficiently. Perform CRUD operations for section management, enabling the configuration of section details such as number, section name, and available slots. The Student Record Management feature facilitates the removal of student records for those who choose not to continue their enrollment.</p>
       </div> <!-- End of Header Content -->
       
-      <!-- Open and Close Enrollment -->
+      <!-- Enrollment SY Management -->
       <div class="w-full flex flex-col pt-4">
-        <h3 class="text-md font-semibold text-red-500">No school year selected to manage.</h3>
-        <h4 class="text-base font-regular text-gray-500">Choose from the dropdown to manage an existing one or add a new school year using the button.</h3>
-
+        @if (!is_null($schoolYear) && $enrollmentStatus == 'Closed')
+            <h3 class="text-md font-bold text-black">Managing school year: {{ $schoolYear }}</h3>
+            <h4 class="text-base font-semibold text-emerald-700">Enrollment status: {{ $enrollmentStatus }}</h4>
+        @elseif (!is_null($schoolYear) && $enrollmentStatus == 'Open')
+            <h3 class="text-md font-bold text-black">Managing school year: {{ $schoolYear }}</h3>
+            <h4 class="text-base font-semibold text-emerald-700">Enrollment status: {{ $enrollmentStatus }}</h4>
+            <h4 class="text-base font-regular text-gray-500">Enrollment phase: {{ $enrollmentPhase }}</h4>
+        @else
+            <h3 class="text-md font-semibold text-red-500">No school year selected to manage.</h3>
+            <h4 class="text-base font-regular text-gray-500">Choose from the dropdown to manage an existing one or add a new school year using the button.</h4>
+        @endif
         
+        <!-- Main functions for SY Management -->
+        <div class="flex flex-col sm:flex-row w-full h-auto gap-4 pt-1 sm:justify-between">
+            @if (is_null($schoolYear))
+            @else
+              @if ($enrollmentStatus == 'Open')
+                @if ($enrollmentPhase == 'Official')
+                <a href="#" data-modal-target="closeOfficialEnrollmentModal" data-modal-show="closeOfficialEnrollmentModal" id="closeOfficialEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-100 hover:bg-red-200 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
+                  Close enrollment
+                </a>
+                @else
+                <a href="#" data-modal-target="closePreEnrollmentModal" data-modal-show="closePreEnrollmentModal" id="closePreEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-100 hover:bg-red-200 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
+                  Close enrollment
+                </a>    
+                @endif          
+              @else
+              <a href="#" data-modal-target="closeOfficialEnrollmentModal" data-modal-show="closeOfficialEnrollmentModal" id="openEnrollmentButton" class="text-white bg-green-500 hover:bg-green-600 focus:ring-2 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">
+                Open enrollment
+              </a>
+              @endif
+            @endif
 
-        <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
-          <!-- Dropdown SY Button for Open and Close Enrollment -->
-          <button id="dropdownSYHoverButton-ocl" data-dropdown-toggle="dropdownSYHover-ocl" data-dropdown-trigger="hover" class="text-white bg-brown-500 hover:bg-brown-600 focus:ring-2 focus:outline-none focus:ring-brown-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800" type="button">Choose a school year to manage<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-            </svg>
-          </button>
+            <!-- Close Pre-enrollment Modal -->
+            <div id="closePreEnrollmentModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+              <div class="relative w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                  <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="closePreEnrollmentModal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                  </button>
+                  <div class="p-6 pt-8 text-center">
+                    <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
+                    </svg>
+                    <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to close the pre-enrollment phase of SY {{ $schoolYear }} and start its official enrollment?</h3>
+                      <button data-modal-hide="closePreEnrollmentModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                        Yes, I'm sure
+                      </button>
+                      <button data-modal-hide="closePreEnrollmentModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+                  </div>
+                </div>
+              </div> 
+            </div> <!-- End of Close Pre-enrollment Modal -->
 
-          <!-- Dropdown menu for Open and Close Enrollment -->
-          <div id="dropdownSYHover-ocl" class="z-10 w-52 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-            <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+            <!-- Close Official Enrollment Modal -->
+            <div id="closeOfficialEnrollmentModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+              <div class="relative w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                  <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="closeOfficialEnrollmentModal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                  </button>
+                  <div class="p-6 pt-8 text-center">
+                    <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
+                    </svg>
+                    <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to close the official enrollment phase of SY {{ $schoolYear }}?</h3>
+                      <button data-modal-hide="closeOfficialEnrollmentModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                        Yes, I'm sure
+                      </button>
+                      <button data-modal-hide="closeOfficialEnrollmentModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+                  </div>
+                </div>
+              </div> 
+            </div> <!-- End of Close Official Enrollment Modal -->
+          
+          <!-- SY Functions Container - Select SY and Add SY -->
+          <div class="flex flex-col sm:flex-row gap-0 sm:gap-4 w-auto">
+            <!-- Dropdown SY Button for Select a SY to Manage -->
+            <button id="dropdownSYHoverButton-ocl" data-dropdown-toggle="dropdownSYHover-ocl" data-dropdown-trigger="click" class="text-white bg-brown-500 hover:bg-brown-600 focus:ring-2 focus:outline-none focus:ring-brown-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800" type="button">Choose a school year to manage<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+              </svg>
+            </button>
+
+            <!-- Dropdown menu for Select a SY to Manage -->
+            <div id="dropdownSYHover-ocl" class="z-10 w-52 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+              <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2020 - 2021</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2021 - 2022</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2022 - 2023</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2023 - 2024</a>
+                </li>
+            </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
+
+            <!-- Create SY Button -->
+            <button data-modal-target="createSYModal" data-modal-toggle="createSYModal" type="button" class="my-2 text-black bg-green-50 hover:bg-green-100 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-5 py-2.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+              <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
+              </svg>
+              Add a School Year
+            </button> <!-- End of Add School Year Button -->
+
+            <!-- Create SY modal -->
+            <div id="createSYModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+              <div class="relative w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                  <!-- Modal header -->
+                  <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                      Add a school year
+                    </h3>
+                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="createSYModal">
+                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                      </svg>
+                      <span class="sr-only">Close modal</span>
+                  </button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="p-6 space-y-6">
+                    <div class="flex flex-col gap-4">
+
+                      <div class="flex flex-col">
+                        <label for="startYearOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
+                        <input type="number" name="startYearOfSY" id="startYearOfSY" min="2022" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="20XX" required="">
+                      </div>
+                      <div class="flex flex-col">
+                        <label for="requiredDaysOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Required days of SY as per DepEd order</label>
+                        <input type="number" name="requiredDaysOfSY" id="requiredDaysOfSY" min="200" max="300" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="200" required="">
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+                      <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
+                  </div>
+                </form>
+              </div>
+            </div> <!-- End of Create SY modal -->
+          </div>
+
+        </div> 
+        
+      </div>
+
+      <!-- Sections to Manage for the Current SY -->
+      <div class="w-full flex flex-col">
+        <h3 class="mt-8 text-lg font-semibold text-gray-900 dark:text-white">Section Management for SY *insert selected SY*</h3>
+        <p class="mt-1 mb-4 text-sm text-gray-500 dark:text-gray-400">Streamline your administrative tasks by editing, archiving, or deleting sections for the selected school year. Manage section details with ease to optimize student enrollment and class organization.</p>
+        
+        <!-- Sections Table functions - all -->
+        <div class="grid grid-cols-1 sm:grid-cols-2">
+
+          <!-- Table functions - search and sort -->
+          <div class="flex sm:flex-row gap-4 flex-col w-full py-4 items-center">
+
+            <!-- Sort Dropdown for Grade Level -->
+            <div class="flex h-full">
+
+              <button id="dropdownGradeLevelRadioButton" data-dropdown-toggle="dropdownGradeLevelRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:ring-2 focus:outline-none hover:bg-gray-100 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path>
+                </svg>
+                All
+                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+              </button>
+
+              <!-- Dropdown menu -->
+              <div id="dropdownGradeLevelRadio" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
+                <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownGradeLevelRadio">
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-1" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-1" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">All</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input checked="" id="dropdownGradeLevelRadio-example-2" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-2" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Kinder</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="dropdownGradeLevelRadio-example-3" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-3" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 1</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input checked="" id="dropdownGradeLevelRadio-example-4" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-4" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 2</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="dropdownGradeLevelRadio-example-5" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-5" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 3</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input checked="" id="dropdownGradeLevelRadio-example-6" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-6" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 4</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="dropdownGradeLevelRadio-example-7" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-7" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 5</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="dropdownGradeLevelRadio-example-8" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="dropdownGradeLevelRadio-example-8" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 6</label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div> <!-- End of Sort Dropdown for Grade Level -->
+
+            <!-- Search bar -->
+            <div class="flex items-center justify-between flex-column md:flex-row flex-wrap bg-white dark:bg-gray-900">
+              <label for="table-search" class="sr-only">Search</label>
+              <div class="relative w-max-64 mt-0">
+                <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                  </svg>
+                </div>
+                <input type="text" id="table-search-users" class="sm:w-max-64 block ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search for a section">
+              </div>
+            </div> <!-- End of Search bar -->
+
+          </div> <!-- End of Table functions - search and sort -->
+
+          <!-- Table functions - create section -->
+          <div class="grid justify-items-center sm:justify-items-end gap-4 w-full pb-4 sm:py-4 ">
+            <button data-modal-target="createSectionModal" data-modal-toggle="createSectionModal" type="button" class="h-full text-black bg-green-50 hover:bg-green-200 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
+              <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"  viewBox="0 0 256 256">
+                <path d="M64.12,147.8a4,4,0,0,1-4,4.2H16a8,8,0,0,1-7.8-6.17,8.35,8.35,0,0,1,1.62-6.93A67.79,67.79,0,0,1,37,117.51a40,40,0,1,1,66.46-35.8,3.94,3.94,0,0,1-2.27,4.18A64.08,64.08,0,0,0,64,144C64,145.28,64,146.54,64.12,147.8Zm182-8.91A67.76,67.76,0,0,0,219,117.51a40,40,0,1,0-66.46-35.8,3.94,3.94,0,0,0,2.27,4.18A64.08,64.08,0,0,1,192,144c0,1.28,0,2.54-.12,3.8a4,4,0,0,0,4,4.2H240a8,8,0,0,0,7.8-6.17A8.33,8.33,0,0,0,246.17,138.89Zm-89,43.18a48,48,0,1,0-58.37,0A72.13,72.13,0,0,0,65.07,212,8,8,0,0,0,72,224H184a8,8,0,0,0,6.93-12A72.15,72.15,0,0,0,157.19,182.07Z"></path>
+              </svg>
+              Create a section
+            </button>
+          </div> <!-- End of Table functions - add user -->
+
+        </div> <!-- End of Sections Table functions - all -->
+
+        <!-- Sections Table -->
+        <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
+        
+          <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
+
+            <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" class="px-6 py-3">
+                    NUMBER
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    SECTION NAME
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    GRADE LEVEL
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    SLOTS
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    ACTION
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+                <td class="px-6 py-4">
+                  1
+                </td>
+                <td class="px-6 py-4">
+                  Halimuyak
+                </td>
+                <td class="px-6 py-4">
+                  Kinder
+                </td>
+                <td class="px-6 py-4">
+                  12/40
+                </td>
+                <td class="px-6 py-4 gap-2">
+                  <!-- Modal toggle -->
+                  <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                  <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                  <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                </td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+                <td class="px-6 py-4">
+                  2
+                </td>
+                <td class="px-6 py-4">
+                  Mabantut
+                </td>
+                <td class="px-6 py-4">
+                  Kinder
+                </td>
+                <td class="px-6 py-4">
+                  40/40
+                </td>
+                <td class="px-6 py-4">
+                  <!-- Modal toggle -->
+                  <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                  <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                  <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+
+        </div> <!-- End of Sections Table -->
+
+        <!-- Pagination -->
+        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+          <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-black dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">345</span></span>
+            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
               <li>
-                <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2020 - 2021</a>
+                <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
               </li>
               <li>
-                <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2021 - 2022</a>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
               </li>
               <li>
-                <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2022 - 2023</a>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
               </li>
               <li>
-                <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2023 - 2024</a>
+                <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-green-600 border border-gray-300 bg-green-50 hover:bg-green-100 hover:text-green-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
               </li>
-          </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+              </li>
+            </ul>
+        </nav> <!-- End of Pagination -->
 
-          <!-- Add School Year Button -->
-          <button data-modal-target="createSYModal" data-modal-toggle="createSYModal" type="button" class="h-auto my-2 text-black bg-green-50 hover:bg-green-100 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-            <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
-              <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
-            </svg>
-            Add a School Year
-          </button> <!-- End of Add School Year Button -->
-
-        </div>  
-
-        <!-- Create SY modal -->
-        <div id="createSYModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <!-- Create section modal -->
+        <div id="createSectionModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-2xl max-h-full">
             <!-- Modal content -->
             <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
               <!-- Modal header -->
               <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  Add a school year
+                  Create a new section
                 </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="createSYModal">
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="createSectionModal">
                   <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                   </svg>
                   <span class="sr-only">Close modal</span>
-              </button>
+                </button>
               </div>
               <!-- Modal body -->
               <div class="p-6 space-y-6">
-                <div class="grid grid-cols-2 gap-4">
-
+                <div class="grid grid-cols-1 gap-4">
                   <div class="flex flex-col">
-                    <label for="startYearOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
-                    <input type="number" name="startYearOfSY" id="startYearOfSY" min="2022" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="20XX" required="">
+                    <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section Name</label>
+                    <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Sampaguita" required="">
                   </div>
-
                   <div class="flex flex-col">
-                    <label for="dropdownEnrollmentPhase" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
+                    <label for="sectionSlots" class="block mb-2 text-sm font-medium text-black dark:text-white">Students slots of the section (Choose from 15 - 65 as per DepEd order)</label>
+                    <input type="number" name="sectionSlots" id="sectionSlots" min="15" max="65" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="15" required="">
+                  </div>
+                  <div class="flex flex-col">
+                    <label for="gradeLevelDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">Grade level of the section</label>
                     <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
-                      <!-- Dropdown SY Button for Open and Close Enrollment -->
-                      <button id="dropdownEnrollmentPhaseButton" data-dropdown-toggle="dropdownEnrollmentPhase" data-dropdown-trigger="hover" class="justify-between pr-4 text-black w-full border border-gray-300 bg-gray-50  focus:ring-green-600 focus:border-green-600 rounded-lg text-sm p-2.5 text-left inline-flex items-center dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"" type="button">Enrollment Phase<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <!-- Dropdown Button for Grade Level for Edit Section Modal -->
+                      <button id="gradeLevelDropdownButton" data-dropdown-toggle="gradeLevelDropdown" data-dropdown-trigger="click" class="justify-between pr-4 text-black w-full border border-gray-300 bg-gray-50  focus:ring-green-600 focus:border-green-600 rounded-lg text-sm p-2.5 text-left inline-flex items-center dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"" type="button">Grade level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                         </svg>
-                      </button>
+                      </button> <!-- End of Dropdown Button for Grade Level for Edit Section Modal -->
 
-                      <!-- Dropdown menu for Open and Close Enrollment -->
-                      <div id="dropdownEnrollmentPhase" class="relative z-50 w-52 hidden bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-                        <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                      <!-- Dropdown menu for Grade Level for Edit Section Modal -->
+                      <div id="gradeLevelDropdown" class="relative z-50 w-52 hidden bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                        <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeLevelDropdown">
                           <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Pre-enrollment</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
                           </li>
                           <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Official</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 1</a>
                           </li>
-                      </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
-
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 2</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 3</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 4</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 5</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 6</a>
+                          </li>
+                        </ul>
+                      </div> <!-- End of Dropdown menu for Grade Level for Edit Section Modal -->
                     </div>  
                   </div>    
-
                 </div>
               </div>
               <!-- Modal footer -->
               <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                  <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
+                  <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save all</button>
               </div>
             </form>
           </div>
-        </div> <!-- End of Create SY modal -->
+        </div> <!-- End of Edit section modal -->
 
+        <!-- Edit section modal -->
+        <div id="editSectionModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+          <div class="relative w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <!-- Modal header -->
+              <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Edit section
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editSectionModal">
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+                  <span class="sr-only">Close modal</span>
+                </button>
+              </div>
+              <!-- Modal body -->
+              <div class="p-6 space-y-6">
+                <div class="grid grid-cols-1 gap-4">
+                  <div class="flex flex-col">
+                    <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section Name</label>
+                    <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Sampaguita" required="">
+                  </div>
+                  <div class="flex flex-col">
+                    <label for="sectionSlots" class="block mb-2 text-sm font-medium text-black dark:text-white">Students slots of the section (Choose from 15 - 65 as per DepEd order)</label>
+                    <input type="number" name="sectionSlots" id="sectionSlots" min="15" max="65" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="15" required="">
+                  </div>
+                  <div class="flex flex-col">
+                    <label for="gradeLevelDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">Grade level of the section</label>
+                    <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+                      <!-- Dropdown Button for Grade Level for Edit Section Modal -->
+                      <button id="gradeLevelDropdownButton" data-dropdown-toggle="gradeLevelDropdown" data-dropdown-trigger="click" class="justify-between pr-4 text-black w-full border border-gray-300 bg-gray-50  focus:ring-green-600 focus:border-green-600 rounded-lg text-sm p-2.5 text-left inline-flex items-center dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"" type="button">Grade level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                      </button> <!-- End of Dropdown Button for Grade Level for Edit Section Modal -->
+
+                      <!-- Dropdown menu for Grade Level for Edit Section Modal -->
+                      <div id="gradeLevelDropdown" class="relative z-50 w-52 hidden bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                        <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeLevelDropdown">
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 1</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 2</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 3</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 4</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 5</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 6</a>
+                          </li>
+                        </ul>
+                      </div> <!-- End of Dropdown menu for Grade Level for Edit Section Modal -->
+
+                    </div>  
+                  </div>    
+                </div>
+              </div>
+              <!-- Modal footer -->
+              <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save all</button>
+              </div>
+            </form>
+          </div>
+        </div> <!-- End of Edit section modal -->
+
+        <!-- Archive section Modal -->
+        <div id="archiveSectionModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+          <div class="relative w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="archiveSectionModal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+              <div class="p-6 pt-8 text-center">
+                <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
+                </svg>
+                <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to archive the section called *insert section name*?</h3>
+                <button data-modal-hide="archiveSectionModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                  Yes, I'm sure
+                </button>
+                <button data-modal-hide="archiveSectionModal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delete section Modal -->
+        <div id="deleteSectionModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+          <div class="relative w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="deleteSectionModal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+              <div class="p-6 pt-8 text-center">
+                <svg class="mx-auto mb-4 text-red-500 w-12 h-12 dark:text-red-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
+                </svg>
+                <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to PERMANENTLY DELETE the section *insert section name*?</h3>
+                  <button data-modal-hide="deleteSectionModal" type="button" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                    Yes, I'm sure
+                  </button>
+                  <button data-modal-hide="deleteSectionModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
       </div>
 
+      <!-- Student Records Management for the Current SY -->
+      <div class="w-full flex flex-col">
+        <h3 class="mt-8 text-lg font-semibold text-gray-900 dark:text-white">Student Records Management for SY *insert selected SY*</h3>
+        <p class="mt-1 mb-4 text-sm text-gray-500 dark:text-gray-400">Effortlessly view, edit, archive, or remove student records for the chosen school year. This section puts comprehensive student information at your fingertips.</p>
+        <!-- Table functions - all -->
+        <div class="grid grid-cols-1 sm:grid-cols-2">
+          <!-- Table functions - search and sort -->
+          <div class="flex sm:flex-row gap-4 flex-col w-full py-4 items-center">
 
+            <!-- Sort Dropdown -->
+            <div class="flex h-full">
+
+              <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path>
+                </svg>
+                Active
+                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+              </button>
+
+              <!-- Dropdown menu -->
+              <div id="dropdownRadio" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
+                <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioButton">
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">All</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input checked="" id="filter-radio-example-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-2" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Active</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Inactive</label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div> <!-- End of Sort Dropdown -->
+
+            <!-- Search bar -->
+            <div class="flex items-center justify-between flex-column md:flex-row flex-wrap bg-white dark:bg-gray-900">
+              <label for="table-search" class="sr-only">Search</label>
+              <div class="relative w-max-64 mt-0">
+                <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                  </svg>
+                </div>
+                <input type="text" id="table-search-users" class="sm:w-max-64 block ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search for students">
+              </div>
+            </div> <!-- End of Search bar -->
+
+          </div> <!-- End of Table functions - search and sort -->
+          <!-- Table functions - add user -->
+          <div class="grid justify-items-center sm:justify-items-end gap-4 w-full pb-4 sm:py-4 ">
+            <a href="#insertEnrollmentLinkhere" type="button" class="h-full text-white bg-brown-500 hover:bg-brown-700 focus:ring-4 focus:outline-none focus:ring-brown-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
+              <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
+              </svg>
+              Add Student Account
+            </a>
+          </div> <!-- End of Table functions - add user -->
+        </div> <!-- End of Table functions - all -->
+
+        <!-- Table Student User Management -->
+        <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
+        
+          <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
+
+            <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" class="px-3 py-3">
+                    LAST NAME
+                </th>
+                <th scope="col" class="px-3 py-3">
+                    FIRST NAME
+                </th>
+                <th scope="col" class="px-3 py-3">
+                    MIDDLE NAME
+                </th>
+                <th scope="col" class="px-3 py-3">
+                    NAME EXTENSION
+                </th>
+                <th scope="col" class="px-3 py-3">
+                    USERNAME
+                </th>
+                <th scope="col" class="px-3 py-3">
+                    GRADE LEVEL
+                </th>
+                <th scope="col" class="px-3 py-3">
+                    LRN
+                </th>
+                <th scope="col" class="px-3 py-3">
+                    STATUS
+                </th>
+                <th scope="col" class="px-3 py-3">
+                    DATE CREATED
+                </th>
+                <th scope="col" class="px-3 py-3">
+                    ACTION
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+                <td class="px-3 py-3">
+                  Reyes
+                </td>
+                <td class="px-3 py-3">
+                  Alex
+                </td>
+                <td class="px-3 py-3">
+                  Pajarellano
+                </td>
+                <td class="px-3 py-3">
+                  N/A
+                </td>
+                <td class="px-3 py-3">
+                  lxxMeow
+                </td>
+                <td class="px-3 py-3">
+                  Kinder
+                </td>
+                <td class="px-3 py-3">
+                  158514070128
+                </td>
+                <td class="px-3 py-3">
+                  Active
+                </td>
+                <td class="px-3 py-3">
+                  August 23, 2023
+                </td>
+                <td class="px-3 py-3 gap-2">
+                  <!-- Modal toggle -->
+                  <a href="#" data-modal-target="viewStudentUserModal" data-modal-show="viewStudentUserModal" type="button" class="px-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View</a>
+                  <a href="#" data-modal-target="editStudentUserModal" data-modal-show="editStudentUserModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                  <a href="#" data-modal-target="archiveStudentUserModal" data-modal-show="archiveStudentUserModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                </td>
+            </tbody>
+
+          </table>
+
+        </div> <!-- End of Table Student User Management -->
+
+        <!-- Pagination -->
+        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+          <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-black dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">345</span></span>
+            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+              </li>
+              <li>
+                <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-green-600 border border-gray-300 bg-green-50 hover:bg-green-100 hover:text-green-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+              </li>
+            </ul>
+        </nav> <!-- End of Pagination -->
+
+        <!-- View student user modal -->
+        <div id="viewStudentUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+          <div class="relative w-full max-w-2xl max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <!-- Modal header -->
+              <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
+                  View student user 
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="viewStudentUserModal">
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+                  <span class="sr-only">Close modal</span>
+                </button>
+              </div>
+              <!-- Modal body -->
+              <div class="p-6 space-y-3 divide-y divide-gray-200">
+                <h3 class="text-md font-semibold text-black dark:text-white">*Insert Student Name here*</h3>
+                <div class="pt-4">
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Last Name: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">First Name: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Middle Name: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Name Extension: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Username: </p>
+                </div>
+                <div class="pt-4">
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Returnee: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">LRN (Learner's Refenrece Number): </p>
+                </div>
+                <div class="pt-4">
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Date of Birth: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Age: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Nabibilang sa indegenous group: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Indegenous group na kinabibilangan: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother tongue: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Religion: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Nangangailangan ng special assistance?  </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Disability: </p>
+                </div>
+                <div class="pt-4">
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">House no. and street: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Barangay: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">City: </p>
+                </div>
+                <div class="pt-4">
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's full name: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's contact number: </p>
+                </div>
+                <div class="pt-4">
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother maiden name: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother's contact number: </p>
+                </div>
+                <div class="pt-4">
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's full name: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's contact number: </p>
+                </div>
+                <div class="pt-4">
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's beneficiary? </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's Household ID No.: </p>
+                </div>
+                <div class="pt-4">
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Access to technology: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Preferred mode of learning: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Account status: </p>
+                </div>
+
+                <!-- BACKEND: Just add conditional statements kapag meron na laman si returnee. If returnee == yes -->
+                <div class="pt-4 hidden">
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling baitang na natapos: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling paaralan na pinasukan: </p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Panuruang taon na natapos ng mag-aaral: </p>
+                </div>
+              </div>
+            </div>  
+          </div>
+        </div>
+
+        <!-- Edit student user modal -->
+        <div id="editStudentUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+          <div class="relative w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <!-- Modal header -->
+              <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-black dark:text-white">
+                  Edit student user 
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editStudentUserModal">
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+                  <span class="sr-only">Close modal</span>
+                </button>
+              </div>
+              <!-- Modal body -->
+              <div class="p-6 space-y-3">
+                <div class="grid grid-cols-6 gap-6">
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="last-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Last Name</label>
+                    <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="first-name" class="block mb-2 text-sm font-medium text-black dark:text-white">First Name</label>
+                    <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-2">
+                    <label for="middle-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Middle Name</label>
+                    <input type="text" name="middle-name" id="middle-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-2">
+                    <label for="dropdownNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">Name Extension</label>
+                    <button id="dropdownNameExtensionlButton" data-dropdown-toggle="dropdownNameExtension" class="text-black w-full justify-between border border-gray-300 bg-gray-50 focus:ring-green-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">*Name Extension* <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                    </button>
+                    <!-- Dropdown Name Extension menu -->
+                    <div id="dropdownNameExtension" class="z-10 hidden bg-gray-50 border border-gray-300 divide-y divide-gray-100 rounded-lg shadow w-48 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownNameExtension">
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">N/A</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Junior</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">I</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">II</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">III</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">IV</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">V</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">VI</a>
+                          </li>
+                        </ul>
+                    </div>
+                  
+                  </div>
+                  <div class="col-span-6 sm:col-span-2">
+                    <label for="username" class="block mb-2 text-sm font-medium text-black dark:text-white">Username</label>
+                    <input type="text" name="username" id="username" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6">
+                    <label for="returnee" class="block mb-2 text-sm font-medium text-black dark:text-white">Returnee</label>
+                    <div id="returnee" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="returnee">
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">HINDI</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-2" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">OO dahil sya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="dropdownGradeLevelButton" class="block mb-2 text-sm font-medium text-black dark:text-white">Grade Level</label>
+                    <button id="dropdownGradeLevelButton" data-dropdown-toggle="dropdownGradeLevel" class="text-black w-full justify-between border border-gray-300 bg-gray-50 focus:ring-green-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">*Grade level* <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                    </button>
+                    <!-- Dropdown Grade Level menu -->
+                    <div id="dropdownGradeLevel" class="z-10 hidden bg-gray-50 border border-gray-300 divide-y divide-gray-100 rounded-lg shadow w-72 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownGradeLevel">
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 1</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 2</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 3</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 4</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 5</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 6</a>
+                          </li>
+                        </ul>
+                    </div>          
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="lrn" class="block mb-2 text-sm font-medium text-black dark:text-white">LRN</label>
+                    <input type="number" name="lrn" id="lrn" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="date-of-birth" class="block mb-2 text-sm font-medium text-black dark:text-white">Date of Birth</label>
+                    <input type="date" name="date-of-birth" id="date-of-birth" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="age" class="block mb-2 text-sm font-medium text-black dark:text-white">Age</label>
+                    <input type="number" name="age" id="age" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6">
+                    <label for="indigenous-group" class="block mb-2 text-sm font-medium text-black dark:text-white">Nabibilang sa indegenous group</label>
+                    <div id="indigenous-group" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="returnee">
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="radio" name="indigenous-group" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-2" type="radio" name="indigenous-group" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-span-6">
+                    <label for="indigenous-group-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Indegenous group (optional)</label>
+                    <input type="text" name="indigenous-group" id="indigenous-group" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="dropdownMotherTongueButton" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother Tongue</label>
+                    <button id="dropdownMotherTongueButton" data-dropdown-toggle="dropdownMotherTongue" class="text-black w-full justify-between border border-gray-300 bg-gray-50 focus:ring-green-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">*Mother tongue* <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                    </button>
+                    <!-- Dropdown Mother Tongue menu -->
+                    <div id="dropdownMotherTongue" class="z-10 hidden bg-gray-50 border border-gray-300 divide-y divide-gray-100 rounded-lg shadow w-80 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMotherTongue">
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Filipino</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Bicolano</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cebuano</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chinese</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">English</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ilocano</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kapampangan</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Maguindanaoan</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Manobo</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nihonggo</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Philippine Sign Language</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tausug</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Waray</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ybanag</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Others</a>
+                          </li>
+                        </ul>
+                    </div> 
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="dropdownReligionButton" class="block mb-2 text-sm font-medium text-black dark:text-white">Religion</label>
+                    <button id="dropdownReligionButton" data-dropdown-toggle="dropdownReligion" class="text-black w-full justify-between border border-gray-300 bg-gray-50 focus:ring-green-600 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">*Religion* <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                    </button>
+                    <!-- Dropdown Grade Level menu -->
+                    <div id="dropdownReligion" class="z-10 hidden bg-gray-50 border border-gray-300 divide-y divide-gray-100 rounded-lg shadow w-72 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownReligion">
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Christianity</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Aglipayan</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Angelican</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Apostolic</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Baptist</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Buddhism</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Christ Latter Day Saints</a>
+                          </li>
+
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Church of God in Jesus Christ</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Church of God International</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dating Daan</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">El Shaddai</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Full Gospel</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hinduism</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Iglesia ni Cristo</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Indigenous Religion</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Islam</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Jehovah Witneses</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Judaism</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kingdom of Jesus Christ</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Lutheran</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Methodist</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Orthodox Church</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pentecostal</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Presbyterian</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Seventh Day Adventist</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sikhism</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Taoism</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">No Religion</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Others</a>
+                          </li>
+                        </ul>
+                    </div>          
+                  </div>
+
+                  <div class="col-span-6">
+                    <label for="special-assistance" class="block mb-2 text-sm font-medium text-black dark:text-white">Kailangan ng special assistance?</label>
+                    <div id="special-assistance" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="special-assistance">
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="radio" name="special-assistance" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-2" type="radio" name="special-assistance" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  
+                  
+                  
+                  </div>
+                  <div class="col-span-6 ">
+                    <label for="disability" class="block mb-2 text-sm font-medium text-black dark:text-white">Disability (Optional)</label>
+                    <input type="text" name="disability" id="disability" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-2">
+                    <label for="house-no-street" class="block mb-2 text-sm font-medium text-black dark:text-white">House No. and Street</label>
+                    <input type="text" name="house-no-street" id="house-no-street" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-2">
+                    <label for="barangay" class="block mb-2 text-sm font-medium text-black dark:text-white">Barangay</label>
+                    <input type="text" name="barangay" id="barangay" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-2">
+                    <label for="city" class="block mb-2 text-sm font-medium text-black dark:text-white">City</label>
+                    <input type="text" name="city" id="city" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="father-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Full Name</label>
+                    <input type="text" name="father-name" id="father-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="father-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Contact Number</label>
+                    <input type="number" name="father-num" id="father-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="mother-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Maiden Name</label>
+                    <input type="text" name="mother-name" id="mother-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="mother-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Contact Number</label>
+                    <input type="number" name="mother-num" id="mother-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="guardian-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Full Name</label>
+                    <input type="text" name="guardian-name" id="guardian-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="guardian-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Contact Number</label>
+                    <input type="number" name="guardian-num" id="guardian-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="4ps" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Beneficiary?</label>
+                    <input type="text" name="4ps" id="4ps" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="4ps-no" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Household ID No.</label>
+                    <input type="text" name="4ps-no" id="4ps-no" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6">
+                    <label for="accessToTechnologyButton" class="block text-sm font-medium text-black dark:text-white">Access to Technology</p>
+                    <!-- Checkbox  for Access to technology-->
+                    <div id="accessToTechnologyCheckbox" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="accessToTechnologyCheckbox">
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May sariling Cellphone/Tablet ang Bata</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May computer sa bahay</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Walang sariling gadget ang bata</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May tv sa bahay</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May internet connection sa bahay</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Mobile data lamang ang gamit para makaconnect sa internet</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-span-6">
+                    <label for="pmol" class="block mb-2 text-sm font-medium text-black dark:text-white">Preferred Mode of Learning</label>
+                    <div id="pmol" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="pmol">
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Printed</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-2" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Digital</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-3" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Online</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-4" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Educational Television</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-5" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-5" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Homeschooling</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-6" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-6" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Blended</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-span-6">
+                    <label for="status" class="block mb-2 text-sm font-medium text-black dark:text-white">Account Status</label>
+                    <div id="status" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="status">
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-1" type="radio" name="status" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Active</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="flex items-center">
+                            <input id="checkbox-item-2" type="radio" name="status" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Inactive</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  
+                  <div class="col-span-6">
+                    <label for="last-grade-finished" class="block mb-2 text-sm font-medium text-black dark:text-white">Last grade finished</label>
+                    <input type="text" name="last-grade-finished" id="last-grade-finished" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                  <div class="col-span-6">
+                    <label for="last-school-enrolled-in" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school enrolled in</label>
+                    <input type="text" name="last-school-enrolled-in" id="last-school-enrolled-in" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div><div class="col-span-6">
+                    <label for="last-sy-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school year attended</label>
+                    <input type="text" name="last-sy-attended" id="last-sy-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="">
+                  </div>
+                  
+                </div>
+              </div>
+              <!-- Modal footer -->
+              <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
+              </div>
+            </form>
+          </div> 
+        </div> <!-- End of Edit Student User Modal -->
+
+        <!-- Archive Student User Modal -->
+        <div id="archiveStudentUserModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+          <div class="relative w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="archiveStudentUserModal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+              <div class="p-6 pt-8 text-center">
+                <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
+                </svg>
+                <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to ARCHIVE the student account of *insert full name*?</h3>
+                <button data-modal-hide="archiveStudentUserModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                  Yes, I'm sure
+                </button>
+                <button data-modal-hide="archiveStudentUserModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     </div>

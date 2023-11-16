@@ -111,7 +111,7 @@ class EnrollmentController extends Controller
     {
         $validatedData = $request->validate([
             'grade_level' => 'nullable',
-            'school_year' => 'required',
+            'school_year_id' => 'required', //change from school_year to school_year_id
             'lrn_status' => 'required',
             'lrn_number' => 'nullable',
             'psa_birth_cert' => 'nullable',

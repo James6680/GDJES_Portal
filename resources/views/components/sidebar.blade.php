@@ -1,6 +1,8 @@
 
 @php
-  $user = 'Admin';
+  //$user = 'Admin';
+  $user = Auth::guard('admin')->check() ? 'Admin' : 
+          (Auth::guard('teachers')->check() ? 'Faculty' : null);
 @endphp
 
 <nav class="fixed top-0 z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -15,7 +17,22 @@
           <h2 class="font-frl lg:text-lg text-md font-bold leading-none ">
             Hello, {{ $user }} Alex.
           </h2>
+        </div>  
+
+        <!--Added Success Alert-->
+        @if(Session::has('error'))
+        <div class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+          <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <span class="sr-only">Info</span>
+          <div>
+            <span class="font-medium">{{ session::get('error') }}</span>
+          </div>
         </div>
+        @endif
+        <!--End Added Success Alert-->
+
 
         @if($user == 'Student')
         <div class="hidden sm:flex flex-col justify-center p-0 items-start pt-2 xl:pl-36  gap-0 text-black">
@@ -48,10 +65,16 @@
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
               <div class="px-4 py-3" role="none">
                 <p class="text-sm text-gray-900 dark:text-white" role="none">
-                  Alex Reyes
-                </p>
+                  <!--Alex Reyes-->
+                  @if(Auth::guard('admin')->check())
+                    {{ Auth::guard('admin')->user()->username }}
+                  @elseif(Auth::guard('teachers')->check())
+                    {{ Auth::guard('teachers')->user()->username }}
+                  @else
+                    <!-- Handle the case where there's no authenticated user. -->
+                  @endif                </p>
                 <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                  alexreyes.design.work@gmail.com
+                  <!--alexreyes.design.work@gmail.com-->
                 </p>
               </div>
               <ul class="py-1" role="none">
@@ -62,7 +85,15 @@
                   <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
                 </li>
                 <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                  <a href="@if(Auth::guard('admin')->check())
+                              {{ route('admin.signout') }}
+                          @elseif(Auth::guard('teachers')->check())
+                              {{ route('teacher.signout') }}
+                          @endif" 
+                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" 
+                     role="menuitem">
+                     Sign out
+                  </a>
                 </li>
               </ul>
             </div>
