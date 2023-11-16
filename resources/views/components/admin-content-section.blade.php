@@ -2036,7 +2036,7 @@
                   </div>
                   <!-- Modal footer -->
                   <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save all</button>
+                      <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save all</button>
                   </div>
               </form>
           </div>
@@ -2520,7 +2520,7 @@
             </ul>
         </nav> <!-- End of Pagination -->
 
-        <!-- View student user modal -->
+        <!-- View student list modal -->
         <div id="viewStudentListModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-3xl max-h-full">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -2556,8 +2556,71 @@
                       </button>
 
 
-                      <!-- TODO: Assign students modal -->
-                      
+                      <!-- Assign students modal -->
+                      <div id="assignStudentsModal" tabindex="-1" aria-hidden="true" class="absolute top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative w-full max-w-2xl max-h-full">
+                          <div class="relative bg-gray-50 rounded-lg shadow-2xl border border-gray-300 dark:bg-gray-700">
+                            <!-- Modal header -->
+                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                              <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
+                                Assign students 
+                              </h3>
+                              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="assignStudentsModal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                              </button>
+                            </div> <!-- End of Modal header -->
+                            <!-- Modal body -->
+                            <div class="p-6 space-y-3 divide-y divide-gray-200">
+                              <div>
+                                <h3 class="text-md font-semibold text-black">Section Name: *Section Name*</h3>
+                                <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: *insert grade level*</p>
+                                <p class="text-sm font-semibold text-gray-500 dark:text-white">Available Slots: *insert slots*</p>
+                              </div>
+                              <!-- Checkbox for assign students -->
+                              <div id="assignStudentsCheckbox" class="z-10  w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="p-3 grid grid-cols-1 sm:grid-cols-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="assignStudentsCheckbox">
+                                  <li>
+                                    <div class="flex items-center">
+                                      <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                      <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Reyes, Alex Pajarellano</label>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="flex items-center">
+                                      <input id="checkbox-item-2" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                      <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Fabonan, Adrian Zimbabwe</label>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="flex items-center">
+                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="flex items-center">
+                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div> <!-- End of Checkbox for assign students -->
+                            </div> <!-- End of Modal body -->
+
+                            <!-- Modal footer -->
+                            <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+                              <button data-modal-hide="assignStudentsModal" type="submit" class="text-white bg-yellow-600 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save student list</button>
+                              <button data-modal-hide="assignStudentsModal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                            </div> <!-- End of Modal footer -->
+                            
+                            
+
+                          </div>
+                        </div>
+                      </div> <!-- End of Assign students modal -->
 
 
                     </div> <!-- End of Table functions - assign students -->
@@ -2621,10 +2684,7 @@
                 </div>
                 
               </div> <!-- End of Modal body -->
-              <!-- Modal footer -->
-              <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                  <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
-              </div>
+              
             </div> 
 
             <!-- Remove from section Modal -->
@@ -2651,7 +2711,7 @@
               </div>
             </div> <!-- End of Remove from section Modal -->
           </div>
-        </div>
+        </div> <!-- End of View student list modal -->
 
         <!-- Create section modal -->
         <div id="createSectionModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
