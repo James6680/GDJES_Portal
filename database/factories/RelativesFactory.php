@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Relatives>
  */
-class RelativeFactory extends Factory
+class RelativesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,11 +17,9 @@ class RelativeFactory extends Factory
     public function definition(): array
     {
         return [
-            'mother_id' => '1',
-            'father_id' => '1',
-            'guardian_id' => '1',
-        
-        
+            'mother_id' => fake()->numberBetween(1, 100), 
+            'father_id' => fake()->numberBetween(1, 100), 
+            'guardian_id' => fake()->numberBetween(1, 100), 
         ];
     }
 }

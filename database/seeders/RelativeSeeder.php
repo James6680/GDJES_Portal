@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Relatives;
 
+use App\Models\Mothers;
+use App\Models\Fathers;
+use App\Models\Guardians;
+
 class StudentSeeder extends Seeder
 {
     /**
@@ -16,9 +20,9 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-         
-        Relatives::factory(1)->create();
-        
-    
+        $this->call(FatherSeeder::class); // Make sure MothersSeeder is executed first
+        $this->call(GuardianSeeder::class); // Make sure MothersSeeder is executed first
+        $this->call(MotherSeeder::class); // Make sure MothersSeeder is executed first
+        Relatives::factory()->count(100)->create();    
     }
 }
