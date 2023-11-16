@@ -188,7 +188,7 @@
                   pie: {
                     labels: {
                       show: true,
-                    },
+                    },  
                     size: "100%",
                     dataLabels: {
                       offset: -5,

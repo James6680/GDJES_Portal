@@ -19,7 +19,7 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-    /*
+    
      DB::table('students')->insert([
           
        
@@ -46,7 +46,7 @@ class StudentSeeder extends Seeder
             'municipality' => 'Tondo',
             'province' => 'Manila',
             'region' =>'NCR',
-            'relatives_id' => '',
+            'relatives_id' => '3',
             'household_4ps_id' => '1',
 
             'username' => 'Rizal.Jose.2023',
@@ -55,10 +55,10 @@ class StudentSeeder extends Seeder
             'status' => '2',
             // Add the rest of the fields here.
         ]);
-        */
         
-
+        
+        /*
         Student::factory(1)->create();
-    
+        */
     }
 }
