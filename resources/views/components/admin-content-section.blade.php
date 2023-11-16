@@ -2459,6 +2459,7 @@
                 </td>
                 <td class="px-6 py-4 gap-2">
                   <!-- Modal toggle -->
+                  <a href="#" data-modal-target="viewStudentListModal" data-modal-show="viewStudentListModal" type="button" class="px-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Students</a>
                   <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                   <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
                   <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
@@ -2479,6 +2480,7 @@
                 </td>
                 <td class="px-6 py-4">
                   <!-- Modal toggle -->
+                  <a href="#" data-modal-target="viewStudentListModal" data-modal-show="viewStudentListModal" type="button" class="px-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Students</a>
                   <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                   <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
                   <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
@@ -2517,6 +2519,212 @@
               </li>
             </ul>
         </nav> <!-- End of Pagination -->
+
+        <!-- View student user modal -->
+        <div id="viewStudentListModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+          <div class="relative w-full max-w-2xl max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <!-- Modal header -->
+              <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
+                  View student user 
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="viewStudentListModal">
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+                  <span class="sr-only">Close modal</span>
+                </button>
+              </div>
+              <!-- Modal body -->
+              <div class="p-6 space-y-3 divide-y divide-gray-200">
+                <div>
+                  <h3 class="text-md font-semibold text-black dark:text-white">Section Name: *Section Name*</h3>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: *Grade Level*</p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Student slots: *Slot availability*</p>
+                </div>
+                <div class="pt-4">
+                  Table here
+                  <!-- Sections Table functions - all -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2">
+
+                    <!-- Table functions - search and sort -->
+                    <div class="flex sm:flex-row gap-4 flex-col w-full py-4 items-center">
+
+                      <!-- Sort Dropdown for Grade Level -->
+                      <div class="flex h-full">
+
+                        <button id="dropdownGradeLevelRadioButton" data-dropdown-toggle="dropdownGradeLevelRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:ring-2 focus:outline-none hover:bg-gray-100 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                          <path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path>
+                          </svg>
+                          All
+                          <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                          </svg>
+                        </button>
+
+                        <!-- Dropdown menu -->
+                        <div id="dropdownGradeLevelRadio" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
+                          <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownGradeLevelRadio">
+                            <li>
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <input id="filter-radio-example-1" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="dropdownGradeLevelRadio-example-1" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">All</label>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <input checked="" id="dropdownGradeLevelRadio-example-2" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="dropdownGradeLevelRadio-example-2" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Kinder</label>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <input id="dropdownGradeLevelRadio-example-3" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="dropdownGradeLevelRadio-example-3" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 1</label>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <input checked="" id="dropdownGradeLevelRadio-example-4" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="dropdownGradeLevelRadio-example-4" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 2</label>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <input id="dropdownGradeLevelRadio-example-5" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="dropdownGradeLevelRadio-example-5" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 3</label>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <input checked="" id="dropdownGradeLevelRadio-example-6" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="dropdownGradeLevelRadio-example-6" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 4</label>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <input id="dropdownGradeLevelRadio-example-7" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="dropdownGradeLevelRadio-example-7" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 5</label>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <input id="dropdownGradeLevelRadio-example-8" type="radio" value="" name="dropdownGradeLevelRadio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="dropdownGradeLevelRadio-example-8" class="w-full ms-2 text-sm font-medium text-black rounded dark:text-gray-300">Grade 6</label>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div> <!-- End of Sort Dropdown for Grade Level -->
+
+                      <!-- Search bar -->
+                      <div class="flex items-center justify-between flex-column md:flex-row flex-wrap bg-white dark:bg-gray-900">
+                        <label for="table-search" class="sr-only">Search</label>
+                        <div class="relative w-max-64 mt-0">
+                          <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                          </div>
+                          <input type="text" id="table-search-users" class="sm:w-max-64 block ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search for a section">
+                        </div>
+                      </div> <!-- End of Search bar -->
+
+                    </div> <!-- End of Table functions - search and sort -->
+
+                    <!-- Table functions - create section -->
+                    <div class="grid justify-items-center sm:justify-items-end gap-4 w-full pb-4 sm:py-4 ">
+                      <button data-modal-target="createSectionModal" data-modal-toggle="createSectionModal" type="button" class="h-full text-black bg-green-50 hover:bg-green-200 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
+                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"  viewBox="0 0 256 256">
+                          <path d="M64.12,147.8a4,4,0,0,1-4,4.2H16a8,8,0,0,1-7.8-6.17,8.35,8.35,0,0,1,1.62-6.93A67.79,67.79,0,0,1,37,117.51a40,40,0,1,1,66.46-35.8,3.94,3.94,0,0,1-2.27,4.18A64.08,64.08,0,0,0,64,144C64,145.28,64,146.54,64.12,147.8Zm182-8.91A67.76,67.76,0,0,0,219,117.51a40,40,0,1,0-66.46-35.8,3.94,3.94,0,0,0,2.27,4.18A64.08,64.08,0,0,1,192,144c0,1.28,0,2.54-.12,3.8a4,4,0,0,0,4,4.2H240a8,8,0,0,0,7.8-6.17A8.33,8.33,0,0,0,246.17,138.89Zm-89,43.18a48,48,0,1,0-58.37,0A72.13,72.13,0,0,0,65.07,212,8,8,0,0,0,72,224H184a8,8,0,0,0,6.93-12A72.15,72.15,0,0,0,157.19,182.07Z"></path>
+                        </svg>
+                        Create a section
+                      </button>
+                    </div> <!-- End of Table functions - add user -->
+
+                    </div> <!-- End of Sections Table functions - all -->
+
+                    <!-- Sections Table -->
+                    <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
+
+                    <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
+
+                      <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                          <th scope="col" class="px-6 py-3">
+                              NUMBER
+                          </th>
+                          <th scope="col" class="px-6 py-3">
+                              SECTION NAME
+                          </th>
+                          <th scope="col" class="px-6 py-3">
+                              GRADE LEVEL
+                          </th>
+                          <th scope="col" class="px-6 py-3">
+                              SLOTS
+                          </th>
+                          <th scope="col" class="px-6 py-3">
+                              ACTION
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+                          <td class="px-6 py-4">
+                            1
+                          </td>
+                          <td class="px-6 py-4">
+                            Halimuyak
+                          </td>
+                          <td class="px-6 py-4">
+                            Kinder
+                          </td>
+                          <td class="px-6 py-4">
+                            12/40
+                          </td>
+                          <td class="px-6 py-4 gap-2">
+                            <!-- Modal toggle -->
+                            <a href="#" data-modal-target="viewStudentListModal" data-modal-show="viewStudentListModal" type="button" class="px-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Students</a>
+                            <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                            <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                          </td>
+                        </tr>
+                        <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+                          <td class="px-6 py-4">
+                            2
+                          </td>
+                          <td class="px-6 py-4">
+                            Mabantut
+                          </td>
+                          <td class="px-6 py-4">
+                            Kinder
+                          </td>
+                          <td class="px-6 py-4">
+                            40/40
+                          </td>
+                          <td class="px-6 py-4">
+                            <!-- Modal toggle -->
+                            <a href="#" data-modal-target="viewStudentListModal" data-modal-show="viewStudentListModal" type="button" class="px-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Students</a>
+                            <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                            <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                          </td>
+                        </tr>
+                      </tbody>
+
+                    </table>
+
+                    </div> <!-- End of Sections Table -->
+                </div>
+                
+              </div>
+            </div>  
+          </div>
+        </div>
 
         <!-- Create section modal -->
         <div id="createSectionModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -2717,8 +2925,10 @@
           </div>
         </div>
         
-        
       </div>
+
+
+
 
       <!-- Student Records Management for the Current SY -->
       <div class="w-full flex flex-col">
