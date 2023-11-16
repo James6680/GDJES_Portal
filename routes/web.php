@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\EnrollmentController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\AnnouncementController;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Student;
@@ -47,6 +48,12 @@ Route::get('admin.dashboard', function () {
 Route::get('admin.announcements', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.announcements');
+Route::post('admin.announcements.edit', [AnnouncementController::class, 'editAnnouncement'])
+    ->name('admin.announcements.edit');
+Route::post('admin.announcements.create', [AnnouncementController::class, 'addAnnouncement'])
+    ->name('admin.announcements.create');
+Route::post('admin.announcements.delete', [AnnouncementController::class, 'deleteAnnouncement'])
+    ->name('admin.announcements.delete');
 
 Route::get('admin.document-request', function () {
     return view('layouts.admin');

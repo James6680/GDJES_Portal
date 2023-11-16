@@ -785,6 +785,8 @@
 
   <!-- Admin Announcements -->
   @elseif(request()->is('admin.announcements') )
+  
+  @vite(['resources/js/admin.announcements.js'])
   <!-- Admin Announcements Main Content Container -->
   <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
     <div class="w-full h-full gap-4 md:gap-5 lg:gap-6 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
@@ -802,12 +804,13 @@
       </button>
 
       <!-- All Posts Container -->
-      <div class="gap-4 flex flex-col divide-y divide-brown-100">
+      <div class="gap-4 flex flex-col divide-y divide-brown-100" id="announcement-table">
+        @foreach ($announcements as $announcement)
         <!-- Individual Post Container -->
-        <div class="w-full h-auto gap-8 pt-4 flex flex-col sm:flex-row">
+        <div class="w-full h-auto gap-8 pt-4 flex flex-col sm:flex-row" id="indiv_announcement">
           <!-- Buttons Container -->
           <div class="max-h-[36px] w-auto flex gap-2 flex-row">
-            <button data-modal-target="edit-post-modal" data-modal-toggle="edit-post-modal" type="button" class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+            <button id="edit_modal" data-modal-target="edit-post-modal" data-modal-toggle="edit-post-modal" type="button" class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path>
               </svg>
@@ -822,38 +825,13 @@
           </div> <!-- End of Buttons Container -->
           <!-- Announcement Texts Container -->
           <div class="flex flex-col flex-wrap"> 
-            <h3 class="font-semibold text-sm text-black">##Announcement Title (Looking for eligible supplier for the Computer Parts and Accessories)</h3>
-            <p class="font-regular text-sm text-black">##Date Posted (Posted: August 16, 2023 or kung ano format keribels)</p>
+            <p hidden id="announcement_id">{{$announcement->id}}</p>
+            <h3 id="announcement_title" class="font-semibold text-sm text-black">{{$announcement->announcement_title}}</h3>
+            <p id="announcement_url" class="font-regular text-sm text-black">{{$announcement->announcement_url}}</p>
           </div> <!-- End of Announcement Texts Container -->
         </div>
-        <!-- End of Individual Post Container -->
-
-        <!-- Individual Post Container -->
-        <div class="w-full h-auto gap-8 pt-8 flex flex-col sm:flex-row">
-          <!-- Buttons Container -->
-          <div class="max-h-[36px] w-auto flex gap-2 flex-row">
-            <button type="button" class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
-                <path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160l90.35-90.35,16.68,16.69L68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188l90.35-90.35h0l16.68,16.69Z"></path>
-              </svg>
-              <span class="sr-only">Edit</span>
-            </button>
-            <button type="button" class="text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
-              <path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM112,168a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm0-120H96V40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Z"></path>
-              </svg>
-              <span class="sr-only">Delete</span>
-            </button>
-          </div> <!-- End of Buttons Container -->
-          <!-- Announcement Texts Container -->
-          <div class="flex flex-col flex-wrap"> 
-            <h3 class="font-semibold text-sm text-black">##Announcement Title (Looking for eligible supplier for the Computer Parts and Accessories)</h3>
-            <p class="font-regular text-sm text-black">##Date Posted (Posted: August 16, 2023 or kung ano format keribels)</p>
-          </div> <!-- End of Announcement Texts Container -->
-        </div>
-        <!-- End of Individual Post Container -->
-
-        
+        <!-- End of Individual Post Container -->          
+      @endforeach
 
       </div> <!-- End of All Posts Container -->
       
@@ -867,7 +845,7 @@
               <h3 class="text-md sm:text-lg lg:text-xl font-semibold text-gray-900 dark:text-white">
                 Create Announcement Post
               </h3>
-              <button type="button" class="text-brown-400 bg-transparent hover:bg-brown-200 hover:text-brown-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="create-post-modal">
+              <button id="create-form" type="button" class="text-brown-400 bg-transparent hover:bg-brown-200 hover:text-brown-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="create-post-modal">
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                 </svg>
@@ -877,19 +855,23 @@
             <!-- Modal body -->
             <div class="p-6 space-y-6">
               <div>
+                <form action="" method="post" id="Create-form">
+                  @csrf
+                  @method('post')
                   <label for="announcement-title" class="block mb-2 text-sm md:text-base lg:text-md font-medium text-gray-900 dark:text-white">Announcement Title</label>
-                  <input type="text" id="announcement-title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-brown-500" placeholder="Looking for eligible supplier for the Computer Parts and Accessories" required>
+                  <input type="text" id="announcement-title" name="announcement_title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-brown-500" placeholder="Looking for eligible supplier for the Computer Parts and Accessories" required maxlength="300">
               </div>
               <div>
                   <label for="announcement-link" class="block mb-2 text-sm md:text-base lg:text-md font-medium text-gray-900 dark:text-white">Announcement Link</label>
-                  <input type="text" id="announcement-link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-brown-500" placeholder="facebook.com" required>
+                  <input type="text" id="announcement-link" name="announcement_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-brown-500" placeholder="facebook.com" required maxlength="300">
               </div>
             </div>
             <!-- Modal footer -->
             <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="create-post-modal" type="button" class="text-white bg-brown-500 hover:bg-brown-800 focus:ring-4 focus:outline-none focus:ring-brown-300 font-medium rounded-lg text-sm md:text-base lg:text-md px-5 py-2.5 text-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">Save changes</button>
+                <button id="Create" data-modal-hide="create-post-modal" type="button" class="text-white bg-brown-500 hover:bg-brown-800 focus:ring-4 focus:outline-none focus:ring-brown-300 font-medium rounded-lg text-sm md:text-base lg:text-md px-5 py-2.5 text-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">Save changes</button>
                 <button data-modal-hide="create-post-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm md:text-base lg:text-md font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-            </div>
+                </form>
+              </div>
           </div>
         </div>
       </div>
@@ -912,21 +894,26 @@
                       </button>
                   </div>
                   <!-- Modal body -->
+                  <form action="" method="post" id="edit-form">
+                    @csrf
+                    @method('post')
                   <div class="p-6 space-y-6">
+                      <input type="hidden" value ="" name="id">
                     <div>
                         <label for="announcement-title" class="block mb-2 text-sm md:text-base lg:text-md font-medium text-gray-900 dark:text-white">Announcement Title</label>
-                        <input type="text" id="announcement-title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Looking for eligible supplier for the Computer Parts and Accessories" required>
+                        <input name="announcement_title" type="text" id="announcement-title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Looking for eligible supplier for the Computer Parts and Accessories" required maxlength="300">
                     </div>
                     <div>
                         <label for="announcement-link" class="block mb-2 text-sm md:text-base lg:text-md font-medium text-gray-900 dark:text-white">Announcement Link</label>
-                        <input type="text" id="announcement-link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="facebook.com" required>
+                        <input name="announcement_url" type="text" id="announcement-link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base lg:text-md rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="facebook.com" required maxlength="300">
                     </div>
                   </div>
                   <!-- Modal footer -->
                   <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button data-modal-hide="edit-post-modal" type="button" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm md:text-base lg:text-md px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-brown-800">Save changes</button>
+                      <button id="Edit" data-modal-hide="edit-post-modal" type="button" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm md:text-base lg:text-md px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-brown-800">Save changes</button>
                       <button data-modal-hide="edit-post-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm md:text-base lg:text-md font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
                   </div>
+                  </form>
               </div>
           </div>
       </div>
@@ -945,11 +932,16 @@
               <svg class="mx-auto mb-4 text-red-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
               </svg>
+              <form action="" method="post" id="delete-form">
+                @csrf
+                @method("post")
+                <input type="hidden" value ="" name="id">
               <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this announcement post called *insert announcement post title*?</h3>
-                <button data-modal-hide="delete-post-modal" type="button" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm md:text-base lg:text-md inline-flex items-center px-5 py-2.5 text-center mr-2">
+                <button id="Delete" data-modal-hide="delete-post-modal" type="button" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm md:text-base lg:text-md inline-flex items-center px-5 py-2.5 text-center mr-2">
                   Yes, I'm sure
                 </button>
               <button data-modal-hide="delete-post-modal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm md:text-base lg:text-md font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+            </form>
             </div>
           </div>
       </div>
