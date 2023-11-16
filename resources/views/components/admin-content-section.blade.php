@@ -3755,7 +3755,16 @@
 
 
   @elseif(request()->is('admin.school-information') )
-  <p>school-information</p>
+  <!-- Admin School Information Main Content Container -->
+  <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
+    <div class="w-full h-full gap-4 md:gap-5 lg:gap-6 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
+      <!-- Header Content -->
+      <div class="flex flex-col gap-2">
+        <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Announcements Editor</h3>
+        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Empower your administrative communication. This section allows seamless creation, modification, and removal of announcements. Utilize the CRUD operations to keep the school community informed and engaged. Craft timely updates, important notices, and relevant information effortlessly.</p>
+      </div> <!-- End of Header Content -->
+    </div>
+  </section> <!-- End of Admin School Information Main Content Container -->
 
 
 
