@@ -2,6 +2,7 @@
 <div>   
     <!-- Announcement Section -->
     @if (request()->is('faculty.announcements') )
+    @vite(['resources/js/faculty.announcements.js'])
     <div class="md:pl-64 w-full min-h-full sm:py-12 sm:pb-9 sm:pr-[-10rem] py-7 sm:px-16 px-6 bg-yellow-50">
 
         <section class="min-w-full min-h-full relative grid grid-cols-1 sm:gap-7 gap-5 marker: md:ml-8  items-center">
@@ -16,13 +17,7 @@
                         <span class="font-mulish font-semibold text-2xl sm:text-3xl ">Announcements</span>
                     </li>
 
-                    <li class="py-5 border-b-2 border-white hover:border-b-2 hover:border-brown-200 hover:text-brown-200">
-                        <a href="https://www.facebook.com/photo?fbid=772548511547342&set=a.481770427291820"
-                        class="flex flex-col justify-between align-middle">
-                        <span class="font-mulish font-semibold text-base sm:text-lg">Title of Announcement 1</span>
-                        <span class="font-mulish font-normal text-base sm:text-lg">Date Published 1</span>
-                        </a>
-                    </li>
+
 
                     <li class="py-5 border-b-2 border-white hover:border-b-2 hover:border-brown-200 hover:text-brown-200">
                         <a href="https://www.youtube.com/watch?v=rKWLpH1fLMI" class="flex flex-col justify-between align-middle">
