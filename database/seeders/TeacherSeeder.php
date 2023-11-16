@@ -14,7 +14,7 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
     {
-        /*DB::table('teachers')->insert([
+        DB::table('teachers')->insert([
             'last_name' => 'Bonifacio',
             'first_name' => 'Andres',
             'middle_name' => 'Bonifacio',
@@ -36,7 +36,7 @@ class TeacherSeeder extends Seeder
             'password' => Hash::make('Teacher123'),
             // Add the rest of the fields here.
         ]);
-    */
+    
         Teacher::factory(5)->create();
     }
 }
