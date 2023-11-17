@@ -2173,7 +2173,7 @@
                   Close enrollment
                 </a>
                 @else
-                <a href="#" data-modal-target="closePreEnrollmentModal" data-modal-show="closePreEnrollmentModal" id="closePreEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-100 hover:bg-red-200 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
+                <a id="sample-clicker" data-modal-target="closePreEnrollmentModal" data-modal-show="closePreEnrollmentModal" id="closePreEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-100 hover:bg-red-200 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
                   Close enrollment
                 </a>    
                 @endif          

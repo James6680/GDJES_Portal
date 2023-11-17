@@ -1,4 +1,8 @@
 var schoolYearList;
+const schoolYearDropDown = document.getElementById('school-year-dropdown-picker');
+
+
+
 
 function getSchoolYear() {
     const url = '/api/schoolYears';
@@ -11,7 +15,6 @@ function getSchoolYear() {
 }
 
 function updateSchoolYearDropDown() {
-    const schoolYearDropDown = document.getElementById('school-year-dropdown-picker');
 
     $.each(schoolYearList, function(index, entry) {
         let x = `<li>
@@ -27,6 +30,19 @@ function updateSchoolYearDropDown() {
         schoolYearDropDown.append(fragment);
     });
 }
+
+schoolYearDropDown.addEventListener('click', function(event) {
+    if (event.target.tagName === 'A') {
+        // Handle click event on the `<a>` element
+        const valueOfYear = event.target.textContent;
+        console.log('Clicked on school year:', valueOfYear);
+
+        const selectedObject = schoolYearList.find(entry => entry['school_year'] === valueOfYear);
+        document.getElementById('sample-clicker').textContent = selectedObject['school_year'];
+        
+        console.log(selectedObject);
+    }    
+});
 
 $(document).ready(function() {
     getSchoolYear().then(updateSchoolYearDropDown);
