@@ -956,7 +956,54 @@
 
 
   @elseif(request()->is('admin.document-request') )
-  <p>document-</p>
+  <!-- Admin Document Requests Management Main Content Container -->
+  <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
+    <form action="#" class="w-full h-full divide-y divide-gray-200 gap-4 md:gap-5 lg:gap-6 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
+      <!-- Header Content -->
+      <div class="flex flex-col gap-2 pt-4 ">
+        <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Document Requests Management</h3>
+        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Efficiently handle student document requests with a clear interface. Streamline the document flow for a seamless administrative process.</p>
+      </div> <!-- End of Header Content -->
+
+      <!-- Document requests guide -->
+      <div class="flex flex-col w-full pt-4">
+        <div class="w-full flex items-start p-5 text-sm font-mulish border border-yellow-500 text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
+          <svg 
+            class="flex-shrink-0 inline w-5 h-5 mr-2" 
+            aria-hidden="true" 
+            xmlns="http://www.w3.org/2000/svg" 
+            fill="currentColor" 
+            viewBox="0 0 20 20">    
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+
+          <div>
+            <h2 class="mb-2 -mt-0.5 text-base font-semibold text-yellow-800  dark:text-white">
+              Document Requests - Status Guidelines
+            </h2>
+            <ul class="space-y-1 -ml-3 text-sm text-yellow-600  list-disc">
+              <li>
+                <strong>For Validation:</strong> Admin received the request and is in the process of checking the student's eligibility.
+              </li>
+              <li>
+                <strong>Passing of Documents:</strong> Specifically for School Form 10 requests. The student needs to acquire the request form from the school they intend to transfer to.
+              </li>
+              <li>
+                <strong>For Claiming:</strong> Document is ready for the student to claim. Streamline the process by efficiently categorizing requests into these clear statuses for effective management.
+              </li>
+            </ul>
+          </div>
+        </div> <!-- End of Document requests guide -->
+      </div>
+
+      
+
+      <!-- Footer -->
+      <div class="flex items-center pt-4 gap-2 border-gray-200 rounded-b dark:border-gray-600">
+        <button type="submit" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm md:text-base lg:text-md px-5 py-2.5 text-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">Save changes</button>  
+      </div> <!-- End of Footer -->
+    </form>
+  </section> <!-- End of Admin School Information Main Content Container -->
 
 
 
@@ -3095,7 +3142,7 @@
 
         </div>
 
-\
+
         <!-- Start SY Modal -->
         <div id="startSYModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-md max-h-full">
