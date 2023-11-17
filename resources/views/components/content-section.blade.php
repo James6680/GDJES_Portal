@@ -94,7 +94,7 @@
 
                 <div class="w-auto justify-self-end">
 
-                    <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-medium rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 inline-flex w-full text-sm py-2.5 leading-none items-center lg:px-7 px-4" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-medium rounded-md  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full lg:text-base text-sm py-2.5 leading-none items-center lg:px-7 px-4" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> 
                     </svg>
                     </button>
@@ -1415,11 +1415,10 @@
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Student Information</h3>
                 <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <h2 class="mt-2 uppercase font-semibold text-lg sm:text-xl lg:text-3xl text-brown-600">motus, James P. (114743070020)</h2>
+                <h2 class="mt-2 uppercase font-semibold text-lg sm:text-xl lg:text-2xl text-brown-600">motus, James PRADO (114743070020)</h2>
             </div> <!-- End of Header Content -->
 
             <div class=" flex min-w-screen flex-col gap-6 items-center mt-6">
-
                 
                 <div id="mainBody" class="flex flex-col mx-40 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish">
 
@@ -1427,7 +1426,7 @@
                     <div class="w-full flex flex-row justify-center gap-20 ">
                         
                         <div class=" overflow-x-auto">
-                            <table class="bg-white lg:text-lg rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold ">
+                            <table class="bg-white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white ">
@@ -1551,7 +1550,7 @@
                         </div>
 
                         <div class=" overflow-x-auto">
-                            <table class="w-auto lg:text-lg text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold border-l-4 border-green-500">
+                            <table class="w-auto lg:text-base text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold border-l-4 border-green-500">
                                 <tbody>
                                     <tr class="bg-gray-50">
                                         <th scope="row" class="px-7 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
