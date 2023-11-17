@@ -669,6 +669,7 @@
         
     </div>
 
+
     @elseif (request()->is('faculty.grades') )
     <!-- Student Enrollment Status Section -->
     <div class="md:pl-64 pl-0 min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
@@ -679,7 +680,368 @@
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Grades</h3>
                 <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div> <!-- End of Header Content -->
-            
+
+            <div class="flex flex-col gap-2">
+
+                <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black">Class Record</h1>
+
+                <div class="mx-auto w-full ">
+                    <!-- Start coding here -->
+                    <div class="bg-white dark:bg-gray-800 relative overflow-hidden">
+                        
+                        <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-2 p-3 px-1">
+
+                            <div class="w-full md:w-1/2">
+
+                                <form class="flex items-center">
+                                    <label for="simple-search" class="sr-only">Search</label>
+                                    <div class="relative w-full">
+                                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <input type="text" id="myInput" onkeyup="myFunction()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-brown-500 focus:border-brown-500 block w-full pl-10 p-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brown-500 dark:focus:border-primary-500" placeholder="Search" >
+                                    </div>
+                                </form>
+
+                            </div>
+                            
+                            <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+
+                                <div class="flex items-center lg:space-x-3 space-x-1 w-full md:w-auto">
+
+                                    <button id="quarterBtn" data-dropdown-toggle="quarter-dropdown" class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
+                                    Quarter
+                                    <svg class="w-2.5 h-2.5 ms-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                    </button>
+
+                                    <!-- Dropdown menu -->
+                                    <div id="quarter-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
+                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="quarterBtn">
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('Quarter 1')">Quarter 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('Quarter 2')">Quarter 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('Quarter 3')">Quarter 3</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('Quarter 4')">Quarter 4</a>
+                                        </li>
+                                        </ul>
+
+                                        <script>
+                                            function changeQuarter(newText) {
+                                                document.getElementById('quarterBtn').innerText = newText;
+                                                // You can also close the dropdown if needed
+                                                // document.getElementById('quarter-dropdown').classList.add('hidden');
+                                            }
+                                        </script>
+                                    </div>
+
+                                    <!-- Subject Button -->
+                                    <button id="subjectBtn" data-dropdown-toggle="subject-dropdown" class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
+                                    Subject
+                                    <svg class="w-2.5 h-2.5 ms-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                    </button>
+
+                                    <!-- Dropdown menu -->
+                                    <div id="subject-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
+                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="subjectBtn">
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSubject('Subject 1')">Subject 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSubject('Subject 2')">Subject 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSubject('Subject 3')">Subject 3</a>
+                                        </li>
+                                        </ul>
+
+                                        <script>
+                                            function changeSubject(newText) {
+                                                document.getElementById('subjectBtn').innerText = newText;
+                                                // You can also close the dropdown if needed
+                                                // document.getElementById('quarter-dropdown').classList.add('hidden');
+                                            }
+                                        </script>
+
+                                    </div>
+
+                                    <!-- Section Level Button -->
+                                    <button id="sectionBtn" data-dropdown-toggle="section-dropdown" class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Section<svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                    </button>
+
+                                    <!-- Dropdown menu -->
+                                    <div id="section-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
+                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="sectionBtn">
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSection('Section 1')">Section 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSection('Section 2')">Section 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSection('Section 3')">Section 3</a>
+                                        </li>
+                                        </ul>
+
+                                        <script>
+                                            function changeSection(newText) {
+                                                document.getElementById('sectionBtn').innerText = newText;
+                                                // You can also close the dropdown if needed
+                                                // document.getElementById('quarter-dropdown').classList.add('hidden');
+                                            }
+                                        </script>
+
+                                    </div>
+                                    
+                                    <!-- Grade Level Button -->
+                                    <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">Grade<svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                    </button>
+
+                                    <!-- Dropdown menu -->
+                                    <div id="grade-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
+                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeBtn">
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 1')">Grade 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 2')">Grade 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 3')">Grade 3</a>
+                                        </li>
+                                        </ul>
+
+                                        <script>
+                                            function changeGrade(newText) {
+                                                document.getElementById('gradeBtn').innerText = newText;
+                                                // You can also close the dropdown if needed
+                                                // document.getElementById('quarter-dropdown').classList.add('hidden');
+                                            }
+                                        </script>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+
+                            <table class="w-full lg:text-sm text-xs text-left text-black " id="myTable">
+                                <thead class="lg:text-base text-xs text-white uppercase bg-yellow-600 rounded-t">
+                                    <tr class=" text-lg text-center ">
+                                        <th colspan="1" class="border-x border-gray-100 rounded-tl-md"></th>
+                                        <th colspan="1" class="border-x w-[25%] border-gray-100">Student Name</th>
+                                        <th colspan="13" class="border-x w-[30%]  border-gray-100">Written Works</th>
+                                        <th colspan="13" class="border-x w-[30%]  border-gray-100">Performance Tasks</th>
+                                        <th colspan="3" class="text-base border-x border-gray-100 ">Quarterly Assessment (20%)</th>
+                                        <th colspan="1" class="text-sm border-r normal-case border-gray-100">Initial Grade</th>
+                                        <th colspan="1" class="text-sm border-r normal-case border-gray-100"> Quarterly Grade</th>
+                                        <th class="rounded-tr-md"><span class="sr-only"></span></th>                                    
+                                    </tr>
+                                    <tr class="text-center px-4">
+                                        <!-- Student Number --> 
+                                        <th class="border border-gray-100 py-4"></th>
+                                        <!-- Student Name --> 
+                                        <th class="border border-gray-100 px-28"></th>
+                                        <!--Written Works  -->
+                                        <th class="border border-gray-100">1</th>  
+                                        <th class="border border-gray-100">2</th> 
+                                        <th class="border border-gray-100">3</th>
+                                        <th class="border border-gray-100">4</th>
+                                        <th class="border border-gray-100">5</th>
+                                        <th class="border border-gray-100">6</th>
+                                        <th class="border border-gray-100">7</th>
+                                        <th class="border border-gray-100">8</th>
+                                        <th class="border border-gray-100">9</th>
+                                        <th class="border border-gray-100">10</th>
+                                        <th class="normal-case border border-gray-100">Total</th>
+                                        <th class="border border-gray-100 w-7">PS</th>
+                                        <th class="border border-gray-100">WS</th>
+                                        <!-- PerFormance Tasks -->
+                                        <th class="border border-gray-100">1</th>
+                                        <th class="border border-gray-100">2</th>
+                                        <th class="border border-gray-100">3</th>
+                                        <th class="border border-gray-100">4</th>
+                                        <th class="border border-gray-100">5</th>
+                                        <th class="border border-gray-100">6</th>
+                                        <th class="border border-gray-100">7</th>
+                                        <th class="border border-gray-100">8</th>
+                                        <th class="border border-gray-100">9</th>
+                                        <th class="border border-gray-100">10</th>
+                                        <th class="normal-case border-t border border-gray-100">Total</th>
+                                        <th class="border border-gray-100">PS</th>
+                                        <th class="border border-gray-100">WS</th>
+                                        <!-- Quarterly Assessment (20%) -->
+                                        <th class="border border-gray-100">1</th>
+                                        <th class="border border-gray-100">PS</th>
+                                        <th class="border border-gray-100">WS</th>
+                                         <!-- Initial Grade -->
+                                        <th class="border border-gray-100"></th>
+                                         <!-- Quarterly Grade -->
+                                        <th class="border border-gray-100"></th> 
+                                        <th><span class="sr-only"></span></th>                                 
+                                    </tr>
+                                    <!-- Needs to be dynamic since items number may differ -->
+                                    <tr class=" text-center font-medium">
+                                        <th class="border border-gray-100 py-4  "></th>
+                                        <th class="border border-gray-100">Highest Possible Score</th>                    
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">100</th>
+                                        <th class="border border-gray-100">PS</th>
+                                        <th class="border border-gray-100">WS</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">100</th>
+                                        <th class="border border-gray-100">PS</th>
+                                        <th class="border border-gray-100">WS</th>
+                                        <th class="border border-gray-100">20</th>
+                                        <th class="border border-gray-100">PS</th>
+                                        <th class="border border-gray-100">WS</th>
+                                        <th class="border border-gray-100"></th>     
+                                        <th class="border border-gray-100"></th>
+                                        <th><span class="sr-only"></span></th>                                       
+                                    </tr>
+                                    <!-- Gender Separation -->
+                                    <tr class="text-center">
+                                        <th class="border border-gray-100 "></th>
+                                        <th class="border border-gray-100 text-start font-semibold py-2">Male</th>                    
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>     
+                                        <th class="border border-gray-100"></th>
+                                        <th class="border border-gray-100"></th>
+                                        <th><span class="sr-only"></span></th>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="text-center bg-white">
+                                        <td class="border border-yellow-500 px-2 py-2">1</td>
+                                        <td class="border border-yellow-500 px-2">Juan Dela Cruz</td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww1' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww2' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww3' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww4' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww5' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww6' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww7' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww8' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww9' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww10' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww_total' class="p-0 border-none" disabled></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww_percent' class="p-0 border-none" disabled></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none" disabled></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt1' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt2' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt3' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt4' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt5' class="p-0 border-none"></td> 
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt6' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt7' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt8' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt9' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt10' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2" ><input type="text" name='pt_total' class="p-0 border-none" disabled></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt_percent' class="p-0 border-none" disabled></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none" disabled></td>
+                                        <td class="border border-yellow-500 px-2 "><input type="text" name='qa' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2 "><input type="text" name='pt_percent' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none"></td>
+                                        <td class="border border-yellow-500 px-2" disabled><input type="text" name='initial_grade' class="p-0 border-none" disabled></td>
+                                        <td class="border border-yellow-500 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none" disabled></td>
+                                        <td class="border border-yellow-500 px-2"><button type="submit" class="text-blue-700 border border-blue-700 hover:bg-blue-100 ring-1 focus:ring-blue-800 font-normal rounded text-sm px-2 py-1 ">Save</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <script>
+                                function myFunction() {
+                                // Declare variables
+                                var input, filter, table, tr, td, i, txtValue;
+                                input = document.getElementById("myInput");
+                                filter = input.value.toUpperCase();
+                                table = document.getElementById("myTable");
+                                tr = table.getElementsByTagName("tr");
+
+                                // Loop through all table rows, and hide those who don't match the search query
+                                for (i = 0; i < tr.length; i++) {
+                                    td = tr[i].getElementsByTagName("td")[1];
+                                    if (td) {
+                                    txtValue = td.textContent || td.innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        tr[i].style.display = "";
+                                    } else {
+                                        tr[i].style.display = "none";
+                                    }
+                                    }
+                                }
+                                }
+                            </script>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
         </section>
 
     </div>

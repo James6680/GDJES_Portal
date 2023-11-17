@@ -172,7 +172,7 @@
                                 <div class="flex flex-col self-stretch input-container relative">
 
                                     <input
-                                        class="font-button text-xs bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] focus:border-[1px]  border-brown-400 text-gray-900 focus:border-brown-700 focus:ring-brown-700 "
+                                        class="font-button text-sm bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] focus:border-[1px]  border-brown-400 text-gray-900 focus:border-brown-700 focus:ring-brown-700 "
                                         placeholder="Enter your username"
                                         type="text"
                                         required
@@ -204,7 +204,7 @@
                                 <div class="flex flex-col self-stretch relative">
 
                                     <input
-                                        class="font-button text-xs bg-green-50 self-stretch rounded-lg flex flex-row items-center justify-start p-4 border-[1px] focus:border-[1px]  border-brown-400 text-gray-900 focus:border-brown-700 focus:ring-brown-700 "
+                                        class="font-button text-sm bg-green-50 self-stretch rounded-lg flex flex-row items-center justify-start p-4 border-[1px] focus:border-[1px]  border-brown-400 text-gray-900 focus:border-brown-700 focus:ring-brown-700 "
                                         placeholder="Enter your password"
                                         type="password"
                                         :type="show ? 'password' : 'text'"
@@ -226,7 +226,7 @@
 
                                         <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
                                         
-                                        <label class="hover:text-gray-200 rounded font-heading-2-bold px-2 py-1 text-xs text-main-green-secondary-500 cursor-pointer js-password-label " for="toggle">Show</label>
+                                        <label class="hover:text-brown-400 rounded font-heading-2-bold px-2 py-2 text-xs text-brown-900 cursor-pointer js-password-label " for="toggle">Show</label>
                                     
                                     </div>
                                 
