@@ -40,14 +40,26 @@
         @endif
         <!--End Added Success Alert-->
 
-
+        <!-- Need to connect in the backend for students to see what grade level and section they are, along with the name of their adviser -->
         @if($user == 'Student')
         <div class="hidden sm:flex flex-col justify-center p-0 items-start pt-2 xl:pl-36  gap-0 text-black">
-          <p class="font-frl lg:text-lg text-md font-bold leading-none ">
+          <p class="font-frl lg:text-lg text-md font-bold leading-none">
             Grade # - Section
           </p>
           <h2 class="self-stretch font-mulish text-sm font-normal leading-none"> 
             Class Adviser: Fullname
+          </h2>
+        </div>
+        @endif
+
+        <!-- Need to connect in the backend for faculty to see what is the current S.Y, along with their grade and section class advisory -->
+        @if($user == 'Faculty')
+        <div class="hidden sm:flex flex-col justify-center p-0 items-start pt-2 xl:pl-36  gap-0 text-black">
+          <p class="self-stretch font-mulish text-sm font-normal leading-none">
+            Advisory class for S.Y XXXX-XXXX
+          </p>
+          <h2 class="font-frl lg:text-lg text-md font-bold leading-none"> 
+            Grade # - Section
           </h2>
         </div>
         @endif

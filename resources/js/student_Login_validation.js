@@ -5,7 +5,7 @@ const passwordToggle = document.querySelector('#toggle');
 const passwordInput = document.getElementById('password');
 const passwordLabel = document.querySelector('.js-password-label');
 
-passwordToggle.addEventListener('change', function() {x
+passwordToggle.addEventListener('change', function() {
 
     if (passwordInput.type === 'password') {
       passwordInput.type = 'text';

@@ -13,7 +13,7 @@
                 <ul class="m-o p-0 text-white">
 
                     <li class="p-0 m-0">
-                        <span class="font-mulish font-semibold text-2xl sm:text-3xl ">Announcements</span>
+                        <span class="font-semibold text-2xl sm:text-3xl ">Announcements</span>
                     </li>
 
                     <li class="py-5 border-b-2 border-white hover:border-b-2 hover:border-green-200 hover:text-green-200">
@@ -45,7 +45,7 @@
             <!-- Contact Us Main Container -->
             <div class="rounded-md h-auto w-full container  p-6 grid grid-cols-1 bg-white shadow shadow-brown-100">
 
-                <h2 class="w-full flex font-mulish text-2xl sm:text-3xl text-green-900 font-bold">
+                <h2 class="w-full flex text-2xl sm:text-3xl font-mulish text-green-900 font-bold">
                 Contact us
                 </h2>
 
@@ -94,7 +94,7 @@
 
                 <div class="w-auto justify-self-end">
 
-                    <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full lg:text-base text-sm py-2.5 leading-none items-center lg:px-7 px-4" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white rounded-md font-medium hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 inline-flex w-full lg:text-base text-sm py-2 leading-none items-center lg:px-7 px-4" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> 
                     </svg>
                     </button>
@@ -135,11 +135,11 @@
 
                 <!-- Learning Progress and Achievement Section -->
                 <!-- Backend side: Need to connect this table which consists of (Subjects/Teacher/1-4 grade/Final grade/ remarks)  -->
-                <div class="relative overflow-x-auto rounded">
+                <div class="relative overflow-x-auto rounded-sm">
 
-                    <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal ">
+                    <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto ">
 
-                        <thead class=" text-white font-normal font-mulish items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
+                        <thead class=" text-white items-start justify-start lg:text-sm text-xs text-[10px] leading-tight uppercase">
                             <tr>
                                 <th scope="col" class="py-5 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
                                     Subjects
@@ -364,11 +364,11 @@
 
                 <!-- Learner's Oberserved Values -->
                 <!-- Backend Side: Need to connect this table which consists of (Core Values/Behaviour Statement/1-4 mark (SO/AO/--))) -->
-                <div class="relative overflow-x-auto rounded">
+                <div class="relative overflow-x-auto rounded-sm">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
+                        <thead class=" text-white  bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
                             <tr>
                                 <th scope="col" class="w-[25%] py-4 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500">
                                     Core Values
@@ -564,11 +564,11 @@
 
                 <!-- Student's Attendance Section -->
                 <!-- Backend Side: Need to connect this table which consists of (Col=Attendance/12 months: Row=Days of school/ Days of present/ Days of absent) -->
-                <div class="relative overflow-x-auto rounded">
+                <div class="relative overflow-x-auto rounded-sm">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
+                        <thead class=" text-white  bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
                             <tr>
                                 <th scope="col" class="py-4 md:px-0 px-4 border-collapse border border-green-600  bg-green-500">
                                     Attendance
@@ -758,11 +758,11 @@
                 
                 <!-- MOL Section -->
                 <!-- Backend side: Need to connect this table which consists of (Type of modality/1 to 4 quarter) -->
-                <div class="relative overflow-x-auto rounded">
+                <div class="relative overflow-x-auto rounded-sm">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
-                        <thead class=" text-white font-normal font-mulish bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
+                        <thead class=" text-white bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
                             <tr>
                                 <th scope="col" class="w-[28%] py-4 md:px-0 px-4 border-collapse border-r border-green-600 bg-green-500 ">
                                     Modality
@@ -974,14 +974,13 @@
                     <div class="w-full flex justify-end">
                         <button 
                             type="button" 
-                            class="focus:outline-none font-mulish text-white border-2 bg-brown-500 font-semibold rounded-lg lg:text-lg text-base xl:w-[20%] lg:w-[40%] w-full py-2.5 cursor-not-allowed shadow-transparent" 
+                            class="focus:outline-none font-mulish text-white border-2 bg-brown-500 font-semibold rounded-md text-base xl:w-[20%] lg:w-[40%] w-full py-2.5 cursor-not-allowed shadow-transparent" 
                             disabled>
                             Temporary Enrolled
                         </button>
                     </div>
 
-                    <div 
-                    class="flex items-start pl-4 p-5 text-md font-mulish text-brown-600 rounded-lg bg-brown-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
+                    <div class="flex items-start pl-4 p-5 text-md font-mulish text-brown-600 rounded-lg bg-brown-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
                         <svg 
                         class="flex-shrink-0 inline w-6 h-6 mr-3" 
                         aria-hidden="true" 
@@ -1065,36 +1064,17 @@
             <div class=" flex min-w-screen flex-col gap-6 items-center ">
 
                 <!-- Document Requests Main Body -->
-                <div id="mainBody" class="flex flex-col mx-40 p-4 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish hidden">
+                <div id="mainBody" class="flex flex-col mx-40 p-4 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish ">
 
                     <!-- My Requests Button Section -->
                     <div class="w-full flex flex-col items-end mb-4 gap-1">
 
                         <button
                         id="myRequestBtn" 
-                        class="block focus:outline-none font-mulish text-white bg-brown-500 font-semibold lg:text-lg text-sm xl:w-[20%] lg:w-[40%] w-full lg:py-2.5 py-2.5 mb-2 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 " 
+                        class="block focus:outline-none text-white bg-brown-500 font-semibold lg:text-base text-sm xl:w-[20%] lg:w-[40%] w-full py-2.5 mb-2 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-yellow-600 " 
                         type="button">
                         My Requests
                         </button>
-
-                        <script>
-                            document.addEventListener("DOMContentLoaded", function () {
-                                // Get references to the button and the div elements
-                                const myRequestBtn = document.getElementById("myRequestBtn");
-                                const myRequestBody = document.getElementById("myRequestBody");
-                                const mainBody = document.getElementById("mainBody");
-
-                                // Add a click event listener to the button
-                                myRequestBtn.addEventListener("click", function () {
-                                // Show the myRequestBody div
-                                myRequestBody.style.display = "flex";
-
-                                // Hide the mainBody div
-                                mainBody.style.display = "none";
-                                });
-                            });
-                        </script>
-
 
                         <div class="w-full flex items-start p-5 lg:text-base text-xs font-mulish text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
                             <svg 
@@ -1140,21 +1120,15 @@
 
                         <div class="w-full flex flex-col items-start justify-center pl-4 p-4 mb-3 text-md font-mulish text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800 ">  
                             <h2 class="mb-2 lg:text-2xl text-lg font-semibold dark:text-white self-stretch text-center">Lists of Document</h2>
-                            <ul class="max-w-md ml-4 space-y-2 lg:text-base text-xs list-disc list-inside text-green-900">
+                            <ul class="w-full ml-4 space-y-2 lg:text-base text-xs font-semibold list-disc list-inside text-green-600">
                                 <li>
-                                    Document Requirement #1
+                                    Certificate of Enrollment: scholarships grants 4Ps. One validated na enrolled sila.
                                 </li>
                                 <li>
-                                    Document Requirement #2
+                                    Certificate of Good Moral
                                 </li>
                                 <li>
-                                    Document Requirement #3
-                                </li>
-                                <li>
-                                    Document Requirement #4
-                                </li>
-                                <li>
-                                    Document Requirement #5
+                                    Request of sf10. Needs the request form from the lilipatan na school
                                 </li>
                             </ul>
 
@@ -1164,7 +1138,7 @@
                         <button 
                         data-modal-target="crud-modal" 
                         data-modal-toggle="crud-modal" 
-                        class="focus:outline-none font-mulish text-white bg-green-500 font-semibold lg:text-lg text-sm px-7 lg:py-2.5 py-2.5 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
+                        class="focus:outline-none font-mulish text-white bg-green-500 font-semibold lg:text-base text-sm px-7 py-2.5 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
                         Request Document
                         </button>
 
@@ -1213,28 +1187,19 @@
                                                 <div class="pl-2">
                                                     <div class="flex items-center mb-4">
                                                         <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #1</label>
+                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Request of sf10</label>
                                                     </div>
 
                                                     <div class="flex items-center mb-4">
                                                         <input id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #2</label>
+                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Certificate of Good Moral</label>
                                                     </div>
 
                                                     <div class="flex items-center mb-4">
                                                         <input id="default-radio-3" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #3</label>
+                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Certificate of Enrollment</label>
                                                     </div>
-
-                                                    <div class="flex items-center mb-4">
-                                                        <input id="default-radio-4" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #4</label>
-                                                    </div>
-
-                                                    <div class="flex items-center mb-4">
-                                                        <input id="default-radio-5" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Document Item #5</label>
-                                                    </div>
+                                                    
                                                 </div>
                                                 
                                             </div>
@@ -1262,7 +1227,7 @@
                 </div>
 
                 <!-- My Request body section -->
-                <div id="myRequestBody" class="flex mx-[100vw] py-5 p-0 flex-col w-full h-auto text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 font-mulish ">
+                <div id="myRequestBody" class="flex mx-[100vw] py-5 p-0 flex-col w-full h-auto text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 font-mulish">
 
                     <!-- My Requests Body Section -->
                     <div class="w-full flex flex-col items-center justify-center">
@@ -1284,9 +1249,9 @@
                                     </thead>
                                     <tbody>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default1" >
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td class="px-6 py-4">
                                                 X
-                                            </th>
+                                            </td>
                                             <td class="px-6 py-4">
                                                 X
                                             </td>
@@ -1300,9 +1265,9 @@
                                         </div>
 
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default2">
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td class="px-6 py-4">
                                                 X
-                                            </th>
+                                            </td>
                                             <td class="px-6 py-4">
                                                 X
                                             </td>
@@ -1316,9 +1281,9 @@
                                         </div>
 
                                         <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default3">
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+                                            <td class="px-6 py-4">
                                                 X
-                                            </th>
+                                            </td>
                                             <td class="px-6 py-4">
                                                 X
                                             </td>
@@ -1332,9 +1297,9 @@
                                         </div>
 
                                         <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default4">
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+                                            <td class="px-6 py-4">
                                                 X
-                                            </th>
+                                            </td>
                                             <td class="px-6 py-4">
                                                 X
                                             </td>
@@ -1348,9 +1313,9 @@
                                         </div>
 
                                         <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default5">
-                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td class="px-6 py-4">
                                                 X
-                                            </th>
+                                            </td>
                                             <td class="px-6 py-4">
                                                 X
                                             </td>
@@ -1372,32 +1337,47 @@
 
                         <button
                         id="myRequestBckBtn" 
-                        class="block focus:outline-none font-mulish text-green-600 font-bold border border-green-500 lg:text-base mt-4 text-sm px-12 py-2.5 rounded-xl hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 w-fit" 
+                        class="block focus:outline-none text-green-600 font-bold border border-green-500 lg:text-base mt-4 text-sm px-12 py-2 rounded-xl hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 w-fit" 
                         type="button">
                         <
                         </button>
 
-                        <script>
-                            document.addEventListener("DOMContentLoaded", function () {
-                                // Get references to the button and the div elements
-                                const myRequestBckBtn = document.getElementById("myRequestBckBtn");
-                                const myRequestBody = document.getElementById("myRequestBody");
-                                const mainBody = document.getElementById("mainBody");
-
-                                // Add a click event listener to the button
-                                myRequestBckBtn.addEventListener("click", function () {
-                                // Show the myRequestBody div
-                                mainBody.style.display = "flex";
-
-                                // Hide the mainBody div
-                                myRequestBody.style.display = "none";
-                                });
-                            });
-                        </script>
-
                     </div>
 
                 </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Get references to the buttons and the div elements
+                        const myRequestBtn = document.getElementById("myRequestBtn");
+                        const myRequestBckBtn = document.getElementById("myRequestBckBtn");
+                        const myRequestBody = document.getElementById("myRequestBody");
+                        const mainBody = document.getElementById("mainBody");
+
+                        // Set the initial state (mainBody visible, myRequestBody hidden)
+                        mainBody.style.display = "flex";
+                        myRequestBody.style.display = "none";
+
+                        // Add a click event listener to the "Request" button
+                        myRequestBtn.addEventListener("click", function () {
+                            // Show the myRequestBody div
+                            myRequestBody.style.display = "flex";
+
+                            // Hide the mainBody div
+                            mainBody.style.display = "none";
+                        });
+
+                        // Add a click event listener to the "Back" button
+                        myRequestBckBtn.addEventListener("click", function () {
+                            // Show the mainBody div
+                            mainBody.style.display = "flex";
+
+                            // Hide the myRequestBody div
+                            myRequestBody.style.display = "none";
+                        });
+                    });
+                </script>
+
 
             </div>
             
@@ -1415,11 +1395,10 @@
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Student Information</h3>
                 <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <h2 class="mt-2 uppercase font-semibold text-lg sm:text-xl lg:text-3xl text-brown-600">motus, James P. (114743070020)</h2>
+                <h2 class="mt-2 uppercase font-semibold text-lg sm:text-xl lg:text-2xl text-brown-600">motus, James PRADO (114743070020)</h2>
             </div> <!-- End of Header Content -->
 
             <div class=" flex min-w-screen flex-col gap-6 items-center mt-6">
-
                 
                 <div id="mainBody" class="flex flex-col mx-40 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish">
 
@@ -1427,7 +1406,7 @@
                     <div class="w-full flex flex-row justify-center gap-20 ">
                         
                         <div class=" overflow-x-auto">
-                            <table class="bg-white lg:text-lg rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold ">
+                            <table class="bg-white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white ">
@@ -1551,7 +1530,7 @@
                         </div>
 
                         <div class=" overflow-x-auto">
-                            <table class="w-auto lg:text-lg text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold border-l-4 border-green-500">
+                            <table class="w-auto lg:text-base text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold border-l-4 border-green-500">
                                 <tbody>
                                     <tr class="bg-gray-50">
                                         <th scope="row" class="px-7 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">

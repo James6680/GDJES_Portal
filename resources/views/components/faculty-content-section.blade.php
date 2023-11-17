@@ -71,11 +71,10 @@
 
                 <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black">Advisory Class</h1>
 
-                <div class="relative overflow-x-auto font-mulish">
+                <div class="relative overflow-x-auto">
 
                     <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-200" >
-
-                        <thead class="lg:text-sm text-xs text-white uppercase bg-yellow-600 ">
+                        <thead class=" lg:text-sm text-xs text-white uppercase bg-yellow-600 ">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     Student Name
@@ -93,9 +92,9 @@
                         </thead>
                         <tbody>
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <td class="px-6 py-4">
                                     Juan Dela Cruz
-                                </th>
+                                </td>
                                 <td class="px-6 py-4">
                                     Silver
                                 </td>
@@ -107,9 +106,9 @@
                                 </td>
                             </tr>
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Microsoft Surface Pro
-                                </th>
+                                <td class="px-6 py-4">
+                                    White
+                                </td>
                                 <td class="px-6 py-4">
                                     White
                                 </td>
@@ -121,9 +120,9 @@
                                 </td>
                             </tr>
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Magic Mouse 2
-                                </th>
+                                <td class="px-6 py-4">
+                                    Black
+                                </td>
                                 <td class="px-6 py-4">
                                     Black
                                 </td>
@@ -135,9 +134,9 @@
                                 </td>
                             </tr>
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Magic Mouse 2
-                                </th>
+                                 <td class="px-6 py-4">
+                                    Black
+                                </td>
                                 <td class="px-6 py-4">
                                     Black
                                 </td>
@@ -149,9 +148,9 @@
                                 </td>
                             </tr>
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Magic Mouse 2
-                                </th>
+                                <td class="px-6 py-4">
+                                    Black
+                                </td>
                                 <td class="px-6 py-4">
                                     Black
                                 </td>
@@ -163,9 +162,9 @@
                                 </td>
                             </tr>
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Magic Mouse 2
-                                </th>
+                                <td class="px-6 py-4">
+                                    Black
+                                </td>
                                 <td class="px-6 py-4">
                                     Black
                                 </td>
@@ -209,101 +208,35 @@
 
                             </div>
                             
-                            <!-- 3 Filter dropdown for Subject Class -->
+                            <!-- 1 Filter dropdown for Subject Class -->
                             <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
 
                                 <div class="flex items-center lg:space-x-3 space-x-1 w-full md:w-auto">
-
-                                    <!-- Needs to be dynamic as well. This would trigger upon the selection of section navigating all the given subject unit that the teacher had on that specific section -->
-                                    <!-- Subject Button -->
-                                    <button id="subjectBtn" data-dropdown-toggle="subject-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-4 py-2 text-center inline-flex items-center" type="button">
-                                    Subject
-                                    <svg class="w-2.5 h-2.5 ms-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                                    </svg>
-                                    </button>
-
-                                    <!-- Dropdown menu -->
-                                    <div id="subject-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
-                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="subjectBtn">
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSubject('Subject 1')">Subject 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSubject('Subject 2')">Subject 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSubject('Subject 3')">Subject 3</a>
-                                        </li>
-                                        </ul>
-
-                                        <script>
-                                            function changeSubject(newText) {
-                                                document.getElementById('subjectBtn').innerText = newText;
-                                                event.preventDefault(newText);
-                                                // You can also close the dropdown if needed
-                                                // document.getElementById('quarter-dropdown').classList.add('hidden');
-                                            }
-                                        </script>
-
-                                    </div>
                                     
-                                    <!-- Needs to be dynamic as well. This would trigger upon the selection of grade level navigating all the given section that the teacher had a subject unit that given grade level  -->
-                                    <!-- Section Level Button -->
-                                    <button id="sectionBtn" data-dropdown-toggle="section-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-4 py-2 text-center inline-flex items-center" type="button">Section<svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                                    </svg>
-                                    </button>
-
-                                    <!-- Dropdown menu -->
-                                    <div id="section-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
-                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="sectionBtn">
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSection('Section 1')">Section 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSection('Section 2')">Section 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSection('Section 3')">Section 3</a>
-                                        </li>
-                                        </ul>
-
-                                        <script>
-                                            function changeSection(newText) {
-                                                document.getElementById('sectionBtn').innerText = newText;
-                                                event.preventDefault(newText);
-                                                // You can also close the dropdown if needed
-                                                // document.getElementById('quarter-dropdown').classList.add('hidden');
-                                            }
-                                        </script>
-
-                                    </div>
-                                    
-                                    <!-- Needs to be dynamic for teacher to be able to only navigate the only subject unit in the given grade level that he/she is handling  -->
+                                    <!-- Needs to be dynamic for teachers to be able to navigate the subject classes he/she handles -->
                                     <!-- Grade Level Button -->
-                                    <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-4 py-2 text-center inline-flex items-center" type="button">Grade<svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <button id="subjecUnitBtn" data-dropdown-toggle="grade-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-7 py-2.5 text-center inline-flex items-center" type="button">Subject Class<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                     </svg>
                                     </button>
 
                                     <!-- Dropdown menu -->
                                     <div id="grade-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
-                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeBtn">
+                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="subjecUnitBtn">
                                         <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 1')">Grade 1</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeText('Grade 1: Mathematics (Halimuyak)')">Grade 1: Mathematics (Halimuyak)</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 2')">Grade 2</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeText('Grade 2: Mathematics (Mabantut)')">Grade 2: Mathematics (Mabantut)</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 3')">Grade 3</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeText('Grade 3: Mathematics (Makati)')">Grade 3: Mathematics (Makati)</a>
                                         </li>
                                         </ul>
 
                                         <script>
-                                            function changeGrade(newText) {
-                                                document.getElementById('gradeBtn').innerText = newText;
+                                            function changeText(newText) {
+                                                document.getElementById('subjecUnitBtn').innerText = newText;
                                                 event.preventDefault(newText);
                                                 // You can also close the dropdown if needed
                                                 // document.getElementById('quarter-dropdown').classList.add('hidden');
@@ -457,8 +390,8 @@
                                 <div class="flex items-center lg:space-x-3 space-x-1 w-full md:w-auto">
 
                                     <!-- Needs to be dynamic navigating the exact number of officially enrolled, temporarily enrolled, and dropped mark on the table below -->
-                                    <button id="filterDropdownButton" data-dropdown-toggle="filterDropdown" class="w-full md:w-auto font-mulish items-center justify-center lg:text-sm text-xs py-2.5 lg:px-6 md:px-2 px-4 font-medium flex text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600" type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-4 w-4 mr-2 text-gray-400" viewbox="0 0 20 20" fill="white">
+                                    <button id="filterDropdownButton" data-dropdown-toggle="filterDropdown" class="w-full md:w-auto font-mulish items-center justify-center lg:text-sm text-xs py-2.5 lg:px-6 md:px-2 px-4 flex text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-3.5 w-3.5 mr-2 text-gray-400 items-center" viewbox="0 0 20 20" fill="white">
                                             <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
                                         </svg>
                                         Filter
@@ -756,13 +689,44 @@
 
                             </div>
                             
-                            <!-- 4 filter dropdowns for Grade level, Section, Subject, and Quarter -->
+                            <!-- 2 filter dropdowns for Grade level, Section, Subject, and Quarter -->
                             <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
 
                                 <div class="flex items-center lg:space-x-3 space-x-1 w-full md:w-auto">
 
+                                    <!-- Needs to be dynamic for teacher to be able to only navigate the only subject unit in the given grade level that he/she is handling  --
+                                    <!-- Grade Level Button -->
+                                    <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-7 py-2.5 text-center inline-flex items-center" type="button">Subject Class<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                    </button>
+
+                                    <!-- Dropdown menu -->
+                                    <div id="grade-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
+                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeBtn">
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 1: Mathematics (Halimuyak)')">Grade 1: Mathematics (Halimuyak)</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 2: Mathematics (Mabantut)')">Grade 2: Mathematics (Mabantut)</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 2: Mathematics (Makati)')">Grade 3: Mathematics (Makati)</a>
+                                        </li>
+                                        </ul>
+
+                                        <script>
+                                            function changeGrade(newText) {
+                                                document.getElementById('gradeBtn').innerText = newText;
+                                                // You can also close the dropdown if needed
+                                                // document.getElementById('quarter-dropdown').classList.add('hidden');
+                                            }
+                                        </script>
+
+                                    </div>
+
                                     <!-- Needs to be dynamic for teachers to navigate quarters from 1 to 4 of the given subject from the grade and section that he/she handles-->
-                                    <button id="quarterBtn" data-dropdown-toggle="quarter-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-4 py-2 text-center inline-flex items-center" type="button">
+                                    <button id="quarterBtn" data-dropdown-toggle="quarter-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
                                     Quarter
                                     <svg class="w-2.5 h-2.5 ms-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -793,101 +757,6 @@
                                                 // document.getElementById('quarter-dropdown').classList.add('hidden');
                                             }
                                         </script>
-                                    </div>
-                                    
-                                    <!-- Needs to be dynamic as well. This would trigger upon the selection of section navigating all the given subject unit that the teacher had on that specific section -->
-                                    <!-- Subject Button -->
-                                    <button id="subjectBtn" data-dropdown-toggle="subject-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-4 py-2 text-center inline-flex items-center" type="button">
-                                    Subject
-                                    <svg class="w-2.5 h-2.5 ms-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                                    </svg>
-                                    </button>
-
-                                    <!-- Dropdown menu -->
-                                    <div id="subject-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
-                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="subjectBtn">
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSubject('Subject 1')">Subject 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSubject('Subject 2')">Subject 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSubject('Subject 3')">Subject 3</a>
-                                        </li>
-                                        </ul>
-
-                                        <script>
-                                            function changeSubject(newText) {
-                                                document.getElementById('subjectBtn').innerText = newText;
-                                                // You can also close the dropdown if needed
-                                                // document.getElementById('quarter-dropdown').classList.add('hidden');
-                                            }
-                                        </script>
-
-                                    </div>
-                                    
-                                    <!-- Needs to be dynamic as well. This would trigger upon the selection of grade level navigating all the given section that the teacher had a subject unit that given grade level  -->
-                                    <!-- Section Level Button -->
-                                    <button id="sectionBtn" data-dropdown-toggle="section-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-4 py-2 text-center inline-flex items-center" type="button">Section<svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                                    </svg>
-                                    </button>
-
-                                    <!-- Dropdown menu -->
-                                    <div id="section-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
-                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="sectionBtn">
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSection('Section 1')">Section 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSection('Section 2')">Section 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeSection('Section 3')">Section 3</a>
-                                        </li>
-                                        </ul>
-
-                                        <script>
-                                            function changeSection(newText) {
-                                                document.getElementById('sectionBtn').innerText = newText;
-                                                // You can also close the dropdown if needed
-                                                // document.getElementById('quarter-dropdown').classList.add('hidden');
-                                            }
-                                        </script>
-
-                                    </div>
-                                    
-                                    <!-- Needs to be dynamic for teacher to be able to only navigate the only subject unit in the given grade level that he/she is handling  --
-                                    <!-- Grade Level Button -->
-                                    <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-4 py-2 text-center inline-flex items-center" type="button">Grade<svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                                    </svg>
-                                    </button>
-
-                                    <!-- Dropdown menu -->
-                                    <div id="grade-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
-                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeBtn">
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 1')">Grade 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 2')">Grade 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeGrade('Grade 3')">Grade 3</a>
-                                        </li>
-                                        </ul>
-
-                                        <script>
-                                            function changeGrade(newText) {
-                                                document.getElementById('gradeBtn').innerText = newText;
-                                                // You can also close the dropdown if needed
-                                                // document.getElementById('quarter-dropdown').classList.add('hidden');
-                                            }
-                                        </script>
-
                                     </div>
 
                                 </div>
