@@ -19,7 +19,7 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-    
+    /** 
      DB::table('students')->insert([
           
        
@@ -54,11 +54,11 @@ class StudentSeeder extends Seeder
 
             'status' => '2',
             // Add the rest of the fields here.
-        ]);
+        ]);*/
         
         
-        /*
-        Student::factory(1)->create();
-        */
+        
+        Student::factory(100)->create();
+    
     }
 }

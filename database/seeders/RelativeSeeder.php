@@ -13,7 +13,7 @@ use App\Models\Mothers;
 use App\Models\Fathers;
 use App\Models\Guardians;
 
-class StudentSeeder extends Seeder
+class RelativeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
