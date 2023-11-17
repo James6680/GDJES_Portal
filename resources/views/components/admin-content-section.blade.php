@@ -2730,7 +2730,7 @@
             </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
 
             <!-- Create SY Button -->
-            <button data-modal-target="createSYModal" data-modal-toggle="createSYModal" type="button" class="my-2 text-black bg-green-50 hover:bg-green-100 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-5 py-2.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+            <button id="add-school-year-form-show" data-modal-target="createSYModal" data-modal-toggle="createSYModal" type="button" class="my-2 text-black bg-green-50 hover:bg-green-100 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-5 py-2.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
               <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
               </svg>
@@ -2835,7 +2835,7 @@
             </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
 
             <!-- Create SY Button -->
-            <button data-modal-target="createSYModal" data-modal-toggle="createSYModal" type="button" class="my-2 text-black bg-green-50 hover:bg-green-100 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-5 py-2.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+            <button id="add-school-year-form-show" data-modal-target="createSYModal" data-modal-toggle="createSYModal" type="button" class="my-2 text-black bg-green-50 hover:bg-green-100 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-5 py-2.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
               <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
               </svg>

@@ -10,10 +10,13 @@ class SchoolYearController extends Controller
     //
 
     public function addSchoolYear(Request $request){
-        $year = $request->input('schoolYear') . "-" . $request->input('schoolYear')+1;
+        if (!is_numeric($request->input('schoolYear'))) {
+            $year = 'error';
+        }else{
+            $year = $request->input('schoolYear') . "-" . $request->input('schoolYear')+1;
+        }
         $request->merge(['schoolYear' => $year]);
-
-        $validatedData = $request->validate([
+        $request->validate([
             'schoolYear' => ['required', 'regex:/^(20[0-9][0-9])-(2[0-9][0-9][0-9])$/','unique:school_years,school_year'],
             'requiredDays' => 'required|numeric|min:200|max:300',
         ]);
