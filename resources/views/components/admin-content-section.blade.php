@@ -956,7 +956,237 @@
 
 
   @elseif(request()->is('admin.document-request') )
-  <p>document-</p>
+  <!-- Admin Document Requests Management Main Content Container -->
+  <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
+    <form action="#" class="w-full h-full divide-y divide-gray-200 gap-4 md:gap-5 lg:gap-6 p-4 md:p-8 flex flex-col bg-white outline outline-1 outline-brown-100 rounded-lg">
+      <!-- Header Content -->
+      <div class="flex flex-col gap-2 pt-4 ">
+        <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Document Requests Management</h3>
+        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Efficiently handle student document requests with a clear interface. Streamline the document flow for a seamless administrative process.</p>
+      </div> <!-- End of Header Content -->
+
+      
+      <div class="flex flex-col w-full pt-4 gap-4">
+        <!-- Document requests guide -->
+        <div class="w-full flex items-start p-5 text-sm font-mulish border border-yellow-500 text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
+          <svg 
+            class="flex-shrink-0 inline w-5 h-5 mr-2" 
+            aria-hidden="true" 
+            xmlns="http://www.w3.org/2000/svg" 
+            fill="currentColor" 
+            viewBox="0 0 20 20">    
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+
+
+          <div>
+            <h2 class="mb-2 -mt-0.5 text-base font-semibold text-yellow-800  dark:text-white">
+              Document Requests - Status Guidelines
+            </h2>
+            <ul class="space-y-1 -ml-3 text-sm text-yellow-600  list-disc">
+              <li>
+                <strong>For Validation:</strong> Admin received the request and is in the process of checking the student's eligibility.
+              </li>
+              <li>
+                <strong>Passing of Documents:</strong> Specifically for School Form 10 requests. The student needs to acquire the request form from the school they intend to transfer to.
+              </li>
+              <li>
+                <strong>For Claiming:</strong> Document is ready for the student to claim. Streamline the process by efficiently categorizing requests into these clear statuses for effective management.
+              </li>
+            </ul>
+          </div>
+        </div> <!-- End of Document requests guide -->
+
+        <!-- Document requests table functions - all -->
+        <div class="grid grid-cols-1 sm:grid-cols-2">
+          <!-- Document requests table functions - search and sort -->
+          <div class="flex sm:flex-row gap-4 flex-col w-full py-4 items-center">
+
+            <!-- Sort Dropdown -->
+            <div class="flex h-full">
+
+              <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path>
+                </svg>
+                Request Status
+                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+              </button>
+
+              <!-- Dropdown menu for sort -->
+              <div id="dropdownRadio" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
+                <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioButton">
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input checked="" id="filter-radio-example-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For validation</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-2" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Passing of documents</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For claiming</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-4" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-4" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Denied</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-5" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-5" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Completed</label>
+                    </div>
+                  </li>
+                </ul>
+              </div> <!-- End of Dropdown menu for sort -->
+            </div> <!-- End of Sort Dropdown -->
+
+            <!-- Search bar -->
+            <div class="flex items-center w-auto justify-between flex-column md:flex-row flex-wrap bg-white dark:bg-gray-900">
+              <div class="relative flex flex-row w-auto mt-0">
+                <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                  </svg>
+                </div>
+                <input type="text" id="table-search-doc-reqs" class="w-auto block ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search for requests">
+              </div>
+            </div> <!-- End of Search bar -->
+
+
+          </div> <!-- End of Table functions - search and sort -->
+
+        </div> <!-- End of Table functions - all -->
+
+        <!-- Document Requests Table -->
+        <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
+        
+          <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
+
+            <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" class="px-6 py-3">
+                  REQUEST NUMBER
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  STUDENT NAME
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  DOCUMENT REQUESTED
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  REQUEST STATUS
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+                <td class="px-6 py-4">
+                  1
+                </td>
+                <td class="px-6 py-4">
+                  Last Name, First Name Middle Name
+                </td>
+                <td class="px-6 py-4">
+                  Certificate of enrollment
+                </td>
+                <td class="px-6 py-4">
+                  <button id="dropdownReqStatusButton" data-dropdown-toggle="dropdownReqStatus" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M243.33,90.91,114.92,219.31a16,16,0,0,1-22.63,0l-71.62-72a16,16,0,0,1,0-22.61l24-24a16,16,0,0,1,22.57-.06l36.64,35.27.11.11h0l92.73-91.37a16,16,0,0,1,22.58,0l24,23.56A16,16,0,0,1,243.33,90.91Z"></path>
+                    </svg>                    
+                    For validation
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+
+        </div> <!-- End of Table -->
+
+        <!-- Dropdown menu for Requirement Status -->
+        <div id="dropdownReqStatus" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
+          <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownReqStatus">
+            <li>
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input checked="" id="dropdownReqStatus-example-1" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="dropdownReqStatus-example-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For validation</label>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input id="dropdownReqStatus-example-2" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="dropdownReqStatus-example-2" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Passing of documents</label>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input id="dropdownReqStatus-example-3" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="dropdownReqStatus-example-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For claiming</label>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input id="dropdownReqStatus-example-4" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="dropdownReqStatus-example-4" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Denied</label>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input id="dropdownReqStatus-example-5" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="dropdownReqStatus-example-5" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Completed</label>
+              </div>
+            </li>
+          </ul>
+        </div> <!-- End of Dropdown menu for Requirement Status -->
+
+        <!-- Pagination -->
+        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+          <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-black dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">345</span></span>
+            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+              </li>
+              <li>
+                <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-green-600 border border-gray-300 bg-green-50 hover:bg-green-100 hover:text-green-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+              </li>
+            </ul>
+        </nav> <!-- End of Pagination -->
+
+      </div>
+
+    </form>
+  </section> <!-- End of Admin School Information Main Content Container -->
 
 
 
@@ -3095,7 +3325,7 @@
 
         </div>
 
-\
+
         <!-- Start SY Modal -->
         <div id="startSYModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-md max-h-full">
