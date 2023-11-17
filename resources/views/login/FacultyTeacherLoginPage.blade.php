@@ -236,7 +236,7 @@
                             
                         </div>
                         
-                        <a class="[text-decoration:none] self-stretch relative text-xs text-green-500 text-center" id="myBtn">
+                        <a class="[text-decoration:none] self-stretch relative text-xs text-brown-500 text-center" id="myBtn">
                         <span class="font-button">Forgot your password? </span>
 
                             <b class="font-button" id="forgotPasword_link">

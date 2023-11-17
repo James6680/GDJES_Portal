@@ -251,7 +251,7 @@
 
                             <b class="font-button" id="forgotPasword_link">
                                 
-                                <span class="[text-decoration:underline] hover:text-green-900 cursor-pointer">Click here</span>
+                                <span class="[text-decoration:underline] hover:text-brown-900 cursor-pointer">Click here</span>
                             
                             </b>
                         </a>
