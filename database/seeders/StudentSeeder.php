@@ -19,7 +19,7 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-    /** 
+    /*
      DB::table('students')->insert([
           
        
@@ -27,7 +27,7 @@ class StudentSeeder extends Seeder
             'psa_birthcert_no' => '012345',
             'lrn' => '012345',
 
-            'last_name' => 'Rizal',
+            'last_name' => 'Rizall',
             'first_name' => 'Jose',
             'middle_name' => 'Protacio',
             'extension_name' => 'Sr',
