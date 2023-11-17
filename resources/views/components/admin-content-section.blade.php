@@ -1036,6 +1036,18 @@
                       <label for="filter-radio-example-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For claiming</label>
                     </div>
                   </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-4" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-4" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Denied</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-5" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-5" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Completed</label>
+                    </div>
+                  </li>
                 </ul>
               </div> <!-- End of Dropdown menu for sort -->
             </div> <!-- End of Sort Dropdown -->
@@ -1054,24 +1066,7 @@
 
 
           </div> <!-- End of Table functions - search and sort -->
-          
-          <!-- Table functions - add user -->
-          <div class="grid justify-items-center sm:justify-items-end gap-4 w-full pb-4 sm:py-4 ">
-            <button data-modal-target="createTeacherUserModal" 
-                    data-modal-toggle="createTeacherUserModal" 
-                    type="button" 
-                    class="h-full text-white bg-brown-500 hover:bg-brown-700 focus:ring-4 focus:outline-none focus:ring-brown-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
-              
-                    <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
-                
-                      <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
-              
-                    </svg>
-            
-                    Add Teacher Account
-            </button>
 
-          </div> <!-- End of Table functions - add user -->
         </div> <!-- End of Table functions - all -->
 
         <!-- Document Requests Table -->
@@ -1107,10 +1102,10 @@
                   Certificate of enrollment
                 </td>
                 <td class="px-6 py-4">
-                  <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                  <button id="dropdownReqStatusButton" data-dropdown-toggle="dropdownReqStatus" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                     <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path>
-                    </svg>
+                    <path d="M243.33,90.91,114.92,219.31a16,16,0,0,1-22.63,0l-71.62-72a16,16,0,0,1,0-22.61l24-24a16,16,0,0,1,22.57-.06l36.64,35.27.11.11h0l92.73-91.37a16,16,0,0,1,22.58,0l24,23.56A16,16,0,0,1,243.33,90.91Z"></path>
+                    </svg>                    
                     For validation
                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -1120,11 +1115,45 @@
               </tr>
             </tbody>
 
-
-
           </table>
 
         </div> <!-- End of Table -->
+
+        <!-- Dropdown menu for Requirement Status -->
+        <div id="dropdownReqStatus" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
+          <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownReqStatus">
+            <li>
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input checked="" id="dropdownReqStatus-example-1" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="dropdownReqStatus-example-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For validation</label>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input id="dropdownReqStatus-example-2" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="dropdownReqStatus-example-2" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Passing of documents</label>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input id="dropdownReqStatus-example-3" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="dropdownReqStatus-example-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For claiming</label>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input id="dropdownReqStatus-example-4" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="dropdownReqStatus-example-4" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Denied</label>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input id="dropdownReqStatus-example-5" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="dropdownReqStatus-example-5" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Completed</label>
+              </div>
+            </li>
+          </ul>
+        </div> <!-- End of Dropdown menu for Requirement Status -->
 
         <!-- Pagination -->
         <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
