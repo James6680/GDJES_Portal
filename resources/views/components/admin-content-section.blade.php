@@ -966,7 +966,7 @@
       </div> <!-- End of Header Content -->
 
       
-      <div class="flex flex-col w-full pt-4">
+      <div class="flex flex-col w-full pt-4 gap-4">
         <!-- Document requests guide -->
         <div class="w-full flex items-start p-5 text-sm font-mulish border border-yellow-500 text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
           <svg 
@@ -1009,7 +1009,7 @@
                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path>
                 </svg>
-                For validation
+                Request Status
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                 </svg>
@@ -1041,20 +1041,20 @@
             </div> <!-- End of Sort Dropdown -->
 
             <!-- Search bar -->
-            <div class="flex items-center justify-between flex-column md:flex-row flex-wrap bg-white dark:bg-gray-900">
-              <label for="table-search-doc-reqs" class="sr-only">Search document requests</label>
-              <div class="relative w-max-64 mt-0">
+            <div class="flex items-center w-auto justify-between flex-column md:flex-row flex-wrap bg-white dark:bg-gray-900">
+              <div class="relative flex flex-row w-auto mt-0">
                 <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                   <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                   </svg>
                 </div>
-                <input type="text" id="table-search-doc-reqs" class="sm:w-max-64 block ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search for document requests">
+                <input type="text" id="table-search-doc-reqs" class="w-auto block ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search for requests">
               </div>
             </div> <!-- End of Search bar -->
 
 
           </div> <!-- End of Table functions - search and sort -->
+          
           <!-- Table functions - add user -->
           <div class="grid justify-items-center sm:justify-items-end gap-4 w-full pb-4 sm:py-4 ">
             <button data-modal-target="createTeacherUserModal" 
