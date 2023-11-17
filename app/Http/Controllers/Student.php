@@ -23,6 +23,6 @@ class Student extends Controller
     }//end login method
     public function StudentSignout(){
         Auth::guard('students')->logout();
-        return redirect()->route('students_login_from')->with('error', 'Admin Logout Successfully');
+        return redirect()->route('students_login_from')->with('error', 'Student Logout Successfully');
     }//end index method
 }
