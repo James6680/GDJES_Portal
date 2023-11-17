@@ -25,7 +25,10 @@ class AdminController extends Controller
     public function Signout(){
         Auth::guard('admin')->logout();
         return redirect()->route('login_from')->with('error', 'Admin Logout Successfully');
-    }//end index method
+    }//end signout method
+    public function CreateTeacher(){
+        return view('admin.teacher-management.create');
+    }//end signout method
     
 }
 

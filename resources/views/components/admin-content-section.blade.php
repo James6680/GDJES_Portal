@@ -2123,7 +2123,9 @@
       </div>
       
     </div>
-  
+    
+    @include('scripts_with_ajax')   {{--added--}}
+
   </section> <!-- End of Admin Teacher Accounts Main Content Container -->
   
 

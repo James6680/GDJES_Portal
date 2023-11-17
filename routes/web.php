@@ -33,6 +33,9 @@ Route::prefix('admin')->group(function(){
     Route::get('/login',[AdminController::class, 'Index'])->name('login_from');
     Route::post('/login/owner',[AdminController::class, 'Login'])->name('admin.login');
     Route::get('/signout',[AdminController::class, 'Signout'])->name('admin.signout');
+    Route::post('/create-teacher',[AdminController::class, 'CreateTeacher'])
+    ->name('admin.teacher-management.create');//added
+
     
 });
 /*----------------End Added Admin Routes-----------------------*/
@@ -48,12 +51,13 @@ Route::get('admin.dashboard', function () {
 Route::get('admin.announcements', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.announcements');
+
 Route::post('admin.announcements.edit', [AnnouncementController::class, 'editAnnouncement'])
-    ->name('admin.announcements.edit');
+    ->name('admin.announcements.edit')->middleware('admin');
 Route::post('admin.announcements.create', [AnnouncementController::class, 'addAnnouncement'])
-    ->name('admin.announcements.create');
+    ->name('admin.announcements.create')->middleware('admin');
 Route::post('admin.announcements.delete', [AnnouncementController::class, 'deleteAnnouncement'])
-    ->name('admin.announcements.delete');
+    ->name('admin.announcements.delete')->middleware('admin');
 
 Route::get('admin.document-request', function () {
     return view('layouts.admin');
@@ -66,6 +70,8 @@ Route::get('admin.student-management', function () {
 Route::get('admin.teacher-management', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.teacher-management');
+
+
 
 Route::get('admin.enrollment-management', function () {
     return view('layouts.admin');
