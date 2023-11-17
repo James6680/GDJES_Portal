@@ -33,14 +33,14 @@ Route::prefix('admin')->group(function(){
     Route::get('/login',[AdminController::class, 'Index'])->name('login_from');
     Route::post('/login/owner',[AdminController::class, 'Login'])->name('admin.login');
     Route::get('/signout',[AdminController::class, 'Signout'])->name('admin.signout');
-    Route::post('/create-teacher',[AdminController::class, 'CreateTeacher'])
-    ->name('admin.teacher-management.create');//added
+  
 
     
 });
 /*----------------End Added Admin Routes-----------------------*/
 //R: FIX THE ADMIN ROUTES AND ADD THE OTHER ROUTES FOR THE OTHER USERS
 //- :ADD EMAIL FOR RESETTIN PASSWORD IN DATABASE TABLE
+
 
 
 // Admin Routes
@@ -71,6 +71,8 @@ Route::get('admin.teacher-management', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.teacher-management');
 
+Route::post('admin.teacher-management.add',[AdminController::class, 'CreateTeacher'])
+->name('admin.teacher-management.add');//added
 
 
 Route::get('admin.enrollment-management', function () {

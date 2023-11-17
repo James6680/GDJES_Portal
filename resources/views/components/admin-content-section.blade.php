@@ -1034,7 +1034,11 @@
         </div> <!-- End of Table functions - search and sort -->
         <!-- Table functions - add user -->
         <div class="grid justify-items-center sm:justify-items-end gap-4 w-full pb-4 sm:py-4 ">
-          <a href="#" data-modal-target="addStudentUserModal" data-modal-show="addStudentUserModal" type="button" class="h-full text-white bg-brown-500 hover:bg-brown-700 focus:ring-4 focus:outline-none focus:ring-brown-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
+          <a href="#" 
+              data-modal-target="addStudentUserModal" 
+              data-modal-show="addStudentUserModal" 
+              type="button" 
+              class="h-full text-white bg-brown-500 hover:bg-brown-700 focus:ring-4 focus:outline-none focus:ring-brown-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
             <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
               <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
             </svg>
@@ -1153,10 +1157,14 @@
       </nav> <!-- End of Pagination -->
 
       <!-- Add student user modal -->
-      <div id="addStudentUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div id="addStudentUserModal" 
+           tabindex="-1" 
+           aria-hidden="true" 
+           class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
           <!-- Modal content -->
-          <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <form action="#" 
+                class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
               <h3 class="text-xl font-semibold text-black dark:text-white">
@@ -2375,12 +2383,20 @@
         </div> <!-- End of Table functions - search and sort -->
         <!-- Table functions - add user -->
         <div class="grid justify-items-center sm:justify-items-end gap-4 w-full pb-4 sm:py-4 ">
-          <button data-modal-target="createTeacherUserModal" data-modal-toggle="createTeacherUserModal" type="button" class="h-full text-white bg-brown-500 hover:bg-brown-700 focus:ring-4 focus:outline-none focus:ring-brown-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
-            <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
-              <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
-            </svg>
-            Add Teacher Account
+          <button data-modal-target="createTeacherUserModal" 
+                  data-modal-toggle="createTeacherUserModal" 
+                  type="button" 
+                  class="h-full text-white bg-brown-500 hover:bg-brown-700 focus:ring-4 focus:outline-none focus:ring-brown-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
+            
+                  <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+              
+                    <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
+            
+                  </svg>
+           
+                  Add Teacher Account
           </button>
+
         </div> <!-- End of Table functions - add user -->
       </div> <!-- End of Table functions - all -->
 
@@ -2492,14 +2508,23 @@
       </nav> <!-- End of Pagination -->
       
       <!-- Create teacher user modal -->
-      <div id="createTeacherUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-          <div class="relative w-full max-w-2xl max-h-full">
+      <div id="createTeacherUserModal" 
+            tabindex="-1" 
+            aria-hidden="true" 
+            class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+          
+            <div class="relative w-full max-w-2xl max-h-full">
               <!-- Modal content -->
-              <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <form action="{{ route('admin.teacher-management.add') }}" 
+                    method="post"
+                    id="createTeacher"
+                    class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+                    >
+                    @csrf
                   <!-- Modal header -->
                   <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                       <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                          Create teacher user
+                          Create Teacher Account
                       </h3>
                     <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="createTeacherUserModal">
                       <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -2511,43 +2536,239 @@
                   <!-- Modal body -->
                   <div class="p-6 space-y-6">
                       <div class="grid grid-cols-6 gap-6">
+                          <!--Lastname-->
+                        <div class="col-span-6 sm:col-span-3">
+                          <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Lastname</label>
+                          <input type="text" 
+                                name="last_name" 
+                                id="last_name" 
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                placeholder="" 
+                                required="">
+                      </div>
+                      <!--Firstname-->
                           <div class="col-span-6 sm:col-span-3">
-                              <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
-                              <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Bonnie" required="">
+                            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                              First Name
+                            </label>
+                            <input type="text" 
+                                  name="first_name" 
+                                  id="first_name" 
+                                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                  placeholder="Bonnie" 
+                                  required="">
+                        </div>
+                        
+                        <!--Middlename-->
+                            <div class="col-span-6 sm:col-span-3">
+                              <label for="middlename" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Middle Name
+                              </label>
+                              <input type="text" 
+                                    name="middle_name" 
+                                    id="middle_name" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    placeholder="Bonnie" 
+                                    required="">
                           </div>
+                        <!--Extension Name-->
+                            <div class="col-span-6 sm:col-span-3">
+                              <label for="extension_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Extension Name</label>
+                              <input type="text" 
+                                    name="extension_name" 
+                                    id="extension_name" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    placeholder="Sr" 
+                                    required=""
+                              >
+                            </div>
+
                           <div class="col-span-6 sm:col-span-3">
-                              <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
-                              <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Green" required="">
+                              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Email
+                              </label>
+                              <input type="email" 
+                                    name="email" 
+                                    id="email" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    placeholder="example@company.com" 
+                                    required=""
+                              >
                           </div>
+                          <!-- Add Profile Picture Input -->
                           <div class="col-span-6 sm:col-span-3">
-                              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                              <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="example@company.com" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
-                              <input type="number" name="phone-number" id="phone-number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="e.g. +(12)3456 789" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
-                              <input type="text" name="department" id="department" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Development" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company</label>
-                              <input type="number" name="company" id="company" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="123456" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="current-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Current Password</label>
-                              <input type="password" name="current-password" id="current-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="••••••••" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="new-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
-                              <input type="password" name="new-password" id="new-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="••••••••" required="">
-                          </div>
+                            <label for="profile_picture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Profile Picture
+                            </label>
+                            <input type="file" 
+                                name="profile_picture" 
+                                id="profile_picture" 
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                accept="image/*"
+                            >
+                        </div>
+                        
+                        <!-- Birthdate -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="birth_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Birthday
+                            </label>
+                            <input type="date" 
+                                    name="birth_date" 
+                                    id="birth_date" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Age -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Age
+                            </label>
+                            <input type="number" 
+                                    name="age" 
+                                    id="age" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Gender -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Gender
+                            </label>
+                            <select name="gender" 
+                                    id="gender" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required="">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Phone Number -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Phone Number
+                            </label>
+                            <input type="tel" 
+                                    name="phone_number" 
+                                    id="phone_number" 
+                                    pattern="[0-9]{11}" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    placeholder="639xxxxxxxxx" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Address -->
+                        <!-- House Number -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="house_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                House Number
+                            </label>
+                            <input type="text" 
+                                    name="house_number" 
+                                    id="house_number" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Street -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="street" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Street
+                            </label>
+                            <input type="text" 
+                                    name="street" 
+                                    id="street" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Barangay -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="barangay" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Barangay
+                            </label>
+                            <input type="text" 
+                                    name="barangay" 
+                                    id="barangay" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Municipality -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="municipality" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Municipality
+                            </label>
+                            <input type="text" 
+                                    name="municipality" 
+                                    id="municipality" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Province -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="province" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Province
+                            </label>
+                            <input type="text" 
+                                    name="province" 
+                                    id="province" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Region -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="region" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Region
+                            </label>
+                            <input type="text" 
+                                    name="region" 
+                                    id="region" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Facebook Link -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="facebook_link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Facebook Link
+                            </label>
+                            <input type="text" 
+                                    name="facebook_link" 
+                                    id="facebook_link" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    placeholder="https://www.facebook.com/example" 
+                                    required=""
+                            >
+                        </div>
+                    
                       </div>
                   </div>
                   <!-- Modal footer -->
                   <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
+                      <button type="submit" 
+                              id="addTeacher"
+                              data-modal-hide="createTeacherUserModal"
+                              class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                              
+                              Save all
+                      </button>
                   </div>
               </form>
           </div>
