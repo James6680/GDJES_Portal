@@ -965,8 +965,9 @@
         <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Efficiently handle student document requests with a clear interface. Streamline the document flow for a seamless administrative process.</p>
       </div> <!-- End of Header Content -->
 
-      <!-- Document requests guide -->
+      
       <div class="flex flex-col w-full pt-4">
+        <!-- Document requests guide -->
         <div class="w-full flex items-start p-5 text-sm font-mulish border border-yellow-500 text-yellow-600 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800">
           <svg 
             class="flex-shrink-0 inline w-5 h-5 mr-2" 
@@ -994,6 +995,10 @@
             </ul>
           </div>
         </div> <!-- End of Document requests guide -->
+
+        <!-- Document requests table -->
+        
+
       </div>
 
       
