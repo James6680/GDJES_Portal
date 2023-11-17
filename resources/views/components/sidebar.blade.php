@@ -56,7 +56,7 @@
         @if($user == 'Faculty')
         <div class="hidden sm:flex flex-col justify-center p-0 items-start pt-2 xl:pl-36  gap-0 text-black">
           <p class="self-stretch font-mulish text-sm font-normal leading-none">
-            Advisory class for S.Y xxxx-xxxx
+            Advisory class for S.Y XXXX-XXXX
           </p>
           <h2 class="font-frl lg:text-lg text-md font-bold leading-none"> 
             Grade # - Section
