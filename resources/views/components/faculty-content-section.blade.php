@@ -14,7 +14,7 @@
                 <ul class="m-o p-0 text-white" id="announcement-list">
 
                     <li class="p-0 m-0">
-                        <span class="font-mulish font-semibold text-2xl sm:text-3xl ">Announcements</span>
+                        <span class="font-semibold text-2xl sm:text-3xl ">Announcements</span>
                     </li>
                 </ul>
             </div>
@@ -459,8 +459,8 @@
                                         <td class="px-4 py-3">Male</td>
                                         <td class="px-4 py-3">10-26-2001</td>
                                         <td class="px-4 py-3">
-                                            <p data-modal-target="small-modal" data-modal-toggle="modal1" class="inline-flex items-center cursor-pointer uppercase text-base font-medium text-center text-blue-700 hover:text-blue-400">
-                                                edit
+                                            <p data-modal-target="small-modal" data-modal-toggle="modal1" class="inline-flex items-center cursor-pointer text-sm font-medium text-center text-blue-700 hover:text-blue-400">
+                                                Edit
                                             </p>
 
                                             <div id="modal1" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -512,7 +512,7 @@
                                             </div>
                                         </td>
                                         <td class="px-4 py-3">
-                                            <button data-popover-target="popover-click" data-popover-placement="left" data-popover-trigger="click" type="button" class="text-blue-700 border     border-blue-700 hover:bg-blue-100 font-medium rounded text-sm  px-4 py-1 text-center " id="statusButton1">
+                                            <button data-popover-target="popover-click" data-popover-placement="left" data-popover-trigger="click" type="button" class="text-blue-700 border  border-blue-700 hover:bg-blue-100 font-medium rounded text-sm px-4 py-1 text-center" id="statusButton1">
                                                 Null
                                             </button>
 
@@ -536,8 +536,8 @@
                                         <td class="px-4 py-3">Male</td>
                                         <td class="px-4 py-3">10-36-2001</td>
                                         <td class="px-4 py-3">
-                                            <p data-modal-target="small-modal" data-modal-toggle="modal2" class="inline-flex items-center cursor-pointer uppercase text-base font-medium text-center text-blue-700 hover:text-blue-400">
-                                                edit
+                                            <p data-modal-target="small-modal" data-modal-toggle="modal2" class="inline-flex items-center cursor-pointer  text-sm font-medium text-center text-blue-700 hover:text-blue-400">
+                                                Edit
                                             </p>
 
                                             <div id="modal2" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -589,7 +589,7 @@
                                             </div>
                                         </td>
                                         <td class="px-4 py-3">
-                                            <button data-popover-target="popover-click2" data-popover-placement="left" data-popover-trigger="click" type="button" class="text-blue-700 border     border-blue-700 hover:bg-blue-100 font-medium rounded text-sm px-4 py-1 text-center btn2" id="statusButton2">
+                                            <button data-popover-target="popover-click2" data-popover-placement="left" data-popover-trigger="click" type="button" class="text-blue-700 border border-blue-700 hover:bg-blue-100 font-medium rounded text-sm px-4 py-1 text-center btn2" id="statusButton2">
                                                 Null
                                             </button>
 
