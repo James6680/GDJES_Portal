@@ -214,3 +214,7 @@ Route::get('/forget-password', function(){
 Route::get('/Admin.login', function(){
     return view('admin.login');
 });
+
+Route::get('/Random.login', function(){
+    return view('login.random');
+});

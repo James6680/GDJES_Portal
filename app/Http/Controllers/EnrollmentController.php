@@ -14,7 +14,6 @@ use App\Models\Enrollment;
 use App\Models\LearningInfo;
 use App\Models\EnrollmentForm;
 use App\Models\DocumentRequirements;
-
 class EnrollmentController extends Controller
 {
     //
@@ -47,7 +46,6 @@ class EnrollmentController extends Controller
         }else{
             return redirect()->route('enrollment.StudentportalRegistrationPage3');
         }
-
     }
 
     public function getEnrollment1(Request $request)
@@ -75,15 +73,9 @@ class EnrollmentController extends Controller
             'lastSchoolAttended' => 'required',
             'lastSchoolYearAttended' => 'required',
         ]);
-        if(empty($request->session()->get('enrollment'))){
-            $enrollment = new EnrollmentForm();
-            $enrollment->fill($validatedData);
-            $request->session()->put('enrollment', $enrollment);
-        }else{
             $enrollment = $request->session()->get('enrollment');
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
-        }
         return redirect()->route('enrollment.StudentportalRegistrationPage3');
     }
 
@@ -111,7 +103,7 @@ class EnrollmentController extends Controller
     {
         $validatedData = $request->validate([
             'grade_level' => 'nullable',
-            'school_year_id' => 'required', //change from school_year to school_year_id
+            'school_year' => 'nullable', //change from school_year to school_year_id
             'lrn_status' => 'required',
             'lrn_number' => 'nullable',
             'psa_birth_cert' => 'nullable',
@@ -135,15 +127,9 @@ class EnrollmentController extends Controller
             'street_text' => 'required',
             'house_number' => 'nullable',
         ]);
-        if(empty($request->session()->get('enrollment'))){
-            $enrollment = new EnrollmentForm();
-            $enrollment->fill($validatedData);
-            $request->session()->put('enrollment', $enrollment);
-        }else{
             $enrollment = $request->session()->get('enrollment');
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
-        }
         return redirect()->route('enrollment.StudentportalRegistrationPage4');
     }
 
@@ -186,16 +172,9 @@ class EnrollmentController extends Controller
             "fourps" => 'required',
             "fourps_id" => 'nullable',
         ]);
-
-        if(empty($request->session()->get('enrollment'))){
-            $enrollment = new EnrollmentForm();
-            $enrollment->fill($validatedData);
-            $request->session()->put('enrollment', $enrollment);
-        }else{
             $enrollment = $request->session()->get('enrollment');
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
-        }
         return redirect()->route('enrollment.StudentportalRegistrationPage4');
     }
 
@@ -221,17 +200,10 @@ class EnrollmentController extends Controller
             "learning_info" => 'required',
             "distance_learning" => 'required',    
         ]);
-        if(empty($request->session()->get('enrollment'))){
-            $enrollment = new EnrollmentForm();
-            $enrollment->fill($validatedData);
-            $request->session()->put('enrollment', $enrollment);
-        }else{
             $enrollment = $request->session()->get('enrollment');
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
-        }
-
-        $returnval = '';
+        // $returnval = '';
         $this->createStudentInDatabase($enrollment);
         //  return view('checking',compact('returnval')) ////FOR CHECKING;
         return redirect()->route('enrollment.StudentportalRegistrationCompletedPage'); 

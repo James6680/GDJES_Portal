@@ -22,7 +22,11 @@
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
+  <style>
+    table input {
+      max-width: 25px;  
+    }
+  </style>
 </head>
   
 <body class="min-w-full grid grid-flow-col justify-start h-screen pt-16 bg-green-50">
