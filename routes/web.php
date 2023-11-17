@@ -1,14 +1,15 @@
 <?php
 
+use App\Http\Controllers\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\EnrollmentController;
-use App\Http\Controllers\AnnouncementController;
-
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Student;
+use App\Http\Controllers\ProfileController;
+
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\AnnouncementController;
 
 
 
@@ -76,6 +77,8 @@ Route::get('admin.teacher-management', function () {
 Route::get('admin.enrollment-management', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.enrollment-management');
+Route::post('admin.addSchoolYear', [SchoolYearController::class, 'addSchoolYear']
+)->name('admin.addSchoolYear');
 
 Route::get('admin.school-information', function () {
     return view('layouts.admin');

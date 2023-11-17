@@ -4,7 +4,7 @@
   $schoolYear = 'meron laman';
   $enrollmentPhase = 'Pre-enrollment';
   $enrollmentStatus = 'Open';
-  $activeSchoolYear = 'wala laman';
+  $activeSchoolYear = 'meron laman';
 @endphp
 
 
@@ -2726,9 +2726,6 @@
             <!-- Dropdown menu for Select a SY to Manage -->
             <div id="dropdownSYHover-ocl" class="z-10 w-52 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
               <ul id="school-year-dropdown-picker" class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                <li>
-                  <a class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2021-1021</a>
-              </li>
               </ul>
             </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
 
@@ -2744,7 +2741,9 @@
             <div id="createSYModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
               <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
-                <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <form method ="post" action="" id="add-school-year-form" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                  @csrf
+                  @method('post')
                   <!-- Modal header -->
                   <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
@@ -2762,19 +2761,26 @@
                     <div class="flex flex-col gap-4">
 
                       <div class="flex flex-col">
+                        <span   
+                        id="input-schoolYear-error" 
+                        class="hidden p-1 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                      </span> 
                         <label for="startYearOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
-                        <input type="number" name="startYearOfSY" id="startYearOfSY" min="2022" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="20XX" required="">
+                        <input type="text" name="schoolYear" id="startYearOfSY" min="2022" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="20XX" required="">
                       </div>
                       <div class="flex flex-col">
+                        <span   
+                        id="input-requiredDays-error"  
+                        class="hidden p-1 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                      </span> 
                         <label for="requiredDaysOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Required days of SY as per DepEd order</label>
-                        <input type="number" name="requiredDaysOfSY" id="requiredDaysOfSY" min="200" max="300" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="200" required="">
+                        <input type="number" name="requiredDays" id="requiredDaysOfSY" min="200" max="300" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="200" required="">
                       </div>
-
                     </div>
                   </div>
                   <!-- Modal footer -->
                   <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
+                      <button id="add-school-year-form-submit" type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
                   </div>
                 </form>
               </div>

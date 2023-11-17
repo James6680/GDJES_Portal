@@ -1,8 +1,7 @@
 var schoolYearList;
 const schoolYearDropDown = document.getElementById('school-year-dropdown-picker');
-
-
-
+const addSchoolYearForm = document.getElementById('add-school-year-form');
+const addschoolYearDropDownSubmit = document.getElementById('add-school-year-form-submit');
 
 function getSchoolYear() {
     const url = '/api/schoolYears';
@@ -42,6 +41,23 @@ schoolYearDropDown.addEventListener('click', function(event) {
         
         console.log(selectedObject);
     }    
+});
+
+addschoolYearDropDownSubmit.addEventListener('click', function(event){
+    event.preventDefault();
+    const serializeData = $(addSchoolYearForm).serialize();
+    $.ajax({
+        url: "/admin.addSchoolYear",
+        type: "POST",
+        data: serializeData,
+        success: function(response) {
+          // Form submission is successful, prevent default submission
+        },
+        error: function(response) {
+            var errors = JSON.parse(response.responseText);
+        }
+      });  
+    console.log(serializeData);
 });
 
 $(document).ready(function() {
