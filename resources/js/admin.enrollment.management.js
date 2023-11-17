@@ -68,7 +68,6 @@ openEnrollmentButton.addEventListener('click', function(){
     });
 });
 
-
 startSchoolYearButton.addEventListener('click', function(){
     $.ajax({
       url: "/admin.startSchoolYear",
