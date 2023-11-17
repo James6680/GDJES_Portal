@@ -1,9 +1,16 @@
 
 @php
-  //$user = 'Admin';
-  $user = Auth::guard('admin')->check() ? 'Admin' : 
-          (Auth::guard('teachers')->check() ? 'Faculty' : null);
+    $user = null;
+
+    if (Auth::guard('admin')->check()) {
+        $user = 'Admin';
+    } elseif (Auth::guard('teachers')->check()) {
+        $user = 'Faculty';
+    } elseif (Auth::guard('students')->check()) {
+        $user = 'Student';
+    }
 @endphp
+
 
 <nav class="fixed top-0 z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
   <div class="px-3 py-3 lg:px-5 lg:pl-3 w-full">
@@ -70,6 +77,8 @@
                     {{ Auth::guard('admin')->user()->username }}
                   @elseif(Auth::guard('teachers')->check())
                     {{ Auth::guard('teachers')->user()->username }}
+                  @elseif(Auth::guard('students')->check())
+                  {{ Auth::guard('students')->user()->username }}
                   @else
                     <!-- Handle the case where there's no authenticated user. -->
                   @endif                </p>
@@ -89,6 +98,8 @@
                               {{ route('admin.signout') }}
                           @elseif(Auth::guard('teachers')->check())
                               {{ route('teacher.signout') }}
+                              @elseif(Auth::guard('students')->check())
+                              {{ route('student.signout') }}
                           @endif" 
                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" 
                      role="menuitem">

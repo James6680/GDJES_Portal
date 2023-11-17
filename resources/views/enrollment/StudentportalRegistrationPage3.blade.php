@@ -993,13 +993,9 @@
             </div>
             
           </div>
-
           <div class="flex gap-2 w-full">  
 
             <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] w-1/2 border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100">
-        <script>
-          console.log('{{$enrollment->aralStatus}}');
-        </script>
               
               <button type ="button" id="backBtn"
               @if(isset($enrollment->aralStatus))

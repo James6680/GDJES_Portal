@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
-  @vite(['resources/css/app.css','resources/js/app.js', 'resources/js/ph-address-selector.js'])
+  @vite(['resources/css/app.css','resources/js/app.js'])
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>GDJES Admin Portal</title>
 
   <link rel="shortcut icon" href="{{ asset('assets/GDJES Logo.png') }}">
@@ -17,11 +18,16 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
 
-
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  <script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    </script> 
 
 </head>
   

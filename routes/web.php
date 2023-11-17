@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\EnrollmentController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\AnnouncementController;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Student;
 use App\Http\Controllers\TeacherController;
 
 
@@ -46,6 +48,12 @@ Route::get('admin.dashboard', function () {
 Route::get('admin.announcements', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.announcements');
+Route::post('admin.announcements.edit', [AnnouncementController::class, 'editAnnouncement'])
+    ->name('admin.announcements.edit');
+Route::post('admin.announcements.create', [AnnouncementController::class, 'addAnnouncement'])
+    ->name('admin.announcements.create');
+Route::post('admin.announcements.delete', [AnnouncementController::class, 'deleteAnnouncement'])
+    ->name('admin.announcements.delete');
 
 Route::get('admin.document-request', function () {
     return view('layouts.admin');
@@ -70,34 +78,77 @@ Route::get('admin.school-information', function () {
 
 
 
+/*----------------Added Student Routes-----------------------*/
+Route::prefix('students')->group(function(){
+    Route::get('/login',[Student::class, 'StudentIndex'])->name('students_login_from');
+    Route::post('/login/owner',[Student::class, 'StudentLogin'])->name('login.StudentLoginPage');
+    Route::get('/signout',[Student::class, 'StudentSignout'])->name('student.signout');
+    
+});
+/*----------------End Student Admin Routes-----------------------*/
 
-
+/*   
+Route::get('/student.login', function(){
+    return view('login.StudentLoginPage');
+});
+*/
 //Student Routes
 Route::get('student.announcements', function () {
     return view('layouts.student');
-});
+})->middleware('students')->name('student.announcements');
 
 Route::get('student.grades', function () {
     return view('layouts.student');
-});
+})->middleware('students')->name('student.grades');
 
 Route::get('student.class-schedule', function () {
     return view('layouts.student');
-});
+})->middleware('students')->name('student.class-schedule');
 
 Route::get('student.enrollment-status', function () {
     return view('layouts.student');
-});
+})->middleware('students')->name('student.enrollment-status');
 
 Route::get('student.request-documents', function () {
     return view('layouts.student');
-});
+})->middleware('students')->name('student.request-documents');
 
 Route::get('student.student-information', function () {
     return view('layouts.student');
-});
+})->middleware('students')->name('student.student-information');
 //End of Student Routes
 
+
+
+Route::get('student-registration-1', [EnrollmentController::class, 'getEnrollment'])
+    ->name('enrollment.StudentportalRegistrationPage1');
+Route::post('student-registration-1', [EnrollmentController::class, 'postEnrollment'])
+    ->name('enrollment.StudentportalRegistrationPage1.post');
+
+Route::get('student-registration-2', [EnrollmentController::class, 'getEnrollment1'])
+    ->name('enrollment.StudentportalRegistrationPage2');
+Route::post('student-registration-2', [EnrollmentController::class, 'postEnrollment1'])
+    ->name('enrollment.StudentportalRegistrationPage2.post');
+
+Route::get('student-registration-3', [EnrollmentController::class, 'getEnrollment2'])
+    ->name('enrollment.StudentportalRegistrationPage3');
+Route::post('student-registration-3', [EnrollmentController::class, 'postEnrollment2'])
+    ->name('enrollment.StudentportalRegistrationPage3.post');
+
+Route::get('student-registration-4', [EnrollmentController::class, 'getEnrollment3'])
+    ->name('enrollment.StudentportalRegistrationPage4');
+Route::post('student-registration-4', [EnrollmentController::class, 'postEnrollment3'])
+    ->name('enrollment.StudentportalRegistrationPage4.post');
+
+Route::get('student-registration-5', [EnrollmentController::class, 'getEnrollment4'])
+    ->name('enrollment.StudentportalRegistrationPage5');
+Route::post('student-registration-5', [EnrollmentController::class, 'postEnrollment4'])
+    ->name('enrollment.StudentportalRegistrationPage5.post');
+
+Route::get('student-registration-Completed', [EnrollmentController::class, 'enrollmentComplete'])
+    ->name('enrollment.StudentportalRegistrationCompletedPage');
+
+   
 
 /*----------------Added Faculty Routes-----------------------*/
 Route::prefix('teacher')->group(function(){
@@ -131,35 +182,6 @@ Route::get('faculty.grades', function () {
 
 
 
-Route::get('student-registration-1', [EnrollmentController::class, 'getEnrollment'])
-    ->name('enrollment.StudentportalRegistrationPage1');
-Route::post('student-registration-1', [EnrollmentController::class, 'postEnrollment'])
-    ->name('enrollment.StudentportalRegistrationPage1.post');
-
-Route::get('student-registration-2', [EnrollmentController::class, 'getEnrollment1'])
-    ->name('enrollment.StudentportalRegistrationPage2');
-Route::post('student-registration-2', [EnrollmentController::class, 'postEnrollment1'])
-    ->name('enrollment.StudentportalRegistrationPage2.post');
-
-Route::get('student-registration-3', [EnrollmentController::class, 'getEnrollment2'])
-    ->name('enrollment.StudentportalRegistrationPage3');
-Route::post('student-registration-3', [EnrollmentController::class, 'postEnrollment2'])
-    ->name('enrollment.StudentportalRegistrationPage3.post');
-
-Route::get('student-registration-4', [EnrollmentController::class, 'getEnrollment3'])
-    ->name('enrollment.StudentportalRegistrationPage4');
-Route::post('student-registration-4', [EnrollmentController::class, 'postEnrollment3'])
-    ->name('enrollment.StudentportalRegistrationPage4.post');
-
-Route::get('student-registration-5', [EnrollmentController::class, 'getEnrollment4'])
-    ->name('enrollment.StudentportalRegistrationPage5');
-Route::post('student-registration-5', [EnrollmentController::class, 'postEnrollment4'])
-    ->name('enrollment.StudentportalRegistrationPage5.post');
-
-Route::get('student-registration-Completed', [EnrollmentController::class, 'enrollmentComplete'])
-    ->name('enrollment.StudentportalRegistrationCompletedPage');
-
-   
    
    
    
@@ -198,14 +220,13 @@ Route::get('student-registration-Completed', [EnrollmentController::class, 'enro
     
     require __DIR__.'/auth.php';
 
-    
-Route::get('/student.login', function(){
-    return view('login.StudentLoginPage');
-});
 
+
+/*
 Route::get('/faculty.login', function(){
     return view('login.FacultyTeacherLoginPage');
 });
+*/
 
 Route::get('/forget-password', function(){
     return view('login.forgotPasswordForm');

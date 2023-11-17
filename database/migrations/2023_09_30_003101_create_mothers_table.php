@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('middle_name', 50);
             $table->string('extension_name', 5);
             $table->string('phone_number', 15);
-            $table->string('email_address', 30);
+            $table->string('email_address');
             $table->timestamps();
         });
     }

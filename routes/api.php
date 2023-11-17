@@ -24,4 +24,9 @@ Route::get('/address/{type}', function (String $type) {
     return response()->json($user);
 });
 
+Route::get('/schoolYears', function () {
+    $user = DB::table('school_years')->get();
+    return response()->json($user);
+});
+
 Route::get('GetAnnouncements', [AnnouncementController::class, 'getAnnouncement']);

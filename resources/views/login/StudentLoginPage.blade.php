@@ -33,7 +33,7 @@
     <div class="bg-white min-w-full min-h-full flex flex-row shrink-0 overflow-hidden">
     
         <!-- Left section container -->
-        <div class="relative basis-auto h-auto shrink-0 flex-1 overflow-hidden flex flex-col items-start justify-center text-left text-xl gap-16 pl-7 -mb-2" style="background-image: url('./assets/leftdiv@3x.png'); background-size: cover; background-repeat: no-repeat;" id="leftSection">
+        <div class="relative basis-auto h-auto shrink-0 flex-1 overflow-hidden flex flex-col items-start justify-center text-left text-xl gap-16 pl-7 -mb-2" style="background-image: url({{ asset('./assets/leftdiv@3x.png')}}); background-size: cover; background-repeat: no-repeat;" id="leftSection">
 
             <div class="flex flex-row items-center justify-center z-[0]">
 
@@ -49,7 +49,7 @@
                 <img
                 class="relative w-[4rem] h-[4rem] overflow-hidden shrink-0 object-cover"
                 alt=""
-                src="./assets/GDJES Logo.png"
+                src="{{ asset('./assets/GDJES Logo.png')}}"
                 />
 
                 <div class="flex-1 flex flex-col items-start justify-start">
@@ -98,7 +98,7 @@
                     <img
                         class="relative w-[3rem] h-[3rem] overflow-hidden shrink-0 object-cover"
                         alt=""
-                        src="./assets/GDJES Logo.png"
+                        src="{{ asset('./assets/GDJES Logo.png')}}"
                     />
 
                     <div class="flex flex-col items-center justify-start font-frl">
@@ -115,7 +115,35 @@
                     
                 </div>
 
-                <form class="rounded-lg bg-green-50 flex font-frl flex-col items-center justify-center p-8 gap-4" novalidate>
+
+
+
+
+
+                <!--Added Access Error Message-->
+                @if (Session::has('error'))
+                <div class="flex items-center p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+                    <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                    <span class="font-medium">{{ Session::get('error') }}</span> 
+                    </div>
+                </div>
+                @endif
+                <!--End Added Access Error Message-->
+
+
+
+
+                
+                <form class="rounded-lg bg-green-50 flex font-frl flex-col items-center justify-center p-8 gap-4"
+                      action="{{ route('login.StudentLoginPage') }}" 
+                      method="post" 
+                      novalidate>
+
+                    @csrf
 
                     <h1
                         class="relative text-3xl font-bold text-green-800 text-center">
@@ -143,31 +171,32 @@
             
                         <div class="self-stretch flex flex-col items-start justify-start gap-4 ">
 
-                            <!-- Email Address Field -->
+                            <!-- Username Address Field -->
                             <div class="self-stretch flex flex-col items-start justify-start gap-4">
 
                                 <b 
                                 class="self-stretch relative text-xs flex font-mulish text-green-800 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap shrink-0">
-                                EMAIL ADDRESS
+                                USERNAME
                                 </b>
                             
                                 <div class="flex flex-col self-stretch input-container relative">
 
                                     <input
                                         class="font-button text-xs bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] focus:border-[1px] focus:ring-green-700 focus:border-green-700 text-gray-900"
-                                        placeholder="juandelacruz@gmail.com" 
+                                        placeholder="Enter your username"
                                         type="text"
                                         required
-                                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                                        pattern="^[a-zA-Z]+\.[a-zA-Z]+\.2023$"
                                         autocomplete="off"
-                                        id="loginEmail"
+                                        id="username"
+                                        name="username"
                                     />
                                     
                                     <!-- The Error Message for Email input -->
                                     <span 
-                                        id="email-error" 
+                                        id="username-error" 
                                         class="hidden mt-1 text-sm font-medium text-red-600 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                                        ❌ Maari bang maglagay ka ng wastong email address
+                                        ❌ Maari bang maglagay ka ng wastong username
                                     </span>
 
                                 </div>
@@ -191,7 +220,8 @@
                                         :type="show ? 'password' : 'text'"
                                         required
                                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                                        id="loginPassword"
+                                        id="password"
+                                        name="password"
                                         autocomplete="off"
                                     />
                                     
@@ -226,8 +256,9 @@
                             </b>
                         </a>
 
+                        <!-- commnet out id="loginBtn"-->
                         <button
-                        id="loginBtn"
+                        
                         type="submit"
                         class="cursor-pointer [border:none] py-4 px-8 bg-green-500 self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-green-900">
                         
@@ -249,16 +280,18 @@
                         
                         </div>
 
-                        <button
-                        class="cursor-pointer py-4 px-8 bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-700"
-                        >
-                        <div
-                            class="flex-1 relative text-base uppercase font-button text-brown-500 text-center"
-                            id="createAccount">
-                            create your student account here
-                        </div>
+                        <!--<button-->
+                        <a href="/student-registration-1"
+                            class="cursor-pointer py-4 px-8 bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-700"
+                            >
+                                <div
+                                    class="flex-1 relative text-base uppercase font-button text-brown-500 text-center"
+                                    id="createAccount">
+                                    create your student account here
+                                </div>
 
-                        </button>
+                        </a>
+                        <!--</button>-->
 
                     </div>
 
@@ -344,8 +377,6 @@
 
         </form>
 
-<<<<<<< HEAD
-=======
       </section>
 
     </main>
@@ -426,7 +457,6 @@
 
       </form>
 
->>>>>>> e9e035a5e1de03b3df1012c40862f6d522217f54
     </div>
 
     <script>

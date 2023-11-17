@@ -129,7 +129,10 @@
           @endif
           <!--End Added Access Error Message-->
 
-          <form class="rounded-lg bg-green-50 flex font-frl flex-col items-center justify-center p-8 gap-4 " action="{{ route('admin.login') }}" method="post" novalidate>
+          <form class="rounded-lg bg-green-50 flex font-frl flex-col items-center justify-center p-8 gap-4 " 
+          action="{{ route('admin.login') }}" 
+          method="post" 
+          novalidate>
           @csrf
 
             <h1 class="relative text-3xl mx-12 font-bold text-green-800 text-center ">
