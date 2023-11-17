@@ -83,6 +83,12 @@ Route::post('admin.addSchoolYear', [SchoolYearController::class, 'addSchoolYear'
 )->name('admin.addSchoolYear');
 Route::post('admin.endSchoolYear', [SchoolYearController::class, 'endSchoolYear']
 )->name('admin.endSchoolYear');
+Route::post('admin.startSchoolYear', [SchoolYearController::class, 'startSchoolYear']
+)->name('admin.startSchoolYear');
+Route::post('admin.closeEnrollment', [SchoolYearController::class, 'closeEnrollment']
+)->name('admin.closeEnrollment');
+Route::post('admin.openEnrollment', [SchoolYearController::class, 'openEnrollment']
+)->name('admin.openEnrollment');
 
 
 Route::get('admin.school-information', function () {

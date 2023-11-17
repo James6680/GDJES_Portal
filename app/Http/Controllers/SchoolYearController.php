@@ -32,7 +32,43 @@ class SchoolYearController extends Controller
     public function endSchoolYear(Request $request){
         DB::table('school_years')
         ->where('id', $request->id)
-        ->update(['active' => 0]);
+        ->update(['active' => 0, 'isEnrollment' => 0]);
+        return response()->json($request);
+    }
+
+    public function startSchoolYear(Request $request){
+        DB::table('school_years')
+        ->where('id', $request->id)
+        ->update(['active' => 1]);
+        return response()->json($request);
+    }
+
+    public function closeEnrollment(Request $request){
+        DB::table('school_years')
+        ->where('id', $request->id)
+        ->update(['isEnrollment' => 0]);
+        return response()->json($request);
+    }
+
+    public function openEnrollment(Request $request) {
+        // Check if there is an existing active school year with open enrollment, excluding the specified ID
+        $existingActiveSchoolYearWithOpenEnrollment = DB::table('school_years')
+            ->where('id', '!=', $request->id) // Exclude the specified ID
+            ->where('active', 0)
+            ->where('isEnrollment', 1)
+            ->first();
+        if ($existingActiveSchoolYearWithOpenEnrollment) {
+            // Update the enrollment status of the existing active school year to closed
+            DB::table('school_years')
+                ->where('id', $existingActiveSchoolYearWithOpenEnrollment->id)
+                ->update(['isEnrollment' => 0]);
+        }
+    
+        // Update the enrollment status of the specified school year to open
+        DB::table('school_years')
+            ->where('id', $request->id)
+            ->update(['isEnrollment' => 1]);
+    
         return response()->json($request);
     }
 }
