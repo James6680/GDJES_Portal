@@ -216,7 +216,7 @@
                                     
                                     <!-- Needs to be dynamic for teachers to be able to navigate the subject classes he/she handles -->
                                     <!-- Grade Level Button -->
-                                    <button id="subjecUnitBtn" data-dropdown-toggle="grade-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-7 py-2 text-center inline-flex items-center" type="button">Subject Classes<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <button id="subjecUnitBtn" data-dropdown-toggle="grade-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-7 py-2 text-center inline-flex items-center" type="button">Subject Class<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                     </svg>
                                     </button>
@@ -697,7 +697,7 @@
 
                                     <!-- Needs to be dynamic for teacher to be able to only navigate the only subject unit in the given grade level that he/she is handling  --
                                     <!-- Grade Level Button -->
-                                    <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-7 py-2 text-center inline-flex items-center" type="button">Subject Classes<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 text-sm px-7 py-2 text-center inline-flex items-center" type="button">Subject Class<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                     </svg>
                                     </button>
