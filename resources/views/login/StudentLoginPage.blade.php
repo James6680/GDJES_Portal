@@ -236,7 +236,7 @@
 
                                         <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
                                         
-                                        <label class="hover:text-green-400 rounded font-heading-2-bold px-2 py-2 text-xs text-green-900  cursor-pointer js-password-label " for="toggle">Show</label>
+                                        <label class="hover:text-green-400 rounded font-heading-2-bold px-2 py-2 text-xs text-green-900 cursor-pointer js-password-label " for="toggle">Show</label>
                                     
                                     </div>
                                 
@@ -251,7 +251,7 @@
 
                             <b class="font-button" id="forgotPasword_link">
                                 
-                                <span class="[text-decoration:underline] hover:text-green-900 cursor-pointer">Click here</span>
+                                <span class="[text-decoration:underline] hover:text-brown-900 cursor-pointer">Click here</span>
                             
                             </b>
                         </a>

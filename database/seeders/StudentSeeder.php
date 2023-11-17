@@ -54,11 +54,11 @@ class StudentSeeder extends Seeder
 
             'status' => '2',
             // Add the rest of the fields here.
-        ]);
-         */
+        ]);*/
+        
         
         
         Student::factory(100)->create();
-       
+    
     }
 }

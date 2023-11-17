@@ -232,7 +232,7 @@
                 <span class="font-button">Forgot your password? </span>
 
                 <b class="font-button" id="forgotPasword_link">
-                  <span class="[text-decoration:underline] hover:text-gray-900 cursor-pointer">Click here</span>.
+                  <span class="[text-decoration:underline] hover:text-brown-900 cursor-pointer">Click here</span>.
                 </b>
 
               </a>
