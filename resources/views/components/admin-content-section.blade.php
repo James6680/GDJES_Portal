@@ -1107,11 +1107,20 @@
                   Certificate of enrollment
                 </td>
                 <td class="px-6 py-4">
-                  For validation
+                  <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path>
+                    </svg>
+                    For validation
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                  </button>
                 </td>
               </tr>
-              
             </tbody>
+
+
 
           </table>
 
@@ -1147,12 +1156,6 @@
 
       </div>
 
-      
-
-      <!-- Footer -->
-      <div class="flex items-center pt-4 gap-2 border-gray-200 rounded-b dark:border-gray-600">
-        <button type="submit" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm md:text-base lg:text-md px-5 py-2.5 text-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">Save changes</button>  
-      </div> <!-- End of Footer -->
     </form>
   </section> <!-- End of Admin School Information Main Content Container -->
 
