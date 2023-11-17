@@ -13,7 +13,7 @@
                 <ul class="m-o p-0 text-white">
 
                     <li class="p-0 m-0">
-                        <span class="font-mulish font-semibold text-2xl sm:text-3xl ">Announcements</span>
+                        <span class="font-semibold text-2xl sm:text-3xl ">Announcements</span>
                     </li>
 
                     <li class="py-5 border-b-2 border-white hover:border-b-2 hover:border-green-200 hover:text-green-200">
@@ -45,7 +45,7 @@
             <!-- Contact Us Main Container -->
             <div class="rounded-md h-auto w-full container  p-6 grid grid-cols-1 bg-white shadow shadow-brown-100">
 
-                <h2 class="w-full flex font-mulish text-2xl sm:text-3xl text-green-900 font-bold">
+                <h2 class="w-full flex text-2xl sm:text-3xl text-green-900 font-bold">
                 Contact us
                 </h2>
 
@@ -94,7 +94,7 @@
 
                 <div class="w-auto justify-self-end">
 
-                    <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-mulish font-bold rounded-lg  hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-900 inline-flex w-full lg:text-base text-sm py-2.5 leading-none items-center lg:px-7 px-4" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white font-medium rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 inline-flex w-full text-sm py-2.5 leading-none items-center lg:px-7 px-4" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> 
                     </svg>
                     </button>
