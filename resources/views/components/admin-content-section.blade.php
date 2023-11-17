@@ -2237,19 +2237,11 @@
 
             <!-- Dropdown menu for Select a SY to Manage -->
             <div id="dropdownSYHover-ocl" class="z-10 w-52 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-              <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+              <ul id="school-year-dropdown-picker" class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                 <li>
-                  <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2020 - 2021</a>
-                </li>
-                <li>
-                  <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2021 - 2022</a>
-                </li>
-                <li>
-                  <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2022 - 2023</a>
-                </li>
-                <li>
-                  <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2023 - 2024</a>
-                </li>
+                  <a class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2021-1021</a>
+              </li>
+              </ul>
             </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
 
             <!-- Create SY Button -->
