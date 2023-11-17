@@ -2,7 +2,7 @@
   $currentSchoolYearStart = '2023';
   $currentSchoolYearEnd = '2024';
   $schoolYear = 'meron laman';
-  $enrollmentPhase = 'Pre-enrollment';
+  $enrollmentPhase = 'Official';
   $enrollmentStatus = 'Open';
   $activeSchoolYear = 'wala laman';
 @endphp
@@ -2668,60 +2668,36 @@
       
 
       
-      <!-- Enrollment SY Management -->
-      <div class="w-full flex flex-col pt-4">
-        @if (!is_null($schoolYear) && $enrollmentStatus == 'Closed')
-            <h3 class="text-md font-bold text-black">Managing school year: 
-              {{ $schoolYear }}</h3>
-            <h4 class="text-base font-semibold text-emerald-700">Enrollment status:
-              {{ $enrollmentStatus }}</h4>
-        @elseif (!is_null($schoolYear) && $enrollmentStatus == 'Open')
-            <h3 class="text-md font-bold text-black">Managing school year: 
-              {{ $schoolYear }}</h3>
-            <h4 class="text-base font-semibold text-emerald-700">Enrollment status: 
-              {{ $enrollmentStatus }}</h4>
-            <h4 class="text-base font-regular text-gray-500">Enrollment phase: 
-              {{ $enrollmentPhase }}</h4>
-        @elseif (is_null($schoolYear))
+      <!-- Enrollment SY Management -->   
+      <div class="w-full flex flex-col pt-4" id="yes-selected-school-year" style="display:none;">  
+            <h3 class="text-md font-bold text-black" id="school-year-holder"></h3>
+            <h4 class="text-base font-semibold text-emerald-700" id="enrollment-status-holder"></h4> 
+            {{-- conditional --}}
+            <h4 class="text-base font-regular text-gray-500" id="enrollment-phase-holder"></h4>
+      </div>
+      <div class="w-full flex flex-col pt-4" id="no-selected-school-year">
             <h3 class="text-md font-semibold text-red-500">No school year selected to manage.</h3>
             <h4 class="text-base font-regular text-gray-500">Choose from the dropdown to manage an existing one or add a new school year using the button.</h4>
-        @endif
+      </div>
+            {{-- @endif --}}
         
         
         <!-- Main functions for SY Management -->
         <div class="flex flex-col sm:flex-row w-full h-auto gap-4 pt-1 sm:justify-between">
-          @if (is_null($schoolYear))
-          @else
-          <div class="flex flex-row gap-4 justify-start">
-            @if ($enrollmentStatus == 'Open')
-              @if ($enrollmentPhase == 'Official')
+          <div class="flex flex-row gap-4 justify-start" style="display:none;" id="enrollment-button-controls">
               <a href="#" data-modal-target="closeOfficialEnrollmentModal" data-modal-show="closeOfficialEnrollmentModal" id="closeOfficialEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-100 hover:bg-red-200 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
-                Close enrollment
               </a>
-              @else
-              <a id="sample-clicker" data-modal-target="closePreEnrollmentModal" data-modal-show="closePreEnrollmentModal" id="closePreEnrollmentButton" class="text-red-500 hover:text-red-800 bg-red-100 hover:bg-red-200 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
-                Close enrollment
-              </a>    
-              @endif          
-            @else
+
             <a href="#" data-modal-target="openOfficialEnrollmentModal" data-modal-show="openOfficialEnrollmentModal" id="openOfficialEnrollmentButton" class="text-white bg-green-500 hover:bg-green-600 focus:ring-2 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">
-              Open enrollment
             </a>
-            
-            @endif
-              
             <div> 
-              @if ($activeSchoolYear == $schoolYear)
               <a href="#" data-modal-target="endSYModal" data-modal-show="endSYModal" id="endSYButton" class="text-red-800 bg-red-200 hover:bg-red-400 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
                 End SY
               </a> 
-              @else ($activeSchoolYear != $schoolYear)
               <a href="#" data-modal-target="startSYModal" data-modal-show="startSYModal" id="startSYButton" class="text-green-800 bg-green-200 hover:bg-green-400 focus:ring-2 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">
                 Start SY
               </a>
-              @endif
             </div>
-            @endif
           </div>
           
 
@@ -2736,9 +2712,6 @@
             <!-- Dropdown menu for Select a SY to Manage -->
             <div id="dropdownSYHover-ocl" class="z-10 w-52 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
               <ul id="school-year-dropdown-picker" class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                <li>
-                  <a class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2021-1021</a>
-              </li>
               </ul>
             </div> <!-- End of Dropdown menu for Open and Close Enrollment -->
 
@@ -2754,7 +2727,7 @@
             <div id="createSYModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
               <div class="relative w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
-                <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <form action="" id="add-school-year-form" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                   <!-- Modal header -->
                   <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
@@ -2770,21 +2743,27 @@
                   <!-- Modal body -->
                   <div class="p-6 space-y-6">
                     <div class="flex flex-col gap-4">
-
                       <div class="flex flex-col">
-                        <label for="startYearOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
-                        <input type="number" name="startYearOfSY" id="startYearOfSY" min="2022" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="20XX" required="">
+                        <span   
+                        id="input-schoolYear-error" 
+                        class="hidden p-1 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                      </span>
+                        <label for="schoolYear" class="block mb-2 text-sm font-medium text-black dark:text-white">Start year of school year</label>
+                        <input type="number" name="schoolYear" id="schoolYear" min="2022" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="20XX" required="">
                       </div>
                       <div class="flex flex-col">
-                        <label for="requiredDaysOfSY" class="block mb-2 text-sm font-medium text-black dark:text-white">Required days of SY as per DepEd order</label>
-                        <input type="number" name="requiredDaysOfSY" id="requiredDaysOfSY" min="200" max="300" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="200" required="">
+                        <span   
+                        id="input-requiredDays-error" 
+                        class="hidden p-1 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                      </span>
+                        <label for="requiredDays" class="block mb-2 text-sm font-medium text-black dark:text-white">Required days of SY as per DepEd order</label>
+                        <input type="number" name="requiredDays" id="requiredDays" min="200" max="300" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="200" required="">
                       </div>
-
                     </div>
                   </div>
                   <!-- Modal footer -->
                   <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
+                      <button type="submit" id="add-school-year-form-submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
                   </div>
                 </form>
               </div>
@@ -2812,34 +2791,10 @@
                   <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
                 </svg>
                 <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to end the SY {{ $schoolYear }}?</h3>
-                  <button data-modal-hide="endSYModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                  <button data-modal-hide="endSYModal" id="end-school-year-button" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                     Yes, I'm sure
                   </button>
                   <button data-modal-hide="endSYModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
-              </div>
-            </div>
-          </div> 
-        </div> <!-- End of Close Pre-enrollment Modal -->
-
-        <!-- Close Pre-enrollment Modal -->
-        <div id="closePreEnrollmentModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-          <div class="relative w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="closePreEnrollmentModal">
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                </svg>
-                <span class="sr-only">Close modal</span>
-              </button>
-              <div class="p-6 pt-8 text-center">
-                <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
-                  <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
-                </svg>
-                <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to close the pre-enrollment phase of SY {{ $schoolYear }} and start its official enrollment?</h3>
-                  <button data-modal-hide="closePreEnrollmentModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                    Yes, I'm sure
-                  </button>
-                  <button data-modal-hide="closePreEnrollmentModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
               </div>
             </div>
           </div> 

@@ -79,6 +79,9 @@ Route::get('admin.enrollment-management', function () {
 })->middleware('admin')->name('admin.enrollment-management');
 Route::post('admin.addSchoolYear', [SchoolYearController::class, 'addSchoolYear']
 )->name('admin.addSchoolYear');
+Route::post('admin.endSchoolYear', [SchoolYearController::class, 'endSchoolYear']
+)->name('admin.endSchoolYear');
+
 
 Route::get('admin.school-information', function () {
     return view('layouts.admin');

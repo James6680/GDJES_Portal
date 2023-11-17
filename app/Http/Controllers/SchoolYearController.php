@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SchoolYears;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SchoolYearController extends Controller
 {
@@ -24,7 +25,14 @@ class SchoolYearController extends Controller
         $schoolYear['school_year'] = $request->input('schoolYear');
         $schoolYear['school_days'] = $request->input('requiredDays');
         $schoolYear['active'] = 0;
-        $schoolYear['isPreEnrollment'] = 0; 
+        $schoolYear['isEnrollment'] = 0; 
         $schoolYear->save();
+    }
+
+    public function endSchoolYear(Request $request){
+        DB::table('school_years')
+        ->where('id', $request->id)
+        ->update(['active' => 0]);
+        return response()->json($request);
     }
 }
