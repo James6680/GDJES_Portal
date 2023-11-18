@@ -3932,37 +3932,16 @@
                     <label for="gradeLevelDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">Grade level of the section</label>
                     <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
                       <!-- Dropdown Button for Grade Level for Edit Section Modal -->
-                      <button id="gradeLevelDropdownButton" data-dropdown-toggle="gradeLevelDropdown" data-dropdown-trigger="click" class="justify-between pr-4 text-black w-full border border-gray-300 bg-gray-50  focus:ring-green-600 focus:border-green-600 rounded-lg text-sm p-2.5 text-left inline-flex items-center dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"" type="button">Grade level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                        </svg>
-                      </button> <!-- End of Dropdown Button for Grade Level for Edit Section Modal -->
-
-                      <!-- Dropdown menu for Grade Level for Edit Section Modal -->
-                      <div id="gradeLevelDropdown" class="relative z-50 w-52 hidden bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-                        <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeLevelDropdown">
-                          <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
-                          </li>
-                          <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 1</a>
-                          </li>
-                          <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 2</a>
-                          </li>
-                          <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 3</a>
-                          </li>
-                          <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 4</a>
-                          </li>
-                          <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 5</a>
-                          </li>
-                          <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">Grade 6</a>
-                          </li>
-                        </ul>
-                      </div> <!-- End of Dropdown menu for Grade Level for Edit Section Modal -->
+                      <select id="gradeLevelDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
+                        <option value="" disabled selected>Select Grade Level</option>
+                        <option value="kinder">Kinder</option>
+                        <option value="grade1">Grade 1</option>
+                        <option value="grade2">Grade 2</option>
+                        <option value="grade3">Grade 3</option>
+                        <option value="grade4">Grade 4</option>
+                        <option value="grade5">Grade 5</option>
+                        <option value="grade6">Grade 6</option>
+                      </select>
                     </div>  
                   </div>    
                 </div>
