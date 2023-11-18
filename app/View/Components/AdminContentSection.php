@@ -8,6 +8,9 @@ use Illuminate\View\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 
+use App\Models\Teacher;
+
+
 class AdminContentSection extends Component
 {
     /**
@@ -23,6 +26,8 @@ class AdminContentSection extends Component
      */
     public function render(): View|Closure|string
     {   $announcements = new AnnouncementController;
-        return view('components.admin-content-section', ['announcements' => $announcements->getAnnouncement()]);
+        $teacher = Teacher::latest()->paginate(10); //added
+        return view('components.admin-content-section', 
+        ['announcements' => $announcements->getAnnouncement(), 'teacher' => $teacher]);
     }
 }

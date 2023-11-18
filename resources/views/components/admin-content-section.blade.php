@@ -2634,10 +2634,13 @@
       <!-- Table -->
       <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
       
-        <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
+        <table id="tbl" class=" w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
 
           <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
             <tr>
+              <th scope="col" class="px-6 py-3">
+                NO.
+            </th>
               <th scope="col" class="px-6 py-3">
                   FULL NAME
               </th>
@@ -2660,21 +2663,25 @@
           </thead>
 
           <tbody>
+            @foreach($teacher as $t)
             <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
               <td class="px-6 py-4">
-                Last Name, First Name Middle Name
+                {{ $loop->iteration }}
               </td>
               <td class="px-6 py-4">
-                lnfnmn001
+                {{ $t->last_name }}, {{ $t->first_name }} {{ $t->middle_name }}
               </td>
               <td class="px-6 py-4">
-                9th Avenue W, Grace Park West, Caloocan, Metro Manila
+                {{ $t->username }}
               </td>
               <td class="px-6 py-4">
-                Active
+                {{ $t->house_number }}, {{ $t->street }}, {{ $t->barangay }}, {{ $t->municipality }}, {{ $t->province }}, {{ $t->region }}
               </td>
               <td class="px-6 py-4">
-                August 23, 2023
+                {{ $t->status }}
+              </td>
+              <td class="px-6 py-4">
+                {{ $t->created_at }}
               </td>
               <td class="px-6 py-4">
                 <!-- Modal toggle -->
@@ -2683,7 +2690,7 @@
                 <a href="#" type="button" data-modal-target="archiveTeacherUserModal" data-modal-show="archiveTeacherUserModal" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
-            <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+            <!--<tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
               <td class="px-6 py-4">
                 Canlas, Arlene Marquez
               </td>
@@ -2700,19 +2707,21 @@
                 August 23, 2023
               </td>
               <td class="px-6 py-4">
-                <!-- Modal toggle -->
+                <!-- Modal toggle --><!--
                 <a href="#" data-modal-target="viewTeachertUserModal" data-modal-show="viewTeachertUserModal" type="button" class="font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View</a>
                 <a href="#" type="button" data-modal-target="editTeacherUserModal" data-modal-show="editTeacherUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 <a href="#" type="button" data-modal-target="archiveTeacherUserModal" data-modal-show="archiveTeacherUserModal" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
+          -->
           </tbody>
+          @endforeach
 
         </table>
-
+       
       </div> <!-- End of Table -->
 
-      <!-- Pagination -->
+      <!-- Pagination
       <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
         <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-black dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">345</span></span>
           <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
@@ -2738,7 +2747,72 @@
               <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
             </li>
           </ul>
-      </nav> <!-- End of Pagination -->
+      </nav> End of Pagination -->
+
+
+<!-- Pagination -->
+<nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+  <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
+      Showing <span class="font-semibold text-black dark:text-white">{{ $teacher->firstItem() }}</span> 
+      to <span class="font-semibold text-black dark:text-white">{{ $teacher->lastItem() }}</span> 
+      of <span class="font-semibold text-gray-900 dark:text-white">{{ $teacher->total() }}</span>
+  </span>
+
+  <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+      {{-- Previous Page Link --}}
+      @if ($teacher->previousPageUrl())
+          <li>
+              <a href="{{ $teacher->previousPageUrl() }}" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                  Previous
+              </a>
+          </li>
+      @endif
+
+      {{-- Display pages after the current page --}}
+      @for ($i = $teacher->currentPage() - 2; $i <= min($teacher->currentPage() + 2, $teacher->lastPage()); $i++)
+          @if ($i > 0)
+              <li>
+                  <a href="{{ $teacher->url($i) }}" 
+                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border @if ($teacher->currentPage() == $i) bg-blue-500 text-white @else border-gray-300 @endif hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                      {{ $i }}
+                  </a>
+              </li>
+          @endif
+      @endfor
+
+      {{-- Display ellipsis if there are more pages --}}
+      @if ($teacher->currentPage() + 2 < $teacher->lastPage())
+          <li>
+              <span class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                  ...
+              </span>
+          </li>
+      @endif
+
+      {{-- Display last page --}}
+      <li>
+          <a href="{{ $teacher->url($teacher->lastPage()) }}" 
+              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border @if ($teacher->currentPage() == $teacher->lastPage()) bg-blue-500 text-white @else border-gray-300 @endif hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+              {{ $teacher->lastPage() }}
+          </a>
+      </li>
+
+      {{-- Next Page Link --}}
+      @if ($teacher->nextPageUrl())
+          <li>
+              <a href="{{ $teacher->nextPageUrl() }}" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                  Next
+              </a>
+          </li>
+      @endif
+  </ul>
+</nav>
+<!-- End of Pagination -->
+
+
+
+
+
 
       <!-- View Teacher user modal -->
       <div id="viewTeachertUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
