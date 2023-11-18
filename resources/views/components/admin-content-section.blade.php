@@ -3638,7 +3638,7 @@
                 <div class="flex flex-col pt-4 w-full ">
                   <h3 class="text-md font-semibold text-black dark:text-white">Assigned Teachers</h3>
                   <p class="text-sm font-semibold text-green-500 dark:text-white">Adviser - *Teacher name*</p>
-                  <div class="grid grid-cols-2">
+                  <div class="grid grid-cols-1 sm:grid-cols-2">
                     <p class="text-sm font-regular text-gray-500 dark:text-white">*Subject* - *Teacher Name*</p>
                     <p class="text-sm font-regular text-gray-500 dark:text-white">*Subject* - *Teacher Name*</p>
                     <p class="text-sm font-regular text-gray-500 dark:text-white">*Subject* - *Teacher Name*</p>
@@ -3652,7 +3652,7 @@
                     <!-- Table functions - assign students -->
                     <div class="grid justify-items-end gap-4 w-full pb-4">
 
-                      <div class="flex flex-row gap-4 w-full">
+                      <div class="flex flex-col sm:flex-row gap-0 sm:gap-4 w-full">
                         <button data-modal-target="assignTeachersModal" data-modal-toggle="assignTeachersModal" type="button" class="my-2 h-auto text-black bg-green-50 hover:bg-green-200 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-4 py-2 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
                           <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"  viewBox="0 0 256 256">
                           <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H53.39a8,8,0,0,0,7.23-4.57,48,48,0,0,1,86.76,0,8,8,0,0,0,7.23,4.57H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM104,168a32,32,0,1,1,32-32A32,32,0,0,1,104,168Zm112,32H159.43a63.93,63.93,0,0,0-13.16-16H192a8,8,0,0,0,8-8V80a8,8,0,0,0-8-8H64a8,8,0,0,0-8,8v96a8,8,0,0,0,6,7.75A63.72,63.72,0,0,0,48.57,200H40V56H216Z"></path>
@@ -3670,7 +3670,8 @@
                       <!-- Assign students modal -->
                       <div id="assignStudentsModal" tabindex="-1" aria-hidden="true" class="absolute top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-2xl max-h-full">
-                          <div class="relative bg-gray-50 rounded-lg shadow-2xl border border-gray-300 dark:bg-gray-700">
+                          <!-- Modal content -->
+                          <form action="#" class="relative bg-gray-50 rounded-lg shadow-2xl border border-gray-300 dark:bg-gray-700">
                             <!-- Modal header -->
                             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                               <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
@@ -3852,65 +3853,95 @@
                               <button data-modal-hide="assignStudentsModal" type="submit" class="text-white bg-yellow-600 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save student list</button>
                               <button data-modal-hide="assignStudentsModal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
                             </div> <!-- End of Modal footer -->
-                          </div>
-                        </div>
+                          </form>
+                        </div> <!-- Modal content -->
                       </div> <!-- End of Assign students modal -->
 
                       <!-- Assign teachers modal -->
-                      <div id="assignTeachersModal" tabindex="-1" aria-hidden="true" class="absolute top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                      <div id="assignTeachersModal" tabindex="-1" aria-hidden="true" class="shadow-lg fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-2xl max-h-full">
-                          <div class="relative bg-gray-50 rounded-lg shadow-2xl border border-gray-300 dark:bg-gray-700">
+                          <!-- Modal content -->
+                          <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                             <!-- Modal header -->
                             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                              <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
-                                Assign teachers 
+                              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                  Assign teachers
                               </h3>
-                              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="assignTeachersModal">
+                              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="assignTeachersModal">
                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                                 </svg>
                                 <span class="sr-only">Close modal</span>
                               </button>
-                            </div> <!-- End of Modal header -->
+                            </div>
                             <!-- Modal body -->
-                            <div class="p-6 space-y-3 divide-y divide-gray-200">
-                              <div>
-                                <h3 class="text-md font-semibold text-black">Section Name: *Section Name*</h3>
-                                <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: *insert grade level*</p>
+                            <div class="p-6 space-y-6">
+                              <div class="grid grid-cols-1 gap-4 divide-y divide-gray-300">
+                                <!-- Adviser assigning -->
+                                <div class="flex flex-col">
+                                  <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">Class adviser</label>
+                                  <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+                                    <!-- Dropdown select button for assign teacher -->
+                                    <select id="teachersDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
+                                      <!-- Dropdown menu for assign teacher -->
+                                      <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                                        <option value="" disabled selected>Select adviser</option>
+                                        <option value="kinder">*Teacher name*</option>
+                                        <option value="kinder">*Teacher name*</option>
+                                        <option value="kinder">*Teacher name*</option>
+                                        <option value="kinder">*Teacher name*</option>
+                                        <option value="kinder">*Teacher name*</option>
+                                      </div><!-- End of Dropdown menu for assign teacher -->
+                                    </select>
+                                  </div>  
+                                </div>    
+                                <!-- Subject teacher assigning -->
+                                <div class="flex flex-col pt-4 gap-4">
+                                  <div class="flex flex-col">
+                                    <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">*Subject*</label>
+                                    <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+                                      <!-- Dropdown select button for assign teacher -->
+                                      <select id="teachersDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
+                                        <!-- Dropdown menu for assign teacher -->
+                                        <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                                          <option value="" disabled selected>Select subject teacher</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                        </div><!-- End of Dropdown menu for assign teacher -->
+                                      </select>
+                                    </div>  
+                                  </div>
+                                  <div class="flex flex-col">
+                                    <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">*Subject*</label>
+                                    <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+                                      <!-- Dropdown select button for assign teacher -->
+                                      <select id="teachersDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
+                                        <!-- Dropdown menu for assign teacher -->
+                                        <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                                          <option value="" disabled selected>Select subject teacher</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                        </div><!-- End of Dropdown menu for assign teacher -->
+                                      </select>
+                                    </div>  
+                                  </div>   
+                                </div> 
                               </div>
-                              <!-- Checkbox for assign teachers -->
-                              <div id="assignTeachersCheckbox" class="z-10  w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="p-3 grid grid-cols-1 sm:grid-cols-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="assignTeachersCheckbox">
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Reyes, Alex Pajarellano</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-2" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                </ul>
-                              </div> <!-- End of Checkbox for assign students -->
-                            </div> <!-- End of Modal body -->
-
+                            </div>
                             <!-- Modal footer -->
                             <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                              <button data-modal-hide="assignTeachersModal" type="submit" class="text-white bg-yellow-600 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save teacher designations</button>
+                              <button data-modal-hide="assignTeachersModal" type="submit" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save teacher designations</button>
                               <button data-modal-hide="assignTeachersModal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                            </div> <!-- End of Modal footer -->
-                          </div>
+                            </div>
+                          </form>
                         </div>
-                      </div> <!-- End of Assign students modal -->
+                      </div> <!-- End of Edit section modal -->
 
                     </div> <!-- End of Table functions - assign students -->
 
