@@ -91,6 +91,10 @@ Route::post('admin.openEnrollment', [SchoolYearController::class, 'openEnrollmen
 )->name('admin.openEnrollment');
 
 
+
+
+
+
 Route::get('admin.school-information', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.school-information');

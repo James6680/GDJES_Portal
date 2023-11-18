@@ -1,4 +1,5 @@
 var schoolYearList;
+var sectionList;
 var selectedSchoolYearObject = null;
 const schoolYearDropDown = document.getElementById('school-year-dropdown-picker');
 const addSchoolYearForm = document.getElementById('add-school-year-form');
@@ -22,6 +23,28 @@ function getSchoolYear() {
             resolve();
         });
     });
+}
+
+function getSections() {
+  const url = '/api/sections/' + selectedSchoolYearObject.id;
+  return new Promise((resolve, reject) => {
+      $.getJSON(url, function(data) {
+        sectionList = data;
+          console.log("the data ius" + sectionList);
+          resolve();
+      });
+  });
+}
+
+function getStudents() {
+  const url = '/api/students/' + selectedSchoolYearObject.id;
+  return new Promise((resolve, reject) => {
+      $.getJSON(url, function(data) {
+        studentList = data;
+          console.log("the student ius" + studentList);
+          resolve();
+      });
+  });
 }
 
 closeEnrollmentButton.addEventListener('click', function(){
@@ -202,6 +225,7 @@ schoolYearDropDown.addEventListener('click', function(event) {
         const valueOfYear = event.target.textContent;
         const selectedObject = schoolYearList.find(entry => entry['school_year'] === valueOfYear);
         selectedSchoolYearObject = selectedObject;
+        getSections();
         updateSchoolYearInformation();
         updateSchoolYearControlButtons();
     }    

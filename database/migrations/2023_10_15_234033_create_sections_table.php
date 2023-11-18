@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('section_name', 20);
             $table->unsignedBigInteger('grade_level_id');
             $table->foreign('grade_level_id')->references('id')->on('grade_levels');
+            $table->unsignedBigInteger('school_year_id');
+            $table->foreign('school_year_id')->references('id')->on('school_years');
             $table->unsignedBigInteger('adviser_id')->nullable();
             $table->foreign('adviser_id')->references('id')->on('teachers');
             $table->timestamps();
