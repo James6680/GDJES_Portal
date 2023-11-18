@@ -48,15 +48,16 @@ function getStudents() {
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
         studentList = data;
-          console.log("the student ius" + studentList);
           resolve();
       });
   });
 }
 
 addSectionFormSubmit.addEventListener("click", function(event){
-  event.preventDefault();
-  const serializeData = $(addSectionForm).serialize();
+  event.preventDefault(); 
+  const gradeLevelDropdown = document.getElementById('gradeLevelDropdownButton');
+  const selectedGradeLevel = gradeLevelDropdown.options[gradeLevelDropdown.selectedIndex].value;
+  const serializeData = $(addSectionForm).serialize() + '&gradeLevel=' + selectedGradeLevel;
   $.ajax({
       url: "/admin.addSection",
       type: "POST",
