@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\SchoolYearController;
@@ -89,7 +90,8 @@ Route::post('admin.closeEnrollment', [SchoolYearController::class, 'closeEnrollm
 )->name('admin.closeEnrollment');
 Route::post('admin.openEnrollment', [SchoolYearController::class, 'openEnrollment']
 )->name('admin.openEnrollment');
-
+Route::post('admin.addSection', [SectionController::class, 'addSection']
+)->name('admin.addSection');
 
 
 
