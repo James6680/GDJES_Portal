@@ -3,8 +3,10 @@ var sectionList;
 var selectedSchoolYearObject = null;
 const schoolYearDropDown = document.getElementById('school-year-dropdown-picker');
 const addSchoolYearForm = document.getElementById('add-school-year-form');
+const addSectionForm = document.getElementById('add-section-form');
 const addschoolYearDropDownSubmit = document.getElementById('add-school-year-form-submit');
 const addSchoolYearFormShow = document.querySelectorAll('#add-school-year-form-show');
+const addSectionFormSubmit = document.getElementById('add-section-form-submit');
 ///////////INFORMATIONS////
 const noSchoolYearSelected = document.querySelector('#no-selected-school-year');
 const yesSchoolYearSelected = document.querySelector('#yes-selected-school-year');
@@ -30,7 +32,12 @@ function getSections() {
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
         sectionList = data;
-          console.log("the data ius" + sectionList);
+          console.log(sectionList);
+
+          for (let i = 0; i < sectionList.length; i++) {
+            const section = sectionList[i];
+            console.log('Section:', section);
+          }
           resolve();
       });
   });
@@ -46,6 +53,22 @@ function getStudents() {
       });
   });
 }
+
+addSectionFormSubmit.addEventListener("click", function(event){
+  event.preventDefault();
+  const serializeData = $(addSectionForm).serialize();
+  $.ajax({
+      url: "/admin.addSection",
+      type: "POST",
+      data: serializeData,
+      success: function(response) {
+        console.log(serializeData);
+      },
+      error: function(response) {
+      }
+    });  
+});
+
 
 closeEnrollmentButton.addEventListener('click', function(){
     $.ajax({

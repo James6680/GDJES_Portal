@@ -3509,28 +3509,7 @@
               </tr>
             </thead>
 
-            <tbody>
-              <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
-                <td class="px-6 py-4">
-                  1
-                </td>
-                <td class="px-6 py-4">
-                  Halimuyak
-                </td>
-                <td class="px-6 py-4">
-                  Kinder
-                </td>
-                <td class="px-6 py-4">
-                  12/40
-                </td>
-                <td class="px-6 py-4 gap-2">
-                  <!-- Modal toggle -->
-                  <a href="#" data-modal-target="viewStudentListModal" data-modal-show="viewStudentListModal" type="button" class="pr-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Students</a>
-                  <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="pr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                  <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="pr-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
-                  <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="pr-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
-                </td>
-              </tr>
+            <tbody id="sections-table-body">
               <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">
                   2
@@ -3904,7 +3883,9 @@
         <div id="createSectionModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-2xl max-h-full">
             <!-- Modal content -->
-            <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <form action="" method="post" id="add-section-form" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              @csrf
+              @method('post')
               <!-- Modal header -->
               <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
@@ -3921,8 +3902,8 @@
               <div class="p-6 space-y-6">
                 <div class="grid grid-cols-1 gap-4">
                   <div class="flex flex-col">
-                    <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section Name</label>
-                    <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Sampaguita" required="">
+                    <label for="section-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section Name</label>
+                    <input type="text" name="sectionName" id="section-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Sampaguita" required="">
                   </div>
                   <div class="flex flex-col">
                     <label for="sectionSlots" class="block mb-2 text-sm font-medium text-black dark:text-white">Students slots of the section (Choose from 15 - 65 as per DepEd order)</label>
@@ -3948,7 +3929,7 @@
               </div>
               <!-- Modal footer -->
               <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                  <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save all</button>
+                  <button type="button" id="add-section-form-submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save all</button>
               </div>
             </form>
           </div>
