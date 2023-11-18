@@ -3213,7 +3213,7 @@
       </div>
             {{-- @endif --}}
         
-        
+      <div class="flex flex-col">
         <!-- Main functions for SY Management -->
         <div class="flex flex-col sm:flex-row w-full h-auto gap-4 pt-1 sm:justify-between">
           <div class="flex flex-row gap-4 justify-start" style="display:none;" id="enrollment-button-controls">
@@ -3302,7 +3302,6 @@
           </div>
 
         </div>
-
 
         <!-- Start SY Modal -->
         <div id="startSYModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -3455,6 +3454,7 @@
                   </li>
                 </ul>
               </div>
+
             </div> <!-- End of Sort Dropdown for Grade Level -->
 
             <!-- Search bar -->
@@ -4065,9 +4065,6 @@
         </div>
         
       </div>
-
-
-
 
       <!-- Student Records Management for the Current SY -->
       <div class="w-full flex flex-col">
@@ -4896,7 +4893,8 @@
             </div>
           </div>
         </div>
-      </div>
+
+      </div> <!
 
 
     </div>
