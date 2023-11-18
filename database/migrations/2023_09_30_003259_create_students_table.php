@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->year('school_year');  //QUESTION ABOUT THIS: DI BA DAPAT ITO SY LIKE 2014 - 2016
-            //$table->unsignedBigInteger('school_year_id'); // Foreign key field
-
+            // $table->year('school_year');  //QUESTION ABOUT THIS: DI BA DAPAT ITO SY LIKE 2014 - 2016
+            $table->unsignedBigInteger('school_year_id'); // Foreign key field
+            $table->foreign('school_year_id')->references('id')->on('school_years');
             $table->string('psa_birthcert_no', 50);
             $table->bigInteger('lrn')->nullable();   //QUESTION: POSSIBLE BA NA ANG LRN AY MAGSIMULA SA 0? KASI MAG EERROR SIYA PAG PWEDE SINCE NUMBER YUNG DATATYPE
             $table->string('last_name', 50);
@@ -38,7 +38,6 @@ return new class extends Migration
             $table->unsignedBigInteger('relatives_id');
             $table->foreign('relatives_id')->references('id')->on('relatives');
             $table->string('household_4ps_id', 30)->nullable();
-
             $table->string('username',50)->unique();
             $table->string('password');
             $table->string('status', 15);

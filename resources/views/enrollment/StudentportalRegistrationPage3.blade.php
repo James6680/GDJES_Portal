@@ -156,17 +156,21 @@
                 <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">School Year <span class="text-red-600">*</span></b>
               
               </div>
-
+              
               <!-- School Year -->
               <div class="mb-1">
-                <input 
+                <input
+                  disabled 
                   required 
                   type="text" 
                   placeholder="{{date("Y")}}"
                   id="school_year" 
                   name="school_year" 
                   class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
-                  value="{{ isset($enrollment->school_year) ? $enrollment->school_year : old('school_year') }}"
+                  value="{{ isset($enrollment->school_year) ? $enrollment->school_year : DB::table('school_years')
+                  ->where('is_enrollment', 1)
+                  ->pluck('school_year')
+                  ->first(); }}"
                 >></div>
 
               <!-- Error Message for School Year -->

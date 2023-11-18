@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use ErrorException;
-use Illuminate\Http\Request;
 use App\Models\Father;
 use App\Models\Mother;
 use App\Models\Student;
@@ -12,8 +11,11 @@ use App\Models\Returnee;
 use App\Models\Relatives;
 use App\Models\Enrollment;
 use App\Models\LearningInfo;
+use Illuminate\Http\Request;
 use App\Models\EnrollmentForm;
+use Illuminate\Support\Facades\DB;
 use App\Models\DocumentRequirements;
+
 class EnrollmentController extends Controller
 {
     //
@@ -175,7 +177,7 @@ class EnrollmentController extends Controller
             $enrollment = $request->session()->get('enrollment');
             $enrollment->fill($validatedData);
             $request->session()->put('enrollment', $enrollment);
-        return redirect()->route('enrollment.StudentportalRegistrationPage4');
+        return redirect()->route('enrollment.StudentportalRegistrationPage5');
     }
 
     public function getEnrollment4(Request $request)
@@ -228,7 +230,7 @@ class EnrollmentController extends Controller
         // }else{
         //     $student = new Student(); 
         // }
-
+        $school_year = DB::table('school_years')->where('is_enrollment','=','1')->pluck('id')->first();
         $enrollment = new Enrollment;
         $student = Student::where('lrn', $enrollmentForm->lrn_number)->first();
         $father = Father::where('last_name', $enrollmentForm->lastName_ng_ama)->where('first_name', $enrollmentForm->firstName_ng_ama)->where('middle_name', $enrollmentForm->middleName_ng_ama)->first();
@@ -263,7 +265,6 @@ class EnrollmentController extends Controller
                 $learningInfo->mobile_data_lang_ang_gamit = 1;
             }
         }
-                $learningInfo->save();  
         ////////////////////////////////////////////////////////
 
         ////////////////////Mother FATHER GUARDIAN//////////////
@@ -311,7 +312,7 @@ class EnrollmentController extends Controller
         ////////////////////////////////Student/////////////////////////////
         if($student == null){
             $relatives->save();
-
+            $learningInfo->save();  
             $student = new Student();
             $student->first_name = $enrollmentForm->firstName_ng_bata;
             $student->middle_name = $enrollmentForm->middleName_ng_bata;
@@ -321,7 +322,7 @@ class EnrollmentController extends Controller
             $student->gender = $enrollmentForm->gender;
             $student->mother_tongue = $enrollmentForm->primary_language;
             $student->relatives_id = $relatives->id;
-            $student->school_year = 2023;
+            $student->school_year_id = $school_year;
         }
         if($enrollmentForm->lrn_status == 1){
             $student->lrn = $enrollmentForm->lrn_number;
@@ -348,7 +349,7 @@ class EnrollmentController extends Controller
         //////////////////RETURNEE//////////////////
         if($enrollmentForm->aralStatus == "OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon"){
             $returnee->student_id = $student->id;
-            $returnee->school_year_id = 1;
+            $returnee->school_year_id = $school_year;
             $returnee->last_school_year_finished = $enrollmentForm->lastSchoolYearAttended;
             $returnee->last_grade_attended = $enrollmentForm->returnee;
             $returnee->last_school_attended = $enrollmentForm->lastSchoolAttended;

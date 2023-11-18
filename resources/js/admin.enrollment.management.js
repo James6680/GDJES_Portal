@@ -32,12 +32,6 @@ function getSections() {
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
         sectionList = data;
-          console.log(sectionList);
-
-          for (let i = 0; i < sectionList.length; i++) {
-            const section = sectionList[i];
-            console.log('Section:', section);
-          }
           resolve();
       });
   });
@@ -63,7 +57,6 @@ addSectionFormSubmit.addEventListener("click", function(event){
       type: "POST",
       data: serializeData,
       success: function(response) {
-        console.log(serializeData);
       },
       error: function(response) {
       }
@@ -102,6 +95,7 @@ openEnrollmentButton.addEventListener('click', function(){
         getSchoolYear() // Retrieve school year list
         .then(async () => {
           selectedSchoolYearObject = schoolYearList.find(entry => entry['id'] == response.id);
+          console.log(selectedSchoolYearObject);
           await Promise.resolve(); // Await to ensure the find() operation completes before proceeding
         })
         .then(() => {
@@ -169,8 +163,8 @@ function updateSchoolYearInformation(){
         $(noSchoolYearSelected).css("display", "none");
         $(yesSchoolYearSelected).css("display", "block");
         $("#school-year-holder").text("Managing school year: " + selectedSchoolYearObject.school_year);
-        selectedSchoolYearObject.isEnrollment === 1 ? $("#enrollment-status-holder").text("Enrollment status: Open") : $("#enrollment-status-holder").text("Enrollment status: Closed");
-        if(selectedSchoolYearObject.isEnrollment == 1){
+        selectedSchoolYearObject.is_enrollment === 1 ? $("#enrollment-status-holder").text("Enrollment status: Open") : $("#enrollment-status-holder").text("Enrollment status: Closed");
+        if(selectedSchoolYearObject.is_enrollment == 1){
             $("#enrollment-phase-holder").css("display", "block");
             selectedSchoolYearObject.active === 1 ? $("#enrollment-phase-holder").text("Enrollment phase: Official") : $("#enrollment-phase-holder").text("Enrollment phase: Pre-enrollment");        
         }else{
@@ -190,7 +184,7 @@ function updateSchoolYearControlButtons(){
         if(selectedSchoolYearObject.active === 1){
             $(endSchoolYearButton).css("display", "flex");
             $(startSchoolYearButton).css("display", "none");    
-            if(selectedSchoolYearObject.isEnrollment === 1){
+            if(selectedSchoolYearObject.is_enrollment === 1){
                 $(closeEnrollmentButton).css("display", "flex");
                 $(closeEnrollmentButton).text("Close Enrollment");
                 $(openEnrollmentButton).css("display", "none");  
@@ -206,7 +200,7 @@ function updateSchoolYearControlButtons(){
             }else{
                 $(startSchoolYearButton).css("display", "none");
             }
-            if(selectedSchoolYearObject.isEnrollment === 1){
+            if(selectedSchoolYearObject.is_enrollment === 1){
                 $(closeEnrollmentButton).css("display", "flex");
                 $(closeEnrollmentButton).text("Close Pre-enrollment");
                 $(openEnrollmentButton).css("display", "none");  
@@ -249,7 +243,7 @@ schoolYearDropDown.addEventListener('click', function(event) {
         const valueOfYear = event.target.textContent;
         const selectedObject = schoolYearList.find(entry => entry['school_year'] === valueOfYear);
         selectedSchoolYearObject = selectedObject;
-        getSections();
+        // getSections().then();
         updateSchoolYearInformation();
         updateSchoolYearControlButtons();
     }    

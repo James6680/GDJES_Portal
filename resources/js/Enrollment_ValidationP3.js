@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Split the input into two parts by the hyphen
           const part = element.value.trim();
-          const regex = /^(19|20)\d{2}\b$/;
+          const regex = /^(20\d{2})-?(20\d{2})$/;
 
           const match = part.match(regex);
           if (!match) {

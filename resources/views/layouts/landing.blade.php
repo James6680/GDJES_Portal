@@ -109,7 +109,6 @@
           </li>
       @endforeach
       @else
-        <p>hello world na wlaang value</p>
       @endif
     </ul>
 
