@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('grade_level_id')->references('id')->on('grade_levels');
             $table->unsignedBigInteger('school_year_id');
             $table->foreign('school_year_id')->references('id')->on('school_years');
-            $table->unsignedBigInteger('section_id');
+            $table->unsignedBigInteger('section_id')->nullable();
             $table->foreign('section_id')->references('id')->on('sections');
             $table->unsignedBigInteger('learning_info_id');
             $table->foreign('learning_info_id')->references('id')->on('learning_info');
