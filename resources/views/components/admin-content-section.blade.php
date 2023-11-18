@@ -2634,10 +2634,13 @@
       <!-- Table -->
       <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
       
-        <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
+        <table id="tbl" class=" w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
 
           <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
             <tr>
+              <th scope="col" class="px-6 py-3">
+                NO.
+            </th>
               <th scope="col" class="px-6 py-3">
                   FULL NAME
               </th>
@@ -2660,21 +2663,25 @@
           </thead>
 
           <tbody>
+            @foreach($teacher as $t)
             <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
               <td class="px-6 py-4">
-                Last Name, First Name Middle Name
+                {{ $loop->iteration }}
               </td>
               <td class="px-6 py-4">
-                lnfnmn001
+                {{ $t->last_name }}, {{ $t->first_name }} {{ $t->middle_name }}
               </td>
               <td class="px-6 py-4">
-                9th Avenue W, Grace Park West, Caloocan, Metro Manila
+                {{ $t->username }}
               </td>
               <td class="px-6 py-4">
-                Active
+                {{ $t->house_number }}, {{ $t->street }}, {{ $t->barangay }}, {{ $t->municipality }}, {{ $t->province }}, {{ $t->region }}
               </td>
               <td class="px-6 py-4">
-                August 23, 2023
+                {{ $t->status }}
+              </td>
+              <td class="px-6 py-4">
+                {{ $t->created_at }}
               </td>
               <td class="px-6 py-4">
                 <!-- Modal toggle -->
@@ -2683,7 +2690,7 @@
                 <a href="#" type="button" data-modal-target="archiveTeacherUserModal" data-modal-show="archiveTeacherUserModal" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
-            <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+            <!--<tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
               <td class="px-6 py-4">
                 Canlas, Arlene Marquez
               </td>
@@ -2700,19 +2707,21 @@
                 August 23, 2023
               </td>
               <td class="px-6 py-4">
-                <!-- Modal toggle -->
+                <!-- Modal toggle --><!--
                 <a href="#" data-modal-target="viewTeachertUserModal" data-modal-show="viewTeachertUserModal" type="button" class="font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View</a>
                 <a href="#" type="button" data-modal-target="editTeacherUserModal" data-modal-show="editTeacherUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 <a href="#" type="button" data-modal-target="archiveTeacherUserModal" data-modal-show="archiveTeacherUserModal" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
+          -->
           </tbody>
+          @endforeach
 
         </table>
-
+       
       </div> <!-- End of Table -->
 
-      <!-- Pagination -->
+      <!-- Pagination
       <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
         <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-black dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">345</span></span>
           <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
@@ -2738,7 +2747,68 @@
               <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
             </li>
           </ul>
-      </nav> <!-- End of Pagination -->
+      </nav> End of Pagination -->
+
+
+      <!-- Pagination -->
+      <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+        <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
+            Showing <span class="font-semibold text-black dark:text-white">{{ $teacher->firstItem() }}</span> 
+            to <span class="font-semibold text-black dark:text-white">{{ $teacher->lastItem() }}</span> 
+            of <span class="font-semibold text-gray-900 dark:text-white">{{ $teacher->total() }}</span>
+        </span>
+
+        <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+            {{-- Previous Page Link --}}
+            @if ($teacher->previousPageUrl())
+                <li>
+                    <a href="{{ $teacher->previousPageUrl() }}" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        Previous
+                    </a>
+                </li>
+            @endif
+
+            {{-- Display pages after the current page --}}
+            @for ($i = $teacher->currentPage() - 2; $i <= min($teacher->currentPage() + 2, $teacher->lastPage()); $i++)
+                @if ($i > 0)
+                    <li>
+                        <a href="{{ $teacher->url($i) }}" 
+                        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border @if ($teacher->currentPage() == $i) bg-blue-500 text-white @else border-gray-300 @endif hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            {{ $i }}
+                        </a>
+                    </li>
+                @endif
+            @endfor
+
+            {{-- Display ellipsis if there are more pages --}}
+            @if ($teacher->currentPage() + 2 < $teacher->lastPage())
+                <li>
+                    <span class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        ...
+                    </span>
+                </li>
+            @endif
+
+            {{-- Display last page --}}
+            <li>
+                <a href="{{ $teacher->url($teacher->lastPage()) }}" 
+                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border @if ($teacher->currentPage() == $teacher->lastPage()) bg-blue-500 text-white @else border-gray-300 @endif hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    {{ $teacher->lastPage() }}
+                </a>
+            </li>
+
+            {{-- Next Page Link --}}
+            @if ($teacher->nextPageUrl())
+                <li>
+                    <a href="{{ $teacher->nextPageUrl() }}" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        Next
+                    </a>
+                </li>
+            @endif
+        </ul>
+      </nav>
+      <!-- End of Pagination -->
+
 
       <!-- View Teacher user modal -->
       <div id="viewTeachertUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -3487,7 +3557,7 @@
         </div> <!-- End of Sections Table functions - all -->
 
         <!-- Sections Table -->
-        <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
+        <div class="relative overflow-x-auto overflow-y-auto max-h-96 mb-4 outline outline-2 outline-green-50 rounded-sm">
         
           <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
 
@@ -3514,7 +3584,7 @@
             <tbody id="sections-table-body">
               <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">
-                  2
+                  1
                 </td>
                 <td class="px-6 py-4">
                   Mabantut
@@ -3527,7 +3597,7 @@
                 </td>
                 <td class="px-6 py-4">
                   <!-- Modal toggle -->
-                  <a href="#" data-modal-target="viewStudentListModal" data-modal-show="viewStudentListModal" type="button" class="pr-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Students</a>
+                  <a href="#" data-modal-target="viewSectionInfoModal" data-modal-show="viewSectionInfoModal" type="button" class="pr-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Section Info</a>
                   <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="pr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                   <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="pr-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
                   <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="pr-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
@@ -3539,44 +3609,16 @@
 
         </div> <!-- End of Sections Table -->
 
-        <!-- Pagination -->
-        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-          <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-black dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">345</span></span>
-            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-              </li>
-              <li>
-                <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-green-600 border border-gray-300 bg-green-50 hover:bg-green-100 hover:text-green-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-              </li>
-            </ul>
-        </nav> <!-- End of Pagination -->
-
-        <!-- View student list modal -->
-        <div id="viewStudentListModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <!-- View section info modal -->
+        <div id="viewSectionInfoModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-3xl max-h-full">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
               <!-- Modal header -->
               <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                 <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
-                  View student list 
+                  View section information 
                 </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="viewStudentListModal">
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="viewSectionInfoModal">
                   <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                   </svg>
@@ -3585,28 +3627,51 @@
               </div> <!-- End of Modal header -->
               <!-- Modal body -->
               <div class="p-6 space-y-3 divide-y divide-gray-200">
+                <!-- Modal body header -->
                 <div>
                   <h3 class="text-md font-semibold text-black dark:text-white">Section Name: *Section Name*</h3>
                   <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: *Grade Level*</p>
                   <p class="text-sm font-semibold text-gray-500 dark:text-white">Student slots: *Slot availability*</p>
+                </div> <!-- End of Modal body header -->
+
+                <!-- Modal body subjects with teachers -->
+                <div class="flex flex-col pt-4 w-full ">
+                  <h3 class="text-md font-semibold text-black dark:text-white">Assigned Teachers</h3>
+                  <p class="text-sm font-semibold text-green-500 dark:text-white">Adviser - *Teacher name*</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2">
+                    <p class="text-sm font-regular text-gray-500 dark:text-white">*Subject* - *Teacher Name*</p>
+                    <p class="text-sm font-regular text-gray-500 dark:text-white">*Subject* - *Teacher Name*</p>
+                    <p class="text-sm font-regular text-gray-500 dark:text-white">*Subject* - *Teacher Name*</p>
+                  </div>
                 </div>
+
+                <!-- Modal body functions -->
                 <div class="pt-4">
                   <!-- Sections Table functions - all -->
                   <div class="grid grid-cols-1">
                     <!-- Table functions - assign students -->
                     <div class="grid justify-items-end gap-4 w-full pb-4">
-                      <button data-modal-target="assignStudentsModal" data-modal-toggle="assignStudentsModal" type="button" class="my-2 h-auto text-black bg-green-50 hover:bg-green-200 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-4 py-2 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"  viewBox="0 0 256 256">
-                          <path d="M64.12,147.8a4,4,0,0,1-4,4.2H16a8,8,0,0,1-7.8-6.17,8.35,8.35,0,0,1,1.62-6.93A67.79,67.79,0,0,1,37,117.51a40,40,0,1,1,66.46-35.8,3.94,3.94,0,0,1-2.27,4.18A64.08,64.08,0,0,0,64,144C64,145.28,64,146.54,64.12,147.8Zm182-8.91A67.76,67.76,0,0,0,219,117.51a40,40,0,1,0-66.46-35.8,3.94,3.94,0,0,0,2.27,4.18A64.08,64.08,0,0,1,192,144c0,1.28,0,2.54-.12,3.8a4,4,0,0,0,4,4.2H240a8,8,0,0,0,7.8-6.17A8.33,8.33,0,0,0,246.17,138.89Zm-89,43.18a48,48,0,1,0-58.37,0A72.13,72.13,0,0,0,65.07,212,8,8,0,0,0,72,224H184a8,8,0,0,0,6.93-12A72.15,72.15,0,0,0,157.19,182.07Z"></path>
-                        </svg>
-                        Assign students
-                      </button>
 
-
+                      <div class="flex flex-col sm:flex-row gap-0 sm:gap-4 w-full">
+                        <button data-modal-target="assignTeachersModal" data-modal-toggle="assignTeachersModal" type="button" class="my-2 h-auto text-black bg-green-50 hover:bg-green-200 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-4 py-2 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
+                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"  viewBox="0 0 256 256">
+                          <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H53.39a8,8,0,0,0,7.23-4.57,48,48,0,0,1,86.76,0,8,8,0,0,0,7.23,4.57H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM104,168a32,32,0,1,1,32-32A32,32,0,0,1,104,168Zm112,32H159.43a63.93,63.93,0,0,0-13.16-16H192a8,8,0,0,0,8-8V80a8,8,0,0,0-8-8H64a8,8,0,0,0-8,8v96a8,8,0,0,0,6,7.75A63.72,63.72,0,0,0,48.57,200H40V56H216Z"></path>
+                          </svg>
+                          Assign teachers
+                        </button>
+                        <button data-modal-target="assignStudentsModal" data-modal-toggle="assignStudentsModal" type="button" class="my-2 h-auto text-black bg-green-50 hover:bg-green-200 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-4 py-2 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
+                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"  viewBox="0 0 256 256">
+                            <path d="M64.12,147.8a4,4,0,0,1-4,4.2H16a8,8,0,0,1-7.8-6.17,8.35,8.35,0,0,1,1.62-6.93A67.79,67.79,0,0,1,37,117.51a40,40,0,1,1,66.46-35.8,3.94,3.94,0,0,1-2.27,4.18A64.08,64.08,0,0,0,64,144C64,145.28,64,146.54,64.12,147.8Zm182-8.91A67.76,67.76,0,0,0,219,117.51a40,40,0,1,0-66.46-35.8,3.94,3.94,0,0,0,2.27,4.18A64.08,64.08,0,0,1,192,144c0,1.28,0,2.54-.12,3.8a4,4,0,0,0,4,4.2H240a8,8,0,0,0,7.8-6.17A8.33,8.33,0,0,0,246.17,138.89Zm-89,43.18a48,48,0,1,0-58.37,0A72.13,72.13,0,0,0,65.07,212,8,8,0,0,0,72,224H184a8,8,0,0,0,6.93-12A72.15,72.15,0,0,0,157.19,182.07Z"></path>
+                          </svg>
+                          Assign students
+                        </button>
+                      </div>
+                      
                       <!-- Assign students modal -->
                       <div id="assignStudentsModal" tabindex="-1" aria-hidden="true" class="absolute top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-2xl max-h-full">
-                          <div class="relative bg-gray-50 rounded-lg shadow-2xl border border-gray-300 dark:bg-gray-700">
+                          <!-- Modal content -->
+                          <form action="#" class="relative bg-gray-50 rounded-lg shadow-2xl border border-gray-300 dark:bg-gray-700">
                             <!-- Modal header -->
                             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                               <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
@@ -3788,10 +3853,98 @@
                               <button data-modal-hide="assignStudentsModal" type="submit" class="text-white bg-yellow-600 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save student list</button>
                               <button data-modal-hide="assignStudentsModal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
                             </div> <!-- End of Modal footer -->
-                          </div>
-                        </div>
+                          </form>
+                        </div> <!-- Modal content -->
                       </div> <!-- End of Assign students modal -->
+
+                      <!-- Assign teachers modal -->
+                      <div id="assignTeachersModal" tabindex="-1" aria-hidden="true" class="shadow-lg fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative w-full max-w-2xl max-h-full">
+                          <!-- Modal content -->
+                          <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <!-- Modal header -->
+                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                  Assign teachers
+                              </h3>
+                              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="assignTeachersModal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                              </button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="p-6 space-y-6">
+                              <div class="grid grid-cols-1 gap-4 divide-y divide-gray-300">
+                                <!-- Adviser assigning -->
+                                <div class="flex flex-col">
+                                  <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">Class adviser</label>
+                                  <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+                                    <!-- Dropdown select button for assign teacher -->
+                                    <select id="teachersDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
+                                      <!-- Dropdown menu for assign teacher -->
+                                      <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                                        <option value="" disabled selected>Select adviser</option>
+                                        <option value="kinder">*Teacher name*</option>
+                                        <option value="kinder">*Teacher name*</option>
+                                        <option value="kinder">*Teacher name*</option>
+                                        <option value="kinder">*Teacher name*</option>
+                                        <option value="kinder">*Teacher name*</option>
+                                      </div><!-- End of Dropdown menu for assign teacher -->
+                                    </select>
+                                  </div>  
+                                </div>    
+                                <!-- Subject teacher assigning -->
+                                <div class="flex flex-col pt-4 gap-4">
+                                  <div class="flex flex-col">
+                                    <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">*Subject*</label>
+                                    <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+                                      <!-- Dropdown select button for assign teacher -->
+                                      <select id="teachersDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
+                                        <!-- Dropdown menu for assign teacher -->
+                                        <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                                          <option value="" disabled selected>Select subject teacher</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                        </div><!-- End of Dropdown menu for assign teacher -->
+                                      </select>
+                                    </div>  
+                                  </div>
+                                  <div class="flex flex-col">
+                                    <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">*Subject*</label>
+                                    <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+                                      <!-- Dropdown select button for assign teacher -->
+                                      <select id="teachersDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
+                                        <!-- Dropdown menu for assign teacher -->
+                                        <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                                          <option value="" disabled selected>Select subject teacher</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                          <option value="kinder">*Teacher name*</option>
+                                        </div><!-- End of Dropdown menu for assign teacher -->
+                                      </select>
+                                    </div>  
+                                  </div>   
+                                </div> 
+                              </div>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+                              <button data-modal-hide="assignTeachersModal" type="submit" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save teacher designations</button>
+                              <button data-modal-hide="assignTeachersModal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div> <!-- End of Edit section modal -->
+
                     </div> <!-- End of Table functions - assign students -->
+
                   </div> <!-- End of Sections Table functions - all -->
 
                   <!-- Sections Table -->
@@ -3879,7 +4032,7 @@
               </div>
             </div> <!-- End of Remove from section Modal -->
           </div>
-        </div> <!-- End of View student list modal -->
+        </div> <!-- End of View section info modal -->
 
         <!-- Create section modal -->
         <div id="createSectionModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -4125,7 +4278,7 @@
         </div> <!-- End of Table functions - all -->
 
         <!-- Table Student User Management -->
-        <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
+        <div class="relative overflow-x-auto overflow-y-auto max-h-96 outline outline-2 outline-green-50 rounded-sm">
         
           <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
 
@@ -4200,39 +4353,12 @@
                   <a href="#" data-modal-target="archiveStudentUserModal" data-modal-show="archiveStudentUserModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
                   <a href="#" data-modal-target="deleteStudentUserModal" data-modal-show="deleteStudentUserModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                 </td>
+              </tr>      
             </tbody>
 
           </table>
 
         </div> <!-- End of Table Student User Management -->
-
-        <!-- Pagination -->
-        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-          <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-black dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">345</span></span>
-            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-              </li>
-              <li>
-                <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-green-600 border border-gray-300 bg-green-50 hover:bg-green-100 hover:text-green-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-              </li>
-            </ul>
-        </nav> <!-- End of Pagination -->
 
         <!-- View student user modal -->
         <div id="viewStudentUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">

@@ -54,7 +54,7 @@
                         //document.getElementById('createTeacherUserModal').classList.remove('visible');
                         //document.getElementById('createTeacherUserModal').classList.add('invisible');
                         document.getElementById('createTeacher').reset();
-                        $('.tbl').load(location.href + ' .tbl');
+                        $('#tbl').load(location.href + ' #tbl');
                     }
                 },
                 error: function(result) {
@@ -66,5 +66,8 @@
                 }
             });  
         })
+
+
+        
     });
 </script>
