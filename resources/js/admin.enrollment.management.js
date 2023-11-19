@@ -1,12 +1,11 @@
 var schoolYearList;
 var sectionList;
+var selectedGradeLevel = null;
 var selectedSchoolYearObject = null;
 const schoolYearDropDown = document.getElementById('school-year-dropdown-picker');
 const addSchoolYearForm = document.getElementById('add-school-year-form');
-const addSectionForm = document.getElementById('add-section-form');
 const addschoolYearDropDownSubmit = document.getElementById('add-school-year-form-submit');
-const addSchoolYearFormShow = document.querySelectorAll('#add-school-year-form-show');
-const addSectionFormSubmit = document.getElementById('add-section-form-submit');
+const addSchoolYearFormShow = document.querySelector('#add-school-year-form-show');
 ///////////INFORMATIONS////
 const noSchoolYearSelected = document.querySelector('#no-selected-school-year');
 const yesSchoolYearSelected = document.querySelector('#yes-selected-school-year');
@@ -16,6 +15,11 @@ const startSchoolYearButton = document.getElementById('start-school-year-button'
 const closeEnrollmentButton = document.getElementById('close-enrollment-button');
 const openEnrollmentButton = document.getElementById('openOfficialEnrollmentButton');
 ///////////////////////////
+////////////////SECTIONS//////////
+const addSectionForm = document.getElementById('add-section-form');
+const addSectionFormSubmit = document.getElementById('add-section-form-submit');
+const addSectionFormShow = document.querySelector('#show-add-section-form');
+const sectionsTableBody = document.getElementById('sections-table-body');
 
 function getSchoolYear() {
     const url = '/api/schoolYears';
@@ -32,6 +36,7 @@ function getSections() {
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
         sectionList = data;
+        console.log(sectionList);
           resolve();
       });
   });
@@ -48,23 +53,93 @@ function getStudents() {
 }
 
 addSectionFormSubmit.addEventListener("click", function(event){
-  event.preventDefault(); 
+  event.preventDefault();   
   const gradeLevelDropdown = document.getElementById('gradeLevelDropdownButton');
   const selectedGradeLevel = gradeLevelDropdown.options[gradeLevelDropdown.selectedIndex].value;
-  const serializeData = $(addSectionForm).serialize() + '&gradeLevel=' + selectedGradeLevel;
+  const serializeData = $(addSectionForm).serialize() + '&gradeLevel=' + selectedGradeLevel + '&schoolYear=' + selectedSchoolYearObject.id;
+  console.log(serializeData);
   $.ajax({
-      url: "/admin.addSection",
-      type: "POST",
-      data: serializeData,
-      success: function(response) {
-      },
-      error: function(response) {
-      }
-    });  
+    url: "/admin.addSection",
+    type: "POST",
+    data: serializeData,
+    success: function (response) {
+        $("#input-sectionName-error").css("display", "block");
+        $("#input-sectionName-error").css("color", "green");
+        $("#input-sectionName-error").text("School Year Created Successfully");
+        $("#input-sectionSlots-error").css("display", "none");
+        $("#input-gradeLevel-error").css("display", "none");
+        getSections().then(async () => {
+            updateSectionsTable(selectedGradeLevel);
+        });
+    },
+    error: function (response) {
+      clearAddSectionErrors();
+      var validationErrors = response.responseJSON.errors;
+                  // Handle other error responses
+      $.each(validationErrors, function (fieldName, errorMessage) {
+          $("#input-" + fieldName + "-error").css("color", "red");
+          $("#input-" + fieldName + "-error").text(errorMessage);
+          $("#input-" + fieldName + "-error").css("display", "block");
+      });
+    }
+  });
+
 });
+
+function updateSectionsTable(gradeLevel) {
+  $(sectionsTableBody).empty();
+
+  $.each(sectionList, function (index, entry) {
+                        /////////<tr class="bg-white dark:bg-gray-800 hover:bg-green-500 dark:hover:bg-gray-600
+    const rowHTML = `<tr class="bg-white dark:bg-gray-800">
+      <td class="px-6 py-4">
+        ${index+1}
+      </td>
+      <td class="px-6 py-4">
+        ${entry['section_name']}
+      </td>
+      <td class="px-6 py-4">
+        ${entry['grade_level_id']}
+      </td>
+      <td class="px-6 py-4">
+        ${entry['section_slot']} / ${entry['section_slot']}
+      </td>
+      <td class="px-6 py-4">
+        <a href="#" data-modal-target="viewSectionInfoModal" data-modal-show="viewSectionInfoModal" type="button" class="pr-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Section Info</a>
+        <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="pr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+        <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="pr-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+        <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="pr-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+      </td>
+    </tr>`;
+
+    $(sectionsTableBody).append(rowHTML);
+    $(sectionsTableBody).hide().show(0);
+  });
+}
+
+addSectionFormShow.addEventListener('click', function(){
+  clearAddSectionErrors();
+})
+
+function clearAddSectionErrors(){
+  $("#input-sectionName-error").css("color", "red");
+  $("#input-sectionName-error").text("");
+  $("#input-sectionName-error").css("display", "none");
+  $("#input-sectionSlots-error").css("color", "red");
+  $("#input-sectionSlots-error").text("");
+  $("#input-sectionSlots-error").css("display", "none");
+  $("#input-gradeLevel-error").css("color", "red");
+  $("#input-gradeLevel-error").text("");
+  $("#input-gradeLevel-error").css("display", "none");
+}
+
+function clearEditSectionErrors(){
+
+}
 
 
 closeEnrollmentButton.addEventListener('click', function(){
+  document.getElementById('show-add-student').href = '#';
     $.ajax({
       url: "/admin.closeEnrollment",
       type: "POST",
@@ -87,6 +162,7 @@ closeEnrollmentButton.addEventListener('click', function(){
 });
 
 openEnrollmentButton.addEventListener('click', function(){
+  document.getElementById('show-add-student').href = '/student-registration-1';
     $.ajax({
       url: "/admin.openEnrollment",
       type: "POST",
@@ -95,7 +171,6 @@ openEnrollmentButton.addEventListener('click', function(){
         getSchoolYear() // Retrieve school year list
         .then(async () => {
           selectedSchoolYearObject = schoolYearList.find(entry => entry['id'] == response.id);
-          console.log(selectedSchoolYearObject);
           await Promise.resolve(); // Await to ensure the find() operation completes before proceeding
         })
         .then(() => {
@@ -243,16 +318,21 @@ schoolYearDropDown.addEventListener('click', function(event) {
         const valueOfYear = event.target.textContent;
         const selectedObject = schoolYearList.find(entry => entry['school_year'] === valueOfYear);
         selectedSchoolYearObject = selectedObject;
-        // getSections().then();
+        document.querySelector('#dropdownSYHoverButton-ocl').innerHTML = selectedSchoolYearObject.school_year;
+        addSectionFormShow.removeAttribute("disabled");
+        if(selectedSchoolYearObject.is_enrollment == 1){
+          document.getElementById('show-add-student').href = '/student-registration-1';
+        }
+        getSections().then( async ()=>{
+          updateSectionsTable(selectedGradeLevel);
+        });
         updateSchoolYearInformation();
         updateSchoolYearControlButtons();
     }    
 });
 
-addSchoolYearFormShow.forEach(element => {
-    element.addEventListener('click', function(event){
-        addSchoolYearFormClearError();
-    });
+addSchoolYearFormShow.addEventListener('click', function(event){
+  addSchoolYearFormClearError();
 });
 
 addschoolYearDropDownSubmit.addEventListener('click', function(event){
@@ -268,7 +348,9 @@ addschoolYearDropDownSubmit.addEventListener('click', function(event){
           $("#input-schoolYear-error").css("color", "green");
           $("#input-schoolYear-error").text("School Year Created Successfully");
           $("#input-requiredDays-error").css("display", "none");
-          getSchoolYear().then(updateSchoolYearDropDown);
+          getSchoolYear().then(async () => {
+            updateSchoolYearDropDown();
+          });
         },
         error: function(response) {
             addSchoolYearFormClearError();
@@ -284,4 +366,6 @@ addschoolYearDropDownSubmit.addEventListener('click', function(event){
 
 $(document).ready(function() {
     getSchoolYear().then(updateSchoolYearDropDown);
+
+    
 });
