@@ -495,13 +495,9 @@
               <!-- Guardian's Information --> 
               <!-- Lastname -->
               <div class="mb-1">
-                <input required type="text"
-                                id="lastName_ng_guardian"
-                                name="lastName_ng_guardian"
-                                class="text-[.90rem] block w-full p-25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
-                                value="{{ isset($enrollment) ? $enrollment->lastName_ng_guardian : old('lastName_ng_guardian') }}"
-                                >
-
+                <input required type="text" id="lastName_ng_guardian" name="lastName_ng_guardian" class="text-[.90rem] block w-full p-25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"value="{{ isset($enrollment) ? $enrollment->lastName_ng_guardian : old('lastName_ng_guardian') }}">
+              </div>  
+                
               <span   
                 id="input_error13" 
                 class="hidden pt-2 pl-0 font-medium text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
@@ -771,6 +767,7 @@
               <button type="button" id="nextBtn" class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block">next</button>
             
             </div>
+
           </div>
         
         </div>
