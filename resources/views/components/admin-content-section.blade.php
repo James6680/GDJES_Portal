@@ -4073,13 +4073,13 @@
                         <!-- Dropdown menu for Grade Level for Edit Section Modal -->
                         <div id="gradeLevelDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
                           <option value="" disabled selected>Select Grade Level</option>
-                          <option value="kinder">Kinder</option>
-                          <option value="grade1">Grade 1</option>
-                          <option value="grade2">Grade 2</option>
-                          <option value="grade3">Grade 3</option>
-                          <option value="grade4">Grade 4</option>
-                          <option value="grade5">Grade 5</option>
-                          <option value="grade6">Grade 6</option>
+                          <option value="0">Kinder</option>
+                          <option value="1">Grade 1</option>
+                          <option value="2">Grade 2</option>
+                          <option value="3">Grade 3</option>
+                          <option value="4">Grade 4</option>
+                          <option value="5">Grade 5</option>
+                          <option value="6">Grade 6</option>
                         </div><!-- End of Dropdown menu for Grade Level for Edit Section Modal -->
 
                       </select>
@@ -4132,13 +4132,13 @@
                         <!-- Dropdown menu for Grade Level for Edit Section Modal -->
                         <div id="gradeLevelDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
                           <option value="" disabled selected>Select Grade Level</option>
-                          <option value="kinder">Kinder</option>
-                          <option value="grade1">Grade 1</option>
-                          <option value="grade2">Grade 2</option>
-                          <option value="grade3">Grade 3</option>
-                          <option value="grade4">Grade 4</option>
-                          <option value="grade5">Grade 5</option>
-                          <option value="grade6">Grade 6</option>
+                          <option value="0">Kinder</option>
+                          <option value="1">Grade 1</option>
+                          <option value="2">Grade 2</option>
+                          <option value="3">Grade 3</option>
+                          <option value="4">Grade 4</option>
+                          <option value="5">Grade 5</option>
+                          <option value="6">Grade 6</option>
                         </div><!-- End of Dropdown menu for Grade Level for Edit Section Modal -->
 
                       </select>

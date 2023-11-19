@@ -414,14 +414,14 @@
               
               <select id="extensionName_ng_bata" name="extensionName_ng_bata" class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block gap-2  p-2.5 w-full">
                 <option value=""></option>
-                <option value="0" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 0) selected @endif>None</option>
-                <option value="1" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 1) selected @endif>Jr</option>
-                <option value="2" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 2) selected @endif>I</option>
-                <option value="3" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 3) selected @endif>II</option>
-                <option value="4" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 4) selected @endif>III</option>
-                <option value="5" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 5) selected @endif>IV</option>
-                <option value="6" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 6) selected @endif>V</option>
-                <option value="7" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == 7) selected @endif>VI</option>
+                <option value="None" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == "None") selected @endif>None</option>
+                <option value="Jr" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == "Jr") selected @endif>Jr</option>
+                <option value="I" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == "I") selected @endif>I</option>
+                <option value="II" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == "II") selected @endif>II</option>
+                <option value="III" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == "III") selected @endif>III</option>
+                <option value="IV" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == "IV") selected @endif>IV</option>
+                <option value="V" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == "V") selected @endif>V</option>
+                <option value="VI" @if(isset($enrollment->extensionName_ng_bata) && $enrollment->extensionName_ng_bata == "VI") selected @endif>VI</option>
               </select>
 
               <span   

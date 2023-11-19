@@ -231,7 +231,6 @@ class EnrollmentController extends Controller
         //     $student = new Student(); 
         // }
         $school_year = DB::table('school_years')->where('is_enrollment','=','1')->pluck('id')->first();
-        $enrollment = new Enrollment;
         $student = Student::where('lrn', $enrollmentForm->lrn_number)->first();
         $father = Father::where('last_name', $enrollmentForm->lastName_ng_ama)->where('first_name', $enrollmentForm->firstName_ng_ama)->where('middle_name', $enrollmentForm->middleName_ng_ama)->first();
         $mother = Mother::where('last_name', $enrollmentForm->lastName_ng_ina)->where('first_name', $enrollmentForm->firstName_ng_ina)->where('middle_name', $enrollmentForm->middleName_ng_ina)->first();
@@ -343,8 +342,17 @@ class EnrollmentController extends Controller
 
         $student->save();
         ///////////////////////////////////////////////////////////////////
-
-
+        //////////////ENROLLMENT////////////////////
+        $enrollment = Enrollment::where('student_id', $student->id)->where('school_year_id', $school_year)->first();
+        if($enrollment == null){
+            $enrollment = new Enrollment();
+        }
+        $enrollment->student_id = $student->id;
+        $enrollment->school_year_id =  $school_year;
+        $enrollment->grade_level_id = $enrollmentForm->school_year+1;
+        $enrollment->learning_info_id = $learningInfo->id;
+        $enrollment->enrollment_status = "temporarily enrolled";
+        $enrollment->save();
 
         //////////////////RETURNEE//////////////////
         if($enrollmentForm->aralStatus == "OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon"){
