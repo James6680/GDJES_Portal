@@ -931,7 +931,7 @@
                                         <td class="border border-yellow-500 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none"></td>
                                         <td class="border border-yellow-500 px-2" disabled><input type="text" name='initial_grade' class="p-0 border-none" disabled></td>
                                         <td class="border border-yellow-500 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none" disabled></td>
-                                        <td class="border border-yellow-500 px-2"><button type="submit" class="text-blue-700 border border-blue-700 hover:bg-blue-100 ring-1 focus:ring-blue-800 font-normal rounded text-sm px-2 py-1 ">Save</button></td>
+                                        <td class="border border-yellow-500 px-2"><button type="submit" class="text-white border bg-blue-700 hover:bg-blue-950  font-normal rounded text-sm px-2 py-1 ">Save</button></td>
                                     </tr>
                                 </tbody>
                             </table>
