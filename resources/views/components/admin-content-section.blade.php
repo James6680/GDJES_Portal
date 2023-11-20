@@ -2663,10 +2663,10 @@
           </thead>
 
           <tbody>
-            @foreach($teacher as $t)
+            @foreach($teacher as $id=>$t)
             <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
               <td class="px-6 py-4">
-                {{ $loop->iteration }}
+                {{ $id+1 }}
               </td>
               <td class="px-6 py-4">
                 {{ $t->last_name }}, {{ $t->first_name }} {{ $t->middle_name }}
@@ -2685,8 +2685,38 @@
               </td>
               <td class="px-6 py-4">
                 <!-- Modal toggle -->
-                <a href="#" data-modal-target="viewTeachertUserModal" data-modal-show="viewTeachertUserModal" type="button" class="font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View</a>                
-                <a href="#" type="button" data-modal-target="editTeacherUserModal" data-modal-show="editTeacherUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <a href="#" 
+                   data-modal-target="viewTeachertUserModal" 
+                   data-modal-show="viewTeachertUserModal" 
+                   type="button" 
+                   class="font-medium text-emerald-600 dark:text-emerald-500 hover:underline">
+                   View
+                  </a>                
+                <a href="#" 
+                   type="button" 
+                   class="edit_Teacher font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                   data-modal-target="editTeacherUserModal" 
+                   data-modal-show="editTeacherUserModal" 
+                   data-id="{{ $t->id }}"
+                   data-last_name="{{ $t->last_name }}"
+                    data-first_name="{{ $t->first_name }}"
+                    data-middle_name="{{ $t->middle_name }}"
+                    data-extension_name="{{ $t->extension_name }}"
+                    data-email="{{ $t->email}}"
+                    data-profile_picture="{{ $t->profile_picture }}"
+                    data-birth_date="{{ $t->birth_date }}"
+                    data-age="{{ $t->age}}"
+                    data-gender="{{ $t->gender}}"
+                    data-phone_number="{{ $t->phone_number}}"
+                    data-house_number="{{ $t->house_number }}"
+                    data-street="{{ $t->street }}"
+                    data-barangay="{{ $t->barangay }}"
+                    data-municipality="{{ $t->municipality }}"
+                    data-province="{{ $t->province }}"
+                    data-region="{{ $t->region }}"
+                    data-facebook_link="{{ $t->facebook_link}}">
+                   Edit
+                  </a>
                 <a href="#" type="button" data-modal-target="archiveTeacherUserModal" data-modal-show="archiveTeacherUserModal" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
@@ -2714,8 +2744,9 @@
               </td>
             </tr>
           -->
-          </tbody>
           @endforeach
+          </tbody>
+         
 
         </table>
        
@@ -3161,11 +3192,15 @@
       <div id="editTeacherUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative w-full max-w-2xl max-h-full">
               <!-- Modal content -->
-              <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <form action="#" 
+                    id="editTeacher"
+                    class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    @csrf
+                    
                   <!-- Modal header -->
                   <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                       <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                          Edit teacher user
+                          Edit Teacher User
                       </h3>
                     <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editTeacherUserModal">
                       <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -3177,43 +3212,241 @@
                   <!-- Modal body -->
                   <div class="p-6 space-y-6">
                       <div class="grid grid-cols-6 gap-6">
+                        <input type="hidden"
+                            id="edit_id">
+                           <!--Lastname-->
+                        <div class="col-span-6 sm:col-span-3">
+                          <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Lastname</label>
+                          <input type="text" 
+                                name="edit_last_name" 
+                                id="edit_last_name" 
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                placeholder="" 
+                                required="">
+                      </div>
+                      <!--Firstname-->
                           <div class="col-span-6 sm:col-span-3">
-                              <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
-                              <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bonnie" required="">
+                            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                              First Name
+                            </label>
+                            <input type="text" 
+                                  name="edit_first_name" 
+                                  id="edit_first_name" 
+                                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                  placeholder="Bonnie" 
+                                  required="">
+                        </div>
+                        
+                        <!--Middlename-->
+                            <div class="col-span-6 sm:col-span-3">
+                              <label for="middlename" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Middle Name
+                              </label>
+                              <input type="text" 
+                                    name="edit_middle_name" 
+                                    id="edit_middle_name" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    placeholder="Bonnie" 
+                                    required="">
                           </div>
+                        <!--Extension Name-->
+                            <div class="col-span-6 sm:col-span-3">
+                              <label for="extension_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Extension Name</label>
+                              <input type="text" 
+                                    name="edit_extension_name" 
+                                    id="edit_extension_name" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    placeholder="Sr" 
+                                    required=""
+                              >
+                            </div>
+
                           <div class="col-span-6 sm:col-span-3">
-                              <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
-                              <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Green" required="">
+                              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Email
+                              </label>
+                              <input type="email" 
+                                    name="edit_email" 
+                                    id="edit_email" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    placeholder="example@company.com" 
+                                    required=""
+                              >
                           </div>
+                          <!-- Add Profile Picture Input -->
                           <div class="col-span-6 sm:col-span-3">
-                              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                              <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="example@company.com" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
-                              <input type="number" name="phone-number" id="phone-number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="e.g. +(12)3456 789" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
-                              <input type="text" name="department" id="department" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Development" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company</label>
-                              <input type="number" name="company" id="company" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123456" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="current-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Current Password</label>
-                              <input type="password" name="current-password" id="current-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required="">
-                          </div>
-                          <div class="col-span-6 sm:col-span-3">
-                              <label for="new-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
-                              <input type="password" name="new-password" id="new-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required="">
-                          </div>
+                            <label for="profile_picture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Profile Picture
+                            </label>
+                            <input type="file" 
+                                name="edit_profile_picture" 
+                                id="edit_profile_picture" 
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                accept="image/*"
+                            >
+                        </div>
+                        
+                        <!-- Birthdate -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="birth_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Birthday
+                            </label>
+                            <input type="date" 
+                                    name="edit_birth_date" 
+                                    id="edit_birth_date" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Age -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Age
+                            </label>
+                            <input type="number" 
+                                    name="edit_age" 
+                                    id="edit_age" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Gender -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Gender
+                            </label>
+                            <select name="edit_gender" 
+                                    id="edit_gender" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required="">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Phone Number -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Phone Number
+                            </label>
+                            <input type="tel" 
+                                    name="edit_phone_number" 
+                                    id="edit_phone_number" 
+                                    pattern="[0-9]{11}" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    placeholder="639xxxxxxxxx" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Address -->
+                        <!-- House Number -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="house_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                House Number
+                            </label>
+                            <input type="text" 
+                                    name="edit_house_number" 
+                                    id="edit_house_number" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Street -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="street" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Street
+                            </label>
+                            <input type="text" 
+                                    name="edit_street" 
+                                    id="edit_street" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Barangay -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="barangay" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Barangay
+                            </label>
+                            <input type="text" 
+                                    name="edit_barangay" 
+                                    id="edit_barangay" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Municipality -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="municipality" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Municipality
+                            </label>
+                            <input type="text" 
+                                    name="edit_municipality" 
+                                    id="edit_municipality" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Province -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="province" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Province
+                            </label>
+                            <input type="text" 
+                                    name="edit_province" 
+                                    id="edit_province" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Region -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="region" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Region
+                            </label>
+                            <input type="text" 
+                                    name="edit_region" 
+                                    id="edit_region" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    required=""
+                            >
+                        </div>
+                        
+                        <!-- Facebook Link -->
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="facebook_link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Facebook Link
+                            </label>
+                            <input type="text" 
+                                    name="edit_facebook_link" 
+                                    id="edit_facebook_link" 
+                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                                    placeholder="https://www.facebook.com/example" 
+                                    required=""
+                            >
+                        </div>
+                    
+                      
                       </div>
                   </div>
                   <!-- Modal footer -->
                   <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
+                      <button type="submit" 
+                              id="editSaveTeacher"
+                              class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                              data-modal-hide="editTeacherUserModal"
+
+                              >Save all</button>
                   </div>
               </form>
           </div>
