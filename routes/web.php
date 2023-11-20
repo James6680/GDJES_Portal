@@ -35,9 +35,6 @@ Route::prefix('admin')->group(function(){
     Route::get('/login',[AdminController::class, 'Index'])->name('login_from');
     Route::post('/login/owner',[AdminController::class, 'Login'])->name('admin.login');
     Route::get('/signout',[AdminController::class, 'Signout'])->name('admin.signout');
-  
-
-    
 });
 /*----------------End Added Admin Routes-----------------------*/
 //R: FIX THE ADMIN ROUTES AND ADD THE OTHER ROUTES FOR THE OTHER USERS
@@ -75,7 +72,8 @@ Route::get('admin.teacher-management', function () {
 
 Route::post('admin.teacher-management.add',[AdminController::class, 'CreateTeacher'])
 ->name('admin.teacher-management.add');//added
-
+Route::post('admin.teacher-management.edit',[AdminController::class, 'EditTeacher'])
+->name('admin.teacher-management.edit');//added
 
 Route::get('admin.enrollment-management', function () {
     return view('layouts.admin');
@@ -92,7 +90,8 @@ Route::post('admin.openEnrollment', [SchoolYearController::class, 'openEnrollmen
 )->name('admin.openEnrollment');
 Route::post('admin.addSection', [SectionController::class, 'addSection']
 )->name('admin.addSection');
-
+Route::post('admin.editSection', [SectionController::class, 'editSection']
+)->name('admin.editSection');
 
 
 

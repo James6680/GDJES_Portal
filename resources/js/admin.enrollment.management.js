@@ -1,7 +1,10 @@
+import { Modal } from 'flowbite';
 var schoolYearList;
 var sectionList;
+var teacherList;
 var selectedGradeLevel = null;
 var selectedSchoolYearObject = null;
+var selectedClass = null;
 const schoolYearDropDown = document.getElementById('school-year-dropdown-picker');
 const addSchoolYearForm = document.getElementById('add-school-year-form');
 const addschoolYearDropDownSubmit = document.getElementById('add-school-year-form-submit');
@@ -20,6 +23,38 @@ const addSectionForm = document.getElementById('add-section-form');
 const addSectionFormSubmit = document.getElementById('add-section-form-submit');
 const addSectionFormShow = document.querySelector('#show-add-section-form');
 const sectionsTableBody = document.getElementById('sections-table-body');
+const sectionEquivalents = ["Kinder", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6"];
+
+const editSectionForm = document.getElementById('edit-section-form');
+const editSectionFormSubmit = document.getElementById('edit-section-form-submit');
+///////DECLARE MODAL////////
+
+const $viewSectionInfo = document.getElementById('viewSectionInfoModal');
+const $editSectionInfo = document.getElementById('editSectionModal');
+const $archiveSectionInfo = document.getElementById('archiveSectionModal');
+const $deleteSectionInfo = document.getElementById('deleteSectionModal');
+
+
+const viewSectionInfoModal = new Modal($viewSectionInfo);
+const editSectionInfoModal = new Modal($editSectionInfo);
+const archiveSectionInfoModal = new Modal($archiveSectionInfo);
+const deleteSectionInfoModal = new Modal($deleteSectionInfo);
+////////////
+
+document.getElementById('closeViewSectionModal').addEventListener('click', function(){
+  viewSectionInfoModal.hide();
+});
+
+document.getElementById('closeEditSectionModal').addEventListener('click', function(){
+  editSectionInfoModal.hide();
+});
+document.getElementById('closeArchiveSectionModal').addEventListener('click', function(){
+  archiveSectionInfoModal.hide();
+});
+document.getElementById('closeDeleteSectionModal').addEventListener('click', function(){
+  deleteSectionInfoModal.hide();
+});
+
 
 function getSchoolYear() {
     const url = '/api/schoolYears';
@@ -31,12 +66,21 @@ function getSchoolYear() {
     });
 }
 
+function getTeachers() {
+  const url = '/api/teachers';
+  return new Promise((resolve, reject) => {
+      $.getJSON(url, function(data) {
+        teacherList = data;
+          resolve();
+      });
+  });
+}
+
 function getSections() {
   const url = '/api/sections/' + selectedSchoolYearObject.id;
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
         sectionList = data;
-        console.log(sectionList);
           resolve();
       });
   });
@@ -54,10 +98,9 @@ function getStudents() {
 
 addSectionFormSubmit.addEventListener("click", function(event){
   event.preventDefault();   
-  const gradeLevelDropdown = document.getElementById('gradeLevelDropdownButton');
+  const gradeLevelDropdown = addSectionForm.querySelector('#gradeLevelDropdownButton');
   const selectedGradeLevel = gradeLevelDropdown.options[gradeLevelDropdown.selectedIndex].value;
   const serializeData = $(addSectionForm).serialize() + '&gradeLevel=' + selectedGradeLevel + '&schoolYear=' + selectedSchoolYearObject.id;
-  console.log(serializeData);
   $.ajax({
     url: "/admin.addSection",
     type: "POST",
@@ -70,7 +113,7 @@ addSectionFormSubmit.addEventListener("click", function(event){
         $("#input-gradeLevel-error").css("display", "none");
         getSections().then(async () => {
             updateSectionsTable(selectedGradeLevel);
-        });
+        }); 
     },
     error: function (response) {
       clearAddSectionErrors();
@@ -83,37 +126,109 @@ addSectionFormSubmit.addEventListener("click", function(event){
       });
     }
   });
-
 });
+
+editSectionFormSubmit.addEventListener("click", function(event){
+  event.preventDefault();
+  const gradeLevelDropdown = editSectionForm.querySelector('#gradeLevelDropdownButton');
+  const selectedGradeLevel = gradeLevelDropdown.options[gradeLevelDropdown.selectedIndex].value;
+  const serializeData = $(editSectionForm).serialize() + '&gradeLevel=' + selectedGradeLevel + '&schoolYear=' + selectedSchoolYearObject.id;
+  console.log(serializeData);
+  $.ajax({
+    url: "/admin.editSection",
+    type: "POST",
+    data: serializeData,
+    success: function (response) {
+        $("#edit-sectionName-error").css("display", "block");
+        $("#edit-sectionName-error").css("color", "green");
+        $("#edit-sectionName-error").text("School Year Created Successfully");
+        $("#edit-sectionSlots-error").css("display", "none");
+        $("#edit-gradeLevel-error").css("display", "none");
+        getSections().then(async () => {
+            updateSectionsTable(selectedGradeLevel);
+        }); 
+    },
+    error: function (response) {
+      clearEditSectionErrors();
+      var validationErrors = response.responseJSON.errors;
+                  // Handle other error responses
+      $.each(validationErrors, function (fieldName, errorMessage) {
+          $("#edit-" + fieldName + "-error").css("color", "red");
+          $("#edit-" + fieldName + "-error").text(errorMessage);
+          $("#edit-" + fieldName + "-error").css("display", "block");
+      });
+    }
+  });   
+});
+
 
 function updateSectionsTable(gradeLevel) {
   $(sectionsTableBody).empty();
 
   $.each(sectionList, function (index, entry) {
-                        /////////<tr class="bg-white dark:bg-gray-800 hover:bg-green-500 dark:hover:bg-gray-600
     const rowHTML = `<tr class="bg-white dark:bg-gray-800">
       <td class="px-6 py-4">
-        ${index+1}
+        ${index + 1}
       </td>
       <td class="px-6 py-4">
         ${entry['section_name']}
       </td>
       <td class="px-6 py-4">
-        ${entry['grade_level_id']}
+      ${sectionEquivalents[entry['grade_level_id']-1]}
       </td>
       <td class="px-6 py-4">
         ${entry['section_slot']} / ${entry['section_slot']}
       </td>
       <td class="px-6 py-4">
-        <a href="#" data-modal-target="viewSectionInfoModal" data-modal-show="viewSectionInfoModal" type="button" class="pr-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Section Info</a>
-        <a href="#" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="pr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-        <a href="#" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="pr-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
-        <a href="#" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="pr-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+        <a href="#" id="show-view-section-information-modal-${entry['id']}" data-modal-target="viewSectionInfoModal" data-modal-show="viewSectionInfoModal" type="button" class="pr-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Section Info</a>
+        <a href="#" id="show-edit-section-information-modal-${entry['id']}" data-modal-target="editSectionModal" data-modal-show="editSectionModal" type="button" class="pr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+        <a href="#" id="show-archive-section-information-modal-${entry['id']}" data-modal-target="archiveSectionModal" data-modal-show="archiveSectionModal" type="button" class="pr-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+        <a href="#" id="show-delete-section-information-modal-${entry['id']}" data-modal-target="deleteSectionModal" data-modal-show="deleteSectionModal" type="button" class="pr-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
       </td>
     </tr>`;
-
     $(sectionsTableBody).append(rowHTML);
-    $(sectionsTableBody).hide().show(0);
+
+    const viewSectionInfoBtn = document.getElementById(`show-view-section-information-modal-${entry['id']}`);
+    viewSectionInfoBtn.addEventListener('click', function() {
+      viewSectionInfoModal.toggle();
+      const url = '/api/getClass/' + entry['grade_level_id'] + '/' + selectedSchoolYearObject.id;
+      $.getJSON(url, function(data) {
+        selectedClass = data;
+      }).then(()=>{
+        console.log(selectedClass);
+      });
+    });
+
+    const editSectionInfoBtn = document.getElementById(`show-edit-section-information-modal-${entry['id']}`);
+    editSectionInfoBtn.addEventListener('click', function() {
+      clearEditSectionErrors();
+      editSectionForm.querySelector('input[name="section_id"]').value = entry['id'];
+      editSectionForm.querySelector('input[name="sectionName"]').value = entry['section_name'];
+
+// Replace section slots input value
+      editSectionForm.querySelector('input[name="sectionSlots"]').value = entry['section_slot'];
+
+// Replace grade level select option
+      const gradeLevelOptions = editSectionForm.querySelector('select[name="gradeLevel"]').querySelectorAll('option');
+      for (const option of gradeLevelOptions) {
+        if (option.value == entry['grade_level_id']) {
+          option.selected = true;
+          break; // Once the matching option is found, stop iterating
+        }
+      }
+      editSectionInfoModal.toggle();
+    });
+
+    const archiveSectionInfoBtn = document.getElementById(`show-archive-section-information-modal-${entry['id']}`);
+    archiveSectionInfoBtn.addEventListener('click', function() {
+      archiveSectionInfoModal.toggle();
+    });
+
+    const deleteSectionInfoBtn = document.getElementById(`show-delete-section-information-modal-${entry['id']}`);
+    deleteSectionInfoBtn.addEventListener('click', function() {
+     deleteSectionInfoModal.toggle();
+    });
+
   });
 }
 
@@ -133,8 +248,17 @@ function clearAddSectionErrors(){
   $("#input-gradeLevel-error").css("display", "none");
 }
 
-function clearEditSectionErrors(){
 
+function clearEditSectionErrors(){
+  $("#edit-sectionName-error").css("color", "red");
+  $("#edit-sectionName-error").text("");
+  $("#edit-sectionName-error").css("display", "none");
+  $("#edit-sectionSlots-error").css("color", "red");
+  $("#edit-sectionSlots-error").text("");
+  $("#edit-sectionSlots-error").css("display", "none");
+  $("#input-gradeLevel-error").css("color", "red");
+  $("#edit-gradeLevel-error").text("");
+  $("#edit-gradeLevel-error").css("display", "none");
 }
 
 
@@ -162,7 +286,6 @@ closeEnrollmentButton.addEventListener('click', function(){
 });
 
 openEnrollmentButton.addEventListener('click', function(){
-  document.getElementById('show-add-student').href = '/student-registration-1';
     $.ajax({
       url: "/admin.openEnrollment",
       type: "POST",
@@ -365,7 +488,6 @@ addschoolYearDropDownSubmit.addEventListener('click', function(event){
 });
 
 $(document).ready(function() {
-    getSchoolYear().then(updateSchoolYearDropDown);
-
+    getSchoolYear().then(updateSchoolYearDropDown).then(getTeachers);
     
 });
