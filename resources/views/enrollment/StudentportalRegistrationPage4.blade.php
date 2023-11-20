@@ -217,14 +217,14 @@
               
               <select id="extensionName_ng_ama" name="extensionName_ng_ama" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
                 <option value=""></option>
-                <option value="0" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 0) selected @endif>None</option>
-                <option value="1" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 1) selected @endif>Jr</option>
-                <option value="2" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 2) selected @endif>I</option>
-                <option value="3" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 3) selected @endif>II</option>
-                <option value="4" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 4) selected @endif>III</option>
-                <option value="5" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 5) selected @endif>IV</option>
-                <option value="6" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 6) selected @endif>V</option>
-                <option value="7" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == 7) selected @endif>VI</option>
+                <option value="None" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "None") selected @endif>None</option>
+                <option value="Jr" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "Jr") selected @endif>Jr</option>
+                <option value="I" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "I") selected @endif>I</option>
+                <option value="II" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "II") selected @endif>II</option>
+                <option value="III" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "III") selected @endif>III</option>
+                <option value="IV" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "IV") selected @endif>IV</option>
+                <option value="V" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "V") selected @endif>V</option>
+                <option value="VI" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "VI") selected @endif>VI</option>
               </select>
 
               <span   
@@ -405,14 +405,14 @@
               <!-- Extension Name -->
               <select id="extensionName_ng_ina" name="extensionName_ng_ina" class="bg-main-background border border-gray-300 text-gray-900 text-[1rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full">
                 <option value=""></option>
-                <option value="0" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 0) selected @endif>None</option>
-                <option value="1" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 1) selected @endif>Jr</option>
-                <option value="2" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 2) selected @endif>I</option>
-                <option value="3" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 3) selected @endif>II</option>
-                <option value="4" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 4) selected @endif>III</option>
-                <option value="5" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 5) selected @endif>IV</option>
-                <option value="6" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 6) selected @endif>V</option>
-                <option value="7" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == 7) selected @endif>VI</option>
+                <option value="None" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == "None") selected @endif>None</option>
+                <option value="jr" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == "jr") selected @endif>Jr</option>
+                <option value="I" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == "I") selected @endif>I</option>
+                <option value="II" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == "II") selected @endif>II</option>
+                <option value="III" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == "III") selected @endif>III</option>
+                <option value="IV" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == "IV") selected @endif>IV</option>
+                <option value="V" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == "V") selected @endif>V</option>
+                <option value="VI" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == "VI") selected @endif>VI</option>
               </select>
 
               <span   
@@ -495,13 +495,9 @@
               <!-- Guardian's Information --> 
               <!-- Lastname -->
               <div class="mb-1">
-                <input required type="text"
-                                id="lastName_ng_guardian"
-                                name="lastName_ng_guardian"
-                                class="text-[.90rem] block w-full p-25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
-                                value="{{ isset($enrollment) ? $enrollment->lastName_ng_guardian : old('lastName_ng_guardian') }}"
-                                >
-
+                <input required type="text" id="lastName_ng_guardian" name="lastName_ng_guardian" class="text-[.90rem] block w-full p-25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"value="{{ isset($enrollment) ? $enrollment->lastName_ng_guardian : old('lastName_ng_guardian') }}">
+              </div>  
+                
               <span   
                 id="input_error13" 
                 class="hidden pt-2 pl-0 font-medium text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
@@ -582,14 +578,14 @@
               
               <select id="extensionName_ng_guardian" name="extensionName_ng_guardian" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
                 <option value=""></option>
-                <option value="0" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 0 ? 'selected' : '' }}>None</option>
-                <option value="1" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 1 ? 'selected' : '' }}>Jr</option>
-                <option value="2" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 2 ? 'selected' : '' }}>I</option>
-                <option value="3" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 3 ? 'selected' : '' }}>II</option>
-                <option value="4" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 4 ? 'selected' : '' }}>III</option>
-                <option value="5" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 5 ? 'selected' : '' }}>IV</option>
-                <option value="6" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 6 ? 'selected' : '' }}>V</option>
-                <option value="7" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == 7 ? 'selected' : '' }}>VI</option>
+                <option value="None" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == "None" ? 'selected' : '' }}>None</option>
+                <option value="jr" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == "jr" ? 'selected' : '' }}>Jr</option>
+                <option value="I" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == "I" ? 'selected' : '' }}>I</option>
+                <option value="II" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == "II" ? 'selected' : '' }}>II</option>
+                <option value="III" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == "III" ? 'selected' : '' }}>III</option>
+                <option value="IV" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == "IV" ? 'selected' : '' }}>IV</option>
+                <option value="V" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == "V" ? 'selected' : '' }}>V</option>
+                <option value="VI" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == "VI" ? 'selected' : '' }}>VI</option>
               </select>
 
               <span   
@@ -771,6 +767,7 @@
               <button type="button" id="nextBtn" class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block">next</button>
             
             </div>
+
           </div>
         
         </div>

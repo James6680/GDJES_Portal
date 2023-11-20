@@ -25,14 +25,14 @@ class SchoolYearController extends Controller
         $schoolYear['school_year'] = $request->input('schoolYear');
         $schoolYear['school_days'] = $request->input('requiredDays');
         $schoolYear['active'] = 0;
-        $schoolYear['isEnrollment'] = 0; 
+        $schoolYear['is_enrollment'] = 0; 
         $schoolYear->save();
     }
 
     public function endSchoolYear(Request $request){
         DB::table('school_years')
         ->where('id', $request->id)
-        ->update(['active' => 0, 'isEnrollment' => 0]);
+        ->update(['active' => 0, 'is_enrollment' => 0]);
         return response()->json($request);
     }
 
@@ -46,7 +46,7 @@ class SchoolYearController extends Controller
     public function closeEnrollment(Request $request){
         DB::table('school_years')
         ->where('id', $request->id)
-        ->update(['isEnrollment' => 0]);
+        ->update(['is_enrollment' => 0]);
         return response()->json($request);
     }
 
@@ -55,20 +55,19 @@ class SchoolYearController extends Controller
         $existingActiveSchoolYearWithOpenEnrollment = DB::table('school_years')
             ->where('id', '!=', $request->id) // Exclude the specified ID
             ->where('active', 0)
-            ->where('isEnrollment', 1)
+            ->where('is_enrollment', 1)
             ->first();
         if ($existingActiveSchoolYearWithOpenEnrollment) {
             // Update the enrollment status of the existing active school year to closed
             DB::table('school_years')
                 ->where('id', $existingActiveSchoolYearWithOpenEnrollment->id)
-                ->update(['isEnrollment' => 0]);
+                ->update(['is_enrollment' => 0]);
         }
     
         // Update the enrollment status of the specified school year to open
         DB::table('school_years')
             ->where('id', $request->id)
-            ->update(['isEnrollment' => 1]);
-    
+            ->update(['is_enrollment' => 1]);
         return response()->json($request);
     }
 }

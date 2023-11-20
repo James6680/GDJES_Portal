@@ -28,7 +28,7 @@ Route::get('layouts.landing', function () {
     ->orderBy('created_at', 'desc')
     ->get();
     return view('layouts.landing', ['announcements' => $announcements]);
-});
+})->name('layouts.landing');
 
 /*----------------Added Admin Routes-----------------------*/
 Route::prefix('admin')->group(function(){
@@ -90,7 +90,8 @@ Route::post('admin.openEnrollment', [SchoolYearController::class, 'openEnrollmen
 )->name('admin.openEnrollment');
 Route::post('admin.addSection', [SectionController::class, 'addSection']
 )->name('admin.addSection');
-
+Route::post('admin.editSection', [SectionController::class, 'editSection']
+)->name('admin.editSection');
 
 
 
@@ -142,9 +143,9 @@ Route::get('student.student-information', function () {
 })->middleware('students')->name('student.student-information');
 //End of Student Routes
 
-
-
-Route::get('student-registration-1', [EnrollmentController::class, 'getEnrollment'])
+Route::group(['middleware' => 'CheckSchoolYearStatus'], function () {
+    // Routes that should be accessible only when SY is active
+    Route::get('student-registration-1', [EnrollmentController::class, 'getEnrollment'])
     ->name('enrollment.StudentportalRegistrationPage1');
 Route::post('student-registration-1', [EnrollmentController::class, 'postEnrollment'])
     ->name('enrollment.StudentportalRegistrationPage1.post');
@@ -172,8 +173,7 @@ Route::post('student-registration-5', [EnrollmentController::class, 'postEnrollm
 Route::get('student-registration-Completed', [EnrollmentController::class, 'enrollmentComplete'])
     ->name('enrollment.StudentportalRegistrationCompletedPage');
 
-   
-
+});
 /*----------------Added Faculty Routes-----------------------*/
 Route::prefix('teacher')->group(function(){
     Route::get('/login',[TeacherController::class, 'IndexTeacher'])->name('teacher_login_from');

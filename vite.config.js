@@ -10,7 +10,6 @@ export default defineConfig({
                 'resources/js/app.js', 
                 'resources/js/ph-address-selector.js',
                 'resources/js/sample.js',
-                'resources/js/form.js',
                 'resources/js/Enrollment_ValidationP1.js',
             ],
             refresh: true,
