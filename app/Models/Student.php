@@ -75,7 +75,6 @@ class Student extends Authenticatable
 
     protected function generatePassword()
     {
-        //return 8 random characters as password
-        return Str::random(8);
+        return "Student123";
     }
 }
