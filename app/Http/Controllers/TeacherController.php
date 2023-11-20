@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -25,4 +26,17 @@ class TeacherController extends Controller
         Auth::guard('teachers')->logout();
         return redirect()->route('teacher_login_from')->with('error', 'Teacher Logout Successfully');
     }//end index method
+
+    public function getAllTeacher(){
+        $teachers = DB::table('teachers')
+            ->select(
+                'teachers.id',
+                'teachers.last_name',
+                'teachers.first_name',
+                'teachers.middle_name',
+                DB::raw('COALESCE(teachers.extension_name, \'\') AS extension_name')
+            )
+            ->get();
+        return $teachers;    
+    }
 }

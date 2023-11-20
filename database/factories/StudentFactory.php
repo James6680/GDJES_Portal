@@ -21,7 +21,7 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'school_year' => $this->faker->year,
+            'school_year_id' => 1,
             'psa_birthcert_no' => $this->faker->numerify('##########'),
             'lrn' => $this->faker->numerify('##########'),
 

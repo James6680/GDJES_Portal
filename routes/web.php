@@ -92,7 +92,8 @@ Route::post('admin.openEnrollment', [SchoolYearController::class, 'openEnrollmen
 )->name('admin.openEnrollment');
 Route::post('admin.addSection', [SectionController::class, 'addSection']
 )->name('admin.addSection');
-
+Route::post('admin.editSection', [SectionController::class, 'editSection']
+)->name('admin.editSection');
 
 
 

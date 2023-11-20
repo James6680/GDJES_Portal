@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AnnouncementController;
 
 /*
@@ -38,5 +39,7 @@ Route::get('/sections/{variableValue}', function ($variableValue) {
 
     return response()->json($sections);
 });
+
+Route::get('/teachers', [TeacherController::class, 'getAllTeacher']);
 
 Route::get('GetAnnouncements', [AnnouncementController::class, 'getAnnouncement']);
