@@ -25,9 +25,16 @@ class AdminContentSection extends Component
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
-    {   $announcements = new AnnouncementController;
-        $teacher = Teacher::latest()->paginate(10); //added
-        return view('components.admin-content-section', 
-        ['announcements' => $announcements->getAnnouncement(), 'teacher' => $teacher]);
+    {   
+        if(request()->is('admin.teacher-management')){
+            $teacher = Teacher::latest()->paginate(10); //added
+            return view('components.admin-content-section', [ 'teacher' => $teacher]);
+        }
+        else if(request()->is('admin.announcements')){
+            $announcements = new AnnouncementController;
+            return view('components.admin-content-section', ['announcements' => $announcements->getAnnouncement()]);
+        }else{
+            return view('components.admin-content-section');
+        }
     }
 }
