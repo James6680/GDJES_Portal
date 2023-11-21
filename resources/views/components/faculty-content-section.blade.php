@@ -60,11 +60,11 @@
     <!-- Faculty Class & Advisory List Section -->
     <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 sm:pb-9 md:px-16 px-12">
 
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-4 lg:py-7 bg-white lg:ml-8 ml-6 shadow shadow-brown-100">
+        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-6 lg:py-7 bg-white lg:ml-8 ml-6 shadow shadow-brown-100">
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">My Students</h3>
-                <p class="mt-1 lg:text-base text-sm text-justify text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm text-gray-500">This section offers faculty seamless academic oversight. It comprises two tables—one for advisory class details, another for subject class student lists. This dual-view feature streamlines management, empowering educators with efficient, comprehensive tools for enhanced teaching and advising.</p>
             </div> <!-- End of Header Content -->
 
             <div class="flex flex-col gap-2">
@@ -183,7 +183,7 @@
 
             </div>
 
-            <div class="flex flex-col gap-2">.
+            <div class="flex flex-col gap-2">
 
                 <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black">Subject Class</h1>
 
@@ -191,7 +191,7 @@
                     <!-- Start coding here -->
                     <div class="bg-white dark:bg-gray-800 relative overflow-hidden">
                         
-                        <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-2 p-3 px-1">
+                        <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-2 py-1 pb-2.5 px-1">
 
                             <div class="w-full md:w-1/2">
                                 <!-- Seach input field form container -->
@@ -357,18 +357,16 @@
 
             <div class="flex flex-col gap-2">  
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Enrollments</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm text-gray-500 pr-4">This section provides crucial enrollment insights, displaying the status of each student. Faculty can easily identify whether students are officially enrolled, track completion of enrollment requirements, ensuring a streamlined and informed academic management process.</p>
             </div> <!-- End of Header Content -->
 
             <div class="flex flex-col gap-2">
-
-                <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black">Subject Class</h1>
 
                 <div class="mx-auto w-full ">
                     <!-- Start coding here -->
                     <div class="bg-white dark:bg-gray-800 relative overflow-hidden">
                         
-                        <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-2 p-3 px-1">
+                        <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-2 py-2 px-1">
 
                             <div class="w-full md:w-1/2">
                                 <!-- Search input field form container -->
@@ -606,17 +604,17 @@
                                     // Add classes based on selected status
                                     switch (status) {
                                         case "Enrolled":
-                                        button.classList.add("text-green-500", "border", "border-green-500", "hover:bg-green-100", "focus:ring-1", "focus:outline-none", "focus:ring-gray-700", "font-medium", "rounded");
+                                        button.classList.add("text-green-500", "border", "border-green-500", "hover:bg-green-100", "focus:ring-1", "focus:ring-gray-700", "rounded");
                                         break;
                                         case "Temporary":
-                                        button.classList.add("text-yellow-500", "border", "border-yellow-500", "hover:bg-yellow-100", "focus:ring-1", "focus:outline-none", "focus:ring-gray-700", "font-medium", "rounded");
+                                        button.classList.add("text-yellow-500", "border", "border-yellow-500", "hover:bg-yellow-100", "focus:ring-1", "focus:ring-gray-700", "rounded");
                                         break;
                                         case "Dropped":
-                                        button.classList.add("text-red-600", "border", "border-red-600", "hover:bg-red-100", "focus:ring-1", "focus:outline-none", "font-semibold", "rounded");
+                                        button.classList.add("text-red-600", "border", "border-red-600", "hover:bg-red-100", "focus:ring-1", "rounded");
                                         break;
                                         default:
                                         // If None or other value is selected, keep default classes
-                                        button.classList.add("text-gray-700", "border", "border-gray-700", "hover:bg-gray-100", "focus:ring-1", "focus:outline-none", "focus:ring-gray-700", "font-medium", "rounded");
+                                        button.classList.add("text-gray-700", "border", "border-gray-700", "hover:bg-gray-100", "focus:ring-1", "focus:ring-gray-700", "rounded");
                                     }
                                     button.textContent = status; // Update button text
                                     }
@@ -662,19 +660,19 @@
     <!-- Faculty Grade Input Section -->
     <div class="md:pl-64 pl-0 min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
 
-        <section class="self-stretch container lg:p-8 p-7 px-8 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-7 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
+        <section class="self-stretch container lg:p-8 p-7 px-8 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-5 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Grades</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">In this section, a user-friendly table streamlines raw score input for student grades, automatically calculated by the system. The convenience is further amplified with a dropdown button, allowing faculty to effortlessly switch between grading sheets for different subject classes, catering to the multifaceted roles of teachers.</p>
             </div> <!-- End of Header Content -->
 
-            <div class="flex flex-col gap-5">
+            <div class="flex flex-col">
 
                 <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-2 p-3 px-1">
                                 
                     <!-- 2 filter dropdowns for Grade level, Section, Subject, and Quarter -->
-                    <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                    <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0 ">
 
                         <div class="flex items-center lg:space-x-3 space-x-1 w-full md:w-auto">
 
@@ -838,7 +836,7 @@
 
                 </div>
 
-                <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black -mb-2" id="gSheetHeader">Grading Sheet Input for  Students</h1>
+                <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black mb-1.5" id="gSheetHeader">Grading Sheet Input for Students</h1>
 
                 <div class="mx-auto w-full ">
                     
@@ -1593,16 +1591,16 @@
     <!-- Faculty Attendance Input Section -->
     <div class="md:pl-64 pl-0 min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
 
-        <section class="self-stretch container lg:p-8 p-7 px-8 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-7  lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
+        <section class="self-stretch container lg:p-8 p-7 px-8 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-5 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Attendance</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">In this section, a user-friendly table streamlines raw score input for student grades, automatically calculated by the system. The convenience is further amplified with a dropdown button, allowing faculty to effortlessly switch between grading sheets for different subject classes, catering to the multifaceted roles of teachers.</p>
             </div> <!-- End of Header Content -->
 
-            <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-2">
 
-                <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black -mb-2">Attendance Sheet Input for Students</h1>
+                <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black">Attendance Sheet Input for Students</h1>
 
                 <div class="mx-auto w-full ">
                     
