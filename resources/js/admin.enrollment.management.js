@@ -2,6 +2,11 @@ import { Modal } from 'flowbite';
 var schoolYearList;
 var sectionList;
 var teacherList;
+var subjectList;
+var studentList;
+var availableSlotsInSection;
+const range = document.createRange();
+const parser = new DOMParser();
 var selectedGradeLevel = null;
 var selectedSchoolYearObject = null;
 var selectedClass = null;
@@ -27,13 +32,22 @@ const sectionEquivalents = ["Kinder", "Grade 1", "Grade 2", "Grade 3", "Grade 4"
 
 const editSectionForm = document.getElementById('edit-section-form');
 const editSectionFormSubmit = document.getElementById('edit-section-form-submit');
-///////DECLARE MODAL////////
+//////////////SECTION INFORMATION///////////////
+const sectionInformationSectionName = document.querySelectorAll('#section-information-section-name');
+const sectionInformationGradeLevel = document.querySelectorAll('#section-information-grade-level');
+const sectionInformationSlots = document.querySelectorAll('#section-information-slots');
+const sectionInformationAdviser = document.querySelector('#section-information-adviser');
+const sectionInformationSubjectSelect = document.querySelector('#section-information-subject-list-dropdown');
+const sectionInformationSaveTeacher = document.querySelector('#save-teacher-for-section');
+const sectionInformationSaveTeacherForm = document.querySelector('#section-information-select-teachers-form');
+const teachersDropdownButton = document.querySelector('#teachersDropdownButton'); 
+///////DECLARE MODAL////////  
+
 
 const $viewSectionInfo = document.getElementById('viewSectionInfoModal');
 const $editSectionInfo = document.getElementById('editSectionModal');
 const $archiveSectionInfo = document.getElementById('archiveSectionModal');
 const $deleteSectionInfo = document.getElementById('deleteSectionModal');
-
 
 const viewSectionInfoModal = new Modal($viewSectionInfo);
 const editSectionInfoModal = new Modal($editSectionInfo);
@@ -55,6 +69,23 @@ document.getElementById('closeDeleteSectionModal').addEventListener('click', fun
   deleteSectionInfoModal.hide();
 });
 
+sectionInformationSaveTeacher.addEventListener('click', function(){
+  var serializedSaveTeacherForm = $(sectionInformationSaveTeacherForm).serialize();
+  console.log(serializedSaveTeacherForm);
+  return new Promise((resolve) =>{
+    $.ajax({
+      url: "/classes.assignTeachers",
+      type: "POST",
+      data: serializedSaveTeacherForm,
+      success: function (response) {
+        console.log(response);
+      },
+      error: function (response) {
+      }
+    });
+    resolve();
+  });
+});
 
 function getSchoolYear() {
     const url = '/api/schoolYears';
@@ -71,6 +102,16 @@ function getTeachers() {
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
         teacherList = data;
+          resolve();
+      });
+  });
+}
+
+function getSubjects(){
+  const url = '/api/subjects';
+  return new Promise((resolve, reject) => {
+      $.getJSON(url, function(data) {
+        subjectList = data;
           resolve();
       });
   });
@@ -133,7 +174,6 @@ editSectionFormSubmit.addEventListener("click", function(event){
   const gradeLevelDropdown = editSectionForm.querySelector('#gradeLevelDropdownButton');
   const selectedGradeLevel = gradeLevelDropdown.options[gradeLevelDropdown.selectedIndex].value;
   const serializeData = $(editSectionForm).serialize() + '&gradeLevel=' + selectedGradeLevel + '&schoolYear=' + selectedSchoolYearObject.id;
-  console.log(serializeData);
   $.ajax({
     url: "/admin.editSection",
     type: "POST",
@@ -161,6 +201,72 @@ editSectionFormSubmit.addEventListener("click", function(event){
   });   
 });
 
+function updateViewSectionInformation(selectedSection){
+  teachersDropdownButton.setAttribute('name', 'adviser-' + selectedSection.id);
+  ///////////////AVAILABLE COUNT FOR SECTION SLOT////////
+  availableSlotsInSection = selectedSection['section_slot'] - selectedClass.slots;
+  sectionInformationSectionName.forEach(sectionInformationSectionName => {
+    sectionInformationSectionName.innerText = "Section Name: " + selectedSection.section_name;
+  });
+  sectionInformationGradeLevel.forEach(sectionInformationGradeLevel => {
+    sectionInformationGradeLevel.innerText = "Grade Level: " + sectionEquivalents[selectedSection['grade_level_id']-1];
+  });
+  sectionInformationSlots.forEach(sectionInformationSlots => {
+    sectionInformationSlots.innerHTML = "Available Slots: "  + selectedClass.slots + "/" + selectedSection['section_slot'];
+  });
+
+  var adviserTeacher = teacherList.find(teacher => teacher.id === selectedSection.adviser_id);
+  if(adviserTeacher){
+    sectionInformationAdviser.innerText = "Adviser - " + adviserTeacher.last_name + ", " + adviserTeacher.first_name + " " + adviserTeacher.middle_name + " " + adviserTeacher.extension_name;
+  }else{
+    sectionInformationAdviser.innerText = "Adviser - ";
+  }
+  var sectionSubjectList = document.getElementById('section-information-subject-list');
+  $(sectionSubjectList).empty();
+  $(sectionInformationSubjectSelect).empty();
+  selectedClass.sections.forEach(element => {
+    //////////////////LIST FOR VIEWING///////////////////
+    var subjectTeacher = teacherList.find(teacher => teacher.id === element.teacher_id);
+    var subjectForSection = subjectList.find(subject => subject.id === element.subject_id);
+    var x
+    if(subjectTeacher){
+       x = `<p class="text-sm font-regular text-gray-500 dark:text-white">${subjectForSection.subject_name} - ${subjectTeacher.last_name}, ${subjectTeacher.first_name} ${subjectTeacher.middle_name} ${subjectTeacher.extension_name}</p>`;
+    }else{
+       x = `<p class="text-sm font-regular text-gray-500 dark:text-white">${subjectForSection.subject_name} - `;
+    }
+    const doc = parser.parseFromString(x, "text/html");
+    const desiredHTML = doc.body.innerHTML;
+    const fragment = range.createContextualFragment(desiredHTML); // Convert string to Node fragment
+    $(sectionSubjectList).append(fragment);
+    ////////////////////LIST FOR EDITING/////////////////
+    let y = `<div class="flex flex-col">
+              <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">${subjectForSection.subject_name}</label>
+              <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+                <!-- Dropdown select button for assign teacher -->
+                <select id="teachersDropdownButton${element.subject_id}" name="subject-${element.id}" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
+                  <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                    <option value="" disabled selected>Select subject teacher</option>
+                  </div><!-- End of Dropdown menu for assign teacher -->;
+                  </select>
+              </div>  
+            </div>`
+    const doc1 = parser.parseFromString(y, "text/html");
+    const desiredHTML1 = doc1.body.innerHTML;
+    const fragment1 = range.createContextualFragment(desiredHTML1); // Convert string to Node fragment
+    $(sectionInformationSubjectSelect).append(fragment1);
+    const selectDropDown  = sectionInformationSubjectSelect.querySelector('#teachersDropdownButton' + element.subject_id);
+    ///////////ASSIGN DROPDOWN SELECT////////
+        const teacherOptionsFragment = document.createDocumentFragment();
+        teacherList.forEach(teacher => {
+          const teacherOption = document.createElement('option');
+          teacherOption.value = teacher.id;
+          teacherOption.textContent = `${teacher.last_name}, ${teacher.first_name} ${teacher.middle_name} ${teacher.extension_name}`;
+          teacherOptionsFragment.appendChild(teacherOption);
+        });
+      $(selectDropDown).append(teacherOptionsFragment);
+  });
+}
+
 
 function updateSectionsTable(gradeLevel) {
   $(sectionsTableBody).empty();
@@ -177,7 +283,7 @@ function updateSectionsTable(gradeLevel) {
       ${sectionEquivalents[entry['grade_level_id']-1]}
       </td>
       <td class="px-6 py-4">
-        ${entry['section_slot']} / ${entry['section_slot']}
+        ${entry['section_slot']}
       </td>
       <td class="px-6 py-4">
         <a href="#" id="show-view-section-information-modal-${entry['id']}" data-modal-target="viewSectionInfoModal" data-modal-show="viewSectionInfoModal" type="button" class="pr-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View Section Info</a>
@@ -191,11 +297,11 @@ function updateSectionsTable(gradeLevel) {
     const viewSectionInfoBtn = document.getElementById(`show-view-section-information-modal-${entry['id']}`);
     viewSectionInfoBtn.addEventListener('click', function() {
       viewSectionInfoModal.toggle();
-      const url = '/api/getClass/' + entry['grade_level_id'] + '/' + selectedSchoolYearObject.id;
+      const url = '/api/getClass/' + entry['grade_level_id'] + '/' + selectedSchoolYearObject.id + "/" + entry['id'];
       $.getJSON(url, function(data) {
         selectedClass = data;
       }).then(()=>{
-        console.log(selectedClass);
+        updateViewSectionInformation(entry);
       });
     });
 
@@ -413,8 +519,6 @@ function updateSchoolYearControlButtons(){
 
 function updateSchoolYearDropDown() {
     $(schoolYearDropDown).empty();
-    const range = document.createRange();
-    const parser = new DOMParser();
     $.each(schoolYearList, function(index, entry) {
         let x = `<li>
             <a class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">${entry['school_year']}</a>
@@ -448,6 +552,8 @@ schoolYearDropDown.addEventListener('click', function(event) {
         }
         getSections().then( async ()=>{
           updateSectionsTable(selectedGradeLevel);
+        }).then( async ()=>{
+          getStudents();
         });
         updateSchoolYearInformation();
         updateSchoolYearControlButtons();
@@ -488,6 +594,24 @@ addschoolYearDropDownSubmit.addEventListener('click', function(event){
 });
 
 $(document).ready(function() {
-    getSchoolYear().then(updateSchoolYearDropDown).then(getTeachers);
-    
+  getSchoolYear()
+    .then(async () => {
+      await updateSchoolYearDropDown();
+    })
+    .then(async () => {
+      await getSubjects();
+    })
+    .then(async () => {
+      await getTeachers();
+      const teacherOptionsFragment = document.createDocumentFragment();
+
+      teacherList.forEach((teacher) => {
+        const teacherOption = document.createElement('option');
+        teacherOption.value = teacher.id;
+        teacherOption.textContent = `${teacher.last_name}, ${teacher.first_name} ${teacher.middle_name} ${teacher.extension_name}`;
+        teacherOptionsFragment.appendChild(teacherOption);
+      });
+
+      $(teachersDropdownButton).append(teacherOptionsFragment);
+    });
 });

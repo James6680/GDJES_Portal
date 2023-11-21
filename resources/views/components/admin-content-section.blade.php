@@ -3803,7 +3803,7 @@
                     GRADE LEVEL
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    SLOTS
+                    TOTAL SLOTS
                 </th>
                 <th scope="col" class="px-6 py-3">
                     ACTION
@@ -3836,19 +3836,16 @@
               <div class="p-6 space-y-3 divide-y divide-gray-200">
                 <!-- Modal body header -->
                 <div>
-                  <h3 class="text-md font-semibold text-black dark:text-white">Section Name: *Section Name*</h3>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: *Grade Level*</p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Student slots: *Slot availability*</p>
+                  <h3 id="section-information-section-name" class="text-md font-semibold text-black dark:text-white">Section Name: *Section Name*</h3>
+                  <p id="section-information-grade-level" class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: *Grade Level*</p>
+                  <p id="section-information-slots" class="text-sm font-semibold text-gray-500 dark:text-white">Student slots: *Slot availability*</p>
                 </div> <!-- End of Modal body header -->
 
                 <!-- Modal body subjects with teachers -->
                 <div class="flex flex-col pt-4 w-full ">
                   <h3 class="text-md font-semibold text-black dark:text-white">Assigned Teachers</h3>
-                  <p class="text-sm font-semibold text-green-500 dark:text-white">Adviser - *Teacher name*</p>
-                  <div class="grid grid-cols-1 sm:grid-cols-2">
-                    <p class="text-sm font-regular text-gray-500 dark:text-white">*Subject* - *Teacher Name*</p>
-                    <p class="text-sm font-regular text-gray-500 dark:text-white">*Subject* - *Teacher Name*</p>
-                    <p class="text-sm font-regular text-gray-500 dark:text-white">*Subject* - *Teacher Name*</p>
+                  <p id="section-information-adviser" class="text-sm font-semibold text-green-500 dark:text-white">Adviser - </p>
+                  <div id="section-information-subject-list" class="grid grid-cols-1 sm:grid-cols-2">
                   </div>
                 </div>
 
@@ -3894,9 +3891,9 @@
                             <!-- Modal body -->
                             <div class="p-6 space-y-3 divide-y divide-gray-200">
                               <div>
-                                <h3 class="text-md font-semibold text-black">Section Name: *Section Name*</h3>
-                                <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: *insert grade level*</p>
-                                <p class="text-sm font-semibold text-gray-500 dark:text-white">Available Slots: *insert slots*</p>
+                                <h3 id="section-information-section-name" class="text-md font-semibold text-black">Section Name: *Section Name*</h3>
+                                <p id="section-information-grade-level" class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: *insert grade level*</p>
+                                <p id="section-information-slots" class="text-sm font-semibold text-gray-500 dark:text-white">Available Slots: *insert slots*</p>
                               </div>
                               <!-- Checkbox for assign students -->
                               <div id="assignStudentsCheckbox" class="z-10  w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
@@ -4068,7 +4065,9 @@
                       <div id="assignTeachersModal" tabindex="-1" aria-hidden="true" class="shadow-lg fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-2xl max-h-full">
                           <!-- Modal content -->
-                          <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                          <form action="#" method="post" id="section-information-select-teachers-form" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            @csrf
+                            @method('post')
                             <!-- Modal header -->
                             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                               <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
@@ -4089,61 +4088,43 @@
                                   <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">Class adviser</label>
                                   <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
                                     <!-- Dropdown select button for assign teacher -->
-                                    <select id="teachersDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
+                                    <select id="teachersDropdownButton" name="adviser" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
                                       <!-- Dropdown menu for assign teacher -->
                                       <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
                                         <option value="" disabled selected>Select adviser</option>
-                                        <option value="kinder">*Teacher name*</option>
-                                        <option value="kinder">*Teacher name*</option>
-                                        <option value="kinder">*Teacher name*</option>
-                                        <option value="kinder">*Teacher name*</option>
-                                        <option value="kinder">*Teacher name*</option>
                                       </div><!-- End of Dropdown menu for assign teacher -->
                                     </select>
                                   </div>  
                                 </div>    
+
                                 <!-- Subject teacher assigning -->
-                                <div class="flex flex-col pt-4 gap-4">
-                                  <div class="flex flex-col">
-                                    <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">*Subject*</label>
-                                    <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
-                                      <!-- Dropdown select button for assign teacher -->
-                                      <select id="teachersDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
-                                        <!-- Dropdown menu for assign teacher -->
-                                        <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-                                          <option value="" disabled selected>Select subject teacher</option>
-                                          <option value="kinder">*Teacher name*</option>
-                                          <option value="kinder">*Teacher name*</option>
-                                          <option value="kinder">*Teacher name*</option>
-                                          <option value="kinder">*Teacher name*</option>
-                                          <option value="kinder">*Teacher name*</option>
-                                        </div><!-- End of Dropdown menu for assign teacher -->
-                                      </select>
-                                    </div>  
+                                <div id="section-information-subject-list-dropdown">
+                                  <div class="flex flex-col pt-4 gap-4">
+                                    <div class="flex flex-col">
+                                      <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">*Subject*</label>
+                                      <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
+                                        <!-- Dropdown select button for assign teacher -->
+                                        <select id="teachersDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
+                                          <!-- Dropdown menu for assign teacher -->
+                                          <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                                            <option value="" disabled selected>Select subject teacher</option>
+                                            <option value="kinder">*Teacher name*</option>
+                                            <option value="kinder">*Teacher name*</option>
+                                            <option value="kinder">*Teacher name*</option>
+                                            <option value="kinder">*Teacher name*</option>
+                                            <option value="kinder">*Teacher name*</option>
+                                          </div><!-- End of Dropdown menu for assign teacher -->
+                                        </select>
+                                      </div>  
+                                    </div>   
                                   </div>
-                                  <div class="flex flex-col">
-                                    <label for="teachersDropdown" class="block mb-2 text-sm font-medium text-black dark:text-white">*Subject*</label>
-                                    <div class="flex flex-col sm:flex-row w-full h-auto gap-0 sm:gap-4">
-                                      <!-- Dropdown select button for assign teacher -->
-                                      <select id="teachersDropdownButton" name="gradeLevel" class="mt-1 block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-green-600 focus:border-green-600 sm:text-sm rounded-lg bg-gray-50 gap-2">
-                                        <!-- Dropdown menu for assign teacher -->
-                                        <div id="teachersDropdown" class="relative bg-gray-50 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-                                          <option value="" disabled selected>Select subject teacher</option>
-                                          <option value="kinder">*Teacher name*</option>
-                                          <option value="kinder">*Teacher name*</option>
-                                          <option value="kinder">*Teacher name*</option>
-                                          <option value="kinder">*Teacher name*</option>
-                                          <option value="kinder">*Teacher name*</option>
-                                        </div><!-- End of Dropdown menu for assign teacher -->
-                                      </select>
-                                    </div>  
-                                  </div>   
-                                </div> 
+                                </div>
+                                 {{--end of div for subject list --}}
                               </div>
                             </div>
                             <!-- Modal footer -->
                             <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                              <button data-modal-hide="assignTeachersModal" type="submit" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save teacher designations</button>
+                              <button id="save-teacher-for-section" data-modal-hide="assignTeachersModal" type="button" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save teacher designations</button>
                               <button data-modal-hide="assignTeachersModal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
                             </div>
                           </form>

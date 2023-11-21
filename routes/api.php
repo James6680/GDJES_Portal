@@ -40,13 +40,40 @@ Route::get('/sections/{variableValue}', function ($variableValue) {
     return response()->json($sections);
 });
 
-Route::get('/getClass/{gradeLevel}/{schoolYear}', function ($gradeLevel, $schoolYear) {
+Route::get('/getClass/{gradeLevel}/{schoolYear}/{section}', function ($gradeLevel, $schoolYear, $section) {
     // Retrieve unique section IDs for the specified school year
     $sections = DB::table('classes')
         ->where('school_year_id', $schoolYear)
         ->where('grade_level_id', $gradeLevel)
         ->get();
-    return response()->json($sections);
+
+    // Calculate the number of slots for the specified section
+    $slots = DB::table('enrollment')
+        ->where('section_id', $section)
+        ->where('school_year_id', $schoolYear)
+        ->count();
+
+    // Merge the section data and slot count into a single JSON object
+    $responseData = [
+        'sections' => $sections,
+        'slots' => $slots,
+    ];
+
+    return response()->json($responseData);
+});
+Route::get('/subjects', function(){
+    $subjects = DB::table('subjects')
+    ->get();
+    return response()->json($subjects);
+});
+
+Route::get('/students/{schoolYear}', function($schoolYear){
+    $students = DB::table('students')
+    ->join('enrollment', 'students.id', '=', 'enrollment.student_id')
+    ->where('enrollment.school_year_id', $schoolYear)
+    ->select('students.id', 'students.last_name', 'students.first_name', 'students.middle_name', 'students.extension_name')
+    ->get();
+    return response()->json($students);
 });
 
 

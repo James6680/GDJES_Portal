@@ -92,7 +92,8 @@ Route::post('admin.addSection', [SectionController::class, 'addSection']
 )->name('admin.addSection');
 Route::post('admin.editSection', [SectionController::class, 'editSection']
 )->name('admin.editSection');
-
+Route::post('classes.assignTeachers', [SectionController::class, 'assignTeacher']
+)->name('classes.assignTeachers');
 
 
 

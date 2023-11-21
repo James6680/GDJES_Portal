@@ -8,6 +8,26 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class SectionController extends Controller
 {
+    public function assignTeacher(Request $request){
+        $inputNames = array_diff(array_slice($request->keys(), 2), ['token', 'method']);
+
+        foreach($inputNames as $input){
+            $variableId = null;
+            if(strpos($input, "adviser") !== false){
+                $variableId = substr_replace($input, '', 0, strlen("adviser-"));
+                DB::table('sections')
+                ->where('id', $variableId)
+                ->update(['adviser_id' => $request->input($input)]);
+            }else if(strpos($input, "subject") !== false){
+                $variableId = substr_replace($input, '', 0, strlen("subject-"));
+                DB::table('classes')
+                ->where('id', $variableId)
+                ->update(['teacher_id' => $request->input($input)]);
+            }
+        }
+    }
+
+    
     public function addSection(Request $request){
         $validatedData = $request->validate([
             "sectionName" => 'required|max:20',
