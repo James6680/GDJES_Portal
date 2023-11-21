@@ -1,6 +1,6 @@
 <!-- Content Section -->
 <div>   
-    <!-- Announcement Section -->
+    <!-- Faculty Announcement Section -->
     @if (request()->is('faculty.announcements') )
     @vite(['resources/js/faculty.announcements.js'])
     <div class="md:pl-64 w-full min-h-full sm:py-12 sm:pb-9 sm:pr-[-10rem] py-7 sm:px-16 px-6 bg-yellow-50">
@@ -57,7 +57,7 @@
     </div>
 
     @elseif (request()->is('faculty.my-students') )
-    <!-- Grade Viewing Section -->
+    <!-- Faculty Class & Advisory List Section -->
     <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 sm:pb-9 md:px-16 px-12">
 
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-4 lg:py-7 bg-white lg:ml-8 ml-6 shadow shadow-brown-100">
@@ -348,7 +348,7 @@
     </div>
 
     @elseif (request()->is('faculty.enrollments') )
-    <!-- Class Schedule Section -->
+    <!-- Faculty Enrollment List Section -->
     <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
         
         <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-7 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-100">
@@ -591,6 +591,8 @@
                                         </td>
                                     </tr>
                                 </tbody>
+
+                                <!-- Enrollment status changer script -->
                                 <script>
                                     function changeStatus(status, buttonId) {
                                     var button = document.getElementById(buttonId);
@@ -617,7 +619,8 @@
                                     }
                                 </script>
                             </table>
-
+                            
+                            <!-- Search input field script -->
                             <script>
                                 function myFunction() {
                                 // Declare variables
@@ -653,7 +656,7 @@
     </div>
 
     @elseif (request()->is('faculty.grades') )
-    <!-- Student Enrollment Status Section -->
+    <!-- Faculty Grade Input Section -->
     <div class="md:pl-64 pl-0 min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
 
         <section class="self-stretch container lg:p-8 p-7 px-8 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-7 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
@@ -1548,7 +1551,6 @@
                                         <th class="border-x-2 border-brown-100 py-4"></th>
                                         <!-- Student Name --> 
                                         <th class="border-x-2 border-brown-100 px-28"></th>
-                                        <!--Written Works  -->
                                         <th class="border-2 py-1.5 border-brown-100">1st Quarter</th>  
                                         <th class="border-2 px-2 border-brown-100">2nd Quarter</th> 
                                         <th class="border-2 border-brown-100 px-2">3rd Quarter</th>
@@ -1584,7 +1586,7 @@
     </div>
 
     @elseif (request()->is('faculty.Attendance') )
-    <!-- Student Enrollment Status Section -->
+    <!-- Faculty Attendance Input Section -->
     <div class="md:pl-64 pl-0 min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
 
         <section class="self-stretch container lg:p-8 p-7 px-8 grid grid-cols-1 w-full min-h-full relative rounded-md justify-start gap-7  lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-200">
@@ -1596,15 +1598,7 @@
 
             <div class="flex flex-col gap-5">
 
-                <div class="flex flex-row justify-between">
-
-                    <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black -mb-2">Attendance Sheet Input for Students</h1>
-                    
-                    <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white focus:outline-none bg-brown-400 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-400 text-sm px-8 py-2.5 text-center inline-flex items-center" type="button">
-                        Click this button bitch
-                    </button>
-
-                </div>
+                <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black -mb-2">Attendance Sheet Input for Students</h1>
 
                 <div class="mx-auto w-full ">
                     <!-- Start coding here -->
