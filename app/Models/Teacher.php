@@ -9,10 +9,11 @@ use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon; //for getting the current year
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\SoftDeletes; //for archiving
 
 class Teacher extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     protected $guard = 'teachers';
     protected $table= 'teachers';

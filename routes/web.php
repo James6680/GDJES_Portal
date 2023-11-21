@@ -74,6 +74,8 @@ Route::post('admin.teacher-management.add',[AdminController::class, 'CreateTeach
 ->name('admin.teacher-management.add');//added
 Route::post('admin.teacher-management.edit',[AdminController::class, 'EditTeacher'])
 ->name('admin.teacher-management.edit');//added
+Route::post('admin.teacher-management.delete',[AdminController::class, 'delete'])
+->name('admin.teacher-management.delete');//added
 
 Route::get('admin.enrollment-management', function () {
     return view('layouts.admin');
