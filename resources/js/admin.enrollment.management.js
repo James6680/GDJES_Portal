@@ -4,6 +4,7 @@ var sectionList;
 var teacherList;
 var selectedGradeLevel = null;
 var selectedSchoolYearObject = null;
+var selectedClass = null;
 const schoolYearDropDown = document.getElementById('school-year-dropdown-picker');
 const addSchoolYearForm = document.getElementById('add-school-year-form');
 const addschoolYearDropDownSubmit = document.getElementById('add-school-year-form-submit');
@@ -190,6 +191,12 @@ function updateSectionsTable(gradeLevel) {
     const viewSectionInfoBtn = document.getElementById(`show-view-section-information-modal-${entry['id']}`);
     viewSectionInfoBtn.addEventListener('click', function() {
       viewSectionInfoModal.toggle();
+      const url = '/api/getClass/' + entry['grade_level_id'] + '/' + selectedSchoolYearObject.id;
+      $.getJSON(url, function(data) {
+        selectedClass = data;
+      }).then(()=>{
+        console.log(selectedClass);
+      });
     });
 
     const editSectionInfoBtn = document.getElementById(`show-edit-section-information-modal-${entry['id']}`);

@@ -203,6 +203,10 @@ Route::get('faculty.enrollments', function () {
 Route::get('faculty.grades', function () {
     return view('layouts.faculty');
 })->middleware('teachers')->name('faculty.grades');
+
+Route::get('faculty.Attendance', function () {
+    return view('layouts.faculty');
+})->middleware('teachers')->name('faculty.Attendance');
 // End of Faculty Routes
 
 

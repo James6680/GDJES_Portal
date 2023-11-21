@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
-            $table->string('subject_name', 30);
+            $table->string('subject_name', 50);
             $table->unsignedBigInteger('grade_level_id')->nullable();
             $table->foreign('grade_level_id')->references('id')->on('grade_levels');
             $table->timestamps();
