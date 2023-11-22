@@ -3855,9 +3855,8 @@
                   <div class="grid grid-cols-1">
                     <!-- Table functions - assign students -->
                     <div class="grid justify-items-end gap-4 w-full pb-4">
-
                       <div class="flex flex-col sm:flex-row gap-0 sm:gap-4 w-full">
-                        <button data-modal-target="assignTeachersModal" data-modal-toggle="assignTeachersModal" type="button" class="my-2 h-auto text-black bg-green-50 hover:bg-green-200 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-4 py-2 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
+                        <button data-modal-target="assignTeachersModal" id = "OpenSaveTeacherModal" data-modal-toggle="assignTeachersModal" type="button" class="my-2 h-auto text-black bg-green-50 hover:bg-green-200 focus:ring-2 focus:outline-none focus:ring-green-300 text-sm font-medium rounded-lg px-4 py-2 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
                           <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"  viewBox="0 0 256 256">
                           <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H53.39a8,8,0,0,0,7.23-4.57,48,48,0,0,1,86.76,0,8,8,0,0,0,7.23,4.57H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM104,168a32,32,0,1,1,32-32A32,32,0,0,1,104,168Zm112,32H159.43a63.93,63.93,0,0,0-13.16-16H192a8,8,0,0,0,8-8V80a8,8,0,0,0-8-8H64a8,8,0,0,0-8,8v96a8,8,0,0,0,6,7.75A63.72,63.72,0,0,0,48.57,200H40V56H216Z"></path>
                           </svg>
@@ -3875,7 +3874,9 @@
                       <div id="assignStudentsModal" tabindex="-1" aria-hidden="true" class="absolute top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-2xl max-h-full">
                           <!-- Modal content -->
-                          <form action="#" class="relative bg-gray-50 rounded-lg shadow-2xl border border-gray-300 dark:bg-gray-700">
+                          <form action="" id="student-assignment-form" method="post" class="relative bg-gray-50 rounded-lg shadow-2xl border border-gray-300 dark:bg-gray-700">
+                            @csrf
+                            @method('post')
                             <!-- Modal header -->
                             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                               <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
@@ -3897,155 +3898,11 @@
                               </div>
                               <!-- Checkbox for assign students -->
                               <div id="assignStudentsCheckbox" class="z-10  w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="p-3 grid grid-cols-1 sm:grid-cols-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="assignStudentsCheckbox">
+                                <ul class="p-3 grid grid-cols-1 sm:grid-cols-2 text-sm text-gray-700 dark:text-gray-200" id="student_assignment_checklist_list" aria-labelledby="assignStudentsCheckbox">
                                   <li>
                                     <div class="flex items-center">
                                       <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                       <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Reyes, Alex Pajarellano</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Tiro, Karen Jordan</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="flex items-center">
-                                      <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                      <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Motus, James Lebron</label>
                                     </div>
                                   </li>
                                 </ul>
@@ -4054,7 +3911,7 @@
 
                             <!-- Modal footer -->
                             <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                              <button data-modal-hide="assignStudentsModal" type="submit" class="text-white bg-yellow-600 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save student list</button>
+                              <button id="submit-student-assignment-to-section" data-modal-hide="assignStudentsModal" type="button" class="text-white bg-yellow-600 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save student list</button>
                               <button data-modal-hide="assignStudentsModal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
                             </div> <!-- End of Modal footer -->
                           </form>
@@ -4163,28 +4020,7 @@
                         </tr>
                       </thead>
 
-                      <tbody>
-                        <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
-                          <td class="px-6 py-4">
-                            Reyes
-                          </td>
-                          <td class="px-6 py-4">
-                            Alex
-                          </td>
-                          <td class="px-6 py-4">
-                            Pajarellano
-                          </td>
-                          <td class="px-6 py-4">
-                            N/A
-                          </td>
-                          <td class="px-6 py-4">
-                            158515478545
-                          </td>
-                          <td class="px-6 py-4">
-                            <!-- Modal toggle -->
-                            <a href="#" data-modal-target="removeFromSectionModal" data-modal-show="removeFromSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
-                          </td>
-                        </tr>
+                      <tbody id="view-section-information-students-in-section">
                       </tbody>
 
                     </table>
@@ -4530,44 +4366,7 @@
                 </th>
               </tr>
             </thead>
-
-            <tbody>
-              <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
-                <td class="px-3 py-3">
-                  Reyes
-                </td>
-                <td class="px-3 py-3">
-                  Alex
-                </td>
-                <td class="px-3 py-3">
-                  Pajarellano
-                </td>
-                <td class="px-3 py-3">
-                  N/A
-                </td>
-                <td class="px-3 py-3">
-                  lxxMeow
-                </td>
-                <td class="px-3 py-3">
-                  Kinder
-                </td>
-                <td class="px-3 py-3">
-                  158514070128
-                </td>
-                <td class="px-3 py-3">
-                  Active
-                </td>
-                <td class="px-3 py-3">
-                  August 23, 2023
-                </td>
-                <td class="grid grid-cols-1 px-3 py-3">
-                  <!-- Modal toggle -->
-                  <a href="#" data-modal-target="viewStudentUserModal" data-modal-show="viewStudentUserModal" type="button" class="px-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View</a>
-                  <a href="#" data-modal-target="editStudentUserModal" data-modal-show="editStudentUserModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                  <a href="#" data-modal-target="archiveStudentUserModal" data-modal-show="archiveStudentUserModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
-                  <a href="#" data-modal-target="deleteStudentUserModal" data-modal-show="deleteStudentUserModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
-                </td>
-              </tr>      
+            <tbody id="enrolled-student-list-all">
             </tbody>
 
           </table>

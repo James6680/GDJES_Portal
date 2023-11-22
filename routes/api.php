@@ -71,7 +71,7 @@ Route::get('/students/{schoolYear}', function($schoolYear){
     $students = DB::table('students')
     ->join('enrollment', 'students.id', '=', 'enrollment.student_id')
     ->where('enrollment.school_year_id', $schoolYear)
-    ->select('students.id', 'students.last_name', 'students.first_name', 'students.middle_name', 'students.extension_name')
+    ->select('students.id', 'enrollment.school_year_id', 'students.last_name', 'students.first_name', 'students.middle_name', 'students.extension_name', 'students.username', 'students.lrn', 'enrollment.section_id', 'enrollment.grade_level_id')
     ->get();
     return response()->json($students);
 });

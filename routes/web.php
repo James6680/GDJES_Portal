@@ -95,6 +95,8 @@ Route::post('admin.editSection', [SectionController::class, 'editSection']
 Route::post('classes.assignTeachers', [SectionController::class, 'assignTeacher']
 )->name('classes.assignTeachers');
 
+Route::post('classes.assignStudentsToSection', [SectionController::class, 'assignStudentSection']
+)->name('classes.assignStudentsToSection');
 
 
 Route::get('admin.school-information', function () {

@@ -5,6 +5,7 @@ var teacherList;
 var subjectList;
 var studentList;
 var availableSlotsInSection;
+var globalSectionInformationEntry;
 const range = document.createRange();
 const parser = new DOMParser();
 var selectedGradeLevel = null;
@@ -32,6 +33,9 @@ const sectionEquivalents = ["Kinder", "Grade 1", "Grade 2", "Grade 3", "Grade 4"
 
 const editSectionForm = document.getElementById('edit-section-form');
 const editSectionFormSubmit = document.getElementById('edit-section-form-submit');
+//////////STUDENT LIST/////////////////////////
+const enrolledStudentTables = document.getElementById('enrolled-student-list-all');
+
 //////////////SECTION INFORMATION///////////////
 const sectionInformationSectionName = document.querySelectorAll('#section-information-section-name');
 const sectionInformationGradeLevel = document.querySelectorAll('#section-information-grade-level');
@@ -40,7 +44,12 @@ const sectionInformationAdviser = document.querySelector('#section-information-a
 const sectionInformationSubjectSelect = document.querySelector('#section-information-subject-list-dropdown');
 const sectionInformationSaveTeacher = document.querySelector('#save-teacher-for-section');
 const sectionInformationSaveTeacherForm = document.querySelector('#section-information-select-teachers-form');
-const teachersDropdownButton = document.querySelector('#teachersDropdownButton'); 
+const teachersDropdownButton = document.querySelector('#teachersDropdownButton');
+////// STUDENT CHECKLIST///////
+const studentChecklistList = document.getElementById('student_assignment_checklist_list'); 
+const studentChecklistForm = document.getElementById('student-assignment-form');
+const studentChecklistFormSubmit = document.getElementById('submit-student-assignment-to-section');
+const studentListInSectionInformation = document.getElementById('view-section-information-students-in-section');
 ///////DECLARE MODAL////////  
 
 
@@ -54,6 +63,102 @@ const editSectionInfoModal = new Modal($editSectionInfo);
 const archiveSectionInfoModal = new Modal($archiveSectionInfo);
 const deleteSectionInfoModal = new Modal($deleteSectionInfo);
 ////////////
+
+function updateStudentListInViewSectionInformation(){
+  $(studentListInSectionInformation).empty;
+  studentList.forEach(student => {
+    if(student.section_id == globalSectionInformationEntry.id){
+      let x = `<tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+      <td class="px-6 py-4">
+        ${student.last_name}
+      </td>
+      <td class="px-6 py-4">
+      ${student.first_name}
+      </td>
+      <td class="px-6 py-4">
+      ${student.middle_name}
+      </td>
+      <td class="px-6 py-4">
+      ${student.extension_name}
+      </td>
+      <td class="px-6 py-4">
+      ${student.lrn}
+      </td>
+      <td class="px-6 py-4">
+        <!-- Modal toggle -->
+        <a href="#" data-modal-target="removeFromSectionModal" data-modal-show="removeFromSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+      </td>
+    </tr>`;
+    $(studentListInSectionInformation).append(x);
+    }
+  });
+}
+
+function updateEnrolledStudentsTable(){
+  $(enrolledStudentTables).empty();
+  studentList.forEach(student => {
+    let x3 = `<tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+    <td class="px-3 py-3">
+      ${student['last_name']}
+    </td>
+    <td class="px-3 py-3">
+      ${student['first_name']}
+    </td>
+    <td class="px-3 py-3">
+    ${student['middle_name']}
+    </td>
+    <td class="px-3 py-3">
+    ${student['extension_name']}
+    </td>
+    <td class="px-3 py-3">
+    ${student['username']}
+    </td>
+    <td class="px-3 py-3">
+    ${sectionEquivalents[student['grade_level_id']]}
+    </td>
+    <td class="px-3 py-3">
+    ${student['lrn']}
+    </td>
+    <td class="px-3 py-3">
+      Active
+    </td>
+    <td class="px-3 py-3">
+      ----
+    </td>
+    <td class="grid grid-cols-1 px-3 py-3">
+      <!-- Modal toggle -->
+      <a href="#" data-modal-target="viewStudentUserModal" data-modal-show="viewStudentUserModal" type="button" class="px-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View</a>
+      <a href="#" data-modal-target="editStudentUserModal" data-modal-show="editStudentUserModal" type="button" class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+      <a href="#" data-modal-target="archiveStudentUserModal" data-modal-show="archiveStudentUserModal" type="button" class="px-2 font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+      <a href="#" data-modal-target="deleteStudentUserModal" data-modal-show="deleteStudentUserModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+    </td>
+  </tr>`;
+  $(enrolledStudentTables).append(x3);
+  });
+}
+
+studentChecklistFormSubmit.addEventListener('click', function(e){
+  e.preventDefault();
+  const studentCheckListSerialized = $(studentChecklistForm).serialize() + '&section_id=' + globalSectionInformationEntry.id + '&school_year=' + selectedSchoolYearObject.id;
+  $.ajax({
+    url: "/classes.assignStudentsToSection",
+    type: "POST",
+    data: studentCheckListSerialized,
+    success: function(response) {
+      // Form submission is successful, prevent default submission
+      if(response != ''){
+        response.forEach(student => {
+          const list = studentList.find(studentInList => studentInList.id == student); 
+          list.section_id = globalSectionInformationEntry.id;
+        });
+      }
+      updateStudentSectionAssignmentList();
+    },
+    error: function(response) {
+      // Form submission failed, prevent default submission
+    }
+  });  
+});
 
 document.getElementById('closeViewSectionModal').addEventListener('click', function(){
   viewSectionInfoModal.hide();
@@ -69,16 +174,29 @@ document.getElementById('closeDeleteSectionModal').addEventListener('click', fun
   deleteSectionInfoModal.hide();
 });
 
+document.querySelector('#OpenSaveTeacherModal').addEventListener('click', function(){
+  const selectDropdownOptions = sectionInformationSaveTeacherForm.querySelectorAll('select');
+    for (const selectDropdownOption of selectDropdownOptions) {
+      selectDropdownOption.selectedIndex = 0;
+  }
+})
+
 sectionInformationSaveTeacher.addEventListener('click', function(){
   var serializedSaveTeacherForm = $(sectionInformationSaveTeacherForm).serialize();
-  console.log(serializedSaveTeacherForm);
   return new Promise((resolve) =>{
     $.ajax({
       url: "/classes.assignTeachers",
       type: "POST",
       data: serializedSaveTeacherForm,
       success: function (response) {
-        console.log(response);
+        if(response['teacher_id'] != null ){
+          var section = sectionList.find(section => section.id == response['section_id']);
+          if (section) {
+            section.adviser_id = response['teacher_id'];
+          }
+          updateAdviserInView(response['teacher_id']);
+        }
+        viewSectionInfoModal.hide();
       },
       error: function (response) {
       }
@@ -181,11 +299,13 @@ editSectionFormSubmit.addEventListener("click", function(event){
     success: function (response) {
         $("#edit-sectionName-error").css("display", "block");
         $("#edit-sectionName-error").css("color", "green");
-        $("#edit-sectionName-error").text("School Year Created Successfully");
+        $("#edit-sectionName-error").text("School Year Updated Successfully");
         $("#edit-sectionSlots-error").css("display", "none");
         $("#edit-gradeLevel-error").css("display", "none");
         getSections().then(async () => {
             updateSectionsTable(selectedGradeLevel);
+        }).then(async () => {
+            getStudents();
         }); 
     },
     error: function (response) {
@@ -201,6 +321,15 @@ editSectionFormSubmit.addEventListener("click", function(event){
   });   
 });
 
+function updateAdviserInView(adviserTeacherID){
+  var adviserTeacher = teacherList.find(teacher => teacher.id == adviserTeacherID);
+  if(adviserTeacher){
+    sectionInformationAdviser.innerText = "Adviser - " + adviserTeacher.last_name + ", " + adviserTeacher.first_name + " " + adviserTeacher.middle_name + " " + adviserTeacher.extension_name;
+  }else{
+    sectionInformationAdviser.innerText = "Adviser - ";
+  }  
+}
+
 function updateViewSectionInformation(selectedSection){
   teachersDropdownButton.setAttribute('name', 'adviser-' + selectedSection.id);
   ///////////////AVAILABLE COUNT FOR SECTION SLOT////////
@@ -214,13 +343,7 @@ function updateViewSectionInformation(selectedSection){
   sectionInformationSlots.forEach(sectionInformationSlots => {
     sectionInformationSlots.innerHTML = "Available Slots: "  + selectedClass.slots + "/" + selectedSection['section_slot'];
   });
-
-  var adviserTeacher = teacherList.find(teacher => teacher.id === selectedSection.adviser_id);
-  if(adviserTeacher){
-    sectionInformationAdviser.innerText = "Adviser - " + adviserTeacher.last_name + ", " + adviserTeacher.first_name + " " + adviserTeacher.middle_name + " " + adviserTeacher.extension_name;
-  }else{
-    sectionInformationAdviser.innerText = "Adviser - ";
-  }
+  updateAdviserInView(selectedSection.adviser_id);
   var sectionSubjectList = document.getElementById('section-information-subject-list');
   $(sectionSubjectList).empty();
   $(sectionInformationSubjectSelect).empty();
@@ -267,7 +390,6 @@ function updateViewSectionInformation(selectedSection){
   });
 }
 
-
 function updateSectionsTable(gradeLevel) {
   $(sectionsTableBody).empty();
 
@@ -296,7 +418,10 @@ function updateSectionsTable(gradeLevel) {
 
     const viewSectionInfoBtn = document.getElementById(`show-view-section-information-modal-${entry['id']}`);
     viewSectionInfoBtn.addEventListener('click', function() {
+      globalSectionInformationEntry = entry;
       viewSectionInfoModal.toggle();
+      updateStudentSectionAssignmentList();
+      updateStudentListInViewSectionInformation();
       const url = '/api/getClass/' + entry['grade_level_id'] + '/' + selectedSchoolYearObject.id + "/" + entry['id'];
       $.getJSON(url, function(data) {
         selectedClass = data;
@@ -307,6 +432,7 @@ function updateSectionsTable(gradeLevel) {
 
     const editSectionInfoBtn = document.getElementById(`show-edit-section-information-modal-${entry['id']}`);
     editSectionInfoBtn.addEventListener('click', function() {
+      globalSectionInformationEntry = entry;
       clearEditSectionErrors();
       editSectionForm.querySelector('input[name="section_id"]').value = entry['id'];
       editSectionForm.querySelector('input[name="sectionName"]').value = entry['section_name'];
@@ -327,11 +453,13 @@ function updateSectionsTable(gradeLevel) {
 
     const archiveSectionInfoBtn = document.getElementById(`show-archive-section-information-modal-${entry['id']}`);
     archiveSectionInfoBtn.addEventListener('click', function() {
+      globalSectionInformationEntry = entry;
       archiveSectionInfoModal.toggle();
     });
 
     const deleteSectionInfoBtn = document.getElementById(`show-delete-section-information-modal-${entry['id']}`);
     deleteSectionInfoBtn.addEventListener('click', function() {
+      globalSectionInformationEntry = entry;
      deleteSectionInfoModal.toggle();
     });
 
@@ -353,7 +481,6 @@ function clearAddSectionErrors(){
   $("#input-gradeLevel-error").text("");
   $("#input-gradeLevel-error").css("display", "none");
 }
-
 
 function clearEditSectionErrors(){
   $("#edit-sectionName-error").css("color", "red");
@@ -434,8 +561,6 @@ startSchoolYearButton.addEventListener('click', function(){
       }
     });
 });
-
-
 
 endSchoolYearButton.addEventListener('click', function(){
     $.ajax({
@@ -539,6 +664,22 @@ function addSchoolYearFormClearError(){
     $("#input-schoolYear-error").css("display", "none");
 }
 
+function updateStudentSectionAssignmentList(){
+  ////studentChecklistList
+    $(studentChecklistList).empty();
+    studentList.forEach(student => {
+      if(student.section_id == null && student.grade_level_id == globalSectionInformationEntry.grade_level_id && globalSectionInformationEntry.id != student.section_id){
+        let x = ` <li>
+                  <div class="flex items-center">
+                    <input name="student[]" type="checkbox" value="${student.id}" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                    <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">${student.last_name}, ${student.first_name} ${student.middle_name} ${student.extension_name}</label>
+                  </div>
+                </li>`;
+        $(studentChecklistList).append(x);        
+      }
+    });
+}
+
 schoolYearDropDown.addEventListener('click', function(event) {
     if (event.target.tagName === 'A') {
         // Handle click event on the `<a>` element
@@ -550,10 +691,12 @@ schoolYearDropDown.addEventListener('click', function(event) {
         if(selectedSchoolYearObject.is_enrollment == 1){
           document.getElementById('show-add-student').href = '/student-registration-1';
         }
+        // let getStudentPromise = getStudents();
         getSections().then( async ()=>{
           updateSectionsTable(selectedGradeLevel);
         }).then( async ()=>{
-          getStudents();
+          await getStudents();
+          updateEnrolledStudentsTable();
         });
         updateSchoolYearInformation();
         updateSchoolYearControlButtons();
