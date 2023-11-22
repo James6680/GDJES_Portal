@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Teacher;
 
 class TeacherController extends Controller
 {
@@ -38,5 +39,11 @@ class TeacherController extends Controller
             )
             ->get();
         return $teachers;    
+    }
+
+    public function delete($id){
+        $data=Teacher::find($id);
+        $data->delete();
+        return redirect()->back();
     }
 }

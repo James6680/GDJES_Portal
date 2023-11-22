@@ -12,7 +12,7 @@
             let middle_name = $('#createTeacher #middle_name').val();
             let extension_name = $('#createTeacher #extension_name').val();
             let email = $('#createTeacher #email').val();
-            let profile_picture = $('#createTeacher #profile_picture').val();
+            /*let profile_picture = $('#createTeacher #profile_picture').val();*/
             let birth_date = $('#createTeacher #birth_date').val();
             let age = $('#createTeacher #age').val();
             let gender = $('#createTeacher #gender').val();
@@ -34,7 +34,7 @@
                     middle_name: middle_name,
                     extension_name: extension_name,
                     email: email,
-                    profile_picture: profile_picture,
+                    /*profile_picture: profile_picture,*/
                     birth_date: birth_date,
                     age: age,
                     gender: gender,
@@ -67,6 +67,91 @@
             });  
         })
 
+        //view Teacher
+        $('.view_teacher').on('click', function(e){
+
+        let id = $(this).data('id');
+        let last_name = $(this).data('last_name');
+        let first_name = $(this).data('first_name');    
+        let middle_name = $(this).data('middle_name');
+        let extension_name = $(this).data('extension_name');
+        let username = $(this).data('username');
+        let birth_date = $(this).data('birth_date');
+        let age = $(this).data('age');
+        let gender = $(this).data('gender');
+        
+        let house_number = $(this).data('house_number');
+        let street = $(this).data('street');
+        let barangay = $(this).data('barangay');
+        let municipality = $(this).data('municipality');
+        let province = $(this).data('province');
+        let region = $(this).data('region');
+
+        let profile_picture = $(this).data('profile_picture');
+        let email = $(this).data('email');
+        let phone_number = $(this).data('phone_number');
+        let facebook_link = $(this).data('facebook_link');
+
+        // Update modal content
+        $('#viewTeachertUserModal h3:eq(1)').text(`${first_name} ${middle_name} ${last_name}`);
+
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(0)').text(`Last Name: ${last_name}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(1)').text(`First Name: ${first_name}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(2)').text(`Middle Name: ${middle_name}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(3)').text(`Name Extension: ${extension_name}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(4)').text(`Username: ${username}`);
+        
+       
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(5)').text(`Birthday: ${birth_date}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(6)').text(`Age : ${age}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(7)').text(`Gender: ${gender}`);
+        
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(8)').text(`House Number: ${house_number}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(9)').text(`Street: ${street}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(10)').text(`Barangay: ${barangay}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(11)').text(`Municipality: ${municipality}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(12)').text(`Province: ${province}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(13)').text(`Region: ${region}`);
+
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(14)').text(`Profile Picture: ${profile_picture}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(15)').text(`Email: ${email}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(16)').text(`Phone Number: ${phone_number}`);
+        $('#viewTeachertUserModal .pt-4:eq(0) p:eq(17)').text(`Facebook Link: ${facebook_link}`);
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+        $('#edit_id').val(id);
+        $('#edit_last_name').val(last_name);
+        $('#edit_first_name').val(first_name);
+        $('#edit_middle_name').val(middle_name);
+        $('#edit_extension_name').val(extension_name);
+        $('#edit_email').val(email);
+        $('#edit_profile_picture').val(profile_picture);
+        $('#edit_birth_date').val(birth_date);
+        $('#edit_age').val(age);
+        $('#edit_gender').val(gender);
+        $('#edit_phone_number').val(phone_number);
+        $('#edit_house_number').val(house_number);
+        $('#edit_street').val(street);
+        $('#edit_barangay').val(barangay);
+        $('#edit_municipality').val(municipality);
+        $('#edit_province').val(province);
+        $('#edit_region').val(region);
+        $('#edit_facebook_link').val(facebook_link);
+
+    
+        */
+        });
         //edit Teacher
         $('.edit_Teacher').on('click', function(e){
 
@@ -124,7 +209,7 @@
             let edit_middle_name = $('#editTeacher #edit_middle_name').val();
             let edit_extension_name = $('#editTeacher #edit_extension_name').val();
             let edit_email = $('#editTeacher #edit_email').val();
-            let edit_profile_picture = $('#editTeacher #edit_profile_picture').val();
+           /* let edit_profile_picture = $('#editTeacher #edit_profile_picture').val();*/
             let edit_birth_date = $('#editTeacher #edit_birth_date').val();
             let edit_age = $('#editTeacher #edit_age').val();
             let edit_gender = $('#editTeacher #edit_gender').val();
@@ -147,7 +232,7 @@
                     edit_middle_name: edit_middle_name,
                     edit_extension_name: edit_extension_name,
                     edit_email: edit_email,
-                    edit_profile_picture: edit_profile_picture,
+                   /* edit_profile_picture: edit_profile_picture,*/
                     edit_birth_date: edit_birth_date,
                     edit_age: edit_age,
                     edit_gender: edit_gender,

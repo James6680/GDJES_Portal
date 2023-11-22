@@ -2650,9 +2650,10 @@
               <th scope="col" class="px-6 py-3">
                   ADDRESS
               </th>
-              <th scope="col" class="px-6 py-3">
+             {{-- <th scope="col" class="px-6 py-3">
                   STATUS
               </th>
+              --}}
               <th scope="col" class="px-6 py-3">
                   DATE CREATED
               </th>
@@ -2677,9 +2678,10 @@
               <td class="px-6 py-4">
                 {{ $t->house_number }}, {{ $t->street }}, {{ $t->barangay }}, {{ $t->municipality }}, {{ $t->province }}, {{ $t->region }}
               </td>
-              <td class="px-6 py-4">
+              {{--<td class="px-6 py-4">
                 {{ $t->status }}
               </td>
+              --}}
               <td class="px-6 py-4">
                 {{ $t->created_at }}
               </td>
@@ -2689,7 +2691,30 @@
                    data-modal-target="viewTeachertUserModal" 
                    data-modal-show="viewTeachertUserModal" 
                    type="button" 
-                   class="font-medium text-emerald-600 dark:text-emerald-500 hover:underline">
+                   class="view_teacher font-medium text-emerald-600 dark:text-emerald-500 hover:underline"
+                   data-id="{{ $t->id }}"
+                   data-last_name="{{ $t->last_name }}"
+                    data-first_name="{{ $t->first_name }}"
+                    data-middle_name="{{ $t->middle_name }}"
+                    data-extension_name="{{ $t->extension_name }}"
+                    data-username="{{ $t->username}}"
+                    
+                    
+                    data-birth_date="{{ $t->birth_date }}"
+                    data-age="{{ $t->age}}"
+                    data-gender="{{ $t->gender}}"
+                    
+                    data-house_number="{{ $t->house_number }}"
+                    data-street="{{ $t->street }}"
+                    data-barangay="{{ $t->barangay }}"
+                    data-municipality="{{ $t->municipality }}"
+                    data-province="{{ $t->province }}"
+                    data-region="{{ $t->region }}"
+
+                    data-profile_picture="{{ $t->profile_picture}}"
+                    data-email="{{ $t->email}}"
+                    data-phone_number="{{ $t->phone_number}}"
+                    data-facebook_link="{{ $t->facebook_link}}">
                    View
                   </a>                
                 <a href="#" 
@@ -2703,7 +2728,7 @@
                     data-middle_name="{{ $t->middle_name }}"
                     data-extension_name="{{ $t->extension_name }}"
                     data-email="{{ $t->email}}"
-                    data-profile_picture="{{ $t->profile_picture }}"
+                   
                     data-birth_date="{{ $t->birth_date }}"
                     data-age="{{ $t->age}}"
                     data-gender="{{ $t->gender}}"
@@ -2848,7 +2873,7 @@
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
               <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
-                View student user 
+                View Teacher User 
               </h3>
               <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="viewTeachertUserModal">
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -2859,61 +2884,28 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-3 divide-y divide-gray-200">
-              <h3 class="text-md font-semibold text-black dark:text-white">*Insert Student Name here*</h3>
+              <h3 class="text-md font-semibold text-black dark:text-white">
+                *Insert Student Name here*
+              </h3>
               <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Last Name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">First Name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Middle Name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Name Extension: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Username: </p>
-              </div>
-              <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Returnee: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">LRN (Learner's Refenrece Number): </p>
-              </div>
-              <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Date of Birth: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Age: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Nabibilang sa indegenous group: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Indegenous group na kinabibilangan: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother tongue: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Religion: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Nangangailangan ng special assistance?  </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Disability: </p>
-              </div>
-              <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">House no. and street: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Barangay: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">City: </p>
-              </div>
-              <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's full name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's contact number: </p>
-              </div>
-              <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother maiden name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother's contact number: </p>
-              </div>
-              <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's full name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's contact number: </p>
-              </div>
-              <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's beneficiary? </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's Household ID No.: </p>
-              </div>
-              <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Access to technology: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Preferred mode of learning: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Account status: </p>
-              </div>
-
-              <!-- BACKEND: Just add conditional statements kapag meron na laman si returnee. If returnee == yes -->
-              <div class="pt-4 hidden">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling baitang na natapos: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling paaralan na pinasukan: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Panuruang taon na natapos ng mag-aaral: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Last Name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">First Name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Middle Name: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Name Extension: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Username: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Birthday: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Age: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Gender: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">House Number: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Street: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Barangay: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Municipality: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Province: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Region: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Profile Picture: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Email: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white mb-2">Phone Number: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Facebook Link: </p>
               </div>
             </div>
           </div>  
@@ -3010,7 +3002,7 @@
                                     required=""
                               >
                           </div>
-                          <!-- Add Profile Picture Input -->
+                          <!-- Add Profile Picture Input
                           <div class="col-span-6 sm:col-span-3">
                             <label for="profile_picture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Profile Picture
@@ -3021,7 +3013,8 @@
                                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
                                 accept="image/*"
                             >
-                        </div>
+                        </div> 
+                        -->
                         
                         <!-- Birthdate -->
                         <div class="col-span-6 sm:col-span-3">
@@ -3275,7 +3268,7 @@
                                     required=""
                               >
                           </div>
-                          <!-- Add Profile Picture Input -->
+                          <!-- Add Profile Picture Input
                           <div class="col-span-6 sm:col-span-3">
                             <label for="profile_picture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Profile Picture
@@ -3287,7 +3280,7 @@
                                 accept="image/*"
                             >
                         </div>
-                        
+                        -->
                         <!-- Birthdate -->
                         <div class="col-span-6 sm:col-span-3">
                             <label for="birth_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -3476,7 +3469,6 @@
           </div>
         </div>
       </div>
-      
     </div>
     
     @include('scripts_with_ajax')   {{--added--}}
