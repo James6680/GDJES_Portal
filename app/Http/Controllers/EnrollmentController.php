@@ -264,6 +264,7 @@ class EnrollmentController extends Controller
                 $learningInfo->mobile_data_lang_ang_gamit = 1;
             }
         }
+        $learningInfo->save();  
         ////////////////////////////////////////////////////////
 
         ////////////////////Mother FATHER GUARDIAN//////////////
@@ -311,7 +312,6 @@ class EnrollmentController extends Controller
         ////////////////////////////////Student/////////////////////////////
         if($student == null){
             $relatives->save();
-            $learningInfo->save();  
             $student = new Student();
             $student->first_name = $enrollmentForm->firstName_ng_bata;
             $student->middle_name = $enrollmentForm->middleName_ng_bata;

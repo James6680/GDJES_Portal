@@ -15,7 +15,12 @@ class EnrollmentSeeder extends Seeder
     {
         for($i = 1; $i <= 50; $i++){
             DB::table('enrollment')
-            ->insert(['student_id' => $i, 'grade_level_id' => mt_rand(1, 7), 'school_year_id' => 1, 'enrollment_status' => 'temporarily enrolled']);
+            ->insert(['student_id' => $i, 
+            'grade_level_id' => mt_rand(1, 7), 
+            'school_year_id' => 1, 
+            'learning_info_id' => $i,
+            'enrollment_status' => 'temporarily enrolled',
+        ]);
         }
         //
     }

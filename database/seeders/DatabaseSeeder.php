@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Relatives;
 use App\Models\GradeLevel;
 use Illuminate\Database\Seeder;
 
@@ -13,27 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\Admin::factory(1)->create();
-         \App\Models\Teacher::factory(5)->create();
-         \App\Models\Student::factory(5)->create();
-         \App\Models\Mother::factory(1)->create();
-         \App\Models\Father::factory(1)->create();
-         \App\Models\Relatives::factory(1)->create();
-         \App\Models\Guardian::factory(1)->create();
+        ////RELATIVES
+        $this->call(FatherSeeder::class); // Make sure MothersSeeder is executed first
+        $this->call(GuardianSeeder::class); // Make sure MothersSeeder is executed first
+        $this->call(MotherSeeder::class); // Make sure MothersSeeder is executed first
+        Relatives::factory()->count(100)->create();    
 
-
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call(SchoolYearSeeder::class);
+        $this->call(GradeLevelSeeder::class);
+        $this->call(SubjectsSeeder::class);
+        $this->call(SchoolYearSeeder::class);
+        $this->call(StudentSeeder::class);
         
-        $gradeLevelArray = ['Kinder', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'ALS'];
+        $this->call(DocumentRequirementsSeeder::class);
+        $this->call(LearningInfoSeeder::class);
+        $this->call(EnrollmentSeeder::class);
 
-        for ($i = 0; $i < 8; $i++) {
-            GradeLevel::create([
-                'grade_level' =>  $gradeLevelArray[$i],
-            ]);
-        }
+        $this->call(TeacherSeeder::class);
+        $this->call(AdminSeeder::class);
+        
     }
 }
