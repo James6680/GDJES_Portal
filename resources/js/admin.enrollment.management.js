@@ -57,15 +57,19 @@ const $viewSectionInfo = document.getElementById('viewSectionInfoModal');
 const $editSectionInfo = document.getElementById('editSectionModal');
 const $archiveSectionInfo = document.getElementById('archiveSectionModal');
 const $deleteSectionInfo = document.getElementById('deleteSectionModal');
+const $removeFromSectionModal = document.getElementById('removeFromSectionModal');
 
 const viewSectionInfoModal = new Modal($viewSectionInfo);
 const editSectionInfoModal = new Modal($editSectionInfo);
 const archiveSectionInfoModal = new Modal($archiveSectionInfo);
 const deleteSectionInfoModal = new Modal($deleteSectionInfo);
+////
+const removeFromSectionModal = new Modal($removeFromSectionModal);
 ////////////
 
 function updateStudentListInViewSectionInformation(){
-  $(studentListInSectionInformation).empty;
+  $(studentListInSectionInformation).empty();
+  let index = 1;
   studentList.forEach(student => {
     if(student.section_id == globalSectionInformationEntry.id){
       let x = `<tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
@@ -86,10 +90,16 @@ function updateStudentListInViewSectionInformation(){
       </td>
       <td class="px-6 py-4">
         <!-- Modal toggle -->
-        <a href="#" data-modal-target="removeFromSectionModal" data-modal-show="removeFromSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+        <a href="#" id="showRemoveFromSectionModal${index}" data-modal-target="removeFromSectionModal" data-modal-show="removeFromSectionModal" type="button" class="px-2 font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
       </td>
     </tr>`;
     $(studentListInSectionInformation).append(x);
+
+    const showRemoveFromSectionModal =  document.getElementById('showRemoveFromSectionModal' + index);
+      showRemoveFromSectionModal.addEventListener('click', function(){
+        removeFromSectionModal.toggle();
+      });
+    index++;
     }
   });
 }
@@ -134,6 +144,7 @@ function updateEnrolledStudentsTable(){
     </td>
   </tr>`;
   $(enrolledStudentTables).append(x3);
+
   });
 }
 
@@ -151,8 +162,9 @@ studentChecklistFormSubmit.addEventListener('click', function(e){
           const list = studentList.find(studentInList => studentInList.id == student); 
           list.section_id = globalSectionInformationEntry.id;
         });
+        updateStudentListInViewSectionInformation();
+        updateStudentSectionAssignmentList();
       }
-      updateStudentSectionAssignmentList();
     },
     error: function(response) {
       // Form submission failed, prevent default submission
