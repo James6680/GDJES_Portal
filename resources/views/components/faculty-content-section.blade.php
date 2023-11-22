@@ -9,7 +9,7 @@
 
             <!-- Announcement Main Container -->
             <!-- Backend side: need to connect para magreflect ung icrcreate na announcement ng admin -->
-            <div class="rounded-md w-auto h-auto relative container p-6 grid grid-cols-1 bg-yellow-600 shadow shadow-green-500">
+            <div class="rounded-md w-auto h-auto relative container p-6 grid grid-cols-1 bg-yellow-600 shadow shadow-brown-100">
 
                 <ul class="m-o p-0 text-white" id="announcement-list">
 
@@ -678,7 +678,7 @@
 
                             <!-- Needs to be dynamic for teacher to be able to only navigate the only subject unit in the given grade level that he/she is handling  --
                             <!-- Grade Level Button -->
-                            <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-500 text-sm px-8 py-2.5 text-center inline-flex items-center" type="button">Subject Class<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white min-w-[300px] justify-between focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-500 text-sm px-8 py-2.5 text-center inline-flex items-center" type="button">Subject Class<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg>
                             </button>
@@ -830,7 +830,7 @@
 
                     <div class=" items-center py-2.5 px-4 text-sm text-green-500 rounded-md bg-green-100 hidden"  id="LISReady">
                         <div class="font-normal">
-                             Final Grades are ready for LIS Encoding
+                            Final Grades are ready for LIS Encoding
                         </div>
                     </div>
 
@@ -895,9 +895,9 @@
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                         <!-- Initial Grade -->
+                                        <!-- Initial Grade -->
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th>
-                                         <!-- Quarterly Grade -->
+                                        <!-- Quarterly Grade -->
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th> 
                                         <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
