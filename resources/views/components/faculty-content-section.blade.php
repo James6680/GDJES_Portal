@@ -902,45 +902,80 @@
                                         <th class=" border-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
                                     <!-- Needs to be dynamic since items number may differ -->
-                                    <tr class=" text-center font-medium">
+                                    <tr class=" text-center font-medium" id="q1Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww2' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww3' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww4' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww5' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww6' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww7' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww8' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww9' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww10' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt1' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt2' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt3' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt4' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt5' class="p-0 border-none bg-transparent text-center" ></td> 
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt6' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt7' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt8' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt9' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt10' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton1">Edit</button></td>                                  
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww1' class="p-0 border-none bg-transparent text-center">
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww2' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww3' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww4' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww5' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww6' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww7' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww8' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww9' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww10' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt1' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt2' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt3' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt4' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt5' class="p-0 border-none bg-transparent text-center" ></td> 
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt6' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt7' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt8' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt9' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt10' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2" >
+                                            <input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2 ">
+                                            <input type="text" name='qa' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2 ">
+                                            <input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton1">Edit</button></td>                                  
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-center bg-white">
+                                    <tr class="text-center bg-white" id="q1row1">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">Juan Dela Cruz</td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
@@ -976,7 +1011,7 @@
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton2">Edit</button></td>
                                     </tr>
-                                    <tr class="text-center bg-white">
+                                    <tr class="text-center bg-white" id="q1row2">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">Adrian Fabonan</td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
@@ -1073,7 +1108,7 @@
                                         <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
                                     <!-- Needs to be dynamic since items number may differ -->
-                                    <tr class=" text-center font-medium">
+                                    <tr class=" text-center font-medium" id="q2Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center" ></td>
@@ -1086,9 +1121,9 @@
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww8' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww9' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww10' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt1' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt2' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt3' class="p-0 border-none bg-transparent text-center" ></td>
@@ -1099,19 +1134,18 @@
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt8' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt9' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt10' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton4">Edit</button></td>                                  
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-center bg-white">
+                                    <tr class="text-center bg-white" id="q2row1">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">Karen Tiro</td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
@@ -1147,7 +1181,7 @@
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton5">Edit</button></td>
                                     </tr>
-                                    <tr class="text-center bg-white">
+                                    <tr class="text-center bg-white" id="q2row2">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">Alex Reyes</td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
@@ -1244,7 +1278,7 @@
                                         <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
                                     <!-- Needs to be dynamic since items number may differ -->
-                                    <tr class=" text-center font-medium">
+                                    <tr class=" text-center font-medium" id="q3Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center" ></td>
@@ -1257,9 +1291,9 @@
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww8' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww9' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww10' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt1' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt2' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt3' class="p-0 border-none bg-transparent text-center" ></td>
@@ -1270,19 +1304,19 @@
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt8' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt9' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt10' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton7">Edit</button></td>                                  
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-center bg-white">
+                                    <tr class="text-center bg-white" id="q3row1">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">James Motus</td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
@@ -1318,7 +1352,7 @@
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton8">Edit</button></td>
                                     </tr>
-                                    <tr class="text-center bg-white">
+                                    <tr class="text-center bg-white" id="q3row2">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">Karen Tiro</td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
@@ -1415,7 +1449,7 @@
                                         <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
                                     <!-- Needs to be dynamic since items number may differ -->
-                                    <tr class=" text-center font-medium">
+                                    <tr class=" text-center font-medium" id="q4Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center" ></td>
@@ -1428,9 +1462,9 @@
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww8' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww9' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww10' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt1' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt2' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt3' class="p-0 border-none bg-transparent text-center" ></td>
@@ -1441,19 +1475,19 @@
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt8' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt9' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt10' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" ></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton10">Edit</button></td>                                  
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-center bg-white">
+                                    <tr class="text-center bg-white" id="q4row1">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">Alex reyes</td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
@@ -1489,7 +1523,7 @@
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton11">Edit</button></td>
                                     </tr>
-                                    <tr class="text-center bg-white">
+                                    <tr class="text-center bg-white" id="q4row2">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">Adrian Fabonan</td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
@@ -1594,17 +1628,56 @@
                                 // Setup for multiple buttons
                                 setupToggleButton('editButton1');
                                 setupToggleButton('editButton2');
-                                setupToggleButton('editButton3');
+                                setupToggleButton('editButton3'); // For 1st Quarter
                                 setupToggleButton('editButton4');
                                 setupToggleButton('editButton5');
-                                setupToggleButton('editButton6');
+                                setupToggleButton('editButton6'); // For 2nd Quarter
                                 setupToggleButton('editButton7');
                                 setupToggleButton('editButton8');
-                                setupToggleButton('editButton9');
+                                setupToggleButton('editButton9'); // For 3rd Quarter
                                 setupToggleButton('editButton10');
                                 setupToggleButton('editButton11');
-                                setupToggleButton('editButton12');
+                                setupToggleButton('editButton12');// For 4th Quarter
                                 // Add more buttons as needed
+                            </script>
+
+                            <!-- Enable/Disable of input fields in the table -->
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    // Function to toggle the disabled attribute of input fields
+                                    function toggleInputFields(rowId, buttonId) {
+                                        var editableRow = document.getElementById(rowId);
+                                        var inputFields = editableRow.querySelectorAll('input[type="text"]');
+                                        var editButton = document.getElementById(buttonId);
+
+
+                                        // Set input fields to disabled initially
+                                        inputFields.forEach(function (input) {
+                                            input.disabled = true;
+                                        });
+
+                                        editButton.addEventListener('click', function () {
+                                            inputFields.forEach(function (input) {
+                                                input.disabled = !input.disabled;
+                                            });
+                                        });
+                                    }
+
+                                    // Call the function for each row and button combination
+                                    toggleInputFields('q1Header', 'editButton1');
+                                    toggleInputFields('q1row1', 'editButton2');
+                                    toggleInputFields('q1row2', 'editButton3');// For Quarter 1 table
+                                    toggleInputFields('q2Header', 'editButton4');
+                                    toggleInputFields('q2row1', 'editButton5');
+                                    toggleInputFields('q2row2', 'editButton6');// For Quarter 2 table
+                                    toggleInputFields('q3Header', 'editButton7');
+                                    toggleInputFields('q3row1', 'editButton8');
+                                    toggleInputFields('q3row2', 'editButton9');// For Quarter 3 table
+                                    toggleInputFields('q4Header', 'editButton10');
+                                    toggleInputFields('q4row1', 'editButton11');
+                                    toggleInputFields('q4row2', 'editButton12');// For Quarter 4 table
+                                    // Add more calls for additional rows and buttons as needed
+                                });
                             </script>
 
                         </div>
@@ -1615,7 +1688,7 @@
 
                 <!-- Kinder ECCD Checklist Input -->
                 <h1 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black hidden" id="">Early Childhood and Development Care (ECCD) Checklist for Kindergarteners</h1>
-                <div class="mx-auto w-full ">
+                <div class="mx-auto w-full">
                     <div class="bg-white dark:bg-gray-800 relative overflow-hidden">
                         <!-- Kinder ECCD Checklist Table -->
                         <div class="overflow-x-auto pt-4">
@@ -1679,39 +1752,39 @@
                                     <!-- Needs to be dynamic since items number may differ -->
                                     <tr class=" text-center font-medium">
                                         <th class="border-2 border-yellow-100"></th>
-                                        <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>                    
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">100</th>
-                                        <th class="border-2 border-yellow-100">PS</th>
-                                        <th class="border-2 border-yellow-100">WS</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">100</th>
-                                        <th class="border-2 border-yellow-100">PS</th>
-                                        <th class="border-2 border-yellow-100">WS</th>
-                                        <th class="border-2 border-yellow-100">20</th>
-                                        <th class="border-2 border-yellow-100">PS</th>
-                                        <th class="border-x-2 border-yellow-100">WS</th>
-                                        <th class="border-x-2 border-yellow-100"></th>     
-                                        <th class="border-x-2 border-yellow-100"></th>
-                                        <th class="border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                       
+                                        <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww2' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww3' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww4' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww5' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww6' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww7' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww8' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww9' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww10' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt1' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt2' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt3' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt4' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt5' class="p-0 border-none bg-transparent text-center" ></td> 
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt6' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt7' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt8' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt9' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt10' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton13">Edit</button></td>                                  
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1749,7 +1822,7 @@
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center"></td>
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-green-500 hover:bg-green-900  font-normal rounded text-xs px-2 py-1 ">Save</button></td>
+                                        <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton14">Edit</button></td>
                                     </tr>
                                     <tr class="text-center bg-white">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
@@ -1785,7 +1858,7 @@
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center"></td>
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-green-500 hover:bg-green-900  font-normal rounded text-xs px-2 py-1 ">Save</button></td>
+                                        <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton15">Edit</button></td>
                                     </tr>
                                 </tbody>
                             </table>
