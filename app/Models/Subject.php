@@ -14,4 +14,6 @@ class Subject extends Model
         'subject_name',
         'grade_level_id',
     ];
+
+   
 }
