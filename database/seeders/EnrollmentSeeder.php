@@ -13,7 +13,7 @@ class EnrollmentSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 1; $i <= 50; $i++){
+        for($i = 1; $i <= 200; $i++){
             DB::table('enrollment')
             ->insert(['student_id' => $i, 
             'grade_level_id' => mt_rand(1, 7), 

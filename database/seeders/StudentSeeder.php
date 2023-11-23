@@ -58,6 +58,6 @@ class StudentSeeder extends Seeder
         
         
         
-        Student::factory(50)->create();
+        Student::factory(200)->create();
     }
 }

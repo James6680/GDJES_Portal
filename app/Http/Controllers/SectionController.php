@@ -160,4 +160,10 @@ class SectionController extends Controller
         }
         return $request->input('student');
     }
+
+    public function removeStudentSection(Request $request){
+        // DB::table('enrollments'){
+
+        // }
+    }
 }

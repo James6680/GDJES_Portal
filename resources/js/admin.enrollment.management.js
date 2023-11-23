@@ -4,6 +4,7 @@ var sectionList;
 var teacherList;
 var subjectList;
 var studentList;
+var selectedStudent;
 var availableSlotsInSection;
 var globalSectionInformationEntry;
 const range = document.createRange();
@@ -67,7 +68,39 @@ const deleteSectionInfoModal = new Modal($deleteSectionInfo);
 const removeFromSectionModal = new Modal($removeFromSectionModal);
 ////////////
 
+const closeRemoveFromSectionModal = document.querySelectorAll('#closeRemoveFromSectionModal');
+for (const close of closeRemoveFromSectionModal) {
+  close.addEventListener('click', function(){
+    removeFromSectionModal.hide();
+  })
+}
+
+const submitRemoveFromSectionModal = document.getElementById('submit-remove-from-section');
+submitRemoveFromSectionModal.addEventListener('click', function(){
+  $.ajax({
+    url: "/classes.removeStudentsFromSection",
+    type: "POST",
+    data: selectedStudent,
+    success: function(response) {
+      // Form submission is successful, prevent default submission
+      const changedStudent = studentList.find(student => student.id == selectedStudent);
+      changedStudent.section_id = null;
+      selectedClass.slots--;
+      removeFromSectionModal.hide();
+      updateStudentListInViewSectionInformation();
+      updateStudentSectionAssignmentList();
+      console.log(selectedClass);
+      updateViewSectionInformation(globalSectionInformationEntry);
+    },
+    error: function(response) {
+      // Form submission failed, prevent default submission
+    }
+  });  
+});
+
+
 function updateStudentListInViewSectionInformation(){
+  const variable = studentList.find(student => student.id == selectedStudent);
   $(studentListInSectionInformation).empty();
   let index = 1;
   studentList.forEach(student => {
@@ -98,6 +131,7 @@ function updateStudentListInViewSectionInformation(){
     const showRemoveFromSectionModal =  document.getElementById('showRemoveFromSectionModal' + index);
       showRemoveFromSectionModal.addEventListener('click', function(){
         removeFromSectionModal.toggle();
+        selectedStudent = student.id;
       });
     index++;
     }
@@ -161,9 +195,11 @@ studentChecklistFormSubmit.addEventListener('click', function(e){
         response.forEach(student => {
           const list = studentList.find(studentInList => studentInList.id == student); 
           list.section_id = globalSectionInformationEntry.id;
+          selectedClass.slots++;
         });
         updateStudentListInViewSectionInformation();
         updateStudentSectionAssignmentList();
+        updateViewSectionInformation(globalSectionInformationEntry);
       }
     },
     error: function(response) {
@@ -343,6 +379,7 @@ function updateAdviserInView(adviserTeacherID){
 }
 
 function updateViewSectionInformation(selectedSection){
+  console.log(selectedSection);
   teachersDropdownButton.setAttribute('name', 'adviser-' + selectedSection.id);
   ///////////////AVAILABLE COUNT FOR SECTION SLOT////////
   availableSlotsInSection = selectedSection['section_slot'] - selectedClass.slots;
@@ -353,8 +390,30 @@ function updateViewSectionInformation(selectedSection){
     sectionInformationGradeLevel.innerText = "Grade Level: " + sectionEquivalents[selectedSection['grade_level_id']-1];
   });
   sectionInformationSlots.forEach(sectionInformationSlots => {
-    sectionInformationSlots.innerHTML = "Available Slots: "  + selectedClass.slots + "/" + selectedSection['section_slot'];
+    sectionInformationSlots.innerHTML = "Available Slots: "  + availableSlotsInSection + "/" + selectedSection['section_slot'];
   });
+  const studentInputFields = document.getElementById('student-assignment-form').querySelectorAll('input[name="student[]"]');
+  ///////////COUNTING OF AVAILABLE SLOTS////////////
+  for (const inputField of studentInputFields) {
+    inputField.addEventListener('click', (event) => {
+      // Handle changing of slots here
+      if(inputField.checked){
+        availableSlotsInSection--;
+        if(availableSlotsInSection < 0){
+          inputField.checked = false;
+          availableSlotsInSection++;
+        }
+      }else{
+        availableSlotsInSection++;
+      }
+      if(availableSlotsInSection >= 0){
+      sectionInformationSlots.forEach(sectionInformationSlots => {
+        sectionInformationSlots.innerHTML = "Available Slots: "  + (availableSlotsInSection) + "/" + selectedSection['section_slot'];
+      });
+
+      }
+    });
+  }
   updateAdviserInView(selectedSection.adviser_id);
   var sectionSubjectList = document.getElementById('section-information-subject-list');
   $(sectionSubjectList).empty();

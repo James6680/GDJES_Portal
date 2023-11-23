@@ -14,7 +14,7 @@ class LearningInfoSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 1; $i <= 50; $i++){
+        for($i = 1; $i <= 200; $i++){
             LearningInfo::create([
                 'distance_learning' => "Online",
                 'may_sariling_tablet_ang_bata' => 0,

@@ -16,7 +16,7 @@ class DocumentRequirementsSeeder extends Seeder
     public function run(): void
     {
         $date = new DateTime('2024-01-01');
-        for($i = 1; $i <= 50; $i++){
+        for($i = 1; $i <= 200; $i++){
             DB::table('document_requirements')
                 ->insert([
                 'student_id' => $i,

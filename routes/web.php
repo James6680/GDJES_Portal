@@ -99,7 +99,8 @@ Route::post('classes.assignTeachers', [SectionController::class, 'assignTeacher'
 
 Route::post('classes.assignStudentsToSection', [SectionController::class, 'assignStudentSection']
 )->name('classes.assignStudentsToSection');
-
+Route::post('classes.removeStudentsFromSection', [SectionController::class, 'removeStudentSection']
+)->name('classes.removeStudentsFromSection');
 
 Route::get('admin.school-information', function () {
     return view('layouts.admin');
