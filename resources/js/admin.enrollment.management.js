@@ -80,7 +80,11 @@ submitRemoveFromSectionModal.addEventListener('click', function(){
   $.ajax({
     url: "/classes.removeStudentsFromSection",
     type: "POST",
-    data: selectedStudent,
+    data:{
+     _method: 'POST',
+    student_id : selectedStudent,
+    school_year_id: selectedSchoolYearObject.id,
+    },
     success: function(response) {
       // Form submission is successful, prevent default submission
       const changedStudent = studentList.find(student => student.id == selectedStudent);
@@ -89,7 +93,6 @@ submitRemoveFromSectionModal.addEventListener('click', function(){
       removeFromSectionModal.hide();
       updateStudentListInViewSectionInformation();
       updateStudentSectionAssignmentList();
-      console.log(selectedClass);
       updateViewSectionInformation(globalSectionInformationEntry);
     },
     error: function(response) {
@@ -379,7 +382,6 @@ function updateAdviserInView(adviserTeacherID){
 }
 
 function updateViewSectionInformation(selectedSection){
-  console.log(selectedSection);
   teachersDropdownButton.setAttribute('name', 'adviser-' + selectedSection.id);
   ///////////////AVAILABLE COUNT FOR SECTION SLOT////////
   availableSlotsInSection = selectedSection['section_slot'] - selectedClass.slots;
@@ -422,11 +424,11 @@ function updateViewSectionInformation(selectedSection){
     //////////////////LIST FOR VIEWING///////////////////
     var subjectTeacher = teacherList.find(teacher => teacher.id === element.teacher_id);
     var subjectForSection = subjectList.find(subject => subject.id === element.subject_id);
-    var x
+    var x;
     if(subjectTeacher){
        x = `<p class="text-sm font-regular text-gray-500 dark:text-white">${subjectForSection.subject_name} - ${subjectTeacher.last_name}, ${subjectTeacher.first_name} ${subjectTeacher.middle_name} ${subjectTeacher.extension_name}</p>`;
-    }else{
-       x = `<p class="text-sm font-regular text-gray-500 dark:text-white">${subjectForSection.subject_name} - `;
+    }else if (subjectTeacher === undefined){
+      x = `<p class="text-sm font-regular text-gray-500 dark:text-white">${subjectForSection.subject_name} - `;
     }
     const doc = parser.parseFromString(x, "text/html");
     const desiredHTML = doc.body.innerHTML;
@@ -496,6 +498,7 @@ function updateSectionsTable(gradeLevel) {
       const url = '/api/getClass/' + entry['grade_level_id'] + '/' + selectedSchoolYearObject.id + "/" + entry['id'];
       $.getJSON(url, function(data) {
         selectedClass = data;
+        resolve();
       }).then(()=>{
         updateViewSectionInformation(entry);
       });

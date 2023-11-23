@@ -45,6 +45,7 @@ Route::get('/getClass/{gradeLevel}/{schoolYear}/{section}', function ($gradeLeve
     $sections = DB::table('classes')
         ->where('school_year_id', $schoolYear)
         ->where('grade_level_id', $gradeLevel)
+        ->where('section_id', $section)
         ->get();
 
     // Calculate the number of slots for the specified section

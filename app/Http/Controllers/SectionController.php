@@ -161,9 +161,10 @@ class SectionController extends Controller
         return $request->input('student');
     }
 
-    public function removeStudentSection(Request $request){
-        // DB::table('enrollments'){
-
-        // }
-    }
+    public function removeStudentSection(Request $request) {
+        $studentId = $request->input('student_id');
+        DB::table('enrollment')
+          ->where('student_id', $studentId)
+          ->update(['section_id' => null]);
+      }
 }
