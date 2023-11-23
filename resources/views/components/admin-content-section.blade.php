@@ -3985,7 +3985,7 @@
                   </div> <!-- End of Sections Table functions - all -->
 
                   <!-- Sections Table -->
-                  <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
+                  <div class="relative overflow-x-auto overflow-y-auto max-h-96 outline outline-2 outline-green-50 rounded-sm">
 
                     <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
 
