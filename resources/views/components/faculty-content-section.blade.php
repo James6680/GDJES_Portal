@@ -836,13 +836,13 @@
 
                 </div>
 
-                <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black mb-1.5" id="gSheetHeader">Grading Sheet Input for Students</h1>
-
+                <!-- Grade 1 - 6 Grading Input -->
+                <h1 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">Grading Sheet Input for Students</h1>
                 <div class="mx-auto w-full ">
                     
                     <div class="bg-white dark:bg-gray-800 relative overflow-hidden">
 
-                        <div class="overflow-x-auto">
+                        <div class="overflow-x-auto pt-4">
                             <!-- Faculty grading sheet for students table for QUARTER 1 -->
                             <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
                             <table class="w-full lg:text-sm text-xs text-left text-black " id="gSheetTableQ1">
@@ -1579,8 +1579,188 @@
                         </div>
 
                     </div>
+
                 </div>
 
+                <!-- Kinder ECCD Checklist Input -->
+                <h1 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black hidden" id="">Early Childhood and Development Care (ECCD) Checklist for Kindergarteners</h1>
+                <div class="mx-auto w-full ">
+                    <div class="bg-white dark:bg-gray-800 relative overflow-hidden">
+                        <!-- Kinder ECCD Checklist Table -->
+                        <div class="overflow-x-auto pt-4">
+                            <!-- Faculty Early Childhood Care and Development (ECCD) Checklist for kinder students table -->
+                            <!-- For Backend: Need to connect this table data into the db in order for inputs to be saved and recorded for kinder students-->
+                            <table class="w-full lg:text-sm text-xs text-left text-black py-4" id="gSheetTableECCDTable">
+                                <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
+                                    <tr class="text-lg font-light text-center">
+                                        <th colspan="1" class=" border-2 border-yellow-100 rounded-tl-md"></th>
+                                        <th colspan="1" class="border-2 w-[25%] border-yellow-100">Learner's Name</th>
+                                        <th colspan="13" class="border-2 w-[30%] border-yellow-100">Written Works</th>
+                                        <th colspan="13" class="border-2 w-[30%] border-yellow-100">Performance Tasks</th>
+                                        <th colspan="3" class="text-base border-2 border-yellow-100 ">Quarterly Assessment (20%)</th>
+                                        <th colspan="1" class="text-sm  border-2 normal-case border-yellow-100">Initial</th>
+                                        <th colspan="1" class="text-sm border-2 normal-case border-yellow-100"> Quarterly</th>
+                                        <th class="rounded-tr-md border-2 border-yellow-100"><span class="sr-only"></span></th>                                    
+                                    </tr>
+                                    <tr class="text-center px-4">
+                                        <!-- Gross Motor Domain --> 
+                                        <th class="border-2 border-yellow-100 py-4"></th>
+                                        <!-- Student Name --> 
+                                        <th class="border-2 border-yellow-100 px-28"></th>
+                                        <!--Written Works  -->
+                                        <th class="border-2 border-yellow-100">1</th>  
+                                        <th class="border-2 border-yellow-100">2</th> 
+                                        <th class="border-2 border-yellow-100">3</th>
+                                        <th class="border-2 border-yellow-100">4</th>
+                                        <th class="border-2 border-yellow-100">5</th>
+                                        <th class="border-2 border-yellow-100">6</th>
+                                        <th class="border-2 border-yellow-100">7</th>
+                                        <th class="border-2 border-yellow-100">8</th>
+                                        <th class="border-2 border-yellow-100">9</th>
+                                        <th class="border-2 border-yellow-100">10</th>
+                                        <th class="normal-case border-2 border-yellow-100">Total</th>
+                                        <th class="border-2 border-yellow-100 w-7">PS</th>
+                                        <th class="border-2 border-yellow-100">WS</th>
+                                        <!-- PerFormance Tasks -->
+                                        <th class="border-2 border-yellow-100">1</th>
+                                        <th class="border-2 border-yellow-100">2</th>
+                                        <th class="border-2 border-yellow-100">3</th>
+                                        <th class="border-2 border-yellow-100">4</th>
+                                        <th class="border-2 border-yellow-100">5</th>
+                                        <th class="border-2 border-yellow-100">6</th>
+                                        <th class="border-2 border-yellow-100">7</th>
+                                        <th class="border-2 border-yellow-100">8</th>
+                                        <th class="border-2 border-yellow-100">9</th>
+                                        <th class="border-2 border-yellow-100">10</th>
+                                        <th class="normal-case border-2 border-yellow-100">Total</th>
+                                        <th class="border-2 border-yellow-100">PS</th>
+                                        <th class="border-2 border-yellow-100">WS</th>
+                                        <!-- Quarterly Assessment (20%) -->
+                                        <th class="border-2 border-yellow-100">1</th>
+                                        <th class="border-2 border-yellow-100">PS</th>
+                                        <th class="border-2 border-yellow-100">WS</th>
+                                        <!-- Initial Grade -->
+                                        <th class="border-x-2 border-yellow-100 normal-case">Grade</th>
+                                        <!-- Quarterly Grade -->
+                                        <th class="border-x-2 border-yellow-100 normal-case">Grade</th> 
+                                        <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
+                                    </tr>
+                                    <!-- Needs to be dynamic since items number may differ -->
+                                    <tr class=" text-center font-medium">
+                                        <th class="border-2 border-yellow-100"></th>
+                                        <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>                    
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">100</th>
+                                        <th class="border-2 border-yellow-100">PS</th>
+                                        <th class="border-2 border-yellow-100">WS</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">100</th>
+                                        <th class="border-2 border-yellow-100">PS</th>
+                                        <th class="border-2 border-yellow-100">WS</th>
+                                        <th class="border-2 border-yellow-100">20</th>
+                                        <th class="border-2 border-yellow-100">PS</th>
+                                        <th class="border-x-2 border-yellow-100">WS</th>
+                                        <th class="border-x-2 border-yellow-100"></th>     
+                                        <th class="border-x-2 border-yellow-100"></th>
+                                        <th class="border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="text-center bg-white">
+                                        <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
+                                        <td class="border-2 border-yellow-100 px-2">Alex reyes</td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww2' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww3' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww4' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww5' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww6' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww7' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww8' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww9' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww10' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt1' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt2' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt3' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt4' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt5' class="p-0 border-none bg-transparent text-center"></td> 
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt6' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt7' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt8' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt9' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt10' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-green-500 hover:bg-green-900  font-normal rounded text-xs px-2 py-1 ">Save</button></td>
+                                    </tr>
+                                    <tr class="text-center bg-white">
+                                        <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
+                                        <td class="border-2 border-yellow-100 px-2">Adrian Fabonan</td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww2' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww3' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww4' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww5' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww6' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww7' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww8' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww9' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww10' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt1' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt2' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt3' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt4' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt5' class="p-0 border-none bg-transparent text-center"></td> 
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt6' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt7' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt8' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt9' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt10' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
+                                        <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-green-500 hover:bg-green-900  font-normal rounded text-xs px-2 py-1 ">Save</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </section>
