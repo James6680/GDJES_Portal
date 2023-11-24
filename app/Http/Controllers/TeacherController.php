@@ -38,6 +38,7 @@ class TeacherController extends Controller
                 'teachers.middle_name',
                 DB::raw('COALESCE(teachers.extension_name, \'\') AS extension_name')
             )
+            ->orderBy('teachers.last_name', 'asc')
             ->get();
         return $teachers;    
     }

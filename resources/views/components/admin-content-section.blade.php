@@ -22,12 +22,14 @@
 
   <!-- Admin Dashboard -->
   @if (request()->is('admin.dashboard') )
+  @vite(['resources/js/admin.dashboard.js'])
   <!-- Top Bar Dark Green Decor -->
   <section class="absolute top-0 right-0 -z-50 bg-gradient-to-t from-green-700 to-slate-900 w-full h-80">
   </section> <!-- End of Top Bar Dark Green Decor -->
   <!--  Admin Dashboard Main Content Container -->
   <section class="w-full min-h-full gap-4 p-4 grid grid-cols-1">
-    <h1 class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">Academic Year {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} Data</h1>
+    {{-- Academic Year {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} Data --}}
+    <h1 id="current-school-year-name" class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">No school year is currently active</h1>
     
     <!--  Statistics Container -->
     <div class="sm:mx-4 gap-4 grid grid-cols-1 lg:grid-cols-2 h-auto">
@@ -35,23 +37,23 @@
       <div class="gap-4 grid grid-cols-3 h-auto">
         <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">ENROLLEES</h5>
-            <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
+            <p id="current-school-year-enrollees" class="font-semibold text-2xl text-black dark:text-gray-400">N/A</p>
         </a>
 
         <div class="grid md:grid-rows-2 gap-4  ">
           <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">MALE</h5>
-              <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
+              <p id="current-school-year-male" class="font-semibold text-2xl text-black dark:text-gray-400">N/A</p>
           </a>
           <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col flex-wrap w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">FEMALE</h5>
-              <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
+              <p id="current-school-year-female" class="font-semibold text-2xl text-black dark:text-gray-400">N/A</p>
           </a>
         </div>
 
         <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">CUSTOMIZED AID STUDENTS</h5>
-            <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
+            <p id="current-school-year-disabled" class="font-semibold text-2xl text-black dark:text-gray-400">N/A</p>
         </a>
       </div>
       
@@ -59,17 +61,17 @@
         <div class="grid grid-cols-2 gap-4  ">
           <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">TRANSFERRED IN</h5>
-              <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
+              <p id="current-school-year-transferred-in" class="font-semibold text-2xl text-black dark:text-gray-400">N/A</p>
           </a>
           <a href="#" class="shadow outline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="text-xs md:text-base font-normal tracking-tight text-black dark:text-white">TRANSFERRED OUT</h5>
-              <p class="font-semibold text-2xl text-black dark:text-gray-400">1351</p>
+              <p id="current-school-year-transferred-out" class="font-semibold text-2xl text-black dark:text-gray-400">N/A</p>
           </a>
         </div>
 
         <a href="#" class="shadowoutline outline-1 outline-green-50 hover:outline-green-200 outline-offset-1 hover:outline-2 flex flex-col w-full p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="text-xs md:text-base font-regular tracking-tight text-black dark:text-white">DROPOUTS</h5>
-              <p class="font-semibold text-2xl text-black-700 dark:text-gray-400">1351</p>
+              <p id="current-school-year-dropout" class="font-semibold text-2xl text-black-700 dark:text-gray-400">N/A</p>
         </a>
       </div>   
     </div> <!-- End of Statistics Container -->
@@ -103,14 +105,14 @@
             </div>
 
             <!-- Dropdown SY Button for Preferred Mode of Learning -->
-            <button id="dropdownSYHoverButton-pmol" data-dropdown-toggle="dropdownSYHover-pmol" data-dropdown-trigger="hover" class="text-green-600 bg-green-50 hover:bg-green-100 hover:text-green-900 focus:ring-2 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">School Year: {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <button id="dropdownSYHoverButton-pmol" data-dropdown-toggle="dropdownSYHover-pmol" data-dropdown-trigger="hover" class="text-green-600 bg-green-50 hover:bg-green-100 hover:text-green-900 focus:ring-2 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">Select a school year to view<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
               </svg>
             </button>
 
             <!-- Dropdown menu for Preferred Mode of Learning -->
             <div id="dropdownSYHover-pmol" class="z-10 w-52 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-                <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                <ul id="mode-of-learning-dropdown" class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                   <li>
                     <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2019 - 2020</a>
                   </li>
@@ -135,104 +137,7 @@
         <!-- Script Start of Pie Chart Preferred Mode of Learning -->
         <script> 
         // ApexCharts options and config
-        window.addEventListener("load", function() {
-          const getChartOptions = () => {
-            // Combine series and labels into an array of objects
-            let combined = [
-              { label: "Blended", value: 50 },
-              { label: "Modular Digital", value: 61 },
-              { label: "Online", value: 35 },
-              { label: "Educational Television", value: 12 },
-              { label: "Modular Printed", value: 46 },
-            ];
 
-            // Sort the array by value in descending order
-            combined.sort((a, b) => b.value - a.value);
-
-            // Split the array back into separate series and labels arrays
-            let series = combined.map(item => item.value);
-            let labels = combined.map(item => `${item.label}: ${item.value}`);
-
-            return {
-              series: series,
-              colors: ["#93733e", "#303c30", "#506350", "#798a79", "#b2bcb2"],
-                chart: {
-                  height: 400,
-                  width: "100%",
-                  type: "pie",
-                  toolbar: {
-                    show: true,
-                    export: {
-                      csv: {
-                        filename: "GDJES Students' Preferred Mode of Learning Data",
-                        columnDelimiter: ',',
-                        headerCategory: 'Preferred MOL',
-                        headerValue: 'No. of Students',
-                        dateFormatter(timestamp) {
-                          return new Date(timestamp).toDateString()
-                        }
-                      },
-                      svg: {
-                        filename: "GDJES Students' Preferred Mode of Learning Data",
-                      },
-                      png: {
-                        filename: "GDJES Students' Preferred Mode of Learning Data",
-                      }
-                    },
-                  },
-                },
-                stroke: {
-                  colors: ["white"],
-                  lineCap: "",
-                },
-                plotOptions: {
-                  pie: {
-                    labels: {
-                      show: true,
-                    },  
-                    size: "100%",
-                    dataLabels: {
-                      offset: -5,
-                    }
-                  },
-                },
-              labels: labels,
-              dataLabels: {
-                  enabled: true,
-                  style: {
-                    fontFamily: "Mulish, Inter, sans-serif",
-                  },
-                },
-                legend: {
-                  position: "right",
-                  fontFamily: "Mulish, Inter, sans-serif",
-                },
-                yaxis: {
-                  labels: {
-                    formatter: function (value) {
-                      return value
-                    },
-                  },
-                },
-                xaxis: {
-                  labels: {
-                    show: false,
-                  },
-                  axisTicks: {
-                    show: false,
-                  },
-                  axisBorder: {
-                    show: false,
-                  },
-                },
-            }
-          }
-
-          if (document.getElementById("pmol-pie-chart") && typeof ApexCharts !== 'undefined') {
-            const chart = new ApexCharts(document.getElementById("pmol-pie-chart"), getChartOptions());
-            chart.render();
-          }
-        });
         </script> <!-- Script End of Pie Chart Preferred Mode of Learning -->
       </div> <!-- End of Preferred Mode of Learning Section -->
 
@@ -241,7 +146,7 @@
         <div class="flex justify-between items-start w-full">
           <div class="flex-col items-center">
             <div class="flex items-center mb-1">
-                <h5 class="text-xl font-semibold leading-none text-black dark:text-white mr-1">ENROLLEES MOTHER TONGUE</h5>
+                <h5 class="text-xl font-semibold leading-none text-black dark:text-white mr-1">ENROLLEES LEARNING INFORMATION</h5>
                 <svg data-popover-target="emt-chart-info" data-popover-placement="bottom" class="w-4 h-4 text-green-300 dark:text-gray-400 hover:text-black dark:hover:text-white cursor-pointer ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z"/>
                 </svg>
@@ -261,14 +166,14 @@
             </div>
 
             <!-- Dropdown SY Button for Enrollees Mother Tongue -->
-            <button id="dropdownSYHoverButton-emt" data-dropdown-toggle="dropdownSYHover-emt" data-dropdown-trigger="hover" class="text-green-600 bg-green-50 hover:bg-green-100 hover:text-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">School Year: {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <button id="dropdownSYHoverButton-emt" data-dropdown-toggle="dropdownSYHover-emt" data-dropdown-trigger="hover" class="text-green-600 bg-green-50 hover:bg-green-100 hover:text-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 my-2 py-2.5 text-left inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">Select a school year to view<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
               </svg>
             </button>
 
             <!-- Dropdown menu for Enrollees Mother Tongue -->
             <div id="dropdownSYHover-emt" class="z-10 w-52 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-                <ul class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                <ul id="mother-tongue-dropdown" class="p-2 rounded-xl text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                   <li>
                     <a href="#" class="block px-4 py-2 hover:bg-brown-50 dark:hover:bg-gray-600 dark:hover:text-white">2019 - 2020</a>
                   </li>
@@ -292,118 +197,6 @@
         <div class="py-6" id="emt-pie-chart"></div>
 
         <script>
-        // ApexCharts options and config
-        window.addEventListener("load", function() {
-          const getChartOptions = () => {
-            // Combine series and labels into an array of objects
-            let combined = [
-              { label: "Filipino", value: 1332 },
-              { label: "English", value: 16 },
-              { label: "Bikolano", value: 25 },
-              { label: "Cebuano", value: 15 },
-              { label: "Chinese", value: 0 },
-              { label: "Ilocano", value: 33 },
-              { label: "Kapampangan", value: 0 },
-              { label: "Maguindanaoan", value: 0 },
-              { label: "Manobo", value: 0 },
-              { label: "Nihonggo", value: 0 },
-              { label: "PH Sign Language", value: 8 },
-              { label: "Tausug", value: 0 },
-              { label: "Waray", value: 0 },
-              { label: "Ybanag", value: 0 },
-              { label: "Others", value: 0 },
-            ];
-
-            // Filter out items with a value of zero
-            combined = combined.filter(item => item.value !== 0);
-
-            // Sort the array by value in descending order
-            combined.sort((a, b) => b.value - a.value);
-
-            // Split the array back into separate series and labels arrays
-            let series = combined.map(item => item.value);
-            let labels = combined.map(item => `${item.label}: ${item.value}`);
-
-            return {
-              series: series,
-              colors: ["#506350", "#303c30", "#cdbfa6", "#a98f65", "#bb9a5a", "#715d36", "#e8d7b7", "#d7ba82", "#866938", "#513f22"],
-                chart: {
-                  height: 400,
-                  width: "100%",
-                  type: "pie",
-                  toolbar: {
-                    show: true,
-                    export: {
-                      csv: {
-                        filename: 'GDJES Enrollees Mother Tongue Data',
-                        columnDelimiter: ',',
-                        headerCategory: 'Enrollees Mother Tongue',
-                        headerValue: 'No. of Students',
-                        dateFormatter(timestamp) {
-                          return new Date(timestamp).toDateString()
-                        }
-                      },
-                      svg: {
-                        filename: 'GDJES Enrollees Mother Tongue Data',
-                      },
-                      png: {
-                        filename: 'GDJES Enrollees Mother Tongue Data',
-                      }
-                    },
-                  },
-                },
-                stroke: {
-                  colors: ["white"],
-                  lineCap: "",
-                },
-                plotOptions: {
-                  pie: {
-                    labels: {
-                      show: true,
-                    },
-                    size: "100%",
-                    dataLabels: {
-                      offset: -5,
-                    },
-                  },
-                },
-              labels: labels,
-              dataLabels: {
-                  enabled: true,
-                  style: {
-                    fontFamily: "Mulish, Inter, sans-serif",
-                  },
-                },
-                legend: {
-                  position: "right",
-                  fontFamily: "Mulish, Inter, sans-serif",
-                },
-                yaxis: {
-                  labels: {
-                    formatter: function (value) {
-                      return value
-                    },
-                  },
-                },
-                xaxis: {
-                  labels: {
-                    show: false,
-                  },
-                  axisTicks: {
-                    show: false,
-                  },
-                  axisBorder: {
-                    show: false,
-                  },
-                },
-            }
-          }
-
-          if (document.getElementById("emt-pie-chart") && typeof ApexCharts !== 'undefined') {
-            const chart = new ApexCharts(document.getElementById("emt-pie-chart"), getChartOptions());
-            chart.render();
-          }
-        });
         </script> <!-- Script End of Pie Chart Enrollees Mother Tongue -->
       </div> <!-- End of Enrollees Mother Tongue Section -->
     </div> <!-- End of Charts Container for Current School Year -->
@@ -429,7 +222,7 @@
             calculate the average
             update the text of the div that displays the average below --> 
             <div>
-              <h5 class="leading-none text-2xl font-bold text-black dark:text-white pb-1">3.4k</h5>
+              <h5 id="historical-enrollment-information" class="leading-none text-2xl font-bold text-black dark:text-white pb-1">3.4k</h5>
               <p class="text-sm font-normal text-black-500 dark:text-black">Average no. of enrollees per year</p>
             </div>
           </div>
@@ -442,7 +235,6 @@
           <div>
             <span class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" viewBox="0 0 256 256"><path d="M240,56v64a8,8,0,0,1-13.66,5.66L200,99.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31,29.66,189.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0L136,140.69,188.69,88,162.34,61.66A8,8,0,0,1,168,48h64A8,8,0,0,1,240,56Z"></path></svg>
-              42.5%
             </span>
           </div>
           <!-- Downtrend 
@@ -465,137 +257,7 @@
       <script>
         
         // ApexCharts options and config
-        window.addEventListener("load", function() {
 
-          const options = { 
-                //BACKEND
-                //Populate the series data with the data from the db  
-                colors: ["#798a79", "#a98f65"],
-                series: [
-                  {
-                    name: "Male",
-                    color: "#93733e",
-                    data: [
-                      { x: "2019 - 2020", y: 804 },
-                      { x: "2020 - 2021", y: 772 },
-                      { x: "2021 - 2022", y: 847 },
-                      { x: "2022 - 2023", y: 736 },
-                    ],
-                  },
-                  {
-                    name: "Female",
-                    color: "#586d58",
-                    data: [
-                      { x: "2019 - 2020", y: 689 },
-                      { x: "2020 - 2021", y: 675 },
-                      { x: "2021 - 2022", y: 728 },
-                      { x: "2022 - 2023", y: 615 },
-                    ],
-                  },
-                ],
-                chart: {
-                  type: "bar",
-                  stacked: "true",
-                  height: "320px",
-                  fontFamily: "Mulish, Inter, sans-serif",
-                  toolbar: {
-                    show: true,
-                    export: {
-                      csv: {
-                        filename: 'GDJES Historical Student Enrollment Data',
-                        columnDelimiter: ',',
-                        headerCategory: 'Academic Year',
-                        headerValue: 'No. of Students',
-                        dateFormatter(timestamp) {
-                          return new Date(timestamp).toDateString()
-                        }
-                      },
-                      svg: {
-                        filename: 'GDJES Historical Student Enrollment Data',
-                      },
-                      png: {
-                        filename: 'GDJES Historical Student Enrollment Data',
-                      }
-                    },
-                  },
-                },
-                plotOptions: {
-                  bar: {
-                    horizontal: false,
-                    columnWidth: "70%",
-                    borderRadiusApplication: "end",
-                    borderRadius: 8,
-                    dataLabels: {
-                      total: {
-                        enabled: true,
-                      }
-                    }
-                  },
-                },
-                tooltip: {
-                  shared: true,
-                  intersect: false,
-                  style: {
-                    fontFamily: "Mulish, Inter, sans-serif",
-                  },
-                },
-                states: {
-                  hover: {
-                    filter: {
-                      type: "darken",
-                      value: 1,
-                    },
-                  },
-                },
-                stroke: {
-                  show: true,
-                  width: 0,
-                  colors: ["transparent"],
-                },
-                grid: {
-                  show: true,
-                  strokeDashArray: 4,
-                  padding: {
-                    left: 2,
-                    right: 2,
-                    top: 20,
-                  },
-                },
-                dataLabels: {
-                  enabled: true,
-                },
-                legend: {
-                  show: true,
-                },
-                xaxis: {
-                  floating: false,
-                  labels: {
-                    show: true,
-                    style: {
-                      fontFamily: "Mulish, Inter, sans-serif",
-                      cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-                    }
-                  },
-                  axisBorder: {
-                    show: false,
-                  },
-                  axisTicks: {
-                    show: false,
-                  },
-                },
-                yaxis: {
-                  show: true,
-                },
-                fill: {
-                  opacity: 1,
-                },
-              }
-
-              if(document.getElementById("hsed-column-chart") && typeof ApexCharts !== 'undefined') {
-                const chart = new ApexCharts(document.getElementById("hsed-column-chart"), options);
-                chart.render();
-              }
-        });
 
       </script> <!-- End of Script for Historical Student Enrollment Data Section -->
 
@@ -616,7 +278,7 @@
             calculate the average
             update the text of the div that displays the average below --> 
             <div>
-              <h5 class="leading-none text-2xl font-bold text-black dark:text-white pb-1">88%</h5>
+              <h5 id="historical-completion-information" class="leading-none text-2xl font-bold text-black dark:text-white pb-1"></h5>
               <p class="text-sm font-normal text-black-500 dark:text-black">Average completion rate per year</p>
             </div>
           </div>
@@ -629,7 +291,6 @@
           <div>
             <span class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" viewBox="0 0 256 256"><path d="M240,56v64a8,8,0,0,1-13.66,5.66L200,99.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31,29.66,189.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0L136,140.69,188.69,88,162.34,61.66A8,8,0,0,1,168,48h64A8,8,0,0,1,240,56Z"></path></svg>
-              1.2
             </span>
           </div>
           <!-- Downtrend 
@@ -645,140 +306,8 @@
         <div>
           <h5 class="leading-none text-xl font-bold text-black dark:text-white pb-1">HISTORICAL COMPLETION RATE DATA</h5>
         </div>
-
         <div id="hcr-column-chart"></div>
       </div> <!-- End of Historical Student Enrollment Data Section -->
-
-      <script>
-        
-        // ApexCharts options and config
-        window.addEventListener("load", function() {
-
-          const options = { 
-                //BACKEND
-                //Populate the series data with the data from the db  
-                colors: ["#798a79", "#a98f65"],
-                series: [
-                  {
-                    name: "Completion Rate",
-                    color: "#798a79",
-                    data: [
-                      { x: "2019 - 2020", y: 95 },
-                      { x: "2020 - 2021", y: 85 },
-                      { x: "2021 - 2022", y: 92 },
-                      { x: "2022 - 2023", y: 93 },
-                    ],
-                  },
-                ],
-                chart: {
-                  type: "bar",
-                  stacked: "false",
-                  height: "320px",
-                  fontFamily: "Mulish, Inter, sans-serif",
-                  toolbar: {
-                    show: true,
-                    export: {
-                      csv: {
-                        filename: 'GDJES Historical Completion Rate Data',
-                        columnDelimiter: ',',
-                        headerCategory: 'Academic Year',
-                        headerValue: 'Percentage',
-                        dateFormatter(timestamp) {
-                          return new Date(timestamp).toDateString()
-                        }
-                      },
-                      svg: {
-                        filename: 'GDJES Historical Completion Rate Data',
-                      },
-                      png: {
-                        filename: 'GDJES Historical Completion Rate Data',
-                      }
-                    },
-                  },
-                },
-                plotOptions: {
-                  bar: {
-                    horizontal: false,
-                    columnWidth: "70%",
-                    borderRadiusApplication: "end",
-                    borderRadius: 8,
-                  },
-                },
-                tooltip: {
-                  shared: true,
-                  intersect: false,
-                  style: {
-                    fontFamily: "Mulish, Inter, sans-serif",
-                  },
-                },
-                states: {
-                  hover: {
-                    filter: {
-                      type: "darken",
-                      value: 1,
-                    },
-                  },
-                },
-                stroke: {
-                  show: true,
-                  width: 0,
-                  colors: ["transparent"],
-                },
-                grid: {
-                  show: true,
-                  strokeDashArray: 4,
-                  padding: {
-                    left: 2,
-                    right: 2,
-                    top: 20,
-                  },
-                },
-                dataLabels: {
-                  enabled: true,
-                  formatter: function (value) {
-                    return value + "%";
-                  },
-                },
-                legend: {
-                  show: true,
-                  showForSingleSeries: true,
-                },
-                xaxis: {
-                  floating: false,
-                  labels: {
-                    show: true,
-                    style: {
-                      fontFamily: "Mulish, Inter, sans-serif",
-                      cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-                    },
-                  },
-                  axisBorder: {
-                    show: false,
-                  },
-                  axisTicks: {
-                    show: false,
-                  },
-                },
-                yaxis: {
-                  show: true,
-                  labels: {
-                    formatter: function (value) {
-                      return value + "%";
-                    },
-                  },
-                },
-                fill: {
-                  opacity: 1,
-                },
-              }
-
-              if(document.getElementById("hcr-column-chart") && typeof ApexCharts !== 'undefined') {
-                const chart = new ApexCharts(document.getElementById("hcr-column-chart"), options);
-                chart.render();
-              }
-        });
-
-      </script> <!-- End of Script for Historical Completion Rate Data Section -->
     </div> <!-- End of Charts Container for Current School Year -->
   </section> <!-- End of Admin Dashboard Main Content Container -->
 

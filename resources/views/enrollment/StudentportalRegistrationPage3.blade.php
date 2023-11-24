@@ -170,7 +170,7 @@
                   value="{{ isset($enrollment->school_year) ? $enrollment->school_year : DB::table('school_years')
                   ->where('is_enrollment', 1)
                   ->pluck('school_year')
-                  ->first(); }}"
+                  ->first()}}"
                 >></div>
 
               <!-- Error Message for School Year -->
