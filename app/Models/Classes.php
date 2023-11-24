@@ -18,5 +18,7 @@ class Classes extends Model
         'grade_level_id',
         'school_year_id',
     ];
-    
+
+   
+
 }

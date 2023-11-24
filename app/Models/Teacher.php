@@ -71,6 +71,6 @@ class Teacher extends Authenticatable
         //return 8 random characters as password
         return "Teacher123";
     }
-
     
+
 }
