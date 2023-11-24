@@ -44,6 +44,7 @@ return new class extends Migration
             $table->float('qa_weighted_score')->nullable();     
             $table->float('initial_grade')->nullable();
             $table->integer('quarterly_grade')->nullable();
+            $table->string('quarter')->nullable(); // added
             $table->timestamps();
         });
     }

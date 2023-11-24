@@ -51,8 +51,10 @@ return new class extends Migration
             $table->float('qa_weighted_score')->nullable();     
             $table->float('initial_grade')->nullable();
             $table->integer('quarterly_grade')->nullable();
+            $table->string('quarter')->nullable(); // added
             $table->unsignedBigInteger('school_year_id'); // added
             $table->foreign('school_year_id')->references('id')->on('school_years'); // added
+
             $table->timestamps();
         });
     }
