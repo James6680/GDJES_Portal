@@ -47,4 +47,6 @@ class TeacherController extends Controller
         $data->delete();
         return redirect()->back();
     }
+
 }
+

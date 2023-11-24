@@ -77,4 +77,6 @@ class Student extends Authenticatable
     {
         return "Student123";
     }
+
+    
 }
