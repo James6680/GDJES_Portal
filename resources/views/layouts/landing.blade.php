@@ -64,7 +64,7 @@
         </li>
         <!-- CTA Button -->
         <div class="flex items-center gap-6">
-          <button
+          <button onclick=" window.location.href = 'students/login'"
             class="px-4 py-2.5 lg:px-8 lg:py-3 bg-green-500 text-sm md:text-base text-white rounded-lg hover:bg-green-900 uppercase font-mulish hover:shadow-md hover:shadow-green-700/50">
             Student Portal
           </button>

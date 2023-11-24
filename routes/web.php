@@ -13,16 +13,7 @@ use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\AnnouncementController;
 
 
-
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('helloworld', function () {
-    return view('helloworld');
-});
-
-Route::get('layouts.landing', function () {
     $announcements = DB::table('announcements')
     ->select('*')
     ->orderBy('created_at', 'desc')
@@ -70,37 +61,37 @@ Route::get('admin.teacher-management', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.teacher-management');
 
-Route::post('admin.teacher-management.add',[AdminController::class, 'CreateTeacher'])
+Route::post('admin.teacher-management.add',[AdminController::class, 'CreateTeacher'])->middleware('admin')
 ->name('admin.teacher-management.add');//added
-Route::post('admin.teacher-management.edit',[AdminController::class, 'EditTeacher'])
+Route::post('admin.teacher-management.edit',[AdminController::class, 'EditTeacher'])->middleware('admin')
 ->name('admin.teacher-management.edit');//added
-Route::post('admin.teacher-management.delete',[AdminController::class, 'delete'])
+Route::post('admin.teacher-management.delete',[AdminController::class, 'delete'])->middleware('admin')
 ->name('admin.teacher-management.delete');//added
 
 Route::get('admin.enrollment-management', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.enrollment-management');
 Route::post('admin.addSchoolYear', [SchoolYearController::class, 'addSchoolYear']
-)->name('admin.addSchoolYear');
+)->middleware('admin')->name('admin.addSchoolYear');
 Route::post('admin.endSchoolYear', [SchoolYearController::class, 'endSchoolYear']
-)->name('admin.endSchoolYear');
+)->middleware('admin')->name('admin.endSchoolYear');
 Route::post('admin.startSchoolYear', [SchoolYearController::class, 'startSchoolYear']
-)->name('admin.startSchoolYear');
+)->middleware('admin')->name('admin.startSchoolYear');
 Route::post('admin.closeEnrollment', [SchoolYearController::class, 'closeEnrollment']
-)->name('admin.closeEnrollment');
+)->middleware('admin')->name('admin.closeEnrollment');
 Route::post('admin.openEnrollment', [SchoolYearController::class, 'openEnrollment']
-)->name('admin.openEnrollment');
+)->middleware('admin')->name('admin.openEnrollment');
 Route::post('admin.addSection', [SectionController::class, 'addSection']
-)->name('admin.addSection');
+)->middleware('admin')->name('admin.addSection');
 Route::post('admin.editSection', [SectionController::class, 'editSection']
-)->name('admin.editSection');
+)->middleware('admin')->name('admin.editSection');
 Route::post('classes.assignTeachers', [SectionController::class, 'assignTeacher']
-)->name('classes.assignTeachers');
+)->middleware('admin')->name('classes.assignTeachers');
 
 Route::post('classes.assignStudentsToSection', [SectionController::class, 'assignStudentSection']
-)->name('classes.assignStudentsToSection');
+)->middleware('admin')->name('classes.assignStudentsToSection');
 Route::post('classes.removeStudentsFromSection', [SectionController::class, 'removeStudentSection']
-)->name('classes.removeStudentsFromSection');
+)->middleware('admin')->name('classes.removeStudentsFromSection');
 
 Route::get('admin.school-information', function () {
     return view('layouts.admin');
@@ -178,8 +169,12 @@ Route::post('student-registration-5', [EnrollmentController::class, 'postEnrollm
 
 Route::get('student-registration-Completed', [EnrollmentController::class, 'enrollmentComplete'])
     ->name('enrollment.StudentportalRegistrationCompletedPage');
-
 });
+
+
+Route::get('enrollment-closed', function(){
+    return view('enrollment.StudentportalRegistrationClosedPage');
+})->name('enrollment.StudentportalRegistrationClosedPage');
 /*----------------Added Faculty Routes-----------------------*/
 Route::prefix('teacher')->group(function(){
     Route::get('/login',[TeacherController::class, 'IndexTeacher'])->name('teacher_login_from');
@@ -212,35 +207,6 @@ Route::get('faculty.Attendance', function () {
     return view('layouts.faculty');
 })->middleware('teachers')->name('faculty.Attendance');
 // End of Faculty Routes
-
-
-
-
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-    Route::get('/', function () {
-        return view('welcome');
-    });
     
     Route::get('/dashboard', function () {
         return view('dashboard');

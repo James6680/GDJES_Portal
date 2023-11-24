@@ -218,6 +218,7 @@ class EnrollmentController extends Controller
         }catch(ErrorException $e){
         }
         if(!is_null($pageSpecificField)){    
+            Session()->forget('enrollment');
             return view('enrollment.StudentportalRegistrationCompletedPage');
         }else{
             return redirect()->route('enrollment.StudentportalRegistrationPage1');
@@ -225,13 +226,8 @@ class EnrollmentController extends Controller
     }
 
     public function createStudentInDatabase(EnrollmentForm $enrollmentForm){
-        // if($enrollmentForm->lrn_status == '1'){
-        //     $student = Student::where('lrn', $enrollmentForm->lrn_number)->first();
-        // }else{
-        //     $student = new Student(); 
-        // }
+
         $school_year = DB::table('school_years')->where('is_enrollment','=','1')->pluck('id')->first();
-        $student = Student::where('lrn', $enrollmentForm->lrn_number)->first();
         $father = Father::where('last_name', $enrollmentForm->lastName_ng_ama)->where('first_name', $enrollmentForm->firstName_ng_ama)->where('middle_name', $enrollmentForm->middleName_ng_ama)->first();
         $mother = Mother::where('last_name', $enrollmentForm->lastName_ng_ina)->where('first_name', $enrollmentForm->firstName_ng_ina)->where('middle_name', $enrollmentForm->middleName_ng_ina)->first();
         $guardian = Guardian::where('last_name', $enrollmentForm->lastName_ng_guardian)->where('first_name', $enrollmentForm->firstName_ng_guardian)->where('middle_name', $enrollmentForm->middleName_ng_guardian)->first();
@@ -242,7 +238,7 @@ class EnrollmentController extends Controller
         //////DECLARING LEARNING INFO;
         $learningInfo->distance_learning = $enrollmentForm->distance_learning;
         foreach($enrollmentForm->learning_info as $learning_info){
-            if($learning_info == "cellphoneVtablet"){
+            if($learning_info == "cellphone/tablet"){
                 $learningInfo->may_sariling_tablet_ang_bata = 1;
             }
             if($learning_info == "Computer"){
@@ -250,9 +246,6 @@ class EnrollmentController extends Controller
             }
             if($learning_info == "No_gadget"){
                 $learningInfo->walang_sariling_gadget_ang_bata = 1;
-            }
-            if($learning_info == "Tv"){
-                $learningInfo->may_tv_sa_bahay = 1;
             }
             if($learning_info == "Tv"){
                 $learningInfo->may_tv_sa_bahay = 1;
@@ -310,9 +303,12 @@ class EnrollmentController extends Controller
         ///////////////////////////////////////////
         
         ////////////////////////////////Student/////////////////////////////
-        if($student == null){
+        if($enrollmentForm->lrn_status == '1'){
+            $student = Student::where('lrn', $enrollmentForm->lrn_number)->first();
+        }else{
             $relatives->save();
             $student = new Student();
+            
             $student->first_name = $enrollmentForm->firstName_ng_bata;
             $student->middle_name = $enrollmentForm->middleName_ng_bata;
             $student->last_name = $enrollmentForm->lastName_ng_bata;
@@ -392,6 +388,7 @@ class EnrollmentController extends Controller
         $documentRequirements-> requirements = json_encode($documentrequest);
         $documentRequirements-> submission_deadline = date_add(date_create(date("Y-m-d")),date_interval_create_from_date_string("40 days"));
         $documentRequirements->save();
+
         /////////////////////
     }
 }

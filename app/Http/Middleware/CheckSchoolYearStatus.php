@@ -20,7 +20,9 @@ class CheckSchoolYearStatus
 
         if (!is_null($isEnrollmentOpen)) {
             return $next($request);
+        }else{
+            return redirect()->route('enrollment.StudentportalRegistrationClosedPage');
         }
-        return redirect()->route('layouts.landing');
+
     }
 }

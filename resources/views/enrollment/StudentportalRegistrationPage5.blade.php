@@ -223,7 +223,7 @@
                 <input 
                   id="4ps_yes" 
                   type="radio" 
-                  value="1" 
+                  value="Modular Printed" 
                   name="distance_learning" 
                   class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == '1') checked @endif
@@ -235,7 +235,7 @@
                 <input 
                   id="modular_printed" 
                   type="radio" 
-                  value="Modular_printed" 
+                  value="Modular Digital" 
                   name="distance_learning" 
                   class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Modular_printed') checked @endif
@@ -259,7 +259,7 @@
                 <input 
                   id="educational_television" 
                   type="radio" 
-                  value="Educational_television" 
+                  value="Educational television" 
                   name="distance_learning" 
                   class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Educational_television') checked @endif
@@ -304,7 +304,7 @@
           <div class="flex gap-2 w-full">  
 
             <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] w-1/2 border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100">
-              <button class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" id="backBtn">Back</button>
+              <button type="button" class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" id="backBtn">Back</button>
             </div>
 
             <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] w-1/2  hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50"> 
