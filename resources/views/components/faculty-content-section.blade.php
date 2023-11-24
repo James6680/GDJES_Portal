@@ -1696,173 +1696,284 @@
                             <!-- For Backend: Need to connect this table data into the db in order for inputs to be saved and recorded for kinder students-->
                             <table class="w-full lg:text-sm text-xs text-left text-black py-4" id="gSheetTableECCDTable">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
-                                    <tr class="text-lg font-light text-center">
-                                        <th colspan="1" class=" border-2 border-yellow-100 rounded-tl-md"></th>
-                                        <th colspan="1" class="border-2 w-[25%] border-yellow-100">Learner's Name</th>
-                                        <th colspan="13" class="border-2 w-[30%] border-yellow-100">Written Works</th>
-                                        <th colspan="13" class="border-2 w-[30%] border-yellow-100">Performance Tasks</th>
-                                        <th colspan="3" class="text-base border-2 border-yellow-100 ">Quarterly Assessment (20%)</th>
-                                        <th colspan="1" class="text-sm  border-2 normal-case border-yellow-100">Initial</th>
-                                        <th colspan="1" class="text-sm border-2 normal-case border-yellow-100"> Quarterly</th>
-                                        <th class="rounded-tr-md border-2 border-yellow-100"><span class="sr-only"></span></th>                                    
-                                    </tr>
-                                    <tr class="text-center px-4">
-                                        <!-- Gross Motor Domain --> 
-                                        <th class="border-2 border-yellow-100 py-4"></th>
-                                        <!-- Student Name --> 
-                                        <th class="border-2 border-yellow-100 px-28"></th>
-                                        <!--Written Works  -->
-                                        <th class="border-2 border-yellow-100">1</th>  
-                                        <th class="border-2 border-yellow-100">2</th> 
-                                        <th class="border-2 border-yellow-100">3</th>
-                                        <th class="border-2 border-yellow-100">4</th>
-                                        <th class="border-2 border-yellow-100">5</th>
-                                        <th class="border-2 border-yellow-100">6</th>
-                                        <th class="border-2 border-yellow-100">7</th>
-                                        <th class="border-2 border-yellow-100">8</th>
-                                        <th class="border-2 border-yellow-100">9</th>
-                                        <th class="border-2 border-yellow-100">10</th>
-                                        <th class="normal-case border-2 border-yellow-100">Total</th>
-                                        <th class="border-2 border-yellow-100 w-7">PS</th>
-                                        <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- PerFormance Tasks -->
-                                        <th class="border-2 border-yellow-100">1</th>
-                                        <th class="border-2 border-yellow-100">2</th>
-                                        <th class="border-2 border-yellow-100">3</th>
-                                        <th class="border-2 border-yellow-100">4</th>
-                                        <th class="border-2 border-yellow-100">5</th>
-                                        <th class="border-2 border-yellow-100">6</th>
-                                        <th class="border-2 border-yellow-100">7</th>
-                                        <th class="border-2 border-yellow-100">8</th>
-                                        <th class="border-2 border-yellow-100">9</th>
-                                        <th class="border-2 border-yellow-100">10</th>
-                                        <th class="normal-case border-2 border-yellow-100">Total</th>
-                                        <th class="border-2 border-yellow-100">PS</th>
-                                        <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Quarterly Assessment (20%) -->
-                                        <th class="border-2 border-yellow-100">1</th>
-                                        <th class="border-2 border-yellow-100">PS</th>
-                                        <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Initial Grade -->
-                                        <th class="border-x-2 border-yellow-100 normal-case">Grade</th>
-                                        <!-- Quarterly Grade -->
-                                        <th class="border-x-2 border-yellow-100 normal-case">Grade</th> 
-                                        <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
-                                    </tr>
-                                    <!-- Needs to be dynamic since items number may differ -->
-                                    <tr class=" text-center font-medium">
-                                        <th class="border-2 border-yellow-100"></th>
-                                        <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww2' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww3' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww4' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww5' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww6' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww7' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww8' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww9' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww10' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt1' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt2' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt3' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt4' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt5' class="p-0 border-none bg-transparent text-center" ></td> 
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt6' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt7' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt8' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt9' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt10' class="p-0 border-none bg-transparent text-center" ></td>
-                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton13">Edit</button></td>                                  
+                                    <tr class="text-lg font-light text-center border-yellow-100">
+                                        <th class="border-2 border-yellow-100 w-auto py-2"></th>
+                                        <th class="border-2 border-yellow-100 w-auto py-2">Learner's Name</th>
+                                        <th class="border-2 border-yellow-100 w-auto py-2">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-center bg-white">
-                                        <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
-                                        <td class="border-2 border-yellow-100 px-2">Alex reyes</td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww2' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww3' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww4' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww5' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww6' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww7' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww8' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww9' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww10' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt1' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt2' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt3' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt4' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt5' class="p-0 border-none bg-transparent text-center"></td> 
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt6' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt7' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt8' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt9' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt10' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton14">Edit</button></td>
-                                    </tr>
-                                    <tr class="text-center bg-white">
-                                        <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
-                                        <td class="border-2 border-yellow-100 px-2">Adrian Fabonan</td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww2' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww3' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww4' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww5' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww6' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww7' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww8' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww9' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww10' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt1' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt2' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt3' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt4' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt5' class="p-0 border-none bg-transparent text-center"></td> 
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt6' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt7' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt8' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt9' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt10' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2" ><input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='qa' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2 "><input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2"><input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center"></td>
-                                        <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
-                                        <td class="border-2 border-yellow-100 px-2"><button type="button" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton15">Edit</button></td>
+                                    <tr class="text-center text-black bg-white border-yellow-100">
+                                        <td class="border-2 border-yellow-100 w-auto">1</td>
+                                        <td class="border-2 border-yellow-100 px-2 pl-4 py-2 text-left">Alex reyes</td>
+                                        <td class="border-2 border-yellow-100 px-3 py-3">
+                                            <!-- Modal toggle -->
+                                            <a href="#" data-modal-target="viewECCDChecklistModal" data-modal-show="viewECCDChecklistModal" type="button" class="px-2 font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View ECCD Checklist</a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> <!-- End of ECCD Checklist Table -->
+
+                        <!-- ECCD Checklist Modal -->
+                        <div id="viewECCDChecklistModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto lg:inset-0 h-[calc(100%-1rem)] max-h-full">
+                          <div class="relative w-full max-w-5xl max-h-full">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                              <!-- Modal header -->
+                              <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
+                                  Early Childhood Care and Development Checklist 
+                                </h3>
+                                <button id="closeECCDChecklistModal" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="viewECCDChecklistModal">
+                                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                  </svg>
+                                  <span class="sr-only">Close modal</span>
+                                </button>
+                              </div> <!-- End of Modal header -->
+                              <!-- Modal body -->
+                              <div class="p-6 space-y-3">
+                                <!-- Modal body header -->
+                                <div>
+                                  <h3 id="ECCD-checklist-student-name" class="text-md font-semibold text-black dark:text-white">Student Name: *Student Name*</h3>
+                                  <p id="ECCD-checklist-student-section" class="text-sm font-semibold text-gray-500 dark:text-white">Section: *Section Name*</p>
+                                </div> <!-- End of Modal body header -->
+                                <!-- Modal body content Individual Student ECCD Tables -->
+                                <div class="grid grid-cols-2 gap-6 pt-4">
+                                  <!-- Gross Motor Domain Table -->
+                                  <div class="relative outline outline-2 outline-green-50 rounded-sm">
+                                    <table class="w-full text-sm p-4 text-black dark:text-gray-400">
+                                      <thead class="text-sm text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr class="text-center ">
+                                          <th scope="col" class="text-left px-6 py-3 w-[80%] border-r border-white">
+                                              Gross Motor Domain
+                                          </th>
+                                          <th scope="col" class="px-2 py-3 w-[10%] border-r border-white">
+                                              Pre-test
+                                          </th>
+                                          <th scope="col" class="px-2 py-3 w-[10%] ">
+                                              Post-test
+                                          </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+                                        <!-- Gross Motor Domain 1 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakaaakyat sa upuan o iba pang maaakyatang bagay/kasangkapan gaya ng kama nang walang tulong
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-1-pretest" id="gross-motor-domain-1-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-1-posttest" id="gross-motor-domain-1-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 2 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakalalakad nang paatras
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-2-pretest" id="gross-motor-domain-2-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-2-posttest" id="gross-motor-domain-2-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 3 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakatatakbo nang hindi nadadapa
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-3-pretest" id="gross-motor-domain-3-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-3-posttest" id="gross-motor-domain-3-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 4 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakabababa sa hagdan nang dalawang paa sa bawat hakbang na nakahawak ang isang kamay sa gabay ng hagdanan
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-4-pretest" id="gross-motor-domain-4-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-4-posttest" id="gross-motor-domain-4-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 5 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakaakyat sa hagdan nang dalawang paa sa bawat hakbang na nakahawak ang isang kamay sa gabay ng hagdanan
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-5-pretest" id="gross-motor-domain-5-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-5-posttest" id="gross-motor-domain-5-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 6 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakaaakyat sa hagdan nang salitan ang mga paa at hindi hunahawak sa gabay ng hagdanan
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-6-pretest" id="gross-motor-domain-6-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-6-posttest" id="gross-motor-domain-6-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 7 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakababa sa hagdan nang salitan ang mga paa at hindi humahawak sa gabay ng hagdanan
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-7-pretest" id="gross-motor-domain-7-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-7-posttest" id="gross-motor-domain-7-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 8 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Naigagalaw ang bahagi ng katawan na tinutukoy
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-8-pretest" id="gross-motor-domain-8-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-8-posttest" id="gross-motor-domain-8-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 9 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakatatalon
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-9-pretest" id="gross-motor-domain-9-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-9-posttest" id="gross-motor-domain-9-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 10 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Naihahagis ang bola nang paitaas na may direksyon
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-10-pretest" id="gross-motor-domain-10-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-10-posttest" id="gross-motor-domain-10-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 11 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakalulundag nang isa hanggang tatlong beses gamit ang mas gustong paa
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-11-pretest" id="gross-motor-domain-11-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-11-posttest" id="gross-motor-domain-11-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 12 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakatatalon at nakaiikot
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-12-pretest" id="gross-motor-domain-12-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-12-posttest" id="gross-motor-domain-12-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain 13 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakasasayaw nang may pinaparisan o tinutularan/ nakalalahok sa mga gawaing ukol sa kilos o galaw na para sa grupo
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="gross-motor-domain-13-pretest" id="gross-motor-domain-13-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="gross-motor-domain-13-posttest" id="gross-motor-domain-13-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- Gross Motor Domain Scores -->
+                                        <tr class="text-center font-bold odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-right uppercase border-r border-green-200">
+                                            Iskor
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <span id="pretest-score">0</span>
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <span id="posttest-score">0</span>
+                                          </td>
+                                        </tr>
+
+                                        <!-- Gross Motor Domain Pretest and Postest Score Calculator -->
+                                        <script>
+                                          // Calculate the sum of pre-test and post-test scores
+                                          function calculateScores() {
+                                            let pretestScore = 0;
+                                            let posttestScore = 0;
+
+                                            // Loop through each checkbox and calculate the scores
+                                            for (let i = 1; i <= 13; i++) {
+                                              const pretestCheckbox = document.getElementById(`gross-motor-domain-${i}-pretest`);
+                                              const posttestCheckbox = document.getElementById(`gross-motor-domain-${i}-posttest`);
+
+                                              if (pretestCheckbox && pretestCheckbox.checked) {
+                                                pretestScore++;
+                                              }
+
+                                              if (posttestCheckbox && posttestCheckbox.checked) {
+                                                posttestScore++;
+                                              }
+                                            }
+
+                                            // Update the pre-test and post-test scores in the HTML
+                                            document.getElementById('pretest-score').textContent = pretestScore;
+                                            document.getElementById('posttest-score').textContent = posttestScore;
+                                          }
+
+                                          // Call the calculateScores function when a checkbox is clicked
+                                          const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                                          checkboxes.forEach(checkbox => {
+                                            checkbox.addEventListener('click', calculateScores);
+                                          });
+
+                                          // Call the calculateScores function when the modal is opened
+                                          document.getElementById('viewECCDChecklistModal').addEventListener('modal:show', function() {
+                                            setTimeout(calculateScores, 0);
+                                          });
+                                        </script>
+                                      </tbody>
+                                    </table>
+                                  </div> <!-- End of Gross Motor Domain Table -->
+                                </div> <!-- End of Modal body content -->
+                              </div> <!-- End of Modal body -->
+                              
+                            </div> 
+                            
+                          </div>
+                        </div> <!-- End of View section info modal -->
+
                     </div>
                 </div>
             </div>
