@@ -1742,7 +1742,8 @@
                         <!-- ECCD Checklist Modal -->
                         <div id="viewECCDChecklistModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto lg:inset-0 h-[calc(100%-1rem)] max-h-full">
                           <div class="relative w-full max-w-5xl max-h-full">
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <!-- Modal content -->
+                            <form class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                               <!-- Modal header -->
                               <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                                 <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
@@ -1756,16 +1757,17 @@
                                 </button>
                               </div> <!-- End of Modal header -->
                               <!-- Modal body -->
-                              <div class="p-6 space-y-3">
+                              <div class="p-6 space-y-3 overflow-x-auto max-h-[450px]">
                                 <!-- Modal body header -->
                                 <div>
                                   <h3 id="ECCD-checklist-student-name" class="text-md font-semibold text-black dark:text-white">Student Name: *Student Name*</h3>
                                   <p id="ECCD-checklist-student-section" class="text-sm font-semibold text-gray-500 dark:text-white">Section: *Section Name*</p>
                                 </div> <!-- End of Modal body header -->
                                 <!-- Modal body content Individual Student ECCD Tables -->
-                                <div class="grid grid-cols-2 gap-6 pt-4">
+                                <div class="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-6 pt-4 items-start">
+
                                   <!-- Gross Motor Domain Table -->
-                                  <div class="relative outline outline-2 outline-green-50 rounded-sm">
+                                  <div class="flex h-auto outline outline-2 outline-green-50 rounded-sm">
                                     <table class="w-full text-sm p-4 text-black dark:text-gray-400">
                                       <thead class="text-sm text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
                                         <tr class="text-center ">
@@ -1790,7 +1792,7 @@
                                             <input type="checkbox" name="gross-motor-domain-1-pretest" id="gross-motor-domain-1-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
                                           </td>
                                           <td class="px-6 py-2">
-                                            <input type="checkbox" name="gross-motor-domain-1-posttest" id="gross-motor-domain-1-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                            <input type="checkbox" name="gross-motor-domain-1-posttest" id="gross-motor-domain-1-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
                                           </td>
                                         </tr>
                                         <!-- Gross Motor Domain 2 -->
@@ -1943,57 +1945,271 @@
                                             Iskor
                                           </td>
                                           <td class="px-6 py-2 border-r border-green-200">
-                                            <span id="pretest-score">0</span>
+                                            <span id="gross-motor-domain-pretest-score">0</span>
                                           </td>
                                           <td class="px-6 py-2">
-                                            <span id="posttest-score">0</span>
+                                            <span id="gross-motor-domain-posttest-score">0</span>
                                           </td>
                                         </tr>
 
-                                        <!-- Gross Motor Domain Pretest and Postest Score Calculator -->
-                                        <script>
-                                          // Calculate the sum of pre-test and post-test scores
-                                          function calculateScores() {
-                                            let pretestScore = 0;
-                                            let posttestScore = 0;
+                                        
+                                      </tbody>
 
-                                            // Loop through each checkbox and calculate the scores
-                                            for (let i = 1; i <= 13; i++) {
-                                              const pretestCheckbox = document.getElementById(`gross-motor-domain-${i}-pretest`);
-                                              const posttestCheckbox = document.getElementById(`gross-motor-domain-${i}-posttest`);
+                                      <!-- Gross Motor Domain Pretest and Postest Score Calculator -->
+                                      <script>
+                                        // Calculate the sum of pre-test and post-test scores
+                                        function calculateScores() {
+                                          let grossMotorDomainPretestScore = 0;
+                                          let grossMotorDomainPosttestScore = 0;
 
-                                              if (pretestCheckbox && pretestCheckbox.checked) {
-                                                pretestScore++;
-                                              }
+                                          // Loop through each checkbox and calculate the scores
+                                          for (let i = 1; i <= 13; i++) {
+                                            const pretestCheckbox = document.getElementById(`gross-motor-domain-${i}-pretest`);
+                                            const posttestCheckbox = document.getElementById(`gross-motor-domain-${i}-posttest`);
 
-                                              if (posttestCheckbox && posttestCheckbox.checked) {
-                                                posttestScore++;
-                                              }
+                                            if (pretestCheckbox && pretestCheckbox.checked) {
+                                              grossMotorDomainPretestScore++;
                                             }
 
-                                            // Update the pre-test and post-test scores in the HTML
-                                            document.getElementById('pretest-score').textContent = pretestScore;
-                                            document.getElementById('posttest-score').textContent = posttestScore;
+                                            if (posttestCheckbox && posttestCheckbox.checked) {
+                                              grossMotorDomainPosttestScore++;
+                                            }
                                           }
 
-                                          // Call the calculateScores function when a checkbox is clicked
-                                          const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                                          checkboxes.forEach(checkbox => {
-                                            checkbox.addEventListener('click', calculateScores);
-                                          });
+                                          // Update the pre-test and post-test scores in the HTML
+                                          document.getElementById('gross-motor-domain-pretest-score').textContent = grossMotorDomainPretestScore;
+                                          document.getElementById('gross-motor-domain-posttest-score').textContent = grossMotorDomainPosttestScore;
+                                        }
 
-                                          // Call the calculateScores function when the modal is opened
-                                          document.getElementById('viewECCDChecklistModal').addEventListener('modal:show', function() {
-                                            setTimeout(calculateScores, 0);
-                                          });
-                                        </script>
-                                      </tbody>
+                                        // Call the calculateScores function when a checkbox is clicked
+                                        const grossMotorCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+                                        grossMotorCheckboxes.forEach(checkbox => {
+                                          checkbox.addEventListener('click', calculateScores);
+                                        });
+
+                                        // Call the calculateScores function when the modal is opened
+                                        document.getElementById('viewECCDChecklistModal').addEventListener('modal:show', function() {
+                                          setTimeout(calculateScores, 0);
+                                        });
+                                      </script>
                                     </table>
                                   </div> <!-- End of Gross Motor Domain Table -->
+
+                                  <!-- Fine Motor Domain Table -->
+                                  <div class="flex h-auto outline outline-2 outline-green-50 rounded-sm ">
+                                    <table class="w-full text-sm p-4 text-black dark:text-gray-400">
+                                      <thead class="text-sm text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr class="text-center ">
+                                          <th scope="col" class="text-left px-6 py-3 w-[80%] border-r border-white">
+                                              Fine Motor Domain
+                                          </th>
+                                          <th scope="col" class="px-2 py-3 w-[10%] border-r border-white">
+                                              Pre-test
+                                          </th>
+                                          <th scope="col" class="px-2 py-3 w-[10%] ">
+                                              Post-test
+                                          </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+                                        <!-- fine Motor Domain 1 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nagagamit ang lahat ng limang daliri at kamay upang makuha ang pagkain/ laruan na nakalagay sa patag na espasyo.
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-1-pretest" id="fine-motor-domain-1-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-1-posttest" id="fine-motor-domain-1-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- fine Motor Domain 2 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakukuha ang mga bagay gamit ang hinlalaki at hintuturo.
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-2-pretest" id="fine-motor-domain-2-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-2-posttest" id="fine-motor-domain-2-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- fine Motor Domain 3 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Naipakikita ang gustong kamay na laging ginagamit.
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-3-pretest" id="fine-motor-domain-3-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-3-posttest" id="fine-motor-domain-3-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- fine Motor Domain 4 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nalalagay/ natatanggal ang mga maliliit na bagay mula sa lalagyan.
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-4-pretest" id="fine-motor-domain-4-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-4-posttest" id="fine-motor-domain-4-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- fine Motor Domain 5 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nahahawakan ang krayola nang nakatikom ang mga daliri sa palad.
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-5-pretest" id="fine-motor-domain-5-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-5-posttest" id="fine-motor-domain-5-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- fine Motor Domain 6 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Natatanggal ang takip ng bote lalagyan o inaalis ang mga balot ng mga pagkain.
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-6-pretest" id="fine-motor-domain-6-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-6-posttest" id="fine-motor-domain-6-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- fine Motor Domain 7 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakaguguhit nang kusa
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-7-pretest" id="fine-motor-domain-7-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-7-posttest" id="fine-motor-domain-7-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- fine Motor Domain 8 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakaguguhit nang patayo at pahalang na linya.
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-8-pretest" id="fine-motor-domain-8-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-8-posttest" id="fine-motor-domain-8-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- fine Motor Domain 9 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakaguguhit ng hugis bilog.
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-9-pretest" id="fine-motor-domain-9-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-9-posttest" id="fine-motor-domain-9-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- fine Motor Domain 10 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakaguguhit ang larawan ng tao (ulo, mata, katawan, braso, kamay o paa).
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-10-pretest" id="fine-motor-domain-10-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-10-posttest" id="fine-motor-domain-10-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>
+                                        <!-- fine Motor Domain 11 -->
+                                        <tr class="text-center odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-left border-r border-green-200">
+                                            Nakaguguhit ang bahay gamit ang iba't-ibang uri ng hugis (parisukat, tatsulok).
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <input type="checkbox" name="fine-motor-domain-11-pretest" id="fine-motor-domain-11-pretest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <input type="checkbox" name="fine-motor-domain-11-posttest" id="fine-motor-domain-11-posttest" class="h-4 w-4 text-green-600 focus:ring-1 focus:ring-green-400 rounded-sm transition duration-150 ease-in-out">
+                                          </td>
+                                        </tr>                                        
+                                        <!-- fine Motor Domain Scores -->
+                                        <tr class="text-center font-bold odd:bg-white even:bg-green-50 border-b">
+                                          <td class="px-6 py-2 text-right uppercase border-r border-green-200">
+                                            Iskor
+                                          </td>
+                                          <td class="px-6 py-2 border-r border-green-200">
+                                            <span id="fine-motor-domain-pretest-score">0</span>
+                                          </td>
+                                          <td class="px-6 py-2">
+                                            <span id="fine-motor-domain-posttest-score">0</span>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+
+                                      <!-- Fine Motor Domain Pretest and Postest Score Calculator -->
+                                      <script>
+                                        // Calculate the sum of pre-test and post-test scores
+                                        function fineMotorCalculateScores() {
+                                          let fineMotorDomainPretestScore = 0;
+                                          let fineMotorDomainPosttestScore = 0;
+
+                                          // Loop through each checkbox and calculate the scores
+                                          for (let i = 1; i <= 13; i++) {
+                                            const pretestCheckbox = document.getElementById(`fine-motor-domain-${i}-pretest`);
+                                            const posttestCheckbox = document.getElementById(`fine-motor-domain-${i}-posttest`);
+
+                                            if (pretestCheckbox && pretestCheckbox.checked) {
+                                              fineMotorDomainPretestScore++;
+                                            }
+
+                                            if (posttestCheckbox && posttestCheckbox.checked) {
+                                              fineMotorDomainPosttestScore++;
+                                            }
+                                          }
+
+                                          // Update the pre-test and post-test scores in the HTML
+                                          document.getElementById('fine-motor-domain-pretest-score').textContent = fineMotorDomainPretestScore;
+                                          document.getElementById('fine-motor-domain-posttest-score').textContent = fineMotorDomainPosttestScore;
+                                        }
+
+                                        // Call the calculateScores function when a checkbox is clicked
+                                        const fineMotorCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+                                        fineMotorCheckboxes.forEach(checkbox => {
+                                          checkbox.addEventListener('click', fineMotorCalculateScores);
+                                        });
+
+                                        // Call the calculateScores function when the modal is opened
+                                        document.getElementById('viewECCDChecklistModal').addEventListener('modal:show', function() {
+                                          setTimeout(fineMotorCalculateScores, 0);
+                                        });
+                                      </script>
+                                    </table>
+                                  </div> <!-- End of fine Motor Domain Table -->
+
+                                  
+
+
+
                                 </div> <!-- End of Modal body content -->
                               </div> <!-- End of Modal body -->
-                              
-                            </div> 
+                              <!-- Modal footer -->
+                              <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button id="submit-student-assignment-to-section" data-modal-hide="viewECCDChecklistModal" type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save student list</button>
+                                <button data-modal-hide="viewECCDChecklistModal" type="button" class="text-gray-500 bg-white hover:bg-gray-50 focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                              </div> <!-- End of Modal footer -->
+                            </form>  <!-- End of Modal content -->
                             
                           </div>
                         </div> <!-- End of View section info modal -->
