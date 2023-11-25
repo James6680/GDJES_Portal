@@ -47,7 +47,7 @@ return new class extends Migration
             $table->float('pt_ps')->nullable();//added
             $table->float('pp_weighted_score')->nullable();     
             $table->float('qa10')->nullable();
-            $table->float('hps_qa_ps')->nullable();//added
+            $table->float('qa_ps')->nullable();//added
             $table->float('qa_weighted_score')->nullable();     
             $table->float('initial_grade')->nullable();
             $table->integer('quarterly_grade')->nullable();

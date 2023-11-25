@@ -357,6 +357,7 @@ class EnrollmentController extends Controller
 
         for($i = 0; $i < $subjects; $i++){
             for($j = 1; $j <=4; $j++){
+                
             }
 
         }
