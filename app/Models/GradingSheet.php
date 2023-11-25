@@ -16,7 +16,7 @@ class GradingSheet extends Model
         'student_id',
         'class_id',
         'highest_possible_score_id',
-        'quarter'
+        'quarter',
         'ww1',
         'ww2',
         'ww3',
