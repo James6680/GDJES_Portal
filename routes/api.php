@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\HighestPossibleScoreController;
+
+use App\Models\HighestPossibleScore;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -244,3 +248,4 @@ foreach ($recentSchoolYears as $schoolYear) {
 Route::get('/teachers', [TeacherController::class, 'getAllTeacher']);
 
 Route::get('GetAnnouncements', [AnnouncementController::class, 'getAnnouncement']);
+

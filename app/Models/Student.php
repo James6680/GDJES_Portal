@@ -78,5 +78,9 @@ class Student extends Authenticatable
         return "Student123";
     }
 
-    
+    public function grades()
+    {
+        return $this->hasMany(GradingSheet::class);
+    }
+
 }
