@@ -19,6 +19,30 @@ class Classes extends Model
         'school_year_id',
     ];
 
-   
+    public function section()
+    {
+        return $this->belongsTo(Section::class, 'section_id');
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id');
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class, 'subject_id');
+    }
+
+    public function gradeLevel()
+    {
+        return $this->belongsTo(GradeLevel::class, 'grade_level_id');
+    }
+
+    public function schoolYears()
+    {
+        return $this->belongsTo(SchoolYears::class, 'school_year_id');
+    }
+
 
 }
