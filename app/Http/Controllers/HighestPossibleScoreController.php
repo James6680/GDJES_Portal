@@ -12,21 +12,6 @@ class HighestPossibleScoreController extends Controller
     // ScoreController
     public function store(Request $request)
     {
-<<<<<<< HEAD
-        $data = $request->all();
-        $score = HighestPossibleScore::create($data);
-        return redirect()->back()->with('success', 'Scores saved successfully');
-    }
-
-    public function update_hps($id)
-    {
-        $score = HighestPossibleScore::find($id);
-
-       $score->w1 = request()->input('w1');
-         $score->w2 = request()->input('w2');
-            $score->w3 = request()->input('w3');
-        return view('faculty.edit_hps', compact('score'));
-=======
         $data = new HighestPossibleScore;
 
         $data->ww1 = $request->input('ww1');
@@ -122,7 +107,6 @@ class HighestPossibleScoreController extends Controller
 
         $data->save();
         return redirect('faculty.grades',)->back()->with('success', 'Scores saved successfully');
->>>>>>> ee89a0866638f073a8cd7cb2d2ccb64a909924fd
     }
 
 }
