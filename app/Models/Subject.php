@@ -14,4 +14,16 @@ class Subject extends Model
         'subject_name',
         'grade_level_id',
     ];
+    
+    public function grades()
+    {
+        return $this->hasMany(GradingSheet::class);
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
+   
 }

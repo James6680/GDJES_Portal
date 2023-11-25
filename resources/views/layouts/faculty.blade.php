@@ -5,6 +5,7 @@
   @vite(['resources/css/app.css','resources/js/app.js', 'resources/js/ph-address-selector.js'])
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>GDJES Faculty Portal</title>
 
   <link rel="shortcut icon" href="{{ asset('assets/GDJES Logo.png') }}">
@@ -31,7 +32,7 @@
   
 <body class="min-w-full grid grid-flow-col justify-start h-screen pt-16 bg-green-50">
   <x-sidebar />
-  <x-faculty-content-section/> 
+  <x-faculty-content-section /> 
 
 </body>
 </html>

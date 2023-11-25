@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon; //for getting the current year
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Carbon\Carbon; //for getting the current year
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
 
 class Student extends Authenticatable
 {
@@ -70,11 +71,31 @@ class Student extends Authenticatable
     protected function generateUsername()
     {
         $year = Carbon::now()->year;
-        return strtolower($this->last_name) . '.' . strtolower($this->first_name) . '.' . $year;
+        $inc=1;
+        $username = strtolower($this->last_name) . '.' . strtolower($this->first_name) . '.' . $year;
+        $is_duplicate = true;
+        while($is_duplicate){
+            $exists = DB::table('students')
+            ->where('username', $username)
+            ->exists();
+            if($exists){
+                $username= strtolower($this->last_name) . $inc. '.' . strtolower($this->first_name) . '.' . $year;
+                $inc++;
+            }else{
+                $is_duplicate = false;
+            }
+        }
+        return $username;
     }
 
     protected function generatePassword()
     {
         return "Student123";
     }
+
+    public function grades()
+    {
+        return $this->hasMany(GradingSheet::class);
+    }
+
 }

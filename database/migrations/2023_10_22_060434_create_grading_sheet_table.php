@@ -30,6 +30,8 @@ return new class extends Migration
             $table->float('ww8')->nullable();
             $table->float('ww9')->nullable();
             $table->float('ww10')->nullable();
+            $table->float('ww_total')->nullable();//added
+            $table->float('ww_ps')->nullable();//added
             $table->float('ww_weighted_score')->nullable();            
             $table->float('pt1')->nullable();
             $table->float('pt2')->nullable();
@@ -41,11 +43,18 @@ return new class extends Migration
             $table->float('pt8')->nullable();
             $table->float('pt9')->nullable();
             $table->float('pt10')->nullable();
+            $table->float('pt_total')->nullable();//added
+            $table->float('pt_ps')->nullable();//added
             $table->float('pp_weighted_score')->nullable();     
             $table->float('qa10')->nullable();
+            $table->float('qa_ps')->nullable();//added
             $table->float('qa_weighted_score')->nullable();     
             $table->float('initial_grade')->nullable();
             $table->integer('quarterly_grade')->nullable();
+            $table->string('quarter')->nullable(); // added
+            $table->unsignedBigInteger('school_year_id'); // added
+            $table->foreign('school_year_id')->references('id')->on('school_years'); // added
+
             $table->timestamps();
         });
     }
