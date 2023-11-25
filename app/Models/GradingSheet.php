@@ -16,6 +16,10 @@ class GradingSheet extends Model
         'student_id',
         'class_id',
         'highest_possible_score_id',
+<<<<<<< HEAD
+=======
+        'quarter',
+>>>>>>> ee89a0866638f073a8cd7cb2d2ccb64a909924fd
         'ww1',
         'ww2',
         'ww3',
@@ -47,7 +51,10 @@ class GradingSheet extends Model
         'qa_weighted_score',
         'initial_grade',
         'quarterly_grade',
+<<<<<<< HEAD
         'quarter',
+=======
+>>>>>>> ee89a0866638f073a8cd7cb2d2ccb64a909924fd
         'school_year_id',
     ];
 
