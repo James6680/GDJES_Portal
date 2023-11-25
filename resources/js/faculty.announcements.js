@@ -10,7 +10,7 @@ function getTableData(){
         $.each(data, function(index, entry) {
 
         const x = `<li class="py-5 border-b-2 border-white hover:border-b-2 hover:border-brown-200 hover:text-brown-200">
-        <a href="${entry['url']}" class="flex flex-col justify-between align-middle">
+        <a href="${entry['announcement_url']}" class="flex flex-col justify-between align-middle">
         <span class="font-mulish font-semibold text-base sm:text-lg">${entry['announcement_title']}</span>
         <span class="font-mulish font-normal text-base sm:text-lg">${entry['created_at']}</span>
         </a>`;

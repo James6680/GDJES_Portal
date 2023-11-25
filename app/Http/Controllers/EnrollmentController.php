@@ -323,7 +323,6 @@ class EnrollmentController extends Controller
             $student->school_year_id = $school_year;
             $student->lrn = $enrollmentForm->lrn_number;
         }
-
         $student->psa_birthcert_no = $enrollmentForm->psa_birth_cert;    
         $student->age = $enrollmentForm->age_on_oct_31;
         $student->indigenous_group = $enrollmentForm->indigenous_group_name;
@@ -339,6 +338,34 @@ class EnrollmentController extends Controller
         $student->status = 'active';
 
         $student->save();
+
+        /////////////////////
+        $gradingsheets = DB::table('grading_sheet')
+                        ->where('school_year_id', $school_year)
+                        ->where('student_id', $student->id)
+                        ->pluck('id');
+
+        $subjects = DB::table('subjects')
+        ->where('grade_level_id', $enrollmentForm->school_year+1)
+        ->count();
+
+        foreach($gradingsheets as $gradingsheet){
+            DB::table('grading_sheet')
+            ->where('id', $gradingsheet)
+            ->delete();
+        }
+
+        for($i = 0; $i < $subjects; $i++){
+            for($j = 1; $j <=4; $j++){
+                
+            }
+
+        }
+
+        
+
+
+
 
         $receiver = new stdClass();
         $receiver->name = $student->first_name;
