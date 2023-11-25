@@ -12,9 +12,12 @@ use App\Models\Relatives;
 use App\Models\Enrollment;
 use App\Models\LearningInfo;
 use Illuminate\Http\Request;
+use App\Mail\RegistrationMail;
 use App\Models\EnrollmentForm;
 use Illuminate\Support\Facades\DB;
 use App\Models\DocumentRequirements;
+use Illuminate\Support\Facades\Mail;
+use stdClass;
 
 class EnrollmentController extends Controller
 {
@@ -217,8 +220,8 @@ class EnrollmentController extends Controller
             $pageSpecificField = $request->session()->get('enrollment')->distance_learning;
         }catch(ErrorException $e){
         }
-        if(!is_null($pageSpecificField)){    
-            Session()->forget('enrollment');
+        if(!is_null($pageSpecificField)){
+            // Session()->forget('enrollment');
             return view('enrollment.StudentportalRegistrationCompletedPage');
         }else{
             return redirect()->route('enrollment.StudentportalRegistrationPage1');
@@ -318,10 +321,9 @@ class EnrollmentController extends Controller
             $student->mother_tongue = $enrollmentForm->primary_language;
             $student->relatives_id = $relatives->id;
             $student->school_year_id = $school_year;
-        }
-        if($enrollmentForm->lrn_status == 1){
             $student->lrn = $enrollmentForm->lrn_number;
-        } 
+        }
+
         $student->psa_birthcert_no = $enrollmentForm->psa_birth_cert;    
         $student->age = $enrollmentForm->age_on_oct_31;
         $student->indigenous_group = $enrollmentForm->indigenous_group_name;
@@ -337,6 +339,13 @@ class EnrollmentController extends Controller
         $student->status = 'active';
 
         $student->save();
+
+        $receiver = new stdClass();
+        $receiver->name = $student->first_name;
+        $receiver->email = session()->get('enrollment')->email_ng_guardian;
+        $receiver->username = $student->username;
+        $receiver->password = 'Student123';
+        Mail::to($receiver->email)->send(new RegistrationMail($receiver));
         ///////////////////////////////////////////////////////////////////
         //////////////ENROLLMENT////////////////////
         $enrollment = Enrollment::where('student_id', $student->id)->where('school_year_id', $school_year)->first();
