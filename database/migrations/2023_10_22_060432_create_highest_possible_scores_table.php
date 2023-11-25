@@ -23,6 +23,8 @@ return new class extends Migration
             $table->float('ww8')->nullable();
             $table->float('ww9')->nullable();
             $table->float('ww10')->nullable();
+            $table->float('hps_ww_total')->nullable();//added
+            $table->float('hps_ww_ps')->nullable();//added
             $table->float('ww_weighted_score')->nullable();            
             $table->float('pt1')->nullable();
             $table->float('pt2')->nullable();
@@ -34,11 +36,15 @@ return new class extends Migration
             $table->float('pt8')->nullable();
             $table->float('pt9')->nullable();
             $table->float('pt10')->nullable();
+            $table->float('hps_pt_total')->nullable();//added
+            $table->float('hps_pt_ps')->nullable();//added
             $table->float('pp_weighted_score')->nullable();     
             $table->float('qa10')->nullable();
+            $table->float('hps_qa_ps')->nullable();//added
             $table->float('qa_weighted_score')->nullable();     
             $table->float('initial_grade')->nullable();
             $table->integer('quarterly_grade')->nullable();
+            $table->string('quarter')->nullable(); // added
             $table->timestamps();
         });
     }

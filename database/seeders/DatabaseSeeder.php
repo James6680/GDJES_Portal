@@ -31,6 +31,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TeacherSeeder::class);
         $this->call(AdminSeeder::class);
+
+        $this->call(TransmutationSeeder::class);
+
         
     }
 }

@@ -12,6 +12,9 @@ use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\AnnouncementController;
 
+use App\Http\Controllers\HighestPossibleScoreController;
+
+
 
 Route::get('/', function () {
     $announcements = DB::table('announcements')
@@ -202,6 +205,9 @@ Route::get('faculty.enrollments', function () {
 Route::get('faculty.grades', function () {
     return view('layouts.faculty');
 })->middleware('teachers')->name('faculty.grades');
+
+//added
+Route::post('edit_hps/{id}', [HighestPossibleScoreController::class, 'edit']);
 
 Route::get('faculty.Attendance', function () {
     return view('layouts.faculty');

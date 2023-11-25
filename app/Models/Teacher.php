@@ -71,4 +71,15 @@ class Teacher extends Authenticatable
         //return 8 random characters as password
         return "Teacher123";
     }
+    
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
+
+    public function classes()
+    {
+        return $this->hasMany(Classes::class, 'teacher_id');
+    }
+
 }
