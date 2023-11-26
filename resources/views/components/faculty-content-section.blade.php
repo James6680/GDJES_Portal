@@ -638,12 +638,20 @@
 
                             <!-- Needs to be dynamic for teacher to be able to only navigate the only subject unit in the given grade level that he/she is handling  --
                             <!-- Grade Level Button -->
-                            <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white min-w-[300px] justify-between focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-500 text-sm px-8 py-2.5 text-center inline-flex items-center" type="button">Subject Class<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <button id="gradeBtn" 
+                                    data-dropdown-toggle="grade-dropdown" 
+                                    class="text-white min-w-[300px] justify-between focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-500 text-sm px-8 py-2.5 text-center inline-flex items-center" 
+                                    type="button">
+                                    Subject Class
+                                    <svg class="w-2.5 h-2.5 ms-3" 
+                                    aria-hidden="true" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg>
                             </button>
 
-                            <!-- Dropdown menu -->
+                            <!-- Dropdown menu 
                             <div id="grade-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeBtn">
                                 <li>
@@ -664,44 +672,52 @@
                                         // document.getElementById('quarter-dropdown').classList.add('hidden');
                                     }
                                 </script>
-
                             </div>
-
+                            -->
+                            <div id="grade-dropdown" 
+                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeBtn">
+                                    @foreach($dropdownOptions as $option)
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $option }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>  
+                            
                             <!-- Needs to be dynamic for teachers to navigate quarters from 1 to 4 of the given subject from the grade and section that he/she handles-->
-                            <button id="quarterBtn" data-dropdown-toggle="quarter-dropdown" class="text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
-                            Grading Quarter
+                            <button id="quarterBtn" 
+                                    data-dropdown-toggle="quarter-dropdown" 
+                                    class="text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center" 
+                                    type="button">
+                                    Grading Quarter
                             <svg class="w-2.5 h-2.5 ms-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg>  
                             </button>
 
-                            <!-- Dropdown menu -->
+                            <!-- Dropdown menu 
                             <div id="quarter-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="quarterBtn">
                                 <li>
-                                    <!--a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('1st Quarter')">1st Quarter</a-->
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('1st Quarter')">1st Quarter</a>
                                 </li>
                                 <li>
-                                    <!--a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('2nd Quarter')">2nd Quarter</a-->
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('2nd Quarter')">2nd Quarter</a>
                                 </li>
                                 <li>
-                                    <!--a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('3rd Quarter')">3rd Quarter</a-->
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('3rd Quarter')">3rd Quarter</a>
+                                    ><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('3rd Quarter')">3rd Quarter</a>
                                 </li>
                                 <li>
-                                    <!--a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('4th Quarter')">4th Quarter</a-->
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('4th Quarter')">4th Quarter</a>
                                 </li>
                                 <li>
-                                    <!--a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('Quarterly Summary')">Quarterly Summary</a-->
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('Quarterly Summary')">Quarterly Summary</a>
                                 </li>
                                 </ul>
 
                             </div>
-
+                            -->
                             <!--
                             <script>
                                 function changeQuarter(newText) {
@@ -788,8 +804,17 @@
 
                                     event.preventDefault(selectedQuarter);
                                 }
-                            </script>
-                        -->
+                            </script-->
+                            <div id="quarter-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="quarterBtn">
+                                    @foreach($quarters as $quarter)
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $quarter }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            
                         </div>
 
                     </div>
@@ -811,6 +836,8 @@
                         <div class="overflow-x-auto pt-4">
                             <!-- Faculty grading sheet for students table for QUARTER 1 -->
                             <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
+                            
+                            
                             <table id="tableBody" class="w-full lg:text-sm text-xs text-left text-black " id="gSheetTableQ1">
 
                                 <!--Field Title--> 
@@ -1025,8 +1052,10 @@
                             -->
 
                             <!--Highest Possible Score-->
-                            <form action="/faculty.grades.edit" method="POST" id="edit_hps">
-                                @csrf                         
+                            <form action="/faculty.grades.edit" 
+                                    method="POST" 
+                                    id="edit_hps">
+                                @csrf                    
                                 @foreach($highestPossibleScore as $hps)
                                 <input type="hidden" name="edit_id" value="{{ $hps->id }}">
                                     <tr class="text-center font-medium" id="q1Header">
@@ -1062,7 +1091,7 @@
                                     </tr>
                                 @endforeach
                             </form>
-                            <!--End Highest Possible Score-->
+                           <!--End Highest Possible Score-->
                             
 
                                 <!--End Added-->
@@ -1159,8 +1188,101 @@
                                         <td class="border-2 border-yellow-100 px-2">
                                             <button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton1">Edit</button></td>                                  
                                     </tr>
-                                <!-- End of Needs to be dynamic since items number may differ -->
-
+                               End of Needs to be dynamic since items number may differ -->
+                                
+                                  <!--tr class=" text-center font-medium" 
+                                        id="q1Header">
+                                        <th class="border-2 border-yellow-100"></th>
+                                        <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww1' class="p-0 border-none bg-transparent text-center">
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww2' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww3' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww4' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww5' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww6' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww7' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww8' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww9' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww10' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt1' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt2' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt3' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt4' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt5' class="p-0 border-none bg-transparent text-center" >
+                                        </td> 
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt6' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt7' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt8' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt9' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt10' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2" >
+                                            <input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2 ">
+                                            <input type="text" name='qa' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2 ">
+                                            <input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton1">Edit</button></td>                                  
+                                    </tr-->
+                               
                                 </thead>
                                 <tbody>
                                     <tr class="text-center bg-white" id="q1row1">
@@ -1239,7 +1361,7 @@
                                 </tbody>
                             </table>
                             
-                            <!-- Faculty grading sheet for students table for QUARTER 2 -->
+                            <!-- Faculty grading shet for students table for QUARTER 2 -->
                             <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students
                             <table class="w-full lg:text-sm text-xs text-left text-black hidden" id="gSheetTableQ2">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
@@ -1798,7 +1920,7 @@
                                 </tbody>
                             </table>
                             -->
-                            <!-- Edit/Save Button inside gsheet script -->
+                            <!-- Edit/Save Button inside gsheet script 
                             <script>
                                 function setupToggleButton(buttonId) {
                                     var editButton = document.getElementById(buttonId);
@@ -1817,22 +1939,22 @@
                                 
                                 // Setup for multiple buttons
                                 setupToggleButton('editButton1');
-                                setupToggleButton('editButton2');
-                                setupToggleButton('editButton3'); // For 1st Quarter
-                                setupToggleButton('editButton4');
-                                setupToggleButton('editButton5');
-                                setupToggleButton('editButton6'); // For 2nd Quarter
-                                setupToggleButton('editButton7');
-                                setupToggleButton('editButton8');
-                                setupToggleButton('editButton9'); // For 3rd Quarter
-                                setupToggleButton('editButton10');
-                                setupToggleButton('editButton11');
-                                setupToggleButton('editButton12');// For 4th Quarter
+                                //setupToggleButton('editButton2');
+                                //setupToggleButton('editButton3'); // For 1st Quarter
+                                //setupToggleButton('editButton4');
+                                //setupToggleButton('editButton5');
+                                //setupToggleButton('editButton6'); // For 2nd Quarter
+                                //setupToggleButton('editButton7');
+                                //setupToggleButton('editButton8');
+                                //setupToggleButton('editButton9'); // For 3rd Quarter
+                                //setupToggleButton('editButton10');
+                                //setupToggleButton('editButton11');
+                                //setupToggleButton('editButton12');// For 4th Quarter
                                 // Add more buttons as needed
                             </script>
                             
-                            <!--to be put here--> 
-                            <!-- Enable/Disable of input fields in the table -->
+                            to be put here
+                            <!-- Enable/Disable of input fields in the table
                             <script>
                                 document.addEventListener('DOMContentLoaded', function () {
                                     // Function to toggle the disabled attribute of input fields
@@ -1870,6 +1992,8 @@
                                     // Add more calls for additional rows and buttons as needed
                                 });
                             </script>
+                            -->
+
 
                         </div>
 

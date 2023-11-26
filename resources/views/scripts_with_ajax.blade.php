@@ -268,8 +268,8 @@
     });
 </script>
 
-<!--Faculty Portal-->
-<!--Grading-->
+<!-------------------------------------------Faculty Portal--------------------------------------->
+<!--Disregard this ---Grading-->
 <script>
     $(document).ready(function(){
         //show hps in row
@@ -411,6 +411,31 @@
         $('#quarterlyGrade').val(quarterlyGrade);
         $('#quarter').val(quarter);       
 
+        });
+    });
+</script>
+
+
+<!--Subject Class Dropdown-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const gradeBtn = document.getElementById('gradeBtn');
+        const quarterBtn = document.getElementById('quarterBtn');
+        const gradeDropdownOptions = document.querySelectorAll('#grade-dropdown a');
+        const quarterDropdownOptions = document.querySelectorAll('#quarter-dropdown a');
+
+        gradeDropdownOptions.forEach(function (option) {
+            option.addEventListener('click', function (event) {
+                event.preventDefault();
+                gradeBtn.innerText = this.innerText.trim();
+            });
+        });
+
+        quarterDropdownOptions.forEach(function (option) {
+            option.addEventListener('click', function (event) {
+                event.preventDefault();
+                quarterBtn.innerText = this.innerText.trim();
+            });
         });
     });
 </script>
