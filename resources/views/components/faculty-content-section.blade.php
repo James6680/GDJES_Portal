@@ -719,24 +719,30 @@
                             <div id="quarter-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="quarterBtn">
                                 <li>
+                                    <!--a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('1st Quarter')">1st Quarter</a-->
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('1st Quarter')">1st Quarter</a>
                                 </li>
                                 <li>
+                                    <!--a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('2nd Quarter')">2nd Quarter</a-->
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('2nd Quarter')">2nd Quarter</a>
                                 </li>
                                 <li>
+                                    <!--a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('3rd Quarter')">3rd Quarter</a-->
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('3rd Quarter')">3rd Quarter</a>
                                 </li>
                                 <li>
+                                    <!--a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('4th Quarter')">4th Quarter</a-->
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('4th Quarter')">4th Quarter</a>
                                 </li>
                                 <li>
+                                    <!--a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('Quarterly Summary')">Quarterly Summary</a-->
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('Quarterly Summary')">Quarterly Summary</a>
                                 </li>
                                 </ul>
 
                             </div>
 
+                            <!--
                             <script>
                                 function changeQuarter(newText) {
                                     document.getElementById('quarterBtn').innerText = newText;
@@ -823,7 +829,7 @@
                                     event.preventDefault(selectedQuarter);
                                 }
                             </script>
-
+                        -->
                         </div>
 
                     </div>
@@ -845,7 +851,7 @@
                         <div class="overflow-x-auto pt-4">
                             <!-- Faculty grading sheet for students table for QUARTER 1 -->
                             <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
-                            <table id="table" class="w-full lg:text-sm text-xs text-left text-black " id="gSheetTableQ1">
+                            <table id="tableBody" class="w-full lg:text-sm text-xs text-left text-black " id="gSheetTableQ1">
 
                                 <!--Field Title--> 
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
@@ -1057,11 +1063,12 @@
                                     </tr>
                                
                             -->
-                            <form action="" method="POST" id="edit_hps">
-                                @csrf
-                                <input type="hidden" name="edit_id">
-                            
+
+                            <!--Highest Possible Score-->
+                            <form action="/faculty.grades.edit" method="POST" id="edit_hps">
+                                @csrf                         
                                 @foreach($highestPossibleScore as $hps)
+                                <input type="hidden" name="edit_id" value="{{ $hps->id }}">
                                     <tr class="text-center font-medium" id="q1Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>
@@ -1095,6 +1102,7 @@
                                     </tr>
                                 @endforeach
                             </form>
+                            <!--End Highest Possible Score-->
                             
 
                                 <!--End Added-->
@@ -1231,7 +1239,7 @@
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton2">Edit</button></td>
                                     </tr>
-                                    <tr class="text-center bg-white" id="q1row2">
+                                    <!--<tr class="text-center bg-white" id="q1row2">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">Adrian Fabonan</td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
@@ -1267,11 +1275,12 @@
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton3">Edit</button></td>
                                     </tr>
+                                -->
                                 </tbody>
                             </table>
                             
                             <!-- Faculty grading sheet for students table for QUARTER 2 -->
-                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
+                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students
                             <table class="w-full lg:text-sm text-xs text-left text-black hidden" id="gSheetTableQ2">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
                                     <tr class="text-lg font-light text-center">
@@ -1285,11 +1294,11 @@
                                         <th class="rounded-tr-md border-2 border-yellow-100"><span class="sr-only"></span></th>                                    
                                     </tr>
                                     <tr class="text-center px-4">
-                                        <!-- Student Number --> 
+                                        <!-- Student Number
                                         <th class="border-2 border-yellow-100 py-4"></th>
-                                        <!-- Student Name --> 
+                                        <!-- Student Name 
                                         <th class="border-2 border-yellow-100 px-28"></th>
-                                        <!--Written Works  -->
+                                        <!--Written Works  
                                         <th class="border-2 border-yellow-100">1</th>  
                                         <th class="border-2 border-yellow-100">2</th> 
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1303,7 +1312,7 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100 w-7">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- PerFormance Tasks -->
+                                        <!-- PerFormance Tasks 
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">2</th>
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1317,17 +1326,17 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Quarterly Assessment (20%) -->
+                                        <!-- Quarterly Assessment (20%) 
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Initial Grade -->
+                                        <!-- Initial Grade
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th>
-                                        <!-- Quarterly Grade -->
+                                        <!-- Quarterly Grade 
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th> 
                                         <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
-                                    <!-- Needs to be dynamic since items number may differ -->
+                                    <!-- Needs to be dynamic since items number may differ
                                     <tr class=" text-center font-medium" id="q2Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
@@ -1439,9 +1448,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
+                            -->
                             <!-- Faculty grading sheet for students table for QUARTER 3 -->
-                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
+                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students
                             <table class="w-full lg:text-sm text-xs text-left text-black hidden" id="gSheetTableQ3">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
                                     <tr class="text-lg font-light text-center">
@@ -1455,11 +1464,11 @@
                                         <th class="rounded-tr-md border-2 border-yellow-100"><span class="sr-only"></span></th>                                    
                                     </tr>
                                     <tr class="text-center px-4">
-                                        <!-- Student Number --> 
+                                        <!-- Student Number 
                                         <th class="border-2 border-yellow-100 py-4"></th>
-                                        <!-- Student Name --> 
+                                        <!-- Student Name 
                                         <th class="border-2 border-yellow-100 px-28"></th>
-                                        <!--Written Works  -->
+                                        <!--Written Works  
                                         <th class="border-2 border-yellow-100">1</th>  
                                         <th class="border-2 border-yellow-100">2</th> 
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1473,7 +1482,7 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100 w-7">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- PerFormance Tasks -->
+                                        <!-- PerFormance Tasks 
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">2</th>
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1487,17 +1496,17 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Quarterly Assessment (20%) -->
+                                        <!-- Quarterly Assessment (20%)
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Initial Grade -->
+                                        <!-- Initial Grade 
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th>
-                                        <!-- Quarterly Grade -->
+                                        <!-- Quarterly Grade 
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th> 
                                         <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
-                                    <!-- Needs to be dynamic since items number may differ -->
+                                    <!-- Needs to be dynamic since items number may differ 
                                     <tr class=" text-center font-medium" id="q3Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
@@ -1610,9 +1619,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
+                            -->
                             <!-- Faculty grading sheet for students table for QUARTER 4 -->
-                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
+                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students
                             <table class="w-full lg:text-sm text-xs text-left text-black hidden" id="gSheetTableQ4">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
                                     <tr class="text-lg font-light text-center">
@@ -1626,11 +1635,11 @@
                                         <th class="rounded-tr-md border-2 border-yellow-100"><span class="sr-only"></span></th>                                    
                                     </tr>
                                     <tr class="text-center px-4">
-                                        <!-- Student Number --> 
+                                        <!-- Student Number 
                                         <th class="border-2 border-yellow-100 py-4"></th>
-                                        <!-- Student Name --> 
+                                        <!-- Student Name 
                                         <th class="border-2 border-yellow-100 px-28"></th>
-                                        <!--Written Works  -->
+                                        <!--Written Works  
                                         <th class="border-2 border-yellow-100">1</th>  
                                         <th class="border-2 border-yellow-100">2</th> 
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1644,7 +1653,7 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100 w-7">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- PerFormance Tasks -->
+                                        <!-- PerFormance Tasks 
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">2</th>
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1658,17 +1667,17 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Quarterly Assessment (20%) -->
+                                        <!-- Quarterly Assessment (20%) 
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Initial Grade -->
+                                        <!-- Initial Grade 
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th>
-                                        <!-- Quarterly Grade -->
+                                        <!-- Quarterly Grade 
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th> 
                                         <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
-                                    <!-- Needs to be dynamic since items number may differ -->
+                                    <!-- Needs to be dynamic since items number may differ 
                                     <tr class=" text-center font-medium" id="q4Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
@@ -1781,9 +1790,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
+                            -->
                             <!-- Faculty grading sheet for students table for QUARTERLY SUMMARY REPORT -->
-                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
+                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students
                             <table class="w-full lg:text-sm text-xs text-left text-black hidden" id="gSheetSummaryTable">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
                                     <tr class="text-sm text-center">
@@ -1803,9 +1812,9 @@
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">Filipino</th>                                  
                                     </tr>
                                     <tr class="text-center">
-                                        <!-- Student Number --> 
+                                        <!-- Student Number 
                                         <th class="border-x-2 border-yellow-100 py-4"></th>
-                                        <!-- Student Name --> 
+                                        <!-- Student Name 
                                         <th class="border-x-2 border-yellow-100 px-28"></th>
                                         <th class="border-2 py-1.5 border-yellow-100">1st Quarter</th>  
                                         <th class="border-2 px-2 border-yellow-100">2nd Quarter</th> 
@@ -1828,7 +1837,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-
+                            -->
                             <!-- Edit/Save Button inside gsheet script -->
                             <script>
                                 function setupToggleButton(buttonId) {

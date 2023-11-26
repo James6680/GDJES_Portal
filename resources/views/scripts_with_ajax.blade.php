@@ -314,7 +314,6 @@
         let edit_quarterly_grade = $('#edit_quarterly_grade').val();
         let edit_quarter = $('#edit_quarter').val();
 
-       
 
         $.ajax({
             url: "/faculty.grades.edit",
@@ -362,7 +361,7 @@
                     //document.getElementById('createTeacherUserModal').classList.remove('visible');
                     //document.getElementById('createTeacherUserModal').classList.add('invisible');
                    // document.getElementById('edit_hps').reset();
-                    $('#table').load(location.href + ' #table');
+                    $('#tableBody').load(location.href + ' #tableBody');
                 }
             },
             error: function(result) {
@@ -373,8 +372,6 @@
                 });
             }
         });  
-
-
 
 
 
@@ -416,4 +413,38 @@
 
         });
     });
+</script>
+
+<script>
+    function changeQuarter(quarter) {
+        // Add logic to fetch and update data based on the selected quarter
+        // You may use AJAX to fetch data from the server
+
+        // For demonstration purposes, let's assume you have the data for each quarter available in JavaScript objects
+        var quarterData = {
+            '1st Quarter': { /* Data for 1st Quarter */ },
+            '2nd Quarter': { /* Data for 2nd Quarter */ },
+            '3rd Quarter': { /* Data for 3rd Quarter */ },
+            '4th Quarter': { /* Data for 4th Quarter */ },
+            'Quarterly Summary': { /* Data for Quarterly Summary */ },
+        };
+
+        // Replace 'tableBody' with the actual ID or class of your table body
+        var tableBody = document.getElementById('tableBody');
+
+        // Clear existing rows from the table
+        tableBody.innerHTML = '';
+
+        // Add new rows based on the selected quarter
+        var selectedQuarterData = quarterData[quarter];
+        if (selectedQuarterData) {
+            var newRow = '<tr class="text-center font-medium">';
+            // Add cells for each field, similar to your existing code
+            // Use selectedQuarterData to populate the values
+            // ...
+
+            newRow += '</tr>';
+            tableBody.innerHTML = newRow;
+        }
+    }
 </script>
