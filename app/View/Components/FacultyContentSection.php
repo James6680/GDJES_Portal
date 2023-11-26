@@ -6,7 +6,6 @@ use Closure;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-
 use App\Http\Controllers\HighestPossibleScoreController;
 use App\Models\HighestPossibleScore;
 
