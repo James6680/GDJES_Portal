@@ -1,4 +1,7 @@
 <!-- Content Section -->
+@php
+  use Carbon\Carbon;
+@endphp
 <div>   
     <!-- Announcement Section -->
     @if (request()->is('student.announcements') )
@@ -28,7 +31,7 @@
                             <a href="{{$announcement->announcement_url}}"
                             class="flex flex-col justify-between align-middle">
                         <span class="font-mulish font-semibold text-base sm:text-lg">{{$announcement->announcement_title}}</span>
-                            <span class="font-mulish font-normal text-base sm:text-lg">{{$announcement->created_at}}</span>
+                            <span class="font-mulish font-normal text-base sm:text-lg">{{Carbon::parse($announcement->created_at)->format('F j, Y g:i A')}}</span>
                             </a>
                         </li>
                         @endforeach
