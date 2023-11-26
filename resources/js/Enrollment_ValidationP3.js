@@ -246,6 +246,7 @@ nextButton.addEventListener("click", function (e) {
     const isRadioGroupsValid = validateRadioGroups();
     const isRadioGroupOptionalValid = validateRadioOptionals();
     if (isTextElementsValid && isRadioGroupsValid && isRadioGroupOptionalValid) {
+        document.getElementById('grade_level').removeAttribute('disabled');
         document.getElementById("enrollment-page-3").submit();      
         
     }

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students');
-            $table->unsignedBigInteger('class_id')->nullable();;
+            $table->unsignedBigInteger('class_id')->nullable();
             $table->foreign('class_id')->references('id')->on('classes')->nullOnDelete();
-            $table->unsignedBigInteger('highest_possible_score_id')->nullable();;
-            $table->foreign('highest_possible_score_id')->references('id')->on('highest_possible_scores');
+            $table->unsignedBigInteger('highest_possible_score_id')->nullable();
+            $table->foreign('highest_possible_score_id')->references('id')->on('highest_possible_scores')->nullOnDelete();
             $table->integer('quarter');
             $table->float('ww1')->nullable();
             $table->float('ww2')->nullable();

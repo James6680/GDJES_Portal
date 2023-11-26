@@ -25,9 +25,6 @@
 </head>
 
 <body class="m-0 p-0">
-  <script>
-    console.log('{{$enrollment}}');
-  </script>
   <!-- Form Background  -->
   <div class="relative w-full h-full overflow-hidden flex flex-row items-center justify-center py-[5.5rem] px-[15rem] bg-cover bg-repeat-y bg-topz lg:flex-row lg:gap-[0rem] lg:items-center lg:justify-center lg:py-[11.25rem] lg:px-[9.38rem] lg:box-border md:flex-row md:gap-[0rem] md:items-center md:justify-center md:py-[8.75rem] md:px-[4.38rem] md:box-border sm:flex-row sm:gap-[0rem] sm:items-center sm:justify-center sm:py-[14.38rem] sm:px-[3.13rem] sm:box-border"
   style="background-image: url('./assets/bg_page.png');">
@@ -214,7 +211,9 @@
                 <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="balikAral">Extension Name ng Ama ng bata <span class="text-red-600">*</span></b>
               
               </div>
-              
+              <script>
+                console.log("{{session('enrollment')}}")
+              </script>
               <select id="extensionName_ng_ama" name="extensionName_ng_ama" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
                 <option value=""></option>
                 <option value="None" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "None") selected @endif>None</option>

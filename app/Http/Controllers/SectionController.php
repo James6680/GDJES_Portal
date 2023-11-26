@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes;
 use App\Models\GradingSheet;
+use App\Models\HighestPossibleScore;
 use App\Models\Section;
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
@@ -74,6 +75,14 @@ class SectionController extends Controller
             $class->grade_level_id = $request->input('gradeLevel');
             $class->school_year_id = $request->input('schoolYear');
             $class->save();
+            
+            for($i = 1; $i <= 4; $i++){
+                $highestPossibleScore = new HighestPossibleScore();
+                $highestPossibleScore->school_year_id = $request->input('schoolYear');
+                $highestPossibleScore->class_id = $class->id;
+                $highestPossibleScore->quarter = $i;
+                $highestPossibleScore->save();
+            }
         }
     }
 
@@ -110,6 +119,11 @@ class SectionController extends Controller
             ->where('section_id', $section->id)
             ->get();
 
+            HighestPossibleScore::join('classes', 'classes.id', '=', 'highest_possible_scores.class_id')
+            ->where('highest_possible_scores.school_year_id', $request->input('schoolYear'))
+            ->where('classes.section_id',  $section->id)
+            ->delete();
+
             DB::table('classes')
             ->where('section_id', $section->id)
             ->delete();
@@ -118,6 +132,7 @@ class SectionController extends Controller
             ->where('grade_level_id', $request->input('gradeLevel'))
             ->pluck('id');
 
+
             foreach($subjects as $subject){
                 $class = new Classes();
                 $class->section_id = $section->id;
@@ -125,7 +140,15 @@ class SectionController extends Controller
                 $class->grade_level_id = $request->input('gradeLevel');
                 $class->school_year_id = $request->input('schoolYear');
                 $class->save();
-            }            
+
+                for($i = 1; $i <= 4; $i++){
+                    $highestPossibleScore = new HighestPossibleScore();
+                    $highestPossibleScore->school_year_id = $request->input('schoolYear');
+                    $highestPossibleScore->class_id = $class->id;
+                    $highestPossibleScore->quarter = $i;
+                    $highestPossibleScore->save();
+                }
+            }
 
             if ($enrollments) {
                 foreach ($enrollments as $enrollment) {
@@ -167,12 +190,17 @@ class SectionController extends Controller
                     ->orderBy('quarter', 'asc')
                     ->get();
 
+                $highestPossibleScores = HighestPossibleScore::whereIn('class_id', $classes)
+                ->orderBy('quarter', 'asc')
+                ->pluck('id');
+
                 for($i = 1; $i <= 4; $i++){
                     foreach($classes as $class){
                         $gs = $gradingSheets->shift();
+                        $hps = $highestPossibleScores->shift();
                         $gs->class_id = $class;
+                        $gs->highest_possible_score_id = $hps;
                         $gs->save();
-
                     }
                 }
             }
@@ -186,10 +214,9 @@ class SectionController extends Controller
           ->where('student_id', $studentId)
           ->update(['section_id' => null]);
 
-
         DB::table('grading_sheet')
             ->where('student_id', $request->input('student_id'))
             ->where('school_year_id', $request->input('school_year_id'))
-            ->update(['class_id' => null]);
+            ->update(['class_id' => null, 'highest_possible_score_id' => null]);
       }
 }
