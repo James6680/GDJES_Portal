@@ -20,7 +20,7 @@ class Student extends Authenticatable
 
     protected $fillable = [
         'school_year',
-        'psa,birthcert_no',
+        'psa_birthcert_no',
         'lrn',
         'last_name',
         'first_name',
