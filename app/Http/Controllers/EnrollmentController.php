@@ -383,6 +383,7 @@ class EnrollmentController extends Controller
         ///////////////////////////////////////////////////////////////////
         //////////////ENROLLMENT////////////////////
         $enrollment = Enrollment::where('student_id', $student->id)->where('school_year_id', $school_year)->first();
+        
         if($enrollment == null){
             $enrollment = new Enrollment();
         }
