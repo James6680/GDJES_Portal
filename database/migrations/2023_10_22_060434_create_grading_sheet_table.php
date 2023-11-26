@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students');
-            $table->unsignedBigInteger('class_id');
-            $table->foreign('class_id')->references('id')->on('classes');
-            $table->unsignedBigInteger('highest_possible_score_id');
+            $table->unsignedBigInteger('class_id')->nullable();;
+            $table->foreign('class_id')->references('id')->on('classes')->nullOnDelete();
+            $table->unsignedBigInteger('highest_possible_score_id')->nullable();;
             $table->foreign('highest_possible_score_id')->references('id')->on('highest_possible_scores');
             $table->integer('quarter')->nullable();
             $table->float('ww1')->nullable();
@@ -53,7 +53,6 @@ return new class extends Migration
             $table->integer('quarterly_grade')->nullable();
             $table->unsignedBigInteger('school_year_id'); // added
             $table->foreign('school_year_id')->references('id')->on('school_years'); // added
-
             $table->timestamps();
         });
     }

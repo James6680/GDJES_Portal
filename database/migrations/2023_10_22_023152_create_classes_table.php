@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('grade_level_id')->references('id')->on('grade_levels');
             $table->unsignedBigInteger('school_year_id');
             $table->foreign('school_year_id')->references('id')->on('school_years');
-            $table->timestamps();   
+            $table->timestamps();
         });
     }
     /**

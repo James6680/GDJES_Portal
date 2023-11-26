@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use stdClass;
 use ErrorException;
 use App\Models\Father;
 use App\Models\Mother;
@@ -10,6 +11,7 @@ use App\Models\Guardian;
 use App\Models\Returnee;
 use App\Models\Relatives;
 use App\Models\Enrollment;
+use App\Models\GradingSheet;
 use App\Models\LearningInfo;
 use Illuminate\Http\Request;
 use App\Mail\RegistrationMail;
@@ -17,7 +19,6 @@ use App\Models\EnrollmentForm;
 use Illuminate\Support\Facades\DB;
 use App\Models\DocumentRequirements;
 use Illuminate\Support\Facades\Mail;
-use stdClass;
 
 class EnrollmentController extends Controller
 {
@@ -111,7 +112,7 @@ class EnrollmentController extends Controller
             'school_year' => 'nullable', //change from school_year to school_year_id
             'lrn_status' => 'required',
             'lrn_number' => 'nullable',
-            'psa_birth_cert' => 'nullable',
+            'psa_birth_cert' => 'required',
             'lastName_ng_bata' => 'required',
             'firstName_ng_bata' => 'required',
             'middleName_ng_bata' => 'nullable',
@@ -221,7 +222,7 @@ class EnrollmentController extends Controller
         }catch(ErrorException $e){
         }
         if(!is_null($pageSpecificField)){
-            // Session()->forget('enrollment');
+            Session()->forget('enrollment');
             return view('enrollment.StudentportalRegistrationCompletedPage');
         }else{
             return redirect()->route('enrollment.StudentportalRegistrationPage1');
@@ -306,9 +307,12 @@ class EnrollmentController extends Controller
         ///////////////////////////////////////////
         
         ////////////////////////////////Student/////////////////////////////
+        $student = null;
         if($enrollmentForm->lrn_status == '1'){
             $student = Student::where('lrn', $enrollmentForm->lrn_number)->first();
-        }else{
+        }
+
+        if($student == null || $enrollmentForm->lrn_status == '0'){
             $relatives->save();
             $student = new Student();
             
@@ -323,6 +327,7 @@ class EnrollmentController extends Controller
             $student->school_year_id = $school_year;
             $student->lrn = $enrollmentForm->lrn_number;
         }
+
         $student->psa_birthcert_no = $enrollmentForm->psa_birth_cert;    
         $student->age = $enrollmentForm->age_on_oct_31;
         $student->indigenous_group = $enrollmentForm->indigenous_group_name;
@@ -345,8 +350,12 @@ class EnrollmentController extends Controller
                         ->where('student_id', $student->id)
                         ->pluck('id');
 
+        // $subjects = DB::table('subjects')
+        // ->where('grade_level_id', $enrollmentForm->school_year+1)
+        // ->count();
+
         $subjects = DB::table('subjects')
-        ->where('grade_level_id', $enrollmentForm->school_year+1)
+        ->whereIn('grade_level_id', [$enrollmentForm->grade_level+1])
         ->count();
 
         foreach($gradingsheets as $gradingsheet){
@@ -356,16 +365,14 @@ class EnrollmentController extends Controller
         }
 
         for($i = 0; $i < $subjects; $i++){
-            for($j = 1; $j <=4; $j++){
-                
+            for($j = 1; $j <= 4; $j++){
+                $gradingsheet = new GradingSheet();
+                $gradingsheet->student_id = $student->id;
+                $gradingsheet->quarter = $j;
+                $gradingsheet->school_year_id = $school_year;
+                $gradingsheet->save();
             }
-
         }
-
-        
-
-
-
 
         $receiver = new stdClass();
         $receiver->name = $student->first_name;
@@ -381,7 +388,7 @@ class EnrollmentController extends Controller
         }
         $enrollment->student_id = $student->id;
         $enrollment->school_year_id =  $school_year;
-        $enrollment->grade_level_id = $enrollmentForm->school_year+1;
+        $enrollment->grade_level_id = $enrollmentForm->grade_level+1;
         $enrollment->learning_info_id = $learningInfo->id;
         $enrollment->enrollment_status = "temporarily enrolled";
         $enrollment->save();

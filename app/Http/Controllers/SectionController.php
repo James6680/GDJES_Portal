@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classes;
+use App\Models\GradingSheet;
 use App\Models\Section;
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
@@ -33,7 +34,6 @@ class SectionController extends Controller
         return ['section_id' => $sectionId, 'teacher_id' => $sectionTeacher];
     }
 
-    
     public function addSection(Request $request){
         $validatedData = $request->validate([
             "sectionName" => 'required|max:20',
@@ -102,6 +102,8 @@ class SectionController extends Controller
                     ], 422);
             }
         }
+        
+        ////IF EDITED THE GRADE_LEVEL_ID DELETE THE SECTIONS IN THE ENROLLMENTS AND THE CLASSES/
         $section = Section::where('id', $request->input('section_id'))->first();
         if($request->input('gradeLevel') != $section->grade_level_id){
             $enrollments = DB::table('enrollment')
@@ -139,8 +141,6 @@ class SectionController extends Controller
                 }
             }
         }
-        
-        ////IF EDITED THE GRADE_LEVEL_ID DELETE THE SECTIONS IN THE ENROLLMENTS AND THE CLASSES/
 
         $section->section_name = $request->input('sectionName');
         $section->section_slot = $request->input('sectionSlots');    
@@ -156,6 +156,25 @@ class SectionController extends Controller
                     ->where('student_id', $student)
                     ->where('school_year_id', $request->input('school_year'))
                     ->update(['section_id' => $request->input('section_id')]);
+                ////////////
+                $classes = DB::table('classes')
+                            ->where('section_id', $request->input('section_id'))
+                            ->pluck('id');
+
+                $gradingSheets = GradingSheet::
+                    where('student_id',  $student)
+                    ->where('school_year_id', $request->input('school_year'))
+                    ->orderBy('quarter', 'asc')
+                    ->get();
+
+                for($i = 1; $i <= 4; $i++){
+                    foreach($classes as $class){
+                        $gs = $gradingSheets->shift();
+                        $gs->class_id = $class;
+                        $gs->save();
+
+                    }
+                }
             }
         }
         return $request->input('student');
@@ -166,5 +185,11 @@ class SectionController extends Controller
         DB::table('enrollment')
           ->where('student_id', $studentId)
           ->update(['section_id' => null]);
+
+
+        DB::table('grading_sheet')
+            ->where('student_id', $request->input('student_id'))
+            ->where('school_year_id', $request->input('school_year_id'))
+            ->update(['class_id' => null]);
       }
 }
