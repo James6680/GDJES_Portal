@@ -18,11 +18,9 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
 
-
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
   <style>
     table input {
       max-width: 25px;  
@@ -33,6 +31,12 @@
 <body class="min-w-full grid grid-flow-col justify-start h-screen pt-16 bg-green-50">
   <x-sidebar />
   <x-faculty-content-section /> 
-
+  <script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    </script> 
 </body>
 </html>

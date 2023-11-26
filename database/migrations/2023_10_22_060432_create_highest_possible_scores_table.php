@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('highest_possible_scores', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('class_id');
+            $table->foreign('class_id')->references('id')->on('classes');
             $table->float('ww1')->nullable();
             $table->float('ww2')->nullable();
             $table->float('ww3')->nullable();

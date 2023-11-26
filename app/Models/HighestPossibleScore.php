@@ -12,6 +12,7 @@ class HighestPossibleScore extends Model
     protected $table = 'highest_possible_scores';
 
     protected $fillable = [
+        'class_id',
         'ww1',
         'ww2',
         'ww3',
@@ -43,5 +44,21 @@ class HighestPossibleScore extends Model
         'qa_weighted_score',
         'initial_grade',
         'quarterly_grade',
+        'quarter',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($model) {
+            $model->hps_ww_total = 0;
+            $model->hps_pt_total = 0;
+
+            for ($i = 1; $i <= 10; $i++) {
+                $model->hps_ww_total += $model->{'ww'.$i};
+                $model->hps_pt_total += $model->{'pt'.$i};
+            }
+        });
+    }
 }

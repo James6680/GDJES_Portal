@@ -845,7 +845,7 @@
                         <div class="overflow-x-auto pt-4">
                             <!-- Faculty grading sheet for students table for QUARTER 1 -->
                             <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
-                            <table class="w-full lg:text-sm text-xs text-left text-black " id="gSheetTableQ1">
+                            <table id="table" class="w-full lg:text-sm text-xs text-left text-black " id="gSheetTableQ1">
 
                                 <!--Field Title--> 
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
@@ -904,156 +904,198 @@
                                     </tr>
                                     
                                 <!-- Needs to be dynamic since items number may differ -->                                <!--Added-->
-                                @foreach($highestPossibleScore as $hps)
-                        
-
+                                <!--
+                            
                                     <tr class=" text-center font-medium" id="q1Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>
                                                
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww1' class="p-0 border-none bg-transparent text-center">
-                                            {{ $hps->ww1}}
+                                            <input type="text" name='edit_ww1' id='edit_ww1' class="p-0 border-none bg-transparent text-center">
+                                           
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww2' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww2}}
-                                        </td>
-                                        </td>
-                                        <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww3' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww3}}
+                                            <input type="text" name='edit_ww2' id='edit_ww2' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww4' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww4}}
+                                            <input type="text" name='edit_ww3' id='edit_ww3' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww5' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww5}}
+                                            <input type="text" name='edit_ww4' id='edit_ww4' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww6' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww6}}
+                                            <input type="text" name='edit_ww5' id='edit_ww5' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww7' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww7}}
+                                            <input type="text" name='edit_ww6' id='edit_ww6' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww8' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww8}}
+                                            <input type="text" name='edit_ww7' id='edit_ww7' class="p-0 border-none bg-transparent text-center" >
+                                           
                                         </td>
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww9' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww9}}
+                                            <input type="text" name='edit_ww8' id='edit_ww8'  class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww10' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww10}}
+                                            <input type="text" name='edit_ww9' id='edit_ww9' class="p-0 border-none bg-transparent text-center" >
+                                           
                                         </td>
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww_total}}
+                                            <input type="text" name='edit_ww10' id='edit_ww10'' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww_percent}}
+                                            <input type="text" name='edit_ww_total' id='edit_ww_total' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->ww_weighted_score}}
+                                            <input type="text" name='edit_ww_percent' id='edit_ww_percent' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt1' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt1}}
+                                            <input type="text" name='edit_ww_weighted_score' id='edit_ww_weighted_score' class="p-0 border-none bg-transparent text-center" >
+                                          
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt1' id='edit_pt1' class="p-0 border-none bg-transparent text-center" >
+                                            
 
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt2' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt2}}
+                                            <input type="text" name='edit_pt2' id='edit_pt2' class="p-0 border-none bg-transparent text-center" >
+                                           
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt3' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt3}}
+                                            <input type="text" name='edit_pt3' id='edit_pt3' class="p-0 border-none bg-transparent text-center" >
+                                           
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt4' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt4}}
+                                            <input type="text" name='edit_pt4' id='edit_pt4' class="p-0 border-none bg-transparent text-center" >
+                                         
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt5' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt5}}
+                                            <input type="text" name='edit_pt5' id='edit_pt5' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td> 
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt6' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt6}}
+                                            <input type="text" name='edit_pt6' id='edit_pt6' class="p-0 border-none bg-transparent text-center" >
+                                          
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt7' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt7}}
+                                            <input type="text" name='edit_pt7' id='edit_pt7' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt8' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt8}}
+                                            <input type="text" name='edit_pt8' id='edit_pt8' class="p-0 border-none bg-transparent text-center" >
+                                           
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt9' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt9}}
+                                            <input type="text" name='edit_pt9' id='edit_pt9' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt10' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt10}}
+                                            <input type="text" name='edit_pt10' id='edit_pt0' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2" >
-                                            <input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt_total}}
+                                            <input type="text" name='edit_pt_total' id='edit_pt_total' class="p-0 border-none bg-transparent text-center" >
+                                           
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt_percent}}
+                                            <input type="text" name='edit_pt_percent' id='edit_pt_percent' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->pt_weighted_score}}
+                                            <input type="text" name='edit_pt_weighted_score' id='edit_pt_weighted_score' class="p-0 border-none bg-transparent text-center" >
+                                        
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2 ">
-                                            <input type="text" name='qa' class="p-0 border-none bg-transparent text-center">
-                                            {{ $hps->qa}}
+                                            <input type="text" name='edit_qa' id='edit_qa' class="p-0 border-none bg-transparent text-center">
+                                           
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2 ">
-                                            <input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center">
-                                            {{ $hps->pt_percent}}
+                                            <input type="text" name='edit_pt_percent' id='edit_pt_percent' class="p-0 border-none bg-transparent text-center">
+                                           
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center">
-                                            {{ $hps->pt_weighted_score}}
+                                            <input type="text" name='edit_pt_weighted_score' id='edit_pt_weighted_score' class="p-0 border-none bg-transparent text-center">
+                                            
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->initial_grade}}
+                                            <input type="text" name='edit_initial_grade' id='edit_initial_grade' class="p-0 border-none bg-transparent text-center" >
+                                           
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" >
-                                            {{ $hps->quarterly_grade}}
+                                            <input type="text" name='edit_quarterly_grade' id='edit_quarterly_grade' class="p-0 border-none bg-transparent text-center" >
+                                            
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <a href="edit_hps/{{ $hps->id }}">
-                                            <button type="submit" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton1">Edit</button>
-                                            </a>
+                                            
+                                            <button type="button" 
+                                                    class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1 editHPS" 
+                                                    id="editButton1">
+                                                    Edit
+                                            </button>
+                                           
                                         </td>                                  
                                     </tr>
+                               
+                            -->
+                            <form action="" method="POST" id="edit_hps">
+                                @csrf
+                                <input type="hidden" name="edit_id">
+                            
+                                @foreach($highestPossibleScore as $hps)
+                                    <tr class="text-center font-medium" id="q1Header">
+                                        <th class="border-2 border-yellow-100"></th>
+                                        <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>
+                            
+                                        @php $fields = ['ww1', 'ww2', 'ww3', 'ww4', 'ww5', 'ww6', 'ww7', 'ww8', 'ww9', 'ww10',
+                                                         'ww_total', 'ww_percent', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
+                                                         'pt4', 'pt5', 'pt6', 'pt7', 'pt8', 'pt9', 'pt10', 'pt_total', 
+                                                         'pt_percent', 'pt_weighted_score', 'qa', 'pt_percent', 'pt_weighted_score', 
+                                                         'initial_grade', 'quarterly_grade'
+                                                        ]; 
+                                        @endphp
+                            
+                                        @foreach($fields as $field)
+                                            <td class="border-2 border-yellow-100 px-2">
+                                                <input type="text" 
+                                                        name='{{ "edit_" . $field }}' 
+                                                        id='{{ "edit_" . $field }}' 
+                                                        class="p-0 border-none bg-transparent text-center" 
+                                                        value="{{ $hps->$field }}">
+                                            </td>
+                                        @endforeach
+                            
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <button type="button" 
+                                                    class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1 
+                                                            editHPS" 
+                                                    id="editButton1">
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </tr>
                                 @endforeach
-                                
+                            </form>
+                            
 
                                 <!--End Added-->
 
@@ -2375,6 +2417,8 @@
             </div>
 
         </section>
+
+        @include('scripts_with_ajax')
 
     </div>
 
