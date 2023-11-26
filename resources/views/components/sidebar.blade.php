@@ -124,7 +124,7 @@
                 <p class="text-sm text-gray-900 dark:text-white" role="none">
                   <!--Alex Reyes-->
                   @if(Auth::guard('admin')->check())
-                    {{ Auth::guard('admin')->user()->email }}
+                    {{ Auth::guard('admin')->user()->username}}
                   @elseif(Auth::guard('teachers')->check())
                     {{ Auth::guard('teachers')->user()->email }}
                   @elseif(Auth::guard('students')->check())

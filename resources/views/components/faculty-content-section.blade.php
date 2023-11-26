@@ -76,105 +76,63 @@
                     <!-- For Backend: Needs to connect in order for list of students to reflect within the table -->
                     <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-200" >
                         <thead class=" lg:text-sm text-xs text-white uppercase bg-yellow-600 ">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Student Name
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Color
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Category
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Price
-                                </th>
+                            <tr class="header">
+                                <th scope="col" class="px-4 py-3">Last Name</th>
+                                <th scope="col" class="px-4 py-3">First Name</th>
+                                <th scope="col" class="px-4 py-3">Middle Name</th>
+                                <th scope="col" class="px-4 py-3">Extension Name</th>
+                                <th scope="col" class="px-4 py-3">lrn</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class="px-6 py-4">
-                                    Juan Dela Cruz
-                                </td>
-                                <td class="px-6 py-4">
-                                    Silver
-                                </td>
-                                <td class="px-6 py-4">
-                                    Laptop
-                                </td>
-                                <td class="px-6 py-4">
-                                    $2999
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Dela Cruz</td>                         
+                                <td class="px-4 py-3">Mark</td>
+                                <td class="px-4 py-3">Dustin</td>
+                                <td class="px-4 py-3"></td>
+                                <td class="px-4 py-3">059503095670</td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4">
-                                    White
-                                </td>
-                                <td class="px-6 py-4">
-                                    White
-                                </td>
-                                <td class="px-6 py-4">
-                                    Laptop PC
-                                </td>
-                                <td class="px-6 py-4">
-                                    $1999
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Dela Vega</td>                         
+                                <td class="px-4 py-3">Justin</td>
+                                <td class="px-4 py-3">Bailey</td>
+                                <td class="px-4 py-3"></td>
+                                <td class="px-4 py-3">15357112411</td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td class="px-6 py-4">
-                                    $99
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Frando</td>                         
+                                <td class="px-4 py-3">James</td>
+                                <td class="px-4 py-3">Cheska</td>
+                                <td class="px-4 py-3">IV</td>
+                                <td class="px-4 py-3">85256212521</td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                 <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td class="px-6 py-4">
-                                    $99
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Franco</td>                         
+                                <td class="px-4 py-3">Rain</td>
+                                <td class="px-4 py-3">Mark</td>
+                                <td class="px-4 py-3">Jr.</td>
+                                <td class="px-4 py-3">27391281522</td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td class="px-6 py-4">
-                                    $99
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Egay</td>                         
+                                <td class="px-4 py-3">Daniel</td>
+                                <td class="px-4 py-3">Zamora</td>
+                                <td class="px-4 py-3"></td>
+                                <td class="px-4 py-3">399620943403</td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td class="px-6 py-4">
-                                    $99
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Qira</td>                         
+                                <td class="px-4 py-3">Joseph</td>
+                                <td class="px-4 py-3">Cruz</td>
+                                <td class="px-4 py-3"></td>
+                                <td class="px-4 py-3">167467923595</td>
+                            </tr>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Yugo</td>                         
+                                <td class="px-4 py-3">Mary</td>
+                                <td class="px-4 py-3">Joy</td>
+                                <td class="px-4 py-3"></td>
+                                <td class="px-4 py-3">885610844170</td>
                             </tr>
                         </tbody>
                     </table>
@@ -258,61 +216,63 @@
                             <table class="w-full lg:text-sm text-xs text-left text-gray-500 border border-gray-200" id="myTable">
                                 <thead class="lg:text-sm text-xs text-white uppercase bg-yellow-600 ">
                                     <tr class="header">
-                                        <th scope="col" class="px-4 py-3">Student Name</th>
-                                        <th scope="col" class="px-4 py-3">Category</th>
-                                        <th scope="col" class="px-4 py-3">Brand</th>
-                                        <th scope="col" class="px-4 py-3">Description</th>
-                                        <th scope="col" class="px-4 py-3">Price</th>
+                                        <th scope="col" class="px-4 py-3">Last Name</th>
+                                        <th scope="col" class="px-4 py-3">First Name</th>
+                                        <th scope="col" class="px-4 py-3">Middle Name</th>
+                                        <th scope="col" class="px-4 py-3">Extension Name</th>
+                                        <th scope="col" class="px-4 py-3">lrn</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">Mark Dela Cruz</td>                         
-                                        <td class="px-4 py-3">PC</td>
-                                        <td class="px-4 py-3">Apple</td>
-                                        <td class="px-4 py-3">300</td>
-                                        <td class="px-4 py-3">$2999</td>
-
+                                        <td class="px-4 py-3">Dela Cruz</td>                         
+                                        <td class="px-4 py-3">Mark</td>
+                                        <td class="px-4 py-3">Dustin</td>
+                                        <td class="px-4 py-3"></td>
+                                        <td class="px-4 py-3">059503095670</td>
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">Allen Dela CruzA</td>  
-                                        <td class="px-4 py-3">PC</td>
-                                        <td class="px-4 py-3">Apple</td>
-                                        <td class="px-4 py-3">200</td>
-                                        <td class="px-4 py-3">$1499</td>
-
+                                        <td class="px-4 py-3">Dela Vega</td>                         
+                                        <td class="px-4 py-3">Justin</td>
+                                        <td class="px-4 py-3">Bailey</td>
+                                        <td class="px-4 py-3"></td>
+                                        <td class="px-4 py-3">15357112411</td>
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">Janus Dela Cruz</td>  
-                                        <td class="px-4 py-3">Phone</td>
-                                        <td class="px-4 py-3">Apple</td>
-                                        <td class="px-4 py-3">1237</td>
-                                        <td class="px-4 py-3">$999</td>
-
+                                        <td class="px-4 py-3">Frando</td>                         
+                                        <td class="px-4 py-3">James</td>
+                                        <td class="px-4 py-3">Cheska</td>
+                                        <td class="px-4 py-3">IV</td>
+                                        <td class="px-4 py-3">85256212521</td>
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">George Dela Cruz</td>  
-                                        <td class="px-4 py-3">Tablet</td>
-                                        <td class="px-4 py-3">Apple</td>
-                                        <td class="px-4 py-3">4578</td>
-                                        <td class="px-4 py-3">$1199</td>
-
+                                        <td class="px-4 py-3">Franco</td>                         
+                                        <td class="px-4 py-3">Rain</td>
+                                        <td class="px-4 py-3">Mark</td>
+                                        <td class="px-4 py-3">Jr.</td>
+                                        <td class="px-4 py-3">27391281522</td>
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">James Dela Cruz</td>  
-                                        <td class="px-4 py-3">Gaming/Console</td>
-                                        <td class="px-4 py-3">Microsoft</td>
-                                        <td class="px-4 py-3">56</td>
-                                        <td class="px-4 py-3">$299</td>
-
+                                        <td class="px-4 py-3">Egay</td>                         
+                                        <td class="px-4 py-3">Daniel</td>
+                                        <td class="px-4 py-3">Zamora</td>
+                                        <td class="px-4 py-3"></td>
+                                        <td class="px-4 py-3">399620943403</td>
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">Juan Dela Cruz</td>  
-                                        <td class="px-4 py-3">Gaming/Console</td>
-                                        <td class="px-4 py-3">Sony</td>
-                                        <td class="px-4 py-3">78</td>
-                                        <td class="px-4 py-3">$799</td>
+                                        <td class="px-4 py-3">Qira</td>                         
+                                        <td class="px-4 py-3">Joseph</td>
+                                        <td class="px-4 py-3">Cruz</td>
+                                        <td class="px-4 py-3"></td>
+                                        <td class="px-4 py-3">167467923595</td>
+                                    </tr>
+                                    <tr class="border-b dark:border-gray-700">
+                                        <td class="px-4 py-3">Yugo</td>                         
+                                        <td class="px-4 py-3">Mary</td>
+                                        <td class="px-4 py-3">Joy</td>
+                                        <td class="px-4 py-3"></td>
+                                        <td class="px-4 py-3">885610844170</td>
                                     </tr>
                                 </tbody>
                             </table>
