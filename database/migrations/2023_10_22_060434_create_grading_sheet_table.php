@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('class_id')->references('id')->on('classes')->nullOnDelete();
             $table->unsignedBigInteger('highest_possible_score_id')->nullable();;
             $table->foreign('highest_possible_score_id')->references('id')->on('highest_possible_scores');
-            $table->integer('quarter')->nullable();
+            $table->integer('quarter');
             $table->float('ww1')->nullable();
             $table->float('ww2')->nullable();
             $table->float('ww3')->nullable();
