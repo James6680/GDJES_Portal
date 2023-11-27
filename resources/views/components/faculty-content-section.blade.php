@@ -364,16 +364,16 @@
                                         <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">Choose Status</h6>
                                         <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                                             <li class="flex items-center">
-                                                <input id="fitbit" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-green-600 focus:ring-green-500 dark:focus:ring-green-600 focus:ring-2">
-                                                <label for="fitbit" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Enrolled (16)</label>
+                                                <input id="enrolled_num" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-green-600 focus:ring-green-500 dark:focus:ring-green-600 focus:ring-2">
+                                                <label for="enrolled_num" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Enrolled (2)</label>
                                             </li>
                                             <li class="flex items-center">
-                                                <input id="razor" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-green-600 focus:ring-green-500 dark:focus:ring-green-600 focus:ring-2">
-                                                <label for="razor" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Temporary Enrolled (49)</label>
+                                                <input id="temp_enrolled_num" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-green-600 focus:ring-green-500 dark:focus:ring-green-600 focus:ring-2">
+                                                <label for="temp_enrolled_num" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Temporary Enrolled (198)</label>
                                             </li>
                                             <li class="flex items-center">
-                                                <input id="nikon" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-green-600 focus:ring-green-500 dark:focus:ring-green-600 focus:ring-2">
-                                                <label for="nikon" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Dropped (12)</label>
+                                                <input id="dropped_num" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-green-600 focus:ring-green-500 dark:focus:ring-green-600 focus:ring-2">
+                                                <label for="dropped_num" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Dropped (0)</label>
                                             </li>
                                         </ul>
                                     </div>
@@ -428,27 +428,17 @@
 
                                                             <div class="flex items-center p-3 border border-gray-200 rounded">
                                                                 <input id="document_type1" name="documents1" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">Document item #1</label>
+                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">PSA Birth Certificate</label>
                                                             </div>
 
                                                             <div class="flex items-center p-3 border border-gray-200 rounded">
                                                                 <input id="document_type2"  name="documents1" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-green-900 dark:text-gray-300">Document item #2</label>
+                                                                <label for="default-checkbox" class="ms-3 font-medium text-green-900 dark:text-gray-300">Form 138 / School Form 10 / Report Card</label>
                                                             </div>
 
                                                             <div class="flex items-center p-3 border border-gray-200 rounded">
                                                                 <input id="document_type3"  name="documents1" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">Document item #3</label>
-                                                            </div>
-
-                                                            <div class="flex items-center p-3 border border-gray-200 rounded">
-                                                                <input id="document_type4"  name="documents1" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">Document item #4</label>
-                                                            </div>
-
-                                                            <div class="flex items-center p-3 border border-gray-200 rounded">
-                                                                <input id="document_type5" name="documents1" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">Document item #5</label>
+                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">2 pcs. 2x2 colored ID picture</label>
                                                             </div>
                                                         </div>
                                                     </div>
