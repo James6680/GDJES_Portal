@@ -19,7 +19,8 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/css/style.css',
-                'resources/js/app.js', 
+                'resources/js/app.js',
+                'resources/js/bootstrap.js',  
                 'resources/js/ph-address-selector.js',
                 'resources/js/sample.js',
                 'resources/js/Enrollment_ValidationP1.js',
