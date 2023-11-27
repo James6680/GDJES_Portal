@@ -1,6 +1,9 @@
 <!-- Content Section -->
 @php
   use Carbon\Carbon;
+    $student = Auth::guard('students')->user();
+    $username = $student->first_name . ' ' . $student->last_name;
+    $lrn = $student->lrn;
 @endphp
 <div>   
     <!-- Announcement Section -->
@@ -93,7 +96,7 @@
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Student Grades</h3>
-                <p class="mt-1 lg:text-base text-sm text-justify text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm text-justify text-gray-500 dark:text-gray-400">Check your progress: Stay informed on your child's academic journey with easy access to grades, learning milestones, observed values, and attendance. Stay informed, stay connected.</p>
             </div> <!-- End of Header Content -->
 
             <div class="grid w-full grid-cols-1 gap-2">
@@ -817,11 +820,11 @@
     <!-- Class Schedule Section -->
     <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
         
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-100">
+        <section class="lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-100">
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Class Schedule</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Find your daily class schedule here, so you always know where you need to be. From the first bell to the last, stay informed about your classes. We keep it simple, clear, and always up-to-date, ensuring you have the information you need at your fingertips for a smooth school experience..</p>
             </div> <!-- End of Header Content -->
 
             <div class="grid w-full grid-cols-1 lg:gap-4 gap-2 mt-8">
@@ -837,14 +840,14 @@
                     <span class="sr-only">Info</span>
                     
                     <div class="ml-3 lg:text-base text-xs font-medium font-mulish text-justify pr-2.5 leading-5 ">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Incomplete class schedules will be finalized during the week before start of the school year.
                     </div>
                     
                 </div>    
 
                 <!-- Backend Side: Need to configure para magreflect ung student name and lrn no. in this part per student -->
                 <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold text-base ">
-                    Dela Cruz, Juan Reyes ( xxxx-xxxx-xxxx )
+                    {{$username . ' ' . "(" . $lrn . ")"}}
                 </h2>
 
                 <div class="relative overflow-x-auto rounded">
