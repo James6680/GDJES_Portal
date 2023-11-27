@@ -1,9 +1,31 @@
 <!-- Content Section -->
 @php
   use Carbon\Carbon;
-    $student = Auth::guard('students')->user();
-    $username = $student->first_name . ' ' . $student->last_name;
+  $student = Auth::guard('students')->user();
+  $username = $student->first_name . ' ' . $student->last_name;
+  $last_name = $student->last_name;
+  $first_name = $student->first_name;
+  $middle_name = $student->middle_name;
+  $age = $student->age;
+  $gender = $student->gender;
+  $birth_date = $student->birth_date;
+  $religion = $student->religion;
+  $indigenous_group = $student->indigenous_group;
+  $gender = $student->gender;
+  $mother_tongue = $student->mother_tongue;
+
+  $region = $student->region;
+  $province = $student->province;
+  $city = $student->municipality;
+  $barangay = $student->barangay;
+  $street = $student->street;
+  $house_number = $student->house_number;
+
+  
+
+
     $lrn = $student->lrn;
+
 @endphp
 <div>   
     <!-- Announcement Section -->
@@ -1330,8 +1352,8 @@
             <!-- Header Content -->
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Student Information</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <h2 class="mt-2 uppercase font-semibold text-lg sm:text-xl lg:text-2xl text-brown-600">motus, James PRADO (114743070020)</h2>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Dive into the details of your student profile. From personal information to contact details, everything you need is right here. Keep it easy, keep it straightforward - your student info, always available, always clear.</p>
+                <h2 class="mt-4 font-semibold text-lg sm:text-xl lg:text-2xl text-brown-600">{{ $last_name }}, {{ $first_name }} {{ $middle_name }} ( {{ $lrn }} )</h2>
             </div> <!-- End of Header Content -->
 
             <div class=" flex min-w-screen flex-col gap-6 items-center mt-6">
@@ -1341,23 +1363,28 @@
                     <!-- My Requests Button Section -->
                     <div class="w-full flex flex-row justify-center gap-20 ">
                         
-                        <div class=" overflow-x-auto">
+                        <div class=" overflow-x-auto w-auto">
                             <table class="bg-white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-6 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
+                                            Student Information
+                                        </th>
+                                    </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white ">
-                                            Lrn Number
+                                            Learner's Reference Number
                                         </th>
                                         <td class="px-10 py-2">
-                                            114743070020
+                                            {{ $lrn }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Name
                                         </th>
-                                        <td class="px-10 py-2 uppercase">
-                                            Motus, James Prado
+                                        <td class="px-10 py-2">
+                                            {{ $last_name }}, {{ $first_name }} {{ $middle_name }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1365,7 +1392,7 @@
                                             Age
                                         </th>
                                         <td class="px-10 py-2">
-                                            21
+                                            {{ $age }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1373,7 +1400,7 @@
                                             Gender
                                         </th>
                                         <td class="px-10 py-2">
-                                            Male
+                                            {{ $gender }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1381,7 +1408,7 @@
                                             Date of Birth
                                         </th>
                                         <td class="px-10 py-2">
-                                            October 26, 2001
+                                            {{ $birth_date }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1389,7 +1416,7 @@
                                             Religion
                                         </th>
                                         <td class="px-10 py-2">
-                                            Roman Catholic
+                                            {{ $religion }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1397,19 +1424,20 @@
                                             Indigenous Group
                                         </th>
                                         <td class="px-10 py-2">
-                                            Pogi
+                                            {{ $indigenous_group }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                            Primary Language
+                                            Mother Tongue
                                         </th>
                                         <td class="px-10 py-2">
-                                            Hiligaynon
+                                            {{ $mother_tongue }}
                                         </td>
                                     </tr>
+
                                     <tr class="bg-white">
-                                        <th scope="row" class="px-10 py-2 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
+                                        <th scope="row" class="px-10 py-6 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
                                             Address
                                         </th>
                                     </tr>
@@ -1418,7 +1446,7 @@
                                             Region
                                         </th>
                                         <td class="px-10 py-2">
-                                            IV-4 (Calabarzon)
+                                            {{ $region }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1426,7 +1454,7 @@
                                             Province
                                         </th>
                                         <td class="px-10 py-2">
-                                            Rizal
+                                            {{ $province }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1434,7 +1462,7 @@
                                             City
                                         </th>
                                         <td class="px-10 py-2">
-                                            San Mateo
+                                            {{ $city }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1442,7 +1470,7 @@
                                             Barangay
                                         </th>
                                         <td class="px-10 py-2">
-                                            Guitnang Bayan 2
+                                            {{ $barangay }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1450,7 +1478,7 @@
                                             Street
                                         </th>
                                         <td class="px-10 py-2">
-                                            Di makita
+                                            {{ $street }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1458,25 +1486,30 @@
                                             House number
                                         </th>
                                         <td class="px-10 py-2">
-                                            001100
+                                            {{ $house_number }}
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
-                        <div class=" overflow-x-auto">
-                            <table class="w-auto lg:text-base text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold border-l-4 border-green-500">
+                        <div>
+                            <table class="white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
-                                    <tr class="bg-gray-50">
-                                        <th scope="row" class="px-7 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-6 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
+                                            Family Information
+                                        </th>
+                                    </tr>
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Father's Name
                                         </th>
                                         <td class="px-10 py-2 uppercase">
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
@@ -1484,7 +1517,7 @@
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
@@ -1492,7 +1525,7 @@
                                             father@gmail.com
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Mother's Name
                                         </th>
@@ -1500,7 +1533,7 @@
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
@@ -1508,7 +1541,7 @@
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
@@ -1516,7 +1549,7 @@
                                             Mother@gmail.com
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Guardian's Name
                                         </th>
@@ -1524,7 +1557,7 @@
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
@@ -1532,7 +1565,7 @@
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
