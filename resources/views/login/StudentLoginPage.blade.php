@@ -138,7 +138,7 @@
 
 
                 
-                <form class="rounded-lg bg-green-50 flex font-frl flex-col items-center justify-center p-8 gap-4"
+                <form class="rounded-lg bg-green-50 flex font-frl flex-col items-center justify-center p-8 md:gap-4 gap-2"
                       action="{{ route('login.StudentLoginPage') }}" 
                       method="post" 
                       novalidate>
@@ -150,7 +150,7 @@
                         Student Portal Login
                     </h1>
 
-                    <div class="self-stretch flex flex-col font-mulish items-start justify-start gap-2">
+                    <div class="self-stretch flex flex-col font-mulish items-start justify-start md:gap-2 gap-0">
 
                         <h3
                         class="m-0 relative text-base font-normal  text-brown-600 text-left flex items-center">
@@ -165,14 +165,14 @@
                     </div>
 
                     <!-- Login Form -->
-                    <div class="self-stretch flex flex-col items-start justify-start gap-4">
+                    <div class="self-stretch flex flex-col items-start justify-start md:gap-4 gap-3">
                         
                         <div class="self-stretch relative bg-brown-400 h-[0.13rem] overflow-hidden shrink-0"></div>
             
                         <div class="self-stretch flex flex-col items-start justify-start gap-4 ">
 
                             <!-- Username Address Field -->
-                            <div class="self-stretch flex flex-col items-start justify-start gap-4">
+                            <div class="self-stretch flex flex-col items-start justify-start md:gap-4 gap-2.5">
 
                                 <b 
                                 class="self-stretch relative text-xs flex font-mulish text-green-800 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap shrink-0">
@@ -182,7 +182,7 @@
                                 <div class="flex flex-col self-stretch input-container relative">
 
                                     <input
-                                        class="font-button text-sm bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] focus:border-[1px] focus:ring-green-700 focus:border-green-700 text-gray-900"
+                                        class="font-button text-sm bg-green-50 self-stretch rounded-lg flex items-center justify-start md:p-4 p-3 border-[1px] focus:border-[1px] focus:ring-green-700 focus:border-green-700 text-gray-900"
                                         placeholder="Enter your username"
                                         type="text"
                                         required
@@ -204,7 +204,7 @@
                             </div>
                             
                             <!-- Password input field -->
-                            <div class="relative self-stretch flex flex-col items-start justify-start gap-4 ">
+                            <div class="relative self-stretch flex flex-col items-start justify-start md:gap-4 gap-2.5">
                                 
                                 <b 
                                 class="self-stretch relative text-xs  lex font-mulish  text-green-800 text-left items-center overflow-hidden text-ellipsis whitespace-nowrapshrink-0">
@@ -214,7 +214,7 @@
                                 <div class="flex flex-col self-stretch relative">
 
                                     <input
-                                        class="font-button text-sm bg-green-50 self-stretch rounded-lg flex flex-row items-center justify-start p-4 border-[1px] focus:border-[1px] focus:ring-green-700 focus:border-green-700 text-gray-900"
+                                        class="font-button text-sm bg-green-50 self-stretch rounded-lg flex flex-row items-center justify-start md:p-4 p-3 border-[1px] focus:border-[1px] focus:ring-green-700 focus:border-green-700 text-gray-900"
                                         placeholder="Enter your password"
                                         type="password"
                                         :type="show ? 'password' : 'text'"
@@ -236,7 +236,7 @@
 
                                         <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
                                         
-                                        <label class="hover:text-green-400 rounded font-heading-2-bold px-2 py-2 text-xs text-green-900 cursor-pointer js-password-label " for="toggle">Show</label>
+                                        <label class="hover:text-green-400 rounded font-heading-2-bold px-2 md:py-2 py-1 text-xs text-green-900 cursor-pointer js-password-label " for="toggle">Show</label>
                                     
                                     </div>
                                 
@@ -260,7 +260,7 @@
                         <button
                         
                         type="submit"
-                        class="cursor-pointer [border:none] py-4 px-8 bg-green-500 self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-green-900">
+                        class="cursor-pointer [border:none] md:py-4 py-3 px-8 bg-green-500 self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-green-900">
                         
                         <div class="relative text-base uppercase font-button text-brown-50 text-left">Login</div>
 
@@ -282,10 +282,10 @@
 
                         <!--<button-->
                         <a href="/student-registration-1"
-                            class="cursor-pointer py-4 px-8 bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-700"
+                            class="cursor-pointer md:py-4 py-3 md:px-8 px-2 bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-700"
                             >
                                 <div
-                                    class="flex-1 relative text-base uppercase font-button text-brown-500 text-center"
+                                    class="flex-1 relative md:text-base text-sm uppercase font-button text-brown-500 text-center"
                                     id="createAccount">
                                     create your student account here
                                 </div>
