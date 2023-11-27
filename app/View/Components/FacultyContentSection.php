@@ -45,10 +45,12 @@ class FacultyContentSection extends Component
         ->join('sections', 'classes.section_id', '=', 'sections.id')
         ->distinct()
         ->get();
-    
         // Transform the $classCombinations for dropdown options
         $dropdownOptions = $classCombinations->map(function ($combination) {
-            return $combination['grade_level'] . ': ' . $combination['subject_name'] . ' (' . $combination['section_name'] . ')';
+            return [
+                'id' => $combination['class_id'], // Include the class ID as the value
+                'name' => $combination['grade_level'] . ': ' . $combination['subject_name'] . ' (' . $combination['section_name'] . ')' // Combine grade level, subject name, and section name for the label
+            ];
         });
     
         // Get quarters
@@ -70,29 +72,38 @@ class FacultyContentSection extends Component
             3 => '3rd Quarter',
             4 => '4th Quarter',
         ];
+
+        $quarterValue = null;
+        $class_idValue = null;
+        $quarterValue =request('quarter');
+        $class_idValue = request('class_id');
     
         // Fetch all highest possible scores
-        //$highestPossibleScore = HighestPossibleScore::all();
+        $gradingSheets = null;
+        $highestPossibleScore = HighestPossibleScore::all();
         // Fetch highest possible scores based on the selected criteria
-        $highestPossibleScore = HighestPossibleScore::whereIn('class_id', $classCombinations->pluck('class_id'))
-        ->whereIn('quarter', $quarters)
-        ->select('id', 'ww1', 'ww2', 'ww3', 'ww4', 'ww5', 'ww6', 'ww7', 'ww8', 'ww9', 'ww10',
-                'hps_ww_total', 'hps_ww_ps', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
-                'pt4', 'pt5', 'pt6', 'pt7', 'pt8', 'pt9', 'pt10', 'hps_pt_total', 
-                'hps_pt_ps', 'pp_weighted_score', 'qa10', 'hps_qa_ps', 'qa_weighted_score',
-                'initial_grade', 'quarterly_grade'
-        )
-        ->first();
+        if($quarterValue != null && $class_idValue != null){
+            $highestPossibleScore = HighestPossibleScore::where('class_id', $class_idValue )
+            ->where('quarter', $quarterValue)
+            ->get();
+
+            $gradingSheets = GradingSheet::where('class_id', $class_idValue )
+            ->where('quarter', $quarterValue)
+            ->get();
+        }else{
+            $highestPossibleScore = null;
+        }
 
 
         $quarters = $quarters->map(function ($quarter) use ($quarterTextMapping) {
-            return $quarterTextMapping[$quarter] ?? $quarter;
+          $quarterText = $quarterTextMapping[$quarter] ?? $quarter;
+          $quarterNumber = $quarter; // Assuming $quarter represents the quarter number
+          return ['text' => $quarterText, 'number' => $quarterNumber];
         });
-    
-        
+
             
         // Pass data to the view
-        return view('components.faculty-content-section', compact('dropdownOptions', 'quarters', 'highestPossibleScore'));
+        return view('components.faculty-content-section', compact('gradingSheets','quarterValue', 'class_idValue','dropdownOptions', 'classCombinations', 'quarters', 'highestPossibleScore'));
     }
      else {
         return view('components.faculty-content-section');

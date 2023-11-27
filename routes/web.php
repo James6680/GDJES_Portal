@@ -206,6 +206,9 @@ Route::get('faculty.grades', function () {
     return view('layouts.faculty');
 })->middleware('teachers')->name('faculty.grades');
 
+Route::get('faculty.grades', function () {
+  return view('layouts.faculty');
+})->middleware('teachers')->name('faculty.grades');
 //added
 Route::post('faculty.grades.edit', [HighestPossibleScoreController::class, 'edit'])
 ->middleware('teachers')->name('faculty.grades.edit');

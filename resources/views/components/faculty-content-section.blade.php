@@ -679,12 +679,10 @@
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeBtn">
                                     @foreach($dropdownOptions as $option)
                                         <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $option }}</a>
-                                        </li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-id="{{ $option['id'] }}" onclick="getID(this.dataset.id)">{{ $option['name'] }}</a>                                        </li>
                                     @endforeach
                                 </ul>
-                            </div>  
-                            
+                            </div>    
                             <!-- Needs to be dynamic for teachers to navigate quarters from 1 to 4 of the given subject from the grade and section that he/she handles-->
                             <button id="quarterBtn" 
                                     data-dropdown-toggle="quarter-dropdown" 
@@ -809,14 +807,37 @@
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="quarterBtn">
                                     @foreach($quarters as $quarter)
                                         <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $quarter }}</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-quarter="{{ $quarter['number']}}" onclick="getQuarter(this.dataset.quarter)">{{ $quarter['text']}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
                             </div>
                             
                         </div>
+                        <script>
+                            var class_id=null;
+                            var quarter_value=null;                            
 
+                            function getID(id) {
+                              // Construct the URL using the ID
+                              class_id=id;
+                              console.log(class_id);
+                              checkIfNotNull();
+                            }
+
+                            function getQuarter(quarter){
+                                quarter_value=quarter
+                                console.log(quarter_value);
+                                checkIfNotNull();
+                            }
+
+                            function checkIfNotNull(){
+                                if(class_id != null && quarter_value != null){
+                                    window.location.href = "?quarter=" + quarter_value + '&class_id=' + class_id;
+                                    console.log("both are not null");
+                                }
+                            }
+                        </script>
                     </div>
 
                     <div class=" items-center py-2.5 px-4 text-sm text-green-500 rounded-md bg-green-100 hidden"  id="LISReady">
@@ -1050,12 +1071,13 @@
                                     </tr>
                                
                             -->
-
+                            {{-- {{dd($highestPossibleScore)}} --}}
                             <!--Highest Possible Score-->
                             <form action="/faculty.grades.edit" 
                                     method="POST" 
                                     id="edit_hps">
                                 @csrf                    
+                                @if($highestPossibleScore != null)
                                 @foreach($highestPossibleScore as $hps)
                                 <input type="hidden" name="edit_id" value="{{ $hps->id }}">
                                     <tr class="text-center font-medium" id="q1Header">
@@ -1090,6 +1112,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                @endif
                             </form>
                            <!--End Highest Possible Score-->
                             
@@ -1284,7 +1307,10 @@
                                     </tr-->
                                
                                 </thead>
+
                                 <tbody>
+                                    @if($gradingSheets != null)
+                                    @foreach ($gradingSheets as $gs)
                                     <tr class="text-center bg-white" id="q1row1">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">Juan Dela Cruz</td>
@@ -1321,9 +1347,11 @@
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton2">Edit</button></td>
                                     </tr>
-                                    <!--<tr class="text-center bg-white" id="q1row2">
+                                    @endforeach
+                                    @else
+                                    <tr class="text-center bg-white" id="q1row2">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
-                                        <td class="border-2 border-yellow-100 px-2">Adrian Fabonan</td>
+                                        <td class="border-2 border-yellow-100 px-2"></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww2' class="p-0 border-none bg-transparent text-center"></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww3' class="p-0 border-none bg-transparent text-center"></td>
@@ -1357,6 +1385,9 @@
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton3">Edit</button></td>
                                     </tr>
+                                    @endif
+                                    
+                                    
                                 -->
                                 </tbody>
                             </table>

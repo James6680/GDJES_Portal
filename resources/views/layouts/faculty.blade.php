@@ -27,7 +27,6 @@
     }
   </style>
 </head>
-  
 <body class="min-w-full grid grid-flow-col justify-start h-screen pt-16 bg-green-50">
   <x-sidebar />
   <x-faculty-content-section /> 
