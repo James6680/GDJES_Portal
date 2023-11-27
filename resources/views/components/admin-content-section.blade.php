@@ -5,9 +5,16 @@
   $enrollmentPhase = 'Official';
   $enrollmentStatus = 'Open';
   $activeSchoolYear = 'wala laman';
+
 @endphp
 
-
+@if (request()->is('admin.dashboard') )
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+window.ApexCharts = ApexCharts;
+window.Alpine = Alpine;
+</script>
+@endif
 
 
 
