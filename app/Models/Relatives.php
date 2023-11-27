@@ -29,4 +29,16 @@ class Relatives extends Authenticatable
         'father_id',
         'guardian_id',
     ];
+
+    public function father() {
+        return $this->belongsTo('App\Models\Father', 'father_id');
+    }
+
+    public function mother() {
+        return $this->belongsTo('App\Models\Mother', 'mother_id');
+    }
+
+    public function guardian() {
+        return $this->belongsTo('App\Models\Guardian', 'guardian_id');
+    }
 }

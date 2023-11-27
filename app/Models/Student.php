@@ -11,12 +11,13 @@ use Carbon\Carbon; //for getting the current year
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class Student extends Authenticatable
 {
     use HasFactory;
 
     protected $guard = 'students';
-     protected $table = 'students';
+    protected $table = 'students';
 
     protected $fillable = [
         'school_year',
@@ -96,6 +97,10 @@ class Student extends Authenticatable
     public function grades()
     {
         return $this->hasMany(GradingSheet::class);
+    }
+
+    public function relative() {
+        return $this->belongsTo('App\Models\Relatives', 'relatives_id');
     }
 
 }

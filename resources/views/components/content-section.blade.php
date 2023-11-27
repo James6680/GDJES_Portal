@@ -21,10 +21,50 @@
   $street = $student->street;
   $house_number = $student->house_number;
 
-  
+  $father_first_name = null;
+  $father_middle_name = null;
+  $father_lastn_name = null;
+  $father_email_address = null;
+  $father_phone_number = null;
+
+  if ($student->relative && $student->relative->father) {
+    $father_first_name = $student->relative->father->first_name;
+    $father_middle_name = $student->relative->father->middle_name;
+    $father_last_name = $student->relative->father->last_name;
+    $father_email_address = $student->relative->father->email_address;
+    $father_phone_number = $student->relative->father->phone_number;
+  }
+
+  $mother_first_name = null;
+  $mother_middle_name = null;
+  $mother_lastn_name = null;
+  $mother_email_address = null;
+  $mother_phone_number = null;
+
+  if ($student->relative && $student->relative->mother) {
+    $mother_first_name = $student->relative->mother->first_name;
+    $mother_middle_name = $student->relative->mother->middle_name;
+    $mother_last_name = $student->relative->mother->last_name;
+    $mother_email_address = $student->relative->mother->email_address;
+    $mother_phone_number = $student->relative->mother->phone_number;
+  }
+
+  $guardian_first_name = null;
+  $guardian_middle_name = null;
+  $guardian_lastn_name = null;
+  $guardian_email_address = null;
+  $guardian_phone_number = null;
+
+  if ($student->relative && $student->relative->guardian) {
+    $guardian_first_name = $student->relative->guardian->first_name;
+    $guardian_middle_name = $student->relative->guardian->middle_name;
+    $guardian_last_name = $student->relative->guardian->last_name;
+    $guardian_email_address = $student->relative->guardian->email_address;
+    $guardian_phone_number = $student->relative->guardian->phone_number;
+  }
 
 
-    $lrn = $student->lrn;
+  $lrn = $student->lrn;
 
 @endphp
 <div>   
@@ -1363,7 +1403,7 @@
                     <!-- My Requests Button Section -->
                     <div class="w-full flex flex-row justify-center gap-20 ">
                         
-                        <div class=" overflow-x-auto w-auto">
+                        <div class="w-auto">
                             <table class="bg-white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
                                     <tr class="bg-white">
@@ -1493,7 +1533,7 @@
                             </table>
                         </div>
 
-                        <div>
+                        <div class="w-auto">
                             <table class="white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
                                     <tr class="bg-white">
@@ -1505,8 +1545,8 @@
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Father's Name
                                         </th>
-                                        <td class="px-10 py-2 uppercase">
-                                            Motus, James Prado
+                                        <td class="px-10 py-2">
+                                            {{ $father_last_name }}, {{ $father_first_name }} {{ $father_middle_name }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1514,7 +1554,7 @@
                                             Mobile No.
                                         </th>
                                         <td class="px-10 py-2">
-                                            114743070020
+                                            {{ $father_phone_number }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1522,15 +1562,15 @@
                                             Email
                                         </th>
                                         <td class="px-10 py-2">
-                                            father@gmail.com
+                                            {{ $father_email_address }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Mother's Name
                                         </th>
-                                        <td class="px-10 py-2 uppercase">
-                                            Motus, James Prado
+                                        <td class="px-10 py-2">
+                                            {{ $mother_last_name }}, {{ $mother_first_name }} {{ $mother_middle_name }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1538,7 +1578,7 @@
                                             Mobile No.
                                         </th>
                                         <td class="px-10 py-2">
-                                            114743070020
+                                            {{ $mother_phone_number }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1546,15 +1586,15 @@
                                             Email
                                         </th>
                                         <td class="px-10 py-2">
-                                            Mother@gmail.com
+                                            {{ $mother_email_address }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Guardian's Name
                                         </th>
-                                        <td class="px-10 py-2 uppercase">
-                                            Motus, James Prado
+                                        <td class="px-10 py-2">
+                                            {{ $guardian_last_name }}, {{ $guardian_first_name }} {{ $guardian_middle_name }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1562,7 +1602,7 @@
                                             Mobile No.
                                         </th>
                                         <td class="px-10 py-2">
-                                            114743070020
+                                            {{ $guardian_phone_number }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1570,7 +1610,7 @@
                                             Email
                                         </th>
                                         <td class="px-10 py-2">
-                                            Guardian@gmail.com
+                                            {{ $guardian_email_address }}
                                         </td>
                                     </tr>
                                 </tbody>
