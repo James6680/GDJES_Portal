@@ -339,7 +339,7 @@
     class="z-0 grid w-screen relative gap-4 md:gap-6 h-auto p-8 md:p-16 lg:py-28 lg:px-60 lg:gap-12 bg-white">
     <div class="gap-4 flex flex-col">
       <h2 class="w-auto flex justify-start font-frl text-xl lg:text-3xl text-black font-bold">
-        Faculty and Admin Access
+        Faculty Access
       </h2>
       <p class="w-auto md:w-2/3 lg:w-3/4 font-mulish font-base text-xs md:text-base text-black">
         Hello, beloved faculty member! Log in here with your credentials to access your portal and manage classes,
@@ -348,7 +348,7 @@
     </div>
     <button
       class="px-4 py-2.5 lg:px-8 lg:py-3 w-auto md:max-w-fit bg-brown-500 text-sm md:text-base lg:text-lg text-white rounded-lg hover:bg-brown-900 uppercase font-mulish hover:shadow-md hover:shadow-green-700/50">
-      Go to faculty and admin portal
+      Go to faculty portal
     </button>
 
     <img src="{{ asset ('assets/facultyandadminaccess-gradient-blob.svg') }}" alt="SVG image"
@@ -390,7 +390,7 @@
         <a class=" hover:text-white hover:underline text-xs md:text-sm lg:text-base font-mulish text-white" href="#">
           Student Portal</a>
         <a class="hover:text-white hover:underline text-xs md:text-sm lg:text-base font-mulish text-white"
-          href="#facultyAndAdminAccess">Faculty and Admin Portal</a>
+          href="#facultyAndAdminAccess">Faculty Portal</a>
       </div>
     </div>
   </section>
