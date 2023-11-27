@@ -1401,9 +1401,9 @@
                 <div id="mainBody" class="flex flex-col mx-40 w-full text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 justify-start font-mulish">
 
                     <!-- My Requests Button Section -->
-                    <div class="w-full flex flex-row justify-center gap-20 ">
+                    <div class="w-full grid grid-cols-1 sm:grid-cols-2 justify-center gap-20  ">
                         
-                        <div class="w-auto">
+                        <div class="overflow-x-auto w-auto">
                             <table class="bg-white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
                                     <tr class="bg-white">
@@ -1533,7 +1533,7 @@
                             </table>
                         </div>
 
-                        <div class="w-auto">
+                        <div class="overflow-x-auto w-auto">
                             <table class="white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
                                     <tr class="bg-white">
