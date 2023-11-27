@@ -78,7 +78,7 @@
             <div>
               <button type="button" class="mt-1 flex text-sm bg-green-500 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                 <span class="sr-only">Open user menu</span>
-                <img class="w-11 h-11 rounded-full" src="https://lumiere-a.akamaihd.net/v1/images/character_themuppets_kermit_b77a431b.jpeg" alt="user photo">
+                <img class="w-11 h-11 rounded-full" src="https://freesvg.org/img/abstract-user-flat-4.png" alt="user photo">
               </button>
             </div>
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
@@ -113,9 +113,9 @@
                               @elseif(Auth::guard('students')->check())
                               {{ route('student.signout') }}
                           @endif" 
-                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" 
-                     role="menuitem">
-                     Sign out
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" 
+                    role="menuitem">
+                    Sign out
                   </a>
                 </li>
               </ul>
