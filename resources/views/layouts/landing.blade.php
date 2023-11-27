@@ -347,7 +347,7 @@
       </p>
     </div>
     <button
-      class="px-4 py-2.5 lg:px-8 lg:py-3 w-auto md:max-w-fit bg-brown-500 text-sm md:text-base lg:text-lg text-white rounded-lg hover:bg-brown-900 uppercase font-mulish hover:shadow-md hover:shadow-green-700/50">
+      class="px-4 py-2.5 lg:px-8 lg:py-3 w-auto md:max-w-fit bg-brown-500 text-sm md:text-base lg:text-lg text-white rounded-lg hover:bg-brown-900 uppercase font-mulish hover:shadow-md hover:shadow-green-700/50" onclick=" window.location.href = 'teacher/login'">
       Go to faculty portal
     </button>
 
