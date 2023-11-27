@@ -1043,7 +1043,7 @@
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Request Document</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Take control of your paperwork hassle-free. Our document requests page lets you effortlessly request and track documents. See the status of past requests, explore available document options, and ensure you have everything you need. Simple, organized, and designed to make document management a breeze</p>
             </div> <!-- End of Header Content -->
 
             <div class=" flex min-w-screen flex-col gap-6 items-center ">
@@ -1156,11 +1156,10 @@
 
                                                 <select id="purpose" class="font-mulish flex-initial bg-white border border-gray-300 text-green-900 text-md  rounded-lg focus:ring-green-500 focus:border-green-500  w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 gap-2">
                                                     <option selected="0">Select purpose</option>
-                                                    <option value="1">Purpose #1</option>
-                                                    <option value="2">Purpose #2</option>
-                                                    <option value="3">Purpose #3</option>
-                                                    <option value="4">Purpose #4</option>
-                                                    <option value="5">Purpose #5</option>
+                                                    <option value="1">Scholarship grant.</option>
+                                                    <option value="2">Transfer of school.</option>
+                                                    <option value="3">Government purposes.</option>
+                                                    <option value="4">Others</option>
                                                 </select>
 
                                             </div>
@@ -1235,80 +1234,32 @@
                                     <tbody>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default1" >
                                             <td class="px-6 py-4">
-                                                X
+                                                Certificate of enrollment
                                             </td>
                                             <td class="px-6 py-4">
-                                                X
+                                                Claimed
                                             </td>
                                         </tr>
 
                                         <div data-popover id="popover-default1" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2">
-                                                <p>h-mm AM/PM mm-dd-yyyy</p>
+                                                <p>10:24 AM 09-17-2023</p>
                                             </div>
                                             <div data-popper-arrow></div>
                                         </div>
 
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default2">
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default2" >
                                             <td class="px-6 py-4">
-                                                X
+                                                Certificate of enrollment
                                             </td>
                                             <td class="px-6 py-4">
-                                                X
+                                                Claimed
                                             </td>
                                         </tr>
 
                                         <div data-popover id="popover-default2" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                            <div class="px-3 py-2" >
-                                                <p>h-mm AM/PM mm-dd-yyyy</p>
-                                            </div>
-                                            <div data-popper-arrow></div>
-                                        </div>
-
-                                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default3">
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                        </tr>
-
-                                        <div data-popover id="popover-default3" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2">
-                                                <p>h-mm AM/PM mm-dd-yyyy</p>
-                                            </div>
-                                            <div data-popper-arrow></div>
-                                        </div>
-
-                                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default4">
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                        </tr>
-
-                                        <div data-popover id="popover-default4" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                            <div class="px-3 py-2">
-                                                <p>h-mm AM/PM mm-dd-yyyy</p>
-                                            </div>
-                                            <div data-popper-arrow></div>
-                                        </div>
-
-                                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default5">
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                        </tr>
-
-                                        <div data-popover id="popover-default5" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                            <div class="px-3 py-2">
-                                                <p>h-mm AM/PM mm-dd-yyyy</p>
+                                                <p>8:17 AM 10-29-2023</p>
                                             </div>
                                             <div data-popper-arrow></div>
                                         </div>
