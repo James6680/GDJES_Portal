@@ -1104,16 +1104,16 @@
                     <div class="w-full flex flex-col justify-between gap-1">
 
                         <div class="w-full flex flex-col items-start justify-center pl-4 p-4 mb-3 text-md font-mulish text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800 ">  
-                            <h2 class="mb-2 lg:text-2xl text-lg font-semibold dark:text-white self-stretch text-center">Lists of Document</h2>
-                            <ul class="w-full ml-4 space-y-2 lg:text-base text-xs font-semibold list-disc list-inside text-green-600">
+                            <h2 class="mb-2 lg:text-2xl text-lg font-semibold dark:text-white self-stretch text-left">Lists of Document</h2>
+                            <ul class="w-full ml-4 space-y-1 lg:text-base text-xs font-semibold list-disc list-inside text-green-400">
                                 <li>
-                                    Certificate of Enrollment: scholarships grants 4Ps. One validated na enrolled sila.
+                                    Certificate of Enrollment: scholarships grants, or 4Ps applications.
                                 </li>
                                 <li>
                                     Certificate of Good Moral
                                 </li>
                                 <li>
-                                    Request of sf10. Needs the request form from the lilipatan na school
+                                    Request of SF10. (Needs the request letter from the school that the student will be transferring.)
                                 </li>
                             </ul>
 
@@ -1171,7 +1171,7 @@
                                                 <div class="pl-2">
                                                     <div class="flex items-center mb-4">
                                                         <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Request of sf10</label>
+                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Request of SF10</label>
                                                     </div>
 
                                                     <div class="flex items-center mb-4">
