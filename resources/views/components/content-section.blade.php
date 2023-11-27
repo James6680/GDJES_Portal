@@ -1,6 +1,31 @@
 <!-- Content Section -->
 @php
   use Carbon\Carbon;
+  $student = Auth::guard('students')->user();
+  $username = $student->first_name . ' ' . $student->last_name;
+  $last_name = $student->last_name;
+  $first_name = $student->first_name;
+  $middle_name = $student->middle_name;
+  $age = $student->age;
+  $gender = $student->gender;
+  $birth_date = $student->birth_date;
+  $religion = $student->religion;
+  $indigenous_group = $student->indigenous_group;
+  $gender = $student->gender;
+  $mother_tongue = $student->mother_tongue;
+
+  $region = $student->region;
+  $province = $student->province;
+  $city = $student->municipality;
+  $barangay = $student->barangay;
+  $street = $student->street;
+  $house_number = $student->house_number;
+
+  
+
+
+    $lrn = $student->lrn;
+
 @endphp
 <div>   
     <!-- Announcement Section -->
@@ -93,7 +118,7 @@
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Student Grades</h3>
-                <p class="mt-1 lg:text-base text-sm text-justify text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm text-justify text-gray-500 dark:text-gray-400">Check your progress: Stay informed on your child's academic journey with easy access to grades, learning milestones, observed values, and attendance. Stay informed, stay connected.</p>
             </div> <!-- End of Header Content -->
 
             <div class="grid w-full grid-cols-1 gap-2">
@@ -817,11 +842,11 @@
     <!-- Class Schedule Section -->
     <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
         
-        <section class="container container-fluid lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-100">
+        <section class="lg:p-9 p-6 grid grid-cols-1 min-w-full min-h-full relative rounded-md justify-start gap-1 lg:py-7 bg-white md:ml-8 ml-6 shadow shadow-brown-100">
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">Class Schedule</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Find your daily class schedule here, so you always know where you need to be. From the first bell to the last, stay informed about your classes. We keep it simple, clear, and always up-to-date, ensuring you have the information you need at your fingertips for a smooth school experience..</p>
             </div> <!-- End of Header Content -->
 
             <div class="grid w-full grid-cols-1 lg:gap-4 gap-2 mt-8">
@@ -837,14 +862,14 @@
                     <span class="sr-only">Info</span>
                     
                     <div class="ml-3 lg:text-base text-xs font-medium font-mulish text-justify pr-2.5 leading-5 ">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Incomplete class schedules will be finalized during the week before start of the school year.
                     </div>
                     
                 </div>    
 
                 <!-- Backend Side: Need to configure para magreflect ung student name and lrn no. in this part per student -->
                 <h2 class=" font-mulish lg:text-2xl text-gray-950 font-extrabold text-base ">
-                    Dela Cruz, Juan Reyes ( xxxx-xxxx-xxxx )
+                    {{$username . ' ' . "(" . $lrn . ")"}}
                 </h2>
 
                 <div class="relative overflow-x-auto rounded">
@@ -944,7 +969,7 @@
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Enrollment Status</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Stay in the loop with your enrollment. Easily access the enrollment status section to see the needed requirements, see what's submitted, and spot any missing documents. We make it simple to ensure a smooth enrollment process – all the info you need, right when you need it.</p>
             </div> <!-- End of Header Content -->
 
             <!-- Officially Enrolled Container -->
@@ -1004,48 +1029,24 @@
                         </div>
                     </div>
 
-                    <div class="w-full self-stretch">
+                    <div class="w-full self-stretch gap-4">
 
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
-
-                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
-
-
-                            <label for="bordered-checkbox-1" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg text-base font-semibold text-green-500 dark:text-gray-300">Needed Requirements #1</label>
-
+                        <div class="w-full flex items-center pl-4  bg-green-50 rounded-lg dark:border-gray-700 ">
+                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 border border-green-500 text-green-500 bg-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
+                            <label for="bordered-checkbox-1" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-md text-sm font-semibold text-green-500 dark:text-gray-300">PSA Birth Certificate</label>
                         </div>
 
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
-
-                            <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
-
-                            <label for="bordered-checkbox-2" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #2</label>
-
+                        <div class="w-full flex items-center pl-4 mt-4 bg-green-50  rounded-lg dark:border-gray-700 ">
+                            <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 border border-green-500 text-green-500 bg-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
+                            <label for="bordered-checkbox-2" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-md text-sm font-semibold text-green-500 dark:text-gray-300">Form 138 / School Form 10 / Report Card</label>
                         </div>
 
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
-
-                            <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
-
-                            <label for="bordered-checkbox-3" class="w-full font-mulishlg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #3</label>
-
+                        <div class="w-full flex items-center pl-4 mt-4 bg-red-50  rounded-lg dark:border-gray-700 ">
+                            <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 border border-green-500 text-green-500 bg-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled unchecked>
+                            <label for="bordered-checkbox-3" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-md text-sm font-semibold text-green-500 dark:text-gray-300">2 pcss. 2x2 colored ID picture</label>
                         </div>
 
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow" disabled checked>
-
-                            <input id="bordered-checkbox-4" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
-
-                            <label for="bordered-checkbox-4" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #4</label>
-
-                        </div>
-
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
-
-                            <input id="bordered-checkbox-5" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled >
-
-                            <label for="bordered-checkbox-5" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #5</label>
-
-                        </div>
+                        
 
                     </div>
                 </div>
@@ -1064,7 +1065,7 @@
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Request Document</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Take control of your paperwork hassle-free. Our document requests page lets you effortlessly request and track documents. See the status of past requests, explore available document options, and ensure you have everything you need. Simple, organized, and designed to make document management a breeze</p>
             </div> <!-- End of Header Content -->
 
             <div class=" flex min-w-screen flex-col gap-6 items-center ">
@@ -1125,16 +1126,16 @@
                     <div class="w-full flex flex-col justify-between gap-1">
 
                         <div class="w-full flex flex-col items-start justify-center pl-4 p-4 mb-3 text-md font-mulish text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-gray-200 dark:border-yellow-800 ">  
-                            <h2 class="mb-2 lg:text-2xl text-lg font-semibold dark:text-white self-stretch text-center">Lists of Document</h2>
-                            <ul class="w-full ml-4 space-y-2 lg:text-base text-xs font-semibold list-disc list-inside text-green-600">
+                            <h2 class="mb-2 lg:text-2xl text-lg font-semibold dark:text-white self-stretch text-left">Lists of Document</h2>
+                            <ul class="w-full ml-4 space-y-1 lg:text-base text-xs font-semibold list-disc list-inside text-green-400">
                                 <li>
-                                    Certificate of Enrollment: scholarships grants 4Ps. One validated na enrolled sila.
+                                    Certificate of Enrollment: scholarships grants, or 4Ps applications.
                                 </li>
                                 <li>
                                     Certificate of Good Moral
                                 </li>
                                 <li>
-                                    Request of sf10. Needs the request form from the lilipatan na school
+                                    Request of SF10. (Needs the request letter from the school that the student will be transferring.)
                                 </li>
                             </ul>
 
@@ -1177,11 +1178,10 @@
 
                                                 <select id="purpose" class="font-mulish flex-initial bg-white border border-gray-300 text-green-900 text-md  rounded-lg focus:ring-green-500 focus:border-green-500  w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 gap-2">
                                                     <option selected="0">Select purpose</option>
-                                                    <option value="1">Purpose #1</option>
-                                                    <option value="2">Purpose #2</option>
-                                                    <option value="3">Purpose #3</option>
-                                                    <option value="4">Purpose #4</option>
-                                                    <option value="5">Purpose #5</option>
+                                                    <option value="1">Scholarship grant.</option>
+                                                    <option value="2">Transfer of school.</option>
+                                                    <option value="3">Government purposes.</option>
+                                                    <option value="4">Others</option>
                                                 </select>
 
                                             </div>
@@ -1193,7 +1193,7 @@
                                                 <div class="pl-2">
                                                     <div class="flex items-center mb-4">
                                                         <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Request of sf10</label>
+                                                        <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Request of SF10</label>
                                                     </div>
 
                                                     <div class="flex items-center mb-4">
@@ -1256,80 +1256,32 @@
                                     <tbody>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default1" >
                                             <td class="px-6 py-4">
-                                                X
+                                                Certificate of enrollment
                                             </td>
                                             <td class="px-6 py-4">
-                                                X
+                                                Claimed
                                             </td>
                                         </tr>
 
                                         <div data-popover id="popover-default1" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2">
-                                                <p>h-mm AM/PM mm-dd-yyyy</p>
+                                                <p>10:24 AM 09-17-2023</p>
                                             </div>
                                             <div data-popper-arrow></div>
                                         </div>
 
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default2">
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default2" >
                                             <td class="px-6 py-4">
-                                                X
+                                                Certificate of enrollment
                                             </td>
                                             <td class="px-6 py-4">
-                                                X
+                                                Claimed
                                             </td>
                                         </tr>
 
                                         <div data-popover id="popover-default2" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                            <div class="px-3 py-2" >
-                                                <p>h-mm AM/PM mm-dd-yyyy</p>
-                                            </div>
-                                            <div data-popper-arrow></div>
-                                        </div>
-
-                                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default3">
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                        </tr>
-
-                                        <div data-popover id="popover-default3" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2">
-                                                <p>h-mm AM/PM mm-dd-yyyy</p>
-                                            </div>
-                                            <div data-popper-arrow></div>
-                                        </div>
-
-                                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default4">
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                        </tr>
-
-                                        <div data-popover id="popover-default4" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                            <div class="px-3 py-2">
-                                                <p>h-mm AM/PM mm-dd-yyyy</p>
-                                            </div>
-                                            <div data-popper-arrow></div>
-                                        </div>
-
-                                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default5">
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                X
-                                            </td>
-                                        </tr>
-
-                                        <div data-popover id="popover-default5" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                            <div class="px-3 py-2">
-                                                <p>h-mm AM/PM mm-dd-yyyy</p>
+                                                <p>8:17 AM 10-29-2023</p>
                                             </div>
                                             <div data-popper-arrow></div>
                                         </div>
@@ -1400,8 +1352,8 @@
             <!-- Header Content -->
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Student Information</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <h2 class="mt-2 uppercase font-semibold text-lg sm:text-xl lg:text-2xl text-brown-600">motus, James PRADO (114743070020)</h2>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Dive into the details of your student profile. From personal information to contact details, everything you need is right here. Keep it easy, keep it straightforward - your student info, always available, always clear.</p>
+                <h2 class="mt-4 font-semibold text-lg sm:text-xl lg:text-2xl text-brown-600">{{ $last_name }}, {{ $first_name }} {{ $middle_name }} ( {{ $lrn }} )</h2>
             </div> <!-- End of Header Content -->
 
             <div class=" flex min-w-screen flex-col gap-6 items-center mt-6">
@@ -1411,23 +1363,28 @@
                     <!-- My Requests Button Section -->
                     <div class="w-full flex flex-row justify-center gap-20 ">
                         
-                        <div class=" overflow-x-auto">
+                        <div class=" overflow-x-auto w-auto">
                             <table class="bg-white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-6 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
+                                            Student Information
+                                        </th>
+                                    </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white ">
-                                            Lrn Number
+                                            Learner's Reference Number
                                         </th>
                                         <td class="px-10 py-2">
-                                            114743070020
+                                            {{ $lrn }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Name
                                         </th>
-                                        <td class="px-10 py-2 uppercase">
-                                            Motus, James Prado
+                                        <td class="px-10 py-2">
+                                            {{ $last_name }}, {{ $first_name }} {{ $middle_name }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1435,7 +1392,7 @@
                                             Age
                                         </th>
                                         <td class="px-10 py-2">
-                                            21
+                                            {{ $age }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1443,7 +1400,7 @@
                                             Gender
                                         </th>
                                         <td class="px-10 py-2">
-                                            Male
+                                            {{ $gender }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1451,7 +1408,7 @@
                                             Date of Birth
                                         </th>
                                         <td class="px-10 py-2">
-                                            October 26, 2001
+                                            {{ $birth_date }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1459,7 +1416,7 @@
                                             Religion
                                         </th>
                                         <td class="px-10 py-2">
-                                            Roman Catholic
+                                            {{ $religion }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1467,19 +1424,20 @@
                                             Indigenous Group
                                         </th>
                                         <td class="px-10 py-2">
-                                            Pogi
+                                            {{ $indigenous_group }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                            Primary Language
+                                            Mother Tongue
                                         </th>
                                         <td class="px-10 py-2">
-                                            Hiligaynon
+                                            {{ $mother_tongue }}
                                         </td>
                                     </tr>
+
                                     <tr class="bg-white">
-                                        <th scope="row" class="px-10 py-2 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
+                                        <th scope="row" class="px-10 py-6 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
                                             Address
                                         </th>
                                     </tr>
@@ -1488,7 +1446,7 @@
                                             Region
                                         </th>
                                         <td class="px-10 py-2">
-                                            IV-4 (Calabarzon)
+                                            {{ $region }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1496,7 +1454,7 @@
                                             Province
                                         </th>
                                         <td class="px-10 py-2">
-                                            Rizal
+                                            {{ $province }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1504,7 +1462,7 @@
                                             City
                                         </th>
                                         <td class="px-10 py-2">
-                                            San Mateo
+                                            {{ $city }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1512,7 +1470,7 @@
                                             Barangay
                                         </th>
                                         <td class="px-10 py-2">
-                                            Guitnang Bayan 2
+                                            {{ $barangay }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1520,7 +1478,7 @@
                                             Street
                                         </th>
                                         <td class="px-10 py-2">
-                                            Di makita
+                                            {{ $street }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1528,25 +1486,30 @@
                                             House number
                                         </th>
                                         <td class="px-10 py-2">
-                                            001100
+                                            {{ $house_number }}
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
-                        <div class=" overflow-x-auto">
-                            <table class="w-auto lg:text-base text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold border-l-4 border-green-500">
+                        <div>
+                            <table class="white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
-                                    <tr class="bg-gray-50">
-                                        <th scope="row" class="px-7 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-6 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
+                                            Family Information
+                                        </th>
+                                    </tr>
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Father's Name
                                         </th>
                                         <td class="px-10 py-2 uppercase">
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
@@ -1554,7 +1517,7 @@
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
@@ -1562,7 +1525,7 @@
                                             father@gmail.com
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Mother's Name
                                         </th>
@@ -1570,7 +1533,7 @@
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
@@ -1578,7 +1541,7 @@
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
@@ -1586,7 +1549,7 @@
                                             Mother@gmail.com
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Guardian's Name
                                         </th>
@@ -1594,7 +1557,7 @@
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
@@ -1602,7 +1565,7 @@
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
