@@ -947,7 +947,7 @@
 
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-green-900">Enrollment Status</h3>
-                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">Stay in the loop with your enrollment. Easily access the enrollment status section to see the needed requirements, see what's submitted, and spot any missing documents. We make it simple to ensure a smooth enrollment process – all the info you need, right when you need it.</p>
             </div> <!-- End of Header Content -->
 
             <!-- Officially Enrolled Container -->
