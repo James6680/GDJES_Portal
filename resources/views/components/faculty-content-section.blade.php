@@ -861,7 +861,7 @@
                             
                             <table id="tableBody" class="w-full lg:text-sm text-xs text-left text-black " id="gSheetTableQ1">
 
-                                <!--Field Title--> 
+                                <!-- Field Title--> 
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
                                     <tr class="text-lg font-light text-center">
                                         <th colspan="1" class=" border-2 border-yellow-100 rounded-tl-md"></th>
@@ -1386,9 +1386,6 @@
                                         <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton3">Edit</button></td>
                                     </tr>
                                     @endif
-                                    
-                                    
-                                -->
                                 </tbody>
                             </table>
                             
