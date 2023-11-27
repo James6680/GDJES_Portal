@@ -54,17 +54,6 @@ class FacultyContentSection extends Component
         });
     
         // Get quarters
-        $quarters = GradingSheet::select('quarter')
-            ->join('classes', 'grading_sheet.class_id', '=', 'classes.id')
-            ->whereIn('classes.id', $classCombinations->pluck('class_id'))
-            ->whereIn('classes.section_id', $classCombinations->pluck('section_id'))
-            ->whereIn('classes.teacher_id', $classCombinations->pluck('teacher_id'))
-            ->whereIn('classes.subject_id', $classCombinations->pluck('subject_id'))
-            ->whereIn('classes.grade_level_id', $classCombinations->pluck('grade_level_id'))
-            ->whereIn('classes.school_year_id', $classCombinations->pluck('school_year_id'))
-            ->distinct()
-            ->pluck('quarter');
-    
         // Map quarter values to text
         $quarterTextMapping = [
             1 => '1st Quarter',
@@ -72,6 +61,14 @@ class FacultyContentSection extends Component
             3 => '3rd Quarter',
             4 => '4th Quarter',
         ];
+
+        $quarters = collect([
+            1,
+            2,
+            3,
+            4,
+        ]);
+
 
         $quarterValue = null;
         $class_idValue = null;
