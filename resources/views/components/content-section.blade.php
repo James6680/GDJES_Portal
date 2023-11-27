@@ -1004,48 +1004,24 @@
                         </div>
                     </div>
 
-                    <div class="w-full self-stretch">
+                    <div class="w-full self-stretch gap-4">
 
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
-
-                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
-
-
-                            <label for="bordered-checkbox-1" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg text-base font-semibold text-green-500 dark:text-gray-300">Needed Requirements #1</label>
-
+                        <div class="w-full flex items-center pl-4  bg-green-50 rounded-lg dark:border-gray-700 ">
+                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 border border-green-500 text-green-500 bg-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
+                            <label for="bordered-checkbox-1" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-md text-sm font-semibold text-green-500 dark:text-gray-300">PSA Birth Certificate</label>
                         </div>
 
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
-
-                            <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
-
-                            <label for="bordered-checkbox-2" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #2</label>
-
+                        <div class="w-full flex items-center pl-4 mt-4 bg-green-50  rounded-lg dark:border-gray-700 ">
+                            <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 border border-green-500 text-green-500 bg-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
+                            <label for="bordered-checkbox-2" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-md text-sm font-semibold text-green-500 dark:text-gray-300">Form 138 / School Form 10 / Report Card</label>
                         </div>
 
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
-
-                            <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
-
-                            <label for="bordered-checkbox-3" class="w-full font-mulishlg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #3</label>
-
+                        <div class="w-full flex items-center pl-4 mt-4 bg-red-50  rounded-lg dark:border-gray-700 ">
+                            <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 border border-green-500 text-green-500 bg-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled unchecked>
+                            <label for="bordered-checkbox-3" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-md text-sm font-semibold text-green-500 dark:text-gray-300">2 pcss. 2x2 colored ID picture</label>
                         </div>
 
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow" disabled checked>
-
-                            <input id="bordered-checkbox-4" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
-
-                            <label for="bordered-checkbox-4" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #4</label>
-
-                        </div>
-
-                        <div class="w-full flex items-center pl-4 border-b border-green-500 rounded-lg dark:border-gray-700 shadow">
-
-                            <input id="bordered-checkbox-5" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 text-green-500 bg-white border-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled >
-
-                            <label for="bordered-checkbox-5" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-lg  font-semibold text-green-500 dark:text-gray-300">Needed Requirements #5</label>
-
-                        </div>
+                        
 
                     </div>
                 </div>
