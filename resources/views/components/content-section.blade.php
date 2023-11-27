@@ -1,20 +1,25 @@
 <!-- Content Section -->
 @php
   use Carbon\Carbon;
-    $student = Auth::guard('students')->user();
-    $username = $student->first_name . ' ' . $student->last_name;
-    $last_name = $student->last_name;
-    $first_name = $student->first_name;
-    $middle_name = $student->middle_name;
-    $age = $student->age;
-    $gender = $student->gender;
-    $birth_date = $student->birth_date;
-    $religion = $student->religion;
-    $indigenous_group = $student->indigenous_group;
-    $gender = $student->gender;
-    $mother_tongue = $student->mother_tongue;
+  $student = Auth::guard('students')->user();
+  $username = $student->first_name . ' ' . $student->last_name;
+  $last_name = $student->last_name;
+  $first_name = $student->first_name;
+  $middle_name = $student->middle_name;
+  $age = $student->age;
+  $gender = $student->gender;
+  $birth_date = $student->birth_date;
+  $religion = $student->religion;
+  $indigenous_group = $student->indigenous_group;
+  $gender = $student->gender;
+  $mother_tongue = $student->mother_tongue;
 
-    
+  $region = $student->region;
+  $province = $student->province;
+  $city = $student->municipality;
+  $barangay = $student->barangay;
+  $street = $student->street;
+  $house_number = $student->house_number;
 
 
     $lrn = $student->lrn;
@@ -1356,7 +1361,7 @@
                     <!-- My Requests Button Section -->
                     <div class="w-full flex flex-row justify-center gap-20 ">
                         
-                        <div class=" overflow-x-auto">
+                        <div class=" overflow-x-auto w-auto">
                             <table class="bg-white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
                                     <tr class="bg-white">
@@ -1439,7 +1444,7 @@
                                             Region
                                         </th>
                                         <td class="px-10 py-2">
-                                            IV-4 (Calabarzon)
+                                            {{ $region }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1447,7 +1452,7 @@
                                             Province
                                         </th>
                                         <td class="px-10 py-2">
-                                            Rizal
+                                            {{ $province }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1455,7 +1460,7 @@
                                             City
                                         </th>
                                         <td class="px-10 py-2">
-                                            San Mateo
+                                            {{ $city }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1463,7 +1468,7 @@
                                             Barangay
                                         </th>
                                         <td class="px-10 py-2">
-                                            Guitnang Bayan 2
+                                            {{ $barangay }}
                                         </td>
                                     </tr>
                                     <tr class="bg-gray-50 border-l-4 border-green-500">
@@ -1471,7 +1476,7 @@
                                             Street
                                         </th>
                                         <td class="px-10 py-2">
-                                            Di makita
+                                            {{ $street }}
                                         </td>
                                     </tr>
                                     <tr class="bg-white border-l-4 border-green-500">
@@ -1479,25 +1484,30 @@
                                             House number
                                         </th>
                                         <td class="px-10 py-2">
-                                            001100
+                                            {{ $house_number }}
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
-                        <div class=" overflow-x-auto">
-                            <table class="w-auto lg:text-base text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold border-l-4 border-green-500">
+                        <div>
+                            <table class="white lg:text-base rounded text-xs font-mulish text-left rtl:text-right text-green-900 dark:text-gray-400 font-semibold">
                                 <tbody>
-                                    <tr class="bg-gray-50">
-                                        <th scope="row" class="px-7 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-10 py-6 font-semibold text-green-900 whitespace-nowrap dark:text-white uppercase tracking-wide text-lg">
+                                            Family Information
+                                        </th>
+                                    </tr>
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
+                                        <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Father's Name
                                         </th>
                                         <td class="px-10 py-2 uppercase">
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
@@ -1505,7 +1515,7 @@
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
@@ -1513,7 +1523,7 @@
                                             father@gmail.com
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Mother's Name
                                         </th>
@@ -1521,7 +1531,7 @@
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
@@ -1529,7 +1539,7 @@
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
@@ -1537,7 +1547,7 @@
                                             Mother@gmail.com
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             Guardian's Name
                                         </th>
@@ -1545,7 +1555,7 @@
                                             Motus, James Prado
                                         </td>
                                     </tr>
-                                    <tr class="bg-white">
+                                    <tr class="bg-white border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Mobile No.
                                         </th>
@@ -1553,7 +1563,7 @@
                                             114743070020
                                         </td>
                                     </tr>
-                                    <tr class="bg-gray-50">
+                                    <tr class="bg-gray-50 border-l-4 border-green-500">
                                         <th scope="row" class="px-10 py-2 font-normal text-gray-500 whitespace-nowrap dark:text-white">
                                             Email
                                         </th>
