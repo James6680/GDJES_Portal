@@ -390,7 +390,7 @@
         <a class=" hover:text-white hover:underline text-xs md:text-sm lg:text-base font-mulish text-white" href="#">
           Student Portal</a>
         <a class="hover:text-white hover:underline text-xs md:text-sm lg:text-base font-mulish text-white"
-          href="#facultyAndAdminAccess">Faculty and Admin Portal</a>
+          href="#facultyAndAdminAccess">Faculty Portal</a>
       </div>
     </div>
   </section>
