@@ -1,4 +1,7 @@
 <!-- Content Section -->
+@php
+  use Carbon\Carbon;
+@endphp
 <div>   
     <!-- Announcement Section -->
     @if (request()->is('student.announcements') )
@@ -15,28 +18,31 @@
                     <li class="p-0 m-0">
                         <span class="font-semibold text-2xl sm:text-3xl ">Announcements</span>
                     </li>
-
-                    <li class="py-5 border-b-2 border-white hover:border-b-2 hover:border-green-200 hover:text-green-200">
-                        <a href="https://www.facebook.com/photo?fbid=772548511547342&set=a.481770427291820"
-                        class="flex flex-col justify-between align-middle">
-                        <span class="font-mulish font-semibold text-base sm:text-lg">Title of Announcement 1</span>
-                        <span class="font-mulish font-normal text-base sm:text-lg">Date Published 1</span>
-                        </a>
-                    </li>
-
-                    <li class="py-5 border-b-2 border-white hover:border-b-2 hover:border-green-200 hover:text-green-200">
-                        <a href="https://www.youtube.com/watch?v=rKWLpH1fLMI" class="flex flex-col justify-between align-middle">
-                        <span class="font-mulish font-semibold text-base sm:text-lg">Title of Announcement 2</span>
-                        <span class="font-mulish font-normal text-base sm:text-lg">Date Published 2</span>
-                        </a>
-                    </li>
-
-                    <li class="py-5 hover:text-green-200">
-                        <a href="https://tailwindcss.com/docs/height" class="flex flex-col justify-between align-middle">
-                        <span class="font-mulish font-semibold text-base sm:text-lg">Title of Announcement 3</span>
-                        <span class="font-mulish font-normal text-base sm:text-lg">Date Published 3</span>
-                        </a>
-                    </li>
+                    @php
+                    $announcements = DB::table('announcements')
+                    ->select('announcement_title', 'created_at', 'announcement_url')
+                    ->orderBy('created_at', 'desc')
+                    ->limit(5)
+                    ->get();
+                    @endphp
+                    @if (!$announcements->isEmpty())
+                        @foreach ($announcements as $announcement)
+                        <li class="py-5 border-b-2 border-white hover:border-b-2 hover:border-green-200 hover:text-green-200">
+                            <a href="{{$announcement->announcement_url}}"
+                            class="flex flex-col justify-between align-middle">
+                        <span class="font-mulish font-semibold text-base sm:text-lg">{{$announcement->announcement_title}}</span>
+                            <span class="font-mulish font-normal text-base sm:text-lg">{{Carbon::parse($announcement->created_at)->format('F j, Y g:i A')}}</span>
+                            </a>
+                        </li>
+                        @endforeach
+                    @else
+                        <li class="py-5 border-b-2 border-white">
+                            <a href="#"
+                            class="flex flex-col justify-between align-middle">
+                            <span class="font-mulish font-normal text-base sm:text-lg">There are no Announcements</span>
+                            </a>
+                        </li>        
+                    @endif
 
                 </ul>
 

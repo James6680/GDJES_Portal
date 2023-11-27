@@ -76,105 +76,63 @@
                     <!-- For Backend: Needs to connect in order for list of students to reflect within the table -->
                     <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-200" >
                         <thead class=" lg:text-sm text-xs text-white uppercase bg-yellow-600 ">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Student Name
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Color
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Category
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Price
-                                </th>
+                            <tr class="header">
+                                <th scope="col" class="px-4 py-3">Last Name</th>
+                                <th scope="col" class="px-4 py-3">First Name</th>
+                                <th scope="col" class="px-4 py-3">Middle Name</th>
+                                <th scope="col" class="px-4 py-3">Extension Name</th>
+                                <th scope="col" class="px-4 py-3">lrn</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class="px-6 py-4">
-                                    Juan Dela Cruz
-                                </td>
-                                <td class="px-6 py-4">
-                                    Silver
-                                </td>
-                                <td class="px-6 py-4">
-                                    Laptop
-                                </td>
-                                <td class="px-6 py-4">
-                                    $2999
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Dela Cruz</td>                         
+                                <td class="px-4 py-3">Mark</td>
+                                <td class="px-4 py-3">Dustin</td>
+                                <td class="px-4 py-3"></td>
+                                <td class="px-4 py-3">059503095670</td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4">
-                                    White
-                                </td>
-                                <td class="px-6 py-4">
-                                    White
-                                </td>
-                                <td class="px-6 py-4">
-                                    Laptop PC
-                                </td>
-                                <td class="px-6 py-4">
-                                    $1999
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Dela Vega</td>                         
+                                <td class="px-4 py-3">Justin</td>
+                                <td class="px-4 py-3">Bailey</td>
+                                <td class="px-4 py-3"></td>
+                                <td class="px-4 py-3">15357112411</td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td class="px-6 py-4">
-                                    $99
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Frando</td>                         
+                                <td class="px-4 py-3">James</td>
+                                <td class="px-4 py-3">Cheska</td>
+                                <td class="px-4 py-3">IV</td>
+                                <td class="px-4 py-3">85256212521</td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                 <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td class="px-6 py-4">
-                                    $99
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Franco</td>                         
+                                <td class="px-4 py-3">Rain</td>
+                                <td class="px-4 py-3">Mark</td>
+                                <td class="px-4 py-3">Jr.</td>
+                                <td class="px-4 py-3">27391281522</td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td class="px-6 py-4">
-                                    $99
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Egay</td>                         
+                                <td class="px-4 py-3">Daniel</td>
+                                <td class="px-4 py-3">Zamora</td>
+                                <td class="px-4 py-3"></td>
+                                <td class="px-4 py-3">399620943403</td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td class="px-6 py-4">
-                                    $99
-                                </td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Qira</td>                         
+                                <td class="px-4 py-3">Joseph</td>
+                                <td class="px-4 py-3">Cruz</td>
+                                <td class="px-4 py-3"></td>
+                                <td class="px-4 py-3">167467923595</td>
+                            </tr>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">Yugo</td>                         
+                                <td class="px-4 py-3">Mary</td>
+                                <td class="px-4 py-3">Joy</td>
+                                <td class="px-4 py-3"></td>
+                                <td class="px-4 py-3">885610844170</td>
                             </tr>
                         </tbody>
                     </table>
@@ -258,61 +216,63 @@
                             <table class="w-full lg:text-sm text-xs text-left text-gray-500 border border-gray-200" id="myTable">
                                 <thead class="lg:text-sm text-xs text-white uppercase bg-yellow-600 ">
                                     <tr class="header">
-                                        <th scope="col" class="px-4 py-3">Student Name</th>
-                                        <th scope="col" class="px-4 py-3">Category</th>
-                                        <th scope="col" class="px-4 py-3">Brand</th>
-                                        <th scope="col" class="px-4 py-3">Description</th>
-                                        <th scope="col" class="px-4 py-3">Price</th>
+                                        <th scope="col" class="px-4 py-3">Last Name</th>
+                                        <th scope="col" class="px-4 py-3">First Name</th>
+                                        <th scope="col" class="px-4 py-3">Middle Name</th>
+                                        <th scope="col" class="px-4 py-3">Extension Name</th>
+                                        <th scope="col" class="px-4 py-3">lrn</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">Mark Dela Cruz</td>                         
-                                        <td class="px-4 py-3">PC</td>
-                                        <td class="px-4 py-3">Apple</td>
-                                        <td class="px-4 py-3">300</td>
-                                        <td class="px-4 py-3">$2999</td>
-
+                                        <td class="px-4 py-3">Dela Cruz</td>                         
+                                        <td class="px-4 py-3">Mark</td>
+                                        <td class="px-4 py-3">Dustin</td>
+                                        <td class="px-4 py-3"></td>
+                                        <td class="px-4 py-3">059503095670</td>
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">Allen Dela CruzA</td>  
-                                        <td class="px-4 py-3">PC</td>
-                                        <td class="px-4 py-3">Apple</td>
-                                        <td class="px-4 py-3">200</td>
-                                        <td class="px-4 py-3">$1499</td>
-
+                                        <td class="px-4 py-3">Dela Vega</td>                         
+                                        <td class="px-4 py-3">Justin</td>
+                                        <td class="px-4 py-3">Bailey</td>
+                                        <td class="px-4 py-3"></td>
+                                        <td class="px-4 py-3">15357112411</td>
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">Janus Dela Cruz</td>  
-                                        <td class="px-4 py-3">Phone</td>
-                                        <td class="px-4 py-3">Apple</td>
-                                        <td class="px-4 py-3">1237</td>
-                                        <td class="px-4 py-3">$999</td>
-
+                                        <td class="px-4 py-3">Frando</td>                         
+                                        <td class="px-4 py-3">James</td>
+                                        <td class="px-4 py-3">Cheska</td>
+                                        <td class="px-4 py-3">IV</td>
+                                        <td class="px-4 py-3">85256212521</td>
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">George Dela Cruz</td>  
-                                        <td class="px-4 py-3">Tablet</td>
-                                        <td class="px-4 py-3">Apple</td>
-                                        <td class="px-4 py-3">4578</td>
-                                        <td class="px-4 py-3">$1199</td>
-
+                                        <td class="px-4 py-3">Franco</td>                         
+                                        <td class="px-4 py-3">Rain</td>
+                                        <td class="px-4 py-3">Mark</td>
+                                        <td class="px-4 py-3">Jr.</td>
+                                        <td class="px-4 py-3">27391281522</td>
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">James Dela Cruz</td>  
-                                        <td class="px-4 py-3">Gaming/Console</td>
-                                        <td class="px-4 py-3">Microsoft</td>
-                                        <td class="px-4 py-3">56</td>
-                                        <td class="px-4 py-3">$299</td>
-
+                                        <td class="px-4 py-3">Egay</td>                         
+                                        <td class="px-4 py-3">Daniel</td>
+                                        <td class="px-4 py-3">Zamora</td>
+                                        <td class="px-4 py-3"></td>
+                                        <td class="px-4 py-3">399620943403</td>
                                     </tr>
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">Juan Dela Cruz</td>  
-                                        <td class="px-4 py-3">Gaming/Console</td>
-                                        <td class="px-4 py-3">Sony</td>
-                                        <td class="px-4 py-3">78</td>
-                                        <td class="px-4 py-3">$799</td>
+                                        <td class="px-4 py-3">Qira</td>                         
+                                        <td class="px-4 py-3">Joseph</td>
+                                        <td class="px-4 py-3">Cruz</td>
+                                        <td class="px-4 py-3"></td>
+                                        <td class="px-4 py-3">167467923595</td>
+                                    </tr>
+                                    <tr class="border-b dark:border-gray-700">
+                                        <td class="px-4 py-3">Yugo</td>                         
+                                        <td class="px-4 py-3">Mary</td>
+                                        <td class="px-4 py-3">Joy</td>
+                                        <td class="px-4 py-3"></td>
+                                        <td class="px-4 py-3">885610844170</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -678,12 +638,20 @@
 
                             <!-- Needs to be dynamic for teacher to be able to only navigate the only subject unit in the given grade level that he/she is handling  --
                             <!-- Grade Level Button -->
-                            <button id="gradeBtn" data-dropdown-toggle="grade-dropdown" class="text-white min-w-[300px] justify-between focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-500 text-sm px-8 py-2.5 text-center inline-flex items-center" type="button">Subject Class<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <button id="gradeBtn" 
+                                    data-dropdown-toggle="grade-dropdown" 
+                                    class="text-white min-w-[300px] justify-between focus:outline-none bg-green-500 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-500 text-sm px-8 py-2.5 text-center inline-flex items-center" 
+                                    type="button">
+                                    Subject Class
+                                    <svg class="w-2.5 h-2.5 ms-3" 
+                                    aria-hidden="true" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg>
                             </button>
 
-                            <!-- Dropdown menu -->
+                            <!-- Dropdown menu 
                             <div id="grade-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeBtn">
                                 <li>
@@ -704,18 +672,29 @@
                                         // document.getElementById('quarter-dropdown').classList.add('hidden');
                                     }
                                 </script>
-
                             </div>
-
+                            -->
+                            <div id="grade-dropdown" 
+                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gradeBtn">
+                                    @foreach($dropdownOptions as $option)
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-id="{{ $option['id'] }}" onclick="getID(this.dataset.id)">{{ $option['name'] }}</a>                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>    
                             <!-- Needs to be dynamic for teachers to navigate quarters from 1 to 4 of the given subject from the grade and section that he/she handles-->
-                            <button id="quarterBtn" data-dropdown-toggle="quarter-dropdown" class="text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
-                            Grading Quarter
+                            <button id="quarterBtn" 
+                                    data-dropdown-toggle="quarter-dropdown" 
+                                    class="text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center" 
+                                    type="button">
+                                    Grading Quarter
                             <svg class="w-2.5 h-2.5 ms-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg>  
                             </button>
 
-                            <!-- Dropdown menu -->
+                            <!-- Dropdown menu 
                             <div id="quarter-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="quarterBtn">
                                 <li>
@@ -725,7 +704,7 @@
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('2nd Quarter')">2nd Quarter</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('3rd Quarter')">3rd Quarter</a>
+                                    ><a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('3rd Quarter')">3rd Quarter</a>
                                 </li>
                                 <li>
                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="changeQuarter('4th Quarter')">4th Quarter</a>
@@ -736,7 +715,8 @@
                                 </ul>
 
                             </div>
-
+                            -->
+                            <!--
                             <script>
                                 function changeQuarter(newText) {
                                     document.getElementById('quarterBtn').innerText = newText;
@@ -822,10 +802,42 @@
 
                                     event.preventDefault(selectedQuarter);
                                 }
-                            </script>
-
+                            </script-->
+                            <div id="quarter-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-gray-700">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="quarterBtn">
+                                    @foreach($quarters as $quarter)
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-quarter="{{ $quarter['number']}}" onclick="getQuarter(this.dataset.quarter)">{{ $quarter['text']}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            
                         </div>
+                        <script>
+                            var class_id=null;
+                            var quarter_value=null;                            
 
+                            function getID(id) {
+                              // Construct the URL using the ID
+                              class_id=id;
+                              console.log(class_id);
+                              checkIfNotNull();
+                            }
+
+                            function getQuarter(quarter){
+                                quarter_value=quarter
+                                console.log(quarter_value);
+                                checkIfNotNull();
+                            }
+
+                            function checkIfNotNull(){
+                                if(class_id != null && quarter_value != null){
+                                    window.location.href = "?quarter=" + quarter_value + '&class_id=' + class_id;
+                                    console.log("both are not null");
+                                }
+                            }
+                        </script>
                     </div>
 
                     <div class=" items-center py-2.5 px-4 text-sm text-green-500 rounded-md bg-green-100 hidden"  id="LISReady">
@@ -845,7 +857,9 @@
                         <div class="overflow-x-auto pt-4">
                             <!-- Faculty grading sheet for students table for QUARTER 1 -->
                             <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
-                            <table class="w-full lg:text-sm text-xs text-left text-black " id="gSheetTableQ1">
+                            
+                            
+                            <table id="tableBody" class="w-full lg:text-sm text-xs text-left text-black " id="gSheetTableQ1">
 
                                 <!--Field Title--> 
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
@@ -902,8 +916,211 @@
                                         <th class="border-2 border-yellow-100 normal-case">Grade</th> 
                                         <th class=" border-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
-                                <!-- Needs to be dynamic since items number may differ -->
+                                    
+                                <!-- Needs to be dynamic since items number may differ -->                                <!--Added-->
+                                <!--
+                            
                                     <tr class=" text-center font-medium" id="q1Header">
+                                        <th class="border-2 border-yellow-100"></th>
+                                        <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>
+                                               
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww1' id='edit_ww1' class="p-0 border-none bg-transparent text-center">
+                                           
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww2' id='edit_ww2' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww3' id='edit_ww3' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww4' id='edit_ww4' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww5' id='edit_ww5' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww6' id='edit_ww6' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww7' id='edit_ww7' class="p-0 border-none bg-transparent text-center" >
+                                           
+                                        </td>
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww8' id='edit_ww8'  class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww9' id='edit_ww9' class="p-0 border-none bg-transparent text-center" >
+                                           
+                                        </td>
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww10' id='edit_ww10'' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww_total' id='edit_ww_total' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww_percent' id='edit_ww_percent' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_ww_weighted_score' id='edit_ww_weighted_score' class="p-0 border-none bg-transparent text-center" >
+                                          
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt1' id='edit_pt1' class="p-0 border-none bg-transparent text-center" >
+                                            
+
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt2' id='edit_pt2' class="p-0 border-none bg-transparent text-center" >
+                                           
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt3' id='edit_pt3' class="p-0 border-none bg-transparent text-center" >
+                                           
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt4' id='edit_pt4' class="p-0 border-none bg-transparent text-center" >
+                                         
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt5' id='edit_pt5' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td> 
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt6' id='edit_pt6' class="p-0 border-none bg-transparent text-center" >
+                                          
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt7' id='edit_pt7' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt8' id='edit_pt8' class="p-0 border-none bg-transparent text-center" >
+                                           
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt9' id='edit_pt9' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt10' id='edit_pt0' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2" >
+                                            <input type="text" name='edit_pt_total' id='edit_pt_total' class="p-0 border-none bg-transparent text-center" >
+                                           
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt_percent' id='edit_pt_percent' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt_weighted_score' id='edit_pt_weighted_score' class="p-0 border-none bg-transparent text-center" >
+                                        
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2 ">
+                                            <input type="text" name='edit_qa' id='edit_qa' class="p-0 border-none bg-transparent text-center">
+                                           
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2 ">
+                                            <input type="text" name='edit_pt_percent' id='edit_pt_percent' class="p-0 border-none bg-transparent text-center">
+                                           
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_pt_weighted_score' id='edit_pt_weighted_score' class="p-0 border-none bg-transparent text-center">
+                                            
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_initial_grade' id='edit_initial_grade' class="p-0 border-none bg-transparent text-center" >
+                                           
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='edit_quarterly_grade' id='edit_quarterly_grade' class="p-0 border-none bg-transparent text-center" >
+                                            
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            
+                                            <button type="button" 
+                                                    class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1 editHPS" 
+                                                    id="editButton1">
+                                                    Edit
+                                            </button>
+                                           
+                                        </td>                                  
+                                    </tr>
+                               
+                            -->
+                            {{-- {{dd($highestPossibleScore)}} --}}
+                            <!--Highest Possible Score-->
+                            <form action="/faculty.grades.edit" 
+                                    method="POST" 
+                                    id="edit_hps">
+                                @csrf                    
+                                @if($highestPossibleScore != null)
+                                @foreach($highestPossibleScore as $hps)
+                                <input type="hidden" name="edit_id" value="{{ $hps->id }}">
+                                    <tr class="text-center font-medium" id="q1Header">
+                                        <th class="border-2 border-yellow-100"></th>
+                                        <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>
+                            
+                                        @php $fields = ['ww1', 'ww2', 'ww3', 'ww4', 'ww5', 'ww6', 'ww7', 'ww8', 'ww9', 'ww10',
+                                                         'ww_total', 'ww_percent', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
+                                                         'pt4', 'pt5', 'pt6', 'pt7', 'pt8', 'pt9', 'pt10', 'pt_total', 
+                                                         'pt_percent', 'pt_weighted_score', 'qa', 'pt_percent', 'pt_weighted_score', 
+                                                         'initial_grade', 'quarterly_grade'
+                                                        ]; 
+                                        @endphp
+                            
+                                        @foreach($fields as $field)
+                                            <td class="border-2 border-yellow-100 px-2">
+                                                <input type="text" 
+                                                        name='{{ "edit_" . $field }}' 
+                                                        id='{{ "edit_" . $field }}' 
+                                                        class="p-0 border-none bg-transparent text-center" 
+                                                        value="{{ $hps->$field }}">
+                                            </td>
+                                        @endforeach
+                            
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <button type="button" 
+                                                    class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1 
+                                                            editHPS" 
+                                                    id="editButton1">
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                @endif
+                            </form>
+                           <!--End Highest Possible Score-->
+                            
+
+                                <!--End Added-->
+
+                                <!--I dunno why there's another table here 
+                                <tr class=" text-center font-medium" id="q1Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
                                         <td class="border-2 border-yellow-100 px-2">
@@ -994,10 +1211,106 @@
                                         <td class="border-2 border-yellow-100 px-2">
                                             <button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton1">Edit</button></td>                                  
                                     </tr>
-                                <!-- End of Needs to be dynamic since items number may differ -->
-
+                               End of Needs to be dynamic since items number may differ -->
+                                
+                                  <!--tr class=" text-center font-medium" 
+                                        id="q1Header">
+                                        <th class="border-2 border-yellow-100"></th>
+                                        <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww1' class="p-0 border-none bg-transparent text-center">
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww2' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww3' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww4' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww5' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww6' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww7' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww8' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww9' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww10' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww_total' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww_percent' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='ww_weighted_score' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt1' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt2' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt3' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt4' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt5' class="p-0 border-none bg-transparent text-center" >
+                                        </td> 
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt6' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt7' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt8' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt9' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt10' class="p-0 border-none bg-transparent text-center" >
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2" >
+                                            <input type="text" name='pt_total' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2 ">
+                                            <input type="text" name='qa' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2 ">
+                                            <input type="text" name='pt_percent' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='pt_weighted_score' class="p-0 border-none bg-transparent text-center"></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='initial_grade' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" ></td>
+                                        <td class="border-2 border-yellow-100 px-2">
+                                            <button type="button" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton1">Edit</button></td>                                  
+                                    </tr-->
+                               
                                 </thead>
+
                                 <tbody>
+                                    @if($gradingSheets != null)
+                                    @foreach ($gradingSheets as $gs)
                                     <tr class="text-center bg-white" id="q1row1">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
                                         <td class="border-2 border-yellow-100 px-2">Juan Dela Cruz</td>
@@ -1034,9 +1347,11 @@
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1" id="editButton2">Edit</button></td>
                                     </tr>
+                                    @endforeach
+                                    @else
                                     <tr class="text-center bg-white" id="q1row2">
                                         <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
-                                        <td class="border-2 border-yellow-100 px-2">Adrian Fabonan</td>
+                                        <td class="border-2 border-yellow-100 px-2"></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww2' class="p-0 border-none bg-transparent text-center"></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww3' class="p-0 border-none bg-transparent text-center"></td>
@@ -1070,11 +1385,15 @@
                                         <td class="border-2 border-yellow-100 px-2" disabled><input type="text" name='quarterly_grade' class="p-0 border-none bg-transparent text-center" disabled></td>
                                         <td class="border-2 border-yellow-100 px-2"><button type="submit" class="text-white border bg-red-500 hover:bg-red-900  font-normal rounded text-xs px-2 py-1" id="editButton3">Edit</button></td>
                                     </tr>
+                                    @endif
+                                    
+                                    
+                                -->
                                 </tbody>
                             </table>
                             
-                            <!-- Faculty grading sheet for students table for QUARTER 2 -->
-                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
+                            <!-- Faculty grading shet for students table for QUARTER 2 -->
+                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students
                             <table class="w-full lg:text-sm text-xs text-left text-black hidden" id="gSheetTableQ2">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
                                     <tr class="text-lg font-light text-center">
@@ -1088,11 +1407,11 @@
                                         <th class="rounded-tr-md border-2 border-yellow-100"><span class="sr-only"></span></th>                                    
                                     </tr>
                                     <tr class="text-center px-4">
-                                        <!-- Student Number --> 
+                                        <!-- Student Number
                                         <th class="border-2 border-yellow-100 py-4"></th>
-                                        <!-- Student Name --> 
+                                        <!-- Student Name 
                                         <th class="border-2 border-yellow-100 px-28"></th>
-                                        <!--Written Works  -->
+                                        <!--Written Works  
                                         <th class="border-2 border-yellow-100">1</th>  
                                         <th class="border-2 border-yellow-100">2</th> 
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1106,7 +1425,7 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100 w-7">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- PerFormance Tasks -->
+                                        <!-- PerFormance Tasks 
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">2</th>
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1120,17 +1439,17 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Quarterly Assessment (20%) -->
+                                        <!-- Quarterly Assessment (20%) 
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Initial Grade -->
+                                        <!-- Initial Grade
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th>
-                                        <!-- Quarterly Grade -->
+                                        <!-- Quarterly Grade 
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th> 
                                         <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
-                                    <!-- Needs to be dynamic since items number may differ -->
+                                    <!-- Needs to be dynamic since items number may differ
                                     <tr class=" text-center font-medium" id="q2Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
@@ -1242,9 +1561,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
+                            -->
                             <!-- Faculty grading sheet for students table for QUARTER 3 -->
-                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
+                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students
                             <table class="w-full lg:text-sm text-xs text-left text-black hidden" id="gSheetTableQ3">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
                                     <tr class="text-lg font-light text-center">
@@ -1258,11 +1577,11 @@
                                         <th class="rounded-tr-md border-2 border-yellow-100"><span class="sr-only"></span></th>                                    
                                     </tr>
                                     <tr class="text-center px-4">
-                                        <!-- Student Number --> 
+                                        <!-- Student Number 
                                         <th class="border-2 border-yellow-100 py-4"></th>
-                                        <!-- Student Name --> 
+                                        <!-- Student Name 
                                         <th class="border-2 border-yellow-100 px-28"></th>
-                                        <!--Written Works  -->
+                                        <!--Written Works  
                                         <th class="border-2 border-yellow-100">1</th>  
                                         <th class="border-2 border-yellow-100">2</th> 
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1276,7 +1595,7 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100 w-7">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- PerFormance Tasks -->
+                                        <!-- PerFormance Tasks 
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">2</th>
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1290,17 +1609,17 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Quarterly Assessment (20%) -->
+                                        <!-- Quarterly Assessment (20%)
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Initial Grade -->
+                                        <!-- Initial Grade 
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th>
-                                        <!-- Quarterly Grade -->
+                                        <!-- Quarterly Grade 
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th> 
                                         <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
-                                    <!-- Needs to be dynamic since items number may differ -->
+                                    <!-- Needs to be dynamic since items number may differ 
                                     <tr class=" text-center font-medium" id="q3Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
@@ -1413,9 +1732,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
+                            -->
                             <!-- Faculty grading sheet for students table for QUARTER 4 -->
-                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
+                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students
                             <table class="w-full lg:text-sm text-xs text-left text-black hidden" id="gSheetTableQ4">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
                                     <tr class="text-lg font-light text-center">
@@ -1429,11 +1748,11 @@
                                         <th class="rounded-tr-md border-2 border-yellow-100"><span class="sr-only"></span></th>                                    
                                     </tr>
                                     <tr class="text-center px-4">
-                                        <!-- Student Number --> 
+                                        <!-- Student Number 
                                         <th class="border-2 border-yellow-100 py-4"></th>
-                                        <!-- Student Name --> 
+                                        <!-- Student Name 
                                         <th class="border-2 border-yellow-100 px-28"></th>
-                                        <!--Written Works  -->
+                                        <!--Written Works  
                                         <th class="border-2 border-yellow-100">1</th>  
                                         <th class="border-2 border-yellow-100">2</th> 
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1447,7 +1766,7 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100 w-7">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- PerFormance Tasks -->
+                                        <!-- PerFormance Tasks 
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">2</th>
                                         <th class="border-2 border-yellow-100">3</th>
@@ -1461,17 +1780,17 @@
                                         <th class="normal-case border-2 border-yellow-100">Total</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Quarterly Assessment (20%) -->
+                                        <!-- Quarterly Assessment (20%) 
                                         <th class="border-2 border-yellow-100">1</th>
                                         <th class="border-2 border-yellow-100">PS</th>
                                         <th class="border-2 border-yellow-100">WS</th>
-                                        <!-- Initial Grade -->
+                                        <!-- Initial Grade 
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th>
-                                        <!-- Quarterly Grade -->
+                                        <!-- Quarterly Grade 
                                         <th class="border-x-2 border-yellow-100 normal-case">Grade</th> 
                                         <th class=" border-x-2 border-yellow-100"><span class="sr-only"></span></th>                                 
                                     </tr>
-                                    <!-- Needs to be dynamic since items number may differ -->
+                                    <!-- Needs to be dynamic since items number may differ 
                                     <tr class=" text-center font-medium" id="q4Header">
                                         <th class="border-2 border-yellow-100"></th>
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>       
@@ -1584,9 +1903,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
+                            -->
                             <!-- Faculty grading sheet for students table for QUARTERLY SUMMARY REPORT -->
-                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
+                            <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students
                             <table class="w-full lg:text-sm text-xs text-left text-black hidden" id="gSheetSummaryTable">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
                                     <tr class="text-sm text-center">
@@ -1606,9 +1925,9 @@
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">Filipino</th>                                  
                                     </tr>
                                     <tr class="text-center">
-                                        <!-- Student Number --> 
+                                        <!-- Student Number 
                                         <th class="border-x-2 border-yellow-100 py-4"></th>
-                                        <!-- Student Name --> 
+                                        <!-- Student Name 
                                         <th class="border-x-2 border-yellow-100 px-28"></th>
                                         <th class="border-2 py-1.5 border-yellow-100">1st Quarter</th>  
                                         <th class="border-2 px-2 border-yellow-100">2nd Quarter</th> 
@@ -1631,8 +1950,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <!-- Edit/Save Button inside gsheet script -->
+                            -->
+                            <!-- Edit/Save Button inside gsheet script 
                             <script>
                                 function setupToggleButton(buttonId) {
                                     var editButton = document.getElementById(buttonId);
@@ -1647,25 +1966,26 @@
                                     });
                                     }
                                 }
-
+                                
+                                
                                 // Setup for multiple buttons
                                 setupToggleButton('editButton1');
-                                setupToggleButton('editButton2');
-                                setupToggleButton('editButton3'); // For 1st Quarter
-                                setupToggleButton('editButton4');
-                                setupToggleButton('editButton5');
-                                setupToggleButton('editButton6'); // For 2nd Quarter
-                                setupToggleButton('editButton7');
-                                setupToggleButton('editButton8');
-                                setupToggleButton('editButton9'); // For 3rd Quarter
-                                setupToggleButton('editButton10');
-                                setupToggleButton('editButton11');
-                                setupToggleButton('editButton12');// For 4th Quarter
+                                //setupToggleButton('editButton2');
+                                //setupToggleButton('editButton3'); // For 1st Quarter
+                                //setupToggleButton('editButton4');
+                                //setupToggleButton('editButton5');
+                                //setupToggleButton('editButton6'); // For 2nd Quarter
+                                //setupToggleButton('editButton7');
+                                //setupToggleButton('editButton8');
+                                //setupToggleButton('editButton9'); // For 3rd Quarter
+                                //setupToggleButton('editButton10');
+                                //setupToggleButton('editButton11');
+                                //setupToggleButton('editButton12');// For 4th Quarter
                                 // Add more buttons as needed
                             </script>
                             
-                            <!--to be put here--> 
-                            <!-- Enable/Disable of input fields in the table -->
+                            to be put here
+                            <!-- Enable/Disable of input fields in the table
                             <script>
                                 document.addEventListener('DOMContentLoaded', function () {
                                     // Function to toggle the disabled attribute of input fields
@@ -1703,6 +2023,8 @@
                                     // Add more calls for additional rows and buttons as needed
                                 });
                             </script>
+                            -->
+
 
                         </div>
 
@@ -2219,6 +2541,8 @@
             </div>
 
         </section>
+
+        @include('scripts_with_ajax')
 
     </div>
 

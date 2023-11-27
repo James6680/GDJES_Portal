@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use stdClass;
 use ErrorException;
 use App\Models\Father;
 use App\Models\Mother;
@@ -10,11 +11,14 @@ use App\Models\Guardian;
 use App\Models\Returnee;
 use App\Models\Relatives;
 use App\Models\Enrollment;
+use App\Models\GradingSheet;
 use App\Models\LearningInfo;
 use Illuminate\Http\Request;
+use App\Mail\RegistrationMail;
 use App\Models\EnrollmentForm;
 use Illuminate\Support\Facades\DB;
 use App\Models\DocumentRequirements;
+use Illuminate\Support\Facades\Mail;
 
 class EnrollmentController extends Controller
 {
@@ -108,7 +112,7 @@ class EnrollmentController extends Controller
             'school_year' => 'nullable', //change from school_year to school_year_id
             'lrn_status' => 'required',
             'lrn_number' => 'nullable',
-            'psa_birth_cert' => 'nullable',
+            'psa_birth_cert' => 'required',
             'lastName_ng_bata' => 'required',
             'firstName_ng_bata' => 'required',
             'middleName_ng_bata' => 'nullable',
@@ -217,7 +221,7 @@ class EnrollmentController extends Controller
             $pageSpecificField = $request->session()->get('enrollment')->distance_learning;
         }catch(ErrorException $e){
         }
-        if(!is_null($pageSpecificField)){    
+        if(!is_null($pageSpecificField)){
             Session()->forget('enrollment');
             return view('enrollment.StudentportalRegistrationCompletedPage');
         }else{
@@ -303,9 +307,12 @@ class EnrollmentController extends Controller
         ///////////////////////////////////////////
         
         ////////////////////////////////Student/////////////////////////////
+        $student = null;
         if($enrollmentForm->lrn_status == '1'){
             $student = Student::where('lrn', $enrollmentForm->lrn_number)->first();
-        }else{
+        }
+
+        if($student == null || $enrollmentForm->lrn_status == '0'){
             $relatives->save();
             $student = new Student();
             
@@ -318,10 +325,9 @@ class EnrollmentController extends Controller
             $student->mother_tongue = $enrollmentForm->primary_language;
             $student->relatives_id = $relatives->id;
             $student->school_year_id = $school_year;
-        }
-        if($enrollmentForm->lrn_status == 1){
             $student->lrn = $enrollmentForm->lrn_number;
-        } 
+        }
+
         $student->psa_birthcert_no = $enrollmentForm->psa_birth_cert;    
         $student->age = $enrollmentForm->age_on_oct_31;
         $student->indigenous_group = $enrollmentForm->indigenous_group_name;
@@ -337,15 +343,53 @@ class EnrollmentController extends Controller
         $student->status = 'active';
 
         $student->save();
+
+        /////////////////////
+        $gradingsheets = DB::table('grading_sheet')
+                        ->where('school_year_id', $school_year)
+                        ->where('student_id', $student->id)
+                        ->pluck('id');
+
+        // $subjects = DB::table('subjects')
+        // ->where('grade_level_id', $enrollmentForm->school_year+1)
+        // ->count();
+
+        $subjects = DB::table('subjects')
+        ->whereIn('grade_level_id', [$enrollmentForm->grade_level+1])
+        ->count();
+
+        foreach($gradingsheets as $gradingsheet){
+            DB::table('grading_sheet')
+            ->where('id', $gradingsheet)
+            ->delete();
+        }
+
+        for($i = 0; $i < $subjects; $i++){
+            for($j = 1; $j <= 4; $j++){
+                $gradingsheet = new GradingSheet();
+                $gradingsheet->student_id = $student->id;
+                $gradingsheet->quarter = $j;
+                $gradingsheet->school_year_id = $school_year;
+                $gradingsheet->save();
+            }
+        }
+
+        $receiver = new stdClass();
+        $receiver->name = $student->first_name;
+        $receiver->email = session()->get('enrollment')->email_ng_guardian;
+        $receiver->username = $student->username;
+        $receiver->password = 'Student123';
+        Mail::to($receiver->email)->send(new RegistrationMail($receiver));
         ///////////////////////////////////////////////////////////////////
         //////////////ENROLLMENT////////////////////
         $enrollment = Enrollment::where('student_id', $student->id)->where('school_year_id', $school_year)->first();
+        
         if($enrollment == null){
             $enrollment = new Enrollment();
         }
         $enrollment->student_id = $student->id;
         $enrollment->school_year_id =  $school_year;
-        $enrollment->grade_level_id = $enrollmentForm->school_year+1;
+        $enrollment->grade_level_id = $enrollmentForm->grade_level+1;
         $enrollment->learning_info_id = $learningInfo->id;
         $enrollment->enrollment_status = "temporarily enrolled";
         $enrollment->save();

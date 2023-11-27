@@ -267,3 +267,209 @@
 
     });
 </script>
+
+<!-------------------------------------------Faculty Portal--------------------------------------->
+<!--Disregard this ---Grading-->
+<script>
+    $(document).ready(function(){
+        //show hps in row
+        $('.editHPS').on('click', function(e){ //get class
+            e.preventDefault();
+
+        // Clear previous error messages and remove red borders
+        $('.error-message').remove();
+        $('.form-input').removeClass('border-red-500');
+
+        let edit_id = $('#edit_id').val();
+        let edit_ww1 = $('#edit_ww1').val();
+        let edit_ww2 = $('#edit_ww2').val();
+        let edit_ww3 = $('#edit_ww3').val();
+        let edit_ww4 = $('#edit_ww4').val();
+        let edit_ww5 = $('#edit_ww5').val();
+        let edit_ww6 = $('#edit_ww6').val();
+        let edit_ww7 = $('#edit_ww7').val();
+        let edit_ww8 = $('#edit_ww8').val();
+        let edit_ww9 = $('#edit_ww9').val();
+        let edit_ww10 = $('#edit_ww10').val();
+        let edit_hps_ww_total = $('#edit_hps_ww_total').val();
+        let edit_hps_ww_ps = $('#edit_hps_ww_ps').val();
+        let edit_ww_weighted_score = $('#edit_ww_weighted_score').val();
+        let edit_pt1 = $('#edit_pt1').val();
+        let edit_pt2 = $('#edit_pt2').val();
+        let edit_pt3 = $('#edit_pt3').val();
+        let edit_pt4 = $('#edit_pt4').val();
+        let edit_pt5 = $('#edit_pt5').val();
+        let edit_pt6 = $('#edit_pt6').val();
+        let edit_pt7 = $('#edit_pt7').val();
+        let edit_pt8 = $('#edit_pt8').val();
+        let edit_pt9 = $('#edit_pt9').val();
+        let edit_pt10 = $('#edit_pt10').val();
+        let edit_hps_pt_total = $('#edit_hps_pt_total').val();
+        let edit_hps_pt_ps = $('#edit_hps_pt_ps').val();
+        let edit_pp_weighted_score = $('#edit_pp_weighted_score').val();
+        let edit_qa10 = $('#edit_qa10').val();
+        let edit_hps_qa_ps = $('#edit_hps_qa_ps').val();
+        let edit_qa_weighted_score = $('#edit_qa_weighted_score').val();
+        let edit_initial_grade = $('#edit_initial_grade').val();
+        let edit_quarterly_grade = $('#edit_quarterly_grade').val();
+        let edit_quarter = $('#edit_quarter').val();
+
+
+        $.ajax({
+            url: "/faculty.grades.edit",
+            method: "POST",
+            data: {
+                edit_id: edit_id,
+                edit_ww1: edit_ww1,
+                edit_ww2: edit_ww2,
+                edit_ww3: edit_ww3,
+                edit_ww4: edit_ww4,
+                edit_ww5: edit_ww5,
+                edit_ww6: edit_ww6,
+                edit_ww7: edit_ww7,
+                edit_ww8: edit_ww8,
+                edit_ww9: edit_ww9,
+                edit_ww10: edit_ww10,
+                edit_hps_ww_total: edit_hps_ww_total,
+                edit_hps_ww_ps: edit_hps_ww_ps,
+                edit_ww_weighted_score: edit_ww_weighted_score,
+                edit_pt1: edit_pt1,
+                edit_pt2: edit_pt2,
+                edit_pt3: edit_pt3,
+                edit_pt4: edit_pt4,
+                edit_pt5: edit_pt5,
+                edit_pt6: edit_pt6,
+                edit_pt7: edit_pt7,
+                edit_pt8: edit_pt8,
+                edit_pt9: edit_pt9,
+                edit_pt10: edit_pt10,
+                edit_hps_pt_total: edit_hps_pt_total,
+                edit_hps_pt_ps: edit_hps_pt_ps,
+                edit_pp_weighted_score: edit_pp_weighted_score,
+                edit_qa10: edit_qa10,
+                edit_hps_qa_ps: edit_hps_qa_ps,
+                edit_qa_weighted_score: edit_qa_weighted_score,
+                edit_initial_grade: edit_initial_grade,
+                edit_quarterly_grade: edit_quarterly_grade,
+                edit_quarter: edit_quarter,
+
+            },
+            success: function(result) {
+                // Handle the success response here
+                if (result.status == 'success') {
+                // Close the Tailwind CSS modal
+                    //document.getElementById('createTeacherUserModal').classList.remove('visible');
+                    //document.getElementById('createTeacherUserModal').classList.add('invisible');
+                   // document.getElementById('edit_hps').reset();
+                    $('#tableBody').load(location.href + ' #tableBody');
+                }
+            },
+            error: function(result) {
+                let error = result.responseJSON;
+                $.each(error.errors, function(key, value) {
+                    $('#' + key).addClass('border-red-500');
+                    $('#' + key).after('<p class="text-red-500 text-xs italic error-message">' + value + '</p>');
+                });
+            }
+        });  
+
+
+
+
+
+       $('#edit_id').val(id);
+        $('#ww1').val(ww1);
+        $('#ww2').val(ww2);
+        $('#ww3').val(ww3);
+        $('#ww4').val(ww4);
+        $('#ww5').val(ww5);
+        $('#ww6').val(ww6);
+        $('#ww7').val(ww7);
+        $('#ww8').val(ww8);
+        $('#ww9').val(ww9);
+        $('#ww10').val(ww10);
+        $('#hpsWwTotal').val(hpsWwTotal);
+        $('#hpsWwPs').val(hpsWwPs);
+        $('#wwWeightedScore').val(wwWeightedScore);
+        $('#pt1').val(pt1);
+        $('#pt2').val(pt2);
+        $('#pt3').val(pt3);
+        $('#pt4').val(pt4);
+        $('#pt5').val(pt5);
+        $('#pt6').val(pt6);
+        $('#pt7').val(pt7);
+        $('#pt8').val(pt8);
+        $('#pt9').val(pt9);
+        $('#pt10').val(pt10);
+        $('#hpsPtTotal').val(hpsPtTotal);
+        $('#hpsPtPs').val(hpsPtPs);
+        $('#ppWeightedScore').val(ppWeightedScore);
+        $('#qa10').val(qa10);
+        $('#hpsQaPs').val(hpsQaPs);
+        $('#qaWeightedScore').val(qaWeightedScore);
+        $('#initialGrade').val(initialGrade);
+        $('#quarterlyGrade').val(quarterlyGrade);
+        $('#quarter').val(quarter);       
+
+        });
+    });
+</script>
+
+
+<!--Subject Class Dropdown-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const gradeBtn = document.getElementById('gradeBtn');
+        const quarterBtn = document.getElementById('quarterBtn');
+        const gradeDropdownOptions = document.querySelectorAll('#grade-dropdown a');
+        const quarterDropdownOptions = document.querySelectorAll('#quarter-dropdown a');
+
+        gradeDropdownOptions.forEach(function (option) {
+            option.addEventListener('click', function (event) {
+                event.preventDefault();
+                gradeBtn.innerText = this.innerText.trim();
+            });
+        });
+
+        quarterDropdownOptions.forEach(function (option) {
+            option.addEventListener('click', function (event) {
+                event.preventDefault();
+                quarterBtn.innerText = this.innerText.trim();
+            });
+        });
+    });
+</script>
+
+<script>
+    function changeQuarter(quarter) {
+        // Add logic to fetch and update data based on the selected quarter
+        // You may use AJAX to fetch data from the server
+
+        // For demonstration purposes, let's assume you have the data for each quarter available in JavaScript objects
+        var quarterData = {
+            '1st Quarter': { /* Data for 1st Quarter */ },
+            '2nd Quarter': { /* Data for 2nd Quarter */ },
+            '3rd Quarter': { /* Data for 3rd Quarter */ },
+            '4th Quarter': { /* Data for 4th Quarter */ },
+            'Quarterly Summary': { /* Data for Quarterly Summary */ },
+        };
+
+        // Replace 'tableBody' with the actual ID or class of your table body
+        var tableBody = document.getElementById('tableBody');
+
+        // Clear existing rows from the table
+        tableBody.innerHTML = '';
+
+        // Add new rows based on the selected quarter
+        var selectedQuarterData = quarterData[quarter];
+        if (selectedQuarterData) {
+            var newRow = '<tr class="text-center font-medium">';
+            // Add cells for each field, similar to your existing code
+            // Use selectedQuarterData to populate the values
+            // ...
+
+            newRow += '</tr>';
+            tableBody.innerHTML = newRow;
+        }
+    }
+</script>

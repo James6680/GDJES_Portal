@@ -1,16 +1,50 @@
-
 @php
+    $equivalent= ['Kinder', 'Grade 1', 'Grade 2', 'Grade 3','Grade 4','Grade 5','Grade 6'];
     $user = null;
-
+    $username = null;
     if (Auth::guard('admin')->check()) {
         $user = 'Admin';
+        $username = Auth::guard('admin')->user()->first_name;
     } elseif (Auth::guard('teachers')->check()) {
         $user = 'Faculty';
+        $section = DB::table('teachers')
+                    ->join('sections', 'sections.adviser_id', '=', 'teachers.id')
+                    ->join('school_years', 'school_years.id', '=', 'sections.school_year_id')
+                    ->where('school_years.active', 1)
+                    ->where('teachers.id', Auth::guard('teachers')->user()->id)
+                    ->select('sections.section_name', 'sections.grade_level_id')
+                    ->get();
+        if($section->isNotEmpty()){
+          $gradeLevelConverted = $equivalent[$section[0]->grade_level_id-1];
+        }
+        $schoolYear = DB::table('school_years')->where('active', 1)->pluck('school_year');
+        $username = Auth::guard('teachers')->user()->first_name;
     } elseif (Auth::guard('students')->check()) {
         $user = 'Student';
+        $username = Auth::guard('students')->user()->first_name;
+        $teacher = DB::table('enrollment')
+                    ->where('student_id', Auth::guard('students')->user()->id)
+                    ->join('school_years', 'enrollment.school_year_id', '=', 'school_years.id')
+                    ->where('school_years.active', 1)
+                    ->join('sections', 'sections.id','=','enrollment.section_id')
+                    ->join('teachers', 'teachers.id', '=','sections.adviser_id')
+                    ->select('teachers.last_name','teachers.first_name','teachers.middle_name', 'teachers.extension_name')
+                    ->get();
+        $gradeLevel = DB::table('enrollment')
+                      ->where('student_id', Auth::guard('students')->user()->id)            
+                      ->join('school_years', 'enrollment.school_year_id', '=', 'school_years.id')
+                      ->where('school_years.active', 1)
+                      ->pluck('enrollment.grade_level_id');
+        $gradeLevelConverted = $equivalent[$gradeLevel[0]-1];
+        // $section = DB::table('enrollment')
+        $section = DB::table('enrollment')
+                      ->where('student_id', Auth::guard('students')->user()->id)            
+                      ->join('school_years', 'enrollment.school_year_id', '=', 'school_years.id')
+                      ->join('sections', 'sections.id','=','enrollment.section_id')
+                      ->where('school_years.active', 1)
+                      ->pluck('sections.section_name');
     }
 @endphp
-
 
 <nav class="fixed top-0 z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
   <div class="px-3 py-3 lg:px-5 lg:pl-3 w-full">
@@ -22,7 +56,7 @@
             Mabuhay!
           </p>
           <h2 class="font-frl lg:text-lg text-md font-bold leading-none ">
-            Hello, {{ $user }} Alex.
+            Hello{{", " . $user }} {{$username . "."}}
           </h2>
         </div>  
 
@@ -44,10 +78,14 @@
         @if($user == 'Student')
         <div class="hidden sm:flex flex-col justify-center p-0 items-start pt-2 xl:pl-36  gap-0 text-black">
           <p class="font-frl lg:text-lg text-md font-bold leading-none">
-            Grade # - Section
+            {{$gradeLevelConverted}} @if($section->isNotEmpty()) {{" - " . $section[0]}} @endif
           </p>
-          <h2 class="self-stretch font-mulish text-sm font-normal leading-none"> 
-            Class Adviser: Fullname
+          <h2 class="self-stretch font-mulish text-sm font-normal leading-none">
+            @if ($teacher->isNotEmpty())
+            Class Adviser: {{$teacher[0]->last_name . ","}} {{$teacher[0]->first_name}} {{$teacher[0]->middle_name}} {{$teacher[0]->extension_name}}                
+            @else
+            Class Adviser: 
+            @endif
           </h2>
         </div>
         @endif
@@ -56,10 +94,10 @@
         @if($user == 'Faculty')
         <div class="hidden sm:flex flex-col justify-center p-0 items-start pt-2 xl:pl-36  gap-0 text-black">
           <p class="self-stretch font-mulish text-sm font-normal leading-none">
-            Advisory class for S.Y XXXX-XXXX
+            Advisory class for @if($schoolYear->isNotEmpty()) {{$schoolYear[0]}} @endif 
           </p>
           <h2 class="font-frl lg:text-lg text-md font-bold leading-none"> 
-            Grade # - Section
+            @if($section->isNotEmpty()) {{$gradeLevelConverted}} {{$section[0]->section_name}} @else No advisory class @endif
           </h2>
         </div>
         @endif
@@ -86,11 +124,11 @@
                 <p class="text-sm text-gray-900 dark:text-white" role="none">
                   <!--Alex Reyes-->
                   @if(Auth::guard('admin')->check())
-                    {{ Auth::guard('admin')->user()->username }}
+                    {{ Auth::guard('admin')->user()->username}}
                   @elseif(Auth::guard('teachers')->check())
-                    {{ Auth::guard('teachers')->user()->username }}
+                    {{ Auth::guard('teachers')->user()->email }}
                   @elseif(Auth::guard('students')->check())
-                  {{ Auth::guard('students')->user()->username }}
+                  {{ Auth::guard('students')->user()->email }}
                   @else
                     <!-- Handle the case where there's no authenticated user. -->
                   @endif                </p>

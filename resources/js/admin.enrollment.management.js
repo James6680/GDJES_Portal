@@ -318,7 +318,7 @@ addSectionFormSubmit.addEventListener("click", function(event){
     success: function (response) {
         $("#input-sectionName-error").css("display", "block");
         $("#input-sectionName-error").css("color", "green");
-        $("#input-sectionName-error").text("School Year Created Successfully");
+        $("#input-sectionName-error").text("Section Created Successfully");
         $("#input-sectionSlots-error").css("display", "none");
         $("#input-gradeLevel-error").css("display", "none");
         getSections().then(async () => {
@@ -350,7 +350,7 @@ editSectionFormSubmit.addEventListener("click", function(event){
     success: function (response) {
         $("#edit-sectionName-error").css("display", "block");
         $("#edit-sectionName-error").css("color", "green");
-        $("#edit-sectionName-error").text("School Year Updated Successfully");
+        $("#edit-sectionName-error").text("Section Updated Successfully");
         $("#edit-sectionSlots-error").css("display", "none");
         $("#edit-gradeLevel-error").css("display", "none");
         getSections().then(async () => {
