@@ -1063,7 +1063,7 @@
                             -->
                             {{-- {{dd($highestPossibleScore)}} --}}
                             <!--Highest Possible Score-->
-                            <form action="/faculty.grades.edit" 
+                            <form action="faculty.grades.edit" 
                                     method="POST" 
                                     id="edit_hps">
                                 @csrf                    
@@ -1075,9 +1075,9 @@
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>
                             
                                         @php $fields = ['ww1', 'ww2', 'ww3', 'ww4', 'ww5', 'ww6', 'ww7', 'ww8', 'ww9', 'ww10',
-                                                         'ww_total', 'ww_percent', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
-                                                         'pt4', 'pt5', 'pt6', 'pt7', 'pt8', 'pt9', 'pt10', 'pt_total', 
-                                                         'pt_percent', 'pt_weighted_score', 'qa', 'pt_percent', 'pt_weighted_score', 
+                                                         'hps_ww_total', 'ww_ps', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
+                                                         'pt4', 'pt5', 'pt6', 'pt7', 'pt8', 'pt9', 'pt10', 'hps_pt_total', 
+                                                         'pt_ps', 'pt_weighted_score', 'qa', 'pt_ps', 'pt_weighted_score', 
                                                          'initial_grade', 'quarterly_grade'
                                                         ]; 
                                         @endphp
@@ -1093,11 +1093,11 @@
                                         @endforeach
                             
                                         <td class="border-2 border-yellow-100 px-2">
-                                            <button type="button" 
+                                            <button type="submit" 
                                                     class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1 
                                                             editHPS" 
                                                     id="editButton1">
-                                                Edit
+                                                Save
                                             </button>
                                         </td>
                                     </tr>
@@ -1298,7 +1298,76 @@
                                
                                 </thead>
 
+                                <!--Table-->
                                 <tbody>
+                                    <form action="faculty.grades.edit_student_grading_sheet" 
+                                            method="POST" 
+                                            id="edit_gradingSheet">
+                                            @csrf 
+                                    @if ($gradingSheets && count($gradingSheets) > 0)
+                                    @foreach ($gradingSheets as $gradingSheet) {
+                                        @php $student = $gradingSheet->student; @endphp
+                                        @php
+                                            $quarterValue = $quarterValue ?? null;
+                                            $class_idValue = $class_idValue ?? null;
+                                        @endphp
+                                        
+                                        <input type="hidden" name="id" value="{{ $hps->id }}">
+                                        
+                                        <tr class="text-center bg-white">
+                                            <td class="border-2 border-yellow-100 px-2.5 py-2">{{ $loop->iteration }}</td>
+                                            <td class="border-2 border-yellow-100 px-2">
+                                                @php
+                                                    $formattedName = $student->last_name;
+                                
+                                                    if ($student->name_extension !== 'none' && $student->name_extension !== null) {
+                                                        $formattedName .= ' ' . $student->name_extension;
+                                                    }
+                                
+                                                    $formattedName .= ', ' . $student->first_name;
+                                
+                                                    if ($student->middle_name !== null) {
+                                                        $formattedName .= ' ' . $student->middle_name;
+                                                    }
+                                                @endphp
+                                
+                                                {{ $formattedName }}
+                                            </td>
+                                
+                                            @php
+                                                $fields = ['ww1', 'ww2', 'ww3', 'ww4', 'ww5', 'ww6', 'ww7', 'ww8', 'ww9', 'ww10',
+                                                           'ww_total', 'ww_ps', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
+                                                           'pt4', 'pt5', 'pt6', 'pt7', 'pt8', 'pt9', 'pt10', 'pt_total', 
+                                                           'pt_ps', 'pt_weighted_score', 'qa', 'pt_ps', 'pt_weighted_score', 
+                                                           'initial_grade', 'quarterly_grade'
+                                                        ];
+                                            @endphp
+                                
+                                            @foreach($fields as $field)
+                                                <td class="border-2 border-yellow-100 px-2">
+                                                    <input type="text" 
+                                                           name="{{ $field }}" 
+                                                           class="p-0 border-none bg-transparent text-center"
+                                                           value="{{ $student->$field }}">
+                                                </td>
+                                            @endforeach
+                                
+                                            <td class="border-2 border-yellow-100 px-2">
+                                                <button type="submit" 
+                                                        class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1 editButton
+                                                                editGradingSheet"
+                                                        id="editGradingSheet">
+                                                    Save
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @endif
+                                </tbody>
+                                
+                                
+                                <!--Juan Dela Cruz body-->
+                                <!--<tbody>
                                     @if($gradingSheets != null)
                                     @foreach ($gradingSheets as $gs)
                                     <tr class="text-center bg-white" id="q1row1">
@@ -1377,6 +1446,7 @@
                                     </tr>
                                     @endif
                                 </tbody>
+                            -->
                             </table>
                             
                             <!-- Faculty grading shet for students table for QUARTER 2 -->

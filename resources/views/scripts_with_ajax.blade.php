@@ -280,43 +280,46 @@
         $('.error-message').remove();
         $('.form-input').removeClass('border-red-500');
 
-        let edit_id = $('#edit_id').val();
-        let edit_ww1 = $('#edit_ww1').val();
-        let edit_ww2 = $('#edit_ww2').val();
-        let edit_ww3 = $('#edit_ww3').val();
-        let edit_ww4 = $('#edit_ww4').val();
-        let edit_ww5 = $('#edit_ww5').val();
-        let edit_ww6 = $('#edit_ww6').val();
-        let edit_ww7 = $('#edit_ww7').val();
-        let edit_ww8 = $('#edit_ww8').val();
-        let edit_ww9 = $('#edit_ww9').val();
-        let edit_ww10 = $('#edit_ww10').val();
-        let edit_hps_ww_total = $('#edit_hps_ww_total').val();
-        let edit_hps_ww_ps = $('#edit_hps_ww_ps').val();
-        let edit_ww_weighted_score = $('#edit_ww_weighted_score').val();
-        let edit_pt1 = $('#edit_pt1').val();
-        let edit_pt2 = $('#edit_pt2').val();
-        let edit_pt3 = $('#edit_pt3').val();
-        let edit_pt4 = $('#edit_pt4').val();
-        let edit_pt5 = $('#edit_pt5').val();
-        let edit_pt6 = $('#edit_pt6').val();
-        let edit_pt7 = $('#edit_pt7').val();
-        let edit_pt8 = $('#edit_pt8').val();
-        let edit_pt9 = $('#edit_pt9').val();
-        let edit_pt10 = $('#edit_pt10').val();
-        let edit_hps_pt_total = $('#edit_hps_pt_total').val();
-        let edit_hps_pt_ps = $('#edit_hps_pt_ps').val();
-        let edit_pp_weighted_score = $('#edit_pp_weighted_score').val();
-        let edit_qa10 = $('#edit_qa10').val();
-        let edit_hps_qa_ps = $('#edit_hps_qa_ps').val();
-        let edit_qa_weighted_score = $('#edit_qa_weighted_score').val();
-        let edit_initial_grade = $('#edit_initial_grade').val();
-        let edit_quarterly_grade = $('#edit_quarterly_grade').val();
-        let edit_quarter = $('#edit_quarter').val();
+        
+        let edit_id = $('[name="edit_id"]').val();
+
+        //id will not work, name will
+        let edit_ww1 = $('[name="edit_ww1"]').val();
+        let edit_ww2 = $('[name="edit_ww2"]').val();
+        let edit_ww3 = $('[name="edit_ww3"]').val();
+        let edit_ww4 = $('[name="edit_ww4"]').val();
+        let edit_ww5 = $('[name="edit_ww5"]').val();
+        let edit_ww6 = $('[name="edit_ww6"]').val();
+        let edit_ww7 = $('[name="edit_ww7"]').val();
+        let edit_ww8 = $('[name="edit_ww8"]').val();
+        let edit_ww9 = $('[name="edit_ww9"]').val();
+        let edit_ww10 = $('[name="edit_ww10"]').val();
+        let edit_hps_ww_total = $('[name="edit_hps_ww_total"]').val();
+        let edit_hps_ww_ps = $('[name="edit_hps_ww_ps"]').val();
+        let edit_ww_weighted_score = $('[name="edit_ww_weighted_score"]').val();
+        let edit_pt1 = $('[name="edit_pt1"]').val();
+        let edit_pt2 = $('[name="edit_pt2"]').val();
+        let edit_pt3 = $('[name="edit_pt3"]').val();
+        let edit_pt4 = $('[name="edit_pt4"]').val();
+        let edit_pt5 = $('[name="edit_pt5"]').val();
+        let edit_pt6 = $('[name="edit_pt6"]').val();
+        let edit_pt7 = $('[name="edit_pt7"]').val();
+        let edit_pt8 = $('[name="edit_pt8"]').val();
+        let edit_pt9 = $('[name="edit_pt9"]').val();
+        let edit_pt10 = $('[name="edit_pt10"]').val();
+        let edit_hps_pt_total = $('[name="edit_hps_pt_total"]').val();
+        let edit_hps_pt_ps = $('[name="edit_hps_pt_ps"]').val();
+        let edit_pp_weighted_score = $('[name="edit_pp_weighted_score"]').val();
+        let edit_qa10 = $('[name="edit_qa10"]').val();
+        let edit_hps_qa_ps = $('[name="edit_hps_qa_ps"]').val();
+        let edit_qa_weighted_score = $('[name="edit_qa_weighted_score"]').val();
+        let edit_initial_grade = $('[name="edit_initial_grade"]').val();
+        let edit_quarterly_grade = $('[name="edit_quarterly_grade"]').val();
+        let edit_quarter = $('[name="edit_quarter"]').val();
 
 
         $.ajax({
-            url: "/faculty.grades.edit",
+            url: "faculty.grades.edit/" + edit_id,
             method: "POST",
             data: {
                 edit_id: edit_id,
@@ -374,43 +377,41 @@
         });  
 
 
-
-
-
+/*
        $('#edit_id').val(id);
-        $('#ww1').val(ww1);
-        $('#ww2').val(ww2);
-        $('#ww3').val(ww3);
-        $('#ww4').val(ww4);
-        $('#ww5').val(ww5);
-        $('#ww6').val(ww6);
-        $('#ww7').val(ww7);
-        $('#ww8').val(ww8);
-        $('#ww9').val(ww9);
-        $('#ww10').val(ww10);
-        $('#hpsWwTotal').val(hpsWwTotal);
-        $('#hpsWwPs').val(hpsWwPs);
-        $('#wwWeightedScore').val(wwWeightedScore);
-        $('#pt1').val(pt1);
-        $('#pt2').val(pt2);
-        $('#pt3').val(pt3);
-        $('#pt4').val(pt4);
-        $('#pt5').val(pt5);
-        $('#pt6').val(pt6);
-        $('#pt7').val(pt7);
-        $('#pt8').val(pt8);
-        $('#pt9').val(pt9);
-        $('#pt10').val(pt10);
-        $('#hpsPtTotal').val(hpsPtTotal);
-        $('#hpsPtPs').val(hpsPtPs);
-        $('#ppWeightedScore').val(ppWeightedScore);
-        $('#qa10').val(qa10);
-        $('#hpsQaPs').val(hpsQaPs);
-        $('#qaWeightedScore').val(qaWeightedScore);
-        $('#initialGrade').val(initialGrade);
-        $('#quarterlyGrade').val(quarterlyGrade);
-        $('#quarter').val(quarter);       
-
+        $('#edit_ww1').val(ww1);
+        $('#edit_ww2').val(ww2);
+        $('#edit_ww3').val(ww3);
+        $('#edit_ww4').val(ww4);
+        $('#edit_ww5').val(ww5);
+        $('#edit_ww6').val(ww6);
+        $('#edit_ww7').val(ww7);
+        $('#edit_ww8').val(ww8);
+        $('#edit_ww9').val(ww9);
+        $('#edit_ww10').val(ww10);
+        $('#edit_hpsWwTotal').val(hpsWwTotal);
+        $('#edit_hpsWwPs').val(hpsWwPs);
+        $('#edit_wwWeightedScore').val(wwWeightedScore);
+        $('#edit_pt1').val(pt1);
+        $('#edit_pt2').val(pt2);
+        $('#edit_pt3').val(pt3);
+        $('#edit_pt4').val(pt4);
+        $('#edit_pt5').val(pt5);
+        $('#edit_pt6').val(pt6);
+        $('#edit_pt7').val(pt7);
+        $('#edit_pt8').val(pt8);
+        $('#edit_pt9').val(pt9);
+        $('#edit_pt10').val(pt10);
+        $('#edit_hpsPtTotal').val(hpsPtTotal);
+        $('#edit_hpsPtPs').val(hpsPtPs);
+        $('#edit_ppWeightedScore').val(ppWeightedScore);
+        $('#edit_qa10').val(qa10);
+        $('#edit_hpsQaPs').val(hpsQaPs);
+        $('#edit_qaWeightedScore').val(qaWeightedScore);
+        $('#edit_initialGrade').val(initialGrade);
+        $('#edit_quarterlyGrade').val(quarterlyGrade);
+        $('#edit_quarter').val(quarter);       
+*/
         });
     });
 </script>
@@ -439,7 +440,7 @@
         });
     });
 </script>
-
+<!--
 <script>
     function changeQuarter(quarter) {
         // Add logic to fetch and update data based on the selected quarter
@@ -472,4 +473,117 @@
             tableBody.innerHTML = newRow;
         }
     }
+</script-->
+
+
+
+<script>
+    $(document).ready(function(){
+        //show hps in row
+        $('.editGradingSheet').on('click', function(e){ //get class
+            e.preventDefault();
+
+        // Clear previous error messages and remove red borders
+        $('.error-message').remove();
+        $('.form-input').removeClass('border-red-500');
+
+        
+        let id = $('[name="id"]').val();
+
+        //id will not work, name will
+        let ww1 = $('[name="ww1"]').val();
+        let ww2 = $('[name="ww2"]').val();
+        let ww3 = $('[name="ww3"]').val();
+        let ww4 = $('[name="ww4"]').val();
+        let ww5 = $('[name="ww5"]').val();
+        let ww6 = $('[name="ww6"]').val();
+        let ww7 = $('[name="ww7"]').val();
+        let ww8 = $('[name="ww8"]').val();
+        let ww9 = $('[name="ww9"]').val();
+        let ww10 = $('[name="ww10"]').val();
+        let ww_total = $('[name="ww_total"]').val();
+        let ww_ps = $('[name="ww_ps"]').val();
+        let ww_weighted_score = $('[name="ww_weighted_score"]').val();
+        let pt1 = $('[name="pt1"]').val();
+        let pt2 = $('[name="pt2"]').val();
+        let pt3 = $('[name="pt3"]').val();
+        let pt4 = $('[name="pt4"]').val();
+        let pt5 = $('[name="pt5"]').val();
+        let pt6 = $('[name="pt6"]').val();
+        let pt7 = $('[name="pt7"]').val();
+        let pt8 = $('[name="pt8"]').val();
+        let pt9 = $('[name="pt9"]').val();
+        let pt10 = $('[name="pt10"]').val();
+        let pt_total = $('[name="pt_total"]').val();
+        let pt_ps = $('[name="pt_ps"]').val();
+        let pp_weighted_score = $('[name="pp_weighted_score"]').val();
+        let qa10 = $('[name="qa10"]').val();
+        let qa_ps = $('[name="qa_ps"]').val();
+        let qa_weighted_score = $('[name="qa_weighted_score"]').val();
+        let initial_grade = $('[name="initial_grade"]').val();
+        let quarterly_grade = $('[name="quarterly_grade"]').val();
+        let quarter = $('[name="quarter"]').val();
+
+
+        $.ajax({
+            url: "faculty.grades.edit_student_grading_sheet/" + id,
+            method: "POST",
+            data: {
+                id: id,
+                ww1: ww1,
+                ww2: ww2,
+                ww3: ww3,
+                ww4: ww4,
+                ww5: ww5,
+                ww6: ww6,
+                ww7: ww7,
+                ww8: ww8,
+                ww9: ww9,
+                ww10: ww10,
+                ww_total: ww_total,
+                ww_ps: ww_ps,
+                ww_weighted_score: ww_weighted_score,
+                pt1: pt1,
+                pt2: pt2,
+                pt3: pt3,
+                pt4: pt4,
+                pt5: pt5,
+                pt6: pt6,
+                pt7: pt7,
+                pt8: pt8,
+                pt9: pt9,
+                pt10: pt10,
+                pt_total: pt_total,
+                pt_ps: pt_ps,
+                pp_weighted_score: pp_weighted_score,
+                qa10: qa10,
+                qa_ps: qa_ps,
+                qa_weighted_score: qa_weighted_score,
+                initial_grade: initial_grade,
+                quarterly_grade: quarterly_grade,
+                quarter: quarter,
+                
+
+            },
+            success: function(result) {
+                // Handle the success response here
+                if (result.status == 'success') {
+                // Close the Tailwind CSS modal
+                    //document.getElementById('createTeacherUserModal').classList.remove('visible');
+                    //document.getElementById('createTeacherUserModal').classList.add('invisible');
+                   // document.getElementById('edit_hps').reset();
+                    $('#tableBody').load(location.href + ' #tableBody');
+                }
+            },
+            error: function(result) {
+                let error = result.responseJSON;
+                $.each(error.errors, function(key, value) {
+                    $('#' + key).addClass('border-red-500');
+                    $('#' + key).after('<p class="text-red-500 text-xs italic error-message">' + value + '</p>');
+                });
+            }
+        });  
+
+        });
+    });
 </script>
