@@ -3,13 +3,14 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Contracts\View\View;
-use Illuminate\View\Component;
-use App\Http\Controllers\HighestPossibleScoreController;
-use App\Models\HighestPossibleScore;
 use App\Models\Classes;
 use App\Models\GradingSheet;
+use Illuminate\View\Component;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\View\View;
+use App\Models\HighestPossibleScore;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HighestPossibleScoreController;
 
 
 class FacultyContentSection extends Component
@@ -43,6 +44,9 @@ class FacultyContentSection extends Component
         ->join('grade_levels', 'classes.grade_level_id', '=', 'grade_levels.id')
         ->join('subjects', 'classes.subject_id', '=', 'subjects.id')
         ->join('sections', 'classes.section_id', '=', 'sections.id')
+        ->join('school_years', 'school_years.id', '=', 'classes.school_year_id')
+        ->where('school_years.active', 1)
+        ->where('classes.teacher_id', '=', Auth::guard('teachers')->user()->id) 
         ->distinct()
         ->get();
         // Transform the $classCombinations for dropdown options

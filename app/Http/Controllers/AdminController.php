@@ -39,19 +39,11 @@ class AdminController extends Controller
     }//end view method
     public function CreateTeacher(Request $request){
         $request->validate([
-            'last_name' => [
-                'required',
-                Rule::exists('teachers')->where(function ($query) use ($request) {
-                    return $query->where('first_name', $request->first_name)
-                                 ->where('middle_name', $request->middle_name)
-                                 ->where('extension_name', $request->extension_name);
-                }),
-            ],
+            'last_name' => 'required',
             'first_name' => 'required',
             'middle_name' => 'required',
             'extension_name'=> 'required',
             'email'=> 'required',
-            'profile_picture'=> 'required',
             'birth_date'=> 'required',
             'age'=> 'required',
             'gender'=> 'required',
@@ -70,7 +62,6 @@ class AdminController extends Controller
             'middle_name.required' => 'Middle Name is Required.',
             'extension_name.required' => 'Extension Name is Required.',
             'email.required' => 'Email is Required.',
-            'profile_picture.required' => 'Profile picture is Required.',
             'birth_date.required' => 'Birthday is Required.',
             'age.required' => 'Age is Required.',
             'gender.required' => 'Gender is Required.',
@@ -82,11 +73,10 @@ class AdminController extends Controller
             'province.required' => 'Province is Required.',
             'region.required' => 'Region is Required.',
             'facebook_link.required' => 'Facebook link is Required.',
-            
-
         ]
     );
         $teacher = Teacher::create($request->all());
+        $teacher->profile_picture = 'none';
         //return redirect()->route('')->with('success','');
         return response()->json([
             'status' => 'success',
@@ -100,7 +90,6 @@ class AdminController extends Controller
             'edit_middle_name' => 'required',
             'edit_extension_name'=> 'required',
             'edit_email'=> 'required',
-            'edit_profile_picture'=> 'required',
             'edit_birth_date'=> 'required',
             'edit_age'=> 'required',
             'edit_gender'=> 'required',
@@ -118,7 +107,6 @@ class AdminController extends Controller
             'edit_middle_name.required' => 'Middle Name is Required.',
             'edit_extension_name.required' => 'Extension Name is Required.',
             'edit_email.required' => 'Email is Required.',
-            'edit_profile_picture.required' => 'Profile picture is Required.',
             'edit_birth_date.required' => 'Birthday is Required.',
             'edit_age.required' => 'Age is Required.',
             'edit_gender.required' => 'Gender is Required.',
@@ -138,8 +126,8 @@ class AdminController extends Controller
         'middle_name' => $request->edit_middle_name,
        'extension_name' => $request->edit_extension_name,
        'email' => $request->edit_email,
-        'profile_picture' => $request->edit_profile_picture,
-        'birth_date' => $request->edit_birth_date,
+        'profile_picture' => "none",
+        'birth_date' => $request->edit_birth_date,  
         'age' => $request->edit_age,
         'gender' => $request->edit_gender,
         'phone_number' => $request->edit_phone_number,
