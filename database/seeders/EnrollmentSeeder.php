@@ -13,13 +13,14 @@ class EnrollmentSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 1; $i <= 200; $i++){
+        $enrollmentStatus = ['temporarily enrolled', 'completed', 'dropped'];
+        for($i = 1; $i <= 150; $i++){
             DB::table('enrollment')
             ->insert(['student_id' => $i, 
             'grade_level_id' => mt_rand(1, 7), 
             'school_year_id' => 1, 
             'learning_info_id' => $i,
-            'enrollment_status' => 'temporarily enrolled',
+            'enrollment_status' => $enrollmentStatus[mt_rand(0, 2)],
         ]);
         }
         //
