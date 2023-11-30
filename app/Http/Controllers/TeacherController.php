@@ -54,17 +54,44 @@ class TeacherController extends Controller
         return redirect()->back();
     }
 
-    //added for grading
-    public function inputScores(GradingSheet $gradingSheet)
+    //gradingsheet
+   public function calculateGrades(Request $request, $id)
     {
+
+        // Retrieve the GradingSheet instance based on the provided $id
+        $gradingSheet = GradingSheet::where('id', $request->id)->first();
+
+
+        // Check if the GradingSheet with the given $id exists
+        if (!$gradingSheet) {
+            // Handle the case where no GradingSheet is found
+            return redirect()->back()->with('error', 'GradingSheet not found');
+        }
+
+        //$highestPossibleScores = HighestPossibleScore::find($gradingSheet->highest_possible_score_id);
+        $quarterValue = $request->input('quarter');
+        $class_idValue = $request->input('class_id');
+
+        $quarterValue = null;
+        $class_idValue = null;
+        $quarterValue =request('quarter');
+        $class_idValue = request('class_id');
+        
+        // Fetch all highest possible scores
+        $gradingSheets = null;
         $highestPossibleScores = HighestPossibleScore::all();
+        // Fetch highest possible scores based on the selected criteria
+        if($quarterValue != null && $class_idValue != null){
+            $highestPossibleScores = HighestPossibleScore::where('class_id', $class_idValue )
+            ->where('quarter', $quarterValue)
+            ->get();
 
-        return view('teacher.input_scores', compact('gradingSheet', 'highestPossibleScores'));
-    }
-
-    public function calculateGrades(GradingSheet $gradingSheet)
-    {
-        $highestPossibleScores = HighestPossibleScore::find($gradingSheet->highest_possible_score_id);
+            $gradingSheets = GradingSheet::where('class_id', $class_idValue )
+            ->where('quarter', $quarterValue)
+            ->get();
+        }else{
+            $highestPossibleScores = null;
+        }
 
         //calculating ww scores
         $wwScores = [$gradingSheet->ww1, $gradingSheet->ww2, 
@@ -102,7 +129,6 @@ class TeacherController extends Controller
         //calculate initial grade scores
         $initialGrade = $wwWeightedScore + $ppWeightedScore + $QaWs;
 
-
         
         $transmutationRow = TransmutationTable::where('low', '<=', $initialGrade)
                         ->where('high', '>=', $initialGrade)
@@ -117,22 +143,45 @@ class TeacherController extends Controller
 
                     // Update the grading sheet with the calculated grades
                     $gradingSheet->update([
+                        'ww1' => $request->input('ww1'),
+                        'ww2' => $request->input('ww2'),
+                        'ww3' => $request->input('ww3'),
+                        'ww4' => $request->input('ww4'),
+                        'ww5' => $request->input('ww5'),
+                        'ww6' => $request->input('ww6'),
+                        'ww7' => $request->input('ww7'),
+                        'ww8' => $request->input('ww8'),
+                        'ww9' => $request->input('ww9'),
+                        'ww10' => $request->input('ww10'),
                         'ww_total' => $WwTotal,
                         'ww_ps' => $WwPs,
                         'ww_weighted_score' => $wwWeightedScore,
+                        'pt1' => $request->input('pt1'),
+                        'pt2' => $request->input('pt2'),
+                        'pt3' => $request->input('pt3'),
+                        'pt4' => $request->input('pt4'),
+                        'pt5' => $request->input('pt5'),
+                        'pt6' => $request->input('pt6'),
+                        'pt7' => $request->input('pt7'),
+                        'pt8' => $request->input('pt8'),
+                        'pt9' => $request->input('pt9'),
+                        'pt10' => $request->input('pt10'),
                         'pt_total' => $PtTotal,
                         'pt_ps' => $PtPs,
                         'pp_weighted_score' => $ppWeightedScore,
+                        'qa10' => $request->input('qa10'),
                         'qa_ps' => $QaPs,
+                        'qa_weighted_score' => $request->qa_weighted_score,
                         'initial_grade' => $initialGrade,
                         'quarterly_grade' => $quarterlyGrade,
                     ]);
 
-                    return redirect()->route('grading_sheets.show', ['gradingSheet' => $gradingSheet])
+                    return redirect()->route('faculty.grades.edit_student_grading_sheet', ['gradingSheet' => $gradingSheet])
                         ->with('success', 'Grades calculated successfully');
 
     }
-    
+   
+  
 }
 
 

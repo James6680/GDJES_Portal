@@ -95,6 +95,23 @@ class FacultyContentSection extends Component
             $highestPossibleScore = null;
         }
 
+        // Fetch grading sheets based on the selected criteria
+        if ($quarterValue !== null && $class_idValue !== null) {
+            $gradingSheets = GradingSheet::where('class_id', $class_idValue)
+                ->where('quarter', $quarterValue)
+                ->with('student') 
+                ->get();
+        } else {
+            $gradingSheets = collect(); // Initialize an empty collection if criteria are not set
+        }
+
+        // Check if $gradingSheets is not empty before using sortBy
+        if (!$gradingSheets->isEmpty()) {
+            // sortBy student last name
+            $gradingSheets = $gradingSheets->sortBy(function ($gradingSheet) {
+                return $gradingSheet->student->last_name;
+            });
+        }
 
         $quarters = $quarters->map(function ($quarter) use ($quarterTextMapping) {
           $quarterText = $quarterTextMapping[$quarter] ?? $quarter;
