@@ -49,7 +49,7 @@ function validateForm(event) {
 
   if (loginUsernameInput.checkValidity() && loginPasswordInput.checkValidity()) {
     // If both email and password are valid, redirect the user to the desired link
-    window.location.href = "StudentPortalRegistrationPage1.html";
+    window.location.href = "/public/student-registration-1";
   }
 }
 
@@ -65,7 +65,7 @@ var createAccountBtn = document.getElementById("createAccount");
 
 createAccountBtn.addEventListener("click", function(event) {
   event.preventDefault(); 
-  var newURL = "StudentPortalRegistrationPage1.html";
+  var newURL = "/public/student-registration-1";
   
   window.location.href = newURL;
 

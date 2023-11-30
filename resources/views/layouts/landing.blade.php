@@ -79,7 +79,7 @@
   <!-- Hero section -->
 
   <section id="hero"
-    class="w-screen z-0 flex-col justify-center items-center gap-3 lg:gap-10 flex h-4/6 lg:h-full pt-40 px-18 pb-24 lg:pt-80 lg:py-60 bg-no-repeat bg-cover bg-center bg-[url(../assets/content-schoolgrounds.jpg)]">
+    class="w-screen z-0 flex-col justify-center items-center gap-3 lg:gap-10 flex h-4/6 lg:h-full pt-40 px-18 pb-24 lg:pt-80 lg:py-60" style=" background-image: url({{ asset('./assets/content-schoolgrounds.jpg')}}); background-size: cover; background-repeat: no-repeat;">
     <div class="h-auto p-2.5 justify-center items-center gap-2.5 inline-flex">
       <span
         class="w-auto text-center bg-gradient-to-tr from-brown-200 via-brown-50 to-yellow-100 bg-clip-text text-transparent font-frl text-xl md:text-2xl lg:text-4xl font-bold leading-10">Ang
@@ -118,7 +118,7 @@
 
   <!-- Mission and Vision section -->
   <section id="missionvision"
-    class="grid w-screen relative gap-6 h-auto p-8 md:p-16 lg:py-28 lg:px-60 lg:gap-12 bg-yellow-50 bg-no-repeat bg-cover bg-center  bg-[url(../assets/content-teacher.jpg)]">
+    class="grid w-screen relative gap-6 h-auto p-8 md:p-16 lg:py-28 lg:px-60 lg:gap-12 bg-yellow-50" style=" background-image: url({{ asset('./assets/content-teacher.jpg')}}); background-size: cover; background-repeat: no-repeat;"">
     <h2 class="w-auto flex justify-center font-frl text-xl lg:text-3xl text-black font-bold">
       Mission and Vision
     </h2>

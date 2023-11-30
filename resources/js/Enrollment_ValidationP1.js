@@ -44,7 +44,7 @@ function showNextSet() {
       
     event.preventDefault();
     // Set the new URL to navigate to
-    window.location.href = "/student-login"; // Replace with the desired URL
+    window.location.href = "/public/student-login"; // Replace with the desired URL
 
   });
 

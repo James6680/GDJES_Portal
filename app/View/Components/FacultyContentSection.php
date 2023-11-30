@@ -89,6 +89,8 @@ class FacultyContentSection extends Component
             ->get();
 
             $gradingSheets = GradingSheet::where('class_id', $class_idValue )
+            ->join('students', 'students.id', '=', 'grading_sheet.student_id')
+            ->select('grading_sheet.*', 'students.last_name', 'students.first_name', 'students.middle_name', 'students.extension_name')
             ->where('quarter', $quarterValue)
             ->get();
         }else{

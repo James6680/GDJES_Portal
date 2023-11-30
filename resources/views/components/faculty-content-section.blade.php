@@ -446,8 +446,8 @@
                                             </div>
                                         </td>
                                         <td class="px-4 py-3">
-                                            <button data-popover-target="popover-click" data-popover-placement="left" data-popover-trigger="click" type="button" class="text-blue-700 border  border-blue-700 hover:bg-blue-100 font-medium rounded text-sm px-4 py-1 text-center" id="statusButton1">
-                                                Null
+                                            <button data-popover-target="popover-click" data-popover-placement="left" data-popover-trigger="click" type="button" class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer" id="statusButton1">
+                                               Temporary
                                             </button>
 
                                             <div data-popover id="popover-click" role="tooltip" class="absolute z-10 invisible inline-block w-auto h-auto p-2 text-sm text-gray-500 transition-opacity duration-300 bg-white rounded-lg  opacity-0 font-mulish text-center font-medium popOver2">
@@ -455,7 +455,7 @@
                                                     <p onclick="changeStatus('Enrolled', 'statusButton1')">Enrolled</p>
                                                 </div>
                                                 <div class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer">
-                                                    <p onclick="changeStatus('Temporary', 'statusButton1')">Temporarily Enrolled</p>
+                                                    <p onclick="changeStatus('Temporary', 'statusButton1')">Temporary</p>
                                                 </div>
                                                 <div class="px-2 py-1.5 text-red-600  border border-red-600 rounded hover:bg-red-100 cursor-pointer">
                                                     <p onclick="changeStatus('Dropped', 'statusButton1')">Dropped</p>
@@ -523,8 +523,8 @@
                                             </div>
                                         </td>
                                         <td class="px-4 py-3">
-                                            <button data-popover-target="popover-click2" data-popover-placement="left" data-popover-trigger="click" type="button" class="text-blue-700 border border-blue-700 hover:bg-blue-100 font-medium rounded text-sm px-4 py-1 text-center btn2" id="statusButton2">
-                                                Null
+                                            <button data-popover-target="popover-click2" data-popover-placement="left" data-popover-trigger="click" type="button" class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer" id="statusButton2">
+                                                Temporary
                                             </button>
 
                                             <div data-popover id="popover-click2" role="tooltip" class="absolute z-10 invisible inline-block w-auto h-auto p-2 text-sm text-gray-500 transition-opacity duration-300 bg-white rounded-lg  opacity-0 font-mulish text-center font-medium data popOver2">
@@ -532,7 +532,7 @@
                                                     <p onclick="changeStatus('Enrolled', 'statusButton2')">Enrolled</p>
                                                 </div>
                                                 <div class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer">
-                                                    <p onclick="changeStatus('Temporary', 'statusButton2')">Temporarily Enrolled</p>
+                                                    <p onclick="changeStatus('Temporary', 'statusButton2')">Temporary</p>
                                                 </div>
                                                 <div class="px-2 py-1.5 text-red-600  border border-red-600 rounded hover:bg-red-100 cursor-pointer">
                                                     <p onclick="changeStatus('Dropped', 'statusButton2')">Dropped</p>
@@ -844,12 +844,12 @@
                     
                     <div class="bg-white dark:bg-gray-800 relative overflow-hidden">
 
-                        <div class="overflow-x-auto pt-4">
+                        <div class="w-full overflow-x-auto pt-4">
                             <!-- Faculty grading sheet for students table for QUARTER 1 -->
                             <!-- For Backend: The need to connect this table data into the db in orde for inputs to be saved and recorded for students-->
                             
                             
-                            <table id="tableBody" class="w-full lg:text-sm text-xs text-left text-black " id="gSheetTableQ1">
+                            <table class="w-full lg:text-sm text-xs text-left text-black" id="gSheetTableQ1">
 
                                 <!-- Field Title--> 
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
@@ -1301,9 +1301,9 @@
                                 <tbody>
                                     @if($gradingSheets != null)
                                     @foreach ($gradingSheets as $gs)
-                                    <tr class="text-center bg-white" id="q1row1">
-                                        <td class="border-2 border-yellow-100 px-2.5 py-2">1</td>
-                                        <td class="border-2 border-yellow-100 px-2">Juan Dela Cruz</td>
+                                    <tr class="text-left bg-white" id="q1row1">
+                                        <td class="border-2 border-yellow-100 px-2.5 py-2">{{$loop->iteration}}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{$gs->last_name}}, {{$gs->first_name}} {{$gs->middle_name}}</td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww1' class="p-0 border-none bg-transparent text-center"></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww2' class="p-0 border-none bg-transparent text-center"></td>
                                         <td class="border-2 border-yellow-100 px-2"><input type="text" name='ww3' class="p-0 border-none bg-transparent text-center"></td>

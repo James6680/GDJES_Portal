@@ -13,7 +13,7 @@ $(document).ready(function(e) {
       const serializeData = $('#Create-form').serialize();
       console.log(serializeData);
       $.ajax({
-        url: "/admin.announcements.create",
+        url: "/public/admin.announcements.create",
         type: "POST",
         data: serializeData,
         success: function(response) {
@@ -30,7 +30,7 @@ $(document).ready(function(e) {
       const serializeData = $('#edit-form').serialize();
       console.log(serializeData);
         $.ajax({
-          url: "/admin.announcements.edit",
+          url: "/public/admin.announcements.edit",
           type: "POST",
           data: serializeData,
           success: function(response) {
@@ -47,7 +47,7 @@ $(document).ready(function(e) {
         const serializeData = $('#delete-form').serialize();
         console.log(serializeData);
         $.ajax({
-          url: "/admin.announcements.delete",
+          url: "/public/admin.announcements.delete",
           type: "POST",
           data: serializeData,
           success: function(response) {

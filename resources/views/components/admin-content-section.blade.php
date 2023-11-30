@@ -632,10 +632,10 @@ window.Alpine = Alpine;
                   1
                 </td>
                 <td class="px-6 py-4">
-                  Last Name, First Name Middle Name
+                  Nicolas, Lillian Murray 
                 </td>
                 <td class="px-6 py-4">
-                  Certificate of enrollment
+                  SF 10
                 </td>
                 <td class="px-6 py-4">
                   <button id="dropdownReqStatusButton" data-dropdown-toggle="dropdownReqStatus" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
@@ -3210,7 +3210,7 @@ window.Alpine = Alpine;
 
       <!-- Sections to Manage for the Current SY -->
       <div class="w-full flex flex-col">
-        <h3 class="mt-8 text-lg font-semibold text-gray-900 dark:text-white">Section Management for SY *insert selected SY*</h3>
+        <h3 class="mt-8 text-lg font-semibold text-gray-900 dark:text-white">Section Management for School Year</h3>
         <p class="mt-1 mb-4 text-sm text-gray-500 dark:text-gray-400">Streamline your administrative tasks by editing, archiving, or deleting sections for the selected school year. Manage section details with ease to optimize student enrollment and class organization.</p>
         
         <!-- Sections Table functions - all -->
@@ -3785,7 +3785,7 @@ window.Alpine = Alpine;
 
       <!-- Student Records Management for the Current SY -->
       <div class="w-full flex flex-col">
-        <h3 class="mt-8 text-lg font-semibold text-gray-900 dark:text-white">Student Records Management for SY *insert selected SY*</h3>
+        <h3 class="mt-8 text-lg font-semibold text-gray-900 dark:text-white">Student Records Management for School Year</h3>
         <p class="mt-1 mb-4 text-sm text-gray-500 dark:text-gray-400">Effortlessly view, edit, archive, or remove student records for the chosen school year. This section puts comprehensive student information at your fingertips.</p>
         <!-- Table functions - all -->
         <div class="grid grid-cols-1 sm:grid-cols-2">

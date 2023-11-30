@@ -31,11 +31,11 @@
                     ->select('teachers.last_name','teachers.first_name','teachers.middle_name', 'teachers.extension_name')
                     ->get();
         $gradeLevel = DB::table('enrollment')
-                      ->where('student_id', Auth::guard('students')->user()->id)            
-                      ->join('school_years', 'enrollment.school_year_id', '=', 'school_years.id')
-                      ->where('school_years.active', 1)
-                      ->pluck('enrollment.grade_level_id');
-        $gradeLevelConverted = $equivalent[$gradeLevel[0]-1];
+            ->where('student_id', Auth::guard('students')->user()->id)
+            ->join('school_years', 'enrollment.school_year_id', '=', 'school_years.id')
+            ->orderBy('enrollment.id', 'DESC')
+            ->pluck('enrollment.grade_level_id')->first();
+                $gradeLevelConverted = $equivalent[$gradeLevel-1];
         // $section = DB::table('enrollment')
         $section = DB::table('enrollment')
                       ->where('student_id', Auth::guard('students')->user()->id)            

@@ -24,9 +24,9 @@
             let province = $('#createTeacher #province').val();
             let region = $('#createTeacher #region').val();
             let facebook_link = $('#createTeacher #facebook_link').val();
-            
+            console.log(birth_date);
             $.ajax({
-                url: "/admin.teacher-management.add",
+                url: "/public/admin.teacher-management.add",
                 method: "POST",
                 data: {
                     last_name: last_name,
@@ -223,7 +223,7 @@
             let edit_facebook_link = $('#editTeacher #edit_facebook_link').val();
             
             $.ajax({
-                url: "/admin.teacher-management.edit",
+                url: "/public/admin.teacher-management.edit",
                 method: "POST",
                 data: {
                     edit_id: edit_id,
@@ -316,7 +316,7 @@
 
 
         $.ajax({
-            url: "/faculty.grades.edit",
+            url: "/public/faculty.grades.edit",
             method: "POST",
             data: {
                 edit_id: edit_id,

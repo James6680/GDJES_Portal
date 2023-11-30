@@ -161,7 +161,7 @@ function updateEnrolledStudentsTable(){
     ${student['username']}
     </td>
     <td class="px-3 py-3">
-    ${sectionEquivalents[student['grade_level_id']]}
+    ${sectionEquivalents[student['grade_level_id']-1]}
     </td>
     <td class="px-3 py-3">
     ${student['lrn']}

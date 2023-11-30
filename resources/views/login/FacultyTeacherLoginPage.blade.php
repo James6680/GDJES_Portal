@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    @vite(['resources/js/app.js', 'resources/css/style.css', 'resources/js/teacher_login_validation.js'])
+    @vite(['resources/js/app.js', 'resources/js/teacher_login_validation.js'])
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <title>Faculty Login Page</title>

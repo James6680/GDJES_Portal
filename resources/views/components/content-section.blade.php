@@ -274,16 +274,16 @@
                                     Filipino
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-4">
-                                    Juan Dela Cruz
+                                    Balistreri, Dorothea Kunze I
                                 </td>
                                 <td class="border-collapse border border-green-600">
-                                    87
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    87
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    89
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
                                         
@@ -300,16 +300,16 @@
                                     English
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-4">
-                                    Adrian Fabonan
+                                    Balistreri, Dorothea Kunze I
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    88
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    90   
+                                       
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    90  
+                                      
                                 </td>
                                 <td class="border-collapse border border-green-600">
                                         
@@ -326,16 +326,15 @@
                                     Mathematics
                                 </th>
                                 <td class=" border-collapse border border-green-600 text-start pl-4">
-                                    Karen Tiro
                                 </td>
                                 <td class="border-collapse border border-green-600">
-                                    82  
+                                      
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    78    
+                                        
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    78    
+                                        
                                 </td>
                                 <td class=" border-collapse border border-green-600">
                                             
@@ -352,16 +351,15 @@
                                     Makabansa
                                 </th>
                                 <td class="border-collapse border border-green-600 text-start pl-4">
-                                    Alex Reyes
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    88  
+                                      
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    88
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    88   
+                                       
                                 </td>
                                 <td class=" border-collapse border border-green-600">
                                         
@@ -378,16 +376,15 @@
                                     GMRC
                                 </th>
                                 <td class="border-collapse border border-green-600 text-start pl-4">
-                                    Anne Curtis
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    79
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    81   
+                                       
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    77   
+                                       
                                 </td>
                                 <td class="border-collapse border border-green-600">
                                         
@@ -429,13 +426,13 @@
                     </table>
                 </div>
 
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold mt-3 text-lg ">
+                <h2 hidden class=" font-mulish lg:text-2xl text-gray-950 font-bold mt-3 text-lg ">
                     Learner's Observed Values
                 </h2>
 
                 <!-- Learner's Oberserved Values -->
                 <!-- Backend Side: Need to connect this table which consists of (Core Values/Behaviour Statement/1-4 mark (SO/AO/--))) -->
-                <div class="relative overflow-x-auto rounded-sm">
+                <div hidden class="relative overflow-x-auto rounded-sm">
 
                     <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
@@ -823,7 +820,7 @@
                     </table>
                 </div>
 
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold text-lg mt-3">
+                <h2 hidden class=" font-mulish lg:text-2xl text-gray-950 font-bold text-lg mt-3">
                     Mode of Learning
                 </h2>
                 
@@ -831,7 +828,7 @@
                 <!-- Backend side: Need to connect this table which consists of (Type of modality/1 to 4 quarter) -->
                 <div class="relative overflow-x-auto rounded-sm">
 
-                    <table class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
+                    <table hidden class="m-0 p-0 w-full border-collapse text-sm text-black text-center table-auto font-normal">
 
                         <thead class=" text-white bg-gray-50 dark:bg-green-500 dark:text-gray-400 items-start justify-start lg:text-sm text-[10px] leading-tight uppercase">
                             <tr>
@@ -935,7 +932,7 @@
                                     Filipino
                                 </th>
                                 <td class="px-6 py-4">
-                                    Juan Dela Cruz
+                                    Balistreri, Dorothea Kunze I
                                 </td>
                                 <td class="px-6 py-4">
                                     12:30 PM - 3:00 PM
@@ -1312,10 +1309,10 @@
 
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default2" >
                                             <td class="px-6 py-4">
-                                                Certificate of enrollment
+                                                SF 10
                                             </td>
                                             <td class="px-6 py-4">
-                                                Claimed
+                                                For Validation
                                             </td>
                                         </tr>
 

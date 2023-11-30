@@ -5,7 +5,7 @@
   @vite(['resources/js/app.js', 'resources/css/style.css'])
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, width=device-width" />
-  <title>Student Registration Page 1</title>
+  <title>Student Registration Page</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank Ruhl Libre:wght@400;700&display=swap"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
@@ -86,7 +86,7 @@
               // Add a click event listener to the button
               navigateButton.addEventListener("click", function() {
                   // Set the new URL to navigate to
-                  var newURL = "students/login"; // Replace with the desired URL
+                  var newURL = "/public/students/login"; // Replace with the desired URL
       
                   // Navigate to the new URL
                   window.location.href = newURL;

@@ -11,7 +11,7 @@
     <script>
         $(document).ready(function() {
             $.ajax({
-                url: '/api/getGradingSheet', // Replace `/route/name` with the name of the route you want to call
+                url: '/public/api/getGradingSheet', // Replace `/route/name` with the name of the route you want to call
                 type: 'GET', // Replace `GET` with the HTTP method of the route
                 success: function(response) {
                     response.forEach(element => {
