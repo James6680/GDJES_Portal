@@ -26,7 +26,7 @@
             let facebook_link = $('#createTeacher #facebook_link').val();
             console.log(birth_date);
             $.ajax({
-                url: "/public/admin.teacher-management.add",
+                url: localStorage.getItem('appUrl') + "/admin.teacher-management.add",
                 method: "POST",
                 data: {
                     last_name: last_name,
@@ -223,7 +223,7 @@
             let edit_facebook_link = $('#editTeacher #edit_facebook_link').val();
             
             $.ajax({
-                url: "/public/admin.teacher-management.edit",
+                url: localStorage.getItem('appUrl') + "/admin.teacher-management.edit",
                 method: "POST",
                 data: {
                     edit_id: edit_id,
@@ -316,7 +316,7 @@
 
 
         $.ajax({
-            url: "/public/faculty.grades.edit",
+            url: localStorage.getItem('appUrl') + "/faculty.grades.edit",
             method: "POST",
             data: {
                 edit_id: edit_id,

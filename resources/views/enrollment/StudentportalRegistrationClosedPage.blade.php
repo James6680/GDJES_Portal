@@ -74,7 +74,7 @@
               // Add a click event listener to the button
               navigateButton.addEventListener("click", function() {
                   // Set the new URL to navigate to
-                  var newURL = "/public"; // Replace with the desired URL
+                  var newURL = localStorage.getItem('appUrl') + ""; // Replace with the desired URL
       
                   // Navigate to the new URL
                   window.location.href = newURL;
