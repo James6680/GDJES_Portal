@@ -78,7 +78,7 @@ for (const close of closeRemoveFromSectionModal) {
 const submitRemoveFromSectionModal = document.getElementById('submit-remove-from-section');
 submitRemoveFromSectionModal.addEventListener('click', function(){
   $.ajax({
-    url: "/classes.removeStudentsFromSection",
+    url: "/public/classes.removeStudentsFromSection",
     type: "POST",
     data:{
      _method: 'POST',
@@ -189,7 +189,7 @@ studentChecklistFormSubmit.addEventListener('click', function(e){
   e.preventDefault();
   const studentCheckListSerialized = $(studentChecklistForm).serialize() + '&section_id=' + globalSectionInformationEntry.id + '&school_year=' + selectedSchoolYearObject.id;
   $.ajax({
-    url: "/classes.assignStudentsToSection",
+    url: "/public/classes.assignStudentsToSection",
     type: "POST",
     data: studentCheckListSerialized,
     success: function(response) {
@@ -236,7 +236,7 @@ sectionInformationSaveTeacher.addEventListener('click', function(){
   var serializedSaveTeacherForm = $(sectionInformationSaveTeacherForm).serialize();
   return new Promise((resolve) =>{
     $.ajax({
-      url: "/classes.assignTeachers",
+      url: "/public/classes.assignTeachers",
       type: "POST",
       data: serializedSaveTeacherForm,
       success: function (response) {
@@ -257,7 +257,7 @@ sectionInformationSaveTeacher.addEventListener('click', function(){
 });
 
 function getSchoolYear() {
-    const url = '/api/schoolYears';
+    const url = '/public/api/schoolYears';
     return new Promise((resolve, reject) => {
         $.getJSON(url, function(data) {
             schoolYearList = data;
@@ -267,7 +267,7 @@ function getSchoolYear() {
 }
 
 function getTeachers() {
-  const url = '/api/teachers';
+  const url = '/public/api/teachers';
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
         teacherList = data;
@@ -277,7 +277,7 @@ function getTeachers() {
 }
 
 function getSubjects(){
-  const url = '/api/subjects';
+  const url = '/public/api/subjects';
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
         subjectList = data;
@@ -287,7 +287,7 @@ function getSubjects(){
 }
 
 function getSections() {
-  const url = '/api/sections/' + selectedSchoolYearObject.id;
+  const url = '/public/api/sections/' + selectedSchoolYearObject.id;
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
         sectionList = data;
@@ -297,7 +297,7 @@ function getSections() {
 }
 
 function getStudents() {
-  const url = '/api/students/' + selectedSchoolYearObject.id;
+  const url = '/public/api/students/' + selectedSchoolYearObject.id;
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
         studentList = data;
@@ -312,7 +312,7 @@ addSectionFormSubmit.addEventListener("click", function(event){
   const selectedGradeLevel = gradeLevelDropdown.options[gradeLevelDropdown.selectedIndex].value;
   const serializeData = $(addSectionForm).serialize() + '&gradeLevel=' + selectedGradeLevel + '&schoolYear=' + selectedSchoolYearObject.id;
   $.ajax({
-    url: "/admin.addSection",
+    url: "/public/admin.addSection",
     type: "POST",
     data: serializeData,
     success: function (response) {
@@ -344,7 +344,7 @@ editSectionFormSubmit.addEventListener("click", function(event){
   const selectedGradeLevel = gradeLevelDropdown.options[gradeLevelDropdown.selectedIndex].value;
   const serializeData = $(editSectionForm).serialize() + '&gradeLevel=' + selectedGradeLevel + '&schoolYear=' + selectedSchoolYearObject.id;
   $.ajax({
-    url: "/admin.editSection",
+    url: "/public/admin.editSection",
     type: "POST",
     data: serializeData,
     success: function (response) {
@@ -495,7 +495,7 @@ function updateSectionsTable(gradeLevel) {
       viewSectionInfoModal.toggle();
       updateStudentSectionAssignmentList();
       updateStudentListInViewSectionInformation();
-      const url = '/api/getClass/' + entry['grade_level_id'] + '/' + selectedSchoolYearObject.id + "/" + entry['id'];
+      const url = '/public/api/getClass/' + entry['grade_level_id'] + '/' + selectedSchoolYearObject.id + "/" + entry['id'];
       $.getJSON(url, function(data) {
         selectedClass = data;
         resolve();
@@ -572,7 +572,7 @@ function clearEditSectionErrors(){
 closeEnrollmentButton.addEventListener('click', function(){
   document.getElementById('show-add-student').href = '#';
     $.ajax({
-      url: "/admin.closeEnrollment",
+      url: "/public/admin.closeEnrollment",
       type: "POST",
       data: selectedSchoolYearObject,
       success: function(response) {
@@ -594,7 +594,7 @@ closeEnrollmentButton.addEventListener('click', function(){
 
 openEnrollmentButton.addEventListener('click', function(){
     $.ajax({
-      url: "/admin.openEnrollment",
+      url: "/public/admin.openEnrollment",
       type: "POST",
       data: selectedSchoolYearObject,
       success: function(response) {
@@ -616,7 +616,7 @@ openEnrollmentButton.addEventListener('click', function(){
 
 startSchoolYearButton.addEventListener('click', function(){
     $.ajax({
-      url: "/admin.startSchoolYear",
+      url: "/public/admin.startSchoolYear",
       type: "POST",
       data: selectedSchoolYearObject,
       success: function(response) {
@@ -638,7 +638,7 @@ startSchoolYearButton.addEventListener('click', function(){
 
 endSchoolYearButton.addEventListener('click', function(){
     $.ajax({
-      url: "/admin.endSchoolYear",
+      url: "/public/admin.endSchoolYear",
       type: "POST",
       data: selectedSchoolYearObject,
       success: function(response) {
@@ -785,7 +785,7 @@ addschoolYearDropDownSubmit.addEventListener('click', function(event){
     event.preventDefault();
     const serializeData = $(addSchoolYearForm).serialize();
     $.ajax({
-        url: "/admin.addSchoolYear",
+        url: "/public/admin.addSchoolYear",
         type: "POST",
         data: serializeData,
         success: function(response) {
