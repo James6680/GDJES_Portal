@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('school_days');
             $table->boolean('active');
             $table->boolean('is_enrollment');
+            $table->boolean('is_finished')->default('0');
             $table->timestamps();
         });
     }

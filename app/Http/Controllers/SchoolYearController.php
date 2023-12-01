@@ -20,7 +20,7 @@ class SchoolYearController extends Controller
         $request->validate([
             'schoolYear' => ['required', 'regex:/^(20[0-9][0-9])-(2[0-9][0-9][0-9])$/','unique:school_years,school_year'],
             'requiredDays' => 'required|numeric|min:200|max:300',
-        ]);
+        ]); 
         $schoolYear = new SchoolYears();
         $schoolYear['school_year'] = $request->input('schoolYear');
         $schoolYear['school_days'] = $request->input('requiredDays');
@@ -32,7 +32,7 @@ class SchoolYearController extends Controller
     public function endSchoolYear(Request $request){
         DB::table('school_years')
         ->where('id', $request->id)
-        ->update(['active' => 0, 'is_enrollment' => 0]);
+        ->update(['active' => 0, 'is_enrollment' => 0, 'is_finished' => 1]);
         return response()->json($request);
     }
 
@@ -54,7 +54,7 @@ class SchoolYearController extends Controller
         // Check if there is an existing active school year with open enrollment, excluding the specified ID
         $existingActiveSchoolYearWithOpenEnrollment = DB::table('school_years')
             ->where('id', '!=', $request->id) // Exclude the specified ID
-            ->where('active', 0)
+            // ->where('active', 0)
             ->where('is_enrollment', 1)
             ->first();
         if ($existingActiveSchoolYearWithOpenEnrollment) {

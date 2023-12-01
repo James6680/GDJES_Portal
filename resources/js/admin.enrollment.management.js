@@ -684,34 +684,41 @@ function updateSchoolYearControlButtons(){
         const startSchoolYearButton = document.querySelector('#startSYButton');
         const endSchoolYearButton = document.querySelector('#endSYButton');
         $(enrollmentButtonControls).css("display", "flex");
-        if(selectedSchoolYearObject.active === 1){
-            $(endSchoolYearButton).css("display", "flex");
-            $(startSchoolYearButton).css("display", "none");    
-            if(selectedSchoolYearObject.is_enrollment === 1){
-                $(closeEnrollmentButton).css("display", "flex");
-                $(closeEnrollmentButton).text("Close Enrollment");
-                $(openEnrollmentButton).css("display", "none");  
-            }else{
-                $(openEnrollmentButton).css("display", "flex");
-                $(openEnrollmentButton).text("Open Enrollment");
-                $(closeEnrollmentButton).css("display", "none");  
-            }
-        }else{
+          if(selectedSchoolYearObject.is_finished === 1){
+            $(startSchoolYearButton).css("display", "none");
             $(endSchoolYearButton).css("display", "none");
-            if(!schoolYearList.some(schoolYear => schoolYear.active === 1)){
-                $(startSchoolYearButton).css("display", "flex");
+            $(openEnrollmentButton).css("display", "none");   
+            $(closeEnrollmentButton).css("display", "none");        
+          }else{
+            if(selectedSchoolYearObject.active === 1){
+              $(endSchoolYearButton).css("display", "flex");
+              $(startSchoolYearButton).css("display", "none");    
+              if(selectedSchoolYearObject.is_enrollment === 1){
+                  $(closeEnrollmentButton).css("display", "flex");
+                  $(closeEnrollmentButton).text("Close Enrollment");
+                  $(openEnrollmentButton).css("display", "none");  
+              }else{
+                  $(openEnrollmentButton).css("display", "flex");
+                  $(openEnrollmentButton).text("Open Enrollment");
+                  $(closeEnrollmentButton).css("display", "none");  
+              }
             }else{
-                $(startSchoolYearButton).css("display", "none");
-            }
-            if(selectedSchoolYearObject.is_enrollment === 1){
-                $(closeEnrollmentButton).css("display", "flex");
-                $(closeEnrollmentButton).text("Close Pre-enrollment");
-                $(openEnrollmentButton).css("display", "none");  
-            }else{
-                $(openEnrollmentButton).css("display", "flex");
-                $(openEnrollmentButton).text("Open Pre-enrollment");
-                $(closeEnrollmentButton).css("display", "none");  
-            }   
+              $(endSchoolYearButton).css("display", "none");
+              if(!schoolYearList.some(schoolYear => schoolYear.active === 1)){
+                  $(startSchoolYearButton).css("display", "flex");
+              }else{
+                  $(startSchoolYearButton).css("display", "none");
+              }
+              if(selectedSchoolYearObject.is_enrollment === 1){
+                  $(closeEnrollmentButton).css("display", "flex");
+                  $(closeEnrollmentButton).text("Close Pre-enrollment");
+                  $(openEnrollmentButton).css("display", "none");  
+              }else{
+                  $(openEnrollmentButton).css("display", "flex");
+                  $(openEnrollmentButton).text("Open Pre-enrollment");
+                  $(closeEnrollmentButton).css("display", "none");  
+              }   
+           }
         }
     }
 }
@@ -778,17 +785,28 @@ schoolYearDropDown.addEventListener('click', function(event) {
 });
 
 addSchoolYearFormShow.addEventListener('click', function(event){
+  const schoolYearInput = document.querySelector('#schoolYear');
+  if(schoolYearList.length != 0){
+    schoolYearInput.setAttribute('disabled', true);
+    const syString = schoolYearList[schoolYearList.length-1].school_year;
+    const sy = syString.substring(syString.length - 4);
+    schoolYearInput.value = sy;
+  }
+  console.log(schoolYearList.length);
   addSchoolYearFormClearError();
 });
 
 addschoolYearDropDownSubmit.addEventListener('click', function(event){
     event.preventDefault();
+    document.querySelector('#schoolYear').removeAttribute('disabled');
     const serializeData = $(addSchoolYearForm).serialize();
+    console.log(serializeData);
     $.ajax({
         url: localStorage.getItem('appUrl') + "/admin.addSchoolYear",
         type: "POST",
         data: serializeData,
         success: function(response) {
+          document.querySelector('#schoolYear').setAttribute('disabled', true);
           // Form submission is successful, prevent default submission
           $("#input-schoolYear-error").css("display", "block");
           $("#input-schoolYear-error").css("color", "green");
@@ -799,6 +817,9 @@ addschoolYearDropDownSubmit.addEventListener('click', function(event){
           });
         },
         error: function(response) {
+          if(schoolYearList.length != 0){
+            document.querySelector('#schoolYear').setAttribute('disabled', true);
+          }
             addSchoolYearFormClearError();
             var validationErrors = response.responseJSON.errors;
             $.each(validationErrors, function(fieldName, errorMessage) {
