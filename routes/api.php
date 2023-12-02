@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
@@ -244,6 +245,8 @@ foreach ($recentSchoolYears as $schoolYear) {
 }
     return response()->json($results);
 });
+
+Route::get('studentAccounts', [AdminController::class, 'getStudentAccounts']);
 
 Route::get('/teachers', [TeacherController::class, 'getAllTeacher']);
 

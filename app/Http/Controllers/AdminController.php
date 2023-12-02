@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
 use App\Models\Teacher;
+use Illuminate\Http\Request;
+
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -147,7 +148,17 @@ class AdminController extends Controller
         ]);
     }//end EditTeacher method
     
-    
+    public function getStudentAccounts(){
+        $studentAccounts = DB::table('students')
+                            ->join('enrollment','enrollment.student_id','=','students.id')
+                            ->join('school_years','school_years.id', '=', 'enrollment.school_year_id')
+                            ->where('school_years.active', 1)
+                            ->join('learning_info', 'learning_info.id','=','enrollment.learning_info_id')
+                            ->select('students.*', 'enrollment.grade_level_id', 'learning_info.*')
+                            ->get();
+        return  json_encode($studentAccounts);
+    }
+
 }
 
 

@@ -728,7 +728,8 @@ window.Alpine = Alpine;
 
 
   <!-- Admin Student Management -->
-  @elseif(request()->is('admin.student-management') )
+  @elseif(request()->is('admin.student-management'))
+  @vite(['resources/js/admin.student.management.js'])
   <!-- Admin Student Management Main Content Container -->
   <section class="w-full h-full gap-4 md:gap-16 p-8 pt-12 flex flex-col font-mulish">
 

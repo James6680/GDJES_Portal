@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnnouncementController;
 use Closure;
 use Illuminate\View\Component;
@@ -33,6 +34,8 @@ class AdminContentSection extends Component
         else if(request()->is('admin.announcements')){
             $announcements = new AnnouncementController;
             return view('components.admin-content-section', ['announcements' => $announcements->getAnnouncement()]);
+        }else if(request()->is('admin.student-management')){
+            return view('components.admin-content-section');
         }else{
             return view('components.admin-content-section');
         }
