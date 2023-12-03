@@ -1,3 +1,6 @@
+@php
+use Carbon\Carbon;
+@endphp
 <!-- Content Section -->
 <div>   
     <!-- Faculty Announcement Section -->
@@ -66,7 +69,7 @@
                 <h1 class="font-semibold text-lg sm:text-2xl lg:text-3xl text-black">My Students</h3>
                 <p class="mt-1 lg:text-base text-sm text-gray-500">This section offers faculty seamless academic oversight. It comprises two tables—one for advisory class details, another for subject class student lists. This dual-view feature streamlines management, empowering educators with efficient, comprehensive tools for enhanced teaching and advising.</p>
             </div> <!-- End of Header Content -->
-
+        @if($advisory->isNotEmpty())
             <div class="flex flex-col gap-2">
 
                 <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black">Advisory Class</h1>
@@ -85,54 +88,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($advisory as $student)
                             <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">Dela Cruz</td>                         
-                                <td class="px-4 py-3">Mark</td>
-                                <td class="px-4 py-3">Dustin</td>
-                                <td class="px-4 py-3"></td>
-                                <td class="px-4 py-3">059503095670</td>
-                            </tr>
-                            <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">Dela Vega</td>                         
-                                <td class="px-4 py-3">Justin</td>
-                                <td class="px-4 py-3">Bailey</td>
-                                <td class="px-4 py-3"></td>
-                                <td class="px-4 py-3">15357112411</td>
-                            </tr>
-                            <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">Frando</td>                         
-                                <td class="px-4 py-3">James</td>
-                                <td class="px-4 py-3">Cheska</td>
-                                <td class="px-4 py-3">IV</td>
-                                <td class="px-4 py-3">85256212521</td>
-                            </tr>
-                            <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">Franco</td>                         
-                                <td class="px-4 py-3">Rain</td>
-                                <td class="px-4 py-3">Mark</td>
-                                <td class="px-4 py-3">Jr.</td>
-                                <td class="px-4 py-3">27391281522</td>
-                            </tr>
-                            <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">Egay</td>                         
-                                <td class="px-4 py-3">Daniel</td>
-                                <td class="px-4 py-3">Zamora</td>
-                                <td class="px-4 py-3"></td>
-                                <td class="px-4 py-3">399620943403</td>
-                            </tr>
-                            <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">Qira</td>                         
-                                <td class="px-4 py-3">Joseph</td>
-                                <td class="px-4 py-3">Cruz</td>
-                                <td class="px-4 py-3"></td>
-                                <td class="px-4 py-3">167467923595</td>
-                            </tr>
-                            <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">Yugo</td>                         
-                                <td class="px-4 py-3">Mary</td>
-                                <td class="px-4 py-3">Joy</td>
-                                <td class="px-4 py-3"></td>
-                                <td class="px-4 py-3">885610844170</td>
+                                <td class="px-4 py-3">{{$student->last_name}}</td>                         
+                                <td class="px-4 py-3">{{$student->first_name}}</td>
+                                <td class="px-4 py-3">{{$student->middle_name}}</td>
+                                <td class="px-4 py-3">{{$student->extension_name}}</td>
+                                <td class="px-4 py-3">{{$student->lrn}}</td>                               
+                            @endforeach
                             </tr>
                         </tbody>
                     </table>
@@ -140,7 +103,7 @@
                 </div>
 
             </div>
-
+        @endif
             <div class="flex flex-col gap-2">
 
                 <h1 class="font-semibold text-lg sm:text-xl lg:text-2xl text-black">Subject Class</h1>
@@ -397,17 +360,18 @@
                                 </thead>
 
                                 <tbody>
+                                    @foreach ($advisory as $student)
                                     <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">1</td>                         
-                                        <td class="px-4 py-3">Juan Dela Cruz</td>
-                                        <td class="px-4 py-3">Male</td>
-                                        <td class="px-4 py-3">10-26-2001</td>
+                                        <td class="px-4 py-3">{{$loop->index+1}}</td>                         
+                                        <td class="px-4 py-3">{{$student->last_name}}, {{$student->first_name}} {{$student->middle_name}} {{$student->extension_name}}</td>
+                                        <td class="px-4 py-3">{{$student->gender}}</td>
+                                        <td class="px-4 py-3">{{ Carbon::parse($student->birth_date)->format('F j, Y') }}</td>
                                         <td class="px-4 py-3">
-                                            <p data-modal-target="small-modal" data-modal-toggle="modal1" class="inline-flex items-center cursor-pointer text-sm font-medium text-center text-blue-700 hover:text-blue-400">
+                                            <p data-modal-target="small-modal" data-modal-toggle="modal{{$loop->index}}" class="inline-flex items-center cursor-pointer text-sm font-medium text-center text-blue-700 hover:text-blue-400">
                                                 Edit
                                             </p>
 
-                                            <div id="modal1" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div id="modal{{$loop->index}}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 <div class="relative w-full max-w-sm   ax-h-full">
                                                     <!-- Modal content -->
                                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -416,7 +380,7 @@
                                                             <h3 class="text-lg font-semibold text-white">
                                                                 Required Documents
                                                             </h3>
-                                                            <button type="button" class="text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal1">    
+                                                            <button type="button" class="text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal{{$loop->index}}">    
                                                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                                                                 </svg>
@@ -425,122 +389,63 @@
                                                         </div>
                                                         <!-- Modal body -->
                                                         <div class=" p-4 space-y-3 font-mulish text-base">
-
+                                                            @php 
+                                                            $requirements = json_decode($student->requirements);
+                                                            $checklist = json_decode($student->checklist);
+                                                            $list = array_combine($requirements, $checklist);
+                                                            @endphp
+                                                            @foreach ($list as $key => $value)
                                                             <div class="flex items-center p-3 border border-gray-200 rounded">
-                                                                <input id="document_type1" name="documents1" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">PSA Birth Certificate</label>
-                                                            </div>
-
-                                                            <div class="flex items-center p-3 border border-gray-200 rounded">
-                                                                <input id="document_type2"  name="documents1" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-green-900 dark:text-gray-300">Form 138 / School Form 10 / Report Card</label>
-                                                            </div>
-
-                                                            <div class="flex items-center p-3 border border-gray-200 rounded">
-                                                                <input id="document_type3"  name="documents1" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">2 pcs. 2x2 colored ID picture</label>
-                                                            </div>
+                                                                <input data-id="{{$student->id}}" id="document_type{{$loop->index}}" name="document{{$loop->index}}" type="checkbox" value="{{$loop->index}}" @checked($value == 1) class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2" onchange="handleCheckboxChange(this)">
+                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">{{$key}}</label>
+                                                            </div>   
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
+                                        <script>
+                                            function handleCheckboxChange(checkboxElement) {
+                                                const value = checkboxElement.value;
+                                                const student_id = checkboxElement.getAttribute('data-id');
+                                                var is_checked;
+                                                if (checkboxElement.checked) {
+                                                    is_checked = 1;
+                                                }else{
+                                                    is_checked = 0;
+                                                }  
+                                                $.ajax({
+                                                  url: localStorage.getItem('appUrl') + "/faculty.updateDocumentRequirements",
+                                                  type: "POST",
+                                                  data: {
+                                                    index: value,
+                                                    is_checked: is_checked,
+                                                    student_id: student_id
+                                                  }
+                                                });  
+                                            }
+                                        </script>
                                         <td class="px-4 py-3">
-                                            <button data-popover-target="popover-click" data-popover-placement="left" data-popover-trigger="click" type="button" class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer" id="statusButton1">
+                                            <button data-popover-target="popover-click" data-popover-placement="left" data-popover-trigger="click" type="button" class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer" id="statusButton{{$loop->index}}">
                                                Temporary
                                             </button>
 
                                             <div data-popover id="popover-click" role="tooltip" class="absolute z-10 invisible inline-block w-auto h-auto p-2 text-sm text-gray-500 transition-opacity duration-300 bg-white rounded-lg  opacity-0 font-mulish text-center font-medium popOver2">
                                                 <div class="px-2 py-1.5 text-green-500  border border-green-500 rounded hover:bg-green-100 mb-1 cursor-pointer">
-                                                    <p onclick="changeStatus('Enrolled', 'statusButton1')">Enrolled</p>
+                                                    <p onclick="changeStatus('Enrolled', 'statusButton{{$loop->index}}')">Enrolled</p>
                                                 </div>
                                                 <div class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer">
-                                                    <p onclick="changeStatus('Temporary', 'statusButton1')">Temporary</p>
+                                                    <p onclick="changeStatus('Temporary', 'statusButton{{$loop->index}}')">Temporary</p>
                                                 </div>
                                                 <div class="px-2 py-1.5 text-red-600  border border-red-600 rounded hover:bg-red-100 cursor-pointer">
-                                                    <p onclick="changeStatus('Dropped', 'statusButton1')">Dropped</p>
+                                                    <p onclick="changeStatus('Dropped', 'statusButton{{$loop->index}}')">Dropped</p>
                                                 </div>
                                                 <div data-popper-arrow></div>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr class="border-b dark:border-gray-700">
-                                        <td class="px-4 py-3">2</td>                         
-                                        <td class="px-4 py-3">James Motus</td>
-                                        <td class="px-4 py-3">Male</td>
-                                        <td class="px-4 py-3">10-36-2001</td>
-                                        <td class="px-4 py-3">
-                                            <p data-modal-target="small-modal" data-modal-toggle="modal2" class="inline-flex items-center cursor-pointer  text-sm font-medium text-center text-blue-700 hover:text-blue-400">
-                                                Edit
-                                            </p>
-
-                                            <div id="modal2" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                <div class="relative w-full max-w-sm  max-h-full">
-                                                    <!-- Modal content -->
-                                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                        <!-- Modal header -->
-                                                        <div class="flex items-center justify-between p-2 rounded-t-lg  bg-yellow-500 font-mulish">
-                                                            <h3 class="text-lg font-semibold text-white">
-                                                                Required Documents
-                                                            </h3>
-                                                            <button type="button" class="text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal2">    
-                                                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                                                </svg>
-                                                                <span class="sr-only">Close modal</span>
-                                                            </button>
-                                                        </div>
-                                                        <!-- Modal body -->
-                                                        <div class=" p-4 space-y-3 font-mulish text-base">
-
-                                                            <div class="flex items-center p-3 border border-gray-200 rounded">
-                                                                <input id="document_type1" name="documents2" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">Document item #1</label>
-                                                            </div>
-
-                                                            <div class="flex items-center p-3 border border-gray-200 rounded">
-                                                                <input id="document_type2"  name="documents2" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-green-900 dark:text-gray-300">Document item #2</label>
-                                                            </div>
-
-                                                            <div class="flex items-center p-3 border border-gray-200 rounded">
-                                                                <input id="document_type3"  name="documents2" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">Document item #3</label>
-                                                            </div>
-
-                                                            <div class="flex items-center p-3 border border-gray-200 rounded">
-                                                                <input id="document_type4"  name="documents2" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">Document item #4</label>
-                                                            </div>
-
-                                                            <div class="flex items-center p-3 border border-gray-200 rounded">
-                                                                <input id="document_type5" name="documents2" type="checkbox" value="" class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 focus:ring-2">
-                                                                <label for="default-checkbox" class="ms-3 font-medium text-gray-900 dark:text-gray-300">Document item #5</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <button data-popover-target="popover-click2" data-popover-placement="left" data-popover-trigger="click" type="button" class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer" id="statusButton2">
-                                                Temporary
-                                            </button>
-
-                                            <div data-popover id="popover-click2" role="tooltip" class="absolute z-10 invisible inline-block w-auto h-auto p-2 text-sm text-gray-500 transition-opacity duration-300 bg-white rounded-lg  opacity-0 font-mulish text-center font-medium data popOver2">
-                                                <div class="px-2 py-1.5 text-green-500 border border-green-500 rounded hover:bg-green-100 mb-1 cursor-pointer">
-                                                    <p onclick="changeStatus('Enrolled', 'statusButton2')">Enrolled</p>
-                                                </div>
-                                                <div class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer">
-                                                    <p onclick="changeStatus('Temporary', 'statusButton2')">Temporary</p>
-                                                </div>
-                                                <div class="px-2 py-1.5 text-red-600  border border-red-600 rounded hover:bg-red-100 cursor-pointer">
-                                                    <p onclick="changeStatus('Dropped', 'statusButton2')">Dropped</p>
-                                                </div>
-                                                <div data-popper-arrow></div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
 
                                 <!-- Enrollment status changer script -->

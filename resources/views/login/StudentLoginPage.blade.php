@@ -281,7 +281,7 @@
                         </div>
 
                         <!--<button-->
-                        <a href="/public/student-registration-1"
+                        <a href="/student-registration-1"
                             class="cursor-pointer lg:py-4 py-3 lg:px-8 px-2 bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-700"
                             >
                                 <div

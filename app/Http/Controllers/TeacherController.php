@@ -2,20 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use App\Models\GradingSheet;
-use App\Models\HighestPossibleScore;
-use App\Models\TransmutationTable;
-
-
-
-
 use App\Models\Teacher;
+use App\Models\GradingSheet;
+use Illuminate\Http\Request;
+use App\Models\TransmutationTable;
+use Illuminate\Support\Facades\DB;
+use App\Models\DocumentRequirements;
+
+
+
+
+use App\Models\HighestPossibleScore;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
 {
+    public function getAdvisoryStudents(){
+        $students = DB::table('sections')
+                    ->join('enrollment', 'sections.id','=','enrollment.section_id')
+                    ->join('students', 'students.id','=','enrollment.student_id')
+                    ->join('document_requirements','students.id','=','document_requirements.id')
+                    ->select('document_requirements.*','students.birth_date','students.gender','students.last_name','students.first_name','students.middle_name','students.extension_name','students.lrn','sections.grade_level_id','sections.school_year_id','sections.section_name')
+                    ->where('sections.adviser_id', '=' ,Auth::guard('teachers')->user()->id)
+                    ->orderBy('students.last_name', 'asc')
+                    ->get();
+
+        return $students;
+    }
+
+    public function updateDocumentRequirements(Request $request){
+        $document_requirements = DocumentRequirements::where('student_id', $request->input('student_id'))->first();
+        $checklist = json_decode($document_requirements->checklist, true);
+        $checklist[$request->input('index')] = (string) $request->input('is_checked');
+        $document_requirements->checklist = $checklist;
+        $document_requirements->save();
+    }
+
     public function IndexTeacher(){
         return view('login.FacultyTeacherLoginPage');
     }//end index method
