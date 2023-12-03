@@ -2,13 +2,16 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use App\Models\Student;
+use App\Models\Subject;
+use App\Models\Relatives;
 
+use App\Models\Enrollment;
+use App\Models\GradingSheet;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Student;
-use App\Models\Relatives;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 
 
@@ -58,6 +61,6 @@ class StudentSeeder extends Seeder
         
         
         
-        Student::factory(200)->create();
+        Student::factory(150)->create();
     }
 }

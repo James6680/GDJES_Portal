@@ -25,7 +25,6 @@ class StudentFactory extends Factory
             'psa_birthcert_no' => $this->faker->numerify('##########'),
             'lrn' => $this->faker->numerify('##########'),
 
-
             'last_name' => fake()->lastName,
             'first_name' => fake()->firstName,
             'middle_name' => fake()->lastName,
@@ -38,7 +37,6 @@ class StudentFactory extends Factory
             'mother_tongue' => $this->faker->word,
             'religion' => $this->faker->word,
             'special_assistance_needs' => $this->faker->word,
-            
             
             'house_number' => fake()->buildingNumber,
             'street' => fake()->streetName,
@@ -55,7 +53,6 @@ class StudentFactory extends Factory
             'username' => $this->faker->lastName . '.' . $this->faker->firstName . '.' . now()->year,
             'password' => Hash::make('Student123'),
             'status' => '2',
-            
         ];
     }
 }
