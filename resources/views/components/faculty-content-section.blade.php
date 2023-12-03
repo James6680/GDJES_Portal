@@ -1075,9 +1075,9 @@
                                         <th class="border-2 border-yellow-100 py-1.5">Highest Possible Score</th>
                             
                                         @php $fields = ['ww1', 'ww2', 'ww3', 'ww4', 'ww5', 'ww6', 'ww7', 'ww8', 'ww9', 'ww10',
-                                                         'hps_ww_total', 'ww_ps', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
+                                                         'hps_ww_total', 'hps_ww_ps', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
                                                          'pt4', 'pt5', 'pt6', 'pt7', 'pt8', 'pt9', 'pt10', 'hps_pt_total', 
-                                                         'pt_ps', 'pt_weighted_score', 'qa', 'pt_ps', 'pt_weighted_score', 
+                                                         'hps_pt_ps', 'pp_weighted_score', 'qa10', 'hps_qa_ps', 'qa_weighted_score', 
                                                          'initial_grade', 'quarterly_grade'
                                                         ]; 
                                         @endphp
@@ -1304,6 +1304,7 @@
                                             method="POST" 
                                             id="edit_gradingSheet">
                                             @csrf 
+                                            
                                     @if ($gradingSheets && count($gradingSheets) > 0)
                                     @foreach ($gradingSheets as $gradingSheet) {
                                         @php $student = $gradingSheet->student; @endphp
@@ -1311,8 +1312,10 @@
                                             $quarterValue = $quarterValue ?? null;
                                             $class_idValue = $class_idValue ?? null;
                                         @endphp
-                                        
                                         <input type="hidden" name="id" value="{{ $hps->id }}">
+                                        <!--input type="hidden" name="id" value="{{ $gradingSheet->id }}"-->
+                                        <input type="hidden" name="quarter" value="{{ $quarterValue }}">
+                                        <input type="hidden" name="class_id" value="{{ $class_idValue }}">
                                         
                                         <tr class="text-center bg-white">
                                             <td class="border-2 border-yellow-100 px-2.5 py-2">{{ $loop->iteration }}</td>
@@ -1338,7 +1341,7 @@
                                                 $fields = ['ww1', 'ww2', 'ww3', 'ww4', 'ww5', 'ww6', 'ww7', 'ww8', 'ww9', 'ww10',
                                                            'ww_total', 'ww_ps', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
                                                            'pt4', 'pt5', 'pt6', 'pt7', 'pt8', 'pt9', 'pt10', 'pt_total', 
-                                                           'pt_ps', 'pt_weighted_score', 'qa', 'pt_ps', 'pt_weighted_score', 
+                                                           'pt_ps', 'pp_weighted_score', 'qa10', 'qa_ps', 'qa_weighted_score', 
                                                            'initial_grade', 'quarterly_grade'
                                                         ];
                                             @endphp

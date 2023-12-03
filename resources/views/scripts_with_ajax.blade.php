@@ -523,13 +523,15 @@
         let initial_grade = $('[name="initial_grade"]').val();
         let quarterly_grade = $('[name="quarterly_grade"]').val();
         let quarter = $('[name="quarter"]').val();
-
+        let class_id = $('[name="class_id"]').val();
 
         $.ajax({
             url: "faculty.grades.edit_student_grading_sheet/" + id,
             method: "POST",
             data: {
                 id: id,
+                class_id: class_id,
+                quarter: quarter,
                 ww1: ww1,
                 ww2: ww2,
                 ww3: ww3,
@@ -561,9 +563,7 @@
                 qa_weighted_score: qa_weighted_score,
                 initial_grade: initial_grade,
                 quarterly_grade: quarterly_grade,
-                quarter: quarter,
                 
-
             },
             success: function(result) {
                 // Handle the success response here
