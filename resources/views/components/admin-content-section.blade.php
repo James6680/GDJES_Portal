@@ -2187,7 +2187,7 @@ window.Alpine = Alpine;
               <th scope="col" class="px-6 py-3">
                   ADDRESS
               </th>
-             {{-- <th scope="col" class="px-6 py-3">
+              {{-- <th scope="col" class="px-6 py-3">
                   STATUS
               </th>
               --}}
@@ -2225,60 +2225,59 @@ window.Alpine = Alpine;
               <td class="px-6 py-4">
                 <!-- Modal toggle -->
                 <a href="#" 
-                   data-modal-target="viewTeachertUserModal" 
-                   data-modal-show="viewTeachertUserModal" 
-                   type="button" 
-                   class="view_teacher font-medium text-emerald-600 dark:text-emerald-500 hover:underline"
-                   data-id="{{ $t->id }}"
-                   data-last_name="{{ $t->last_name }}"
-                    data-first_name="{{ $t->first_name }}"
-                    data-middle_name="{{ $t->middle_name }}"
-                    data-extension_name="{{ $t->extension_name }}"
-                    data-username="{{ $t->username}}"
-                    
-                    
-                    data-birth_date="{{ $t->birth_date }}"
-                    data-age="{{ $t->age}}"
-                    data-gender="{{ $t->gender}}"
-                    
-                    data-house_number="{{ $t->house_number }}"
-                    data-street="{{ $t->street }}"
-                    data-barangay="{{ $t->barangay }}"
-                    data-municipality="{{ $t->municipality }}"
-                    data-province="{{ $t->province }}"
-                    data-region="{{ $t->region }}"
+                  data-modal-target="viewTeachertUserModal" 
+                  data-modal-show="viewTeachertUserModal" 
+                  type="button" 
+                  class="view_teacher font-medium text-emerald-600 dark:text-emerald-500 hover:underline"
+                  data-id="{{ $t->id }}"
+                  data-last_name="{{ $t->last_name }}"
+                  data-first_name="{{ $t->first_name }}"
+                  data-middle_name="{{ $t->middle_name }}"
+                  data-extension_name="{{ $t->extension_name }}"
+                  data-username="{{ $t->username}}"
+                  
+                  
+                  data-birth_date="{{ $t->birth_date }}"
+                  data-age="{{ $t->age}}"
+                  data-gender="{{ $t->gender}}"
+                  
+                  data-house_number="{{ $t->house_number }}"
+                  data-street="{{ $t->street }}"
+                  data-barangay="{{ $t->barangay }}"
+                  data-municipality="{{ $t->municipality }}"
+                  data-province="{{ $t->province }}"
+                  data-region="{{ $t->region }}"
 
-                    data-profile_picture="{{ $t->profile_picture}}"
-                    data-email="{{ $t->email}}"
-                    data-phone_number="{{ $t->phone_number}}"
-                    data-facebook_link="{{ $t->facebook_link}}">
-                   View
-                  </a>                
+                  data-profile_picture="{{ $t->profile_picture}}"
+                  data-email="{{ $t->email}}"
+                  data-phone_number="{{ $t->phone_number}}"
+                  data-facebook_link="{{ $t->facebook_link}}">
+                  View
+                </a>                
                 <a href="#" 
-                   type="button" 
-                   class="edit_Teacher font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                   data-modal-target="editTeacherUserModal" 
-                   data-modal-show="editTeacherUserModal" 
-                   data-id="{{ $t->id }}"
-                   data-last_name="{{ $t->last_name }}"
-                    data-first_name="{{ $t->first_name }}"
-                    data-middle_name="{{ $t->middle_name }}"
-                    data-extension_name="{{ $t->extension_name }}"
-                    data-email="{{ $t->email}}"
-                   
-                    data-birth_date="{{ $t->birth_date }}"
-                    data-age="{{ $t->age}}"
-                    data-gender="{{ $t->gender}}"
-                    data-phone_number="{{ $t->phone_number}}"
-                    data-house_number="{{ $t->house_number }}"
-                    data-street="{{ $t->street }}"
-                    data-barangay="{{ $t->barangay }}"
-                    data-municipality="{{ $t->municipality }}"
-                    data-province="{{ $t->province }}"
-                    data-region="{{ $t->region }}"
-                    data-facebook_link="{{ $t->facebook_link}}">
-                   Edit
-                  </a>
+                  type="button" 
+                  class="edit_Teacher font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  data-modal-target="editTeacherUserModal" 
+                  data-modal-show="editTeacherUserModal" 
+                  data-id="{{ $t->id }}"
+                  data-last_name="{{ $t->last_name }}"
+                  data-first_name="{{ $t->first_name }}"
+                  data-middle_name="{{ $t->middle_name }}"
+                  data-extension_name="{{ $t->extension_name }}"
+                  data-email="{{ $t->email}}"
+                  data-birth_date="{{ $t->birth_date }}"
+                  data-age="{{ $t->age}}"
+                  data-gender="{{ $t->gender}}"
+                  data-phone_number="{{ $t->phone_number}}"
+                  data-house_number="{{ $t->house_number }}"
+                  data-street="{{ $t->street }}"
+                  data-barangay="{{ $t->barangay }}"
+                  data-municipality="{{ $t->municipality }}"
+                  data-province="{{ $t->province }}"
+                  data-region="{{ $t->region }}"
+                  data-facebook_link="{{ $t->facebook_link}}">
+                  Edit
+                </a>
                 <a href="#" type="button" data-modal-target="archiveTeacherUserModal" data-modal-show="archiveTeacherUserModal" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
