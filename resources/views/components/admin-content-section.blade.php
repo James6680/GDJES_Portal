@@ -856,7 +856,20 @@ window.Alpine = Alpine;
           </thead>
 
           <tbody>
+          @foreach($student as $id=>$s)
             <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+              <td class="px-6 py-4">
+                {{ $id+1 }}
+              </td>
+              <td class="px-6 py-4">
+                {{ $s->last_name }}, {{ $s->first_name }} {{ $s->middle_name }}
+              </td>
+              <td class="px-6 py-4">
+                {{ $s->username }}
+              </td>
+              <td class="px-6 py-4">
+                {{ $s->house_number }}, {{ $s->street }}, {{ $s->barangay }}, {{ $s->municipality }}, {{ $s->province }}, {{ $s->region }}
+              </td>
               <td class="px-3 py-3">
                 Reyes
               </td>
@@ -890,6 +903,7 @@ window.Alpine = Alpine;
                 <a href="#" data-modal-target="editStudentUserModal" data-modal-show="editStudentUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 <a href="#" data-modal-target="archiveStudentUserModal" data-modal-show="archiveStudentUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
+          @endforeach
           </tbody>
 
         </table>
@@ -926,9 +940,9 @@ window.Alpine = Alpine;
 
       <!-- Add student user modal -->
       <div id="addStudentUserModal" 
-           tabindex="-1" 
-           aria-hidden="true" 
-           class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        tabindex="-1" 
+        aria-hidden="true" 
+        class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
           <!-- Modal content -->
           <form action="#" 
@@ -2307,10 +2321,10 @@ window.Alpine = Alpine;
           -->
           @endforeach
           </tbody>
-         
+        
 
         </table>
-       
+      
       </div> <!-- End of Table -->
 
       <!-- Pagination
