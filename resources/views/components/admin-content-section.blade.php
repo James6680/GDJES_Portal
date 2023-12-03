@@ -823,16 +823,10 @@ window.Alpine = Alpine;
           <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" class="px-3 py-3">
-                  LAST NAME
+                  NO.
               </th>
               <th scope="col" class="px-3 py-3">
-                  FIRST NAME
-              </th>
-              <th scope="col" class="px-3 py-3">
-                  MIDDLE NAME
-              </th>
-              <th scope="col" class="px-3 py-3">
-                  NAME EXTENSION
+                  FULL NAME
               </th>
               <th scope="col" class="px-3 py-3">
                   USERNAME
@@ -842,9 +836,6 @@ window.Alpine = Alpine;
               </th>
               <th scope="col" class="px-3 py-3">
                   LRN
-              </th>
-              <th scope="col" class="px-3 py-3">
-                  STATUS
               </th>
               <th scope="col" class="px-3 py-3">
                   DATE CREATED
@@ -862,40 +853,19 @@ window.Alpine = Alpine;
                 {{ $id+1 }}
               </td>
               <td class="px-6 py-4">
-                {{ $s->last_name }}, {{ $s->first_name }} {{ $s->middle_name }}
+                {{ $s->last_name }},  {{ $s->first_name }} {{ $s->middle_name }}
               </td>
-              <td class="px-6 py-4">
+              <td class="px-3 py-3">
                 {{ $s->username }}
               </td>
-              <td class="px-6 py-4">
-                {{ $s->house_number }}, {{ $s->street }}, {{ $s->barangay }}, {{ $s->municipality }}, {{ $s->province }}, {{ $s->region }}
+              <td class="px-3 py-3">
+              {{ $s->enrollments->first() && $s->enrollments->first()->gradeLevel ? $s->enrollments->first()->gradeLevel->grade_level : 'N/A' }}
               </td>
               <td class="px-3 py-3">
-                Reyes
+                {{ $s ->lrn }}
               </td>
               <td class="px-3 py-3">
-                Alex
-              </td>
-              <td class="px-3 py-3">
-                Pajarellano
-              </td>
-              <td class="px-3 py-3">
-                N/A
-              </td>
-              <td class="px-3 py-3">
-                lxxMeow
-              </td>
-              <td class="px-3 py-3">
-                Kinder
-              </td>
-              <td class="px-3 py-3">
-                158514070128
-              </td>
-              <td class="px-3 py-3">
-                Active
-              </td>
-              <td class="px-3 py-3">
-                August 23, 2023
+                {{ $s ->created_at }}
               </td>
               <td class="px-3 py-3 gap-2">
                 <!-- Modal toggle -->

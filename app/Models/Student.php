@@ -99,8 +99,19 @@ class Student extends Authenticatable
         return $this->hasMany(GradingSheet::class);
     }
 
-    public function relative() {
+    public function relative() 
+    {
         return $this->belongsTo('App\Models\Relatives', 'relatives_id');
+    }
+
+    public function classes()
+    {
+    return $this->hasMany(Classes::class, 'school_year_id', 'school_year_id');
+    }
+
+    public function enrollments()
+    {
+    return $this->hasMany(Enrollment::class);
     }
 
 }
