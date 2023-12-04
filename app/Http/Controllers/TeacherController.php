@@ -35,6 +35,7 @@ class TeacherController extends Controller
             ->where('school_years.active',1)
             ->where('enrollment.student_id',$request->input('student_id'))
             ->update(['enrollment.enrollment_status' => $request->input('status')]);
+        return $request->input('status');
     }
 
     public function updateDocumentRequirements(Request $request){

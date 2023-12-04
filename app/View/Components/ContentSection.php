@@ -3,8 +3,9 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Http\Controllers\Student;
+use Illuminate\Contracts\View\View;
 
 class ContentSection extends Component
 {
@@ -22,5 +23,5 @@ class ContentSection extends Component
     public function render(): View|Closure|string
     {
         return view('components.content-section');
-    }
+    }   
 }
