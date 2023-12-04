@@ -19,4 +19,15 @@ class Enrollment extends Model
         'learning_info_id',
         'enrollment_status',
     ];
+
+    public function student()
+    {
+    return $this->belongsTo(Student::class);
+    }
+
+    public function gradeLevel()
+    {
+    return $this->belongsTo(GradeLevel::class);
+    }
+
 }

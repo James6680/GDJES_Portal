@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 
 use App\Models\Teacher;
+use App\Models\Student;
 
 
 class AdminContentSection extends Component
@@ -28,8 +29,12 @@ class AdminContentSection extends Component
     public function render(): View|Closure|string
     {   
         if(request()->is('admin.teacher-management')){
-            $teacher = Teacher::latest()->paginate(10); //added
+            $teacher = Teacher::orderBy('last_name')->paginate(10); //added
             return view('components.admin-content-section', [ 'teacher' => $teacher]);
+        }
+        elseif(request()->is('admin.student-management')){
+            $student = Student::orderBy('last_name')->paginate(10); //added
+            return view('components.admin-content-section', [ 'student' => $student]);
         }
         else if(request()->is('admin.announcements')){
             $announcements = new AnnouncementController;
