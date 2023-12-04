@@ -355,7 +355,7 @@ use Carbon\Carbon;
                                         <th scope="col" class="px-4 py-3">Gender</th>
                                         <th scope="col" class="px-4 py-3">Birthday</th>
                                         <th scope="col" class="px-4 py-3">Requirements</th>
-                                        <th scope="col" class="px-4 py-3">Status</th>
+                                        <th scope="col" class="px-4 py-3">Enrollment Status</th>
                                     </tr>
                                 </thead>
 
@@ -427,30 +427,62 @@ use Carbon\Carbon;
                                             }
                                         </script>
                                         <td class="px-4 py-3">
-                                            <button data-popover-target="popover-click" data-popover-placement="left" data-popover-trigger="click" type="button" class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer" id="statusButton{{$loop->index}}">
-                                               Temporary
+                                            <button student-id="{{$student->id}}" data-popover-target="popover-click{{$loop->index}}" data-popover-placement="left" data-popover-trigger="click" type="button" class="px-2 py-1.5 
+                                                @if($student->enrollment_status == "Temporarily Enrolled")
+                                                echo 'cursor-pointer text-yellow-500 border border-yellow-500 rounded hover:bg-yellow-100 mb-1'
+                                                @elseif($student->enrollment_status == "Officially Enrolled")
+                                                echo 'cursor-pointer text-green-500 border border-green-500 rounded hover:bg-green-100 mb-1'
+                                                @elseif($student->enrollment_status == "Dropped")
+                                                echo 'cursor-pointer text-red-500 border border-red-500 rounded hover:bg-red-100 mb-1'
+                                                @elseif($student->enrollment_status == "Completed")
+                                                echo 'cursor-pointer text-purple-500 border border-purple-500 rounded hover:bg-purple-100 mb-1'    
+                                                @endif
+                                                " id="statusButton{{$loop->index}}"
+                                                @if($student->enrollment_status == "Completed")
+                                                echo disabled
+                                                @endif
+                                                >
+                                                {{$student->enrollment_status}}
                                             </button>
 
-                                            <div data-popover id="popover-click" role="tooltip" class="absolute z-10 invisible inline-block w-auto h-auto p-2 text-sm text-gray-500 transition-opacity duration-300 bg-white rounded-lg  opacity-0 font-mulish text-center font-medium popOver2">
+                                            <div data-popover id="popover-click{{$loop->index}}" role="tooltip" class="absolute z-10 invisible inline-block w-auto h-auto p-2 text-sm text-gray-500 transition-opacity duration-300 bg-white rounded-lg  opacity-0 font-mulish text-center font-medium popOver2">
                                                 <div class="px-2 py-1.5 text-green-500  border border-green-500 rounded hover:bg-green-100 mb-1 cursor-pointer">
-                                                    <p onclick="changeStatus('Enrolled', 'statusButton{{$loop->index}}')">Enrolled</p>
+                                                    <p id="changeStatusButton" onclick="changeStatus('Officially Enrolled', 'statusButton{{$loop->index}}', {{$student->id}})">Officially Enrolled</p>
                                                 </div>
                                                 <div class="px-2 py-1.5 text-yellow-500  border border-yellow-500 rounded hover:bg-yellow-100 mb-1 cursor-pointer">
-                                                    <p onclick="changeStatus('Temporary', 'statusButton{{$loop->index}}')">Temporary</p>
+                                                    <p id="changeStatusButton" onclick="changeStatus('Temporarily Enrolled', 'statusButton{{$loop->index}}', {{$student->id}})">Temporarily Enrolled</p>
                                                 </div>
                                                 <div class="px-2 py-1.5 text-red-600  border border-red-600 rounded hover:bg-red-100 cursor-pointer">
-                                                    <p onclick="changeStatus('Dropped', 'statusButton{{$loop->index}}')">Dropped</p>
+                                                    <p id="changeStatusButton" onclick="changeStatus('Dropped', 'statusButton{{$loop->index}}', {{$student->id}})">Dropped</p>
                                                 </div>
                                                 <div data-popper-arrow></div>
                                             </div>
                                         </td>
                                     </tr>
+
+                                    {{-- <script>
+                                        const element{{$loop->index}} = document.getElementById('statusButton{{$loop->index}}');
+                                        const student_id{{$loop->index}} = element{{$loop->index}}.getAttribute('student-id');
+                                        const value{{$loop->index}} = element{{$loop->index}}.textContent;
+
+                                        const observer{{$loop->index}} = new MutationObserver((mutations) => {
+                                          for (const mutation of mutations) {
+                                            if (mutation.type === 'childList') {
+                                              console.log('Element content changed {{$loop->index}} ' + student_id{{$loop->index}} + status);
+                                            }
+                                          }
+                                        });
+
+                                        observer{{$loop->index}}.observe(element{{$loop->index}}, {
+                                          childList: true,
+                                        });
+                                    </script> --}},
                                     @endforeach
                                 </tbody>
 
                                 <!-- Enrollment status changer script -->
                                 <script>
-                                    function changeStatus(status, buttonId) {
+                                    function changeStatus(status, buttonId, studentId) {
                                     var button = document.getElementById(buttonId);
 
                                     // Remove existing classes
@@ -458,20 +490,32 @@ use Carbon\Carbon;
 
                                     // Add classes based on selected status
                                     switch (status) {
-                                        case "Enrolled":
+                                        case "Officially Enrolled":
                                         button.classList.add("text-green-500", "border", "border-green-500", "hover:bg-green-100", "focus:ring-1", "focus:ring-gray-700", "rounded");
+                                        console.log(status + " " + studentId);
                                         break;
-                                        case "Temporary":
+                                        case "Temporarily Enrolled":
                                         button.classList.add("text-yellow-500", "border", "border-yellow-500", "hover:bg-yellow-100", "focus:ring-1", "focus:ring-gray-700", "rounded");
+                                        console.log(status + " " + studentId);
                                         break;
                                         case "Dropped":
                                         button.classList.add("text-red-600", "border", "border-red-600", "hover:bg-red-100", "focus:ring-1", "rounded");
+                                        console.log(status + " " + studentId);
                                         break;
                                         default:
                                         // If None or other value is selected, keep default classes
                                         button.classList.add("text-gray-700", "border", "border-gray-700", "hover:bg-gray-100", "focus:ring-1", "focus:ring-gray-700", "rounded");
                                     }
                                     button.textContent = status; // Update button text
+
+                                    $.ajax({
+                                        url: localStorage.getItem('appUrl') + "/faculty.editEnrollmentStatus",
+                                        type: "POST",
+                                        data: {
+                                            status: status,
+                                            student_id: studentId,
+                                        },
+                                    });
                                     }
                                 </script>
                             </table>
