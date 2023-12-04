@@ -823,16 +823,10 @@ window.Alpine = Alpine;
           <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" class="px-3 py-3">
-                  LAST NAME
+                  NO.
               </th>
               <th scope="col" class="px-3 py-3">
-                  FIRST NAME
-              </th>
-              <th scope="col" class="px-3 py-3">
-                  MIDDLE NAME
-              </th>
-              <th scope="col" class="px-3 py-3">
-                  NAME EXTENSION
+                  FULL NAME
               </th>
               <th scope="col" class="px-3 py-3">
                   USERNAME
@@ -844,9 +838,6 @@ window.Alpine = Alpine;
                   LRN
               </th>
               <th scope="col" class="px-3 py-3">
-                  STATUS
-              </th>
-              <th scope="col" class="px-3 py-3">
                   DATE CREATED
               </th>
               <th scope="col" class="px-3 py-3">
@@ -856,33 +847,25 @@ window.Alpine = Alpine;
           </thead>
 
           <tbody>
+          @foreach($student as $id=>$s)
             <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
-              <td class="px-3 py-3">
-                Reyes
+              <td class="px-6 py-4">
+                {{ $id+1 }}
+              </td>
+              <td class="px-6 py-4">
+                {{ $s->last_name }},  {{ $s->first_name }} {{ $s->middle_name }}
               </td>
               <td class="px-3 py-3">
-                Alex
+                {{ $s->username }}
               </td>
               <td class="px-3 py-3">
-                Pajarellano
+              {{ $s->enrollments->first() && $s->enrollments->first()->gradeLevel ? $s->enrollments->first()->gradeLevel->grade_level : 'N/A' }}
               </td>
               <td class="px-3 py-3">
-                N/A
+                {{ $s ->lrn }}
               </td>
               <td class="px-3 py-3">
-                lxxMeow
-              </td>
-              <td class="px-3 py-3">
-                Kinder
-              </td>
-              <td class="px-3 py-3">
-                158514070128
-              </td>
-              <td class="px-3 py-3">
-                Active
-              </td>
-              <td class="px-3 py-3">
-                August 23, 2023
+                {{ $s ->created_at }}
               </td>
               <td class="px-3 py-3 gap-2">
                 <!-- Modal toggle -->
@@ -890,6 +873,7 @@ window.Alpine = Alpine;
                 <a href="#" data-modal-target="editStudentUserModal" data-modal-show="editStudentUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 <a href="#" data-modal-target="archiveStudentUserModal" data-modal-show="archiveStudentUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
+          @endforeach
           </tbody>
 
         </table>
@@ -926,9 +910,9 @@ window.Alpine = Alpine;
 
       <!-- Add student user modal -->
       <div id="addStudentUserModal" 
-           tabindex="-1" 
-           aria-hidden="true" 
-           class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        tabindex="-1" 
+        aria-hidden="true" 
+        class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
           <!-- Modal content -->
           <form action="#" 
@@ -2187,7 +2171,7 @@ window.Alpine = Alpine;
               <th scope="col" class="px-6 py-3">
                   ADDRESS
               </th>
-             {{-- <th scope="col" class="px-6 py-3">
+              {{-- <th scope="col" class="px-6 py-3">
                   STATUS
               </th>
               --}}
@@ -2225,60 +2209,59 @@ window.Alpine = Alpine;
               <td class="px-6 py-4">
                 <!-- Modal toggle -->
                 <a href="#" 
-                   data-modal-target="viewTeachertUserModal" 
-                   data-modal-show="viewTeachertUserModal" 
-                   type="button" 
-                   class="view_teacher font-medium text-emerald-600 dark:text-emerald-500 hover:underline"
-                   data-id="{{ $t->id }}"
-                   data-last_name="{{ $t->last_name }}"
-                    data-first_name="{{ $t->first_name }}"
-                    data-middle_name="{{ $t->middle_name }}"
-                    data-extension_name="{{ $t->extension_name }}"
-                    data-username="{{ $t->username}}"
-                    
-                    
-                    data-birth_date="{{ $t->birth_date }}"
-                    data-age="{{ $t->age}}"
-                    data-gender="{{ $t->gender}}"
-                    
-                    data-house_number="{{ $t->house_number }}"
-                    data-street="{{ $t->street }}"
-                    data-barangay="{{ $t->barangay }}"
-                    data-municipality="{{ $t->municipality }}"
-                    data-province="{{ $t->province }}"
-                    data-region="{{ $t->region }}"
+                  data-modal-target="viewTeachertUserModal" 
+                  data-modal-show="viewTeachertUserModal" 
+                  type="button" 
+                  class="view_teacher font-medium text-emerald-600 dark:text-emerald-500 hover:underline"
+                  data-id="{{ $t->id }}"
+                  data-last_name="{{ $t->last_name }}"
+                  data-first_name="{{ $t->first_name }}"
+                  data-middle_name="{{ $t->middle_name }}"
+                  data-extension_name="{{ $t->extension_name }}"
+                  data-username="{{ $t->username}}"
+                  
+                  
+                  data-birth_date="{{ $t->birth_date }}"
+                  data-age="{{ $t->age}}"
+                  data-gender="{{ $t->gender}}"
+                  
+                  data-house_number="{{ $t->house_number }}"
+                  data-street="{{ $t->street }}"
+                  data-barangay="{{ $t->barangay }}"
+                  data-municipality="{{ $t->municipality }}"
+                  data-province="{{ $t->province }}"
+                  data-region="{{ $t->region }}"
 
-                    data-profile_picture="{{ $t->profile_picture}}"
-                    data-email="{{ $t->email}}"
-                    data-phone_number="{{ $t->phone_number}}"
-                    data-facebook_link="{{ $t->facebook_link}}">
-                   View
-                  </a>                
+                  data-profile_picture="{{ $t->profile_picture}}"
+                  data-email="{{ $t->email}}"
+                  data-phone_number="{{ $t->phone_number}}"
+                  data-facebook_link="{{ $t->facebook_link}}">
+                  View
+                </a>                
                 <a href="#" 
-                   type="button" 
-                   class="edit_Teacher font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                   data-modal-target="editTeacherUserModal" 
-                   data-modal-show="editTeacherUserModal" 
-                   data-id="{{ $t->id }}"
-                   data-last_name="{{ $t->last_name }}"
-                    data-first_name="{{ $t->first_name }}"
-                    data-middle_name="{{ $t->middle_name }}"
-                    data-extension_name="{{ $t->extension_name }}"
-                    data-email="{{ $t->email}}"
-                   
-                    data-birth_date="{{ $t->birth_date }}"
-                    data-age="{{ $t->age}}"
-                    data-gender="{{ $t->gender}}"
-                    data-phone_number="{{ $t->phone_number}}"
-                    data-house_number="{{ $t->house_number }}"
-                    data-street="{{ $t->street }}"
-                    data-barangay="{{ $t->barangay }}"
-                    data-municipality="{{ $t->municipality }}"
-                    data-province="{{ $t->province }}"
-                    data-region="{{ $t->region }}"
-                    data-facebook_link="{{ $t->facebook_link}}">
-                   Edit
-                  </a>
+                  type="button" 
+                  class="edit_Teacher font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  data-modal-target="editTeacherUserModal" 
+                  data-modal-show="editTeacherUserModal" 
+                  data-id="{{ $t->id }}"
+                  data-last_name="{{ $t->last_name }}"
+                  data-first_name="{{ $t->first_name }}"
+                  data-middle_name="{{ $t->middle_name }}"
+                  data-extension_name="{{ $t->extension_name }}"
+                  data-email="{{ $t->email}}"
+                  data-birth_date="{{ $t->birth_date }}"
+                  data-age="{{ $t->age}}"
+                  data-gender="{{ $t->gender}}"
+                  data-phone_number="{{ $t->phone_number}}"
+                  data-house_number="{{ $t->house_number }}"
+                  data-street="{{ $t->street }}"
+                  data-barangay="{{ $t->barangay }}"
+                  data-municipality="{{ $t->municipality }}"
+                  data-province="{{ $t->province }}"
+                  data-region="{{ $t->region }}"
+                  data-facebook_link="{{ $t->facebook_link}}">
+                  Edit
+                </a>
                 <a href="#" type="button" data-modal-target="archiveTeacherUserModal" data-modal-show="archiveTeacherUserModal" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
             </tr>
@@ -2308,10 +2291,10 @@ window.Alpine = Alpine;
           -->
           @endforeach
           </tbody>
-         
+        
 
         </table>
-       
+      
       </div> <!-- End of Table -->
 
       <!-- Pagination

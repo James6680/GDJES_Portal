@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use App\Models\HighestPossibleScore;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\HighestPossibleScoreController;
 
 
@@ -107,8 +108,14 @@ class FacultyContentSection extends Component
             
         // Pass data to the view
         return view('components.faculty-content-section', compact('gradingSheets','quarterValue', 'class_idValue','dropdownOptions', 'classCombinations', 'quarters', 'highestPossibleScore'));
+    }else if(request()->is('faculty.my-students')){
+        $advisoryStudents = new TeacherController;
+        return view('components.faculty-content-section', ['advisory' => $advisoryStudents->getAdvisoryStudents()]); 
     }
-     else {
+    else if(request()->is('faculty.enrollments')){
+        $advisoryStudents = new TeacherController;
+        return view('components.faculty-content-section', ['advisory' => $advisoryStudents->getAdvisoryStudents()]); 
+    }else {
         return view('components.faculty-content-section');
     }
 }
