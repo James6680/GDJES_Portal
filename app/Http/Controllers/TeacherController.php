@@ -67,7 +67,7 @@ class TeacherController extends Controller
         $highestPossibleScores = HighestPossibleScore::where('class_id', $request->class_id)
             ->where('quarter', $request->quarter)
             ->first();
-            dd($gradingSheet);
+        
         $WwTotal = (float) $request->input('wwTotal');
         $WwPs = ($WwTotal / $highestPossibleScores->hps_ww_total) * $highestPossibleScores->hps_ww_ps;
         //ww_weighted_score mudt be converted from percentage to decimal like 
@@ -99,6 +99,7 @@ class TeacherController extends Controller
             // Handle the case where no matching row is found in the transmutation table
             $quarterlyGrade = null;
         }
+        
         
 
         // Update the grading sheet with the calculated grades

@@ -602,13 +602,18 @@
                         $('#tableBody').load(location.href + ' #tableBody');
                     }
                 },
-                error: function(result) {
-                    let error = result.responseJSON;
+                error: function(xhr) {
+                if (xhr.responseJSON && xhr.responseJSON.errors) {
+                    let error = xhr.responseJSON;
                     $.each(error.errors, function(key, value) {
                         $('#' + key).addClass('border-red-500');
                         $('#' + key).after('<p class="text-red-500 text-xs italic error-message">' + value + '</p>');
                     });
+                } else {
+                    // Handle the case where the error object is not defined
+                    console.error("An unexpected error occurred:", xhr.statusText);
                 }
+            }
             });  
 
             });
