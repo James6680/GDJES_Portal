@@ -488,10 +488,15 @@
         $('.form-input').removeClass('border-red-500');
 
         
-        let id = $('[name="id"]').val();
+       // Find the nearest hidden input within the same row
+       let id = $('[name="id"]').val();
+        console.log(id);
+  
 
         //id will not work, name will
         let ww1 = $('[name="ww1"]').val();
+        console.log(ww1);
+  
         let ww2 = $('[name="ww2"]').val();
         let ww3 = $('[name="ww3"]').val();
         let ww4 = $('[name="ww4"]').val();
@@ -526,7 +531,7 @@
         let class_id = $('[name="class_id"]').val();
 
         $.ajax({
-            url: "faculty.grades.edit_student_grading_sheet/" + id,
+            url: "faculty.grades.edit_student_grading_sheet/"+id,
             method: "POST",
             data: {
                 id: id,

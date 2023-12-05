@@ -1300,73 +1300,59 @@
 
                                 <!--Table-->
                                 <tbody>
-                                    <form action="faculty.grades.edit_student_grading_sheet" 
-                                            method="POST" 
-                                            id="edit_gradingSheet">
+                                    
+                                        @if ($gradingSheets && count($gradingSheets) > 0)
+                                        @foreach ($gradingSheets as $gradingSheet) 
+                                        <form action="{{ url('faculty.grades.edit_student_grading_sheet/' . $gradingSheet->id) }}"
+                                                method="POST" 
+                                                class="editGradingSheetForm">
                                             @csrf 
-                                            
-                                    @if ($gradingSheets && count($gradingSheets) > 0)
-                                    @foreach ($gradingSheets as $gradingSheet) {
-                                        @php $student = $gradingSheet->student; @endphp
-                                        @php
-                                            $quarterValue = $quarterValue ?? null;
-                                            $class_idValue = $class_idValue ?? null;
-                                        @endphp
-                                        <input type="hidden" name="id" value="{{ $hps->id }}">
-                                        <!--input type="hidden" name="id" value="{{ $gradingSheet->id }}"-->
-                                        <input type="hidden" name="quarter" value="{{ $quarterValue }}">
-                                        <input type="hidden" name="class_id" value="{{ $class_idValue }}">
-                                        
-                                        <tr class="text-center bg-white">
-                                            <td class="border-2 border-yellow-100 px-2.5 py-2">{{ $loop->iteration }}</td>
-                                            <td class="border-2 border-yellow-100 px-2">
-                                                @php
-                                                    $formattedName = $student->last_name;
-                                
-                                                    if ($student->name_extension !== 'none' && $student->name_extension !== null) {
-                                                        $formattedName .= ' ' . $student->name_extension;
-                                                    }
-                                
-                                                    $formattedName .= ', ' . $student->first_name;
-                                
-                                                    if ($student->middle_name !== null) {
-                                                        $formattedName .= ' ' . $student->middle_name;
-                                                    }
+                                            <tr class="text-center bg-white">
+                                                @php 
+                                                    $quarterValue = $quarterValue ?? null;
+                                                    $class_idValue = $class_idValue ?? null;
+                                                    $fields = ['ww1', 'ww2', 'ww3', 'ww4', 'ww5', 'ww6', 'ww7', 'ww8', 'ww9', 'ww10',
+                                                               'ww_total', 'ww_ps', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
+                                                               'pt4', 'pt5', 'pt6', 'pt7', 'pt8', 'pt9', 'pt10', 'pt_total', 
+                                                               'pt_ps', 'pp_weighted_score', 'qa10', 'qa_ps', 'qa_weighted_score', 
+                                                               'initial_grade', 'quarterly_grade'
+                                                            ];
                                                 @endphp
-                                
-                                                {{ $formattedName }}
-                                            </td>
-                                
-                                            @php
-                                                $fields = ['ww1', 'ww2', 'ww3', 'ww4', 'ww5', 'ww6', 'ww7', 'ww8', 'ww9', 'ww10',
-                                                           'ww_total', 'ww_ps', 'ww_weighted_score', 'pt1', 'pt2', 'pt3', 
-                                                           'pt4', 'pt5', 'pt6', 'pt7', 'pt8', 'pt9', 'pt10', 'pt_total', 
-                                                           'pt_ps', 'pp_weighted_score', 'qa10', 'qa_ps', 'qa_weighted_score', 
-                                                           'initial_grade', 'quarterly_grade'
-                                                        ];
-                                            @endphp
-                                
-                                            @foreach($fields as $field)
-                                                <td class="border-2 border-yellow-100 px-2">
-                                                    <input type="text" 
-                                                           name="{{ $field }}" 
-                                                           class="p-0 border-none bg-transparent text-center"
-                                                           value="{{ $student->$field }}">
-                                                </td>
+                                                <input type="hidden" name="id" value="{{ $gradingSheet->id }}">
+                                                <input type="hidden" name="class_id" value="{{ $class_idValue }}">
+                                                <input type="hidden" name="quarter" value="{{ $quarterValue }}">
+                                                
+                                                
+                                                    <td class="border-2 border-yellow-100 px-2.5 py-2">{{ $loop->iteration }}</td>
+                                                    <td class="border-2 border-yellow-100 px-2">
+                                                        {{ $gradingSheet->student->last_name }}, {{ $gradingSheet->student->first_name }} {{ $gradingSheet->student->middle_name }}
+                                                    </td>
+                                            
+                                                    @foreach($fields as $field)
+                                                        <td class="border-2 border-yellow-100 px-2">
+                                                            <input type="text" 
+                                                                name="{{ $field }}" 
+                                                                id="{{ $field }}" 
+                                                                class="p-0 border-none bg-transparent text-center"
+                                                                value="{{ $gradingSheet->$field }}">
+                                                        </td>
+                                                    @endforeach
+                                            
+                                                    <td class="border-2 border-yellow-100 px-2">
+                                                        <button type="submit" 
+                                                                class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1 editButton 
+                                                                        editGradingSheet"
+                                                                id="editGradingSheet">
+                                                            Save
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </form>
                                             @endforeach
-                                
-                                            <td class="border-2 border-yellow-100 px-2">
-                                                <button type="submit" 
-                                                        class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1 editButton
-                                                                editGradingSheet"
-                                                        id="editGradingSheet">
-                                                    Save
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    @endif
+                                        @endif
+                                    
                                 </tbody>
+                                
                                 
                                 
                                 <!--Juan Dela Cruz body-->

@@ -46,7 +46,7 @@ class FacultyContentSection extends Component
         ->join('sections', 'classes.section_id', '=', 'sections.id')
         ->join('school_years', 'school_years.id', '=', 'classes.school_year_id')
         ->where('school_years.active', 1)
-        ->where('classes.teacher_id', '=', Auth::guard('teachers')->user()->id) 
+       ->where('classes.teacher_id', '=', Auth::guard('teachers')->user()->id) 
         ->distinct()
         ->get();
         // Transform the $classCombinations for dropdown options
@@ -80,7 +80,7 @@ class FacultyContentSection extends Component
         $class_idValue = request('class_id');
     
         // Fetch all highest possible scores
-        $gradingSheets = null;
+        $gradingSheets = GradingSheet::all();
         $highestPossibleScore = HighestPossibleScore::all();
         // Fetch highest possible scores based on the selected criteria
         if($quarterValue != null && $class_idValue != null){
@@ -88,32 +88,37 @@ class FacultyContentSection extends Component
             ->where('quarter', $quarterValue)
             ->get();
 
-            $gradingSheets = GradingSheet::where('class_id', $class_idValue )
-            ->where('quarter', $quarterValue)
-            ->with('student') // Eager load the student relationship
+
+            // $gradingSheets = GradingSheet::where('class_id', $class_idValue )
+            // ->where('quarter', $quarterValue)
+            // //->where('highest_possible_score_id', $highest_possible_score_idValue)
+            // ->with('student') // Eager load the student relationship
+            // ->get();
+
+            $gradingSheets = GradingSheet::join('students', 'grading_sheet.student_id', '=', 'students.id')
+            ->where('grading_sheet.class_id', $class_idValue)
+            ->where('grading_sheet.quarter', $quarterValue)
+            ->select(
+                'grading_sheet.*', 
+                'students.last_name', 
+                'students.first_name', 
+                'students.middle_name'
+            )
             ->get();
+            
         }else{
             $highestPossibleScore = null;
-           
-        }
-
-        // Fetch grading sheets based on the selected criteria
-        if ($quarterValue !== null && $class_idValue !== null) {
-            $gradingSheets = GradingSheet::where('class_id', $class_idValue)
-                ->where('quarter', $quarterValue)
-                ->with('student') 
-                ->get();
-        } else {
             $gradingSheets = collect(); // Initialize an empty collection if criteria are not set
         }
 
-        // Check if $gradingSheets is not empty before using sortBy
-        if (!$gradingSheets->isEmpty()) {
-            // sortBy student last name
-            $gradingSheets = $gradingSheets->sortBy(function ($gradingSheet) {
-                return $gradingSheet->student->last_name;
-            });
-        }
+        
+       // Check if $gradingSheets is not empty before using sortBy
+        // if (!$gradingSheets->isEmpty()) {
+        //     // sortBy student last name
+        //     $gradingSheets = $gradingSheets->sortBy(function ($gradingSheet) {
+        //         return $gradingSheet->student->last_name;
+        //     });
+        // }
 
         $quarters = $quarters->map(function ($quarter) use ($quarterTextMapping) {
           $quarterText = $quarterTextMapping[$quarter] ?? $quarter;

@@ -99,7 +99,7 @@ class TeacherController extends Controller
 
         $wwScores=null;
 
-        $gradingSheet = GradingSheet::where('id', $request->id)->first();
+        $gradingSheet = GradingSheet::where('id', $request->input('id'))->first();
         $highestPossibleScores = HighestPossibleScore::where('class_id', $request->class_id)
             ->where('quarter', $request->quarter)
             ->first();
