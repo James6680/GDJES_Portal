@@ -63,73 +63,20 @@ class TeacherController extends Controller
     public function calculateGrades(Request $request, $id)
     {
 
-        // Retrieve the GradingSheet instance based on the provided $id
-        // $gradingSheet = GradingSheet::where('id', $request->id)->first();
-
-
-        // // Check if the GradingSheet with the given $id exists
-        // if (!$gradingSheet) {
-        //     // Handle the case where no GradingSheet is found
-        //     return redirect()->back()->with('error', 'GradingSheet not found');
-        // }
-
-        // //$highestPossibleScores = HighestPossibleScore::find($gradingSheet->highest_possible_score_id);
-        // $quarterValue = $request->quarter;
-        // $class_idValue = $request->class_id;
-
-        // // Fetch all highest possible scores
-        // $gradingSheets = null;
-        // $highestPossibleScores = HighestPossibleScore::all();
-        // // Fetch highest possible scores based on the selected criteria
-        // if($quarterValue != null && $class_idValue != null){
-        //     // $highestPossibleScores = HighestPossibleScore::where('class_id', $class_idValue )
-        //     // ->where('quarter', $quarterValue)
-        //     // ->get();
-        //     $highestPossibleScores = DB::table('highest_possible_scores')
-        //         ->where('class_id', $class_idValue )
-        //         ->where('quarter', $quarterValue)
-        //         ->first();
-
-        //     $gradingSheets = GradingSheet::where('class_id', $class_idValue )
-        //     ->where('quarter', $quarterValue)
-        //     ->get();
-        // }else {
-        //     $highestPossibleScores = null;
-        // }
-
-        $wwScores=null;
-
-        $gradingSheet = GradingSheet::where('id', $request->input('id'))->first();
+        $gradingSheet = GradingSheet::where('id', $request->id)->first();
         $highestPossibleScores = HighestPossibleScore::where('class_id', $request->class_id)
             ->where('quarter', $request->quarter)
             ->first();
-        //calculating ww scores
-        $wwScores = [
-            $gradingSheet->ww1, $gradingSheet->ww2,
-            $gradingSheet->ww3, $gradingSheet->ww4,
-            $gradingSheet->ww5, $gradingSheet->ww6,
-            $gradingSheet->ww7, $gradingSheet->ww8,
-            $gradingSheet->ww9, $gradingSheet->ww10,
-        ];
-        //total ww scores
-        $WwTotal = array_sum($wwScores);
+            dd($gradingSheet);
+        $WwTotal = (float) $request->input('wwTotal');
         $WwPs = ($WwTotal / $highestPossibleScores->hps_ww_total) * $highestPossibleScores->hps_ww_ps;
         //ww_weighted_score mudt be converted from percentage to decimal like 
         // 50% to .50 
         $wwWeightedScore = $WwPs * $highestPossibleScores->ww_weighted_score;
-        // $gradingSheet->ww_weighted_score;
-
-        $ptScores = [
-            $gradingSheet->pt1, $gradingSheet->pt2,
-            $gradingSheet->pt3, $gradingSheet->pt4,
-            $gradingSheet->pt5, $gradingSheet->pt6,
-            $gradingSheet->pt7, $gradingSheet->pt8,
-            $gradingSheet->pt9, $gradingSheet->pt10,
-        ];
-        //total pt scores
-        $PtTotal = array_sum($ptScores);
+       
         //ww_weighted_score mudt be converted from percentage to decimal like 
         // 50% to .50 
+        $PtTotal = (float) $request->input('ptTotal');
         $PtPs = ($PtTotal / $highestPossibleScores->hps_pt_total) * $highestPossibleScores->hps_pt_ps;
         $ppWeightedScore =  $PtPs * $highestPossibleScores->pp_weighted_score;
         //$gradingSheet->pp_weighted_score;
@@ -152,9 +99,10 @@ class TeacherController extends Controller
             // Handle the case where no matching row is found in the transmutation table
             $quarterlyGrade = null;
         }
+        
 
         // Update the grading sheet with the calculated grades
-        $gradingSheet->update([
+        GradingSheet::where('id', $request->id)->update([
             'ww1' => $request->input('ww1'),
             'ww2' => $request->input('ww2'),
             'ww3' => $request->input('ww3'),
@@ -187,6 +135,7 @@ class TeacherController extends Controller
             'initial_grade' => $initialGrade,
             'quarterly_grade' => $quarterlyGrade,
         ]);
+       
 
         // return redirect()->route('faculty.grades.edit_student_grading_sheet', ['gradingSheet' => $gradingSheet])
         //     ->with('success', 'Grades calculated successfully');

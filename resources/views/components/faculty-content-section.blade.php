@@ -1300,13 +1300,8 @@
 
                                 <!--Table-->
                                 <tbody>
-                                    
-                                        @if ($gradingSheets && count($gradingSheets) > 0)
-                                        @foreach ($gradingSheets as $gradingSheet) 
-                                        <form action="{{ url('faculty.grades.edit_student_grading_sheet/' . $gradingSheet->id) }}"
-                                                method="POST" 
-                                                class="editGradingSheetForm">
-                                            @csrf 
+                                    @if ($gradingSheets && count($gradingSheets) > 0)
+                                        @foreach ($gradingSheets as $id => $gradingSheet)
                                             <tr class="text-center bg-white">
                                                 @php 
                                                     $quarterValue = $quarterValue ?? null;
@@ -1318,11 +1313,14 @@
                                                                'initial_grade', 'quarterly_grade'
                                                             ];
                                                 @endphp
-                                                <input type="hidden" name="id" value="{{ $gradingSheet->id }}">
-                                                <input type="hidden" name="class_id" value="{{ $class_idValue }}">
-                                                <input type="hidden" name="quarter" value="{{ $quarterValue }}">
-                                                
-                                                
+                                                <form action="{{ url('faculty.grades.edit_student_grading_sheet/' . $gradingSheet->id) }}"
+                                                    method="POST" 
+                                                    class="editGradingSheetForm">
+                                                    @csrf 
+                                                    <input type="hidden" name="id" value="{{ $gradingSheet->id }}">
+                                                    <input type="hidden" name="class_id" value="{{ $class_idValue }}">
+                                                    <input type="hidden" name="quarter" value="{{ $quarterValue }}">
+                                                    
                                                     <td class="border-2 border-yellow-100 px-2.5 py-2">{{ $loop->iteration }}</td>
                                                     <td class="border-2 border-yellow-100 px-2">
                                                         {{ $gradingSheet->student->last_name }}, {{ $gradingSheet->student->first_name }} {{ $gradingSheet->student->middle_name }}
@@ -1340,18 +1338,20 @@
                                             
                                                     <td class="border-2 border-yellow-100 px-2">
                                                         <button type="submit" 
-                                                                class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1 editButton 
-                                                                        editGradingSheet"
-                                                                id="editGradingSheet">
+                                                                class="text-white border bg-red-500 hover:bg-red-900 font-normal rounded text-xs px-2 py-1 
+                                                                        editGradingSheet" 
+                                                                data-id= "{{ $gradingSheet->id }}">
                                                             Save
                                                         </button>
                                                     </td>
+                                                
+                                                </form>
                                                 </tr>
-                                            </form>
-                                            @endforeach
-                                        @endif
-                                    
+                                        
+                                        @endforeach
+                                    @endif
                                 </tbody>
+                                
                                 
                                 
                                 

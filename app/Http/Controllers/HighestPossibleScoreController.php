@@ -63,19 +63,6 @@ class HighestPossibleScoreController extends Controller
     //edit highest possible scores
     public function edit(Request $request, $id)
     {
-       /* $request->validate([
-            'edit_ww_weighted_score' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-            'edit_pp_weighted_score' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-            'edit_qa_weighted_score' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-        ], [
-            'edit_ww_weighted_score.regex' => 'Please enter the :attribute in the format .XX (two decimal places).',
-            'edit_pp_weighted_score.regex' => 'Please enter the :attribute in the format .XX (two decimal places).',
-            'edit_qa_weighted_score.regex' => 'Please enter the :attribute in the format .XX (two decimal places).',
-        ]);
-        */
-
-        //$data = HighestPossibleScore::find($id);
-
         // Calculate total for 'ww1' to 'ww10'
         $wwTotal = $request->edit_ww1 + $request->edit_ww2 + $request->edit_ww3 + $request->edit_ww4 + $request->edit_ww5 +
                     $request->edit_ww6 + $request->edit_ww7 + $request->edit_ww8 + $request->edit_ww9 + $request->edit_ww10;

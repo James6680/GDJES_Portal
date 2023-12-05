@@ -478,117 +478,139 @@
 
 
 <script>
-    $(document).ready(function(){
-        //show hps in row
-        $('.editGradingSheet').on('click', function(e){ //get class
-            e.preventDefault();
+        $(document).ready(function(){
+            //show hps in row
+            $('.editGradingSheet').on('click', function(e){ //get class
+                e.preventDefault();
 
-        // Clear previous error messages and remove red borders
-        $('.error-message').remove();
-        $('.form-input').removeClass('border-red-500');
+            // Clear previous error messages and remove red borders
+            $('.error-message').remove();
+            $('.form-input').removeClass('border-red-500');
 
-        
-       // Find the nearest hidden input within the same row
-       let id = $('[name="id"]').val();
-        console.log(id);
-  
+            // Get the data-id attribute from the clicked button
+            let id = $(this).data('id');
 
-        //id will not work, name will
-        let ww1 = $('[name="ww1"]').val();
-        console.log(ww1);
-  
-        let ww2 = $('[name="ww2"]').val();
-        let ww3 = $('[name="ww3"]').val();
-        let ww4 = $('[name="ww4"]').val();
-        let ww5 = $('[name="ww5"]').val();
-        let ww6 = $('[name="ww6"]').val();
-        let ww7 = $('[name="ww7"]').val();
-        let ww8 = $('[name="ww8"]').val();
-        let ww9 = $('[name="ww9"]').val();
-        let ww10 = $('[name="ww10"]').val();
-        let ww_total = $('[name="ww_total"]').val();
-        let ww_ps = $('[name="ww_ps"]').val();
-        let ww_weighted_score = $('[name="ww_weighted_score"]').val();
-        let pt1 = $('[name="pt1"]').val();
-        let pt2 = $('[name="pt2"]').val();
-        let pt3 = $('[name="pt3"]').val();
-        let pt4 = $('[name="pt4"]').val();
-        let pt5 = $('[name="pt5"]').val();
-        let pt6 = $('[name="pt6"]').val();
-        let pt7 = $('[name="pt7"]').val();
-        let pt8 = $('[name="pt8"]').val();
-        let pt9 = $('[name="pt9"]').val();
-        let pt10 = $('[name="pt10"]').val();
-        let pt_total = $('[name="pt_total"]').val();
-        let pt_ps = $('[name="pt_ps"]').val();
-        let pp_weighted_score = $('[name="pp_weighted_score"]').val();
-        let qa10 = $('[name="qa10"]').val();
-        let qa_ps = $('[name="qa_ps"]').val();
-        let qa_weighted_score = $('[name="qa_weighted_score"]').val();
-        let initial_grade = $('[name="initial_grade"]').val();
-        let quarterly_grade = $('[name="quarterly_grade"]').val();
-        let quarter = $('[name="quarter"]').val();
-        let class_id = $('[name="class_id"]').val();
+            // Find the form with the corresponding data-id
+            let form = $('form.editGradingSheetForm[data-id="' + id + '"]')
+            console.log(id);
+            // Find the closest table row (tr) to the clicked button
+            let row = $(this).closest('tr');
+    
+            let ww1 = row.find('[name="ww1"]').val();
+            console.log('ww1:', ww1);
+            let ww2 = row.find('[name="ww2"]').val();
+            let ww3 = row.find('[name="ww3"]').val();
+            let ww4 = row.find('[name="ww4"]').val();
+            let ww5 = row.find('[name="ww5"]').val();
+            let ww6 = row.find('[name="ww6"]').val();
+            let ww7 = row.find('[name="ww7"]').val();
+            let ww8 = row.find('[name="ww8"]').val();
+            let ww9 = row.find('[name="ww9"]').val();
+            let ww10 = row.find('[name="ww10"]').val();
 
-        $.ajax({
-            url: "faculty.grades.edit_student_grading_sheet/"+id,
-            method: "POST",
-            data: {
-                id: id,
-                class_id: class_id,
-                quarter: quarter,
-                ww1: ww1,
-                ww2: ww2,
-                ww3: ww3,
-                ww4: ww4,
-                ww5: ww5,
-                ww6: ww6,
-                ww7: ww7,
-                ww8: ww8,
-                ww9: ww9,
-                ww10: ww10,
-                ww_total: ww_total,
-                ww_ps: ww_ps,
-                ww_weighted_score: ww_weighted_score,
-                pt1: pt1,
-                pt2: pt2,
-                pt3: pt3,
-                pt4: pt4,
-                pt5: pt5,
-                pt6: pt6,
-                pt7: pt7,
-                pt8: pt8,
-                pt9: pt9,
-                pt10: pt10,
-                pt_total: pt_total,
-                pt_ps: pt_ps,
-                pp_weighted_score: pp_weighted_score,
-                qa10: qa10,
-                qa_ps: qa_ps,
-                qa_weighted_score: qa_weighted_score,
-                initial_grade: initial_grade,
-                quarterly_grade: quarterly_grade,
-                
-            },
-            success: function(result) {
-                // Handle the success response here
-                if (result.status == 'success') {
-                // Close the Tailwind CSS modal
-                    //document.getElementById('createTeacherUserModal').classList.remove('visible');
-                    //document.getElementById('createTeacherUserModal').classList.add('invisible');
-                   // document.getElementById('edit_hps').reset();
-                    $('#tableBody').load(location.href + ' #tableBody');
-                }
-            },
-            error: function(result) {
-                let error = result.responseJSON;
-                $.each(error.errors, function(key, value) {
-                    $('#' + key).addClass('border-red-500');
-                    $('#' + key).after('<p class="text-red-500 text-xs italic error-message">' + value + '</p>');
-                });
+            let wwTotal = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                let wwValue = parseFloat(row.find(`[name="ww${i}"]`).val()) || 0;
+                wwTotal += wwValue;
             }
-        });  
 
+            // Assign the total to the hidden input field, making sure it's a float
+            row.find('[name="ww_total"]').val(parseFloat(wwTotal));
+
+                        
+            let ww_ps = row.find('[name="ww_ps"]').val();
+            let ww_weighted_score = row.find('[name="ww_weighted_score"]').val();
+
+
+            let pt1 = row.find('[name="pt1"]').val();
+            let pt2 = row.find('[name="pt2"]').val();
+            let pt3 = row.find('[name="pt3"]').val();
+            let pt4 = row.find('[name="pt4"]').val();
+            let pt5 = row.find('[name="pt5"]').val();
+            let pt6 = row.find('[name="pt6"]').val();
+            let pt7 = row.find('[name="pt7"]').val();
+            let pt8 = row.find('[name="pt8"]').val();
+            let pt9 = row.find('[name="pt9"]').val();
+            let pt10 = row.find('[name="pt10"]').val();
+
+            let ptTotal = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                let ptValue = parseFloat(row.find(`[name="pt${i}"]`).val()) || 0;
+                ptTotal += ptValue;
+            }
+
+            // Assign the total to the hidden input field, making sure it's a float
+            row.find('[name="pt_total"]').val(parseFloat(ptTotal));
+
+            let pt_total = row.find('[name="pt_total"]').val();
+            let pt_ps = row.find('[name="pt_ps"]').val();
+            let pp_weighted_score = row.find('[name="pp_weighted_score"]').val();
+            let qa10 = row.find('[name="qa10"]').val();
+            let qa_ps = row.find('[name="qa_ps"]').val();
+            let qa_weighted_score = row.find('[name="qa_weighted_score"]').val();
+            let initial_grade = row.find('[name="initial_grade"]').val();
+            let quarterly_grade = row.find('[name="quarterly_grade"]').val();
+            let quarter = row.find('[name="quarter"]').val();
+            let class_id = row.find('[name="class_id"]').val();
+
+            $.ajax({
+                url: "faculty.grades.edit_student_grading_sheet/"+id,
+                method: "POST",
+                data: {
+                    id: id,
+                    class_id: row.find('[name="class_id"]').val(),
+                    quarter: row.find('[name="quarter"]').val(),
+                    ww1: ww1,
+                    ww2: ww2,
+                    ww3: ww3,
+                    ww4: ww4,
+                    ww5: ww5,
+                    ww6: ww6,
+                    ww7: ww7,
+                    ww8: ww8,
+                    ww9: ww9,
+                    ww10: ww10,
+                    wwTotal: parseFloat(wwTotal),
+                    ww_ps: ww_ps,
+                    ww_weighted_score: ww_weighted_score,
+                    pt1: pt1,
+                    pt2: pt2,
+                    pt3: pt3,
+                    pt4: pt4,
+                    pt5: pt5,
+                    pt6: pt6,
+                    pt7: pt7,
+                    pt8: pt8,
+                    pt9: pt9,
+                    pt10: pt10,
+                    pt_total: parseFloat(ptTotal),
+                    pt_ps: pt_ps,
+                    pp_weighted_score: pp_weighted_score,
+                    qa10: qa10,
+                    qa_ps: qa_ps,
+                    qa_weighted_score: qa_weighted_score,
+                    initial_grade: initial_grade,
+                    quarterly_grade: quarterly_grade,
+                    
+                },
+                success: function(result) {
+                    console.log(result);
+                    // Handle the success response here
+                    if (result.status == 'success') {
+                        $('#tableBody').load(location.href + ' #tableBody');
+                    }
+                },
+                error: function(result) {
+                    let error = result.responseJSON;
+                    $.each(error.errors, function(key, value) {
+                        $('#' + key).addClass('border-red-500');
+                        $('#' + key).after('<p class="text-red-500 text-xs italic error-message">' + value + '</p>');
+                    });
+                }
+            });  
+
+            });
         });
-    });
 </script>

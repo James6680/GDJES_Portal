@@ -88,13 +88,6 @@ class FacultyContentSection extends Component
             ->where('quarter', $quarterValue)
             ->get();
 
-
-            // $gradingSheets = GradingSheet::where('class_id', $class_idValue )
-            // ->where('quarter', $quarterValue)
-            // //->where('highest_possible_score_id', $highest_possible_score_idValue)
-            // ->with('student') // Eager load the student relationship
-            // ->get();
-
             $gradingSheets = GradingSheet::join('students', 'grading_sheet.student_id', '=', 'students.id')
             ->where('grading_sheet.class_id', $class_idValue)
             ->where('grading_sheet.quarter', $quarterValue)
@@ -110,16 +103,6 @@ class FacultyContentSection extends Component
             $highestPossibleScore = null;
             $gradingSheets = collect(); // Initialize an empty collection if criteria are not set
         }
-
-        
-       // Check if $gradingSheets is not empty before using sortBy
-        // if (!$gradingSheets->isEmpty()) {
-        //     // sortBy student last name
-        //     $gradingSheets = $gradingSheets->sortBy(function ($gradingSheet) {
-        //         return $gradingSheet->student->last_name;
-        //     });
-        // }
-
         $quarters = $quarters->map(function ($quarter) use ($quarterTextMapping) {
           $quarterText = $quarterTextMapping[$quarter] ?? $quarter;
           $quarterNumber = $quarter; // Assuming $quarter represents the quarter number
