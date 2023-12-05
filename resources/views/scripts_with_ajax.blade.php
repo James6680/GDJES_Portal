@@ -585,7 +585,7 @@
                     pt8: pt8,
                     pt9: pt9,
                     pt10: pt10,
-                    pt_total: parseFloat(ptTotal),
+                    ptTotal: parseFloat(ptTotal),
                     pt_ps: pt_ps,
                     pp_weighted_score: pp_weighted_score,
                     qa10: qa10,
