@@ -128,13 +128,14 @@
                 name="grade_level" 
                 class="bg-main-background border border-gray-300 text-gray-900 text-[0.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 py-2.5 w-full">
                 <option value=""  @if(isset($enrollment->grade_level) && $enrollment->grade_level == null) selected @endif>Pumili ng huling baitang na nais pasukan</option>
-                <option value="0" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 0 ) selected @endif>KINDER</option>
-                <option value="1" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 1 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 1) selected @endif>Grade 1</option>
-                <option value="2" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 2 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 2) selected @endif>Grade 2</option>
-                <option value="3" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 3 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 3) selected @endif>Grade 3</option>
-                <option value="4" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 4 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 4) selected @endif>Grade 4</option>
-                <option value="5" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 5 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 5) selected @endif>Grade 5</option>
-                <option value="6" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 6 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 6) selected @endif>Grade 6</option>
+                <option value="0" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 0 ) selected @endif>Kinder pero hindi natapos</option>
+                <option value="1" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 1 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 1) selected @endif>KINDER</option>
+                <option value="2" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 2 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 2) selected @endif>Grade 1</option>
+                <option value="3" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 3 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 3) selected @endif>Grade 2</option>
+                <option value="4" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 4 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 4) selected @endif>Grade 3</option>
+                <option value="5" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 5 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 5) selected @endif>Grade 4</option>
+                <option value="6" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 6 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 6) selected @endif>Grade 5</option>
+                <option value="7" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 7 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && ($enrollment->returnee + 1 == 7 || $enrollment->returnee + 1 == 8)) selected @endif>Grade 6</option>
               </select>
               <!-- Error Message for Ano ang huling baitang na natapos? -->
               <span   

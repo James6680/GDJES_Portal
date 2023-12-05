@@ -999,6 +999,11 @@
     </div>
 
     @elseif (request()->is('student.enrollment-status') )
+    @php
+        $student = new App\Http\Controllers\Student();
+        $student = $student->StudentInfo();
+    @endphp
+
     <!-- Student Enrollment Status Section -->
     <div class="md:pl-64 pl-0 min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
 
@@ -1044,7 +1049,7 @@
                             type="button" 
                             class="focus:outline-none font-mulish text-white border-2 bg-brown-500 font-semibold rounded-md text-base xl:w-[20%] lg:w-[40%] w-full py-2.5 cursor-not-allowed shadow-transparent" 
                             disabled>
-                            Temporary Enrolled
+                                {{$student->enrollment_status}}
                         </button>
                     </div>
 
@@ -1067,24 +1072,18 @@
                     </div>
 
                     <div class="w-full self-stretch gap-4">
+                        @php
+                            $requirements = json_decode($student->requirements);
+                            $checklist = json_decode($student->checklist);
+                            $list = array_combine($requirements, $checklist);
+                        @endphp
 
+                        @foreach ($list as $key => $value)
                         <div class="w-full flex items-center pl-4  bg-green-50 rounded-lg dark:border-gray-700 ">
-                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 border border-green-500 text-green-500 bg-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
-                            <label for="bordered-checkbox-1" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-md text-sm font-semibold text-green-500 dark:text-gray-300">PSA Birth Certificate</label>
+                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 border border-green-500 text-green-500 bg-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled @checked($value)>
+                            <label for="bordered-checkbox-1" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-md text-sm font-semibold text-green-500 dark:text-gray-300">{{$key}}</label>
                         </div>
-
-                        <div class="w-full flex items-center pl-4 mt-4 bg-green-50  rounded-lg dark:border-gray-700 ">
-                            <input id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 border border-green-500 text-green-500 bg-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled checked>
-                            <label for="bordered-checkbox-2" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-md text-sm font-semibold text-green-500 dark:text-gray-300">Form 138 / School Form 10 / Report Card</label>
-                        </div>
-
-                        <div class="w-full flex items-center pl-4 mt-4 bg-red-50  rounded-lg dark:border-gray-700 ">
-                            <input id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-5 h-5 border border-green-500 text-green-500 bg-white rounded-xl focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled unchecked>
-                            <label for="bordered-checkbox-3" class="w-full font-mulish lg:py-6 py-4 ml-2 lg:text-md text-sm font-semibold text-green-500 dark:text-gray-300">2 pcss. 2x2 colored ID picture</label>
-                        </div>
-
-                        
-
+                        @endforeach
                     </div>
                 </div>
 

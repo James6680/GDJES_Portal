@@ -202,6 +202,10 @@ Route::get('faculty.enrollments', function () {
     return view('layouts.faculty');
 })->middleware('teachers')->name('faculty.enrollments');
 
+Route::post('faculty.updateDocumentRequirements', [TeacherController::class, 'updateDocumentRequirements']);
+
+Route::post('faculty.editEnrollmentStatus', [TeacherController::class, 'editEnrollmentStatus']);
+
 Route::get('faculty.grades', function () {
     return view('layouts.faculty');
 })->middleware('teachers')->name('faculty.grades');
