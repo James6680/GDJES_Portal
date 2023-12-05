@@ -30,4 +30,9 @@ class Enrollment extends Model
     return $this->belongsTo(GradeLevel::class);
     }
 
+    public function learning_info()
+    {
+    return $this->belongsTo(LearningInfo::class);
+    }
+
 }

@@ -869,7 +869,59 @@ window.Alpine = Alpine;
               </td>
               <td class="px-3 py-3 gap-2">
                 <!-- Modal toggle -->
-                <a href="#" data-modal-target="viewStudentUserModal" data-modal-show="viewStudentUserModal" type="button" class="font-medium text-emerald-600 dark:text-emerald-500 hover:underline">View</a>
+                <a href="#" 
+                  data-modal-target="viewStudentUserModal" 
+                  data-modal-show="viewStudentUserModal" 
+                  type="button" 
+                  class="font-medium text-emerald-600 dark:text-emerald-500 hover:underline"
+                  data-id="{{ $s->id }}"
+                  data-last_name="{{ $s->last_name }}"
+                  data-first_name="{{ $s->first_name }}"
+                  data-middle_name="{{ $s->middle_name }}"
+                  data-extension_name="{{ $s->extension_name }}"
+                  data-username="{{ $s->username}}"
+                  
+                  data-returnee="{{ $s->returnee }}"
+                  data-grade-level="{{ $s->enrollments->first() && $s->enrollments->first()->gradeLevel ? $s->enrollments->first()->gradeLevel->grade_level : 'N/A' }}"
+                  data-lrn="{{ $s->lrn }}"
+
+                  data-birth_date="{{ $s->birth_date }}"
+                  data-age="{{ $s->age}}"
+                  data-gender="{{ $s->gender}}"
+                  data-indigenous_group="{{ $s->indigenous_group}}"
+                  data-mother_tongue="{{ $s->mother_tongue}}"
+                  data-religion="{{ $s->religion}}"
+                  data-special_assistance_needs="{{ $s->special_assistance_needs}}"
+                  
+                  data-house_number="{{ $s->house_number }}"
+                  data-street="{{ $s->street }}"
+                  data-barangay="{{ $s->barangay }}"
+                  data-municipality="{{ $s->municipality }}"
+                  data-province="{{ $s->province }}"
+                  data-region="{{ $s->region }}"
+
+                  data-father_name="{{ optional(optional($s->relatives)->fathers)->first_name ?? 'N/A' }} {{ optional(optional($s->relatives)->fathers)->last_name ?? 'N/A' }}"
+                  data-father_phone_number="{{ optional(optional($s->relatives)->fathers)->phone_number ?? 'N/A' }}"
+
+                  data-mother_name="{{ optional(optional($s->relatives)->mothers)->first_name ?? 'N/A' }} {{ optional(optional($s->relatives)->mothers)->last_name ?? 'N/A' }}"
+                  data-mother_phone_number="{{ optional(optional($s->relatives)->mothers)->phone_number ?? 'N/A' }}"
+
+                  data-guardian_name="{{ optional(optional($s->relatives)->guardians)->first_name ?? 'N/A' }} {{ optional(optional($s->relatives)->guardians)->last_name ?? 'N/A' }}"
+                  data-guardian_phone_number="{{ optional(optional($s->relatives)->guardians)->phone_number ?? 'N/A' }}"
+
+                  data-4ps="{{ $s->household_4ps_id ?? 'N/A' }}"
+
+                  data-access_to_technology="{{ 
+                    (optional($s->enrollments->first())->learning_info->may_sariling_tablet_ang_bata == 1 ? 'May sariling tablet ang bata, ' : '') .
+                    (optional($s->enrollments->first())->learning_info->may_kompyuter_sa_bahay == 1 ? 'may kompyuter sa bahay, ' : '') .
+                    (optional($s->enrollments->first())->learning_info->walang_sariling_gadget_ang_bata == 1 ? 'walang sariling gadget ang bata, ' : '') .
+                    (optional($s->enrollments->first())->learning_info->may_tv_sa_bahay == 1 ? 'may TV sa bahay, ' : '') .
+                    (optional($s->enrollments->first())->learning_info->may_internet_sa_bahay == 1 ? 'may internet sa bahay, ' : '') .
+                    (optional($s->enrollments->first())->learning_info->mobile_data_lang_ang_gamit == 1 ? 'mobile data lang ang gamit' : '')
+                  }}"
+                  data-preferred_mode_of_learning="{{ optional($s->enrollments->first())->learning_info->distance_learning ?? 'N/A' }}"
+                  >
+                  View</a>
                 <a href="#" data-modal-target="editStudentUserModal" data-modal-show="editStudentUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 <a href="#" data-modal-target="archiveStudentUserModal" data-modal-show="archiveStudentUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
@@ -880,33 +932,68 @@ window.Alpine = Alpine;
 
       </div> <!-- End of Table Student User Management -->
 
-      <!-- Pagination -->
+      <!-- Student Pagination -->
       <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-        <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-black dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">345</span></span>
-          <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+        <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
+            Showing <span class="font-semibold text-black dark:text-white">{{ $student->firstItem() }}</span> 
+            to <span class="font-semibold text-black dark:text-white">{{ $student->lastItem() }}</span> 
+            of <span class="font-semibold text-gray-900 dark:text-white">{{ $student->total() }}</span>
+        </span>
+
+        <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+            {{-- Previous Page Link --}}
+            @if ($student->previousPageUrl())
+                <li>
+                    <a href="{{ $student->previousPageUrl() }}" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        Previous
+                    </a>
+                </li>
+            @endif
+
+            {{-- Display pages after the current page --}}
+            @for ($i = $student->currentPage() - 2; $i <= min($student->currentPage() + 2, $student->lastPage()); $i++)
+                @if ($i > 0)
+                    <li>
+                        <a href="{{ $student->url($i) }}" 
+                        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border @if ($student->currentPage() == $i) bg-green text-[#000000]  @else border-gray-300 @endif hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            {{ $i }}
+                        </a>
+                    </li>
+                @endif
+            @endfor
+
+            {{-- Display ellipsis if there are more pages --}}
+            @if ($student->currentPage() + 2 < $student->lastPage())
+                <li>
+                    <span class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        ...
+                    </span>
+                </li>
+            @endif
+
+            {{-- Display last page --}}
             <li>
-              <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                <a href="{{ $student->url($student->lastPage()) }}" 
+                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border @if ($student->currentPage() == $student->lastPage()) bg-blue-500 text-white @else border-gray-300 @endif hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    {{ $student->lastPage() }}
+                </a>
             </li>
-            <li>
-              <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-            </li>
-            <li>
-              <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-green-600 border border-gray-300 bg-green-50 hover:bg-green-100 hover:text-green-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-            </li>
-          </ul>
-      </nav> <!-- End of Pagination -->
+
+            {{-- Next Page Link --}}
+            @if ($student->nextPageUrl())
+                <li>
+                    <a href="{{ $student->nextPageUrl() }}" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        Next
+                    </a>
+                </li>
+            @endif
+        </ul>
+      </nav>
+      <!-- End of Pagination -->
+
+
+
+
 
       <!-- Add student user modal -->
       <div id="addStudentUserModal" 
@@ -2326,7 +2413,7 @@ window.Alpine = Alpine;
       </nav> End of Pagination -->
 
 
-      <!-- Pagination -->
+      <!-- Teacher Pagination -->
       <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
         <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
             Showing <span class="font-semibold text-black dark:text-white">{{ $teacher->firstItem() }}</span> 
@@ -2989,6 +3076,7 @@ window.Alpine = Alpine;
           </div>
         </div>
       </div>
+      
     </div>
     
     @include('scripts_with_ajax')   {{--added--}}
@@ -4571,10 +4659,5 @@ window.Alpine = Alpine;
       </div> <!-- End of Footer -->
     </form>
   </section> <!-- End of Admin School Information Main Content Container -->
-
-
-
-
-
   @endif
 </div>

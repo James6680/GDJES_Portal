@@ -39,9 +39,11 @@ class AdminContentSection extends Component
         else if(request()->is('admin.announcements')){
             $announcements = new AnnouncementController;
             return view('components.admin-content-section', ['announcements' => $announcements->getAnnouncement()]);
-        }else if(request()->is('admin.student-management')){
+        }
+        else if(request()->is('admin.student-management')){
             return view('components.admin-content-section');
-        }else{
+        }
+        else{
             return view('components.admin-content-section');
         }
     }
