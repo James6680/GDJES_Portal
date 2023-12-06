@@ -132,7 +132,7 @@
                   name="learning_info[]"  
                   type="checkbox" 
                   value="cellphone/tablet" 
-                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-2  border-gray-300 rounded focus:ring-green-500  dark:focus:ring-green-500  dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->learning_info) && in_array('cellphone/tablet', $enrollment->learning_info)) checked @endif
                 >
                 <label for="cellphone_tablet" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May sariling Cellphone/Tablet ang Bata</label>
@@ -144,7 +144,7 @@
                   name="learning_info[]"  
                   type="checkbox" 
                   value="Computer" 
-                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-2  border-gray-300 rounded focus:ring-green-500  dark:focus:ring-green-500  dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->learning_info) && in_array('Computer', $enrollment->learning_info)) checked @endif
                 >
                 <label for="computer" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May computer sa bahay</label>
@@ -156,7 +156,7 @@
                   name="learning_info[]"  
                   type="checkbox" 
                   value="No_gadget" 
-                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-2  border-gray-300 rounded focus:ring-green-500  dark:focus:ring-green-500  dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->learning_info) && in_array('No_gadget', $enrollment->learning_info)) checked @endif
                 >
                 <label for="no_gadget" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Walang sariling gadget ang bata</label>
@@ -168,7 +168,7 @@
                   name="learning_info[]"  
                   type="checkbox" 
                   value="Tv" 
-                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-2  border-gray-300 rounded focus:ring-green-500  dark:focus:ring-green-500  dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->learning_info) && in_array('Tv', $enrollment->learning_info)) checked @endif
                 >
                 <label for="tv" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May tv sa bahay</label>
@@ -180,7 +180,7 @@
                   name="learning_info[]"  
                   type="checkbox" 
                   value="Internet" 
-                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-2  border-gray-300 rounded focus:ring-green-500  dark:focus:ring-green-500  dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->learning_info) && in_array('Internet', $enrollment->learning_info)) checked @endif
                 >
                 <label for="internet" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">May internet connection sa bahay</label>
@@ -192,7 +192,7 @@
                   name="learning_info[]"  
                   type="checkbox" 
                   value="Mobile_data" 
-                  class="w-4 h-4 text-green-800 border-2  border-gray-300 rounded focus:ring-green-800  dark:focus:ring-green-800  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-2  border-gray-300 rounded focus:ring-green-500  dark:focus:ring-green-500  dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->learning_info) && in_array('Mobile_data', $enrollment->learning_info)) checked @endif
                 >
                 <label for="mobile_data" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Mobile data lamang ang gamit para makaconnect sa internet</label>
@@ -225,7 +225,7 @@
                   type="radio" 
                   value="Modular Printed" 
                   name="distance_learning" 
-                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500  border-gray-300 focus:ring-green-500 border-2  dark:focus:ring-green-500 first-letter:dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == '1') checked @endif
                 >
                 <label for="4ps_yes" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Modular Printed</label>
@@ -237,7 +237,7 @@
                   type="radio" 
                   value="Modular Digital" 
                   name="distance_learning" 
-                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500  border-gray-300 focus:ring-green-500 border-2  dark:focus:ring-green-500 first-letter:dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Modular_printed') checked @endif
                 >
                 <label for="modular_printed" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Modular Digital</label>
@@ -249,7 +249,7 @@
                   type="radio" 
                   value="Online" 
                   name="distance_learning" 
-                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500  border-gray-300 focus:ring-green-500 border-2  dark:focus:ring-green-500 first-letter:dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Online') checked @endif
                 >
                 <label for="online" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Online</label>
@@ -261,7 +261,7 @@
                   type="radio" 
                   value="Educational television" 
                   name="distance_learning" 
-                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500  border-gray-300 focus:ring-green-500 border-2  dark:focus:ring-green-500 first-letter:dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Educational_television') checked @endif
                 >
                 <label for="educational_television" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Educational Television</label>
@@ -273,7 +273,7 @@
                   type="radio" 
                   value="Homeschooling" 
                   name="distance_learning" 
-                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500  border-gray-300 focus:ring-green-500 border-2  dark:focus:ring-green-500 first-letter:dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Homeschooling') checked @endif
                 >
                 <label for="homeschooling" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Homeschooling</label>
@@ -285,7 +285,7 @@
                   type="radio" 
                   value="Blended" 
                   name="distance_learning" 
-                  class="w-4 h-4 text-green-800  border-gray-300 focus:ring-green-800 border-2  dark:focus:ring-green-800 first-letter:dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500  border-gray-300 focus:ring-green-500 border-2  dark:focus:ring-green-500 first-letter:dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   @if(isset($enrollment->distance_learning) && $enrollment->distance_learning == 'Blended') checked @endif
                 >
                 <label for="blended" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Blended</label>
@@ -303,12 +303,12 @@
 
           <div class="flex gap-2 w-full">  
 
-            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] w-1/2 border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100">
-              <button type="button" class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" id="backBtn">Back</button>
+            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py3.5 w-1/2 border-[1px] border-solid border-brown-500 hover:box-border hover:border-brown-600 hover:border-[2px] hover:border-solid">
+              <button type="button" class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-base leading-[140%] uppercase font-mulish text-brown-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" id="backBtn">Back</button>
             </div>
 
-            <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] w-1/2  hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50"> 
-              <button type="button" id="nextBtn" class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block">next</button>
+            <div class="self-stretch rounded-lg bg-green-500 flex flex-row items-center justify-center py-3.5 w-1/2  hover:text-white hover:shadow-md hover:shadow-green-700/50 hover:bg-green-900"> 
+              <button type="button" id="nextBtn" class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-base leading-[140%] uppercase font-medium font-mulish  text-brown-50 text-center inline-block">next</button>
             
             </div>
           

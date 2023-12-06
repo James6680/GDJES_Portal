@@ -676,7 +676,7 @@
                   type="radio" 
                   value="1" 
                   name="fourps" 
-                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-800 dark:ring-offset-gray-500 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   onchange="fourPsForm()"
                   {{ isset($enrollment->fourps) && $enrollment->fourps == 1 ? 'checked' : '' }}
                 >
@@ -693,7 +693,7 @@
                   type="radio" 
                   value="0" 
                   name="fourps" 
-                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-800 dark:ring-offset-gray-500 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   onchange="fourPsForm()"
                   {{ isset($enrollment->fourps) && $enrollment->fourps == 0 ? 'checked' : '' }}
                 >
@@ -758,12 +758,12 @@
 
           <div class="flex gap-2 w-full">  
 
-            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] w-1/2 border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100">
-              <button type="button" class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" id="backBtn">Back</button>
+            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-3.5 w-1/2 border-[1px] border-solid border-brown-500 hover:box-border hover:border-brown-600 hover:border-[2px] hover:border-solid">
+              <button type="button" class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-base leading-[140%] uppercase font-mulish text-brown-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" id="backBtn">Back</button>
             </div>
 
-            <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] w-1/2  hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50"> 
-              <button type="button" id="nextBtn" class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block">next</button>
+            <div class="self-stretch rounded-lg bg-green-500 flex flex-row items-center justify-center py-3.5 w-1/2  hover:text-white hover:shadow-md hover:shadow-green-700/50 hover:bg-green-900"> 
+              <button type="button" id="nextBtn" class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-base leading-[140%] uppercase font-medium font-mulish text-brown-50 text-center inline-block">next</button>
             
             </div>
 

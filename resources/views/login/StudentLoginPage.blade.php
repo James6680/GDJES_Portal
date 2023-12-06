@@ -260,9 +260,9 @@
                         <button
                         
                         type="submit"
-                        class="cursor-pointer [border:none] md:py-4 py-3 px-8 bg-green-500 self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-green-900">
+                        class="cursor-pointer [border:none] md:py-3.5 py-3 px-8 bg-green-500 self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-green-900 hover:shadow-md hover:shadow-green-700/50 hover:text-white">
                         
-                        <div class="relative text-base uppercase  text-brown-50 text-left">Login</div>
+                        <div class="relative text-base uppercase font-mulish text-brown-50 text-left">Login</div>
 
                         </button>
                     
@@ -282,10 +282,10 @@
 
                         <!--<button-->
                         <a href="/student-registration-1"
-                            class="cursor-pointer lg:py-4 py-3 lg:px-8 px-2 bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-700"
+                            class="cursor-pointer lg:py-3 py-3 lg:px-8 px-2 bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-brown-600"
                             >
                                 <div
-                                    class="flex-1 relative md:text-base text-sm uppercase  text-brown-500 text-center"
+                                    class="flex-1 relative font-mulish md:text-base text-sm uppercase  text-brown-500 text-center"
                                     id="createAccount">
                                     create your student account here
                                 </div>

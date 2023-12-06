@@ -202,7 +202,7 @@
                   type="radio" 
                   value="1" 
                   name="lrn_status" 
-                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   onchange="lrnForm()"
                   @if(isset($enrollment->lrn_status) && $enrollment->lrn_status == 1) checked @endif
                 >
@@ -216,7 +216,7 @@
                   type="radio" 
                   value="0" 
                   name="lrn_status" 
-                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   onchange="lrnForm()"
                   @if(isset($enrollment->lrn_status) && $enrollment->lrn_status == 0) checked @endif
                 >
@@ -526,7 +526,7 @@
                   type="radio" 
                   value="male" 
                   name="gender" 
-                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   {{ isset($enrollment->gender) && $enrollment->gender == 'male' ? 'checked' : '' }}
                 ><label for="default-radio-1" class="ml-2 text-[.90rem] font-normal text-gray-900 dark:text-gray-900">Lalake</label>
               </div>
@@ -539,7 +539,7 @@
                   type="radio" 
                   value="female" 
                   name="gender" 
-                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   {{ isset($enrollment->gender) && $enrollment->gender == 'female' ? 'checked' : '' }}
                 >
                 <label for="default-radio-2" class="ml-2 text-[.90rem] font-normal text-gray-900 dark:text-gray-900">Babae</label>
@@ -574,7 +574,7 @@
                   type="radio"
                   value="1" 
                   name="indigenous_group" 
-                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   onchange="indiGroupForm()"
                   {{ isset($enrollment->indigenous_group) && $enrollment->indigenous_group == 1 ? 'checked' : '' }}
                 >
@@ -589,7 +589,7 @@
                   type="radio" 
                   value="0" 
                   name="indigenous_group" 
-                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600" 
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600" 
                   onchange="indiGroupForm()"
                   {{ isset($enrollment->indigenous_group) && $enrollment->indigenous_group == 0 ? 'checked' : '' }}
                 >
@@ -753,7 +753,7 @@
                   type="radio" 
                   value="0" 
                   name="special_needs" 
-                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   onchange="specialNeedsForm()"
                   @if(isset($enrollment->special_needs) && $enrollment->special_needs == 0) checked @endif
                 >
@@ -768,7 +768,7 @@
                   type="radio" 
                   value="1" 
                   name="special_needs" 
-                  class="w-4 h-4 text-green-800 border-gray-300 border-2 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                   onchange="specialNeedsForm()"
                   @if(isset($enrollment->special_needs) && $enrollment->special_needs == 1) checked @endif
                 >
@@ -1000,7 +1000,7 @@
           </div>
           <div class="flex gap-2 w-full">  
 
-            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] w-1/2 border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100">
+            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-3.5 w-1/2 border-[1px] border-solid border-brown-500 hover:box-border hover:border-brown-600 hover:border-[2px] hover:border-solid">
               
               <button type ="button" id="backBtn"
               @if(isset($enrollment->aralStatus))
@@ -1011,12 +1011,12 @@
                 @endif
               @endif      
 
-                class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap">Back</button>
+                class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-base leading-[140%] uppercase font-mulish text-brown-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap">Back</button>
             </div>
 
-            <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] w-1/2  hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50"> 
+            <div class="self-stretch rounded-lg bg-green-500 flex flex-row items-center justify-center py-3.5 w-1/2  hover:text-white hover:shadow-md hover:shadow-green-700/50 hover:bg-green-900"> 
                 
-              <button type="button" id="nextBtn" class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block">next</button>
+              <button type="button" id="nextBtn" class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-base leading-[140%] uppercase font-medium font-mulish text-brown-50 text-center inline-block">next</button>
             
             </div>
           

@@ -133,7 +133,7 @@
                     value="HINDI" 
                     name="aralStatus" 
                     id="balikAralNo"
-                    class="w-4 h-4 text-green-800 border-gray-300 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                    class="w-4 h-4 text-green-500 border-gray-300 focus:ring-green-500 dark:focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                     @if(isset($enrollment->aralStatus) && $enrollment->aralStatus == 'HINDI') checked @endif
                   >
                   
@@ -148,7 +148,7 @@
                     value="OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon" 
                     name="aralStatus" 
                     id="balikAralYes"
-                    class="w-4 h-4 text-green-800 border-gray-300 focus:ring-green-800 dark:focus:ring-green-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                    class="w-4 h-4 text-green-500 border-gray-300 focus:ring-green-500 dark:focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
                     @if(isset($enrollment->aralStatus) && $enrollment->aralStatus == 'OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon') checked @endif
                   >
                   <label for="balikAralYes" class="ml-2  text-[0.85rem]  text-gray-900 dark:text-black">OO dahil sya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon</label>
@@ -171,12 +171,12 @@
             </div>
 
             <!-- Next Button -->
-            <div class="self-stretch rounded-lg bg-main-green-secondary-500 flex flex-row items-center justify-center py-[1rem] px-[2.13rem] hover:bg-darkslategray-200 hover:shadow-darkslategray-200  [&_.next]:hover:text-main-brown-primary-50">
+            <div class="self-stretch rounded-lg bg-green-500 flex flex-row items-center justify-center py-4 px-8 hover:text-white hover:shadow-md hover:shadow-green-700/50 hover:bg-green-900">
               
               <button 
               type="button" 
               id="nextButton"
-              class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-button text-main-brown-primary-50 text-center inline-block" 
+              class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-medium font-mulish text-brown-50 text-center inline-block" 
               onclick="showNextSet()">
               Next
               </button>
@@ -192,12 +192,12 @@
             <div class="self-stretch relative text-[0.81rem] leading-[140%] font-button text-main-brown-primary-500 text-center overflow-hidden text-ellipsis whitespace-nowrap">Already have an account?</div>
             
             <!-- Login Button -->
-            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-[1rem] px-[2.13rem] border-[1px] border-solid border-main-brown-primary-500 hover:box-border hover:shadow-darkslategray-200 hover:border-[2px] hover:border-solid hover:border-dimgray-100 cursor-pointer">
+            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-3.5 px-8  border-[1px] border-solid border-brown-500 hover:box-border hover:border-brown-600 hover:border-[2px] hover:border-solid hover:border-dimgray-100 cursor-pointer">
 
               <!--id="loginButton"  -->
               <a href="{{ route('students_login_from') }}"
                 
-                class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-[1rem] leading-[140%] uppercase font-button text-main-brown-primary-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap">
+                class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-base leading-[140%] uppercase font-mulish text-brown-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap">
                 login here
               </a>
             
