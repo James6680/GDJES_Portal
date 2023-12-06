@@ -70,47 +70,62 @@
         </div>
 
         <!-- Progress Bar -->
-        <div class="self-stretch flex flex-row items-center justify-center py-[1.5rem] px-[4.44rem]">
+        <div class="self-stretch flex flex-row items-center justify-center py-[1.5rem] xl:px-44 lg:px-20 md:px-16 px-20">
 
-          <div class="rounded-481xl bg-main-green-secondary-500 h-[2.5rem] overflow-hidden flex flex-col items-center justify-center p-0">
+          <!-- Progress #1 -->
+          <div class="rounded-481xl bg-green-500 h-9  overflow-hidden flex flex-col items-center justify-center p-0">
 
-            <div class="relative text-[1.20rem] leading-[140%] font-heading-2 text-main-background text-left p-4">1</div>
-
-          </div>
-
-          <div class="flex-1 relative bg-main-green-secondary-500 h-[0.31rem] overflow-hidden mix-blend-lifont-light"></div>
-
-          <div class="rounded-481xl bg-main-green-secondary-500 h-[2.6rem] overflow-hidden flex flex-col items-center justify-center p-0">
-
-            <div class="relative text-[1.20rem] leading-[140%] font-heading-2 text-main-background text-left p-4">2</div>
+            <div class="relative text-base leading-[140%] font-mulish text-white text-left px-3.5 p-4">
+              1
+            </div>
 
           </div>
 
-          <div class="flex-1 relative bg-main-green-secondary-500 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
+          <div class="flex-1 relative bg-green-500 h-[0.31rem] overflow-hidden"></div>
 
-          <div class="rounded-481xl bg-main-green-secondary-500 h-[2.67rem] overflow-hidden flex flex-col items-center justify-center p-0">
+          <!-- Progress #2 -->
+          <div class="rounded-481xl bg-green-500 h-9 overflow-hidden flex flex-col items-center justify-center p-0">
 
-            <div class="relative text-[1.20rem] leading-[140%] font-heading-2 text-main-background text-left p-4">3</div>
-
-          </div>
-
-          <div class="flex-1 relative bg-main-green-secondary-500 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
-
-          <div class="rounded-481xl bg-main-green-secondary-500 h-[2.65rem] overflow-hidden flex flex-col items-center justify-center p-0">
-
-            <div class="relative text-[1.25rem] leading-[140%] font-heading-2 text-main-background text-left p-4">4</div>
+            <div class="relative text-base leading-[140%] font-mulish text-white text-left px-3.5 p-4">
+              2
+            </div>
 
           </div>
 
-          <div class="flex-1 relative bg-main-green-secondary-500 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
+          <div class="flex-1 relative bg-green-500 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
 
-          <div class="rounded-481xl bg-main-green-secondary-500 h-[2.65rem] overflow-hidden flex flex-col items-center justify-center p-0">
+          <!-- Progress #3 -->
+          <div class="rounded-481xl bg-green-500 h-9 overflow-hidden flex flex-col items-center justify-center p-0">
 
-            <div class="relative text-[1.25rem] leading-[140%] font-heading-2 text-main-background text-left p-4">5</div>
+            <div class="relative text-base leading-[140%] font-mulish text-white text-left px-3.5 p-4">
+              3
+            </div>
 
           </div>
 
-        </div> 
+          <div class="flex-1 relative bg-green-500 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
+
+          <!-- Progress #4 -->
+          <div class="rounded-481xl bg-green-500 h-9 overflow-hidden flex flex-col items-center justify-center p-0">
+
+            <div class="relative text-base leading-[140%] font-mulish text-white text-left px-3.5 p-4">
+              4
+            </div>
+
+          </div>
+
+          <div class="flex-1 relative bg-green-500 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
+
+          <!-- Progress #5 -->
+          <div class="rounded-481xl bg-green-500 h-9 overflow-hidden flex flex-col items-center justify-center p-0">
+
+            <div class="relative text-base leading-[140%] font-mulish text-white text-left px-3.5 p-4">
+              5
+            </div>
+
+          </div>
+
+        </div>
 
         <div class="self-stretch flex flex-col items-start justify-start gap-[1rem]">
 
