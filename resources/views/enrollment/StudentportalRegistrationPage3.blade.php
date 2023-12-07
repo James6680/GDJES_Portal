@@ -969,7 +969,7 @@
                   type="text" 
                   id="street_text" 
                   name="street_text" 
-                  class=" md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-green-500 focus:border-green-500"
+                  class=" md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500"
                   value="{{ isset($enrollment->street_text) ? $enrollment->street_text : old('street_text') }}"
                 ></div>
 
@@ -1000,7 +1000,7 @@
                   type="text" 
                   id="house_number" 
                   name="house_number" 
-                  class=" md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-green-500 focus:border-green-500"
+                  class=" md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500"
                   value="{{ isset($enrollment->house_number) ? $enrollment->house_number : old('house_number') }}"
                 ></div>
 

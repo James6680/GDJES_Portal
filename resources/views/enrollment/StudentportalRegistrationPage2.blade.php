@@ -177,7 +177,7 @@
                   type="text" 
                   id="lastSchoolAttended" 
                   name="lastSchoolAttended" 
-                  class=" md:text-sm text-xs block w-full md:px-2.4 px-2 md:py-2.5 py-2 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  class=" md:text-sm text-xs block w-full md:px-2.4 px-2 md:py-2.5 py-2 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-blue-500 focus:border-blue-500"
                   value="{{ isset($enrollment->lastSchoolAttended) ? $enrollment->lastSchoolAttended : old('lastSchoolAttended') }}"
                 >
                 <!-- Error Message for Ano ang huling paaralan na pinasukan? -->
@@ -212,7 +212,7 @@
                   id="lastSchoolYearAttended" 
                   name="lastSchoolYearAttended"
                   placeholder="{{date('Y')}}" 
-                  class=" md:text-sm text-xs block w-full md:px-2.4 px-2 md:py-2.5 py-2 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  class=" md:text-sm text-xs block w-full md:px-2.4 px-2 md:py-2.5 py-2 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-blue-500 focus:border-blue-500"
                   value="{{ isset($enrollment->lastSchoolYearAttended) ? $enrollment->lastSchoolYearAttended : old('lastSchoolYearAttended') }}"
                 >
                 <!-- Error Message for Anong panuruang taon ang natapos ng mag-aaral? -->
