@@ -26,51 +26,53 @@
 
 <body class="m-0 p-0">
   <!-- Form Background  -->
-  <div class="relative w-full h-full overflow-hidden flex flex-row items-center justify-center py-[5.5rem] px-[15rem] bg-cover bg-repeat-y bg-topz lg:flex-row lg:gap-[0rem] lg:items-center lg:justify-center lg:py-[11.25rem] lg:px-[9.38rem] lg:box-border md:flex-row md:gap-[0rem] md:items-center md:justify-center md:py-[8.75rem] md:px-[4.38rem] md:box-border sm:flex-row sm:gap-[0rem] sm:items-center sm:justify-center sm:py-[14.38rem] sm:px-[3.13rem] sm:box-border"
+  <div class="relative w-full h-full overflow-hidden flex flex-row items-center justify-center py-20 md:px-60 px-52 bg-cover bg-repeat-y bg-top"
   style="background-image: url('./assets/bg_page.png');">
 
-    <section class="flex-1 flex flex-col items-center justify-center gap-[2rem] text-left text-[1.44rem] text-main-background font-heading-2 md:gap-[1.88rem]">
+    <section class="flex-1 flex flex-col items-center justify-center gap-8 text-left text-2xl text-white font-heading-2 md:gap-7">
     
       <!-- Logo Container -->
-      <div class="h-[7.31rem] flex flex-col items-center justify-center gap-[0.5rem] cursor-pointer" id="logoContainer">
+      <div class="h-[7.31rem] flex flex-col items-center justify-center gap-2 cursor-pointer" id="logoContainer">
 
-        <img class="relative w-[3rem] h-[3rem] overflow-hidden shrink-0 object-cover" alt="" src="./assets/GDJES Logo.png" />
+        <img class="relative w-[3rem] h-[3rem] overflow-hidden shrink-0 object-cover" 
+        alt="" 
+        src="./assets/GDJES Logo.png" />
 
         <div class="flex flex-col items-start justify-start ">
 
-          <h2 class="m-0 relative text-inherit leading-[140%] font-bold font-heading-2-bold font-inherit overflow-hidden text-ellipsis whitespace-nowrap">GREGORIA DE JESUS</h2>
+          <h2 class="m-0 relative text-inherit leading-[140%] font-bold font-frl font-inherit overflow-hidden text-ellipsis whitespace-nowrap">GREGORIA DE JESUS</h2>
 
-          <div class="self-stretch relative text-[0.69rem] leading-[140%] text-center">ELEMENTARY SCHOOL - MANILA</div>
+          <div class="self-stretch relative text-xs leading-[140%] text-center">ELEMENTARY SCHOOL - MANILA</div>
         
         </div>
 
       </div>
 
       <!-- Student Registration Form -->
-      <form class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center py-[3rem] px-[2rem] gap-[.9rem] w-10/12" 
+      <form class=" rounded-lg bg-green-50 flex flex-col items-center justify-center lg:p-8 md:p-7 p-5 md:gap-4 gap-2 lg:w-[56rem] md:w-[43rem] w-[23rem]" 
       id="enrollment-page-4";
       method="post" 
       action="{{route('enrollment.StudentportalRegistrationPage4.post')}}">
       @csrf
       @method('post')
 
-        <h1 class="m-0 self-stretch relative text-[1.80rem] leading-[110%] font-extrabold font-heading-2 text-main-green-secondary-700 text-center font-heading-2-bold">Student Registration for First-time Enrollees</h1>
+        <h1 class="m-0 self-stretch relative md:text-2xl text-base leading-[110%] font-extrabold text-green-700 text-center font-frl">Student Registration for First-time Enrollees</h1>
 
-        <div class="self-stretch flex flex-col items-center justify-start gap-[0.5rem]">
+        <div class="self-stretch flex flex-col items-center justify-start md:gap-2 gap-1">
 
-          <div class="self-stretch relative text-[1rem] leading-[140%] font-button text-main-brown-primary-500 text-center">Welcome to the student portal registration form</div>
+          <div class="self-stretch relative md:text-base text-sm leading-[140%] font-button text-brown-500 text-center">Welcome to the student portal registration form</div>
 
-          <div class="self-stretch relative text-[0.81rem] leading-[140%] font-button text-main-green-secondary-700 text-center">Please fill out all the necessary information below.</div>
+          <div class="self-stretch relative text-xs leading-[140%] font-mulish text-green-700 text-center">Please fill out all the necessary information below.</div>
 
         </div>
 
         <!-- Progress Bar -->
-        <div class="self-stretch flex flex-row items-center justify-center py-[1.5rem] xl:px-44 lg:px-20 md:px-16 px-20">
+        <div class="self-stretch flex flex-row items-center justify-center md:py-6 py-3 lg:px-44 md:px-28 px-16">
 
           <!-- Progress #1 -->
-          <div class="rounded-481xl bg-green-500 h-9  overflow-hidden flex flex-col items-center justify-center p-0">
+          <div class="rounded-481xl bg-green-500 lg:h-9 md:h-7 h-5  overflow-hidden flex flex-col items-center justify-center p-0">
 
-            <div class="relative text-base leading-[140%] font-mulish text-white text-left px-3.5 p-4">
+            <div class="relative md:text-sm text-xs leading-[140%] font-mulish text-white text-left lg:px-3.5 md:px-2.5 px-1.5 p-4">
               1
             </div>
 
@@ -79,9 +81,9 @@
           <div class="flex-1 relative bg-green-500 h-[0.31rem] overflow-hidden"></div>
 
           <!-- Progress #2 -->
-          <div class="rounded-481xl bg-green-500 h-9 overflow-hidden flex flex-col items-center justify-center p-0">
+          <div class="rounded-481xl bg-green-500 lg:h-9 md:h-7 h-5 overflow-hidden flex flex-col items-center justify-center p-0">
 
-            <div class="relative text-base leading-[140%] font-mulish text-white text-left px-3.5 p-4">
+            <div class="relative md:text-sm text-xs leading-[140%] font-mulish text-white text-left lg:px-3.5 md:px-2.5 px-1.5 p-4">
               2
             </div>
 
@@ -90,9 +92,9 @@
           <div class="flex-1 relative bg-green-500 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
 
           <!-- Progress #3 -->
-          <div class="rounded-481xl bg-green-500 h-9 overflow-hidden flex flex-col items-center justify-center p-0">
+          <div class="rounded-481xl bg-green-500 lg:h-9 md:h-7 h-5 overflow-hidden flex flex-col items-center justify-center p-0">
 
-            <div class="relative text-base leading-[140%] font-mulish text-white text-left px-3.5 p-4">
+            <div class="relative md:text-sm text-xs leading-[140%] font-mulish text-white text-left lg:px-3.5 md:px-2.5 px-1.5 p-4">
               3
             </div>
 
@@ -101,9 +103,9 @@
           <div class="flex-1 relative bg-main-green-secondary-500 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
 
           <!-- Progress #4 -->
-          <div class="rounded-481xl bg-green-500 h-9 overflow-hidden flex flex-col items-center justify-center p-0">
+          <div class="rounded-481xl bg-green-500 lg:h-9 md:h-7 h-5 overflow-hidden flex flex-col items-center justify-center p-0">
 
-            <div class="relative text-base leading-[140%] font-mulish text-white text-left px-3.5 p-4">
+            <div class="relative md:text-sm text-xs leading-[140%] font-mulish text-white text-left lg:px-3.5 md:px-2.5 px-1.5 p-4">
               4
             </div>
 
@@ -112,9 +114,9 @@
           <div class="flex-1 relative bg-main-green-secondary-200 h-[0.31rem] overflow-hidden mix-blend-normal"></div>
 
           <!-- Progress #5 -->
-          <div class="rounded-481xl bg-green-200 h-9 overflow-hidden flex flex-col items-center justify-center p-0">
+          <div class="rounded-481xl bg-green-200 lg:h-9 md:h-7 h-5 overflow-hidden flex flex-col items-center justify-center p-0">
 
-            <div class="relative text-base leading-[140%] font-mulish text-green-300 text-left px-3.5 p-4">
+            <div class="relative md:text-sm text-xs leading-[140%] font-mulish text-green-300 text-left lg:px-3.5 md:px-2.5 px-1.5 p-4">
               5
             </div>
 
@@ -122,15 +124,15 @@
 
         </div>
 
-        <div class="self-stretch flex flex-col items-start justify-start gap-[1rem]">
+        <div class="self-stretch flex flex-col items-start justify-start md:gap-4 gap-2">
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[0.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Lastname (Apelyido ng Ama ng bata) <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Lastname (Apelyido ng Ama ng bata) <span class="text-red-600">*</span></b>
               
               </div>
               <!-- Father's Information -->   
@@ -141,7 +143,7 @@
                   type="text" 
                   id="lastName_ng_ama" 
                   name="lastName_ng_ama" 
-                  class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500"
                   value="{{ isset($enrollment->lastName_ng_ama) ? $enrollment->lastName_ng_ama : old('lastName_ng_ama') }}"
               ></div>
 
@@ -155,13 +157,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Firstname (Pangalan ng Ama ng bata)<span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Firstname (Pangalan ng Ama ng bata)<span class="text-red-600">*</span></b>
               
               </div>
               
@@ -172,7 +174,7 @@
                   type="text" 
                   id="firstName_ng_ama" 
                   name="firstName_ng_ama" 
-                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500"
                   value="{{ isset($enrollment->firstName_ng_ama) ? $enrollment->firstName_ng_ama : old('firstName_ng_ama') }}"
                 ></div>
 
@@ -186,13 +188,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Middlename (Gitnang pangalan ng Ama ng bata) <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Middlename (Gitnang pangalan ng Ama ng bata) <span class="text-red-600">*</span></b>
               
               </div>
               
@@ -203,7 +205,7 @@
                   type="text" 
                   id="middleName_ng_ama" 
                   name="middleName_ng_ama" 
-                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500"
                   value="{{ isset($enrollment->middleName_ng_ama) ? $enrollment->middleName_ng_ama : old('middleName_ng_ama') }}"
                 ></div>
 
@@ -217,19 +219,19 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100 w-full">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="balikAralInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="balikAral">Extension Name ng Ama ng bata <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="balikAral">Extension Name ng Ama ng bata <span class="text-red-600">*</span></b>
               
               </div>
               <script>
                 console.log("{{session('enrollment')}}")
               </script>
-              <select id="extensionName_ng_ama" name="extensionName_ng_ama" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
+              <select id="extensionName_ng_ama" name="extensionName_ng_ama" class="bg-transparent border-gray-300 text-gray-900 md:text-sm text-xs rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5 w-full">
                 <option value=""></option>
                 <option value="None" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "None") selected @endif>None</option>
                 <option value="Jr" @if(isset($enrollment->extensionName_ng_ama) && $enrollment->extensionName_ng_ama == "Jr") selected @endif>Jr</option>
@@ -251,14 +253,13 @@
             
           </div>
 
-
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Numero sa Telepono or Cellphone ng Ama ng bata <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Numero sa Telepono or Cellphone ng Ama ng bata <span class="text-red-600">*</span></b>
               
               </div>
               
@@ -269,7 +270,7 @@
                   type="text" 
                   id="father_phone" 
                   name="father_phone" 
-                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  class=" md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500"
                   value="{{ isset($enrollment->father_phone) ? $enrollment->father_phone : old('father_phone') }}"
                 ></div>
 
@@ -283,13 +284,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
 
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Email ng Ama ng bata <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Email ng Ama ng bata <span class="text-red-600">*</span></b>
               
               </div>
               
@@ -298,7 +299,7 @@
                 <input required type="email" 
                 id="email_ng_ama" 
                 name="email_ng_ama" 
-                class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500"
                 value="{{ isset($enrollment->email_ng_ama) ? $enrollment->email_ng_ama : old('email_ng_ama') }}"
                 ></div>
 
@@ -312,13 +313,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Lastname (Apelyido ng Ina ng bata) <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Lastname (Apelyido ng Ina ng bata) <span class="text-red-600">*</span></b>
               
               </div>
               
@@ -330,7 +331,7 @@
                   type="text" 
                   id="lastName_ng_ina"  
                   name="lastName_ng_ina" 
-                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500"
                   value="{{ isset($enrollment->lastName_ng_ina) ? $enrollment->lastName_ng_ina : old('lastName_ng_ina') }}"
                 ></div>
 
@@ -344,13 +345,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Firstname (Pangalan ng Ina ng bata)<span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Firstname (Pangalan ng Ina ng bata)<span class="text-red-600">*</span></b>
               
               </div>
 
@@ -361,7 +362,7 @@
                   type="text" 
                   id="firstName_ng_ina" 
                   name="firstName_ng_ina" 
-                  class=" text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500"
                   value="{{ isset($enrollment->firstName_ng_ina) ? $enrollment->firstName_ng_ina : old('firstName_ng_ina') }}"
                 ></div>
 
@@ -375,13 +376,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Middlename (Gitnang pangalan ng Ina ng bata) <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Middlename (Gitnang pangalan ng Ina ng bata) <span class="text-red-600">*</span></b>
               
               </div>
               
@@ -392,7 +393,7 @@
                   type="text" 
                   id="middleName_ng_ina" 
                   name="middleName_ng_ina" 
-                  class=" text-[.90rem] block w-full p-.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                  class=" md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500"
                   value="{{ isset($enrollment->middleName_ng_ina) ? $enrollment->middleName_ng_ina : old('middleName_ng_ina') }}"
                 ></div>
 
@@ -406,18 +407,18 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100 w-full">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="balikAralInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="balikAral">Extension Name ng Ina ng bata <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="balikAral">Extension Name ng Ina ng bata <span class="text-red-600">*</span></b>
               
               </div>
               
               <!-- Extension Name -->
-              <select id="extensionName_ng_ina" name="extensionName_ng_ina" class="bg-main-background border border-gray-300 text-gray-900 text-[1rem] rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full">
+              <select id="extensionName_ng_ina" name="extensionName_ng_ina" class="bg-transparent border border-gray-300 text-gray-900 md:text-sm text-xs rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5 w-full">
                 <option value=""></option>
                 <option value="None" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == "None") selected @endif>None</option>
                 <option value="jr" @if(isset($enrollment->extensionName_ng_ina) && $enrollment->extensionName_ng_ina == "jr") selected @endif>Jr</option>
@@ -439,13 +440,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Numero sa Telepono or Cellphone ng Ina ng bata <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Numero sa Telepono or Cellphone ng Ina ng bata <span class="text-red-600">*</span></b>
               
               </div>
               
@@ -453,7 +454,7 @@
                 <input required type="text" 
                     id="mother_phone" 
                     name="mother_phone" 
-                    class="text-[.94rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"
+                    class=" md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500"
                     value="{{ isset($enrollment->mother_phone) ? $enrollment->mother_phone : old('mother_phone') }}"
                   ></div>
 
@@ -467,13 +468,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Email ng Ina ng bata <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Email ng Ina ng bata <span class="text-red-600">*</span></b>
               
               </div>
               
@@ -482,7 +483,7 @@
                 <input required type="email" 
                   id="email_ng_ina" 
                   name="email_ng_ina" 
-                  class="text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                  class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500" 
                   value="{{ isset($enrollment->email_ng_ina) ? $enrollment->email_ng_ina : old('email_ng_ina') }}"
                   ></div>
 
@@ -496,20 +497,20 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Lastname (Apelyido ng Guardian ng bata) <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Lastname (Apelyido ng Guardian ng bata) <span class="text-red-600">*</span></b>
               
               </div>
               
               <!-- Guardian's Information --> 
               <!-- Lastname -->
               <div class="mb-1">
-                <input required type="text" id="lastName_ng_guardian" name="lastName_ng_guardian" class="text-[.90rem] block w-full p-25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500"value="{{ isset($enrollment) ? $enrollment->lastName_ng_guardian : old('lastName_ng_guardian') }}">
+                <input required type="text" id="lastName_ng_guardian" name="lastName_ng_guardian" class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500" value="{{ isset($enrollment) ? $enrollment->lastName_ng_guardian : old('lastName_ng_guardian') }}">
               </div>  
                 
               <span   
@@ -522,13 +523,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Firstname (Pangalan ng Guardian ng bata)<span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Firstname (Pangalan ng Guardian ng bata)<span class="text-red-600">*</span></b>
               
               </div>
               
@@ -537,7 +538,7 @@
                 <input required type="text" 
                 id="firstName_ng_guardian" 
                 name="firstName_ng_guardian" 
-                class="text-[0.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500" 
                 value="{{ isset($enrollment->firstName_ng_guardian) ? $enrollment->firstName_ng_guardian : old('firstName_ng_guardian') }}">
               </div>
 
@@ -551,13 +552,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Middlename (Gitnang pangalan ng Guardian ng bata) <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Middlename (Gitnang pangalan ng Guardian ng bata) <span class="text-red-600">*</span></b>
               
               </div>
               
@@ -566,7 +567,7 @@
                 <input required type="text" 
                 id="middleName_ng_guardian" 
                 name="middleName_ng_guardian" 
-                class="text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500" 
                 value="{{ isset($enrollment->middleName_ng_guardian) ? $enrollment->middleName_ng_guardian : old('middleName_ng_guardian') }}">
               </div>
 
@@ -580,17 +581,17 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100 w-full">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
 
             <div id="balikAralInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="balikAral">Extension Name ng Guardian ng bata <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="balikAral">Extension Name ng Guardian ng bata <span class="text-red-600">*</span></b>
               
               </div>
               
-              <select id="extensionName_ng_guardian" name="extensionName_ng_guardian" class="bg-main-background border border-gray-300 text-gray-900 text-[.90rem] rounded-lg focus:ring-blue-500 focus:border-blue-500  block  p-2.5 w-full">
+              <select id="extensionName_ng_guardian" name="extensionName_ng_guardian" class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500">
                 <option value=""></option>
                 <option value="None" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == "None" ? 'selected' : '' }}>None</option>
                 <option value="jr" {{ isset($enrollment->extensionName_ng_guardian) && $enrollment->extensionName_ng_guardian == "jr" ? 'selected' : '' }}>Jr</option>
@@ -612,13 +613,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Numero sa Telepono or Cellphone ng TAGAPAGALAGA/GUARDIAN ng bata
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Numero sa Telepono or Cellphone ng TAGAPAGALAGA/GUARDIAN ng bata
                   ang numerong ito ay kinakailangang TAMA dahil dito magpapadala ng mensahe ang paaralan kung kinakailangan <span class="text-red-600">*</span></b>
               
               </div>
@@ -628,7 +629,7 @@
                 <input required type="text" 
                 id="guardian_phone" 
                 name="guardian_phone" 
-                class="text-[.90rem] block w-full p.25 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500" 
                 value="{{ isset($enrollment->guardian_phone) ? $enrollment->guardian_phone : old('guardian_phone') }}">
               </div>
 
@@ -642,13 +643,13 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Email ng Guardian ng bata <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Email ng Guardian ng bata <span class="text-red-600">*</span></b>
               
               </div>
               
@@ -657,7 +658,7 @@
                 <input required type="email" 
                 id="email_ng_guardian" 
                 name="email_ng_guardian" 
-                class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                class="md:text-sm text-xs] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500" 
                 value="{{ isset($enrollment->email_ng_guardian) ? $enrollment->email_ng_guardian : old('email_ng_guardian') }}">
               </div>
 
@@ -671,19 +672,19 @@
             
           </div>
 
-          <div class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100 redBorder">
+          <div class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full redBorder">
             
             <div id="panuruangTao" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="panuruangTao">Kabilang ba ang pamilya ng bata sa 4ps ng DSWD?
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="panuruangTao">Kabilang ba ang pamilya ng bata sa 4ps ng DSWD?
                   <span class="text-red-600">*</span></b>
               
               </div>
 
               <!-- 4ps -->
-              <div class="flex items-center mb-4">
+              <div class="flex items-center mb-2">
 
                 <input 
                   required 
@@ -691,12 +692,12 @@
                   type="radio" 
                   value="1" 
                   name="fourps" 
-                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-800 dark:ring-offset-gray-500 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-800 dark:ring-offset-gray-500 focus:ring-1"
                   onchange="fourPsForm()"
                   {{ isset($enrollment->fourps) && $enrollment->fourps == 1 ? 'checked' : '' }}
                 >
                 
-                <label for="default-radio-1" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Oo</label>
+                <label for="default-radio-1" class="ml-2 md:text-sm text-xs font-normal text-gray-900 dark:text-gray-900">Oo</label>
               
               </div>
               
@@ -708,12 +709,12 @@
                   type="radio" 
                   value="0" 
                   name="fourps" 
-                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-800 dark:ring-offset-gray-500 focus:ring-1 dark:bg-gray-100 dark:border-gray-600"
+                  class="w-4 h-4 text-green-500 border-gray-300 border-2 focus:ring-green-500 dark:focus:ring-green-800 dark:ring-offset-gray-500 focus:ring-1"
                   onchange="fourPsForm()"
                   {{ isset($enrollment->fourps) && $enrollment->fourps == 0 ? 'checked' : '' }}
                 >
               
-                <label for="default-radio-2" class="ml-2 text-sm font-normal text-gray-900 dark:text-gray-900">Hindi</label>
+                <label for="default-radio-2" class="ml-2 md:text-sm text-xs font-normal text-gray-900 dark:text-gray-900">Hindi</label>
               
               </div>
 
@@ -727,13 +728,13 @@
             
           </div>
 
-          <div id="4ps_form" class="self-stretch rounded-[5px] bg-main-background flex flex-col items-start justify-center p-[2rem] gap-[1.5rem] border-[1px] border-solid border-main-green-secondary-100" style="display: none;">
+          <div id="4ps_form" class="self-stretch rounded-[5px] bg-white flex flex-col items-start justify-center md:p-8 p-5 gap-6 border-[1px] border-solid border-green-100 w-full" style="display: none;">
             
             <div id="paaralanInfo" class="flex flex-col w-full">
              
-              <div class="self-stretch flex flex-col items-start justify-start pb-4">
+              <div class="self-stretch flex flex-col items-start justify-start md:pb-4 pb-3">
                 
-                <b class="relative text-[.94rem] font-medium leading-[140%] font-button text-main-text text-left" for="paaralan">Kung kabilang ang bata sa 4ps, Ilagay ang "HOUSEHOLD ID NUMBER". <span class="text-red-600">*</span></b>
+                <b class="relative md:text-sm text-xs font-medium leading-[140%] font-mulish text-black text-left" for="paaralan">Kung kabilang ang bata sa 4ps, Ilagay ang "HOUSEHOLD ID NUMBER". <span class="text-red-600">*</span></b>
               
               </div>
               
@@ -744,7 +745,7 @@
                 id="fourps_id" 
                 name="fourps_id"
                 placeholder="123456789-1234-1234"
-                class="text-[.90rem] block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-main-background sm:text-md focus:ring-blue-500 focus:border-blue-500" 
+                class="md:text-sm text-xs block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-transparent focus:ring-green-500 focus:border-green-500" 
                 value="{{ isset($enrollment->fourps_id) ? $enrollment->fourps_id : old('fourps_id') }}">
               </div>
 
@@ -773,11 +774,11 @@
 
           <div class="flex gap-2 w-full">  
 
-            <div class="self-stretch rounded-lg flex flex-row items-center justify-center py-3.5 w-1/2 border-[1px] border-solid border-brown-500 hover:box-border hover:border-brown-600 hover:border-[2px] hover:border-solid">
+            <div class="self-stretch md:rounded-lg rounded-md flex flex-row items-center justify-center md:py-3.5 py-2.5 w-1/2 border-[1px] border-solid border-brown-500 hover:box-border hover:border-brown-600 hover:border-[2px] hover:border-solid">
               <button type="button" class="cursor-pointer p-0 bg-[transparent] flex-1 relative text-base leading-[140%] uppercase font-mulish text-brown-500 text-center inline-block overflow-hidden text-ellipsis whitespace-nowrap" id="backBtn">Back</button>
             </div>
 
-            <div class="self-stretch rounded-lg bg-green-500 flex flex-row items-center justify-center py-3.5 w-1/2  hover:text-white hover:shadow-md hover:shadow-green-700/50 hover:bg-green-900"> 
+            <div class="self-stretch md:rounded-lg rounded-md bg-green-500 flex flex-row items-center justify-center md:py-3.5 py-2.5 w-1/2  hover:text-white hover:shadow-md hover:shadow-green-700/50 hover:bg-green-900"> 
               <button type="button" id="nextBtn" class="next cursor-pointer p-0 bg-[transparent] flex-1 relative text-base leading-[140%] uppercase font-medium font-mulish text-brown-50 text-center inline-block">next</button>
             
             </div>
