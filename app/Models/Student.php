@@ -114,4 +114,8 @@ class Student extends Authenticatable
     return $this->hasMany(Enrollment::class);
     }
 
+    public function returnee()
+    {
+    return $this->hasOne(Returnee::class, 'student_id');
+    }
 }
