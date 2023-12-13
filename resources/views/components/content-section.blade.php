@@ -1,6 +1,7 @@
 <!-- Content Section -->
 @php
   use Carbon\Carbon;
+  use App\Models\DocumentRequest;
   $student = Auth::guard('students')->user();
   $username = $student->first_name . ' ' . $student->last_name;
   $last_name = $student->last_name;
@@ -1094,6 +1095,11 @@
     </div>
 
     @elseif (request()->is('student.request-documents') )
+    @vite(['resources/js/student.document.request.js'])
+    @php
+    $student = new App\Http\Controllers\Student();
+    $student = $student->getStudentRequests();
+    @endphp
     <!-- Student Requests Document Section -->
     <div class="md:pl-64 pl-0 w-full min-h-full bg-yellow-50 lg:py-12 py-8 md:px-16 px-12">
 
@@ -1178,7 +1184,8 @@
                         </div>
 
                         <!-- Modal toggle -->
-                        <button 
+                        <button
+                        id="request-document" 
                         data-modal-target="crud-modal" 
                         data-modal-toggle="crud-modal" 
                         class="focus:outline-none font-mulish text-white bg-green-500 font-semibold lg:text-base text-sm px-7 py-2.5 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
@@ -1204,41 +1211,47 @@
                                     </div>
                                     <!-- Modal body -->
                                     <!-- Backend Side: Need to connect para pumasok ung data from the input of students (purpose and type documents) -->
-                                    <form action="#" class="p-4 md:p-5">
-
-                                        <div class="grid gap-1 mb-1 grid-cols-1 rounded-md p-1 shadow-md shadow-gray-300">
-                                            
-                                            <div class="flex items-center gap-2 p-4 ">
-                                                
+                                    <form action=""  method="POST" class="p-4 md:p-5" id="submitDocumentRequestForm">
+                                        @csrf
+                                        @method('post')
+                                        <div class="grid gap-1 mb-1 grid-cols-1 rounded-md p-1">
+                                            <div class="flex flex-col items-start gap-2 p-4 ">
+                                                <span   
+                                                id="purpose-error" 
+                                                class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                                                Please select purpose of request
+                                              </span>
                                                 <label for="purpose" class="font-mulish mb-2 text-md font-semibold text-green-900 dark:text-white flex">Purpose:</label>
-
-                                                <select id="purpose" class="font-mulish flex-initial bg-white border border-gray-300 text-green-900 text-md  rounded-lg focus:ring-green-500 focus:border-green-500  w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 gap-2">
-                                                    <option selected="0">Select purpose</option>
-                                                    <option value="1">Scholarship grant.</option>
-                                                    <option value="2">Transfer of school.</option>
-                                                    <option value="3">Government purposes.</option>
-                                                    <option value="4">Others</option>
+                                                <select  name="purpose" id="purpose" class="font-mulish flex-initial bg-white border border-gray-300 text-green-900 text-md  rounded-lg focus:ring-green-500 focus:border-green-500  w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500 gap-2">
+                                                    <option selected disabled >Select purpose</option>
+                                                    <option value="Scholarship Grand">Scholarship grant</option>
+                                                    <option value="Transfer of School">Transfer of school</option>
+                                                    <option value="Government Purpose">Government purposes</option>
+                                                    <option value="Others">Others</option>
                                                 </select>
 
                                             </div>
 
                                             <div class="flex flex-col items-start gap-2 p-2">
-                                                
+                                                <span   
+                                                id="document-error" 
+                                                class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                                                Please select document to request
+                                              </span>                                                
                                                 <label for="purpose" class="font-mulish mb-2 text-md font-semibold  text-green-900 dark:text-white flex">Document:</label>
-
                                                 <div class="pl-2">
                                                     <div class="flex items-center mb-4">
-                                                        <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <input name="document[]" id="default-radio-1" type="radio" value="SF10" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                         <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Request of SF10</label>
                                                     </div>
 
                                                     <div class="flex items-center mb-4">
-                                                        <input id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <input name="document[]" id="default-radio-2" type="radio" value="Certificate of Good Moral" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                         <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Certificate of Good Moral</label>
                                                     </div>
 
                                                     <div class="flex items-center mb-4">
-                                                        <input id="default-radio-3" type="radio" value="" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <input name="document[]" id="default-radio-3" type="radio" value="Certificate of Enrollment" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                         <label for="default-radio-1" class="ms-2 text-md font-medium text-green-900 dark:text-gray-300">Certificate of Enrollment</label>
                                                     </div>
                                                     
@@ -1248,7 +1261,7 @@
 
                                             <div class="w-full flex justify-end">
                                                 <button 
-                                                    type="button" 
+                                                    type="button" id="submitDocumentRequest"
                                                     class="focus:outline-none font-mulish text-white bg-green-500 font-semibold text-lg px-14 py-2.5 mr-2 mb-2 rounded-lg  hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600">
                                                     Submit
                                                 </button>
@@ -1270,7 +1283,9 @@
 
                 <!-- My Request body section -->
                 <div id="myRequestBody" class="flex mx-[100vw] py-5 p-0 flex-col w-full h-auto text-yellow-500 rounded-lg bg-white dark:bg-gray-800 dark:text-yellow-400 dark:border-yellow-800 font-mulish">
-
+                    @php
+                        $studentRequest = DocumentRequest::where('student_id', Auth::guard('students')->user()->id)->orderBy('updated_at', 'desc')->get();
+                    @endphp
                     <!-- My Requests Body Section -->
                     <div class="w-full flex flex-col items-center justify-center">
 
@@ -1290,38 +1305,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($studentRequest as $request)
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default1" >
                                             <td class="px-6 py-4">
-                                                Certificate of enrollment
+                                                {{$request->document_requests}}
                                             </td>
                                             <td class="px-6 py-4">
-                                                Claimed
+                                                {{$request->status}}
                                             </td>
                                         </tr>
 
                                         <div data-popover id="popover-default1" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2">
-                                                <p>10:24 AM 09-17-2023</p>
+                                                <p>{{Carbon::parse($request->updated_at)->format('F j, Y g:i A')}}</p>
                                             </div>
                                             <div data-popper-arrow></div>
                                         </div>
-
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600" data-popover-target="popover-default2" >
-                                            <td class="px-6 py-4">
-                                                SF 10
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                For Validation
-                                            </td>
-                                        </tr>
-
-                                        <div data-popover id="popover-default2" role="tooltip" class="absolute z-10 invisible inline-block w-auto text-md text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                            <div class="px-3 py-2">
-                                                <p>8:17 AM 10-29-2023</p>
-                                            </div>
-                                            <div data-popper-arrow></div>
-                                        </div>
-
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 

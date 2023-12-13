@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Student;
+use App\Models\HighestPossibleScore;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
+
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\HighestPossibleScoreController;
-
-use App\Models\HighestPossibleScore;
 
 
 /*

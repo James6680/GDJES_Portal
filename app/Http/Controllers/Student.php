@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DocumentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -9,6 +10,20 @@ use Illuminate\Support\Facades\Auth;
 
 class Student extends Controller
 {
+    public function getStudentRequests(){
+        $student_request = DB::table('document_request')->where('student_id', Auth::guard('students')->user()->id)->get();
+        return $student_request;
+    }
+
+    public function studentRequestDocument(Request $request){
+    $documentRequest = new DocumentRequest();
+    $documentRequest->student_id = Auth::guard('students')->user()->id;
+    $documentRequest->document_requests = $request->input('document')[0];
+    $documentRequest->purpose = $request->input('purpose');
+    $documentRequest->status = "For Validation";
+    $documentRequest->save();
+    }
+
     public function StudentInfo(){
         $student = DB::table('students')
             ->join('document_requirements', 'document_requirements.student_id','=','students.id')

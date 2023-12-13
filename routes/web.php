@@ -174,6 +174,7 @@ Route::get('student-registration-Completed', [EnrollmentController::class, 'enro
     ->name('enrollment.StudentportalRegistrationCompletedPage');
 });
 
+Route::post('student.requestDocument', [Student::class, 'studentRequestDocument']);
 
 Route::get('enrollment-closed', function(){
     return view('enrollment.StudentportalRegistrationClosedPage');
