@@ -1192,25 +1192,10 @@
                         Request Document
                         </button>
 
-                        <!-- {{-- Main modal
-                        <button
-                        id="request-document" 
-                        @if($s->documentRequests->whereIn('status', ['For Validation', 'Passing of Documents', 'For Claiming', 'Denied'])->count() > 4)
-                            data-modal-target="warning-modal" 
-                            data-modal-toggle="warning-modal"
-                        @else
-                            data-modal-target="crud-modal" 
-                            data-modal-toggle="crud-modal"
-                        @endif
-                        class="focus:outline-none font-mulish text-white bg-green-500 font-semibold lg:text-base text-sm px-7 py-2.5 rounded-lg hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 " type="button">
-                        Request Document
-                        </button>
-                        --}} -->
-
                         <!-- CRUD modal -->
                         <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                             <div class="relative p-4 w-full max-w-md max-h-full">
-                                <!-- Modal content -->
+                                <!-- CRUD Modal content -->
                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 font-mulish">
                                     <!-- Modal header -->
                                     <div class="flex items-center justify-between p-4 md:p-3 border-b rounded-t dark:border-gray-600 bg-green-500">
@@ -1288,32 +1273,28 @@
 
                                 </div>
 
+                                <!-- Warning modal content -->
+                                <div class="hidden relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                  <button id="closeDeleteSectionModal" type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="warning-modal">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>  
+                                    <span class="sr-only">Close modal</span>
+                                  </button>
+                                  <div class="p-6 pt-8 text-center">
+                                    <svg class="mx-auto mb-4 text-yellow-500 w-12 h-12 dark:text-red-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                                      <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
+                                    </svg>
+                                    <div class="gap-3 mb-5">
+                                      <h3 class="text-sm font-bold text-yellow-500 dark:text-gray-400">You can only request 5 documents at a time.</h3>
+                                      <p class="text-xs font-normal text-yellow-500 dark:text-gray-400">Please wait for the school management to process your request.</p>
+                                    </div>
+                                  </div>
+                                </div>
                             </div>
-
                         </div> 
 
-                        <!-- Warning modal -->
-                        <div id="warning-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                          <div class="relative w-full max-w-md max-h-full">
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                              <button id="closeDeleteSectionModal" type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="warning-modal">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                </svg>  
-                                <span class="sr-only">Close modal</span>
-                              </button>
-                              <div class="p-6 pt-8 text-center">
-                                <svg class="mx-auto mb-4 text-yellow-500 w-12 h-12 dark:text-red-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
-                                  <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
-                                </svg>
-                                <div class="gap-3 mb-5">
-                                  <h3 class="text-sm font-bold text-yellow-500 dark:text-gray-400">You can only request 5 documents at a time.</h3>
-                                  <p class="text-xs font-normal text-yellow-500 dark:text-gray-400">Please wait for the school management to process your request.</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        
 
 
                         
