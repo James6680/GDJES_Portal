@@ -17,4 +17,9 @@ class DocumentRequest extends Model
     'document_requests',
     'status',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

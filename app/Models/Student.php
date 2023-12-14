@@ -118,4 +118,9 @@ class Student extends Authenticatable
     {
     return $this->hasOne(Returnee::class, 'student_id');
     }
+
+    public function documentRequests()
+    {
+    return $this->hasMany(DocumentRequest::class);
+    }
 }

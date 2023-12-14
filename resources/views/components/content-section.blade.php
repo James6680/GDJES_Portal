@@ -1192,10 +1192,10 @@
                         Request Document
                         </button>
 
-                        <!-- Main modal -->
+                        <!-- CRUD modal -->
                         <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                             <div class="relative p-4 w-full max-w-md max-h-full">
-                                <!-- Modal content -->
+                                <!-- CRUD Modal content -->
                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 font-mulish">
                                     <!-- Modal header -->
                                     <div class="flex items-center justify-between p-4 md:p-3 border-b rounded-t dark:border-gray-600 bg-green-500">
@@ -1236,7 +1236,7 @@
                                                 <span   
                                                 id="document-error" 
                                                 class="hidden pt-2 pl-0 text-sm font-medium text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                                                Please select document to request
+                                                Please select document to request.
                                               </span>                                                
                                                 <label for="purpose" class="font-mulish mb-2 text-md font-semibold  text-green-900 dark:text-white flex">Document:</label>
                                                 <div class="pl-2">
@@ -1259,7 +1259,7 @@
                                                 
                                             </div>
 
-                                            <div class="w-full flex justify-end">
+                                            <div class="w-full flex justify-center">
                                                 <button 
                                                     type="button" id="submitDocumentRequest"
                                                     class="focus:outline-none font-mulish text-white bg-green-500 font-semibold text-lg px-14 py-2.5 mr-2 mb-2 rounded-lg  hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600">
@@ -1273,10 +1273,31 @@
 
                                 </div>
 
+                                <!-- Warning modal content -->
+                                <div class="hidden relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                  <button id="closeDeleteSectionModal" type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm md:text-base lg:text-md w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="warning-modal">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>  
+                                    <span class="sr-only">Close modal</span>
+                                  </button>
+                                  <div class="p-6 pt-8 text-center">
+                                    <svg class="mx-auto mb-4 text-yellow-500 w-12 h-12 dark:text-red-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                                      <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
+                                    </svg>
+                                    <div class="gap-3 mb-5">
+                                      <h3 class="text-sm font-bold text-yellow-500 dark:text-gray-400">You can only request 5 documents at a time.</h3>
+                                      <p class="text-xs font-normal text-yellow-500 dark:text-gray-400">Please wait for the school management to process your request.</p>
+                                    </div>
+                                  </div>
+                                </div>
                             </div>
-
                         </div> 
-                    
+
+                        
+
+
+                        
                     </div>
 
                 </div>
