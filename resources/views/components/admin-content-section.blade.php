@@ -1,11 +1,6 @@
 @php
-  $currentSchoolYearStart = '2023';
-  $currentSchoolYearEnd = '2024';
-  $schoolYear = 'meron laman';
-  $enrollmentPhase = 'Official';
-  $enrollmentStatus = 'Open';
-  $activeSchoolYear = 'wala laman';
-
+  use Carbon\Carbon;
+  use App\Models\DocumentRequest;
 @endphp
 
 @if (request()->is('admin.dashboard') )
@@ -35,7 +30,6 @@ window.Alpine = Alpine;
   </section> <!-- End of Top Bar Dark Green Decor -->
   <!--  Admin Dashboard Main Content Container -->
   <section class="w-full min-h-full gap-4 p-4 grid grid-cols-1">
-    {{-- Academic Year {{ $currentSchoolYearStart }} - {{ $currentSchoolYearEnd }} Data --}}
     <h1 id="current-school-year-name" class="text-center w-full px-4 pt-5 pb-3.5 font-mulish font-semibold text-lg sm:text-2xl lg:text-3xl text-white">No school year is currently active</h1>
     
     <!--  Statistics Container -->
@@ -545,7 +539,7 @@ window.Alpine = Alpine;
                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path>
                 </svg>
-                Request Status
+                Status
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                 </svg>
@@ -557,30 +551,30 @@ window.Alpine = Alpine;
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                       <input checked="" id="filter-radio-example-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="filter-radio-example-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">No Filter</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                      <input id="filter-radio-example-1" type="radio" value="For validation" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="filter-radio-example-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For validation</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input id="filter-radio-example-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="filter-radio-example-2" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Passing of documents</label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input id="filter-radio-example-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <input id="filter-radio-example-3" type="radio" value="For claiming" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="filter-radio-example-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For claiming</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input id="filter-radio-example-4" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <input id="filter-radio-example-4" type="radio" value="Denied" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="filter-radio-example-4" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Denied</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                      <input id="filter-radio-example-5" type="radio" value="" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <input id="filter-radio-example-5" type="radio" value="Completed" name="filter-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="filter-radio-example-5" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Completed</label>
                     </div>
                   </li>
@@ -596,7 +590,7 @@ window.Alpine = Alpine;
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                   </svg>
                 </div>
-                <input type="text" id="table-search-doc-reqs" class="w-auto block ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search for requests">
+                <input type="text" maxlength="15" id="table-search-doc-reqs" class="w-auto block ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search for requests">
               </div>
             </div> <!-- End of Search bar -->
 
@@ -626,70 +620,142 @@ window.Alpine = Alpine;
                 </th>
               </tr>
             </thead>
+            @php
+            $requests = DocumentRequest::join('students','students.id','=','document_request.student_id')->select('students.last_name','students.first_name','students.middle_name','students.extension_name','document_request.*')->orderBy('updated_at', 'desc')->get();
+            @endphp
             <tbody>
-              <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+
+              @foreach($requests as $request)
+              <tr id="table-body-row-requests" class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">
-                  1
+                  {{$loop->index+1}}
                 </td>
                 <td class="px-6 py-4">
-                  Nicolas, Lillian Murray 
+                  {{$request->last_name}}, {{$request->first_name}} {{$request->middle_name}} {{$request->extension_name}}
                 </td>
                 <td class="px-6 py-4">
-                  SF 10
+                  {{$request->document_requests}}
                 </td>
                 <td class="px-6 py-4">
-                  <button id="dropdownReqStatusButton" data-dropdown-toggle="dropdownReqStatus" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                
+                  <button @if($request->status == "Completed" || $request->status == "Denied") disabled @endif id="dropdownReqStatusButton" data-dropdown-toggle="dropdownReqStatus" data-request-id="{{$request->id}}" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                     <path d="M243.33,90.91,114.92,219.31a16,16,0,0,1-22.63,0l-71.62-72a16,16,0,0,1,0-22.61l24-24a16,16,0,0,1,22.57-.06l36.64,35.27.11.11h0l92.73-91.37a16,16,0,0,1,22.58,0l24,23.56A16,16,0,0,1,243.33,90.91Z"></path>
-                    </svg>                    
-                    For validation
+                    </svg>
+                    <div id="status-content">{{$request->status}}</div>                    
                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                     </svg>
                   </button>
                 </td>
               </tr>
+              @endforeach
             </tbody>
 
           </table>
+          <script>
+            const searchBar = document.getElementById('table-search-doc-reqs');
+            const radioButtons = document.querySelectorAll('#dropdownRadio input[type="radio"]');
+            const tableBodyContents = document.querySelectorAll('#table-body-row-requests');
 
+            searchBar.addEventListener('input', function(event) {
+              const searchTerm = event.target.value.toLowerCase(); // Lowercase the search term for case-insensitive comparison
+              updateTableBodyFromSearch(searchTerm);
+            });
+
+            radioButtons.forEach(radio => {
+              radio.addEventListener('change', function(event) {
+                if (radio.checked) {
+                  var searchTerm = radio.value.toLowerCase();
+                  // Do something based on the selected value (e.g., update a hidden field, filter data)
+                  updateTableBodyFromSearch(searchTerm);
+                }
+              });
+            });
+
+            function updateTableBodyFromSearch(searchTerm){
+              tableBodyContents.forEach(function(tableRow) {
+                const rowContents = Array.from(tableRow.querySelectorAll('td'));
+                const matchFound = rowContents.some(function(cell) { // Check if any cell content matches the search term
+                  return cell.textContent.toLowerCase().includes(searchTerm);
+                });
+              
+                if (!matchFound) { // Hide the row if no match is found
+                  tableRow.classList.add('hidden'); // Add a hidden class or apply specific display styles
+                } else { // Show the row if a match is found
+                  tableRow.classList.remove('hidden');
+                }
+              });
+            }
+          </script>
         </div> <!-- End of Table -->
 
         <!-- Dropdown menu for Requirement Status -->
         <div id="dropdownReqStatus" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
           <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownReqStatus">
             <li>
-              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600" onclick="changeStatus('For Validation')">
                 <input checked="" id="dropdownReqStatus-example-1" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="dropdownReqStatus-example-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For validation</label>
               </div>
             </li>
+
             <li>
-              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                <input id="dropdownReqStatus-example-2" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="dropdownReqStatus-example-2" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Passing of documents</label>
-              </div>
-            </li>
-            <li>
-              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600" onclick="changeStatus('For claiming')">
                 <input id="dropdownReqStatus-example-3" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="dropdownReqStatus-example-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">For claiming</label>
               </div>
             </li>
             <li>
-              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600" onclick="changeStatus('Denied')">
                 <input id="dropdownReqStatus-example-4" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="dropdownReqStatus-example-4" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Denied</label>
               </div>
             </li>
             <li>
-              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600" onclick="changeStatus('Completed')">
                 <input id="dropdownReqStatus-example-5" type="radio" value="" name="dropdownReqStatus" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="dropdownReqStatus-example-5" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Completed</label>
               </div>
             </li>
           </ul>
         </div> <!-- End of Dropdown menu for Requirement Status -->
+        <script>
+          var requestId;
+          const rows = document.querySelectorAll('#dropdownReqStatusButton');
+          var statusButton;
+          var buttonVar;
+
+          rows.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+              // Your click handler code here
+              requestId = button.dataset.requestId; // Access data from the button'
+              statusButton = button.querySelector('#status-content');
+              buttonVar = button;
+            });
+          });
+
+          function changeStatus(status){
+            $.ajax({
+              url: localStorage.getItem('appUrl') + "/admin.documentRequest",
+              type: "POST",
+              data: {
+                id: requestId,
+                status: status,
+              },
+              success: function(response) {
+                statusButton.innerHTML = status;
+                if(status == "Completed" || status == "Denied"){
+                  buttonVar.setAttribute('disabled', true);
+                }
+
+              },
+              error: function(response) {
+                // Form submission failed, prevent default submission
+              }
+            });
+          }
+        </script>
 
         <!-- Pagination -->
         <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">

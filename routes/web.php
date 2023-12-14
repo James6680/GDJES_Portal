@@ -90,11 +90,12 @@ Route::post('admin.editSection', [SectionController::class, 'editSection']
 )->middleware('admin')->name('admin.editSection');
 Route::post('classes.assignTeachers', [SectionController::class, 'assignTeacher']
 )->middleware('admin')->name('classes.assignTeachers');
-
 Route::post('classes.assignStudentsToSection', [SectionController::class, 'assignStudentSection']
 )->middleware('admin')->name('classes.assignStudentsToSection');
 Route::post('classes.removeStudentsFromSection', [SectionController::class, 'removeStudentSection']
 )->middleware('admin')->name('classes.removeStudentsFromSection');
+Route::post('admin.documentRequest', [AdminController::class, 'documentRequest']
+)->middleware('admin')->name('admin.documentRequest');
 
 Route::get('admin.school-information', function () {
     return view('layouts.admin');

@@ -159,8 +159,11 @@ class AdminController extends Controller
         return  json_encode($studentAccounts);
     }
 
+    public function documentRequest(Request $request){
+        DB::table('document_request')
+            ->where('id', $request->input('id'))
+            ->update(['status' => $request->input('status')]);
+    }
 }
-
-
 
 //REMINDER: 
