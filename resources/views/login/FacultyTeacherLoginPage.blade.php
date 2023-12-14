@@ -247,14 +247,14 @@
                         </a>
 
                         <!--Button id removed id="login-button"-->
-                        <buttonn
+                        <button
                         
                         type="submit"
                         class="cursor-pointer [border:none] md:py-3.5 py-3 px-8 bg-brown-500 self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-brown-900 hover:shadow-md hover:shadow-green-700/50 hover:text-white">
                         
                         <div class="relative text-base uppercase font-mulish text-brown-50 text-left">Login</div>
 
-                        </buttonn>
+                        </button>
                     
                     </div>
 
