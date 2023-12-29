@@ -1,5 +1,90 @@
 <script>
     $(document).ready(function() {
+
+        //create Student
+        $('#addStudent').on('click', function(e){
+            e.preventDefault();
+
+            // Clear previous error messages and remove red borders
+            $('.error-message').remove();
+            $('.form-input').removeClass('border-red-500');
+
+            let psa_birth_certno = $('#createStudent #psa').val();
+            let lrn = $('#createStudent #lrn').val();
+            let last_name = $('#createStudent #last_name').val();
+            let first_name = $('#createStudent #first_name').val();
+            let middle_name = $('#createStudent #middle_name').val();
+            let extension_name = $('#createStudent #dropdownNameExtensionlButton').val();
+            // I need this to create an enrollment record that has a student_id and grade_level_id in the enrollments table
+            // Then I need for the grade_level data here to reflect the grade_level_id in the enrollments table
+            let grade_level = $('#createStudent #dropdownGradeLevelButton').val();
+            let birth_date = $('#createStudent #birth_date').val();
+            let age = $('#createStudent #age').val();
+            let gender = $('#createStudent #gender').val();
+            let indigenous_group = $('#createStudent #indigenous_group').val();
+            let mother_tongue = $('#createStudent #dropdownMotherTongueButton').val();
+            let religion = $('#createStudent #dropdownReligionButton').val();
+            let special_assistance_needs = $('#createStudent #special_assistance_needs').val();
+            let region = $('#createStudent #region').val();
+            let province = $('#createStudent #province').val();
+            let municipality = $('#createStudent #city').val();
+            let barangay = $('#createStudent #barangay').val();
+            let street = $('#createStudent #street').val();
+            let house_number = $('#createStudent #house_number').val();
+
+            //TODO: Add public fuinction to server side - AdminController.php
+            //Check EnrollmentController.php for reference
+            
+            //Input parents input here and then add the last student_col reference (household_4ps_id)
+            let father_last_name = $('#createStudent #father_lastname').val();
+            let father_first_name = $('#createStudent #father_firstname').val();
+            let father_middle_name = $('#createStudent #father_middlename').val();
+            let father_extension_name = $('#createStudent #dropdownFatherNameExtensionButton').val();
+            let father_phone_number = $('#createStudent #father_num').val();
+            let father_email = $('#createStudent #father_email').val();
+
+            console.log(birth_date);
+            $.ajax({
+                url: localStorage.getItem('appUrl') + "/admin.student-management.add",
+                method: "POST",
+                data: {
+                    last_name: last_name,
+                    first_name: first_name,
+                    middle_name: middle_name,
+                    extension_name: extension_name,
+                    email: email,
+                    birth_date: birth_date,
+                    age: age,
+                    gender: gender,
+                    phone_number: phone_number,
+                    house_number: house_number,
+                    street: street,
+                    barangay: barangay,
+                    municipality: municipality,
+                    province: province,
+                    region: region,
+                },
+                success: function(result) {
+                    // Handle the success response here
+                    if (result.status == 'success') {
+                    // Close the Tailwind CSS modal
+                        //document.getElementById('createTeacherUserModal').classList.remove('visible');
+                        //document.getElementById('createTeacherUserModal').classList.add('invisible');
+                        document.getElementById('createTeacher').reset();
+                        $('#tbl').load(location.href + ' #tbl');
+                    }
+                },
+                error: function(result) {
+                    let error = result.responseJSON;
+                    $.each(error.errors, function(key, value) {
+                        $('#' + key).addClass('border-red-500');
+                        $('#' + key).after('<p class="text-red-500 text-xs italic error-message">' + value + '</p>');
+                    });
+                }
+            });  
+        })
+
+        //create Teacher
         $('#addTeacher').on('click', function(e){
             e.preventDefault();
 
@@ -101,7 +186,6 @@
         $('#viewTeachertUserModal .pt-4:eq(0) p:eq(3)').text(`Name Extension: ${extension_name}`);
         $('#viewTeachertUserModal .pt-4:eq(0) p:eq(4)').text(`Username: ${username}`);
         
-       
         $('#viewTeachertUserModal .pt-4:eq(0) p:eq(5)').text(`Birthday: ${birth_date}`);
         $('#viewTeachertUserModal .pt-4:eq(0) p:eq(6)').text(`Age : ${age}`);
         $('#viewTeachertUserModal .pt-4:eq(0) p:eq(7)').text(`Gender: ${gender}`);
@@ -117,16 +201,6 @@
         $('#viewTeachertUserModal .pt-4:eq(0) p:eq(15)').text(`Email: ${email}`);
         $('#viewTeachertUserModal .pt-4:eq(0) p:eq(16)').text(`Phone Number: ${phone_number}`);
         $('#viewTeachertUserModal .pt-4:eq(0) p:eq(17)').text(`Facebook Link: ${facebook_link}`);
-
-
-
-
-
-
-
-
-
-
 
 
 /*
@@ -152,6 +226,7 @@
     
         */
         });
+
         //edit Teacher
         $('.edit_Teacher').on('click', function(e){
 
