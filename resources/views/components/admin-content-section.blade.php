@@ -1087,6 +1087,45 @@ window.Alpine = Alpine;
             <!-- Modal body -->
             <div class="p-6 space-y-3">
               <div class="grid grid-cols-6 gap-6">
+                
+                <!-- Returnee Y/N -->
+                <div class="col-span-6">
+                  <label for="returnee" class="block mb-2 text-sm font-medium text-black dark:text-white">Balik-aral (returnee) ba ang batang ipapalista?</label>
+                  <div id="returnee" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="returnee">
+                      <li>
+                        <div class="flex items-center">
+                          <input id="returnee-checkbox-item-1" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="returnee-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input id="returnee-checkbox-item-2" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="returnee-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Last grade finished? -->
+                <div class="col-span-6">
+                  <label for="last-grade-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last grade level attended (Optional)</label>
+                  <input type="text" name="last-grade-attended" id="last-grade-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
+                </div>
+
+                <!-- Last school attended -->
+                <div class="col-span-6">
+                  <label for="last-school-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school enrolled in (Optional)</label>
+                  <input type="text" name="last-school-attended" id="last-school-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
+                </div>
+                
+                <!-- Last school year attended -->
+                <div class="col-span-6">
+                  <label for="last-school-year-finished" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school year attended (Optional)</label>
+                  <input type="text" name="last-school-year-finished" id="last-school-year-finished" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
+                </div>
 
                 <!-- Last Name -->
                 <div class="col-span-6 sm:col-span-3">
@@ -1319,7 +1358,8 @@ window.Alpine = Alpine;
                   <label for="region" class="block mb-2 text-sm font-medium text-black dark:text-white">Region</label>
                   <select name="region" 
                     id="region" 
-                    class="bg-white border border-gray-300 text-gray-900 md:text-sm text-xs rounded-lg focus:ring-green-500 focus:border-green-500  block  p-2.5  w-full"></select>
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
+                  </select>
                   <input type="hidden" 
                     id="region_text" 
                     name="region_text" >
@@ -1330,7 +1370,8 @@ window.Alpine = Alpine;
                   <label for="province" class="block mb-2 text-sm font-medium text-black dark:text-white">Province</label>
                   <select name="province" 
                     id="province" 
-                    class="bg-white border border-gray-300 text-gray-900 md:text-sm text-xs rounded-lg focus:ring-green-500 focus:border-green-500  block  p-2.5  w-full"></select>
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
+                  </select>
                   <input type="hidden" 
                     id="province_text" 
                     name="province_text" >
@@ -1341,7 +1382,8 @@ window.Alpine = Alpine;
                   <label for="city" class="block mb-2 text-sm font-medium text-black dark:text-white">City</label>
                   <select name="city" 
                     id="city" 
-                    class="bg-white border border-gray-300 text-gray-900 md:text-sm text-xs rounded-lg focus:ring-green-500 focus:border-green-500  block  p-2.5  w-full"></select>
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
+                  </select>
                   <input type="hidden" 
                     id="city_text" 
                     name="city_text" >
@@ -1352,7 +1394,8 @@ window.Alpine = Alpine;
                   <label for="barangay" class="block mb-2 text-sm font-medium text-black dark:text-white">Barangay</label>
                   <select name="barangay" 
                     id="barangay" 
-                    class="bg-white border border-gray-300 text-gray-900 md:text-sm text-xs rounded-lg focus:ring-green-500 focus:border-green-500  block  p-2.5  w-full"></select>
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
+                  </select>
                   <input type="hidden" 
                     id="barangay_text" 
                     name="barangay_text" >
@@ -1369,7 +1412,6 @@ window.Alpine = Alpine;
                   <label for="street" class="block mb-2 text-sm font-medium text-black dark:text-white">House No.</label>
                   <input type="text" name="street" id="street" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
                 </div>
-
 
                 <!-- Father's Full Name -->
                 <div class="col-span-6 sm:col-span-3">
@@ -1413,10 +1455,10 @@ window.Alpine = Alpine;
                   <input type="text" name="4ps" id="4ps" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
                 </div>
 
-                <!-- 4P's Household ID No. -->
+                <!-- 4P's Household ID No. (optional)-->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="4ps-no" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Household ID No.</label>
-                  <input type="text" name="4ps-no" id="4ps-no" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  <input type="text" name="4ps-no" id="4ps-no" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not a 4P's benefactor.)">
                 </div>
 
                 <!-- Access to Technology -->
@@ -1427,103 +1469,104 @@ window.Alpine = Alpine;
                     <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="accessToTechnologyCheckbox">
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May sariling Cellphone/Tablet ang Bata</label>
+                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May sariling cellphone/tablet ang Bata</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May computer sa bahay</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Walang sariling gadget ang bata</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May tv sa bahay</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May internet connection sa bahay</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Mobile data lamang ang gamit para makaconnect sa internet</label>
+                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Mobile data lamang ang gamit</label>
                         </div>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-
-
+                <!-- Preferred Mode of Learning -->
                 <div class="col-span-6">
                   <label for="pmol" class="block mb-2 text-sm font-medium text-black dark:text-white">Preferred Mode of Learning</label>
                   <div id="pmol" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="pmol">
                       <li>
                         <div class="flex items-center">
-                          <input id="checkbox-item-1" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Printed</label>
+                          <input id="pmol-checkbox-item-1" type="radio" name="pmol" value="Modular Printed" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="pmol-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Printed</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="checkbox-item-2" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Digital</label>
+                          <input id="pmol-checkbox-item-2" type="radio" name="pmol" value="Modular Digital" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="pmol-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Digital</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="checkbox-item-3" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Online</label>
+                          <input id="pmol-checkbox-item-3" type="radio" name="pmol" value="Online" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="pmol-checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Online</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="checkbox-item-4" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Educational Television</label>
+                          <input id="pmol-checkbox-item-4" type="radio" name="pmol" value="Educational Television" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="pmol-checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Educational Television</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="checkbox-item-5" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="checkbox-item-5" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Homeschooling</label>
+                          <input id="pmol-checkbox-item-5" type="radio" name="pmol" value="Homeschooling" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="pmol-checkbox-item-5" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Homeschooling</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="checkbox-item-6" type="radio" name="pmol" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="checkbox-item-6" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Blended</label>
+                          <input id="pmol-checkbox-item-6" type="radio" name="pmol" value="Blended" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="pmol-checkbox-item-6" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Blended</label>
                         </div>
                       </li>
                     </ul>
                   </div>
                 </div>
+
+                <!-- Status -->
                 <div class="col-span-6">
                   <label for="status" class="block mb-2 text-sm font-medium text-black dark:text-white">Account Status</label>
                   <div id="status" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="status">
                       <li>
                         <div class="flex items-center">
-                          <input id="checkbox-item-1" type="radio" name="status" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Active</label>
+                          <input id="status-checkbox-item-1" type="radio" name="status" value="Active" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="status-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Active</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="checkbox-item-2" type="radio" name="status" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Inactive</label>
+                          <input id="status-checkbox-item-2" type="radio" name="status" value="Inactive" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="status-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Inactive</label>
                         </div>
                       </li>
                     </ul>
@@ -1531,17 +1574,8 @@ window.Alpine = Alpine;
                 </div>
 
                 
-                <div class="col-span-6">
-                  <label for="last-grade-finished" class="block mb-2 text-sm font-medium text-black dark:text-white">Last grade finished</label>
-                  <input type="text" name="last-grade-finished" id="last-grade-finished" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                </div>
-                <div class="col-span-6">
-                  <label for="last-school-enrolled-in" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school enrolled in</label>
-                  <input type="text" name="last-school-enrolled-in" id="last-school-enrolled-in" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                </div><div class="col-span-6">
-                  <label for="last-sy-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school year attended</label>
-                  <input type="text" name="last-sy-attended" id="last-sy-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="">
-                </div>
+
+                
                 
               </div>
             </div>
@@ -2137,8 +2171,8 @@ window.Alpine = Alpine;
                   <label for="last-school-enrolled-in" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school enrolled in</label>
                   <input type="text" name="last-school-enrolled-in" id="last-school-enrolled-in" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
                 </div><div class="col-span-6">
-                  <label for="last-sy-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school year attended</label>
-                  <input type="text" name="last-sy-attended" id="last-sy-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="">
+                  <label for="last-school-year-finished" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school year attended</label>
+                  <input type="text" name="last-school-year-finished" id="last-school-year-finished" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="">
                 </div>
                 
               </div>
