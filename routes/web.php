@@ -56,9 +56,21 @@ Route::get('admin.document-request', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.document-request');
 
+
+
+
+
+
 Route::get('admin.student-management', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.student-management');
+
+Route::post('admin.student-management.add',[AdminController::class, 'CreateStudent'])->middleware('admin')
+->name('admin.student-management.add');//added
+Route::post('admin.student-management.edit',[AdminController::class, 'EditStudent'])->middleware('admin')
+->name('admin.student-management.edit');//added
+Route::post('admin.student-management.delete',[AdminController::class, 'delete'])->middleware('admin')
+->name('admin.student-management.delete');//added
 
 Route::get('admin.teacher-management', function () {
     return view('layouts.admin');
@@ -70,6 +82,11 @@ Route::post('admin.teacher-management.edit',[AdminController::class, 'EditTeache
 ->name('admin.teacher-management.edit');//added
 Route::post('admin.teacher-management.delete',[AdminController::class, 'delete'])->middleware('admin')
 ->name('admin.teacher-management.delete');//added
+
+
+
+
+
 
 Route::get('admin.enrollment-management', function () {
     return view('layouts.admin');
