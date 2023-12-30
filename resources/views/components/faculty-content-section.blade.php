@@ -328,15 +328,15 @@ use Carbon\Carbon;
                                         <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                                             <li class="flex items-center">
                                                 <input id="enrolled_num" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-green-600 focus:ring-green-500 dark:focus:ring-green-600 focus:ring-2">
-                                                <label for="enrolled_num" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Enrolled (2)</label>
+                                                <label for="enrolled_num" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Enrolled</label>
                                             </li>
                                             <li class="flex items-center">
                                                 <input id="temp_enrolled_num" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-green-600 focus:ring-green-500 dark:focus:ring-green-600 focus:ring-2">
-                                                <label for="temp_enrolled_num" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Temporary Enrolled (198)</label>
+                                                <label for="temp_enrolled_num" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Temporary Enrolled</label>
                                             </li>
                                             <li class="flex items-center">
                                                 <input id="dropped_num" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-green-600 focus:ring-green-500 dark:focus:ring-green-600 focus:ring-2">
-                                                <label for="dropped_num" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Dropped (0)</label>
+                                                <label for="dropped_num" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Dropped</label>
                                             </li>
                                         </ul>
                                     </div>
@@ -476,7 +476,7 @@ use Carbon\Carbon;
                                         observer{{$loop->index}}.observe(element{{$loop->index}}, {
                                           childList: true,
                                         });
-                                    </script> --}},
+                                    </script> --}}
                                     @endforeach
                                 </tbody>
 
