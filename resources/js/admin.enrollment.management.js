@@ -29,6 +29,7 @@ const openEnrollmentButton = document.getElementById('openOfficialEnrollmentButt
 const addSectionForm = document.getElementById('add-section-form');
 const addSectionFormSubmit = document.getElementById('add-section-form-submit');
 const addSectionFormShow = document.querySelector('#show-add-section-form');
+const addStudentFormShow = document.querySelector('#show-add-student-form');
 const sectionsTableBody = document.getElementById('sections-table-body');
 const sectionEquivalents = ["Kinder", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6"];
 
@@ -769,6 +770,7 @@ schoolYearDropDown.addEventListener('click', function(event) {
         selectedSchoolYearObject = selectedObject;
         document.querySelector('#dropdownSYHoverButton-ocl').innerHTML = selectedSchoolYearObject.school_year;
         addSectionFormShow.removeAttribute("disabled");
+        addStudentFormShow.removeAttribute("disabled");
         if(selectedSchoolYearObject.is_enrollment == 1){
           document.getElementById('show-add-student').href = '/student-registration-1';
         }
