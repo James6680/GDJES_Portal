@@ -914,9 +914,14 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                          </div>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                            <div class="mx-auto w-full ">
                             <!-- Faculty grading sheet for students table for QUARTERLY SUMMARY REPORT -->
-                            <table class="w-full lg:text-sm text-xs text-left text-black hidden" 
+                            <table class="w-full lg:text-sm text-xs text-left text-black " 
                                     id="gSheetSummaryTable">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
                                     <tr class="text-sm text-center">
