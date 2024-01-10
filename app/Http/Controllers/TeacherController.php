@@ -59,7 +59,7 @@ class TeacherController extends Controller
         return redirect()->back();
     }
 
-    //gradingsheet
+    //gradingsheet for calculating of grades
     public function calculateGrades(Request $request, $id)
     {
 
@@ -70,6 +70,7 @@ class TeacherController extends Controller
         
         $WwTotal = (float) $request->input('wwTotal');
         $WwPs = ($WwTotal / $highestPossibleScores->hps_ww_total) * $highestPossibleScores->hps_ww_ps;
+        
         //ww_weighted_score mudt be converted from percentage to decimal like 
         // 50% to .50 
         $wwWeightedScore = $WwPs * $highestPossibleScores->ww_weighted_score;
@@ -88,7 +89,6 @@ class TeacherController extends Controller
         //calculate initial grade scores
         $initialGrade = $wwWeightedScore + $ppWeightedScore + $QaWs;
 
-
         $transmutationRow = TransmutationTable::where('low', '<=', $initialGrade)
             ->where('high', '>=', $initialGrade)
             ->first();
@@ -100,8 +100,6 @@ class TeacherController extends Controller
             $quarterlyGrade = null;
         }
         
-        
-
         // Update the grading sheet with the calculated grades
         GradingSheet::where('id', $request->id)->update([
             'ww1' => $request->input('ww1'),
@@ -136,9 +134,20 @@ class TeacherController extends Controller
             'initial_grade' => $initialGrade,
             'quarterly_grade' => $quarterlyGrade,
         ]);
-       
-
-        // return redirect()->route('faculty.grades.edit_student_grading_sheet', ['gradingSheet' => $gradingSheet])
-        //     ->with('success', 'Grades calculated successfully');
     }
+
+    //gradingsheet for posting of grades
+    public function getToStudentPortal(Request $request)
+    {
+        // Get the data from the AJAX request
+        $gradingSheetId = $request->input('id');
+
+        // Retrieve the quarterly grade from the database (replace 'YourModel' with your actual model)
+        $gradingSheet = GradingSheet::find($gradingSheetId);
+        $quarterlyGrade = $gradingSheet->quarterly_grade;
+
+        // Return the quarterly grade in the response
+        return response()->json(['quarterly_grade' => $quarterlyGrade]);
+    }
+
 }

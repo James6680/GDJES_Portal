@@ -64,13 +64,11 @@ class HighestPossibleScoreController extends Controller
     public function edit(Request $request, $id)
     {
         // Calculate total for 'ww1' to 'ww10'
-        $wwTotal = $request->edit_ww1 + $request->edit_ww2 + $request->edit_ww3 + $request->edit_ww4 + $request->edit_ww5 +
-                    $request->edit_ww6 + $request->edit_ww7 + $request->edit_ww8 + $request->edit_ww9 + $request->edit_ww10;
-
+        $hps_wwTotal = (float) $request->input('hps_wwTotal');
+        
         // Calculate total for 'pt1' to 'pt10'
-        $ptTotal = $request->edit_pt1 + $request->edit_pt2 + $request->edit_pt3 + $request->edit_pt4 + $request->edit_pt5 +
-                    $request->edit_pt6 + $request->edit_pt7 + $request->edit_pt8 + $request->edit_pt9 + $request->edit_pt10;
-
+        $hps_ptTotal = (float) $request->input('hps_ptTotal');
+        
         HighestPossibleScore::where('id', $request->edit_id)->update([
         'ww1' => $request->edit_ww1,
         'ww2' => $request->edit_ww2,
@@ -82,7 +80,7 @@ class HighestPossibleScoreController extends Controller
         'ww8' => $request->edit_ww8,
         'ww9' => $request->edit_ww9,
         'ww10' => $request->edit_ww10,
-        'hps_ww_total' => $wwTotal,
+        'hps_ww_total' => $hps_wwTotal,
         'hps_ww_ps' => $request->edit_hps_ww_ps,
         'ww_weighted_score' => $request->edit_ww_weighted_score,
         'pt1' => $request->edit_pt1,
@@ -95,14 +93,13 @@ class HighestPossibleScoreController extends Controller
         'pt8' => $request->edit_pt8,
         'pt9' => $request->edit_pt9,
         'pt10' => $request->edit_pt10,
-        'hps_pt_total' => $ptTotal,
+        'hps_pt_total' => $hps_ptTotal,
         'hps_pt_ps' => $request->edit_hps_pt_ps,
         'pp_weighted_score' => $request->edit_pp_weighted_score,
         'qa10' => $request->edit_qa10,
         'hps_qa_ps' => $request->edit_hps_qa_ps,
         'qa_weighted_score' => $request->edit_qa_weighted_score,
-        'initial_grade' => $request->edit_initial_grade,
-        'quarterly_grade' => $request->edit_quarterly_grade,
+        
         ]);
     
     }

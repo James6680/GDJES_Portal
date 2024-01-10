@@ -165,36 +165,32 @@
 
                 <div class="w-auto justify-self-end">
 
-                    <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="bg-green-500 text-white rounded-md font-medium hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 inline-flex w-full lg:text-base text-sm py-2 leading-none items-center lg:px-7 px-4" type="button">Grade Level<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> 
+                    <!-- Grade Level Dropdown Button -->
+                    <button id="dropdownHoverButton" 
+                            data-dropdown-toggle="dropdownHover" 
+                            data-dropdown-trigger="hover" 
+                            class="bg-green-500 text-white rounded-md font-medium hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 inline-flex w-full lg:text-base text-sm py-2 leading-none items-center lg:px-7 px-4" 
+                            type="button">
+                            Grade Level
+                            <svg class="w-2.5 h-2.5 ml-2.5" 
+                                 aria-hidden="true" 
+                                 xmlns="http://www.w3.org/2000/svg" 
+                                 fill="none" 
+                                 viewBox="0 0 10 6">
+                            <path stroke="currentColor" 
+                                  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> 
                     </svg>
                     </button>
 
-                    <!-- Dropdown menu -->
+                    <!-- Grade Level Dropdown Menu -->
                     <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow lg:w-40 w-32 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 font-mulish" aria-labelledby="dropdownHoverButton">
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kinder</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 1</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 2</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 3</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 4</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 5</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Grade 6</a>
-                        </li>
-
+                            @foreach($gradeLevels as $gradeLevel)
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        {{ $gradeLevel }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 
@@ -239,6 +235,49 @@
                             </tr>
                         </thead>
 
+                        <?php
+                        if (Auth::guard('students')->check()) {
+                            $studentId = Auth::guard('students')->id();
+
+                            // Subjects
+                            $classIds = DB::table('grading_sheet')
+                                ->where('student_id', $studentId)
+                                ->pluck('class_id');
+
+                                $classSubjects = DB::table('classes')
+    ->whereIn('classes.id', $classIds)
+    ->leftJoin('subjects', 'classes.subject_id', '=', 'subjects.id')
+    ->leftJoin('teachers', 'classes.teacher_id', '=', 'teachers.id')
+    ->leftJoin('grading_sheet', function ($join) use ($studentId) {
+        $join->on('classes.id', '=', 'grading_sheet.class_id')
+             ->where('grading_sheet.student_id', '=', $studentId);
+    })
+    ->select(
+        'classes.id as class_id',
+        'subjects.subject_name',
+        'teachers.first_name as teacher_first_name',
+        'teachers.last_name as teacher_last_name',
+        DB::raw('GROUP_CONCAT(grading_sheet.quarter) as quarters'),
+        DB::raw('GROUP_CONCAT(grading_sheet.quarterly_grade) as grades')
+    )
+    ->groupBy('classes.id','subjects.subject_name', 'teachers.first_name', 'teachers.last_name')
+    ->orderBy('subjects.subject_name')
+    ->get();
+
+                        }
+                        ?>
+
+                        <p>Username: {{ $studentId ?? '' }}</p> 
+                        <ul>
+                            @foreach($classSubjects as $classSubject)
+                                <li>
+                                    Subject: {{ $classSubject->subject_name }},
+                                    Teacher: {{ $classSubject->teacher_first_name }} {{ $classSubject->teacher_last_name }}</li>
+                            @endforeach
+                        </ul>
+
+                        
+
                         <tbody>
 
                             <tr class="bg-white text-white border-b lg:text-sm text-[10px] leading-tight">
@@ -268,137 +307,35 @@
                                 </td>
                             </tr>
 
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
+                            @foreach($classSubjects as $classSubject)
+                                <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
+                                    <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
+                                        {{ $classSubject->subject_name }}
+                                    </th>
+                                    <td class=" border-collapse border border-green-600 text-start pl-4">
+                                        {{ $classSubject->teacher_first_name }} {{ $classSubject->teacher_last_name }}
+                                    </td>
+                                    <!-- Quarter Grade Cells -->
+                                    @php
+                                        $quarters = isset($classSubject->quarters) ? explode(',', $classSubject->quarters) : [];
+                                        $grades = isset($classSubject->grades) ? explode(',', $classSubject->grades) : [];
+                                    @endphp
 
-                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap border-collapse border border-green-600 py-4 mt-3 text-start pl-4">
-                                    Filipino
-                                </th>
-                                <td class=" border-collapse border border-green-600 text-start pl-4">
-                                    Juan Dela Cruz
-                                </td>
-                                <td class="border-collapse border border-green-600">
-                                    87
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    87
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    89
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                        
-                                </td>
-                                <td class=" border-collapse border border-green-600 bg-green-200/50">
+                                    @for ($i = 0; $i < count($quarters); $i++)
+                                        <td class="border-collapse border border-green-600">
+                                            {{ isset($grades[$i]) ? $grades[$i] : '' }}
+                                        </td>
+                                    @endfor
                                     
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    
-                                </td>
-                            </tr>
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
-                                    English
-                                </th>
-                                <td class=" border-collapse border border-green-600 text-start pl-4">
-                                    Adrian Fabonan
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    88
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    90   
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    90  
-                                </td>
-                                <td class="border-collapse border border-green-600">
-                                        
-                                </td>
-                                <td class=" border-collapse border border-green-600 bg-green-200/50">
+                                    <td class=" border-collapse border border-green-600 bg-green-200/50">
 
-                                </td>
-                                <td class=" border-collapse border border-green-600">
+                                    </td>
+                                    <td class=" border-collapse border border-green-600">
 
-                                </td>
-                            </tr>
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
-                                    Mathematics
-                                </th>
-                                <td class=" border-collapse border border-green-600 text-start pl-4">
-                                    Karen Tiro
-                                </td>
-                                <td class="border-collapse border border-green-600">
-                                    82  
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    78    
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    78    
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                            
-                                </td>
-                                <td class=" border-collapse border border-green-600 bg-green-200/50">
-
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-
-                                </td>
-                            </tr>
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
-                                    Makabansa
-                                </th>
-                                <td class="border-collapse border border-green-600 text-start pl-4">
-                                    Alex Reyes
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    88  
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    88
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    88   
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                        
-                                </td>
-                                <td class=" border-collapse border border-green-600 bg-green-200/50">
-
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-
-                                </td>
-                            </tr>
-                            <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
-                                    GMRC
-                                </th>
-                                <td class="border-collapse border border-green-600 text-start pl-4">
-                                    Anne Curtis
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    79
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    81   
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-                                    77   
-                                </td>
-                                <td class="border-collapse border border-green-600">
-                                        
-                                </td>
-                                <td class=" border-collapse border border-green-600 bg-green-200/50">
-
-                                </td>
-                                <td class=" border-collapse border border-green-600">
-
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                             @endforeach
+                            
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
                                 <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-6">
                                     
@@ -877,6 +814,8 @@
 
         </section>
     </div>
+
+    @include('scripts_with_ajax')
 
     @elseif (request()->is('student.class-schedule') )
     <!-- Class Schedule Section -->

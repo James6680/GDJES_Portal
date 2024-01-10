@@ -280,7 +280,21 @@
         $('.error-message').remove();
         $('.form-input').removeClass('border-red-500');
 
-        
+        // Toggle input fields to become editable or non-editable
+        let isEditing = $(this).hasClass('editing');
+
+        if (!isEditing) {
+            // If not editing, make fields editable
+            $(this).addClass('editing');
+            $('input[name^="edit_"]').prop('readonly', false);
+            $(this).removeClass('bg-green-500 hover:bg-green-900').addClass('bg-red-500 hover:bg-red-900').text('Save');
+        } else {
+            // If editing, make fields non-editable
+            $(this).removeClass('editing');
+            $('input[name^="edit_"]').prop('readonly', true);
+            $(this).removeClass('bg-red-500 hover:bg-red-900').addClass('bg-green-500 hover:bg-green-900').text('Edit');
+        }
+
         let edit_id = $('[name="edit_id"]').val();
 
         //id will not work, name will
@@ -294,9 +308,21 @@
         let edit_ww8 = $('[name="edit_ww8"]').val();
         let edit_ww9 = $('[name="edit_ww9"]').val();
         let edit_ww10 = $('[name="edit_ww10"]').val();
-        let edit_hps_ww_total = $('[name="edit_hps_ww_total"]').val();
+
+
+        // Calculate sum of edit_ww1 to edit_ww10
+        let hps_wwTotal = 0;
+                for (let i = 1; i <= 10; i++) {
+                    hps_wwTotal += parseFloat($(`[name="edit_ww${i}"]`).val()) || 0;
+                }
+
+        // Assign the sum to edit_hps_ww_total
+        $('[name="edit_hps_ww_total"]').val(parseFloat(hps_wwTotal));
+
         let edit_hps_ww_ps = $('[name="edit_hps_ww_ps"]').val();
         let edit_ww_weighted_score = $('[name="edit_ww_weighted_score"]').val();
+
+
         let edit_pt1 = $('[name="edit_pt1"]').val();
         let edit_pt2 = $('[name="edit_pt2"]').val();
         let edit_pt3 = $('[name="edit_pt3"]').val();
@@ -307,15 +333,22 @@
         let edit_pt8 = $('[name="edit_pt8"]').val();
         let edit_pt9 = $('[name="edit_pt9"]').val();
         let edit_pt10 = $('[name="edit_pt10"]').val();
-        let edit_hps_pt_total = $('[name="edit_hps_pt_total"]').val();
+
+        // Calculate sum of edit_pt1 to edit_pt10
+        let hps_ptTotal = 0;
+                for (let i = 1; i <= 10; i++) {
+                    hps_ptTotal += parseFloat($(`[name="edit_pt${i}"]`).val()) || 0;
+                }
+
+        // Assign the sum to edit_hps_ww_total
+        $('[name="edit_hps_pt_total"]').val(parseFloat(hps_ptTotal));
+
         let edit_hps_pt_ps = $('[name="edit_hps_pt_ps"]').val();
         let edit_pp_weighted_score = $('[name="edit_pp_weighted_score"]').val();
         let edit_qa10 = $('[name="edit_qa10"]').val();
         let edit_hps_qa_ps = $('[name="edit_hps_qa_ps"]').val();
         let edit_qa_weighted_score = $('[name="edit_qa_weighted_score"]').val();
-        let edit_initial_grade = $('[name="edit_initial_grade"]').val();
-        let edit_quarterly_grade = $('[name="edit_quarterly_grade"]').val();
-        let edit_quarter = $('[name="edit_quarter"]').val();
+       let edit_quarter = $('[name="edit_quarter"]').val();
 
 
         $.ajax({
@@ -333,7 +366,7 @@
                 edit_ww8: edit_ww8,
                 edit_ww9: edit_ww9,
                 edit_ww10: edit_ww10,
-                edit_hps_ww_total: edit_hps_ww_total,
+                hps_wwTotal: parseFloat(hps_wwTotal),
                 edit_hps_ww_ps: edit_hps_ww_ps,
                 edit_ww_weighted_score: edit_ww_weighted_score,
                 edit_pt1: edit_pt1,
@@ -346,25 +379,19 @@
                 edit_pt8: edit_pt8,
                 edit_pt9: edit_pt9,
                 edit_pt10: edit_pt10,
-                edit_hps_pt_total: edit_hps_pt_total,
+                hps_ptTotal:parseFloat(hps_ptTotal),
                 edit_hps_pt_ps: edit_hps_pt_ps,
                 edit_pp_weighted_score: edit_pp_weighted_score,
                 edit_qa10: edit_qa10,
                 edit_hps_qa_ps: edit_hps_qa_ps,
                 edit_qa_weighted_score: edit_qa_weighted_score,
-                edit_initial_grade: edit_initial_grade,
-                edit_quarterly_grade: edit_quarterly_grade,
                 edit_quarter: edit_quarter,
 
             },
             success: function(result) {
                 // Handle the success response here
                 if (result.status == 'success') {
-                // Close the Tailwind CSS modal
-                    //document.getElementById('createTeacherUserModal').classList.remove('visible');
-                    //document.getElementById('createTeacherUserModal').classList.add('invisible');
-                   // document.getElementById('edit_hps').reset();
-                    $('#tableBody').load(location.href + ' #tableBody');
+               $('#tableBody').load(location.href + ' #tableBody');
                 }
             },
             error: function(result) {
@@ -377,41 +404,7 @@
         });  
 
 
-/*
-       $('#edit_id').val(id);
-        $('#edit_ww1').val(ww1);
-        $('#edit_ww2').val(ww2);
-        $('#edit_ww3').val(ww3);
-        $('#edit_ww4').val(ww4);
-        $('#edit_ww5').val(ww5);
-        $('#edit_ww6').val(ww6);
-        $('#edit_ww7').val(ww7);
-        $('#edit_ww8').val(ww8);
-        $('#edit_ww9').val(ww9);
-        $('#edit_ww10').val(ww10);
-        $('#edit_hpsWwTotal').val(hpsWwTotal);
-        $('#edit_hpsWwPs').val(hpsWwPs);
-        $('#edit_wwWeightedScore').val(wwWeightedScore);
-        $('#edit_pt1').val(pt1);
-        $('#edit_pt2').val(pt2);
-        $('#edit_pt3').val(pt3);
-        $('#edit_pt4').val(pt4);
-        $('#edit_pt5').val(pt5);
-        $('#edit_pt6').val(pt6);
-        $('#edit_pt7').val(pt7);
-        $('#edit_pt8').val(pt8);
-        $('#edit_pt9').val(pt9);
-        $('#edit_pt10').val(pt10);
-        $('#edit_hpsPtTotal').val(hpsPtTotal);
-        $('#edit_hpsPtPs').val(hpsPtPs);
-        $('#edit_ppWeightedScore').val(ppWeightedScore);
-        $('#edit_qa10').val(qa10);
-        $('#edit_hpsQaPs').val(hpsQaPs);
-        $('#edit_qaWeightedScore').val(qaWeightedScore);
-        $('#edit_initialGrade').val(initialGrade);
-        $('#edit_quarterlyGrade').val(quarterlyGrade);
-        $('#edit_quarter').val(quarter);       
-*/
+
         });
     });
 </script>
@@ -476,7 +469,7 @@
 </script-->
 
 
-
+<!--Grading Sheet Edit-->
 <script>
         $(document).ready(function(){
             //show hps in row
@@ -496,6 +489,25 @@
             // Find the closest table row (tr) to the clicked button
             let row = $(this).closest('tr');
     
+            // Check the current button text to determine the action
+            let buttonText = $(this).text().trim();
+
+            if (buttonText === 'Edit') {
+                // Toggle input fields to become editable
+                row.find('input').prop('readonly', false);
+                // Change button type to "submit" and update button text
+                $(this).prop('type', 'submit').text('Save');
+                // Update button class to green
+                $(this).removeClass('bg-green-500 hover:bg-green-900').addClass('bg-red-500 hover:bg-red-900');
+            } else if (buttonText === 'Save') {
+                // Toggle input fields to become non-editable
+                row.find('input').prop('readonly', true);
+                // Change button type to "button" and update button text
+                $(this).prop('type', 'button').text('Edit');
+                // Update button class to red
+                $(this).removeClass('bg-red-500 hover:bg-red-900').addClass('bg-green-500 hover:bg-green-900');
+            }
+
             let ww1 = row.find('[name="ww1"]').val();
             console.log('ww1:', ww1);
             let ww2 = row.find('[name="ww2"]').val();
@@ -556,7 +568,7 @@
             let class_id = row.find('[name="class_id"]').val();
 
             $.ajax({
-                url: "faculty.grades.edit_student_grading_sheet/"+id,
+                url: "faculty.grades.edit_student_grading_sheet/" + id,
                 method: "POST",
                 data: {
                     id: id,
@@ -595,6 +607,7 @@
                     quarterly_grade: quarterly_grade,
                     
                 },
+                
                 success: function(result) {
                     console.log(result);
                     // Handle the success response here
@@ -615,7 +628,73 @@
                 }
             }
             });  
-
             });
         });
+
+        
+</script>
+
+<!--Post Student Grade Button-->
+<script>
+    document.getElementById('openModal').addEventListener('click', function () {
+        document.getElementById('myModal').classList.remove('hidden');
+    });
+
+    document.getElementById('confirmYes').addEventListener('click', function () {
+
+    // Get all grading sheet IDs
+    var gradingSheetIds = [];
+    document.querySelectorAll('.editGradingSheetForm').forEach(function (form) {
+        gradingSheetIds.push(form.getAttribute('data-id'));
+    });
+    console.log('gradingSheetIds:', gradingSheetIds);
+    var quarter = document.getElementById('confirmYes').getAttribute('data-quarter');
+    /// Make a fetch request to update the 'posted' column for each grading sheet
+    gradingSheetIds.forEach((gradingSheetId) => {
+
+        fetch('/update-posted-status', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            },
+            body: JSON.stringify({ grading_sheet_id: gradingSheetId, quarter: quarter }),
+        })
+        .then(function (response) {
+            // Check if the request was successful
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // Handle the success response
+            return response.json();
+        })
+        .then(function (data) {
+            // Handle the success response
+            alert('Grades posted successfully!');
+            document.getElementById('myModal').classList.add('hidden');
+        })
+        .catch(function (error) {
+            // Handle errors
+            console.error('Error posting grades:', error);
+        });
+    });
+
+});
+
+
+    document.getElementById('confirmNo').addEventListener('click', function () {
+        // If the teacher chooses 'No', simply close the modal
+        document.getElementById('myModal').classList.add('hidden');
+    });
+</script>
+
+<!--Student Scripts-->
+<script>
+    // Add a click event listener to the dropdown menu items
+    document.querySelectorAll('#dropdownHover a').forEach(function(item) {
+        item.addEventListener('click', function() {
+            // Set the selected grade level in the button text
+            document.getElementById('dropdownHoverButton').innerText = item.innerText;
+        });
+    });
 </script>

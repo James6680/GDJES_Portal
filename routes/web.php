@@ -12,6 +12,7 @@ use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\AnnouncementController;
 
+use App\Http\Controllers\GradingSheetController;
 use App\Http\Controllers\HighestPossibleScoreController;
 
 
@@ -126,6 +127,7 @@ Route::get('student.grades', function () {
     return view('layouts.student');
 })->middleware('students')->name('student.grades');
 
+
 Route::get('student.class-schedule', function () {
     return view('layouts.student');
 })->middleware('students')->name('student.class-schedule');
@@ -219,6 +221,9 @@ Route::post('faculty.grades.edit/{id}', [HighestPossibleScoreController::class, 
     ->middleware('teachers')
     ->name('faculty.grades.edit_student_grading_sheet'); 
 
+Route::post('/update-posted-status', [GradingSheetController::class, 'updatePostedStatus'])
+    ->middleware('teachers')
+    ->name('update-posted-status');
 
 Route::get('faculty.Attendance', function () {
     return view('layouts.faculty');
