@@ -919,6 +919,7 @@
                           <br>
                           <br>
                           <br>
+                          <br>
                             <div class="mx-auto w-full ">
                             <!-- Faculty grading sheet for students table for QUARTERLY SUMMARY REPORT -->
                             <table class="w-full lg:text-sm text-xs text-left text-black " 
