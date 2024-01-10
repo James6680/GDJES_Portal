@@ -25,7 +25,16 @@
             }
         }
   </style>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    
+        
+    </script>
   </head>
 
   <body>
@@ -303,91 +312,13 @@
 
     </div>
 
-    <div id="myModal" class="hidden fixed top-0 left-0 right-0 z-50 w-full p-3 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full items-center justify-center drop-shadow-2xl">
-
-        <form
-        class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center w-auto h-auto justify-center md:p-10 p-7 md:gap-4 gap-2 z-[2] " novalidate style="width: 30%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 400px">
-
-            <h1
-            class=" self-stretch relative md:text-3xl text-2xl font-bold font-frl text-main-green-secondary-700 text-center">
-            Forgot Password?
-            </h1>
-
-            <div class="self-stretch flex-col items-center justify-center gap-2">
-
-                <h3
-                    class="relative md:text-base text-sm font-normal  text-main-green-secondary-700 text-center  items-center self-stretch">
-                    Enter your email address, and we'll send you an email with a unique link to reset your password.
-                </h3>
-            
-            </div>
-
-            <div class="self-stretch flex flex-col items-start justify-start md:gap-6 gap-4">
-            
-            <div class="self-stretch relative bg-main-brown-primary-300 h-[0.13rem] overflow-hidden shrink-0"></div>
-
-            <div class="self-stretch flex flex-col items-start justify-start gap-5 ">
-
-                <div class="self-stretch flex flex-col items-start justify-start md:gap-5 gap-4">
-
-                    <b 
-                        class="self-stretch relative text-[0.81rem] leading-[140%] flex  text-main-green-secondary-700 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap h-[1.19rem] shrink-0">
-                        EMAIL ADDRESS
-                    </b>
-                
-                    <div class="flex flex-col self-stretch input-container relative font-mulish">
-
-                        <input
-                        class=" text-sm  bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] border-solid focus:border-[1px] mb-1 focus:ring-green-700 focus:border-green-700 "
-                        placeholder="juandelacruz@gmail.com"
-                        type="text" 
-                        required=""
-                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-                        autocomplete="off"
-                        id="email"
-                        />
-
-                    </div>
-
-                </div>
-            
-            </div>
-
-            <button
-                id="RequestPassword"
-                type="button"
-                class="cursor-pointer py-[1rem] px-[2.13rem] bg-green-500 self-stretch rounded-lg flex flex-row items-center justify-center relative text-[1rem] leading-[140%] uppercase  text-brown-50  hover:bg-green-900"
-                style="border: none;">
-                Request New Password
-            </button>
-
-            
-            </div>
-
-            
-            <div class="self-stretch flex flex-col items-start justify-start">
-
-            <button
-                class="cursor-pointer py-[1rem] px-[2.13rem] bg-[transparent] self-stretch rounded-lg flex flex-row items-center justify-center border-[1px] border-solid border-brown-500 hover:border-[2px] hover:border-solid hover:border-darkolivegreen flex-1 relative text-[1rem] leading-[140%] uppercase  text-brown-500 text-center"
-                type="button">
-                Sign in
-            </button>
-
-            </div>
-
-        </form>
-
-      </section>
-
-    </main>
 
     <div id="myModal" class="hidden fixed top-0 left-0 right-0 z-50  w-full p-3 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full items-center justify-center drop-shadow-2xl">
 
-      <form
-      class=" rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center p-[2.5rem] gap-[1rem] z-[2] lg:w-auto lg:pl-[2.5rem] md:w-auto md:h-auto md:pl-[2.5rem] md:pr-[2.5rem] sm:pl-[2rem] sm:box-border"
-      novalidate
-      style="width: 30%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 400px;">
-
+        <form id="forgot_pass_form" class=" rounded-lg bg-green-50 flex flex-col items-center justify-center p-[2.5rem] gap-[1rem] z-[2] lg:w-auto lg:pl-[2.5rem] md:w-auto md:h-auto md:pl-[2.5rem] md:pr-[2.5rem] sm:pl-[2rem] sm:box-border" novalidate
+        method="post" action="#" style="width: 30%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 400px;">
+        @csrf
+        @method('post')
           <h1
           class="m-0 self-stretch relative text-[1.75rem] leading-[110%] font-bold font-heading-2-bold text-main-green-secondary-700 text-center">
           Forgot Password?
@@ -415,7 +346,7 @@
                       EMAIL ADDRESS
                   </b>
               
-                  <div class="flex flex-col self-stretch input-container relative">
+                  <div class="flex flex-col self-stretch input-container relative" id="email_error">
 
                       <input
                       class=" text-sm bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] border-solid focus:border-[1px] mb-1  focus:ring-green-700 focus:border-green-700 "
@@ -424,13 +355,34 @@
                       required=""
                       pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
                       autocomplete="off"
-                      id="email"
+                      name="email"
+                      id="reset_email"
                       />
 
                   </div>
 
               </div>
-          
+              <div class="self-stretch flex flex-col items-start justify-start gap-[1.3rem] ">
+
+                <b 
+                    class="self-stretch relative text-[0.81rem] leading-[140%] flex font-button text-green-800 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap h-[1.19rem] shrink-0">
+                    USERNAME
+                </b>
+            
+                <div class="flex flex-col self-stretch input-container relative" id="username_error">
+
+                    <input
+                    class=" text-sm bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] border-solid focus:border-[1px] mb-1  focus:ring-green-700 focus:border-green-700 "
+                    placeholder="Delacruz.juan.2023"
+                    type="text" 
+                    name="username"
+                    autocomplete="off"
+                    id="reset_username"
+                    />
+
+                </div>
+
+            </div>
           </div>
 
           <button
@@ -458,6 +410,38 @@
       </form>
 
     </div>
+
+    <script>
+        const form = document.getElementById('forgot_pass_form');
+        const requestNewPass = document.getElementById('RequestPassword');
+
+        requestNewPass.addEventListener('click', function(e){
+            e.preventDefault();
+            const serializedForm = $(form).serialize();
+            const error_fields = document.querySelectorAll('#error_message');
+            error_fields.forEach(element => {
+                element.remove();
+            });
+
+            $.ajax({
+                url: localStorage.getItem('appUrl') + "/students.changePassword",
+                type: "POST",
+                data: serializedForm,
+                success: function(response) {
+                    $('#username_error').addClass('border-green-500');
+                    $('#username_error').after('<p id= "error_message" class="text-green-500 text-xs italic error-message"> Check your email for new password</p>');
+                },error: function(response) {
+                    let error = response.responseJSON;
+                    $.each(error.errors, function(key, value) {
+                        $('#' + key + "_error").addClass('border-red-500');
+                        $('#' + key + "_error").after('<p id= "error_message" class="text-red-500 text-xs italic error-message">' + value + '</p>');
+                    });
+                }
+            });
+        });
+
+    </script>
+
 
     <script>
         var modal = document.getElementById("myModal");

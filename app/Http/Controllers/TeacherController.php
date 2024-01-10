@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 use App\Models\TransmutationTable;
 use Illuminate\Support\Facades\DB;
 use App\Models\DocumentRequirements;
-
-
-
+use stdClass;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\resetPassword;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\HighestPossibleScore;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,31 @@ class TeacherController extends Controller
                     ->orderBy('students.last_name', 'asc')
                     ->get();
         return $students;
+    }
+
+    public function changePassword(Request $request){
+        $validatedData = $request->validate([
+            'email' => 'required',
+            'username' => 'required',
+        ]);
+
+        $bytes = random_bytes(4);
+
+        $val = Teacher::where('email', $validatedData['email'])
+                ->where('username', $validatedData['username'])
+                ->first();
+
+        $val->password = Hash::make(bin2hex($bytes));
+        $val->save();
+        
+        if(!is_null($val)){
+            $receiver = new stdClass();
+            $receiver->name = $val->first_name;
+            $receiver->email = $val->email;
+            $receiver->username = $val->username;
+            $receiver->newPassword = bin2hex($bytes);
+            Mail::to($receiver->email)->send(new resetPassword($receiver));
+        }
     }
 
     public function editEnrollmentStatus(Request $request){

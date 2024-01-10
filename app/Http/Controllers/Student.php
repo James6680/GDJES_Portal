@@ -6,6 +6,10 @@ use App\Models\DocumentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use stdClass;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\resetPassword;
+use Illuminate\Support\Facades\Hash;
 
 
 class Student extends Controller
@@ -38,6 +42,44 @@ class Student extends Controller
     public function StudentIndex(){
         return view('login.StudentLoginPage');
     }//end index method
+
+    public function changePassword(Request $request){
+        $validatedData = $request->validate([
+            'email' => 'required',
+            'username' => 'required',
+        ]);
+
+        $bytes = random_bytes(4);
+
+        $affectedRows = DB::table('students')
+        ->join('relatives', 'relatives.id', '=', 'students.relatives_id')
+        ->join('guardians', 'guardians.id', '=', 'relatives.guardian_id')
+        ->where('guardians.email_address', $validatedData['email'])
+        ->where('students.username', $validatedData['username'])
+        ->update(['password' => Hash::make(bin2hex($bytes))]);
+    
+        if ($affectedRows > 0) {
+        // Retrieve the updated row
+        $val = DB::table('students')
+            ->join('relatives', 'relatives.id', '=', 'students.relatives_id')
+            ->join('guardians', 'guardians.id', '=', 'relatives.guardian_id')
+            ->where('guardians.email_address', $validatedData['email'])
+            ->where('students.username', $validatedData['username'])
+            ->select('students.*','guardians.email_address')
+            ->first();
+    
+        // Send email with updated data
+            $receiver = new stdClass();
+            $receiver->name = $val->first_name;
+            $receiver->email = $val->email_address;
+            $receiver->username = $val->username;
+            $receiver->newPassword = bin2hex($bytes);
+            Mail::to($receiver->email)->send(new resetPassword($receiver));
+        }
+        
+        return $affectedRows;
+    }
+
     public function StudentLogin(Request $request ){
        // dd($request->all()); /*--for dumping data--*/
        $check = $request->all();

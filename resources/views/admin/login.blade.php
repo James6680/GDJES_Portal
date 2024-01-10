@@ -25,7 +25,16 @@
         }
         }
     </style>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    
+        
+    </script>
   </head>
 
   <body>
@@ -134,6 +143,7 @@
           method="post" 
           novalidate>
           @csrf
+          @method('post')
 
             <h1 class="relative text-3xl mx-12 font-bold text-green-800 text-center ">
               <p>Admin Portal Login</p>
@@ -256,8 +266,10 @@
 
     <div id="myModal" class="hidden fixed top-0 left-0 right-0 z-50  w-full p-3 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full items-center justify-center drop-shadow-2xl">
 
-      <form class=" rounded-lg bg-green-50 flex flex-col items-center justify-center p-[2.5rem] gap-[1rem] z-[2] lg:w-auto lg:pl-[2.5rem] md:w-auto md:h-auto md:pl-[2.5rem] md:pr-[2.5rem] sm:pl-[2rem] sm:box-border"
+      <form id="forgot_pass_form" class=" rounded-lg bg-green-50 flex flex-col items-center justify-center p-[2.5rem] gap-[1rem] z-[2] lg:w-auto lg:pl-[2.5rem] md:w-auto md:h-auto md:pl-[2.5rem] md:pr-[2.5rem] sm:pl-[2rem] sm:box-border"
       novalidate style="width: 30%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 400px;">
+      @csrf
+      @method('post')
 
         <h1 class="m-0 self-stretch relative text-[1.75rem] leading-[110%] font-bold font-heading-2-bold text-green-800 text-center">
         Forgot Password?
@@ -285,22 +297,43 @@
                     EMAIL ADDRESS
                 </b>
             
-                <div class="flex flex-col self-stretch input-container relative">
+                <div class="flex flex-col self-stretch input-container relative" id="email_error">
 
                     <input
                     class="font-button text-sm bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] border-brown-500 focus:border-brown-700 focus:ring-brown-700 border-solid focus:border-[1px] mb-1"
                     placeholder="juandelacruz@gmail.com"
                     type="text" 
                     required=""
-                    pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                    name="email"
                     autocomplete="off"
-                    id="email"
+                    id="reset_email"
                     />
 
                 </div>
 
             </div>
-        
+            <div class="self-stretch flex flex-col items-start justify-start gap-[1.3rem] ">
+
+              <b 
+                  class="self-stretch relative text-[0.81rem] leading-[140%] flex font-button text-green-800 text-left items-center overflow-hidden text-ellipsis whitespace-nowrap h-[1.19rem] shrink-0">
+                  EMAIL ADDRESS
+              </b>
+          
+              <div class="flex flex-col self-stretch input-container relative" id="username_error">
+
+                  <input
+                  class="font-button text-sm bg-green-50 self-stretch rounded-lg flex items-center justify-start p-4 border-[1px] border-brown-500 focus:border-brown-700 focus:ring-brown-700 border-solid focus:border-[1px] mb-1"
+                  placeholder="juandelacruz@gmail.com"
+                  type="text" 
+                  required=""
+                  name="username"
+                  autocomplete="off"
+                  id="reset_username"
+                  />
+
+              </div>
+
+          </div>
         </div>
 
         <button
@@ -328,6 +361,38 @@
       </form>
 
     </div>
+
+    <script>
+      const form = document.getElementById('forgot_pass_form');
+      const requestNewPass = document.getElementById('RequestPassword');
+
+      requestNewPass.addEventListener('click', function(e){
+          e.preventDefault();
+          const serializedForm = $(form).serialize();
+          const error_fields = document.querySelectorAll('#error_message');
+          console.log(error_fields);
+          error_fields.forEach(element => {
+              element.remove();
+          });
+
+          $.ajax({
+              url: localStorage.getItem('appUrl') + "/admin.changePassword",
+              type: "POST",
+              data: serializedForm,
+              success: function(response) {
+                  $('#username_error').addClass('border-green-500');
+                  $('#username_error').after('<p id= "error_message" class="text-green-500 text-xs italic error-message"> Check your email for new password</p>');
+              },error: function(response) {
+                  let error = response.responseJSON;
+                  $.each(error.errors, function(key, value) {
+                      $('#' + key + "_error").addClass('border-red-500');
+                      $('#' + key + "_error").after('<p id= "error_message" class="text-red-500 text-xs italic error-message">' + value + '</p>');
+                  });
+              }
+          });
+      });
+
+    </script>
 
     <script>
       var modal = document.getElementById("myModal");

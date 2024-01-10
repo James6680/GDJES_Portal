@@ -867,8 +867,16 @@ window.Alpine = Alpine;
 
         </div> <!-- End of Table functions - search and sort -->
         <!-- Table functions - add user -->
+        @php
+            $var = DB::table("school_years")
+                    ->where("active",'1')
+                    ->exists();
+        @endphp
         <div class="grid justify-items-center sm:justify-items-end gap-4 w-full pb-4 sm:py-4 ">
           <a href="#" 
+              @if(!$var)
+                  style="pointer-events: none"
+              @endif
               data-modal-target="addStudentUserModal" 
               data-modal-show="addStudentUserModal" 
               type="button" 
@@ -877,6 +885,7 @@ window.Alpine = Alpine;
               <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
             </svg>
             Add Student Account
+            </span>
           </a>
         </div> <!-- End of Table functions - add user -->
       </div> <!-- End of Table functions - all -->
@@ -884,7 +893,7 @@ window.Alpine = Alpine;
       <!-- Table Student User Management -->
       <div class="relative overflow-x-auto outline outline-2 outline-green-50 rounded-sm">
       
-        <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400">
+        <table class="w-full text-sm text-left p-4  rtl:text-right text-gray-500 dark:text-gray-400" id="students_table">
 
           <thead class="text-xs text-white uppercase bg-green-600 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -914,7 +923,7 @@ window.Alpine = Alpine;
 
           <tbody>
           @foreach($student as $id=>$s)
-            <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600">
+            <tr class="bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-600" id="student_{{$s->id}}">
               <td class="px-6 py-4">
                 {{ $id+1 }}
               </td>
@@ -939,7 +948,7 @@ window.Alpine = Alpine;
                   data-modal-target="viewStudentUserModal" 
                   data-modal-show="viewStudentUserModal" 
                   type="button" 
-                  class="font-medium text-emerald-600 dark:text-emerald-500 hover:underline"
+                  class="view_students font-medium text-emerald-600 dark:text-emerald-500 hover:underline"
                   data-id="{{ $s->id }}"
                   data-last_name="{{ $s->last_name }}"
                   data-first_name="{{ $s->first_name }}"
@@ -966,18 +975,21 @@ window.Alpine = Alpine;
                   data-province="{{ $s->province }}"
                   data-region="{{ $s->region }}"
 
-                  data-father_name="{{ optional(optional($s->relatives)->fathers)->first_name ?? 'N/A' }} {{ optional(optional($s->relatives)->fathers)->last_name ?? 'N/A' }}"
-                  data-father_phone_number="{{ optional(optional($s->relatives)->fathers)->phone_number ?? 'N/A' }}"
+                  data-father_name="{{$s->father_last_name}}, {{$s->father_first_name}} {{$s->father_middle_name}} {{$s->father_extension_name}}" 
+                  data-father_phone_number="{{$s->father_phone_number}}"
+                  data-father_email_address="{{$s->father_email_address}}"
 
-                  data-mother_name="{{ optional(optional($s->relatives)->mothers)->first_name ?? 'N/A' }} {{ optional(optional($s->relatives)->mothers)->last_name ?? 'N/A' }}"
-                  data-mother_phone_number="{{ optional(optional($s->relatives)->mothers)->phone_number ?? 'N/A' }}"
+                  data-mother_name="{{$s->mother_last_name}}, {{$s->mother_first_name}} {{$s->mother_middle_name}} {{$s->mother_extension_name}}" 
+                  data-mother_phone_number="{{$s->mother_phone_number}}"
+                  data-mother_email_address="{{$s->mother_email_address}}"
 
-                  data-guardian_name="{{ optional(optional($s->relatives)->guardians)->first_name ?? 'N/A' }} {{ optional(optional($s->relatives)->guardians)->last_name ?? 'N/A' }}"
-                  data-guardian_phone_number="{{ optional(optional($s->relatives)->guardians)->phone_number ?? 'N/A' }}"
+                  data-guardian_name="{{$s->guardian_last_name}}, {{$s->guardian_first_name}} {{$s->guardian_middle_name}} {{$s->guardian_extension_name}}" 
+                  data-guardian_phone_number="{{$s->guardian_phone_number}}"
+                  data-guardian_email_address="{{$s->guardian_email_address}}"
 
-                  data-4ps="{{ $s->household_4ps_id ?? 'N/A' }}"
+                  data-household_4ps_id="{{ $s->household_4ps_id ?? 'N/A' }}"
 
-                  data-access_to_technology="{{ 
+                  data-learning_info="{{ 
                     (optional($s->enrollments->first())->learning_info->may_sariling_tablet_ang_bata == 1 ? 'May sariling tablet ang bata, ' : '') .
                     (optional($s->enrollments->first())->learning_info->may_kompyuter_sa_bahay == 1 ? 'may kompyuter sa bahay, ' : '') .
                     (optional($s->enrollments->first())->learning_info->walang_sariling_gadget_ang_bata == 1 ? 'walang sariling gadget ang bata, ' : '') .
@@ -985,11 +997,72 @@ window.Alpine = Alpine;
                     (optional($s->enrollments->first())->learning_info->may_internet_sa_bahay == 1 ? 'may internet sa bahay, ' : '') .
                     (optional($s->enrollments->first())->learning_info->mobile_data_lang_ang_gamit == 1 ? 'mobile data lang ang gamit' : '')
                   }}"
-                  data-preferred_mode_of_learning="{{ optional($s->enrollments->first())->learning_info->distance_learning ?? 'N/A' }}"
+                  data-distance_learning="{{ optional($s->enrollments->first())->learning_info->distance_learning ?? 'N/A' }}"
                   >
                   View</a>
-                <a href="#" data-modal-target="editStudentUserModal" data-modal-show="editStudentUserModal" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                <a href="#" data-modal-target="archiveStudentUserModal" data-modal-show="archiveStudentUserModal" type="button" class="font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
+                <a href="#" data-modal-target="editStudentUserModal" data-modal-show="editStudentUserModal" type="button" class="edit_students font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                data-id="{{ $s->id }}"
+                data-last_name="{{ $s->last_name }}"
+                data-first_name="{{ $s->first_name }}"
+                data-middle_name="{{ $s->middle_name }}"
+                data-extensionName_ng_bata="{{ $s->extension_name }}"
+                data-username="{{ $s->username}}"
+                data-psa="{{$s->psa_birthcert_no}}"
+                data-returnee="{{ $s->returnee }}"
+                data-grade-level="{{ $s->enrollments->first() && $s->enrollments->first()->gradeLevel ? $s->enrollments->first()->gradeLevel->grade_level : 'N/A' }}"
+                data-lrn="{{ $s->lrn }}"
+
+                data-birth_date="{{ $s->birth_date }}"
+                data-age="{{ $s->age}}"
+                data-gender="{{ $s->gender}}"
+                data-indigenous_group="{{ $s->indigenous_group}}"
+                data-mother_tongue="{{ $s->mother_tongue}}"
+                data-religion="{{ $s->religion}}"
+                data-special_assistance_needs="{{ $s->special_assistance_needs}}"
+                
+                data-house_number="{{ $s->house_number }}"
+                data-street="{{ $s->street }}"
+                data-barangay="{{ $s->barangay }}"
+                data-municipality="{{ $s->municipality }}"
+                data-province="{{ $s->province }}"
+                data-region="{{ $s->region }}"
+
+                data-father_name="{{$s->father_last_name}}, {{$s->father_first_name}} {{$s->father_middle_name}} {{$s->father_extension_name}}" 
+                data-father_phone_number="{{$s->father_phone_number}}"
+                data-father_email_address="{{$s->father_email_address}}"
+                data-father_firstname="{{$s->father_first_name}}"
+                data-father_lastname="{{$s->father_last_name}}"
+                data-father_middlename="{{$s->father_middle_name}}"
+                data-extensionname_ng_ama="{{$s->father_extension_name}}"
+                data-father_num="{{$s->father_phone_number}}"
+                data-father_email="{{$s->father_email_address}}"
+
+
+                data-mother_name="{{$s->mother_last_name}}, {{$s->mother_first_name}} {{$s->mother_middle_name}} {{$s->mother_extension_name}}" 
+                data-mother_phone_number="{{$s->mother_phone_number}}"
+                data-mother_email_address="{{$s->mother_email_address}}"
+                data-mother_firstname="{{$s->mother_first_name}}"
+                data-mother_lastname="{{$s->mother_last_name}}"
+                data-mother_middlename="{{$s->mother_middle_name}}"
+                data-extensionname_ng_ina="{{$s->mother_extension_name}}"
+                data-mother_num="{{$s->mother_phone_number}}"
+                data-mother_email="{{$s->mother_email_address}}"
+
+                data-guardian_name="{{$s->guardian_last_name}}, {{$s->guardian_first_name}} {{$s->guardian_middle_name}} {{$s->guardian_extension_name}}" 
+                data-guardian_phone_number="{{$s->guardian_phone_number}}"
+                data-guardian_email_address="{{$s->guardian_email_address}}"
+                data-guardian_firstname="{{$s->guardian_first_name}}"
+                data-guardian_lastname="{{$s->guardian_last_name}}"
+                data-guardian_middlename="{{$s->guardian_middle_name}}"
+                data-extensionname_ng_guardian="{{$s->guardian_extension_name}}"
+                data-guardian_num="{{$s->guardian_phone_number}}"
+                data-guardian_email="{{$s->guardian_email_address}}"
+
+                data-household_4ps_id="{{ $s->household_4ps_id ?? 'N/A' }}"
+                data-status="{{$s->status}}"
+                >Edit</a>
+
+                <a href="#" data-modal-target="archiveStudentUserModal" data-last_name="{{ $s->last_name }}" data-first_name="{{ $s->first_name }}"data-id="{{ $s->id }}" data-modal-show="archiveStudentUserModal" type="button" class="archive_students font-medium text-gray-400 dark:text-gray-500 hover:underline">Archive</a>
               </td>
           @endforeach
           </tbody>
@@ -1070,6 +1143,8 @@ window.Alpine = Alpine;
                 method="POST"
                 id="createStudent"
                 class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                @csrf
+                @method('post')
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
               <h3 class="text-xl font-semibold text-black dark:text-white">
@@ -1088,18 +1163,18 @@ window.Alpine = Alpine;
                 
                 <!-- Returnee Y/N -->
                 <div class="col-span-6">
-                  <label for="returnee" class="block mb-2 text-sm font-medium text-black dark:text-white">Balik-aral (returnee) ba ang batang ipapalista?</label>
-                  <div id="returnee" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                  <label for="balik_aral" class="block mb-2 text-sm font-medium text-black dark:text-white">Balik-aral (returnee) ba ang batang ipapalista?</label>
+                  <div id="aralStatus_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="returnee">
                       <li>
                         <div class="flex items-center">
-                          <input id="returnee-checkbox-item-1" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="returnee-checkbox-item-1" type="radio" name="returnee" value="OO dahil siya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="returnee-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="returnee-checkbox-item-2" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="returnee-checkbox-item-2" type="radio" name="returnee" value="HINDI" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="returnee-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
                         </div>
                       </li>
@@ -1108,51 +1183,77 @@ window.Alpine = Alpine;
                 </div>
 
                 <!-- Last grade finished? -->
-                <div class="col-span-6">
+                <div class="col-span-6 ">
                   <label for="last_grade_attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last grade level attended (Optional)</label>
-                  <input type="text" name="last_grade_attended" id="last_grade_attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
+                  <div id="returnee_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                  <select name="last_grade_attended" id="last_grade_attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
+                    <option value=""></option>
+                    <option value="0">Kinder pero hindi natapos</option>
+                    <option value="1">KINDER</option>
+                    <option value="2">Grade 1</option>
+                    <option value="3">Grade 2</option>
+                    <option value="4">Grade 3</option>
+                    <option value="5">Grade 4</option>
+                    <option value="6">Grade 5</option>
+                    <option value="7">Grade 6 pero hindi natapos</option>                     
+                  </select>
+                  </div>
                 </div>
 
                 <!-- Last school attended -->
                 <div class="col-span-6">
                   <label for="last_school_attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school enrolled in (Optional)</label>
-                  <input type="text" name="last_school_attended" id="last_school_attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
+                  <div id="lastSchoolAttended_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                    <input type="text" name="last_school_attended" id="last_school_attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
+                  </div>
                 </div>
                 
                 <!-- Last school year attended -->
                 <div class="col-span-6">
                   <label for="last_school_year_finished" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school year attended (Optional)</label>
+                  <div id="lastSchoolYearAttended_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
                   <input type="text" name="last_school_year_finished" id="last_school_year_finished" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
+                  </div>
                 </div>
 
                 <!-- PSA Birth Certificate -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="psa" class="block mb-2 text-sm font-medium text-black dark:text-white">PSA Birth Certificate No.</label>
+                  <div id="psa_birth_cert_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
                   <input type="text" name="psa" id="psa" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="2023-#####" required="">
+                  </div>
                 </div>
 
                 <!-- LRN -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="lrn" class="block mb-2 text-sm font-medium text-black dark:text-white">Learner's Reference Number (optional)</label>
-                  <input type="number" name="lrn" id="lrn" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not applicable.)" required="">
+                  <div id="lrn_number_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                  <input type="text" name="lrn" id="lrn" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not applicable.)" required="">
+                  </div>
                 </div>
 
                 <!-- Last Name -->
                 <div class="col-span-6 sm:col-span-2">
                   <label for="last_name" class="block mb-2 text-sm font-medium text-black dark:text-white">Last Name</label>
+                  <div id="lastName_ng_bata_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="text" name="last_name" id="last_name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Dela Cruz" required="">
+                  </div>
                 </div>
 
                 <!-- First Name -->
                 <div class="col-span-6 sm:col-span-2">
                   <label for="first_name" class="block mb-2 text-sm font-medium text-black dark:text-white">First Name</label>
+                  <div id="firstName_ng_bata_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="text" name="first_name" id="first_name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Juan" required="">
+                  </div>
                 </div>
 
                 <!-- Middle Name -->
                 <div class="col-span-6 sm:col-span-2">
                   <label for="middle_name" class="block mb-2 text-sm font-medium text-black dark:text-white">Middle Name</label>
+                  <div id="middleName_ng_bata_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="text" name="middle_name" id="middle_name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Reyes" required="">
+                  </div>
                 </div>
 
                 <!-- Name Extension -->
@@ -1160,14 +1261,15 @@ window.Alpine = Alpine;
                   <label for="dropdownNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
                     Name Extension
                   </label>
+                  <div id="extensionName_ng_bata_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="dropdownNameExtensionlButton" 
-                      id="dropdownNameExtensionlButton" 
+                      id="extensionName_ng_bata" 
                       class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
                       placeholder="Sr."
                       required="">
-                    <option value="not-applicable">N/A</option>
-                    <option value="junior">Jr.</option>
-                    <option value="senior">Sr.</option>
+                    <option value="none">N/A</option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
                     <option value="I">I</option>
                     <option value="II">II</option>
                     <option value="III">III</option>
@@ -1176,6 +1278,7 @@ window.Alpine = Alpine;
                     <option value="VI">VI</option>
                     <option value="VII">VII</option>
                   </select>
+                  </div>
                 </div>
             
                 <!-- Grade Level -->
@@ -1183,54 +1286,55 @@ window.Alpine = Alpine;
                   <label for="dropdownGradeLevelButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
                     Grade Level
                   </label>
+                  <div id="grade_level_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="dropdownGradeLevelButton" 
                       id="dropdownGradeLevelButton" 
                       class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
                       placeholder="Grade 1"
                       required="">
-                    <option value="kinder">Kinder</option>
-                    <option value="grade1">Grade 1</option>
-                    <option value="grade2">Grade 2</option>
-                    <option value="grade3">Grade 3</option>
-                    <option value="grade4">Grade 4</option>
-                    <option value="grade5">Grade 5</option>
-                    <option value="grade6">Grade 6</option>
+                        <option value=""></option>
+                        <option value="1">KINDER</option>
+                        <option value="2">Grade 1</option>
+                        <option value="3">Grade 2</option>
+                        <option value="4">Grade 3</option>
+                        <option value="5">Grade 4</option>
+                        <option value="6">Grade 5</option>
+                        <option value="7">Grade 6</option>  
                   </select>
+                  </div>
                 </div>
 
                 <!-- Birth Date -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="birth_date" class="block mb-2 text-sm font-medium text-black dark:text-white">Date of Birth</label>
+                  <div id="birth_date_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="date" name="birth_date" id="birth_date" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
                 <!-- Age -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="age" class="block mb-2 text-sm font-medium text-black dark:text-white">Age</label>
+                  <div id="age_on_oct_31_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="number" name="age" id="age" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="5" required="">
+                  </div>
                 </div>
 
                 <!-- Gender -->
                 <div class="col-span-6">
                   <label for="gender" class="block mb-2 text-sm font-medium text-black dark:text-white">Gender</label>
-                  <div id="gender" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                  <div id="gender_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gender">
                       <li>
                         <div class="flex items-center">
-                          <input id="gender-checkbox-item-1" type="radio" name="gender" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="gender-checkbox-item-1" type="radio" name="gender" value="female" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="gender-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Female</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="gender-checkbox-item-2" type="radio" name="gender" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="gender-checkbox-item-2" type="radio" name="gender" value="male" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="gender-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Male</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="gender-checkbox-item-3" type="radio" name="gender" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="gender-checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Other</label>
                         </div>
                       </li>
                     </ul>
@@ -1240,7 +1344,9 @@ window.Alpine = Alpine;
                 <!-- Indigenous Group Name (optional) -->
                 <div class="col-span-6">
                   <label for="indigenous_group" class="block mb-2 text-sm font-medium text-black dark:text-white">Indegenous group (optional)</label>
-                  <input type="text" name="indigenous_group" id="indigenous_group" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not part of an indigenous group.)">
+                  <div id="indigenous_group_name_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="indigenous_group" value="" id="indigenous_group" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not part of an indigenous group.)">
+                  </div>
                 </div>
 
                 <!-- Mother Tongue -->
@@ -1248,6 +1354,7 @@ window.Alpine = Alpine;
                   <label for="dropdownMotherTongueButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
                     Mother Tongue
                   </label>
+                  <div id="primary_language_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="dropdownMotherTongueButton" 
                       id="dropdownMotherTongueButton" 
                       class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
@@ -1269,6 +1376,7 @@ window.Alpine = Alpine;
                     <option value="ybanag">Ybanag</option>
                     <option value="others">Others</option>
                   </select>
+                  </div>
                 </div>
 
                 <!-- Religion -->
@@ -1276,6 +1384,7 @@ window.Alpine = Alpine;
                   <label for="dropdownReligionButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
                     Religion
                   </label>
+                  <div id="religion_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="dropdownReligionButton" 
                       id="dropdownReligionButton" 
                       class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
@@ -1310,21 +1419,26 @@ window.Alpine = Alpine;
                     <option value="none">No Religion</option>
                     <option value="others">Others</option>
                   </select>
+                  </div>
                 </div>
 
                 <!-- Special Assistance (optional) -->
                 <div class="col-span-6 ">
                   <label for="special_assistance_needs" class="block mb-2 text-sm font-medium text-black dark:text-white">Ilagay ang disability kung nangangailangan ng special assistance ang mag-aaral (Optional)</label>
-                  <input type="text" name="special_assistance_needs" id="special_assistance_needs" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if no special assistance is needed.)">
+                  <div id="special_needs_description_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="special_assistance_needs" value="" id="special_assistance_needs" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if no special assistance is needed.)">
+                  </div>
                 </div>
 
                 <!-- Region -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="region" class="block mb-2 text-sm font-medium text-black dark:text-white">Region</label>
+                  <div id="region_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="region" 
                     id="region" 
                     class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
                   </select>
+                  </div>
                   <input type="hidden" 
                     id="region_text" 
                     name="region_text" >
@@ -1333,10 +1447,12 @@ window.Alpine = Alpine;
                 <!-- Province -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="province" class="block mb-2 text-sm font-medium text-black dark:text-white">Province</label>
+                  <div id="province_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="province" 
                     id="province" 
                     class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
                   </select>
+                  </div>
                   <input type="hidden" 
                     id="province_text" 
                     name="province_text" >
@@ -1345,10 +1461,12 @@ window.Alpine = Alpine;
                 <!-- City -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="city" class="block mb-2 text-sm font-medium text-black dark:text-white">City/Municipality</label>
+                  <div id="city_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="city" 
                     id="city" 
                     class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
                   </select>
+                  </div>
                   <input type="hidden" 
                     id="city_text" 
                     name="city_text" >
@@ -1357,10 +1475,12 @@ window.Alpine = Alpine;
                 <!-- Barangay -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="barangay" class="block mb-2 text-sm font-medium text-black dark:text-white">Barangay</label>
+                  <div id="barangay_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="barangay" 
                     id="barangay" 
                     class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
                   </select>
+                  </div>
                   <input type="hidden" 
                     id="barangay_text" 
                     name="barangay_text" >
@@ -1369,31 +1489,41 @@ window.Alpine = Alpine;
                 <!-- Street -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="street" class="block mb-2 text-sm font-medium text-black dark:text-white">Street</label>
+                  <div id="street_text_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="text" name="street" id="street" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
                 <!-- House No. -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="house_number" class="block mb-2 text-sm font-medium text-black dark:text-white">House No.</label>
+                  <div id="house_number_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="text" name="house_number" id="house_number" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
                 <!-- Father's Last Name -->
                 <div class="col-span-6 sm:col-span-2">
                   <label for="father_lastname" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Last Name</label>
+                  <div id="lastName_ng_ama_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="text" name="father_lastname" id="father_lastname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
                 <!-- Father's First Name -->
                 <div class="col-span-6 sm:col-span-2">
                   <label for="father_firstname" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's First Name</label>
+                  <div id="firstName_ng_ama_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="text" name="father_firstname" id="father_firstname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
                 <!-- Father's Middle Name -->
                 <div class="col-span-6 sm:col-span-2">
                   <label for="father_middlename" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Middle Name</label>
+                  <div id="middleName_ng_ama_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="text" name="father_middlename" id="father_middlename" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
                 <!-- Father's Name Extension -->
@@ -1401,14 +1531,15 @@ window.Alpine = Alpine;
                   <label for="dropdownFatherNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
                     Father's Name Extension
                   </label>
+                  <div id="extensionName_ng_ama_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="dropdownFatherNameExtensionlButton" 
-                      id="dropdownFatherNameExtensionlButton" 
+                      id="extensionName_ng_ama" 
                       class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
                       placeholder="Sr."
                       required="">
-                    <option value="not-applicable">N/A</option>
-                    <option value="junior">Jr.</option>
-                    <option value="senior">Sr.</option>
+                    <option value="none">N/A</option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
                     <option value="I">I</option>
                     <option value="II">II</option>
                     <option value="III">III</option>
@@ -1417,101 +1548,201 @@ window.Alpine = Alpine;
                     <option value="VI">VI</option>
                     <option value="VII">VII</option>
                   </select>
+                  </div>
                 </div>
 
                 <!-- Father's Contact Number -->
                 <div class="col-span-6 sm:col-span-2">
                   <label for="father_num" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Contact Number</label>
+                  <div id="father_phone_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="number" name="father_num" id="father_num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
                 <!-- Father's Contact Email -->
                 <div class="col-span-6 sm:col-span-2">
                   <label for="father_email" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Email (optional)</label>
+                  <div id="email_ng_ama_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="email" name="father_email" id="father_email" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="example@gmail.com">
+                  </div>
                 </div>
 
-                <!-- Mother's Maiden Name -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="mother-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Maiden Name</label>
-                  <input type="text" name="mother-name" id="mother-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                <!-- mother's Last Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="mother_lastname" class="block mb-2 text-sm font-medium text-black dark:text-white">mother's Last Name</label>
+                  <div id="lastName_ng_ina_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="mother_lastname" id="mother_lastname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
-                <!-- Mother's Contact Number -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="mother-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Contact Number</label>
-                  <input type="number" name="mother-num" id="mother-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                <!-- mother's First Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="mother_firstname" class="block mb-2 text-sm font-medium text-black dark:text-white">mother's First Name</label>
+                  <div id="firstName_ng_ina_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="mother_firstname" id="mother_firstname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
-                <!-- Father's Contact Email -->
-                <div class="col-span-6">
-                  <label for="mother-email" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Email Address (optional)</label>
-                  <input type="email" name="mother-email" id="mother-email" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="example@gmail.com">
+                <!-- mother's Middle Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="mother_middlename" class="block mb-2 text-sm font-medium text-black dark:text-white">mother's Middle Name</label>
+                  <div id="middleName_ng_ina_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="mother_middlename" id="mother_middlename" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
-                <!-- Guardian's Full Name -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="guardian-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Full Name</label>
-                  <input type="text" name="guardian-name" id="guardian-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                <!-- mother's Name Extension -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="dropdownmotherNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
+                    mother's Name Extension
+                  </label>
+                  <div id="extensionName_ng_ina_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <select name="dropdownmotherNameExtensionlButton" 
+                      id="extensionName_ng_ina" 
+                      class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                      placeholder="Sr."
+                      required="">
+                    <option value="none">N/A</option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                    <option value="VI">VI</option>
+                    <option value="VII">VII</option>
+                  </select>
+                  </div>
                 </div>
 
-                <!-- Guardian's Contact Number -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="guardian-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Contact Number</label>
-                  <input type="number" name="guardian-num" id="guardian-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                <!-- mother's Contact Number -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="mother_num" class="block mb-2 text-sm font-medium text-black dark:text-white">mother's Contact Number</label>
+                  <div id="mother_phone_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="number" name="mother_num" id="mother_num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
-                <!-- Guardian's Contact Email -->
-                <div class="col-span-6">
-                  <label for="guardian-email" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Email Address (required - can be same as parent's)</label>
-                  <input type="email" name="guardian-email" id="guardian-email" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="example@gmail.com">
+                <!-- mother's Contact Email -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="mother_email" class="block mb-2 text-sm font-medium text-black dark:text-white">mother's Email (optional)</label>
+                  <div id="email_ng_ina_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="email" name="mother_email" id="mother_email" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="example@gmail.com">
+                  </div>
+                </div>
+                <!-- guardian's Last Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="guardian_lastname" class="block mb-2 text-sm font-medium text-black dark:text-white">guardian's Last Name</label>
+                  <div id="lastName_ng_guardian_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="guardian_lastname" id="guardian_lastname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- guardian's First Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="guardian_firstname" class="block mb-2 text-sm font-medium text-black dark:text-white">guardian's First Name</label>
+                  <div id="firstName_ng_guardian_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="guardian_firstname" id="guardian_firstname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- guardian's Middle Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="guardian_middlename" class="block mb-2 text-sm font-medium text-black dark:text-white">guardian's Middle Name</label>
+                  <div id="middleName_ng_guardian_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="guardian_middlename" id="guardian_middlename" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- guardian's Name Extension -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="dropdownguardianNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
+                    guardian's Name Extension
+                  </label>
+                  <div id="extensionName_ng_guardian_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <select name="dropdownguardianNameExtensionlButton" 
+                      id="extensionName_ng_guardian" 
+                      class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                      placeholder="Sr."
+                      required="">
+                    <option value="none">N/A</option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                    <option value="VI">VI</option>
+                    <option value="VII">VII</option>
+                  </select>
+                  </div>
+                </div>
+
+                <!-- guardian's Contact Number -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="guardian_num" class="block mb-2 text-sm font-medium text-black dark:text-white">guardian's Contact Number</label>
+                  <div id="guardian_phone_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="number" name="guardian_num" id="guardian_num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- guardian's Contact Email -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="guardian_email" class="block mb-2 text-sm font-medium text-black dark:text-white">guardian's Email (optional)</label>
+                  <div id="email_ng_guardian_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="email" name="guardian_email" id="guardian_email" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="example@gmail.com">
+                  </div>
                 </div>
 
                 <!-- 4P's Household ID No. (optional)-->
                 <div class="col-span-6">
                   <label for="household_4ps_id" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Household ID No. (optional)</label>
+                  <div id="fourps_id_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="text" name="household_4ps_id" id="household_4ps_id" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not a 4P's benefactor.)">
+                  </div>
                 </div>
 
                 <!-- Access to Technology -->
                 <div class="col-span-6">
                   <label for="accessToTechnologyButton" class="block text-sm font-medium text-black dark:text-white">Access to Technology</p>
                   <!-- Checkbox  for Access to technology-->
-                  <div id="accessToTechnologyCheckbox" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                  <div id="learning_info_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="accessToTechnologyCheckbox">
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="att-checkbox-item-1" type="checkbox" value="cellphone/tablet" name="learning_info[]" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May sariling cellphone/tablet ang Bata</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="att-checkbox-item-1" type="checkbox" value="Computer" name="learning_info[]" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May computer sa bahay</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="att-checkbox-item-1" type="checkbox" value="No_gadget" name="learning_info[]" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Walang sariling gadget ang bata</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="att-checkbox-item-1" type="checkbox" value="Tv" name="learning_info[]" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May tv sa bahay</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="att-checkbox-item-1" type="checkbox" value="Internet" name="learning_info[]" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May internet connection sa bahay</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <input id="att-checkbox-item-1" type="checkbox" value="Mobile_data" name="learning_info[]" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                           <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Mobile data lamang ang gamit</label>
                         </div>
                       </li>
@@ -1522,7 +1753,7 @@ window.Alpine = Alpine;
                 <!-- Preferred Mode of Learning -->
                 <div class="col-span-6">
                   <label for="pmol" class="block mb-2 text-sm font-medium text-black dark:text-white">Preferred Mode of Learning</label>
-                  <div id="pmol" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                  <div id="distance_learning_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="pmol">
                       <li>
                         <div class="flex items-center">
@@ -1564,7 +1795,7 @@ window.Alpine = Alpine;
                   </div>
                 </div>
 
-                <!-- Status -->
+                {{-- <!-- Status -->
                 <div class="col-span-6">
                   <label for="status" class="block mb-2 text-sm font-medium text-black dark:text-white">Account Status</label>
                   <div id="status" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
@@ -1583,7 +1814,7 @@ window.Alpine = Alpine;
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> --}}
 
               </div>
             </div>
@@ -1619,63 +1850,63 @@ window.Alpine = Alpine;
               </button>
             </div>
             <!-- Modal body -->
-            <div class="p-6 space-y-3 divide-y divide-gray-200">
-              <h3 class="text-md font-semibold text-black dark:text-white">*Insert Student Name here*</h3>
+            <div class="p-6 space-y-3 divide-y divide-gray-200" id="view_student">
+              <h3 class="text-md font-semibold text-black dark:text-white">Student Information</h3>
               <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Last Name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">First Name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Middle Name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Name Extension: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Username: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Last Name: <span id="view_last_name"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">First Name: <span id="view_first_name"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Middle Name: <span id="view_middle_name"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Name Extension: <span id="view_extension_name"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Username: <span id="view_username"></span></p>
               </div>
               <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Returnee: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">LRN (Learner's Refenrece Number): </p>
+                {{-- <p class="text-sm font-semibold text-gray-500 dark:text-white">Returnee: </p> --}}
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: <span id="view_grade_level"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">LRN (Learner's Refenrece Number): <span id="view_lrn"></span></p>
               </div>
               <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Date of Birth: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Age: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Nabibilang sa indegenous group: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Indegenous group na kinabibilangan: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother tongue: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Religion: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Nangangailangan ng special assistance?  </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Disability: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Date of Birth: <span id="view_birth_date"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Age: <span id="view_age"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Indegenous group na kinabibilangan: <span id="view_indigenous_group"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother tongue: <span id="view_mother_tongue"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Religion: <span id="view_religion"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Disability: <span id="view_special_assistance_needs  "></span></p>
               </div>
               <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">House no. and street: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Barangay: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">City: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">House no.: <span id="view_house_number"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Street: <span id="view_street"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Barangay: <span id="view_barangay"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">City: <span id="view_municipality"></span></p>
+                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Province: <span id="view_province"></span></p>
+                    <p class="text-sm font-semibold text-gray-500 dark:text-white">Region: <span id="view_region"></span></p>
               </div>
               <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's full name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's contact number: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's full name: <span id="view_father_name"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's contact number: <span id="view_father_phone_number"></span></p>
               </div>
               <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother maiden name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother's contact number: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother maiden name: <span id="view_mother_name"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother's contact number: <span id="view_mother_phone_number"></span></p>
               </div>
               <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's full name: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's contact number: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's full name: <span id="view_guardian_name"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's contact number: <span id="view_guardian_phone_number"></span></p>
               </div>
               <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's beneficiary? </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's Household ID No.: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's Household ID No.: <span id="view_household_4ps_id"></span></p>
               </div>
               <div class="pt-4">
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Access to technology: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Preferred mode of learning: </p>
-                <p class="text-sm font-semibold text-gray-500 dark:text-white">Account status: </p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Access to technology: <span id="view_learning_info"></span></p>
+                <p class="text-sm font-semibold text-gray-500 dark:text-white">Preferred mode of learning: <span id="view_distance_learning"></span></p>
+                {{-- <p class="text-sm font-semibold text-gray-500 dark:text-white">Account status: <span id="view_status"></span></p> --}}
               </div>
 
-              <!-- BACKEND: Just add conditional statements kapag meron na laman si returnee. If returnee == yes -->
+              {{-- <!-- BACKEND: Just add conditional statements kapag meron na laman si returnee. If returnee == yes -->
               <div class="pt-4 hidden">
                 <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling baitang na natapos: </p>
                 <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling paaralan na pinasukan: </p>
                 <p class="text-sm font-semibold text-gray-500 dark:text-white">Panuruang taon na natapos ng mag-aaral: </p>
-              </div>
+              </div> --}}
             </div>
           </div>  
         </div>
@@ -1691,6 +1922,7 @@ window.Alpine = Alpine;
           <!-- Modal content -->
           <form action="[[route('admin.student-management.edit')]]" 
                 method="POST" 
+                id="editStudent"
                 class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
@@ -1707,62 +1939,46 @@ window.Alpine = Alpine;
             <!-- Modal body -->
             <div class="p-6 space-y-3">
               <div class="grid grid-cols-6 gap-6">
+                <!-- hidden inputs -->
+                <input type="hidden" name="username" id="username">
+                <!-- PSA Birth Certificate -->
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="psa" class="block mb-2 text-sm font-medium text-black dark:text-white">PSA Birth Certificate No.</label>
+                  <div id="psa_birth_cert_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                  <input type="text" name="psa" id="psa" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="2023-#####" required="">
+                  </div>
+                </div>
                 
-                <!-- Returnee Y/N -->
-                <div class="col-span-6">
-                  <label for="returnee" class="block mb-2 text-sm font-medium text-black dark:text-white">Balik-aral (returnee) ba ang batang ipapalista?</label>
-                  <div id="returnee" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="returnee">
-                      <li>
-                        <div class="flex items-center">
-                          <input id="returnee-checkbox-item-1" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="returnee-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="returnee-checkbox-item-2" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="returnee-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
-                        </div>
-                      </li>
-                    </ul>
+                <!-- LRN -->
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="lrn" class="block mb-2 text-sm font-medium text-black dark:text-white">Learner's Reference Number (optional)</label>
+                  <div id="lrn_number_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                  <input type="text" name="lrn" id="lrn" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not applicable.)" required="">
                   </div>
                 </div>
 
-                <!-- Last grade finished? -->
-                <div class="col-span-6">
-                  <label for="last-grade-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last grade level attended (Optional)</label>
-                  <input type="text" name="last-grade-attended" id="last-grade-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
-                </div>
-
-                <!-- Last school attended -->
-                <div class="col-span-6">
-                  <label for="last-school-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school enrolled in (Optional)</label>
-                  <input type="text" name="last-school-attended" id="last-school-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
-                </div>
-                
-                <!-- Last school year attended -->
-                <div class="col-span-6">
-                  <label for="last-school-year-finished" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school year attended (Optional)</label>
-                  <input type="text" name="last-school-year-finished" id="last-school-year-finished" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
-                </div>
-
                 <!-- Last Name -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="last-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Last Name</label>
-                  <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Dela Cruz" required="">
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="last_name" class="block mb-2 text-sm font-medium text-black dark:text-white">Last Name</label>
+                  <div id="lastName_ng_bata_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="last_name" id="last_name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Dela Cruz" required="">
+                  </div>
                 </div>
 
                 <!-- First Name -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="first-name" class="block mb-2 text-sm font-medium text-black dark:text-white">First Name</label>
-                  <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Juan" required="">
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="first_name" class="block mb-2 text-sm font-medium text-black dark:text-white">First Name</label>
+                  <div id="firstName_ng_bata_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="first_name" id="first_name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Juan" required="">
+                  </div>
                 </div>
 
                 <!-- Middle Name -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="middle-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Middle Name</label>
-                  <input type="text" name="middle-name" id="middle-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Reyes" required="">
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="middle_name" class="block mb-2 text-sm font-medium text-black dark:text-white">Middle Name</label>
+                  <div id="middleName_ng_bata_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="middle_name" id="middle_name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Reyes" required="">
+                  </div>
                 </div>
 
                 <!-- Name Extension -->
@@ -1770,14 +1986,15 @@ window.Alpine = Alpine;
                   <label for="dropdownNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
                     Name Extension
                   </label>
+                  <div id="extensionName_ng_bata_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="dropdownNameExtensionlButton" 
-                      id="dropdownNameExtensionlButton" 
+                      id="extensionname_ng_bata" 
                       class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
                       placeholder="Sr."
                       required="">
-                    <option value="not-applicable">N/A</option>
-                    <option value="junior">Jr.</option>
-                    <option value="senior">Sr.</option>
+                    <option value="none">N/A</option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
                     <option value="I">I</option>
                     <option value="II">II</option>
                     <option value="III">III</option>
@@ -1786,82 +2003,40 @@ window.Alpine = Alpine;
                     <option value="VI">VI</option>
                     <option value="VII">VII</option>
                   </select>
-                </div>
-
-                <!-- Returnee -->
-                <div class="col-span-6">
-                  <label for="returnee" class="block mb-2 text-sm font-medium text-black dark:text-white">Returnee</label>
-                  <div id="returnee" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="returnee">
-                      <li>
-                        <div class="flex items-center">
-                          <input id="checkbox-item-1" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">HINDI</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="checkbox-item-2" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">OO dahil sya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon</label>
-                        </div>
-                      </li>
-                    </ul>
                   </div>
                 </div>
-
-                <!-- Grade Level -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="dropdownGradeLevelButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                    Grade Level
-                  </label>
-                  <select name="dropdownGradeLevelButton" 
-                      id="dropdownGradeLevelButton" 
-                      class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
-                      placeholder="Grade 1"
-                      required="">
-                    <option value="kinder">Kinder</option>
-                    <option value="grade1">Grade 1</option>
-                    <option value="grade2">Grade 2</option>
-                    <option value="grade3">Grade 3</option>
-                    <option value="grade4">Grade 4</option>
-                    <option value="grade5">Grade 5</option>
-                    <option value="grade6">Grade 6</option>
-                  </select>
-                </div>
-
-                <!-- LRN -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="lrn" class="block mb-2 text-sm font-medium text-black dark:text-white">LRN</label>
-                  <input type="number" name="lrn" id="lrn" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="############" required="">
-                </div>
-
+                
                 <!-- Birth Date -->
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="date-of-birth" class="block mb-2 text-sm font-medium text-black dark:text-white">Date of Birth</label>
-                  <input type="date" name="date-of-birth" id="date-of-birth" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  <label for="birth_date" class="block mb-2 text-sm font-medium text-black dark:text-white">Date of Birth</label>
+                  <div id="birth_date_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="date" name="birth_date" id="birth_date" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
                 <!-- Age -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="age" class="block mb-2 text-sm font-medium text-black dark:text-white">Age</label>
+                  <div id="age_on_oct_31_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="number" name="age" id="age" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="5" required="">
+                  </div>
                 </div>
 
-                <!-- Indegenous Group Y/N -->
+                <!-- Gender -->
                 <div class="col-span-6">
-                  <label for="indigenous-group" class="block mb-2 text-sm font-medium text-black dark:text-white">Nabibilang sa indigenous group?</label>
-                  <div id="indigenous-group" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="indigenous-group">
+                  <label for="gender" class="block mb-2 text-sm font-medium text-black dark:text-white">Gender</label>
+                  <div id="gender_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="gender">
                       <li>
                         <div class="flex items-center">
-                          <input id="ig-checkbox-item-1" type="radio" name="indigenous-group" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="ig-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
+                          <input id="gender gender-female" type="radio" name="gender" value="Female" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="gender-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Female</label>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center">
-                          <input id="ig-checkbox-item-2" type="radio" name="indigenous-group" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="ig-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
+                          <input id="gender gender-male" type="radio" name="gender" value="Male" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label for="gender-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Male</label>
                         </div>
                       </li>
                     </ul>
@@ -1870,8 +2045,10 @@ window.Alpine = Alpine;
 
                 <!-- Indigenous Group Name (optional) -->
                 <div class="col-span-6">
-                  <label for="indigenous-group-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Indegenous group (optional)</label>
-                  <input type="text" name="indigenous-group-name" id="indigenous-group-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not part of an indigenous group.)">
+                  <label for="indigenous_group" class="block mb-2 text-sm font-medium text-black dark:text-white">Indegenous group (optional)</label>
+                  <div id="indigenous_group_name_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="indigenous_group" value="" id="indigenous_group" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not part of an indigenous group.)">
+                  </div>
                 </div>
 
                 <!-- Mother Tongue -->
@@ -1879,6 +2056,7 @@ window.Alpine = Alpine;
                   <label for="dropdownMotherTongueButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
                     Mother Tongue
                   </label>
+                  <div id="primary_language_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="dropdownMotherTongueButton" 
                       id="dropdownMotherTongueButton" 
                       class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
@@ -1900,6 +2078,7 @@ window.Alpine = Alpine;
                     <option value="ybanag">Ybanag</option>
                     <option value="others">Others</option>
                   </select>
+                  </div>
                 </div>
 
                 <!-- Religion -->
@@ -1907,6 +2086,7 @@ window.Alpine = Alpine;
                   <label for="dropdownReligionButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
                     Religion
                   </label>
+                  <div id="religion_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="dropdownReligionButton" 
                       id="dropdownReligionButton" 
                       class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
@@ -1941,42 +2121,25 @@ window.Alpine = Alpine;
                     <option value="none">No Religion</option>
                     <option value="others">Others</option>
                   </select>
-                </div>
-
-                <!-- Special Assistance Y/N-->
-                <div class="col-span-6">
-                  <label for="special-assistance" class="block mb-2 text-sm font-medium text-black dark:text-white">Kailangan ng special assistance?</label>
-                  <div id="special-assistance" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="special-assistance">
-                      <li>
-                        <div class="flex items-center">
-                          <input id="pwd-checkbox-item-1" type="radio" name="special-assistance" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="pwd-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="pwd-checkbox-item-2" type="radio" name="special-assistance" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="pwd-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
-                        </div>
-                      </li>
-                    </ul>
                   </div>
                 </div>
 
                 <!-- Special Assistance (optional) -->
                 <div class="col-span-6 ">
-                  <label for="disability" class="block mb-2 text-sm font-medium text-black dark:text-white">Disability (Optional)</label>
-                  <input type="text" name="disability" id="disability" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if no special assistance is needed.)">
+                  <label for="special_assistance_needs" class="block mb-2 text-sm font-medium text-black dark:text-white">Ilagay ang disability kung nangangailangan ng special assistance ang mag-aaral (Optional)</label>
+                  <div id="special_needs_description_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="special_assistance_needs" value="" id="special_assistance_needs" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if no special assistance is needed.)">
+                  </div>
                 </div>
-
                 <!-- Region -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="region" class="block mb-2 text-sm font-medium text-black dark:text-white">Region</label>
+                  <div id="region_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="region" 
                     id="region" 
                     class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
                   </select>
+                  </div>
                   <input type="hidden" 
                     id="region_text" 
                     name="region_text" >
@@ -1985,10 +2148,12 @@ window.Alpine = Alpine;
                 <!-- Province -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="province" class="block mb-2 text-sm font-medium text-black dark:text-white">Province</label>
+                  <div id="province_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="province" 
                     id="province" 
                     class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
                   </select>
+                  </div>
                   <input type="hidden" 
                     id="province_text" 
                     name="province_text" >
@@ -1996,11 +2161,13 @@ window.Alpine = Alpine;
 
                 <!-- City -->
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="city" class="block mb-2 text-sm font-medium text-black dark:text-white">City</label>
+                  <label for="city" class="block mb-2 text-sm font-medium text-black dark:text-white">City/Municipality</label>
+                  <div id="city_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="city" 
                     id="city" 
                     class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
                   </select>
+                  </div>
                   <input type="hidden" 
                     id="city_text" 
                     name="city_text" >
@@ -2009,10 +2176,12 @@ window.Alpine = Alpine;
                 <!-- Barangay -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="barangay" class="block mb-2 text-sm font-medium text-black dark:text-white">Barangay</label>
+                  <div id="barangay_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <select name="barangay" 
                     id="barangay" 
                     class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
                   </select>
+                  </div>
                   <input type="hidden" 
                     id="barangay_text" 
                     name="barangay_text" >
@@ -2021,170 +2190,222 @@ window.Alpine = Alpine;
                 <!-- Street -->
                 <div class="col-span-6 sm:col-span-3">
                   <label for="street" class="block mb-2 text-sm font-medium text-black dark:text-white">Street</label>
+                  <div id="street_text_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
                   <input type="text" name="street" id="street" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
                 <!-- House No. -->
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="street" class="block mb-2 text-sm font-medium text-black dark:text-white">House No.</label>
-                  <input type="text" name="street" id="street" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  <label for="house_number" class="block mb-2 text-sm font-medium text-black dark:text-white">House No.</label>
+                  <div id="house_number_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="house_number" id="house_number" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+                @vite(['resources/js/ph-address-selector2.js'])
+                <!-- Father's Last Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="father_lastname" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Last Name</label>
+                  <div id="lastName_ng_ama_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="father_lastname" id="father_lastname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
-                <!-- Father's Full Name -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="father-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Full Name</label>
-                  <input type="text" name="father-name" id="father-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                <!-- Father's First Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="father_firstname" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's First Name</label>
+                  <div id="firstName_ng_ama_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="father_firstname" id="father_firstname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- Father's Middle Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="father_middlename" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Middle Name</label>
+                  <div id="middleName_ng_ama_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="father_middlename" id="father_middlename" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- Father's Name Extension -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="dropdownFatherNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
+                    Father's Name Extension
+                  </label>
+                  <div id="extensionName_ng_ama_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <select name="dropdownFatherNameExtensionlButton" 
+                      id="extensionname_ng_ama" 
+                      class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                      placeholder="Sr."
+                      required="">
+                    <option value="none">N/A</option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                    <option value="VI">VI</option>
+                    <option value="VII">VII</option>
+                  </select>
+                  </div>
                 </div>
 
                 <!-- Father's Contact Number -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="father-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Contact Number</label>
-                  <input type="number" name="father-num" id="father-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="father_num" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Contact Number</label>
+                  <div id="father_phone_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="number" name="father_num" id="father_num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
-                <!-- Mother's Maiden Name -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="mother-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Maiden Name</label>
-                  <input type="text" name="mother-name" id="mother-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                <!-- Father's Contact Email -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="father_email" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Email (optional)</label>
+                  <div id="email_ng_ama_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="email" name="father_email" id="father_email" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="example@gmail.com">
+                  </div>
                 </div>
 
-                <!-- Mother's Contact Number -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="mother-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Contact Number</label>
-                  <input type="number" name="mother-num" id="mother-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                <!-- mother's Last Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="mother_lastname" class="block mb-2 text-sm font-medium text-black dark:text-white">mother's Last Name</label>
+                  <div id="lastName_ng_ina_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="mother_lastname" id="mother_lastname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
-                <!-- Guardian's Full Name -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="guardian-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Full Name</label>
-                  <input type="text" name="guardian-name" id="guardian-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                <!-- mother's First Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="mother_firstname" class="block mb-2 text-sm font-medium text-black dark:text-white">mother's First Name</label>
+                  <div id="firstName_ng_ina_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="mother_firstname" id="mother_firstname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
-                <!-- Guardian's Contact Number -->
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="guardian-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Contact Number</label>
-                  <input type="number" name="guardian-num" id="guardian-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                <!-- mother's Middle Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="mother_middlename" class="block mb-2 text-sm font-medium text-black dark:text-white">mother's Middle Name</label>
+                  <div id="middleName_ng_ina_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="mother_middlename" id="mother_middlename" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
                 </div>
 
-                <!-- 4P's Beneficiary Y/N -->
-                <div class="col-span-6">
-                  <label for="4ps" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Beneficiary?</label>
-                  <div id="4ps" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="4ps">
-                      <li>
-                        <div class="flex items-center">
-                          <input id="4ps-checkbox-item-1" type="radio" name="4ps" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="4ps-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="4ps-checkbox-item-2" type="radio" name="4ps" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="4ps-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
-                        </div>
-                      </li>
-                    </ul>
+                <!-- mother's Name Extension -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="dropdownmotherNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
+                    mother's Name Extension
+                  </label>
+                  <div id="extensionName_ng_ina_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <select name="dropdownmotherNameExtensionlButton" 
+                      id="extensionname_ng_ina" 
+                      class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                      placeholder="Sr."
+                      required="">
+                    <option value="none">N/A</option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                    <option value="VI">VI</option>
+                    <option value="VII">VII</option>
+                  </select>
+                  </div>
+                </div>
+
+                <!-- mother's Contact Number -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="mother_num" class="block mb-2 text-sm font-medium text-black dark:text-white">mother's Contact Number</label>
+                  <div id="mother_phone_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="number" name="mother_num" id="mother_num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- mother's Contact Email -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="mother_email" class="block mb-2 text-sm font-medium text-black dark:text-white">mother's Email (optional)</label>
+                  <div id="email_ng_ina_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="email" name="mother_email" id="mother_email" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="example@gmail.com">
+                  </div>
+                </div>
+                <!-- guardian's Last Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="guardian_lastname" class="block mb-2 text-sm font-medium text-black dark:text-white">guardian's Last Name</label>
+                  <div id="lastName_ng_guardian_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="guardian_lastname" id="guardian_lastname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- guardian's First Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="guardian_firstname" class="block mb-2 text-sm font-medium text-black dark:text-white">guardian's First Name</label>
+                  <div id="firstName_ng_guardian_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="guardian_firstname" id="guardian_firstname" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- guardian's Middle Name -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="guardian_middlename" class="block mb-2 text-sm font-medium text-black dark:text-white">guardian's Middle Name</label>
+                  <div id="middleName_ng_guardian_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="guardian_middlename" id="guardian_middlename" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- guardian's Name Extension -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="dropdownguardianNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
+                    guardian's Name Extension
+                  </label>
+                  <div id="extensionName_ng_guardian_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <select name="dropdownguardianNameExtensionlButton" 
+                      id="extensionname_ng_guardian" 
+                      class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
+                      placeholder="Sr."
+                      required="">
+                    <option value="none">N/A</option>
+                    <option value="Jr.">Jr.</option>
+                    <option value="Sr.">Sr.</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                    <option value="VI">VI</option>
+                    <option value="VII">VII</option>
+                  </select>
+                  </div>
+                </div>
+
+                <!-- guardian's Contact Number -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="guardian_num" class="block mb-2 text-sm font-medium text-black dark:text-white">guardian's Contact Number</label>
+                  <div id="guardian_phone_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="number" name="guardian_num" id="guardian_num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
+                  </div>
+                </div>
+
+                <!-- guardian's Contact Email -->
+                <div class="col-span-6 sm:col-span-2">
+                  <label for="guardian_email" class="block mb-2 text-sm font-medium text-black dark:text-white">guardian's Email (optional)</label>
+                  <div id="email_ng_guardian_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="email" name="guardian_email" id="guardian_email" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="example@gmail.com">
                   </div>
                 </div>
 
                 <!-- 4P's Household ID No. (optional)-->
                 <div class="col-span-6">
-                  <label for="4ps-no" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Household ID No.</label>
-                  <input type="text" name="4ps-no" id="4ps-no" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not a 4P's benefactor.)">
-                </div>
-
-                <!-- Access to Technology -->
-                <div class="col-span-6">
-                  <label for="accessToTechnologyButton" class="block text-sm font-medium text-black dark:text-white">Access to Technology</p>
-                  <!-- Checkbox  for Access to technology-->
-                  <div id="accessToTechnologyCheckbox" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="accessToTechnologyCheckbox">
-                      <li>
-                        <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May sariling cellphone/tablet ang Bata</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May computer sa bahay</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Walang sariling gadget ang bata</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May tv sa bahay</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May internet connection sa bahay</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Mobile data lamang ang gamit</label>
-                        </div>
-                      </li>
-                    </ul>
+                  <label for="household_4ps_id" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Household ID No. (optional)</label>
+                  <div id="fourps_id_error" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">  
+                  <input type="text" name="household_4ps_id" id="household_4ps_id" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not a 4P's benefactor.)">
                   </div>
                 </div>
 
-                <!-- Preferred Mode of Learning -->
-                <div class="col-span-6">
-                  <label for="pmol" class="block mb-2 text-sm font-medium text-black dark:text-white">Preferred Mode of Learning</label>
-                  <div id="pmol" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                    <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="pmol">
-                      <li>
-                        <div class="flex items-center">
-                          <input id="pmol-checkbox-item-1" type="radio" name="pmol" value="Modular Printed" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="pmol-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Printed</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="pmol-checkbox-item-2" type="radio" name="pmol" value="Modular Digital" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="pmol-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Digital</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="pmol-checkbox-item-3" type="radio" name="pmol" value="Online" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="pmol-checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Online</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="pmol-checkbox-item-4" type="radio" name="pmol" value="Educational Television" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="pmol-checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Educational Television</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="pmol-checkbox-item-5" type="radio" name="pmol" value="Homeschooling" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="pmol-checkbox-item-5" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Homeschooling</label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center">
-                          <input id="pmol-checkbox-item-6" type="radio" name="pmol" value="Blended" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="pmol-checkbox-item-6" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Blended</label>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- Status -->
+                {{-- <!-- Status -->
                 <div class="col-span-6">
                   <label for="status" class="block mb-2 text-sm font-medium text-black dark:text-white">Account Status</label>
                   <div id="status" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
@@ -2203,12 +2424,13 @@ window.Alpine = Alpine;
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> --}}
+
               </div>
             </div>
             <!-- Modal footer -->
             <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-              <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
+              <button type="submit" id="editStudentButton" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
             </div>
           </form>
         </div> 
@@ -2228,11 +2450,11 @@ window.Alpine = Alpine;
               <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"></path>
               </svg>
-              <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to ARCHIVE the student account of *insert full name*?</h3>
-              <button data-modal-hide="archiveStudentUserModal" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+              <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Are you sure you want to ARCHIVE the student account of <span id="archive_student_name"></span></h3>
+              <button data-modal-hide="archiveStudentUserModal" id="confirm_student_archive" type="button" class="text-white bg-gray-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                 Yes, I'm sure
               </button>
-              <button data-modal-hide="archiveStudentUserModal" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+              <button data-modal-hide="archiveStudentUserModal" id="cancel_student_archive" type="button" class="text-gray-500 bg-white hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  font-medium px-5 py-2.5 hover:text-black focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
             </div>
           </div>
         </div>
@@ -4165,9 +4387,9 @@ window.Alpine = Alpine;
                         class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
                         placeholder="Sr."
                         required="">
-                      <option value="not-applicable">N/A</option>
-                      <option value="junior">Jr.</option>
-                      <option value="senior">Sr.</option>
+                      <option value="none">N/A</option>
+                      <option value="Jr.">Jr.</option>
+                      <option value="Sr.">Sr.</option>
                       <option value="I">I</option>
                       <option value="II">II</option>
                       <option value="III">III</option>
@@ -4605,617 +4827,9 @@ window.Alpine = Alpine;
           </div> 
         </div> <!-- End of Add Student User Modal -->
 
-        <!-- View student user modal -->
-        <div id="viewStudentUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-          <div class="relative w-full max-w-2xl max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <!-- Modal header -->
-              <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="pl-2 text-xl font-semibold text-black dark:text-white">
-                  View student user 
-                </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="viewStudentUserModal">
-                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                  </svg>
-                  <span class="sr-only">Close modal</span>
-                </button>
-              </div>
-              <!-- Modal body -->
-              <div class="p-6 space-y-3 divide-y divide-gray-200">
-                <h3 class="text-md font-semibold text-black dark:text-white">*Insert Student Name here*</h3>
-                <div class="pt-4">
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Last Name: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">First Name: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Middle Name: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Name Extension: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Username: </p>
-                </div>
-                <div class="pt-4">
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Returnee: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Grade Level: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">LRN (Learner's Refenrece Number): </p>
-                </div>
-                <div class="pt-4">
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Date of Birth: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Age: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Nabibilang sa indegenous group: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Indegenous group na kinabibilangan: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother tongue: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Religion: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Nangangailangan ng special assistance?  </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Disability: </p>
-                </div>
-                <div class="pt-4">
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">House no. and street: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Barangay: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">City: </p>
-                </div>
-                <div class="pt-4">
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's full name: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Father's contact number: </p>
-                </div>
-                <div class="pt-4">
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother maiden name: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Mother's contact number: </p>
-                </div>
-                <div class="pt-4">
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's full name: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Guardian's contact number: </p>
-                </div>
-                <div class="pt-4">
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's beneficiary? </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">4P's Household ID No.: </p>
-                </div>
-                <div class="pt-4">
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Access to technology: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Preferred mode of learning: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Account status: </p>
-                </div>
 
-                <!-- BACKEND: Just add conditional statements kapag meron na laman si returnee. If returnee == yes -->
-                <div class="pt-4 hidden">
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling baitang na natapos: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Huling paaralan na pinasukan: </p>
-                  <p class="text-sm font-semibold text-gray-500 dark:text-white">Panuruang taon na natapos ng mag-aaral: </p>
-                </div>
-              </div>
-            </div>  
-          </div>
-        </div>
 
-        <!-- Edit student user modal -->
-        <div id="editStudentUserModal" 
-          tabindex="-1" 
-          aria-hidden="true" 
-          class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-          
-          <div class="relative w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <form action="[[route('admin.student-management.edit')]]" 
-                  method="POST" 
-                  class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <!-- Modal header -->
-              <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-black dark:text-white">
-                  Edit student user 
-                </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editStudentUserModal">
-                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                  </svg>
-                  <span class="sr-only">Close modal</span>
-                </button>
-              </div>
-              <!-- Modal body -->
-              <div class="p-6 space-y-3">
-                <div class="grid grid-cols-6 gap-6">
-                  
-                  <!-- Returnee Y/N -->
-                  <div class="col-span-6">
-                    <label for="returnee" class="block mb-2 text-sm font-medium text-black dark:text-white">Balik-aral (returnee) ba ang batang ipapalista?</label>
-                    <div id="returnee" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="returnee">
-                        <li>
-                          <div class="flex items-center">
-                            <input id="returnee-checkbox-item-1" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="returnee-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="returnee-checkbox-item-2" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="returnee-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
 
-                  <!-- Last grade finished? -->
-                  <div class="col-span-6">
-                    <label for="last-grade-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last grade level attended (Optional)</label>
-                    <input type="text" name="last-grade-attended" id="last-grade-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
-                  </div>
-
-                  <!-- Last school attended -->
-                  <div class="col-span-6">
-                    <label for="last-school-attended" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school enrolled in (Optional)</label>
-                    <input type="text" name="last-school-attended" id="last-school-attended" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
-                  </div>
-                  
-                  <!-- Last school year attended -->
-                  <div class="col-span-6">
-                    <label for="last-school-year-finished" class="block mb-2 text-sm font-medium text-black dark:text-white">Last school year attended (Optional)</label>
-                    <input type="text" name="last-school-year-finished" id="last-school-year-finished" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if student is not a returnee.)">
-                  </div>
-
-                  <!-- Last Name -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="last-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Last Name</label>
-                    <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Dela Cruz" required="">
-                  </div>
-
-                  <!-- First Name -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="first-name" class="block mb-2 text-sm font-medium text-black dark:text-white">First Name</label>
-                    <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Juan" required="">
-                  </div>
-
-                  <!-- Middle Name -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="middle-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Middle Name</label>
-                    <input type="text" name="middle-name" id="middle-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Reyes" required="">
-                  </div>
-
-                  <!-- Name Extension -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="dropdownNameExtensionlButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                      Name Extension
-                    </label>
-                    <select name="dropdownNameExtensionlButton" 
-                        id="dropdownNameExtensionlButton" 
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
-                        placeholder="Sr."
-                        required="">
-                      <option value="not-applicable">N/A</option>
-                      <option value="junior">Jr.</option>
-                      <option value="senior">Sr.</option>
-                      <option value="I">I</option>
-                      <option value="II">II</option>
-                      <option value="III">III</option>
-                      <option value="IV">IV</option>
-                      <option value="V">V</option>
-                      <option value="VI">VI</option>
-                      <option value="VII">VII</option>
-                    </select>
-                  </div>
-
-                  <!-- Returnee -->
-                  <div class="col-span-6">
-                    <label for="returnee" class="block mb-2 text-sm font-medium text-black dark:text-white">Returnee</label>
-                    <div id="returnee" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="returnee">
-                        <li>
-                          <div class="flex items-center">
-                            <input id="checkbox-item-1" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">HINDI</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="checkbox-item-2" type="radio" name="returnee" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">OO dahil sya ay nag-DROP o huminto sa pag-aaral noong nakaraang taon</label>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <!-- Grade Level -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="dropdownGradeLevelButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                      Grade Level
-                    </label>
-                    <select name="dropdownGradeLevelButton" 
-                        id="dropdownGradeLevelButton" 
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
-                        placeholder="Grade 1"
-                        required="">
-                      <option value="kinder">Kinder</option>
-                      <option value="grade1">Grade 1</option>
-                      <option value="grade2">Grade 2</option>
-                      <option value="grade3">Grade 3</option>
-                      <option value="grade4">Grade 4</option>
-                      <option value="grade5">Grade 5</option>
-                      <option value="grade6">Grade 6</option>
-                    </select>
-                  </div>
-
-                  <!-- LRN -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="lrn" class="block mb-2 text-sm font-medium text-black dark:text-white">LRN</label>
-                    <input type="number" name="lrn" id="lrn" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="############" required="">
-                  </div>
-
-                  <!-- Birth Date -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="date-of-birth" class="block mb-2 text-sm font-medium text-black dark:text-white">Date of Birth</label>
-                    <input type="date" name="date-of-birth" id="date-of-birth" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                  </div>
-
-                  <!-- Age -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="age" class="block mb-2 text-sm font-medium text-black dark:text-white">Age</label>
-                    <input type="number" name="age" id="age" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="5" required="">
-                  </div>
-
-                  <!-- Indegenous Group Y/N -->
-                  <div class="col-span-6">
-                    <label for="indigenous-group" class="block mb-2 text-sm font-medium text-black dark:text-white">Nabibilang sa indigenous group?</label>
-                    <div id="indigenous-group" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="indigenous-group">
-                        <li>
-                          <div class="flex items-center">
-                            <input id="ig-checkbox-item-1" type="radio" name="indigenous-group" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="ig-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="ig-checkbox-item-2" type="radio" name="indigenous-group" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="ig-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <!-- Indigenous Group Name (optional) -->
-                  <div class="col-span-6">
-                    <label for="indigenous-group-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Indegenous group (optional)</label>
-                    <input type="text" name="indigenous-group-name" id="indigenous-group-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not part of an indigenous group.)">
-                  </div>
-
-                  <!-- Mother Tongue -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="dropdownMotherTongueButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                      Mother Tongue
-                    </label>
-                    <select name="dropdownMotherTongueButton" 
-                        id="dropdownMotherTongueButton" 
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
-                        placeholder="Grade 1"
-                        required="">
-                      <option value="filipino">Filipino</option>
-                      <option value="english">English</option>
-                      <option value="bicolano">Bicolano</option>
-                      <option value="cebuano">Cebuano</option>
-                      <option value="chinese">Chinese Mandarin</option>
-                      <option value="ilocano">Ilocano</option>
-                      <option value="kapampangan">Kapampangan</option>
-                      <option value="maguindanaoan">Maguindanaoan</option>
-                      <option value="manobo">Manobo</option>
-                      <option value="nihonggo">Nihonggo</option>
-                      <option value="psl">Philippine Sign Language</option>
-                      <option value="tausug">Tausug</option>
-                      <option value="waray">Waray</option>
-                      <option value="ybanag">Ybanag</option>
-                      <option value="others">Others</option>
-                    </select>
-                  </div>
-
-                  <!-- Religion -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="dropdownReligionButton" class="block mb-2 text-sm font-medium text-black dark:text-white">
-                      Religion
-                    </label>
-                    <select name="dropdownReligionButton" 
-                        id="dropdownReligionButton" 
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" 
-                        placeholder="Christianity"
-                        required="">
-                      <option value="christianity">Christianity</option>
-                      <option value="aglipayan">Aglipayan</option>
-                      <option value="angelican">Angelican</option>
-                      <option value="apostolic">Apostolic</option>
-                      <option value="baptist">Baptist</option>
-                      <option value="buddhism">Buddhism</option>
-                      <option value="clds">Christ Latter Day Saints</option>
-                      <option value="cgjc">Church of God in Jesus Christ</option>
-                      <option value="datingdaan">Dating Daan</option>
-                      <option value="elshaddai">El Shaddai</option>
-                      <option value="fullgospel">Full Gospel</option>
-                      <option value="hinduism">Hinduism</option>
-                      <option value="inc">Iglesia ni Cristo</option>
-                      <option value="indigenous">Indigenous Religion</option>
-                      <option value="islam">Islam</option>
-                      <option value="jehovah">Jehovah's Witnesses</option>
-                      <option value="judaism">Judaism</option>
-                      <option value="kjc">Kingdom of Jesus Christ</option>
-                      <option value="lutheran">Lutheran</option>
-                      <option value="methodist">Methodist</option>
-                      <option value="orthodox">Orthodox Church</option>
-                      <option value="pentecostal">Pentecostal</option>
-                      <option value="presbyterian">Presbyterian</option>
-                      <option value="adventist">Seventh Day Adventist</option>
-                      <option value="sikhism">Sikhism</option>
-                      <option value="taoism">Taoism</option>
-                      <option value="none">No Religion</option>
-                      <option value="others">Others</option>
-                    </select>
-                  </div>
-
-                  <!-- Special Assistance Y/N-->
-                  <div class="col-span-6">
-                    <label for="special-assistance" class="block mb-2 text-sm font-medium text-black dark:text-white">Kailangan ng special assistance?</label>
-                    <div id="special-assistance" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="special-assistance">
-                        <li>
-                          <div class="flex items-center">
-                            <input id="pwd-checkbox-item-1" type="radio" name="special-assistance" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="pwd-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="pwd-checkbox-item-2" type="radio" name="special-assistance" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="pwd-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <!-- Special Assistance (optional) -->
-                  <div class="col-span-6 ">
-                    <label for="disability" class="block mb-2 text-sm font-medium text-black dark:text-white">Disability (Optional)</label>
-                    <input type="text" name="disability" id="disability" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if no special assistance is needed.)">
-                  </div>
-
-                  <!-- Region -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="region" class="block mb-2 text-sm font-medium text-black dark:text-white">Region</label>
-                    <select name="region" 
-                      id="region" 
-                      class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
-                    </select>
-                    <input type="hidden" 
-                      id="region_text" 
-                      name="region_text" >
-                  </div>
-
-                  <!-- Province -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="province" class="block mb-2 text-sm font-medium text-black dark:text-white">Province</label>
-                    <select name="province" 
-                      id="province" 
-                      class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
-                    </select>
-                    <input type="hidden" 
-                      id="province_text" 
-                      name="province_text" >
-                  </div>
-
-                  <!-- City -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="city" class="block mb-2 text-sm font-medium text-black dark:text-white">City</label>
-                    <select name="city" 
-                      id="city" 
-                      class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
-                    </select>
-                    <input type="hidden" 
-                      id="city_text" 
-                      name="city_text" >
-                  </div>
-
-                  <!-- Barangay -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="barangay" class="block mb-2 text-sm font-medium text-black dark:text-white">Barangay</label>
-                    <select name="barangay" 
-                      id="barangay" 
-                      class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Select a region.">
-                    </select>
-                    <input type="hidden" 
-                      id="barangay_text" 
-                      name="barangay_text" >
-                  </div>
-
-                  <!-- Street -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="street" class="block mb-2 text-sm font-medium text-black dark:text-white">Street</label>
-                    <input type="text" name="street" id="street" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                  </div>
-
-                  <!-- House No. -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="street" class="block mb-2 text-sm font-medium text-black dark:text-white">House No.</label>
-                    <input type="text" name="street" id="street" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                  </div>
-
-                  <!-- Father's Full Name -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="father-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Full Name</label>
-                    <input type="text" name="father-name" id="father-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                  </div>
-
-                  <!-- Father's Contact Number -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="father-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Father's Contact Number</label>
-                    <input type="number" name="father-num" id="father-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                  </div>
-
-                  <!-- Mother's Maiden Name -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="mother-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Maiden Name</label>
-                    <input type="text" name="mother-name" id="mother-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                  </div>
-
-                  <!-- Mother's Contact Number -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="mother-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Mother's Contact Number</label>
-                    <input type="number" name="mother-num" id="mother-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                  </div>
-
-                  <!-- Guardian's Full Name -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="guardian-name" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Full Name</label>
-                    <input type="text" name="guardian-name" id="guardian-name" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                  </div>
-
-                  <!-- Guardian's Contact Number -->
-                  <div class="col-span-6 sm:col-span-3">
-                    <label for="guardian-num" class="block mb-2 text-sm font-medium text-black dark:text-white">Guardian's Contact Number</label>
-                    <input type="number" name="guardian-num" id="guardian-num" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="" required="">
-                  </div>
-
-                  <!-- 4P's Beneficiary Y/N -->
-                  <div class="col-span-6">
-                    <label for="4ps" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Beneficiary?</label>
-                    <div id="4ps" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="4ps">
-                        <li>
-                          <div class="flex items-center">
-                            <input id="4ps-checkbox-item-1" type="radio" name="4ps" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="4ps-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Oo</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="4ps-checkbox-item-2" type="radio" name="4ps" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="4ps-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Hindi</label>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <!-- 4P's Household ID No. (optional)-->
-                  <div class="col-span-6">
-                    <label for="4ps-no" class="block mb-2 text-sm font-medium text-black dark:text-white">4P's Household ID No.</label>
-                    <input type="text" name="4ps-no" id="4ps-no" class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="(Leave blank if not a 4P's benefactor.)">
-                  </div>
-
-                  <!-- Access to Technology -->
-                  <div class="col-span-6">
-                    <label for="accessToTechnologyButton" class="block text-sm font-medium text-black dark:text-white">Access to Technology</p>
-                    <!-- Checkbox  for Access to technology-->
-                    <div id="accessToTechnologyCheckbox" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="accessToTechnologyCheckbox">
-                        <li>
-                          <div class="flex items-center">
-                            <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May sariling cellphone/tablet ang Bata</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May computer sa bahay</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Walang sariling gadget ang bata</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May tv sa bahay</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">May internet connection sa bahay</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="att-checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="att-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Mobile data lamang ang gamit</label>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <!-- Preferred Mode of Learning -->
-                  <div class="col-span-6">
-                    <label for="pmol" class="block mb-2 text-sm font-medium text-black dark:text-white">Preferred Mode of Learning</label>
-                    <div id="pmol" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="pmol">
-                        <li>
-                          <div class="flex items-center">
-                            <input id="pmol-checkbox-item-1" type="radio" name="pmol" value="Modular Printed" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="pmol-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Printed</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="pmol-checkbox-item-2" type="radio" name="pmol" value="Modular Digital" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="pmol-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Modular Digital</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="pmol-checkbox-item-3" type="radio" name="pmol" value="Online" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="pmol-checkbox-item-3" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Online</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="pmol-checkbox-item-4" type="radio" name="pmol" value="Educational Television" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="pmol-checkbox-item-4" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Educational Television</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="pmol-checkbox-item-5" type="radio" name="pmol" value="Homeschooling" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="pmol-checkbox-item-5" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Homeschooling</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="pmol-checkbox-item-6" type="radio" name="pmol" value="Blended" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="pmol-checkbox-item-6" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Blended</label>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <!-- Status -->
-                  <div class="col-span-6">
-                    <label for="status" class="block mb-2 text-sm font-medium text-black dark:text-white">Account Status</label>
-                    <div id="status" class="z-10 w-full mt-2 border border-gray-300 bg-gray-50 divide-y divide-gray-100 rounded-lg dark:bg-gray-700 dark:divide-gray-600">
-                      <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="status">
-                        <li>
-                          <div class="flex items-center">
-                            <input id="status-checkbox-item-1" type="radio" name="status" value="Active" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="status-checkbox-item-1" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Active</label>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-center">
-                            <input id="status-checkbox-item-2" type="radio" name="status" value="Inactive" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="status-checkbox-item-2" class="ms-2 text-sm font-medium text-black dark:text-gray-300">Inactive</label>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Modal footer -->
-              <div class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Save all</button>
-              </div>
-            </form>
-          </div> 
-        </div> <!-- End of Edit Student User Modal -->
 
         <!-- Archive Student User Modal -->
         <div id="archiveStudentUserModal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">

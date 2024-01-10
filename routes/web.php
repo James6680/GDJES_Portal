@@ -65,12 +65,14 @@ Route::get('admin.student-management', function () {
     return view('layouts.admin');
 })->middleware('admin')->name('admin.student-management');
 
-Route::post('admin.student-management.add',[AdminController::class, 'CreateStudent'])->middleware('admin')
+Route::post('admin.student-management.add',[Enrollmentcontroller::class, 'adminCreatestudent'])->middleware('admin')
 ->name('admin.student-management.add');//added
 Route::post('admin.student-management.edit',[AdminController::class, 'EditStudent'])->middleware('admin')
 ->name('admin.student-management.edit');//added
 Route::post('admin.student-management.delete',[AdminController::class, 'delete'])->middleware('admin')
 ->name('admin.student-management.delete');//added
+Route::post('admin.student-management.archive',[AdminController::class, 'ArchiveStudent'])->middleware('admin')
+->name('admin.student-management.archive');//added
 
 Route::get('admin.teacher-management', function () {
     return view('layouts.admin');
@@ -83,10 +85,13 @@ Route::post('admin.teacher-management.edit',[AdminController::class, 'EditTeache
 Route::post('admin.teacher-management.delete',[AdminController::class, 'delete'])->middleware('admin')
 ->name('admin.teacher-management.delete');//added
 
-
-
-
-
+//CHANGE PASSWORDS
+Route::post('teacher.changePassword', [TeacherController::class, 'changePassword'])
+->name('teacher.changePassword');
+Route::post('admin.changePassword', [adminController::class, 'changePassword'])
+->name('admin.changePassword');
+Route::post('students.changePassword', [Student::class, 'changePassword'])
+->name('students.changePassword');
 
 Route::get('admin.enrollment-management', function () {
     return view('layouts.admin');

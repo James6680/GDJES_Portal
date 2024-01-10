@@ -1,5 +1,41 @@
 <script>
     $(document).ready(function() {
+        const returneeRadios = document.querySelectorAll('#createStudent input[name="returnee"]');
+        const lastGradeAttendedSelect = document.querySelector('#createStudent #last_grade_attended');
+        const lastSchoolAttendedSelect = document.querySelector('#createStudent #last_school_attended');
+        const lastSchoolYearAttendedSelect = document.querySelector('#createStudent #last_school_year_finished');
+        const gradeLevelSelect = document.querySelector('#createStudent #dropdownGradeLevelButton');
+        returneeRadios.forEach(radio => {
+          radio.addEventListener('change', (event) => {
+            if (event.target.value === 'HINDI') {
+              lastGradeAttendedSelect.disabled = true;
+              lastSchoolAttendedSelect.disabled = true;
+              lastSchoolYearAttendedSelect.disabled = true;
+
+              lastGradeAttendedSelect.selectedIndex = 0;
+              lastSchoolAttendedSelect.value = "";
+              lastSchoolYearAttendedSelect.value = "";
+              
+            } else {
+                lastGradeAttendedSelect.disabled = false;
+              lastSchoolAttendedSelect.disabled = false;
+              lastSchoolYearAttendedSelect.disabled = false;
+            }
+          });
+        });
+
+        lastGradeAttendedSelect.addEventListener('change', (event) => {
+          const selectedGrade = Number(event.target.value);
+          if (selectedGrade == "") {
+            gradeLevelSelect.selectedIndex = 0;
+          } else if (selectedGrade == "0") {
+            gradeLevelSelect.selectedIndex = 1;
+          } else if (selectedGrade == "7") {
+            gradeLevelSelect.selectedIndex = 7;
+          }else if (selectedGrade >= 1 && selectedGrade <= 6) {
+              gradeLevelSelect.value = selectedGrade+1;
+          }
+        });
 
         //create Student
         $('#addStudent').on('click', function(e){
@@ -8,19 +44,20 @@
             // Clear previous error messages and remove red borders
             $('.error-message').remove();
             $('.form-input').removeClass('border-red-500');
-
+            let returnee = $('#createStudent input[name="returnee"]:checked').val();
+            let last_grade_attended = $('#createStudent #last_grade_attended').val();
+            let last_school_attended = $('#createStudent #last_school_attended').val();
+            let last_school_year_finished = $('#createStudent #last_school_year_finished').val();
             let psa_birth_certno = $('#createStudent #psa').val();
             let lrn = $('#createStudent #lrn').val();
             let last_name = $('#createStudent #last_name').val();
             let first_name = $('#createStudent #first_name').val();
             let middle_name = $('#createStudent #middle_name').val();
-            let extension_name = $('#createStudent #dropdownNameExtensionlButton').val();
-            // I need this to create an enrollment record that has a student_id and grade_level_id in the enrollments table
-            // Then I need for the grade_level data here to reflect the grade_level_id in the enrollments table
+            let extension_name = $('#createStudent #extensionName_ng_bata').val();
             let grade_level = $('#createStudent #dropdownGradeLevelButton').val();
             let birth_date = $('#createStudent #birth_date').val();
             let age = $('#createStudent #age').val();
-            let gender = $('#createStudent #gender').val();
+            let gender = $('#createStudent input[name="gender"]:checked').val();
             let indigenous_group = $('#createStudent #indigenous_group').val();
             let mother_tongue = $('#createStudent #dropdownMotherTongueButton').val();
             let religion = $('#createStudent #dropdownReligionButton').val();
@@ -31,58 +68,304 @@
             let barangay = $('#createStudent #barangay').val();
             let street = $('#createStudent #street').val();
             let house_number = $('#createStudent #house_number').val();
-
-            //TODO: Add public fuinction to server side - AdminController.php
-            //Check EnrollmentController.php for reference
-            
-            //Input parents input here and then add the last student_col reference (household_4ps_id)
             let father_last_name = $('#createStudent #father_lastname').val();
             let father_first_name = $('#createStudent #father_firstname').val();
             let father_middle_name = $('#createStudent #father_middlename').val();
-            let father_extension_name = $('#createStudent #dropdownFatherNameExtensionButton').val();
+            let father_extension_name = $('#createStudent #extensionName_ng_ama').val();
             let father_phone_number = $('#createStudent #father_num').val();
             let father_email = $('#createStudent #father_email').val();
+            let mother_last_name = $('#createStudent #mother_lastname').val();
+            let mother_first_name = $('#createStudent #mother_firstname').val();
+            let mother_middle_name = $('#createStudent #mother_middlename').val();
+            let mother_extension_name = $('#createStudent #extensionName_ng_ina').val();
+            let mother_phone_number = $('#createStudent #mother_num').val();
+            let mother_email = $('#createStudent #mother_email').val();
+            let guardian_last_name = $('#createStudent #guardian_lastname').val();
+            let guardian_first_name = $('#createStudent #guardian_firstname').val();
+            let guardian_middle_name = $('#createStudent #guardian_middlename').val();
+            let guardian_extension_name = $('#createStudent #extensionName_ng_guardian').val();
+            let guardian_phone_number = $('#createStudent #guardian_num').val();
+            let guardian_email = $('#createStudent #guardian_email').val();
 
-            console.log(birth_date);
+            let household_4ps_id = $('#createStudent #household_4ps_id').val();
+            var checkedLearningInfo = $('#createStudent input[name="learning_info[]"]:checked');
+            // Collect their values into an array
+            let learning_info = checkedLearningInfo.map(function() {
+              return $(this).val();
+            }).get();
+            let mode_of_learning = $('#createStudent input[name="pmol"]:checked').val();
+            /////NOTE: ADD THE NAMES OF THE FIELDS IN ADMIN CONTNET SECTION. THIS IS INCOMPLETE
+
+            var asd = document.querySelectorAll('*[id*="_error"]');
+                    asd.forEach(function(element) {
+                        if (element.classList.contains('border-red-500')) {
+                            // Find the child element with the 'error-message' class:
+                            const errorMessage = element.querySelector('.error-message');
+                            if (errorMessage) {
+                                errorMessage.remove(); // Remove the error message element
+                            }
+                            // Optionally, remove the border class from the parent:
+                            element.classList.remove('border-red-500');
+                        }
+                    });
+
+            var dataObject = {
+                  aralStatus: returnee,
+                  returnee: last_grade_attended,
+                  lastSchoolAttended: last_school_attended,
+                  lastSchoolYearAttended: last_school_year_finished,
+                  psa_birth_cert: psa_birth_certno,
+                  lrn_number: lrn,
+                  lastName_ng_bata: last_name,
+                  firstName_ng_bata: first_name,
+                  middleName_ng_bata: middle_name,
+                  extensionName_ng_bata: extension_name,
+                  grade_level: grade_level,
+                  birth_date: birth_date,
+                  age_on_oct_31: age,
+                  gender: gender,
+                  indigenous_group_name: indigenous_group,
+                  primary_language: mother_tongue,
+                  religion: religion,
+                  special_needs_description: special_assistance_needs,
+                  region: region,
+                  province: province,
+                  city: municipality,
+                  barangay: barangay,
+                  street_text: street,
+                  house_number: house_number,
+                  lastName_ng_ama: father_last_name,
+                  firstName_ng_ama: father_first_name,
+                  middleName_ng_ama: father_middle_name,
+                  extensionName_ng_ama: father_extension_name,
+                  father_phone: father_phone_number,
+                  email_ng_ama: father_email,
+                  lastName_ng_ina: mother_last_name,
+                  firstName_ng_ina: mother_first_name,
+                  middleName_ng_ina: mother_middle_name,
+                  extensionName_ng_ina: mother_extension_name,
+                  mother_phone: mother_phone_number,
+                  email_ng_ina: mother_email,
+                  lastName_ng_guardian: guardian_last_name,
+                  firstName_ng_guardian: guardian_first_name,
+                  middleName_ng_guardian: guardian_middle_name,
+                  extensionName_ng_guardian: guardian_extension_name,
+                  guardian_phone: guardian_phone_number,
+                  email_ng_guardian: guardian_email,
+                  fourps_id: household_4ps_id,
+                  learning_info: learning_info,
+                  distance_learning: mode_of_learning,
+            };
             $.ajax({
                 url: localStorage.getItem('appUrl') + "/admin.student-management.add",
                 method: "POST",
-                data: {
-                    last_name: last_name,
-                    first_name: first_name,
-                    middle_name: middle_name,
-                    extension_name: extension_name,
-                    email: email,
-                    birth_date: birth_date,
-                    age: age,
-                    gender: gender,
-                    phone_number: phone_number,
-                    house_number: house_number,
-                    street: street,
-                    barangay: barangay,
-                    municipality: municipality,
-                    province: province,
-                    region: region,
-                },
+                data: dataObject,
                 success: function(result) {
                     // Handle the success response here
-                    if (result.status == 'success') {
                     // Close the Tailwind CSS modal
                         //document.getElementById('createTeacherUserModal').classList.remove('visible');
                         //document.getElementById('createTeacherUserModal').classList.add('invisible');
-                        document.getElementById('createTeacher').reset();
+                        document.getElementById('createStudent').reset();
                         $('#tbl').load(location.href + ' #tbl');
-                    }
                 },
                 error: function(result) {
                     let error = result.responseJSON;
                     $.each(error.errors, function(key, value) {
-                        $('#' + key).addClass('border-red-500');
-                        $('#' + key).after('<p class="text-red-500 text-xs italic error-message">' + value + '</p>');
+                        $('#' + key + "_error").addClass('border-red-500');
+                        $('#' + key+ "_error").after('<p class="text-red-500 text-xs italic error-message">' + value + '</p>');
                     });
                 }
             });  
         })
+        //TESTING ONLY
+        // const ish = document.querySelector('#view_last_name');
+        // const buttoms = document.querySelector('#buttoms');
+        // buttoms.addEventListener('click', function(e) {
+        //   ish.textContent += "hello";   
+        // });
+        
+        const viewStudentButtons = document.querySelectorAll(".view_students");
+        for (const viewStudentButton of viewStudentButtons) {
+            viewStudentButton.addEventListener('click', function (e) {
+                const dataset = viewStudentButton.dataset;
+                for (const key in dataset) {
+                    $('#view_' + key).text(dataset[key]); // Use simpler selector
+                }
+            });
+        }
+
+        const editStudentButtons = document.querySelectorAll(".edit_students");
+
+        for (const editStudentButton of editStudentButtons) {
+          editStudentButton.addEventListener('click', function (e) {
+
+            const dataset = editStudentButton.dataset;
+            for(const key in dataset){
+                const targetElement = $('#editStudent #' + key);
+                targetElement.val("");
+                if(targetElement.is('select')){
+                    targetElement.prop('selectedIndex', 0);
+                }
+            }
+        
+            for (const key in dataset) {
+              const targetElement = $('#editStudent #' + key);
+            
+              // Handle text inputs as before
+              if (targetElement.is('input')) {
+                targetElement.val(dataset[key]);
+              }
+          
+              // Handling select elements:
+              else if (targetElement.is('select')) {
+                const selectValue = dataset[key];
+                targetElement.find('option[value="' + selectValue + '"]').prop('selected', true);
+              }
+
+              // Handling radio buttons:
+            //   else if (targetElement.is('radio')) { // Check if it's an array
+            //   console.log("sadfasdf");
+            //       for (let i = 0; i < targetElement.length; i++) {
+            //         const radioButton = targetElement.eq(i); // Get individual radio button
+            //         if (radioButton.is('radio') && radioButton.val() == dataset[key]) {
+            //           radioButton.val(dataset[key]);
+            //         }
+            //       }
+            //     }
+
+            //   console.log(key + ": "+ dataset[key]);
+            //   console.log(targetElement);
+            }
+            const genderRadioButtons = $('#editStudent input[name="gender"]');
+            genderRadioButtons.each(function(index, element) {
+              // Use $(this) to ensure jQuery object context
+              if ($(this).val() === dataset['gender']) {
+                $(this).prop('checked', true);
+              }
+            });
+          });
+        }
+
+        //SUBMIT EDIT STUDENT
+        $('#editStudentButton').on('click', function(e){
+            e.preventDefault();
+            $('.error-message').remove();
+            $('.form-input').removeClass('border-red-500');
+            let username = $('#editStudent #username').val();
+            let returnee = $('#editStudent input[name="returnee"]:checked').val();
+            let last_grade_attended = $('#editStudent #last_grade_attended').val();
+            let last_school_attended = $('#editStudent #last_school_attended').val();
+            let last_school_year_finished = $('#editStudent #last_school_year_finished').val();
+            let psa_birth_certno = $('#editStudent #psa').val();
+            let lrn = $('#editStudent #lrn').val();
+            let last_name = $('#editStudent #last_name').val();
+            let first_name = $('#editStudent #first_name').val();
+            let middle_name = $('#editStudent #middle_name').val();
+            let extension_name = $('#editStudent #extensionname_ng_bata').val();
+            let grade_level = $('#editStudent #dropdownGradeLevelButton').val();
+            let birth_date = $('#editStudent #birth_date').val();
+            let age = $('#editStudent #age').val();
+            let gender = $('#editStudent input[name="gender"]:checked').val();
+            let indigenous_group = $('#editStudent #indigenous_group').val();
+            let mother_tongue = $('#editStudent #dropdownMotherTongueButton').val();
+            let religion = $('#editStudent #dropdownReligionButton').val();
+            let special_assistance_needs = $('#editStudent #special_assistance_needs').val();
+            let region = $('#editStudent #region').val();
+            let province = $('#editStudent #province').val();
+            let municipality = $('#editStudent #city').val();
+            let barangay = $('#editStudent #barangay').val();
+            let street = $('#editStudent #street').val();
+            let house_number = $('#editStudent #house_number').val();
+            let father_last_name = $('#editStudent #father_lastname').val();
+            let father_first_name = $('#editStudent #father_firstname').val();
+            let father_middle_name = $('#editStudent #father_middlename').val();
+            let father_extension_name = $('#editStudent #extensionname_ng_ama').val();
+            let father_phone_number = $('#editStudent #father_num').val();
+            let father_email = $('#editStudent #father_email').val();
+            let mother_last_name = $('#editStudent #mother_lastname').val();
+            let mother_first_name = $('#editStudent #mother_firstname').val();
+            let mother_middle_name = $('#editStudent #mother_middlename').val();
+            let mother_extension_name = $('#editStudent #extensionname_ng_ina').val();
+            let mother_phone_number = $('#editStudent #mother_num').val();
+            let mother_email = $('#editStudent #mother_email').val();
+            let guardian_last_name = $('#editStudent #guardian_lastname').val();
+            let guardian_first_name = $('#editStudent #guardian_firstname').val();
+            let guardian_middle_name = $('#editStudent #guardian_middlename').val();
+            let guardian_extension_name = $('#editStudent #extensionname_ng_guardian').val();
+            let guardian_phone_number = $('#editStudent #guardian_num').val();
+            let guardian_email = $('#editStudent #guardian_email').val();
+            let household_4ps_id = $('#editStudent #household_4ps_id').val();
+            var checkedLearningInfo = $('#editStudent input[name="learning_info[]"]:checked');
+
+            let dataObject={
+                // aralStatus: returnee,
+                //   returnee: last_grade_attended,
+                //   lastSchoolAttended: last_school_attended,
+                //   lastSchoolYearAttended: last_school_year_finished,
+                  username: username,
+                  psa_birth_cert: psa_birth_certno,
+                  lrn_number: lrn,
+                  lastName_ng_bata: last_name,
+                  firstName_ng_bata: first_name,
+                  middleName_ng_bata: middle_name,
+                  extensionName_ng_bata: extension_name,
+                //   grade_level: grade_level,
+                  birth_date: birth_date,
+                  age_on_oct_31: age,
+                  gender: gender,
+                  indigenous_group_name: indigenous_group,
+                  primary_language: mother_tongue,
+                  religion: religion,
+                  special_needs_description: special_assistance_needs,
+                  region: region,
+                  province: province,
+                  city: municipality,
+                  barangay: barangay,
+                  street_text: street,
+                  house_number: house_number,
+                  lastName_ng_ama: father_last_name,
+                  firstName_ng_ama: father_first_name,
+                  middleName_ng_ama: father_middle_name,
+                  extensionName_ng_ama: father_extension_name,
+                  father_phone: father_phone_number,
+                  email_ng_ama: father_email,
+                  lastName_ng_ina: mother_last_name,
+                  firstName_ng_ina: mother_first_name,
+                  middleName_ng_ina: mother_middle_name,
+                  extensionName_ng_ina: mother_extension_name,
+                  mother_phone: mother_phone_number,
+                  email_ng_ina: mother_email,
+                  lastName_ng_guardian: guardian_last_name,
+                  firstName_ng_guardian: guardian_first_name,
+                  middleName_ng_guardian: guardian_middle_name,
+                  extensionName_ng_guardian: guardian_extension_name,
+                  guardian_phone: guardian_phone_number,
+                  email_ng_guardian: guardian_email,
+                  fourps_id: household_4ps_id,
+                //   learning_info: learning_info,
+                //   distance_learning: mode_of_learning,
+            }
+            $.ajax({
+                url: localStorage.getItem('appUrl') + "/admin.student-management.edit",
+                method: "POST",
+                data: dataObject,
+                success: function(result) {
+                    // Handle the success response here
+                    // Close the Tailwind CSS modal
+                        //document.getElementById('createTeacherUserModal').classList.remove('visible');
+                        //document.getElementById('createTeacherUserModal').classList.add('invisible');
+                },
+                error: function(result) {
+                    let error = result.responseJSON;
+                    $.each(error.errors, function(key, value) {
+                        $('#editStudent #' + key + "_error").addClass('border-red-500');
+                        $('#editStudent #' + key + "_error").append('<p class="text-red-500 text-xs italic error-message">' + value + '</p>');
+                    });
+                }
+            });  
+        });
+
+        
 
         //create Teacher
         $('#addTeacher').on('click', function(e){
@@ -109,7 +392,7 @@
             let province = $('#createTeacher #province').val();
             let region = $('#createTeacher #region').val();
             let facebook_link = $('#createTeacher #facebook_link').val();
-            console.log(birth_date);
+
             $.ajax({
                 url: localStorage.getItem('appUrl') + "/admin.teacher-management.add",
                 method: "POST",
@@ -152,9 +435,48 @@
             });  
         })
 
+        //ARCHIVE STUDENT
+        const archiveStudentButtons = document.querySelectorAll(".archive_students");
+        var id;
+        var username;
+        const confirm_student_archive = document.getElementById('confirm_student_archive');
+        const students_table = document.getElementById('students_table');
+
+        for (const archiveStudentButton of archiveStudentButtons) {
+            archiveStudentButton.addEventListener('click', function (e) {
+                student_name = archiveStudentButton.dataset['last_name'] + ", " + archiveStudentButton.dataset['first_name'];
+                id = archiveStudentButton.dataset['id'];
+                document.getElementById('archive_student_name').textContent = student_name;
+            });    
+        };    
+
+        confirm_student_archive.addEventListener('click', function(e){
+            e.preventDefault();
+            $.ajax({
+                    url: localStorage.getItem('appUrl') + "/admin.student-management.archive",
+                    method: "POST",
+                    data: {id:id},
+                    success: function(result){
+                        console.log(id);
+                        console.log(result);
+                        const row = document.getElementById('student_' + id);
+                        document.getElementById("cancel_student_archive").click();
+                        console.log("success");
+                        students_table.deleteRow(row.rowIndex);
+                        const rows = students_table.rows;
+
+                        let number = 1;
+                        for (let i = 1; i < rows.length; i++) {
+                          const row = rows[i];
+                          const numberCell = row.cells[0]; // Assuming the "NO." column is the first one
+                          numberCell.textContent = number++;
+                        }
+                    }
+                });
+        });
+
         //view Teacher
         $('.view_teacher').on('click', function(e){
-
         let id = $(this).data('id');
         let last_name = $(this).data('last_name');
         let first_name = $(this).data('first_name');    

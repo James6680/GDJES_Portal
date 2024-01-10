@@ -229,6 +229,68 @@ class EnrollmentController extends Controller
         }
     }
 
+    public function adminCreatestudent(Request $request){
+        $validatedData = $request->validate([
+            'aralStatus' => 'required',
+            'returnee' => 'nullable',
+            'lastSchoolAttended' => 'nullable',
+            'lastSchoolYearAttended' => 'nullable',
+            'grade_level' => 'required',
+            'lrn_number' => 'nullable',
+            'psa_birth_cert' => 'required',
+            'lastName_ng_bata' => 'required',
+            'firstName_ng_bata' => 'required',
+            'middleName_ng_bata' => 'required',
+            'extensionName_ng_bata' => 'required',
+            'birth_date' => 'required',
+            'age_on_oct_31' => 'required',
+            'gender' => 'required',
+            'indigenous_group_name' => 'nullable',
+            'primary_language'=>'required',
+            'religion' => 'required',
+            'special_needs_description' => 'nullable',
+            'region' => 'required',
+            'province'  => 'required',
+            'city'  => 'required',
+            'barangay'  => 'required',
+            'street_text' => 'required',
+            'house_number' => 'required',
+            "lastName_ng_ama" => 'required',
+            "firstName_ng_ama" => 'required',
+            "middleName_ng_ama" => 'required',
+            "extensionName_ng_ama" => 'required', 
+            "father_phone" => 'required', 
+            "email_ng_ama" => 'required',
+            "lastName_ng_ina" => 'required', 
+            "firstName_ng_ina" => 'required', 
+            "middleName_ng_ina" => 'required', 
+            "extensionName_ng_ina" => 'required', 
+            "mother_phone" => 'required', 
+            "email_ng_ina" => 'required',
+            "lastName_ng_guardian" => 'required', 
+            "firstName_ng_guardian" => 'required', 
+            "middleName_ng_guardian" => 'required', 
+            "extensionName_ng_guardian" => 'required', 
+            "guardian_phone" => 'required', 
+            "email_ng_guardian" => 'required',
+            "fourps_id" => 'nullable',
+            "learning_info" => 'required',
+            "distance_learning" => 'required', 
+        ]);
+
+        if (isset($validatedData['lrn_number'])) {
+            $validatedData['lrn_status'] = 1; // Set lrn_status to 1
+        }
+
+        $validatedData['school_year'] = DB::table('school_years')->where('is_enrollment','=','1')->pluck('id')->first();
+
+        $enrollment = new EnrollmentForm();
+        $enrollment->fill($validatedData);
+        $request->session()->put('enrollment', $enrollment);
+        $this->createStudentInDatabase($enrollment);
+        return $enrollment;
+    }
+
     public function createStudentInDatabase(EnrollmentForm $enrollmentForm){
 
         $school_year = DB::table('school_years')->where('is_enrollment','=','1')->pluck('id')->first();
