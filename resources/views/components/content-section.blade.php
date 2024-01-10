@@ -690,43 +690,43 @@
                                     Days of School
                                 </th>
                                 <td class=" border-collapse border border-green-600">
-                                    x
+                                    
                                 </td>
                                 <td class="border-collapse border border-green-600">
-                                    x  
+                                   
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                      
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                      
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                   
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                   
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                  
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                     
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x        
+                                       
                                 </td>
                                 <td class=" border-collapse border border-green-600 ">
-                                    x
+                                   
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x
+                                   
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
@@ -734,43 +734,43 @@
                                     Days of Present
                                 </th>
                                 <td class=" border-collapse border border-green-600">
-                                    x
+                                    
                                 </td>
                                 <td class="border-collapse border border-green-600">
-                                x   
+                                
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                x     
+                                  
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                x     
+                                
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                x     
+                                   
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                x     
+                                   
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                x     
+                               
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                   
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x        
+                                         
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x
+                                  
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x
+                                   
                                 </td>
                             </tr>
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
@@ -778,43 +778,43 @@
                                     Days of Absent
                                 </th>
                                 <td class=" border-collapse border border-green-600">
-                                    x
+                                   
                                 </td>
                                 <td class="border-collapse border border-green-600">
-                                    x  
+                                   
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                     
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                     
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                   
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                    
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                      
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x    
+                                  
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x
+                                   
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x
+                                  
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    x
+                                    
                                 </td>
                             </tr>
                         </tbody>
@@ -942,49 +942,49 @@
                             </tr>
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
-                                    X
+                                    
                                 </th>
                                 <td class="px-6 py-4">
-                                    X
+                                   
                                 </td>
                                 <td class="px-6 py-4">
-                                    X
+                                    
                                 </td>
 
                             </tr>
                             <tr class="bg-white border-b dark:bg-gray-800">
                                 <th scope="row" class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
-                                    X
+                                   
                                 </th>
                                 <td class="px-6 py-4">
-                                    X
+                                   
                                 </td>
                                 <td class="px-6 py-4">
-                                    X
+                                    
                                 </td>
    
                             </tr>
                             <tr class="bg-white border-b dark:bg-gray-800">
                                 <th scope="row" class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
-                                    X
+                                   
                                 </th>
                                 <td class="px-6 py-4">
-                                    X
+                                  
                                 </td>
                                 <td class="px-6 py-4">
-                                    X
+                                   
                                 </td>
    
                             </tr>
                             <tr class="bg-white border-b dark:bg-gray-800">
                                 <th scope="row" class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
-                                    X
+                                   
                                 </th>
                                 <td class="px-6 py-4">
-                                    X
+                                  
                                 </td>
                                 <td class="px-6 py-4">
-                                    X
+                                    
                                 </td>
    
                             </tr>
