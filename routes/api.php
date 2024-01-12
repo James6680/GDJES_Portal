@@ -230,7 +230,7 @@ foreach ($recentSchoolYears as $schoolYear) {
         ->where('enrollment.school_year_id', $schoolYear->id)
         ->where('students.gender', 'Female')
         ->count();
-
+    ///COMPLETION COUNT CREATE THE APPROPRIATE QUERY HERE LATER
     $completionCount = DB::table('enrollment')
         ->where('school_year_id', $schoolYear->id)
         ->where('enrollment_status', 'completed')
