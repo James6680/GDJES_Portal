@@ -31,7 +31,13 @@
     }
 
   </style>
-
+    <script type="text/javascript">
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+      </script>
 </head>
   
 <body class="min-w-full grid grid-flow-col justify-start h-screen pt-16 bg-green-50">

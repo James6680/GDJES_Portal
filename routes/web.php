@@ -195,6 +195,15 @@ Route::post('student-registration-5', [EnrollmentController::class, 'postEnrollm
 
 Route::get('student-registration-Completed', [EnrollmentController::class, 'enrollmentComplete'])
     ->name('enrollment.StudentportalRegistrationCompletedPage');
+
+Route::post('enrollment.student-enrollment', [EnrollmentController::class, 'existingStudentEnrollment'])
+->name('enrollment.student-enrollment');
+
+Route::post('enrollment.StudentContinuedEnrollment.post', [EnrollmentController::class, 'existingStudentEnrollmentPost'])
+->name('enrollment.StudentContinuedEnrollment.post');
+
+Route::get('enrollment.completed', [EnrollmentController::class, 'StudentContinuedEnrollmentComplete'])
+->name('enrollment.StudentContinuedEnrollmentComplete');
 });
 
 Route::post('student.requestDocument', [Student::class, 'studentRequestDocument']);

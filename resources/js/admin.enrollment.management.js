@@ -571,7 +571,7 @@ function clearEditSectionErrors(){
 
 
 closeEnrollmentButton.addEventListener('click', function(){
-  document.getElementById('show-add-student').href = '#';
+  // document.getElementById('show-add-student').href = '#';
     $.ajax({
       url: localStorage.getItem('appUrl') + "/admin.closeEnrollment",
       type: "POST",
@@ -685,16 +685,17 @@ function updateSchoolYearControlButtons(){
         const startSchoolYearButton = document.querySelector('#startSYButton');
         const endSchoolYearButton = document.querySelector('#endSYButton');
         $(enrollmentButtonControls).css("display", "flex");
-          if(selectedSchoolYearObject.is_finished === 1){
+          if(selectedSchoolYearObject.is_finished == 1){
             $(startSchoolYearButton).css("display", "none");
             $(endSchoolYearButton).css("display", "none");
             $(openEnrollmentButton).css("display", "none");   
             $(closeEnrollmentButton).css("display", "none");        
           }else{
-            if(selectedSchoolYearObject.active === 1){
+            if(selectedSchoolYearObject.active == 1){
+              console.log("hello");
               $(endSchoolYearButton).css("display", "flex");
               $(startSchoolYearButton).css("display", "none");    
-              if(selectedSchoolYearObject.is_enrollment === 1){
+              if(selectedSchoolYearObject.is_enrollment == 1){
                   $(closeEnrollmentButton).css("display", "flex");
                   $(closeEnrollmentButton).text("Close Enrollment");
                   $(openEnrollmentButton).css("display", "none");  
@@ -705,12 +706,12 @@ function updateSchoolYearControlButtons(){
               }
             }else{
               $(endSchoolYearButton).css("display", "none");
-              if(!schoolYearList.some(schoolYear => schoolYear.active === 1)){
+              if(!schoolYearList.some(schoolYear => schoolYear.active == 1)){
                   $(startSchoolYearButton).css("display", "flex");
               }else{
                   $(startSchoolYearButton).css("display", "none");
               }
-              if(selectedSchoolYearObject.is_enrollment === 1){
+              if(selectedSchoolYearObject.is_enrollment == 1){
                   $(closeEnrollmentButton).css("display", "flex");
                   $(closeEnrollmentButton).text("Close Pre-enrollment");
                   $(openEnrollmentButton).css("display", "none");  

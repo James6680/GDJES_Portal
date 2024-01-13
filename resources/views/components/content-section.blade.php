@@ -3,6 +3,7 @@
   use Carbon\Carbon;
   use App\Models\DocumentRequest;
   $student = Auth::guard('students')->user();
+  $student_id = $student->id;
   $username = $student->first_name . ' ' . $student->last_name;
   $last_name = $student->last_name;
   $first_name = $student->first_name;
@@ -163,6 +164,30 @@
             </div> <!-- End of Header Content -->
 
             <div class="grid w-full grid-cols-1 gap-2">
+                <div class="w-auto justify-self-end">
+                <form id="enrollmentFormData"action="" method="post">
+                    @csrf
+                    @method('post')
+                    <input type="hidden" id="idValue" name="id" value="{{$student_id}}">
+                    <button id="ContinuationEnrollmentButton" type="submit" class="bg-brown-500 text-white rounded-md font-medium hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 inline-flex w-full lg:text-base text-sm py-2 leading-none items-center lg:px-7 px-4" type="button">Enroll for next school year
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> 
+                    </svg>
+                    </button>
+                </form>
+                </div>
+
+                <script>
+                    const enrollmentButton = document.getElementById('ContinuationEnrollmentButton');
+                    const enrollmentForm = document.getElementById('enrollmentFormData');
+                    enrollmentForm.addEventListener('submit', function(event) {
+                        event.preventDefault(); // Prevent default form submission
+                    
+                        const formAction = localStorage.getItem('appUrl') + "/enrollment.student-enrollment"; // Get the link from localStorage
+                        enrollmentForm.action = formAction; // Set the form's action attribute
+                    
+                        enrollmentForm.submit(); // Submit the form to the new link
+                    });
+                </script>
 
                 <div class="w-auto justify-self-end">
 
@@ -1050,7 +1075,7 @@
                             type="button" 
                             class="focus:outline-none font-mulish text-white border-2 bg-brown-500 font-semibold rounded-md text-base xl:w-[20%] lg:w-[40%] w-full py-2.5 cursor-not-allowed shadow-transparent" 
                             disabled>
-                                {{$student->enrollment_status}}
+                                @php if(isset($student->enrollment_status))$student->enrollment_status; @endphp
                         </button>
                     </div>
 
@@ -1074,8 +1099,10 @@
 
                     <div class="w-full self-stretch gap-4">
                         @php
-                            $requirements = json_decode($student->requirements);
-                            $checklist = json_decode($student->checklist);
+                            $requirements = [];
+                            $checklist = [];
+                            if(isset($student->requirements))$requirements = json_decode($student->requirements);
+                            if(isset($student->checklist)) $checklist = json_decode($student->checklist);
                             $list = array_combine($requirements, $checklist);
                         @endphp
 
