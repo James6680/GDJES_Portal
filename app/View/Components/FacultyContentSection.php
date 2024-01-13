@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Closure;
 use App\Models\Classes;
+use App\Models\GradeSum;
 use App\Models\GradingSheet;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\DB;
@@ -49,6 +50,14 @@ class FacultyContentSection extends Component
        ->where('classes.teacher_id', '=', Auth::guard('teachers')->user()->id) 
         ->distinct()
         ->get();
+
+
+         
+        
+        
+
+
+
         // Transform the $classCombinations for dropdown options
         $dropdownOptions = $classCombinations->map(function ($combination) {
             return [
@@ -109,9 +118,32 @@ class FacultyContentSection extends Component
           return ['text' => $quarterText, 'number' => $quarterNumber];
         });
 
-            
+        
+
+
+        // Fetch the required data from the GradeSum table and related tables
+        $gradeSums = GradeSum::with('student', 'class', 'schoolYear')
+        ->where('class_id', $class_idValue) // Filter by selected class_id
+        ->get();
+
+        // Transform the $gradeSums for use in the view
+        $gradeSumData = $gradeSums->map(function ($gradeSum) {
+        return [
+            'id' => $gradeSum->id,
+            'student_name' => $gradeSum->student->last_name . ', ' . $gradeSum->student->first_name . ' ' . $gradeSum->student->middle_name,
+            'grade_q1' => $gradeSum->grade_q1,
+            'grade_q2' => $gradeSum->grade_q2,
+            'grade_q3' => $gradeSum->grade_q3,
+            'grade_q4' => $gradeSum->grade_q4,
+            'average' => $gradeSum->average,
+            'remarks' => $gradeSum->remarks,
+        ];
+        });
+
+
+        
         // Pass data to the view
-        return view('components.faculty-content-section', compact('gradingSheets','quarterValue', 'class_idValue','dropdownOptions', 'classCombinations', 'quarters', 'highestPossibleScore'));
+        return view('components.faculty-content-section', compact('gradingSheets','quarterValue', 'class_idValue','dropdownOptions', 'classCombinations', 'quarters', 'highestPossibleScore', 'gradeSumData'));
     }
      else {
         return view('components.faculty-content-section');

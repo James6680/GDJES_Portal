@@ -955,18 +955,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  @foreach ($gradingSheets as $gradingSheet)
-                                    <tr class="text-center bg-white">
+                                  @foreach ($gradeSumData as $gradeSum)                                    
+                                  <tr class="text-center bg-white">
                                         <td class="border-2 border-yellow-100 px-2 py-2 text-left">
-                                          {{ $gradingSheet->student->last_name }}, {{ $gradingSheet->student->first_name }} {{ $gradingSheet->student->middle_name }}
-                                        </td>
-                                        <td class="border-2 border-yellow-100 px-2"></td>
-                                        <td class="border-2 border-yellow-100 px-2">90</td>
-                                        <td class="border-2 border-yellow-100 px-2">92</td>
-                                        <td class="border-2 border-yellow-100 px-2">89</td>
-                                        <td class="border-2 border-yellow-100 px-2">90</td>
-                                        <td class="border-2 border-yellow-100 px-2">91</td>
-                                        <td class="border-2 border-yellow-100 px-2">PASSED</td>
+                                          {{ $gradeSum['student_name'] }}                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['grade_q1'] }}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['grade_q2'] }}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['grade_q3'] }}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['grade_q4'] }}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['average'] }}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['remarks'] }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
