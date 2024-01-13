@@ -28,16 +28,17 @@ class GradingSheetController extends Controller
     public function updatePostedStatus(Request $request)
     {
         $quarter = $request->input('quarter');
-        $classId = $request->input('class_id');
-        
+        $gradingSheetId = $request->input('grading_sheet_id'); 
+
         // Update the appropriate quarter column for all grading sheets in the given class and quarter
         $columnToUpdate = 'posted_q' . $quarter;
-        GradingSheet::where('class_id', $classId)
-            ->where('quarter', $quarter)
-            ->update([$columnToUpdate => true]);
+        // Update the appropriate quarter column for the grading sheet
+        GradingSheet::where('id', $gradingSheetId)
+                    ->update([$columnToUpdate => true]);
 
+        // Return a JSON response indicating success
         return response()->json(['success' => true]);
-    }
+        }
 
 
 }

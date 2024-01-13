@@ -1,20 +1,19 @@
-<?php 
+<?php
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GradeSummary extends Model
+class GradeSum extends Model
 {
     use HasFactory;
 
-    protected $table = 'grade_summary';
-
+    protected $table = 'grade_sum';
     protected $fillable = [
         'student_id',
         'class_id',
-        'sy_id',
+        'school_year_id',
         'grade_q1',
         'grade_q2',
         'grade_q3',
@@ -23,7 +22,6 @@ class GradeSummary extends Model
         'remarks',
     ];
 
-    // Define relationships if needed
     public function student()
     {
         return $this->belongsTo(Student::class, 'student_id');
@@ -36,7 +34,6 @@ class GradeSummary extends Model
 
     public function schoolYear()
     {
-        return $this->belongsTo(SchoolYears::class, 'sy_id');
+        return $this->belongsTo(SchoolYears::class, 'school_year_id');
     }
 }
-

@@ -934,8 +934,8 @@
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">2023-2024</th>                                  
                                     </tr>
                                     <tr class="text-sm font-light text-center">
-                                        <th class=" border-x-2 border-yellow-100 rounded-tl-md"></th>
-                                        <th class="border-x-2 text-xl border-yellow-100">Learner's Name</th>
+                                        <th class=" border-x-2 border-yellow-100 rounded-tl-md">Learner's Name</th>
+                                        <th class="border-x-2 text-xl border-yellow-100"></th>
                                         <th class="border-2 py-1.5 border-yellow-100">teacher:</th>
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">Juan Dela Crux</th>                                  
                                         <th class="border-2 border-yellow-100">Subject:</th>                                  
@@ -955,9 +955,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  @foreach ($gradingSheets as $gradingSheet)
                                     <tr class="text-center bg-white">
-                                        <td class="border-2 border-yellow-100 px-2 py-2"></td>
-                                        <td class="border-2 border-yellow-100 px-2">Alex reyes</td>
+                                        <td class="border-2 border-yellow-100 px-2 py-2 text-left">
+                                          {{ $gradingSheet->student->last_name }}, {{ $gradingSheet->student->first_name }} {{ $gradingSheet->student->middle_name }}
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2"></td>
                                         <td class="border-2 border-yellow-100 px-2">90</td>
                                         <td class="border-2 border-yellow-100 px-2">92</td>
                                         <td class="border-2 border-yellow-100 px-2">89</td>
@@ -965,6 +968,7 @@
                                         <td class="border-2 border-yellow-100 px-2">91</td>
                                         <td class="border-2 border-yellow-100 px-2">PASSED</td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             
