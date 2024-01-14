@@ -828,7 +828,7 @@
                                 <!--Post Grading Sheet Button-->    
                                 <button id="openModal" 
                                         class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
-                                    Display Quarterly Grade
+                                    Post Quarterly Grade
                                 </button>
 
                                 <!--Grading Sheet Table-->
@@ -1094,94 +1094,61 @@
                                   
                                 </tbody>
                             </table>
-                              <!-- Search bar -->
-                              <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    const searchInput = document.getElementById('searchInput');
-                                    const searchButton = document.getElementById('searchButton');
-                                    const tableBody = document.getElementById('gradeTableBody');
-                                    const studentNameHeader = document.getElementById('studentNameHeader');
-                                    const gradeCompletionMessage = document.getElementById('gradeCompletionMessage');
-                                    const LISReadyComplete = document.getElementById('LISReadyComplete');
-                                    const LISReadyIncomplete = document.getElementById('LISReadyIncomplete');
-
-                                    searchButton.addEventListener('click', function () {
-                                        const searchTerm = searchInput.value.toLowerCase();
-                            
-                                        // Make an asynchronous request to fetch data from the server
-                                        fetch(`/search?term=${searchTerm}`, {
-                                            method: 'GET',
-                                        })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            // Populate the table body with the fetched data
-                                            tableBody.innerHTML = '';
-          
-                                            // Check if any results were found
-                                              if (data.length > 0) {
-                                                  const student = data[0].student;
-                                                  const subjectName = data[0].class.subject.subject_name;
-                                                  const studentName = `${student.last_name}, ${student.first_name} ${student.middle_name}`;
-                                                  // Update the Student Name header
-                                                  studentNameHeader.textContent = `${studentName}`;
-
-                                                  // Check if any of the grades is null
-                                                  const anyGradeIsNull = data.some(gradeSum => (
-                                                      gradeSum.grade_q1 === null || 
-                                                      gradeSum.grade_q2 === null || 
-                                                      gradeSum.grade_q3 === null || 
-                                                      gradeSum.grade_q4 === null
-                                                  ));
-
-                                                  // Show the appropriate completion message
-                                                        if (anyGradeIsNull) {
-                                                            LISReadyComplete.style.display = 'none'; // Hide complete message
-                                                            LISReadyIncomplete.style.display = 'flex'; // Show incomplete message
-                                                        } else {
-                                                            LISReadyComplete.style.display = 'flex'; // Show complete message
-                                                            LISReadyIncomplete.style.display = 'none'; // Hide incomplete message
-                                                        }
-                                                        
-                                                        // Display the gradeCompletionMessage div
-                                                        gradeCompletionMessage.style.display = 'flex';
-                                              } else {
-                                                  // If no results, reset the Student Name header
-                                                  studentNameHeader.textContent = 'NA';
-                                              }
-                                            
-                                            data.forEach(gradeSum => {
-                                                const row = document.createElement('tr');
-                                                row.className = 'text-center bg-white';
-                                                row.innerHTML = `
-                                                    <td class="border-2 border-yellow-100 px-2 py-2 text-left">
-                                                      ${gradeSum.class.subject.subject_name}                                                    </td>
-                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q1}</td>
-                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q2}</td>
-                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q3}</td>
-                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q4}</td>
-                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.average}</td>
-                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.descriptor}</td>
-                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.remarks}</td>
-                                                `;
-                                                tableBody.appendChild(row);
-                                            });
-                                        })
-                                        .catch(error => {
-                                            console.error('Error fetching data:', error);
-                                        });
-                                    });
-                                });
-                            </script>
+                              
 
                             <br>
                             <br>
                             <!-- Faculty grading sheet for students table for GWA REPORT -->
                             <h2 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">General Weighted Average</h2>
-                            <!--Post Grading Sheet Button-->    
-                            <button id="openModal" 
-                              class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
-                                Post GWA
+                            <!-- Post GWA Button -->
+                            <button id="openModal" class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
+                              Display GWA
                             </button>
+                                                        
+                            <!-- Modal Container Post GWA Button  -->
+                            <div id="myModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+                              <!-- Modal content -->
+                              <div class="bg-white p-8 rounded-md shadow-md">
+                                  <div class="flex items-center mb-4">
+                                      <i class="fas fa-exclamation-triangle text-red-500 mr-4 text-3xl"></i>
+                                      <p class="text-lg font-bold">Are you sure you want to post the grade to the student portal?</p>
+                                  </div>
+                                  <div class="flex center items-center">
+                                      <p class="text-sm text-gray-600 mb-4">This action will make the general weighted average visible to the students on the portal and cannot be undone. <br>
+                                          Please review the grades carefully before proceeding.</p>
+                                  </div>                                        
+                                  <div class="flex justify-end">
+                                      <!-- Yes button -->
+                                      <button id="GWAconfirmYes" 
+                                              class="mr-2 pt-2 pb-2 pl-10 pr-10 button bg-green-500 text-white"
+                                              data-quarter="{{ $quarterValue }}">
+                                              Yes
+                                      </button>
+                                      <!-- No button -->
+                                      <button id="GWAconfirmNo" 
+                                              class="button pt-2 pb-2 pl-10 pr-10 bg-red-500 text-white">
+                                              No
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <!-- JavaScript to handle modal visibility -->
+                              <script>
+                                document.getElementById('openModal').addEventListener('click', function() {
+                                    document.getElementById('myModal').classList.remove('hidden');
+                                });
+
+                                document.getElementById('GWAconfirmNo').addEventListener('click', function() {
+                                    document.getElementById('myModal').classList.add('hidden');
+                                });
+
+                                document.getElementById('GWAconfirmYes').addEventListener('click', function() {
+                                    // Add logic for what happens when 'Yes' is clicked
+                                    document.getElementById('myModal').classList.add('hidden');
+                                });
+                              </script>
+
                             <table class="w-full lg:text-sm text-xs text-left text-black " 
                                     id="gSheetSummaryTable">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">

@@ -698,3 +698,83 @@
         });
     });
 </script>
+
+
+<!-- Search bar Teacher script-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const tableBody = document.getElementById('gradeTableBody');
+        const studentNameHeader = document.getElementById('studentNameHeader');
+        const gradeCompletionMessage = document.getElementById('gradeCompletionMessage');
+        const LISReadyComplete = document.getElementById('LISReadyComplete');
+        const LISReadyIncomplete = document.getElementById('LISReadyIncomplete');
+
+        searchButton.addEventListener('click', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            // Make an asynchronous request to fetch data from the server
+            fetch(`/search?term=${searchTerm}`, {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Populate the table body with the fetched data
+                tableBody.innerHTML = '';
+
+                // Check if any results were found
+                  if (data.length > 0) {
+                      const student = data[0].student;
+                      const subjectName = data[0].class.subject.subject_name;
+                      const studentName = `${student.last_name}, ${student.first_name} ${student.middle_name}`;
+                      // Update the Student Name header
+                      studentNameHeader.textContent = `${studentName}`;
+
+                      // Check if any of the grades is null
+                      const anyGradeIsNull = data.some(gradeSum => (
+                          gradeSum.grade_q1 === null || 
+                          gradeSum.grade_q2 === null || 
+                          gradeSum.grade_q3 === null || 
+                          gradeSum.grade_q4 === null
+                      ));
+
+                      // Show the appropriate completion message
+                            if (anyGradeIsNull) {
+                                LISReadyComplete.style.display = 'none'; // Hide complete message
+                                LISReadyIncomplete.style.display = 'flex'; // Show incomplete message
+                            } else {
+                                LISReadyComplete.style.display = 'flex'; // Show complete message
+                                LISReadyIncomplete.style.display = 'none'; // Hide incomplete message
+                            }
+                            
+                            // Display the gradeCompletionMessage div
+                            gradeCompletionMessage.style.display = 'flex';
+                  } else {
+                      // If no results, reset the Student Name header
+                      studentNameHeader.textContent = 'NA';
+                  }
+                
+                data.forEach(gradeSum => {
+                    const row = document.createElement('tr');
+                    row.className = 'text-center bg-white';
+                    row.innerHTML = `
+                        <td class="border-2 border-yellow-100 px-2 py-2 text-left">
+                          ${gradeSum.class.subject.subject_name}                                                    </td>
+                        <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q1}</td>
+                        <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q2}</td>
+                        <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q3}</td>
+                        <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q4}</td>
+                        <td class="border-2 border-yellow-100 px-2">${gradeSum.average}</td>
+                        <td class="border-2 border-yellow-100 px-2">${gradeSum.descriptor}</td>
+                        <td class="border-2 border-yellow-100 px-2">${gradeSum.remarks}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        });
+    });
+</script>
