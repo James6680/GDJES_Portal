@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\DocumentRequest;
+use App\Models\Classes;
+use App\Models\GradingSheet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -93,5 +95,7 @@ class Student extends Controller
     public function StudentSignout(){
         Auth::guard('students')->logout();
         return redirect()->route('students_login_from')->with('error', 'Student Logout Successfully');
-    }//end index method
+    }//end signout method
+
 }
+

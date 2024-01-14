@@ -49,6 +49,10 @@ class GradingSheet extends Model
         'initial_grade',
         'quarterly_grade',
         'school_year_id',
+        'posted_q1',
+        'posted_q2',
+        'posted_q3',
+        'posted_q4',
     ];
 
      public function student()
@@ -56,7 +60,7 @@ class GradingSheet extends Model
          return $this->belongsTo(Student::class, 'student_id');
      }
 
-     public function schoolClass()
+     public function class()
      {
          return $this->belongsTo(Classes::class, 'class_id');
      }
@@ -65,4 +69,9 @@ class GradingSheet extends Model
      {
          return $this->belongsTo(HighestPossibleScore::class, 'highest_possible_score_id');
      }
+
+     public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
 }

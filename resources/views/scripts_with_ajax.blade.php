@@ -677,43 +677,79 @@
         $('.error-message').remove();
         $('.form-input').removeClass('border-red-500');
 
-        let edit_id = $('#edit_id').val();
-        let edit_ww1 = $('#edit_ww1').val();
-        let edit_ww2 = $('#edit_ww2').val();
-        let edit_ww3 = $('#edit_ww3').val();
-        let edit_ww4 = $('#edit_ww4').val();
-        let edit_ww5 = $('#edit_ww5').val();
-        let edit_ww6 = $('#edit_ww6').val();
-        let edit_ww7 = $('#edit_ww7').val();
-        let edit_ww8 = $('#edit_ww8').val();
-        let edit_ww9 = $('#edit_ww9').val();
-        let edit_ww10 = $('#edit_ww10').val();
-        let edit_hps_ww_total = $('#edit_hps_ww_total').val();
-        let edit_hps_ww_ps = $('#edit_hps_ww_ps').val();
-        let edit_ww_weighted_score = $('#edit_ww_weighted_score').val();
-        let edit_pt1 = $('#edit_pt1').val();
-        let edit_pt2 = $('#edit_pt2').val();
-        let edit_pt3 = $('#edit_pt3').val();
-        let edit_pt4 = $('#edit_pt4').val();
-        let edit_pt5 = $('#edit_pt5').val();
-        let edit_pt6 = $('#edit_pt6').val();
-        let edit_pt7 = $('#edit_pt7').val();
-        let edit_pt8 = $('#edit_pt8').val();
-        let edit_pt9 = $('#edit_pt9').val();
-        let edit_pt10 = $('#edit_pt10').val();
-        let edit_hps_pt_total = $('#edit_hps_pt_total').val();
-        let edit_hps_pt_ps = $('#edit_hps_pt_ps').val();
-        let edit_pp_weighted_score = $('#edit_pp_weighted_score').val();
-        let edit_qa10 = $('#edit_qa10').val();
-        let edit_hps_qa_ps = $('#edit_hps_qa_ps').val();
-        let edit_qa_weighted_score = $('#edit_qa_weighted_score').val();
-        let edit_initial_grade = $('#edit_initial_grade').val();
-        let edit_quarterly_grade = $('#edit_quarterly_grade').val();
-        let edit_quarter = $('#edit_quarter').val();
+        // Toggle input fields to become editable or non-editable
+        let isEditing = $(this).hasClass('editing');
+
+        if (!isEditing) {
+            // If not editing, make fields editable
+            $(this).addClass('editing');
+            $('input[name^="edit_"]').prop('readonly', false);
+            $(this).removeClass('bg-green-500 hover:bg-green-900').addClass('bg-red-500 hover:bg-red-900').text('Save');
+        } else {
+            // If editing, make fields non-editable
+            $(this).removeClass('editing');
+            $('input[name^="edit_"]').prop('readonly', true);
+            $(this).removeClass('bg-red-500 hover:bg-red-900').addClass('bg-green-500 hover:bg-green-900').text('Edit');
+        }
+
+        let edit_id = $('[name="edit_id"]').val();
+
+        //id will not work, name will
+        let edit_ww1 = $('[name="edit_ww1"]').val();
+        let edit_ww2 = $('[name="edit_ww2"]').val();
+        let edit_ww3 = $('[name="edit_ww3"]').val();
+        let edit_ww4 = $('[name="edit_ww4"]').val();
+        let edit_ww5 = $('[name="edit_ww5"]').val();
+        let edit_ww6 = $('[name="edit_ww6"]').val();
+        let edit_ww7 = $('[name="edit_ww7"]').val();
+        let edit_ww8 = $('[name="edit_ww8"]').val();
+        let edit_ww9 = $('[name="edit_ww9"]').val();
+        let edit_ww10 = $('[name="edit_ww10"]').val();
+
+
+        // Calculate sum of edit_ww1 to edit_ww10
+        let hps_wwTotal = 0;
+                for (let i = 1; i <= 10; i++) {
+                    hps_wwTotal += parseFloat($(`[name="edit_ww${i}"]`).val()) || 0;
+                }
+
+        // Assign the sum to edit_hps_ww_total
+        $('[name="edit_hps_ww_total"]').val(parseFloat(hps_wwTotal));
+
+        let edit_hps_ww_ps = $('[name="edit_hps_ww_ps"]').val();
+        let edit_ww_weighted_score = $('[name="edit_ww_weighted_score"]').val();
+
+
+        let edit_pt1 = $('[name="edit_pt1"]').val();
+        let edit_pt2 = $('[name="edit_pt2"]').val();
+        let edit_pt3 = $('[name="edit_pt3"]').val();
+        let edit_pt4 = $('[name="edit_pt4"]').val();
+        let edit_pt5 = $('[name="edit_pt5"]').val();
+        let edit_pt6 = $('[name="edit_pt6"]').val();
+        let edit_pt7 = $('[name="edit_pt7"]').val();
+        let edit_pt8 = $('[name="edit_pt8"]').val();
+        let edit_pt9 = $('[name="edit_pt9"]').val();
+        let edit_pt10 = $('[name="edit_pt10"]').val();
+
+        // Calculate sum of edit_pt1 to edit_pt10
+        let hps_ptTotal = 0;
+                for (let i = 1; i <= 10; i++) {
+                    hps_ptTotal += parseFloat($(`[name="edit_pt${i}"]`).val()) || 0;
+                }
+
+        // Assign the sum to edit_hps_ww_total
+        $('[name="edit_hps_pt_total"]').val(parseFloat(hps_ptTotal));
+
+        let edit_hps_pt_ps = $('[name="edit_hps_pt_ps"]').val();
+        let edit_pp_weighted_score = $('[name="edit_pp_weighted_score"]').val();
+        let edit_qa10 = $('[name="edit_qa10"]').val();
+        let edit_hps_qa_ps = $('[name="edit_hps_qa_ps"]').val();
+        let edit_qa_weighted_score = $('[name="edit_qa_weighted_score"]').val();
+       let edit_quarter = $('[name="edit_quarter"]').val();
 
 
         $.ajax({
-            url: localStorage.getItem('appUrl') + "/faculty.grades.edit",
+            url: localStorage.getItem('appUrl') + "/faculty.grades.edit" + edit_id,
             method: "POST",
             data: {
                 edit_id: edit_id,
@@ -727,7 +763,7 @@
                 edit_ww8: edit_ww8,
                 edit_ww9: edit_ww9,
                 edit_ww10: edit_ww10,
-                edit_hps_ww_total: edit_hps_ww_total,
+                hps_wwTotal: parseFloat(hps_wwTotal),
                 edit_hps_ww_ps: edit_hps_ww_ps,
                 edit_ww_weighted_score: edit_ww_weighted_score,
                 edit_pt1: edit_pt1,
@@ -740,25 +776,19 @@
                 edit_pt8: edit_pt8,
                 edit_pt9: edit_pt9,
                 edit_pt10: edit_pt10,
-                edit_hps_pt_total: edit_hps_pt_total,
+                hps_ptTotal:parseFloat(hps_ptTotal),
                 edit_hps_pt_ps: edit_hps_pt_ps,
                 edit_pp_weighted_score: edit_pp_weighted_score,
                 edit_qa10: edit_qa10,
                 edit_hps_qa_ps: edit_hps_qa_ps,
                 edit_qa_weighted_score: edit_qa_weighted_score,
-                edit_initial_grade: edit_initial_grade,
-                edit_quarterly_grade: edit_quarterly_grade,
                 edit_quarter: edit_quarter,
 
             },
             success: function(result) {
                 // Handle the success response here
                 if (result.status == 'success') {
-                // Close the Tailwind CSS modal
-                    //document.getElementById('createTeacherUserModal').classList.remove('visible');
-                    //document.getElementById('createTeacherUserModal').classList.add('invisible');
-                   // document.getElementById('edit_hps').reset();
-                    $('#tableBody').load(location.href + ' #tableBody');
+               $('#tableBody').load(location.href + ' #tableBody');
                 }
             },
             error: function(result) {
@@ -771,42 +801,6 @@
         });  
 
 
-
-
-
-       $('#edit_id').val(id);
-        $('#ww1').val(ww1);
-        $('#ww2').val(ww2);
-        $('#ww3').val(ww3);
-        $('#ww4').val(ww4);
-        $('#ww5').val(ww5);
-        $('#ww6').val(ww6);
-        $('#ww7').val(ww7);
-        $('#ww8').val(ww8);
-        $('#ww9').val(ww9);
-        $('#ww10').val(ww10);
-        $('#hpsWwTotal').val(hpsWwTotal);
-        $('#hpsWwPs').val(hpsWwPs);
-        $('#wwWeightedScore').val(wwWeightedScore);
-        $('#pt1').val(pt1);
-        $('#pt2').val(pt2);
-        $('#pt3').val(pt3);
-        $('#pt4').val(pt4);
-        $('#pt5').val(pt5);
-        $('#pt6').val(pt6);
-        $('#pt7').val(pt7);
-        $('#pt8').val(pt8);
-        $('#pt9').val(pt9);
-        $('#pt10').val(pt10);
-        $('#hpsPtTotal').val(hpsPtTotal);
-        $('#hpsPtPs').val(hpsPtPs);
-        $('#ppWeightedScore').val(ppWeightedScore);
-        $('#qa10').val(qa10);
-        $('#hpsQaPs').val(hpsQaPs);
-        $('#qaWeightedScore').val(qaWeightedScore);
-        $('#initialGrade').val(initialGrade);
-        $('#quarterlyGrade').val(quarterlyGrade);
-        $('#quarter').val(quarter);       
 
         });
     });
@@ -836,7 +830,7 @@
         });
     });
 </script>
-
+<!--
 <script>
     function changeQuarter(quarter) {
         // Add logic to fetch and update data based on the selected quarter
@@ -869,4 +863,235 @@
             tableBody.innerHTML = newRow;
         }
     }
+</script-->
+
+
+<!--Grading Sheet Edit-->
+<script>
+        $(document).ready(function(){
+            //show hps in row
+            $('.editGradingSheet').on('click', function(e){ //get class
+                e.preventDefault();
+
+            // Clear previous error messages and remove red borders
+            $('.error-message').remove();
+            $('.form-input').removeClass('border-red-500');
+
+            // Get the data-id attribute from the clicked button
+            let id = $(this).data('id');
+
+            // Find the form with the corresponding data-id
+            let form = $('form.editGradingSheetForm[data-id="' + id + '"]')
+            console.log(id);
+            // Find the closest table row (tr) to the clicked button
+            let row = $(this).closest('tr');
+    
+            // Check the current button text to determine the action
+            let buttonText = $(this).text().trim();
+
+            if (buttonText === 'Edit') {
+                // Toggle input fields to become editable
+                row.find('input').prop('readonly', false);
+                // Change button type to "submit" and update button text
+                $(this).prop('type', 'submit').text('Save');
+                // Update button class to green
+                $(this).removeClass('bg-green-500 hover:bg-green-900').addClass('bg-red-500 hover:bg-red-900');
+            } else if (buttonText === 'Save') {
+                // Toggle input fields to become non-editable
+                row.find('input').prop('readonly', true);
+                // Change button type to "button" and update button text
+                $(this).prop('type', 'button').text('Edit');
+                // Update button class to red
+                $(this).removeClass('bg-red-500 hover:bg-red-900').addClass('bg-green-500 hover:bg-green-900');
+            }
+
+            let ww1 = row.find('[name="ww1"]').val();
+            console.log('ww1:', ww1);
+            let ww2 = row.find('[name="ww2"]').val();
+            let ww3 = row.find('[name="ww3"]').val();
+            let ww4 = row.find('[name="ww4"]').val();
+            let ww5 = row.find('[name="ww5"]').val();
+            let ww6 = row.find('[name="ww6"]').val();
+            let ww7 = row.find('[name="ww7"]').val();
+            let ww8 = row.find('[name="ww8"]').val();
+            let ww9 = row.find('[name="ww9"]').val();
+            let ww10 = row.find('[name="ww10"]').val();
+
+            let wwTotal = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                let wwValue = parseFloat(row.find(`[name="ww${i}"]`).val()) || 0;
+                wwTotal += wwValue;
+            }
+
+            // Assign the total to the hidden input field, making sure it's a float
+            row.find('[name="ww_total"]').val(parseFloat(wwTotal));
+
+                        
+            let ww_ps = row.find('[name="ww_ps"]').val();
+            let ww_weighted_score = row.find('[name="ww_weighted_score"]').val();
+
+
+            let pt1 = row.find('[name="pt1"]').val();
+            let pt2 = row.find('[name="pt2"]').val();
+            let pt3 = row.find('[name="pt3"]').val();
+            let pt4 = row.find('[name="pt4"]').val();
+            let pt5 = row.find('[name="pt5"]').val();
+            let pt6 = row.find('[name="pt6"]').val();
+            let pt7 = row.find('[name="pt7"]').val();
+            let pt8 = row.find('[name="pt8"]').val();
+            let pt9 = row.find('[name="pt9"]').val();
+            let pt10 = row.find('[name="pt10"]').val();
+
+            let ptTotal = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                let ptValue = parseFloat(row.find(`[name="pt${i}"]`).val()) || 0;
+                ptTotal += ptValue;
+            }
+
+            // Assign the total to the hidden input field, making sure it's a float
+            row.find('[name="pt_total"]').val(parseFloat(ptTotal));
+
+            let pt_total = row.find('[name="pt_total"]').val();
+            let pt_ps = row.find('[name="pt_ps"]').val();
+            let pp_weighted_score = row.find('[name="pp_weighted_score"]').val();
+            let qa10 = row.find('[name="qa10"]').val();
+            let qa_ps = row.find('[name="qa_ps"]').val();
+            let qa_weighted_score = row.find('[name="qa_weighted_score"]').val();
+            let initial_grade = row.find('[name="initial_grade"]').val();
+            let quarterly_grade = row.find('[name="quarterly_grade"]').val();
+            let quarter = row.find('[name="quarter"]').val();
+            let class_id = row.find('[name="class_id"]').val();
+
+            $.ajax({
+                url: "faculty.grades.edit_student_grading_sheet/" + id,
+                method: "POST",
+                data: {
+                    id: id,
+                    class_id: row.find('[name="class_id"]').val(),
+                    quarter: row.find('[name="quarter"]').val(),
+                    ww1: ww1,
+                    ww2: ww2,
+                    ww3: ww3,
+                    ww4: ww4,
+                    ww5: ww5,
+                    ww6: ww6,
+                    ww7: ww7,
+                    ww8: ww8,
+                    ww9: ww9,
+                    ww10: ww10,
+                    wwTotal: parseFloat(wwTotal),
+                    ww_ps: ww_ps,
+                    ww_weighted_score: ww_weighted_score,
+                    pt1: pt1,
+                    pt2: pt2,
+                    pt3: pt3,
+                    pt4: pt4,
+                    pt5: pt5,
+                    pt6: pt6,
+                    pt7: pt7,
+                    pt8: pt8,
+                    pt9: pt9,
+                    pt10: pt10,
+                    ptTotal: parseFloat(ptTotal),
+                    pt_ps: pt_ps,
+                    pp_weighted_score: pp_weighted_score,
+                    qa10: qa10,
+                    qa_ps: qa_ps,
+                    qa_weighted_score: qa_weighted_score,
+                    initial_grade: initial_grade,
+                    quarterly_grade: quarterly_grade,
+                    
+                },
+                
+                success: function(result) {
+                    console.log(result);
+                    // Handle the success response here
+                    if (result.status == 'success') {
+                        $('#tableBody').load(location.href + ' #tableBody');
+                    }
+                },
+                error: function(xhr) {
+                if (xhr.responseJSON && xhr.responseJSON.errors) {
+                    let error = xhr.responseJSON;
+                    $.each(error.errors, function(key, value) {
+                        $('#' + key).addClass('border-red-500');
+                        $('#' + key).after('<p class="text-red-500 text-xs italic error-message">' + value + '</p>');
+                    });
+                } else {
+                    // Handle the case where the error object is not defined
+                    console.error("An unexpected error occurred:", xhr.statusText);
+                }
+            }
+            });  
+            });
+        });
+
+        
+</script>
+
+<!--Post Student Grade Button-->
+<script>
+    document.getElementById('openModal').addEventListener('click', function () {
+        document.getElementById('myModal').classList.remove('hidden');
+    });
+
+    document.getElementById('confirmYes').addEventListener('click', function () {
+
+    // Get all grading sheet IDs
+    var gradingSheetIds = [];
+    document.querySelectorAll('.editGradingSheetForm').forEach(function (form) {
+        gradingSheetIds.push(form.getAttribute('data-id'));
+    });
+    console.log('gradingSheetIds:', gradingSheetIds);
+    var quarter = document.getElementById('confirmYes').getAttribute('data-quarter');
+    /// Make a fetch request to update the 'posted' column for each grading sheet
+    gradingSheetIds.forEach((gradingSheetId) => {
+
+        fetch('/update-posted-status', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            },
+            body: JSON.stringify({ grading_sheet_id: gradingSheetId, quarter: quarter }),
+        })
+        .then(function (response) {
+            // Check if the request was successful
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // Handle the success response
+            return response.json();
+        })
+        .then(function (data) {
+            // Handle the success response
+            alert('Grades posted successfully!');
+            document.getElementById('myModal').classList.add('hidden');
+        })
+        .catch(function (error) {
+            // Handle errors
+            console.error('Error posting grades:', error);
+        });
+    });
+
+});
+
+
+    document.getElementById('confirmNo').addEventListener('click', function () {
+        // If the teacher chooses 'No', simply close the modal
+        document.getElementById('myModal').classList.add('hidden');
+    });
+</script>
+
+<!--Student Scripts-->
+<script>
+    // Add a click event listener to the dropdown menu items
+    document.querySelectorAll('#dropdownHover a').forEach(function(item) {
+        item.addEventListener('click', function() {
+            // Set the selected grade level in the button text
+            document.getElementById('dropdownHoverButton').innerText = item.innerText;
+        });
+    });
 </script>

@@ -44,5 +44,9 @@ class Classes extends Model
         return $this->belongsTo(SchoolYears::class, 'school_year_id');
     }
 
+    public function gradingSheets() {
+        return $this->hasMany(GradingSheet::class, 'class_id');
+    }
+
 
 }

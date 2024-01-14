@@ -47,7 +47,7 @@ class FacultyContentSection extends Component
         ->join('sections', 'classes.section_id', '=', 'sections.id')
         ->join('school_years', 'school_years.id', '=', 'classes.school_year_id')
         ->where('school_years.active', 1)
-        ->where('classes.teacher_id', '=', Auth::guard('teachers')->user()->id) 
+       ->where('classes.teacher_id', '=', Auth::guard('teachers')->user()->id) 
         ->distinct()
         ->get();
         // Transform the $classCombinations for dropdown options
@@ -81,7 +81,7 @@ class FacultyContentSection extends Component
         $class_idValue = request('class_id');
     
         // Fetch all highest possible scores
-        $gradingSheets = null;
+        $gradingSheets = GradingSheet::all();
         $highestPossibleScore = HighestPossibleScore::all();
         // Fetch highest possible scores based on the selected criteria
         if($quarterValue != null && $class_idValue != null){
@@ -89,16 +89,21 @@ class FacultyContentSection extends Component
             ->where('quarter', $quarterValue)
             ->get();
 
-            $gradingSheets = GradingSheet::where('class_id', $class_idValue )
-            ->join('students', 'students.id', '=', 'grading_sheet.student_id')
-            ->select('grading_sheet.*', 'students.last_name', 'students.first_name', 'students.middle_name', 'students.extension_name')
-            ->where('quarter', $quarterValue)
+            $gradingSheets = GradingSheet::join('students', 'grading_sheet.student_id', '=', 'students.id')
+            ->where('grading_sheet.class_id', $class_idValue)
+            ->where('grading_sheet.quarter', $quarterValue)
+            ->select(
+                'grading_sheet.*', 
+                'students.last_name', 
+                'students.first_name', 
+                'students.middle_name'
+            )
             ->get();
+            
         }else{
             $highestPossibleScore = null;
+            $gradingSheets = collect(); // Initialize an empty collection if criteria are not set
         }
-
-
         $quarters = $quarters->map(function ($quarter) use ($quarterTextMapping) {
           $quarterText = $quarterTextMapping[$quarter] ?? $quarter;
           $quarterNumber = $quarter; // Assuming $quarter represents the quarter number

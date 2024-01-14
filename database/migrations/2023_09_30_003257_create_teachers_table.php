@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('middle_name', 50);
             $table->string('extension_name', 5);
             $table->string('email')->unique();
-            $table->string('profile_picture');
+            $table->string('profile_picture')->nullable();
             $table->date('birth_date');
             $table->float('age');
             $table->string('gender', 10);
