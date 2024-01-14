@@ -20,6 +20,7 @@ class GradeSum extends Model
         'grade_q4',
         'average',
         'remarks',
+        'descriptor',
     ];
 
     public function student()

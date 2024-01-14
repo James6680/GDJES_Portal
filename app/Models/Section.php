@@ -17,4 +17,11 @@ class Section extends Model
         'school_year_id',
         'adviser_id',
     ];
+
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
 }
