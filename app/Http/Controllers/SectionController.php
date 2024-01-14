@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classes;
-use App\Models\GradingSheet;
-use App\Models\HighestPossibleScore;
 use App\Models\Section;
+use App\Models\GradeSum;
 use App\Models\Enrollment;
+use App\Models\SchoolYears;
+use App\Models\GradingSheet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\HighestPossibleScore;
 
 class SectionController extends Controller
 {
@@ -179,6 +181,47 @@ class SectionController extends Controller
                     ->where('student_id', $student)
                     ->where('school_year_id', $request->input('school_year'))
                     ->update(['section_id' => $request->input('section_id')]);
+
+                    // Retrieve the student based on the student_id
+                    $currentStudent = DB::table('students')->where('id', $student)->first();
+
+                    // Check if the student is found
+                    if ($currentStudent) {
+                        // Fetch the classes for the student
+                        $classes = Classes::where('section_id', $request->input('section_id'))->get();
+
+                        // Loop over the classes and create GradeSum records
+                        foreach ($classes as $class) {
+                            // Fetch the school year for the class
+                            $schoolYear = null;
+
+                            // Check if the relationship exists
+                            if (method_exists($class, 'schoolYear')) {
+                                $schoolYear = $class->schoolYear;
+                            } else {
+                                $schoolYear = SchoolYears::find($class->school_year_id);
+                            }
+
+                            // Check if $schoolYear is not null before proceeding
+                            if ($schoolYear) {
+                                // Check if GradeSum already exists for the student and class
+                                $existingGradeSum = GradeSum::where('student_id', $currentStudent->id)
+                                    ->where('class_id', $class->id)
+                                    ->where('school_year_id', $schoolYear->id)
+                                    ->first();
+
+                                if (!$existingGradeSum) {
+                                    // Create a new GradeSum record for the student
+                                    $gradeSum = new GradeSum();
+                                    $gradeSum->student_id = $currentStudent->id;
+                                    $gradeSum->class_id = $class->id;
+                                    $gradeSum->school_year_id = $schoolYear->id;
+                                    $gradeSum->save();
+                                }
+                            }
+                        }
+                    }
+
                 ////////////
                 $classes = DB::table('classes')
                             ->where('section_id', $request->input('section_id'))
@@ -203,6 +246,9 @@ class SectionController extends Controller
                         $gs->save();
                     }
                 }
+
+
+
             }
         }
         return $request->input('student');
@@ -218,5 +264,10 @@ class SectionController extends Controller
             ->where('student_id', $request->input('student_id'))
             ->where('school_year_id', $request->input('school_year_id'))
             ->update(['class_id' => null, 'highest_possible_score_id' => null]);
+
+            // Find and delete the GradeSum record for the student
+            GradeSum::where('student_id', $studentId)
+            ->where('school_year_id', $request->input('school_year_id'))
+            ->delete();
       }
 }
