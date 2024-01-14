@@ -650,17 +650,21 @@ use Carbon\Carbon;
                                 }
                             </script>
                     </div>
-
-                    <div class=" items-center py-2.5 px-4 text-sm text-green-500 rounded-md bg-green-100 hidden"  id="LISReady">
-                        <div class="font-normal">
-                            Final Grades are ready for LIS Encoding
-                        </div>
-                    </div>
-
+                    
+                   
                 </div>
 
                 <!-- Grade 1 - 6 Grading Input -->
-                <h1 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">Grading Sheet Input for Students</h1>
+                <h1 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">Grading Sheet Input for 
+                  <span class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black ">
+                    (<?php
+                        $selectedClass = $classCombinations->where('class_id', $class_idValue)->first();
+                        $quarter = request('quarter'); // Assuming you have a variable for the quarter
+                    ?>
+                    {{ $quarter ? 'Q' . $quarter : '' }} - {{ $selectedClass->subject_name ?? '' }}
+                    )
+                </span>
+                </h1>
                 <div class="mx-auto w-full ">
                     
                     <div class="bg-white dark:bg-gray-800 relative overflow-hidden">
@@ -773,7 +777,7 @@ use Carbon\Carbon;
                                 <!--Post Grading Sheet Button-->    
                                 <button id="openModal" 
                                         class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
-                                    Post Student Grade
+                                    Post Quarterly Grade
                                 </button>
 
                                 <!--Grading Sheet Table-->
@@ -870,7 +874,19 @@ use Carbon\Carbon;
                           <br>
                           <br>
                             <div class="mx-auto w-full ">
+
                             <!-- Faculty grading sheet for students table for QUARTERLY SUMMARY REPORT -->
+                            <h1 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">Final Grade by Learning Area
+                              <span class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black ">(<?php
+                                $selectedClass = $classCombinations->where('class_id', $class_idValue)->first();
+                                  ?>
+                                  {{ $selectedClass->subject_name ?? '' }}
+                                  )
+                              </span>
+                              
+                            </h1>
+                            
+                            <br>
                             <table class="w-full lg:text-sm text-xs text-left text-black " 
                                     id="gSheetSummaryTable">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
@@ -878,17 +894,35 @@ use Carbon\Carbon;
                                         <th class="border-x-2 border-yellow-100 rounded-tl-md"></th>
                                         <th class="border-x-2 border-yellow-100"></th>
                                         <th class="border-2 py-1.5 border-yellow-100">Grade & Section:</th>
-                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">Marilag</th>                                  
+                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">
+                                          {{ $classCombinations[0]['grade_level'] }} - {{ $classCombinations[0]['section_name'] }}
+                                        </th>                                  
                                         <th class="border-2 border-yellow-100">School year:</th>                                  
-                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">2023-2024</th>                                  
+                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">
+                                          {{ $classCombinations[0]['school_year'] }}
+                                        </th>                                  
                                     </tr>
                                     <tr class="text-sm font-light text-center">
                                         <th class=" border-x-2 border-yellow-100 rounded-tl-md">Learner's Name</th>
                                         <th class="border-x-2 text-xl border-yellow-100"></th>
                                         <th class="border-2 py-1.5 border-yellow-100">teacher:</th>
-                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">Juan Dela Crux</th>                                  
+                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">
+                                          <?php 
+                                              $teacherId = Auth::guard('teachers')->id();
+                                              $teacherInfo = DB::table('teachers')->select('last_name', 'first_name', 'middle_name')->where('id', $teacherId)->first();
+                                             
+                                          ?>
+                                          
+                                          {{ $teacherInfo->last_name ?? '' }}, {{ $teacherInfo->first_name ?? '' }} {{ $teacherInfo->middle_name ?? '' }}
+
+                                          </th>                                  
                                         <th class="border-2 border-yellow-100">Subject:</th>                                  
-                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">Filipino</th>                                  
+                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">
+                                          <?php
+                                                $selectedClass = $classCombinations->where('class_id', $class_idValue)->first();
+                                          ?>
+                                          {{ $selectedClass->subject_name ?? '' }}
+                                        </th>                                  
                                     </tr>
                                     <tr class="text-center">
                                         <!-- Student Number 
@@ -900,7 +934,8 @@ use Carbon\Carbon;
                                         <th class="border-2 border-yellow-100 px-2">3rd Quarter</th>
                                         <th class="border-2 border-yellow-100">4th Quarter</th>
                                         <th class="border-2 border-yellow-100">Final Grade</th>
-                                        <th class="border-2 border-yellow-100 px-3">Remark</th>                             
+                                        <th class="border-2 border-yellow-100 px-3">Descriptor</th>  
+                                        <th class="border-2 border-yellow-100 px-3">Remarks</th>                             
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -913,12 +948,197 @@ use Carbon\Carbon;
                                         <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['grade_q3'] }}</td>
                                         <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['grade_q4'] }}</td>
                                         <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['average'] }}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['descriptor'] }}</td>
                                         <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['remarks'] }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                             
+
+                            <br>
+                            <br>
+                            <br>
+                           
+                            <hr class="w-full border-t border-gray-300 my-4">
+                            <br>
+                            <br>
+                            <div class="flex items-center justify-center">
+                                <h1 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black" id="gSheetHeader">
+                                    Final Grade by Learning Area and General Weighted Average (Advisory Class)
+                                </h1>
+                            </div>
+                            <br>
+                            <div class="hidden flex w-1/2 ml-auto items-center" id="gradeCompletionMessage">
+                              <!-- This div will appear if grades are complete -->
+                              <div class="border-b-4 py-3.5 px-4 text-black-lg rounded-md border-green-500 bg-green-100 font-semibold shadow-md" id="LISReadyComplete">
+                                  <div>
+                                      ✅ <span>Final Grades are complete and ready for LIS Encoding</span>
+                                  </div>
+                              </div>
+                          
+                              <!-- This div will appear if any grade is null -->
+                              <div class="border-b-4 py-3.5 px-4 text-black-lg rounded-md border-red-500 bg-red-400 font-semibold shadow-md" id="LISReadyIncomplete">
+                                  <div>
+                                      ⚠ <span>Final Grades are incomplete and are not yet ready for LIS Encoding</span>
+                                  </div>
+                              </div>
+                          </div>
+                            <br>
+                            <!-- Faculty grading sheet for students table for QUARTERLY SUMMARY REPORT OF ADVISORY CLASS -->
+                            <h2 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">Final Grade by Learning Area</h2>
+                           
+
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-cog text-gray-500 mr-2"></i>
+                                <span class="font-semibold text-sm sm:text-md lg:text-lg text-black" id="gSheetHeader">To view the final grade for each subject, simply enter the student's name and click the search button.</span>
+                            </div>
+                          
+                            <div class="flex items-center mb-4">
+                                <span class="font-semibold text-sm sm:text-md lg:text-lg text-black mr-2" id="gSheetHeader">Student Name:</span>
+                                <input type="text" id="searchInput" placeholder="Search by student name..." class="w-64 p-2 border border-gray-300 rounded-md">
+                                <button id="searchButton" class="ml-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700">Search</button>
+                            </div>
+                            <table class="w-full lg:text-sm text-xs text-left text-black " 
+                                    id="fnalGradeTable">
+
+                                
+                                <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
+                                      <tr class="text-sm text-center">
+                                        <th class="border-x-2 border-yellow-100 rounded-tl-md" >
+                                          Student Name: 
+                                        </th>
+                                        <th colspan="2" class="border-2 border-yellow-100 font-normal" id="studentNameHeader">
+                                        </th>
+                                      </tr>
+                                
+                                    <tr class="text-sm text-center">
+                                        <th class="border-x-2 border-yellow-100 rounded-tl-md" >
+                                        </th>
+                                        <th class="border-2 py-1.5 border-yellow-100"></th>
+                                        <th class="border-2 py-1.5 border-yellow-100">Grade & Section:</th>
+                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">
+                                          {{ $classCombinations[0]['grade_level'] }} - {{ $classCombinations[0]['section_name'] }}
+                                        </th>                                  
+                                        <th class="border-2 border-yellow-100">School year:</th>                                  
+                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">
+                                          {{ $classCombinations[0]['school_year'] }}
+                                        </th>                                  
+                                    </tr>
+                                    <tr class="text-center">
+                                        <!-- Student Number 
+                                        <th class="border-x-2 border-yellow-100 py-4"></th>
+                                        <!-- Student Name -->
+                                        <th class="border-2 py-1.5 border-yellow-100  pl-2">Subjects</th>
+                                        <th class="border-2 py-1.5 border-yellow-100">1st Quarter</th>  
+                                        <th class="border-2 px-2 border-yellow-100">2nd Quarter</th> 
+                                        <th class="border-2 border-yellow-100 px-2">3rd Quarter</th>
+                                        <th class="border-2 border-yellow-100">4th Quarter</th>
+                                        <th class="border-2 border-yellow-100">Final Grade</th>
+                                        <th class="border-2 border-yellow-100 px-3">Descriptor</th>  
+                                        <th class="border-2 border-yellow-100 px-3">Remarks</th>                             
+                                    </tr>
+                                </thead>
+                                <tbody id="gradeTableBody">
+                                  
+                                </tbody>
+                            </table>
+                              
+
+                            <br>
+                            <br>
+                            <!-- Faculty grading sheet for students table for GWA REPORT -->
+                            <h2 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">General Weighted Average</h2>
+                            <!-- Post GWA Button -->
+                            <button id="openModal" class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
+                              Display GWA
+                            </button>
+                                                        
+                            <!-- Modal Container Post GWA Button  -->
+                            <div id="myModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+                              <!-- Modal content -->
+                              <div class="bg-white p-8 rounded-md shadow-md">
+                                  <div class="flex items-center mb-4">
+                                      <i class="fas fa-exclamation-triangle text-red-500 mr-4 text-3xl"></i>
+                                      <p class="text-lg font-bold">Are you sure you want to post the grade to the student portal?</p>
+                                  </div>
+                                  <div class="flex center items-center">
+                                      <p class="text-sm text-gray-600 mb-4">This action will make the general weighted average visible to the students on the portal and cannot be undone. <br>
+                                          Please review the grades carefully before proceeding.</p>
+                                  </div>                                        
+                                  <div class="flex justify-end">
+                                      <!-- Yes button -->
+                                      <button id="GWAconfirmYes" 
+                                              class="mr-2 pt-2 pb-2 pl-10 pr-10 button bg-green-500 text-white"
+                                              data-quarter="{{ $quarterValue }}">
+                                              Yes
+                                      </button>
+                                      <!-- No button -->
+                                      <button id="GWAconfirmNo" 
+                                              class="button pt-2 pb-2 pl-10 pr-10 bg-red-500 text-white">
+                                              No
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <!-- JavaScript to handle modal visibility -->
+                              <script>
+                                document.getElementById('openModal').addEventListener('click', function() {
+                                    document.getElementById('myModal').classList.remove('hidden');
+                                });
+
+                                document.getElementById('GWAconfirmNo').addEventListener('click', function() {
+                                    document.getElementById('myModal').classList.add('hidden');
+                                });
+
+                                document.getElementById('GWAconfirmYes').addEventListener('click', function() {
+                                    // Add logic for what happens when 'Yes' is clicked
+                                    document.getElementById('myModal').classList.add('hidden');
+                                });
+                              </script>
+
+                            <table class="w-full lg:text-sm text-xs text-left text-black " 
+                                    id="gSheetSummaryTable">
+                                <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
+                                    <tr class="text-sm text-center">
+                                        <th class="border-x-2 border-yellow-100 rounded-tl-md">Learner's Name</th>
+                                        <th class="border-2 py-1.5 border-yellow-100">Grade & Section:</th>
+                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">
+                                          {{ $classCombinations[0]['grade_level'] }} - {{ $classCombinations[0]['section_name'] }}
+                                        </th>                                  
+                                        <th class="border-2 border-yellow-100">School year:</th>                                  
+                                        <th colspan="2" class="border-2 border-yellow-100 font-normal">
+                                          {{ $classCombinations[0]['school_year'] }}
+                                        </th>                                  
+                                    </tr>
+                                    <tr class="text-center">
+                                        <!-- Student Number 
+                                        <th class="border-x-2 border-yellow-100 py-4"></th>
+                                        <!-- Student Name -->
+                                        <th class="border-x-2 border-yellow-100 px-28"></th>
+                                        <th class="border-2 py-1.5 border-yellow-100">GWA</th>
+                                        <th class="border-2 border-yellow-100">Descriptor</th> 
+                                        <th class="border-2 border-yellow-100">Remarks</th>
+                                        <th class="border-2 border-yellow-100 px-3">Status</th>    
+                                        <th class="border-2 border-yellow-100 px-3">`No. of Final Grade Lower than 75</th>                            
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($studentData as $student)                                   
+                                  <tr class="text-center bg-white">
+                                        <td class="border-2 border-yellow-100 px-2 py-2 text-left">
+                                          {{ $student['student_name'] }}                                        
+                                        </td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $student['gwa'] }}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $student['descriptors'] }}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $student['remarks'] }}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $student['status'] }}</td>
+                                        <td class="border-2 border-yellow-100 px-2">{{ $student['status_no'] }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
 
                     </div>

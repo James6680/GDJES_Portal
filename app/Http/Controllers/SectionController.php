@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gwa;
 use App\Models\Classes;
 use App\Models\Section;
 use App\Models\GradeSum;
@@ -220,6 +221,23 @@ class SectionController extends Controller
                                 }
                             }
                         }
+
+                        // Check if Gwa record already exists for the student in the grade level, section, and school year
+                        $existingGwa = Gwa::where('student_id', $currentStudent->id)
+                            ->where('grade_level_id', $class->grade_level_id)
+                            ->where('section_id', $class->section_id)
+                            ->where('school_year_id', $schoolYear->id)
+                            ->first();
+
+                        if (!$existingGwa) {
+                            // Create a new Gwa record for the student
+                            $gwa = new Gwa();
+                            $gwa->student_id = $currentStudent->id;
+                            $gwa->grade_level_id = $class->grade_level_id;
+                            $gwa->section_id = $class->section_id;
+                            $gwa->school_year_id = $schoolYear->id;
+                            $gwa->save();
+                        }
                     }
 
                 ////////////
@@ -267,6 +285,11 @@ class SectionController extends Controller
 
             // Find and delete the GradeSum record for the student
             GradeSum::where('student_id', $studentId)
+            ->where('school_year_id', $request->input('school_year_id'))
+            ->delete();
+
+             // Find and delete the Gwa record for the student
+            Gwa::where('student_id', $studentId)
             ->where('school_year_id', $request->input('school_year_id'))
             ->delete();
       }

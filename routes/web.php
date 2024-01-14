@@ -3,15 +3,16 @@
 use App\Http\Controllers\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SearchStudent;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\SchoolYearController;
-use App\Http\Controllers\AnnouncementController;
 
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\GradingSheetController;
 use App\Http\Controllers\HighestPossibleScoreController;
 
@@ -261,6 +262,9 @@ Route::post('faculty.grades.edit/{id}', [HighestPossibleScoreController::class, 
 Route::post('/update-posted-status', [GradingSheetController::class, 'updatePostedStatus'])
     ->middleware('teachers')
     ->name('update-posted-status');
+
+Route::get('/search', [SearchStudent::class, 'search'])
+->middleware('teachers')->name('/search');
 
 Route::get('faculty.Attendance', function () {
     return view('layouts.faculty');
