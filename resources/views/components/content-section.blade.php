@@ -293,8 +293,6 @@
                                 ->get();
 
                         }
-
-                        dd($classSubjects);
                         ?>
 
                         <p>Username: {{ $studentId ?? '' }}</p> 
