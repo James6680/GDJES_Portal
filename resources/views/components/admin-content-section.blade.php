@@ -4239,6 +4239,7 @@ window.Alpine = Alpine;
           <!-- Table functions - add student account -->
           <div class="grid justify-items-center sm:justify-items-end gap-4 w-full pb-4 sm:py-4 ">
             <button id ="show-add-student-form" disabled data-modal-target="addStudentUserModal" data-modal-toggle="addStudentUserModal" type="button" class="h-full text-white bg-brown-500 hover:bg-brown-700 focus:ring-4 focus:outline-none focus:ring-brown-300 text-sm font-medium rounded-lg px-3 py-1.5 gap-2 md:gap-4 text-center inline-flex items-center dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800">
+             <a id="show-add-student"> 
               <svg class="w-4 h-4" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M256,136a8,8,0,0,1-8,8H232v16a8,8,0,0,1-16,0V144H200a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,256,136ZM144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17A8,8,0,0,0,24,208H192a8,8,0,0,0,6.13-13.15C183.18,177.07,164.6,164.44,144,157.68Z"></path>
               </svg>

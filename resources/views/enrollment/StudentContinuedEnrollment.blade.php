@@ -54,9 +54,9 @@
       <form class="rounded-lg bg-main-green-secondary-50 flex flex-col items-center justify-center lg:p-8 md:p-7 p-5 gap-2 lg:w-[56rem] md:w-[41rem] w-[23rem]"
             method="post"
             id="enrollment-page-5"
-            action="{{ route('enrollment.StudentContinuedEnrollment.post')}}">
-    @csrf
-    @method('post')
+            action="{{ route('enrollment.StudentContinuedEnrollment')}}">
+          @csrf
+          @method('post')
         <input type="hidden" id="idValue" name="id" value="{{$enrollment->student_id}}">
         <h1 class="m-0 self-stretch relative md:text-2xl text-base leading-[110%] font-extrabold font-frl text-green-700 text-center">Student Enrollment for Students Who Finished School Year</h1>
 
@@ -82,8 +82,6 @@
                 <select id="grade_level" disabled
                   name="grade_level" 
                   class="bg-white border border-gray-300 text-gray-900 md:text-sm text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500  block md:p-2.5 md:py-2.5 p-2.5 py-2 w-full">
-                  <option value=""  @if(isset($enrollment->grade_level) && $enrollment->grade_level == null) selected @endif>Pumili ng huling baitang na nais pasukan</option>
-                  <option value="0" @if(isset($enrollment->grade_level) && $enrollment->grade_level == 0 ) selected @endif>Kinder pero hindi natapos</option>
                   <option value="1" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 1 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 1) selected @endif>KINDER</option>
                   <option value="2" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 2 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 2) selected @endif>Grade 1</option>
                   <option value="3" @if((isset($enrollment->grade_level) && $enrollment->grade_level == 3 && $enrollment->aralStatus == "HINDI")  || $enrollment->aralStatus != "HINDI" && $enrollment->returnee+1 == 3) selected @endif>Grade 2</option>
@@ -366,6 +364,7 @@ function submitForm() {
 }
 // Add click event listener to the submit button
 submitButton.addEventListener("click", function (e) {
+  document.getElementById("grade_level").disabled = false;
   submitForm();
 });
 

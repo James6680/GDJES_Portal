@@ -511,6 +511,14 @@ class EnrollmentController extends Controller
         ->where('students.id', '=',$request->input('id'))
         ->orderBy('enrollment.created_at', 'desc') // Order by enrollment creation time
         ->first();
+
+        $grade_summary = DB::table('grade_sum')
+                            ->where('student_id',$enrollment->student_id)
+                            ->where('school_year_id',$enrollment->school_year_id)
+                            ->get();
+
+
+
         $enrollment->school_year = $school_year;
         $enrollment->aralStatus = '';
         /////IMPORTANT. IF THE STUDENT FAILED IN THE LAST S.Y. THE VALUE OF returnee SHOULD HAVE -1;
@@ -520,6 +528,77 @@ class EnrollmentController extends Controller
     }
 
     public function existingStudentEnrollmentPost(Request $request){
+        $validatedData = $request->validate([ 
+            'id' => 'required',
+            'grade_level' => 'required',
+            "learning_info" => 'required',
+            "distance_learning" => 'required', 
+        ]);
+
+        $school_year = DB::table('school_years')->where('is_enrollment','=','1')->pluck('id')->first();
+        $student = Student::where('id', $validatedData['id'])->first();
+        $enrollment = Enrollment::where('student_id', $student->id)->where('school_year_id', $school_year)->first();
+        $learningInfo = new LearningInfo();
+
+        $learningInfo->distance_learning = $validatedData['distance_learning'];
+        foreach($validatedData['learning_info'] as $learning_info){
+            if($learning_info == "cellphone/tablet"){
+                $learningInfo->may_sariling_tablet_ang_bata = 1;
+            }
+            if($learning_info == "Computer"){
+                $learningInfo->may_computer_sa_bahay = 1;
+            }
+            if($learning_info == "No_gadget"){
+                $learningInfo->walang_sariling_gadget_ang_bata = 1;
+            }
+            if($learning_info == "Tv"){
+                $learningInfo->may_tv_sa_bahay = 1;
+            }
+            if($learning_info == "Internet"){
+                $learningInfo->may_internet_sa_bahay = 1;
+            }
+            if($learning_info == "Mobile_data"){
+                $learningInfo->mobile_data_lang_ang_gamit = 1;
+            }
+        }
+        $learningInfo->save();  
+
+
+        if($enrollment == null){
+            $enrollment = new Enrollment();
+        }
+        $enrollment->student_id = $student->id;
+        $enrollment->school_year_id =  $school_year;
+        $enrollment->grade_level_id = $validatedData['grade_level'];
+        $enrollment->learning_info_id = $learningInfo->id;
+        $enrollment->enrollment_status = "Completed";
+        $enrollment->save();
+
+        /////////////////////
+        $gradingsheets = DB::table('grading_sheet')
+                        ->where('school_year_id', $school_year)
+                        ->where('student_id', $student->id)
+                        ->pluck('id');
+
+        $subjects = DB::table('subjects')
+        ->whereIn('grade_level_id', [$validatedData['grade_level']])
+        ->count();
+
+        foreach($gradingsheets as $gradingsheet){
+            DB::table('grading_sheet')
+            ->where('id', $gradingsheet)
+            ->delete();
+        }
+
+        for($i = 0; $i < $subjects; $i++){
+            for($j = 1; $j <= 4; $j++){
+                $gradingsheet = new GradingSheet();
+                $gradingsheet->student_id = $student->id;
+                $gradingsheet->quarter = $j;
+                $gradingsheet->school_year_id = $school_year;
+                $gradingsheet->save();
+            }
+        }
 
         return redirect()->route('enrollment.StudentContinuedEnrollmentComplete');
     }

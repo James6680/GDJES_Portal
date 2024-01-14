@@ -23,10 +23,11 @@ class ContentSection extends Component
     public function __construct()
     {
         // Fetch data from the database
-        $gradingSheets = GradingSheet::with('class')->get();
-        $this->gradeLevels = GradeLevel::whereIn('id', $gradingSheets->pluck('class.grade_level_id')->unique())
-            ->pluck('grade_level', 'id');
-        
+        // $gradingSheets = GradingSheet::with('class')->get();
+        // $this->gradeLevels = GradeLevel::whereIn('id', $gradingSheets->pluck('class.grade_level_id')->unique())
+        //     ->pluck('grade_level', 'id');
+        $this->gradeLevels = GradeLevel::pluck('grade_level', 'id');
+        $this->gradeLevels = $this->gradeLevels->except([1, 8]);
     }
 
     /**

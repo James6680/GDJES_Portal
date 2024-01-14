@@ -149,6 +149,9 @@ class FacultyContentSection extends Component
     else if(request()->is('faculty.enrollments')){
         $advisoryStudents = new TeacherController;
         return view('components.faculty-content-section', ['advisory' => $advisoryStudents->getAdvisoryStudents()]); 
+    }else if(request()->is('faculty.my-students')){
+        $advisoryStudents = new TeacherController;
+        return view('components.faculty-content-section', ['advisory' => $advisoryStudents->getAdvisoryStudents()]); 
     }else {
         return view('components.faculty-content-section');
     }
