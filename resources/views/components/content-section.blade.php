@@ -165,6 +165,7 @@
 
             <div class="grid w-full grid-cols-1 gap-2">
                 <div class="w-auto justify-self-end">
+
                 <form id="enrollmentFormData"action="" method="post">
                     @csrf
                     @method('post')
@@ -197,7 +198,7 @@
                             data-dropdown-trigger="hover" 
                             class="bg-green-500 text-white rounded-md font-medium hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-green-600 inline-flex w-full lg:text-base text-sm py-2 leading-none items-center lg:px-7 px-4" 
                             type="button">
-                            Grade Level
+                            @if(!is_null(request('gradeLevelId'))) Grade {{(int)request('gradeLevelId')-1 }} @else Grade Level @endif 
                             <svg class="w-2.5 h-2.5 ml-2.5" 
                                  aria-hidden="true" 
                                  xmlns="http://www.w3.org/2000/svg" 
@@ -213,7 +214,7 @@
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 font-mulish" aria-labelledby="dropdownHoverButton">
                             @foreach($gradeLevels as $gradeLevel)
                                 <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <a href="{{route('student.grades') . '?gradeLevelId=' . $loop->index+2}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         {{ $gradeLevel }}</a>
                                 </li>
                             @endforeach
@@ -263,8 +264,27 @@
 
                         <?php
                         if (Auth::guard('students')->check()) {
+                            $gradeLevelId = request('gradeLevelId');
+                            $school_year;
                             $studentId = Auth::guard('students')->id();
-
+                            if($gradeLevelId == null) {
+                                $school_year = DB::table('school_years')
+                                                ->join('enrollment','school_years.id','=','enrollment.school_year_id')
+                                                ->join('grade_levels','enrollment.grade_level_id','=','grade_levels.id')
+                                                ->where('enrollment.student_id',$studentId)
+                                                ->where('school_years.active',1)
+                                                ->pluck('school_years.id')
+                                                ->first();
+                            }
+                            else{
+                                $school_year = DB::table('enrollment')
+                                                ->join('grade_levels','enrollment.grade_level_id','=','grade_levels.id')
+                                                ->join('school_years','school_years.id','=','enrollment.school_year_id')
+                                                ->where('enrollment.student_id',$studentId)
+                                                ->where('enrollment.grade_level_id', $gradeLevelId)
+                                                ->pluck('enrollment.school_year_id')
+                                                ->first();
+                            }
                             // Subjects
                             $classIds = DB::table('grading_sheet')
                                 ->where('student_id', $studentId)
@@ -287,7 +307,7 @@
                                     DB::raw('GROUP_CONCAT(grading_sheet.quarterly_grade) as grades')
                                 )
                                 //EDIT THIS
-                                ->where('classes.school_year_id',1)
+                                ->where('classes.school_year_id',$school_year)
                                 ->groupBy('classes.id','subjects.subject_name', 'teachers.first_name', 'teachers.last_name')
                                 ->orderBy('subjects.subject_name')
                                 ->get();
@@ -295,14 +315,6 @@
                         }
                         ?>
 
-                        <p>Username: {{ $studentId ?? '' }}</p> 
-                        <ul>
-                            @foreach($classSubjects as $classSubject)
-                                <li>
-                                    Subject: {{ $classSubject->subject_name }},
-                                    Teacher: {{ $classSubject->teacher_first_name }} {{ $classSubject->teacher_last_name }}</li>
-                            @endforeach
-                        </ul>
 
                         
 
@@ -595,7 +607,7 @@
                     </table>
                 </div>
 
-                <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold  text-lg mt-3">
+                {{-- <h2 class=" font-mulish lg:text-2xl text-gray-950 font-bold  text-lg mt-3">
                     Student's Attendance
                 </h2>
 
@@ -787,7 +799,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> --}}
 
                 <h2 hidden class=" font-mulish lg:text-2xl text-gray-950 font-bold text-lg mt-3">
                     Mode of Learning
@@ -1020,7 +1032,8 @@
                             type="button" 
                             class="focus:outline-none font-mulish text-white border-2 bg-brown-500 font-semibold rounded-md text-base xl:w-[20%] lg:w-[40%] w-full py-2.5 cursor-not-allowed shadow-transparent" 
                             disabled>
-                                @php if(isset($student->enrollment_status))$student->enrollment_status; @endphp
+                            
+                                @if(!is_null($student->enrollment_status)) {{$student->enrollment_status}} @endif 
                         </button>
                     </div>
 
