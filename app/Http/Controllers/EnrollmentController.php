@@ -6,11 +6,14 @@ use stdClass;
 use ErrorException;
 use App\Models\Father;
 use App\Models\Mother;
+use App\Models\Classes;
 use App\Models\Student;
+use App\Models\GradeSum;
 use App\Models\Guardian;
 use App\Models\Returnee;
 use App\Models\Relatives;
 use App\Models\Enrollment;
+use App\Models\SchoolYears;
 use App\Models\GradingSheet;
 use App\Models\LearningInfo;
 use Illuminate\Http\Request;
@@ -406,6 +409,7 @@ class EnrollmentController extends Controller
 
         $student->save();
 
+        
         /////////////////////
         $gradingsheets = DB::table('grading_sheet')
                         ->where('school_year_id', $school_year)
@@ -443,6 +447,8 @@ class EnrollmentController extends Controller
         $receiver->password = 'Student123';
         Mail::to($receiver->email)->send(new RegistrationMail($receiver));
         ///////////////////////////////////////////////////////////////////
+
+
         //////////////ENROLLMENT////////////////////
         $enrollment = Enrollment::where('student_id', $student->id)->where('school_year_id', $school_year)->first();
         

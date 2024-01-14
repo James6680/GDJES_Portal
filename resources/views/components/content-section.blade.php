@@ -271,26 +271,30 @@
                                 ->pluck('class_id');
 
                                 $classSubjects = DB::table('classes')
-    ->whereIn('classes.id', $classIds)
-    ->leftJoin('subjects', 'classes.subject_id', '=', 'subjects.id')
-    ->leftJoin('teachers', 'classes.teacher_id', '=', 'teachers.id')
-    ->leftJoin('grading_sheet', function ($join) use ($studentId) {
-        $join->on('classes.id', '=', 'grading_sheet.class_id')
-             ->where('grading_sheet.student_id', '=', $studentId);
-    })
-    ->select(
-        'classes.id as class_id',
-        'subjects.subject_name',
-        'teachers.first_name as teacher_first_name',
-        'teachers.last_name as teacher_last_name',
-        DB::raw('GROUP_CONCAT(grading_sheet.quarter) as quarters'),
-        DB::raw('GROUP_CONCAT(grading_sheet.quarterly_grade) as grades')
-    )
-    ->groupBy('classes.id','subjects.subject_name', 'teachers.first_name', 'teachers.last_name')
-    ->orderBy('subjects.subject_name')
-    ->get();
+                                ->whereIn('classes.id', $classIds)
+                                ->leftJoin('subjects', 'classes.subject_id', '=', 'subjects.id')
+                                ->leftJoin('teachers', 'classes.teacher_id', '=', 'teachers.id')
+                                ->leftJoin('grading_sheet', function ($join) use ($studentId) {
+                                    $join->on('classes.id', '=', 'grading_sheet.class_id')
+                                        ->where('grading_sheet.student_id', '=', $studentId);
+                                })
+                                ->select(
+                                    'classes.id as class_id',
+                                    'subjects.subject_name',
+                                    'teachers.first_name as teacher_first_name',
+                                    'teachers.last_name as teacher_last_name',
+                                    DB::raw('GROUP_CONCAT(grading_sheet.quarter) as quarters'),
+                                    DB::raw('GROUP_CONCAT(grading_sheet.quarterly_grade) as grades')
+                                )
+                                //EDIT THIS
+                                ->where('classes.school_year_id',1)
+                                ->groupBy('classes.id','subjects.subject_name', 'teachers.first_name', 'teachers.last_name')
+                                ->orderBy('subjects.subject_name')
+                                ->get();
 
                         }
+
+                        dd($classSubjects);
                         ?>
 
                         <p>Username: {{ $studentId ?? '' }}</p> 
@@ -345,6 +349,7 @@
                                     @php
                                         $quarters = isset($classSubject->quarters) ? explode(',', $classSubject->quarters) : [];
                                         $grades = isset($classSubject->grades) ? explode(',', $classSubject->grades) : [];
+                                        $grades = array_reverse($grades); 
                                     @endphp
 
                                     @for ($i = 0; $i < count($quarters); $i++)
