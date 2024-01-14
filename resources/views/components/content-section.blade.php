@@ -319,6 +319,7 @@
                                     @php
                                         $quarters = isset($classSubject->quarters) ? explode(',', $classSubject->quarters) : [];
                                         $grades = isset($classSubject->grades) ? explode(',', $classSubject->grades) : [];
+                                        $grades = array_reverse($grades); 
                                     @endphp
 
                                     @for ($i = 0; $i < count($quarters); $i++)
