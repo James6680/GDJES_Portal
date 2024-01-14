@@ -701,13 +701,8 @@
                                 }
                             </script>
                     </div>
-
-                    <div class=" items-center py-2.5 px-4 text-sm text-green-500 rounded-md bg-green-100 hidden"  id="LISReady">
-                        <div class="font-normal">
-                            Final Grades are ready for LIS Encoding
-                        </div>
-                    </div>
-
+                    
+                   
                 </div>
 
                 <!-- Grade 1 - 6 Grading Input -->
@@ -833,7 +828,7 @@
                                 <!--Post Grading Sheet Button-->    
                                 <button id="openModal" 
                                         class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
-                                    Post Quarterly Grade
+                                    Display Quarterly Grade
                                 </button>
 
                                 <!--Grading Sheet Table-->
@@ -1025,13 +1020,29 @@
                                 </h1>
                             </div>
                             <br>
+                            <div class="hidden flex w-1/2 ml-auto items-center" id="gradeCompletionMessage">
+                              <!-- This div will appear if grades are complete -->
+                              <div class="border-b-4 py-3.5 px-4 text-black-lg rounded-md border-green-500 bg-green-100 font-semibold shadow-md" id="LISReadyComplete">
+                                  <div>
+                                      ✅ <span>Final Grades are complete and ready for LIS Encoding</span>
+                                  </div>
+                              </div>
+                          
+                              <!-- This div will appear if any grade is null -->
+                              <div class="border-b-4 py-3.5 px-4 text-black-lg rounded-md border-red-500 bg-red-400 font-semibold shadow-md" id="LISReadyIncomplete">
+                                  <div>
+                                      ⚠ <span>Final Grades are incomplete and are not yet ready for LIS Encoding</span>
+                                  </div>
+                              </div>
+                          </div>
+                            <br>
                             <!-- Faculty grading sheet for students table for QUARTERLY SUMMARY REPORT OF ADVISORY CLASS -->
                             <h2 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">Final Grade by Learning Area</h2>
                            
 
                             <div class="flex items-center mb-4">
                                 <i class="fas fa-cog text-gray-500 mr-2"></i>
-                                <span class="font-semibold text-sm sm:text-md lg:text-lg text-black" id="gSheetHeader">To use, simply enter the student's name and click the search button.</span>
+                                <span class="font-semibold text-sm sm:text-md lg:text-lg text-black" id="gSheetHeader">To view the final grade for each subject, simply enter the student's name and click the search button.</span>
                             </div>
                           
                             <div class="flex items-center mb-4">
@@ -1090,7 +1101,10 @@
                                     const searchButton = document.getElementById('searchButton');
                                     const tableBody = document.getElementById('gradeTableBody');
                                     const studentNameHeader = document.getElementById('studentNameHeader');
-                            
+                                    const gradeCompletionMessage = document.getElementById('gradeCompletionMessage');
+                                    const LISReadyComplete = document.getElementById('LISReadyComplete');
+                                    const LISReadyIncomplete = document.getElementById('LISReadyIncomplete');
+
                                     searchButton.addEventListener('click', function () {
                                         const searchTerm = searchInput.value.toLowerCase();
                             
@@ -1110,6 +1124,26 @@
                                                   const studentName = `${student.last_name}, ${student.first_name} ${student.middle_name}`;
                                                   // Update the Student Name header
                                                   studentNameHeader.textContent = `${studentName}`;
+
+                                                  // Check if any of the grades is null
+                                                  const anyGradeIsNull = data.some(gradeSum => (
+                                                      gradeSum.grade_q1 === null || 
+                                                      gradeSum.grade_q2 === null || 
+                                                      gradeSum.grade_q3 === null || 
+                                                      gradeSum.grade_q4 === null
+                                                  ));
+
+                                                  // Show the appropriate completion message
+                                                        if (anyGradeIsNull) {
+                                                            LISReadyComplete.style.display = 'none'; // Hide complete message
+                                                            LISReadyIncomplete.style.display = 'flex'; // Show incomplete message
+                                                        } else {
+                                                            LISReadyComplete.style.display = 'flex'; // Show complete message
+                                                            LISReadyIncomplete.style.display = 'none'; // Hide incomplete message
+                                                        }
+                                                        
+                                                        // Display the gradeCompletionMessage div
+                                                        gradeCompletionMessage.style.display = 'flex';
                                               } else {
                                                   // If no results, reset the Student Name header
                                                   studentNameHeader.textContent = 'NA';
