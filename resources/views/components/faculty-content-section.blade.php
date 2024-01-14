@@ -711,7 +711,16 @@
                 </div>
 
                 <!-- Grade 1 - 6 Grading Input -->
-                <h1 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">Grading Sheet Input for Students</h1>
+                <h1 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">Grading Sheet Input for 
+                  <span class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black ">
+                    (<?php
+                        $selectedClass = $classCombinations->where('class_id', $class_idValue)->first();
+                        $quarter = request('quarter'); // Assuming you have a variable for the quarter
+                    ?>
+                    {{ $quarter ? 'Q' . $quarter : '' }} - {{ $selectedClass->subject_name ?? '' }}
+                    )
+                </span>
+                </h1>
                 <div class="mx-auto w-full ">
                     
                     <div class="bg-white dark:bg-gray-800 relative overflow-hidden">
@@ -1032,12 +1041,21 @@
                             </div>
                             <table class="w-full lg:text-sm text-xs text-left text-black " 
                                     id="fnalGradeTable">
+
+                                
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
-                                    <tr class="text-sm text-center">
-                                        <th class="border-x-2 border-yellow-100 rounded-tl-md">
+                                      <tr class="text-sm text-center">
+                                        <th class="border-x-2 border-yellow-100 rounded-tl-md" >
                                           Student Name: 
                                         </th>
-                                        <th class="border-x-2 border-yellow-100"></th>
+                                        <th colspan="2" class="border-2 border-yellow-100 font-normal" id="studentNameHeader">
+                                        </th>
+                                      </tr>
+                                
+                                    <tr class="text-sm text-center">
+                                        <th class="border-x-2 border-yellow-100 rounded-tl-md" >
+                                        </th>
+                                        <th class="border-2 py-1.5 border-yellow-100"></th>
                                         <th class="border-2 py-1.5 border-yellow-100">Grade & Section:</th>
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">
                                           {{ $classCombinations[0]['grade_level'] }} - {{ $classCombinations[0]['section_name'] }}
@@ -1051,7 +1069,7 @@
                                         <!-- Student Number 
                                         <th class="border-x-2 border-yellow-100 py-4"></th>
                                         <!-- Student Name -->
-                                        <th class="border-2 py-1.5 border-yellow-100 text-left pl-2">Subjects</th>
+                                        <th class="border-2 py-1.5 border-yellow-100  pl-2">Subjects</th>
                                         <th class="border-2 py-1.5 border-yellow-100">1st Quarter</th>  
                                         <th class="border-2 px-2 border-yellow-100">2nd Quarter</th> 
                                         <th class="border-2 border-yellow-100 px-2">3rd Quarter</th>
@@ -1061,38 +1079,65 @@
                                         <th class="border-2 border-yellow-100 px-3">Remarks</th>                             
                                     </tr>
                                 </thead>
-                                <tbody>
-                                                         
-                                  <tr class="text-center bg-white">
-                                        <td class="border-2 border-yellow-100 px-2 py-2 text-left">
-                                        sdsds</td>
-                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['grade_q1'] }}</td>
-                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['grade_q2'] }}</td>
-                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['grade_q3'] }}</td>
-                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['grade_q4'] }}</td>
-                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['average'] }}</td>
-                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['descriptor'] }}</td>
-                                        <td class="border-2 border-yellow-100 px-2">{{ $gradeSum['remarks'] }}</td>
-                                    </tr>
+                                <tbody id="gradeTableBody">
+                                  
                                 </tbody>
                             </table>
                               <!-- Search bar -->
                               <script>
                                 document.addEventListener('DOMContentLoaded', function () {
                                     const searchInput = document.getElementById('searchInput');
-                                    const tableRows = document.querySelectorAll('#fnalGradeTable tbody tr');
-
-                                    searchInput.addEventListener('input', function () {
+                                    const searchButton = document.getElementById('searchButton');
+                                    const tableBody = document.getElementById('gradeTableBody');
+                                    const studentNameHeader = document.getElementById('studentNameHeader');
+                            
+                                    searchButton.addEventListener('click', function () {
                                         const searchTerm = searchInput.value.toLowerCase();
-
-                                        tableRows.forEach(function (row) {
-                                            const studentName = row.querySelector('td:first-child').textContent.toLowerCase();
-                                            const isVisible = studentName.includes(searchTerm);
-                                            row.style.display = isVisible ? 'table-row' : 'none';
+                            
+                                        // Make an asynchronous request to fetch data from the server
+                                        fetch(`/search?term=${searchTerm}`, {
+                                            method: 'GET',
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // Populate the table body with the fetched data
+                                            tableBody.innerHTML = '';
+          
+                                            // Check if any results were found
+                                              if (data.length > 0) {
+                                                  const student = data[0].student;
+                                                  const subjectName = data[0].class.subject.subject_name;
+                                                  const studentName = `${student.last_name}, ${student.first_name} ${student.middle_name}`;
+                                                  // Update the Student Name header
+                                                  studentNameHeader.textContent = `${studentName}`;
+                                              } else {
+                                                  // If no results, reset the Student Name header
+                                                  studentNameHeader.textContent = 'NA';
+                                              }
+                                            
+                                            data.forEach(gradeSum => {
+                                                const row = document.createElement('tr');
+                                                row.className = 'text-center bg-white';
+                                                row.innerHTML = `
+                                                    <td class="border-2 border-yellow-100 px-2 py-2 text-left">
+                                                      ${gradeSum.class.subject.subject_name}                                                    </td>
+                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q1}</td>
+                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q2}</td>
+                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q3}</td>
+                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.grade_q4}</td>
+                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.average}</td>
+                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.descriptor}</td>
+                                                    <td class="border-2 border-yellow-100 px-2">${gradeSum.remarks}</td>
+                                                `;
+                                                tableBody.appendChild(row);
+                                            });
+                                        })
+                                        .catch(error => {
+                                            console.error('Error fetching data:', error);
                                         });
                                     });
                                 });
-                              </script>
+                            </script>
 
                             <br>
                             <br>

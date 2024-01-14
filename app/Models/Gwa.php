@@ -19,6 +19,8 @@ class Gwa extends Model
         'descriptors',
         'status',
         'status_no',
+        'posted',
+        
     ];
 
     public function student()

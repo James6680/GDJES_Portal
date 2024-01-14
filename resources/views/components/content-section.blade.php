@@ -268,7 +268,7 @@
 
                         }
 
-                        dd($classSubjects);
+                        
                         ?>
 
                         <p>Username: {{ $studentId ?? '' }}</p> 
