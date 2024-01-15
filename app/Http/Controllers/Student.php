@@ -35,7 +35,6 @@ class Student extends Controller
             ->join('document_requirements', 'document_requirements.student_id','=','students.id')
             ->join('enrollment','enrollment.student_id','=','students.id')
             ->join('school_years','school_years.id','=','enrollment.school_year_id')
-            ->where('school_years.active',1)
             ->where('enrollment.student_id', Auth::guard('students')->user()->id)
             ->select('enrollment.enrollment_status','document_requirements.requirements','document_requirements.checklist')
             ->first();

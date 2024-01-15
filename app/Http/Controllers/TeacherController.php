@@ -23,8 +23,10 @@ class TeacherController extends Controller
                     ->join('enrollment', 'sections.id','=','enrollment.section_id')
                     ->join('students', 'students.id','=','enrollment.student_id')
                     ->join('document_requirements','students.id','=','document_requirements.id')
+                    ->join('school_years', 'school_years.id','=','enrollment.school_year_id')
                     ->select('enrollment.enrollment_status','document_requirements.*','students.birth_date','students.gender','students.last_name','students.first_name','students.middle_name','students.extension_name','students.lrn','sections.grade_level_id','sections.school_year_id','sections.section_name')
                     ->where('sections.adviser_id', '=' ,Auth::guard('teachers')->user()->id)
+                    ->where('school_years.active',1)
                     ->orderBy('students.last_name', 'asc')
                     ->get();
         return $students;
