@@ -506,6 +506,7 @@ class EnrollmentController extends Controller
 
     public function existingStudentEnrollment(Request $request){
         $school_year = DB::table('school_years')->where('is_enrollment','=','1')->pluck('id')->first();
+        
         $enrollment = DB::table('students')
         ->join('enrollment', 'students.id', '=', 'enrollment.student_id')
         ->where('students.id', '=',$request->input('id'))
@@ -521,8 +522,19 @@ class EnrollmentController extends Controller
 
         $enrollment->school_year = $school_year;
         $enrollment->aralStatus = '';
+
+        $SYStatus = DB::table('gwas')
+        ->where('student_id', $request->input('id'))
+        ->orderBy('id', 'desc')
+        ->first();
+
+        if($SYStatus->status == "PROMOTED"){
         /////IMPORTANT. IF THE STUDENT FAILED IN THE LAST S.Y. THE VALUE OF returnee SHOULD HAVE -1;
         $enrollment->returnee = $enrollment->grade_level_id;
+        }else if($SYStatus->status == "RETAIN"){
+        /////IMPORTANT. IF THE STUDENT FAILED IN THE LAST S.Y. THE VALUE OF returnee SHOULD HAVE -1;
+        $enrollment->returnee = $enrollment->grade_level_id-1;
+        }
         // $request->input('id')
         return view('enrollment.StudentContinuedEnrollment',compact('enrollment'));
     }
