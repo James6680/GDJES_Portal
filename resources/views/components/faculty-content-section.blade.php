@@ -946,11 +946,11 @@
                                         <th class="border-x-2 border-yellow-100"></th>
                                         <th class="border-2 py-1.5 border-yellow-100">Grade & Section:</th>
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">
-                                          {{ $classCombinations[0]['grade_level'] }} - {{ $classCombinations[0]['section_name'] }}
+                                          @if($classCombinations->isNotEmpty()) {{$classCombinations[0]['grade_level']}} @endif -  @if($classCombinations->isNotEmpty()) {{ $classCombinations[0]['section_name'] }} @endif
                                         </th>                                  
                                         <th class="border-2 border-yellow-100">School year:</th>                                  
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">
-                                          {{ $classCombinations[0]['school_year'] }}
+                                          @if($classCombinations->isNotEmpty())  {{ $classCombinations[0]['school_year'] }} @endif
                                         </th>                                  
                                     </tr>
                                     <tr class="text-sm font-light text-center">
@@ -1075,7 +1075,7 @@
                                         </th>                                  
                                         <th class="border-2 border-yellow-100">School year:</th>                                  
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">
-                                          {{ $classCombinations[0]['school_year'] }}
+                                          @if($classCombinations->isNotEmpty()) {{ $classCombinations[0]['school_year'] }} @endif
                                         </th>                                  
                                     </tr>
                                     <tr class="text-center">
@@ -1118,7 +1118,7 @@
                                         </th>                                  
                                         <th class="border-2 border-yellow-100">School year:</th>                                  
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">
-                                          {{ $classCombinations[0]['school_year'] }}
+                                          @if($classCombinations->isNotEmpty())  {{ $classCombinations[0]['school_year'] }} @endif
                                         </th>                                  
                                     </tr>
                                     <tr class="text-center">
