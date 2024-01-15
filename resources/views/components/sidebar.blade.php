@@ -30,6 +30,7 @@
                     ->join('teachers', 'teachers.id', '=','sections.adviser_id')
                     ->select('teachers.last_name','teachers.first_name','teachers.middle_name', 'teachers.extension_name')
                     ->get();
+
         $gradeLevel = DB::table('enrollment')
             ->where('student_id', Auth::guard('students')->user()->id)
             ->join('school_years', 'enrollment.school_year_id', '=', 'school_years.id')
@@ -91,10 +92,10 @@
         @if($user == 'Student')
         <div class="hidden sm:flex flex-col justify-center p-0 items-start pt-2 xl:pl-36  gap-0 text-black">
           <p class="font-frl lg:text-lg text-md font-bold leading-none">
-            {{$gradeLevelConverted}} @if($section->isNotEmpty()) {{" - " . $section[0]}} @endif
+            {{$gradeLevelConverted}}  @if(count($section)>0) {{" - " . $section[0]}} @endif
           </p>
           <h2 class="self-stretch font-mulish text-sm font-normal leading-none">
-            @if ($teacher->isNotEmpty())
+            @if (count($teacher)>0)
             Class Adviser: {{$teacher[0]->last_name . ","}} {{$teacher[0]->first_name}} {{$teacher[0]->middle_name}} {{$teacher[0]->extension_name}}                
             @else
             Class Adviser: 

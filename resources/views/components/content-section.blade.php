@@ -319,7 +319,6 @@
 
                                 </td>
                             </tr>
-                             
                              @foreach($gradeSums as $gradeSum)
                              <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm md:text-[10px] text-[10px] leading-tight">
                                 <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
