@@ -1121,7 +1121,7 @@
                                       <!-- Yes button -->
                                       <button id="GWAconfirmYes" 
                                               class="mr-2 pt-2 pb-2 pl-10 pr-10 button bg-green-500 text-white"
-                                            >
+                                              >
                                               Yes
                                       </button>
                                       <!-- No button -->

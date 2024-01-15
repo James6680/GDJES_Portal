@@ -116,12 +116,14 @@ class FacultyContentSection extends Component
         });
 
         
-
+// Get the teacher ID of the currently logged-in teacher
+        $teacherId = Auth::guard('teachers')->user()->id;
 
         // Fetch the required data from the GradeSum table and related tables
-        $gradeSums = GradeSum::with('student', 'class', 'schoolYear')
-        ->where('class_id', $class_idValue) // Filter by selected class_id
-        ->get();
+        $gradeSums = GradeSum::with('student', 'gradeLevel', 'section', 'schoolYears')
+        ->whereHas('section', function ($query) use ($teacherId) {
+        $query->where('adviser_id', '=', $teacherId);
+        })->get();
 
         
         // Transform the $gradeSums for use in the view
@@ -140,13 +142,13 @@ class FacultyContentSection extends Component
         ];
         });
 
-        // Get the teacher ID of the currently logged-in teacher
-        $teacherId = Auth::guard('teachers')->user()->id;
+        
 
         // Fetch all students from the gwa table with similar section_id and teacher_id
-        $students = Gwa::with('student', 'gradeLevel', 'section', 'schoolYears')->whereHas('section', function ($query) use ($teacherId) {
-            $query->where('adviser_id', '=', $teacherId);
-        })->get();
+        $students = Gwa::with('student', 'gradeLevel', 'section', 'schoolYears')
+                    ->whereHas('section', function ($query) use ($teacherId) {
+                    $query->where('adviser_id', '=', $teacherId);
+                    })->get();
         
 
         // Transform the $students for use in the view

@@ -42,9 +42,11 @@ class ContentSection extends Component
         
         // Assuming you want the first GradeSum record, you might want to add a more specific condition
         $gradeSums = GradeSum::where('student_id', $studentId)
+                                ->where('school_year_id', 1)
                                 ->with(['class.teacher', 'class.subject'])
                                 ->get();
         $gwas = Gwa::where('student_id', $studentId)
+                    ->where('school_year_id', 1)
                     ->first();
 
 
