@@ -151,9 +151,12 @@ class FacultyContentSection extends Component
 
         // Fetch all students from the gwa table with similar section_id and teacher_id
         $students = Gwa::with('student', 'gradeLevel', 'section', 'schoolYears')
-                    ->whereHas('section', function ($query) use ($teacherId) {
-                    $query->where('adviser_id', '=', $teacherId);
-                    })->get();
+        ->join('school_years', 'school_years.id', '=', 'gwas.school_year_id')
+        ->where('school_years.active', 1)
+        ->whereHas('section', function ($query) use ($teacherId) {
+            $query->where('adviser_id', '=', $teacherId);
+        })->get();
+    
         
 
         // Transform the $students for use in the view
