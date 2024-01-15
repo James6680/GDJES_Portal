@@ -3,13 +3,15 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
-use Illuminate\View\Component;
-use App\Models\GradingSheet;
 use App\Models\Classes;
-use App\Models\GradeLevel;
 use App\Models\Subject;
+use App\Models\GradeSum;
+use App\Models\GradeLevel;
+use App\Models\GradingSheet;
+use Illuminate\View\Component;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class ContentSection extends Component
 {
@@ -33,6 +35,17 @@ class ContentSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.content-section');
+        
+
+        $studentId  = Auth::guard('students')->id();
+        
+        // Assuming you want the first GradeSum record, you might want to add a more specific condition
+        $gradeSums = GradeSum::where('student_id', $studentId)
+                                ->with(['class.teacher', 'class.subject'])
+                                ->get();
+
+
+
+        return view('components.content-section',['gradeSums' => $gradeSums]);
     }
 }

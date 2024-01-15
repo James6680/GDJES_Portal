@@ -268,6 +268,7 @@
 
                         }
 
+
                         
                         ?>
 
@@ -311,36 +312,61 @@
                                 </td>
                             </tr>
 
-                            @foreach($classSubjects as $classSubject)
-                                <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
-                                    <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
-                                        {{ $classSubject->subject_name }}
-                                    </th>
-                                    <td class=" border-collapse border border-green-600 text-start pl-4">
-                                        {{ $classSubject->teacher_first_name }} {{ $classSubject->teacher_last_name }}
-                                    </td>
-                                    <!-- Quarter Grade Cells -->
-                                    @php
-                                        $quarters = isset($classSubject->quarters) ? explode(',', $classSubject->quarters) : [];
-                                        $grades = isset($classSubject->grades) ? explode(',', $classSubject->grades) : [];
-                                        $grades = array_reverse($grades); 
-                                    @endphp
 
-                                    @for ($i = 0; $i < count($quarters); $i++)
-                                        <td class="border-collapse border border-green-600">
-                                            {{ isset($grades[$i]) ? $grades[$i] : '' }}
-                                        </td>
-                                    @endfor
-                                    
-                                    <td class=" border-collapse border border-green-600 bg-green-200/50">
 
-                                    </td>
-                                    <td class=" border-collapse border border-green-600">
 
-                                    </td>
-                                </tr>
-                             @endforeach
+                             this is
+                             <h1>Student ID: {{ $studentId }}</h1>
+                             @foreach($gradeSums as $gradeSum)
+                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm md:text-[10px] text-[10px] leading-tight">
+                                <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
+                                    <!-- Display the class_id -->
+                                    {{ $gradeSum->class->subject->subject_name }}
+                                </th>
+                                <td class="border-collapse border border-green-600 text-start pl-4">
+                                    <!-- Display the school_year_id -->
+                                    {{ $gradeSum->class->teacher->last_name }}, {{ $gradeSum->class->teacher->first_name }} {{ $gradeSum->class->teacher->middle_name }}
+                                </td>
+                                <!-- Quarter Grade Cells -->
+                                <td class="border-collapse border border-green-600">
+                                    <!-- Display grade_q1 -->
+                                    {{ $gradeSum->grade_q1 }}
+                                </td>
+                                <td class="border-collapse border border-green-600">
+                                    <!-- Display grade_q2 -->
+                                    {{ $gradeSum->grade_q2 }}
+                                </td>
+                                <td class="border-collapse border border-green-600">
+                                    <!-- Display grade_q3 -->
+                                    {{ $gradeSum->grade_q3 }}
+                                </td>
+                                <td class="border-collapse border border-green-600">
+                                    <!-- Display grade_q4 -->
+                                   {{ $gradeSum->grade_q4 }}
+                                </td>
+                                @if($gradeSum->grade_q1 !== null && $gradeSum->grade_q2 !== null && $gradeSum->grade_q3 !== null && $gradeSum->grade_q4 !== null)
+                                <td class="border-collapse border border-green-600 bg-green-200/50">
+                                    <!-- Display average -->
+                                   {{ $gradeSum->average }}
+                                </td>
+                                <td class="border-collapse border border-green-600">
+                                    <!-- Display average -->
+                                   {{ $gradeSum->remarks }}
+                                </td>
+                                @else
+                                <td class="border-collapse border border-green-600 bg-green-200/50">
+                                 
+                                </td>
+                                <td class="border-collapse border border-green-600">
+                                   
+                                </td>
+                                @endif
+                            </tr>
+                            @endforeach
+
                             
+                            
+
                             <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm  md:text-[10px] text-[10px] leading-tight">
                                 <th scope="row" class=" font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-6">
                                     

@@ -153,6 +153,7 @@ class FacultyContentSection extends Component
         $studentData = $students->map(function ($student) {
             return [
                 'id' => $student->id,
+                'school_year_id' => $student->school_year_id,
                 'student_name' => $student->student->last_name . ', ' . $student->student->first_name . ' ' . $student->student->middle_name,
                 'gwa' => $student->gwa,
                 'remarks' => $student->remarks,

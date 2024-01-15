@@ -92,7 +92,6 @@ class GradingSheetController extends Controller
                         $numberOfGradeSums = $gradeSums->count();
                         
                         $countBelow75 = $gradeSums->where('average', '<', 75)->count();
-                        
 
                         // Calculate GWA
                         $gwa = ($numberOfGradeSums > 0) ? $totalAverage / $numberOfGradeSums : 0;
@@ -117,18 +116,22 @@ class GradingSheetController extends Controller
                             if ($gwa >= 90 && $gwa <= 100) {
                                 $gwaRecord->descriptors = 'Outstanding';
                                 $gwaRecord->remarks = 'PASSED';
+                                $countBelow75 = '0';
                                 $gwaRecord->status = 'PROMOTED';
                             } elseif ($gwa >= 85 && $gwa <= 89) {
                                 $gwaRecord->descriptors = 'Very Satisfactory';
                                 $gwaRecord->remarks = 'PASSED';
+                                $countBelow75 = '0';
                                 $gwaRecord->status = 'PROMOTED';
                             } elseif ($gwa >= 80 && $gwa <= 84) {
                                 $gwaRecord->descriptors = 'Satisfactory';
                                 $gwaRecord->remarks = 'PASSED';
+                                $countBelow75 = '0';
                                 $gwaRecord->status = 'PROMOTED';
                             } elseif ($gwa >= 75 && $gwa <= 79) {
                                 $gwaRecord->descriptors = 'Fairly Satisfactory';
                                 $gwaRecord->remarks = 'PASSED';
+                                $countBelow75 = '0';
                                 $gwaRecord->status = 'PROMOTED';
                             } else {
                                 $gwaRecord->descriptors = 'Did not meet expectations';
