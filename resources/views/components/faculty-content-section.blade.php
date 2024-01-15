@@ -617,6 +617,19 @@
                 <p class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">In this section, a user-friendly table streamlines raw score input for student grades, automatically calculated by the system. The convenience is further amplified with a dropdown button, allowing faculty to effortlessly switch between grading sheets for different subject classes, catering to the multifaceted roles of teachers.</p>
             </div> <!-- End of Header Content -->
 
+            <br>
+            <div class="flex flex-col gap-2">
+              <div class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <strong>To access the grading sheet for each subject and quarter:</strong>
+              </div>
+              <ul>
+                  <li class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">1. Click or press the subject class button to choose the grade level, section, and subject assigned by the admin.</li>
+                  <li class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">2. Click or press the grading quarter button to select the desired quarter.</li>
+              </ul>
+          </div> <!-- End of Header Content -->
+          
+          
+
             <div class="flex flex-col">
 
                 <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-2 p-3 px-1">
@@ -716,6 +729,10 @@
                     )
                 </span>
                 </h1>
+                <br>
+                  
+
+              
                 <div class="mx-auto w-full ">
                     
                     <div class="bg-white dark:bg-gray-800 relative overflow-hidden">
@@ -731,7 +748,7 @@
                                         <th colspan="1" class="border-2 w-[25%] border-yellow-100">Learner's Name</th>
                                         <th colspan="13" class="border-2 w-[30%] border-yellow-100">Written Works</th>
                                         <th colspan="13" class="border-2 w-[30%] border-yellow-100">Performance Tasks</th>
-                                        <th colspan="3" class="text-base border-2 border-yellow-100 ">Quarterly Assessment (20%)</th>
+                                        <th colspan="3" class="text-base border-2 border-yellow-100 ">Quarterly Assessment</th>
                                         <th colspan="1" class="text-sm  border-2 normal-case border-yellow-100">Initial</th>
                                         <th colspan="1" class="text-sm border-2 normal-case border-yellow-100"> Quarterly</th>
                                         <th class="rounded-tr-md border-2 border-yellow-100">Action<span class="sr-only"></span></th>                                    
@@ -825,12 +842,69 @@
                                     <!--End Highest Possible Score-->
                                 </thead>
 
-                                <!--Post Grading Sheet Button-->    
-                                <button id="openModal" 
-                                        class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
-                                    Post Quarterly Grade
-                                </button>
+                                
 
+                                <div class="flex flex-col gap-2">
+                                  <div class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    <strong>Instructions for entering the highest possible scores on the grading sheet:</strong>
+                                  </div>
+                                  <ol>
+                                    <li class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">
+                                      <strong>Set the highest possible score:</strong>
+                                      <ul>
+                                        <li>1. Click or press the edit button at the rightmost part of the "Highest Possible" row.</li>
+                                        <li>2. Enter the Possible Score (PS) for Written Works.</li>
+                                        <li>3. Enter the Weighted Score (WS) in decimal form (example: 50% -> .050) for Written Works.</li>
+                                        <li>4. Enter the Possible Score for Performance Tasks.</li>
+                                        <li>5. Enter the Weighted Score in decimal form (example: 50% -> .050) for Performance Tasks.</li>
+                                        <li>6. Enter the Possible Score for Quarterly Assessment.</li>
+                                        <li>7. Enter the Weighted Score in decimal form (example: 50% -> .050) for Quarterly Assessment.</li>
+                                      </ul>
+                                    </li>
+                                    <li class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">8. Click Save.</li>
+                                  </ol>
+                                </div>
+
+                                
+                                  <br>
+                                  <div class="flex flex-col gap-2">
+                                    <div class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">
+                                      <strong>Instructions for entering raw scores on the grading sheet:</strong>
+                                    </div>
+                                    <ol>
+                                      <li class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">
+                                        <strong>Enter raw scores:</strong>
+                                        <ul>
+                                          <li>1. Locate and click the "Edit" button on the right side of the table in the "Action" column.</li>
+                                          <li>2. In the corresponding cell next to the student's name, enter the raw score for the assessment.</li>
+                                          <li>3. Ensure the entered score matches the highest possible score for that assessment.</li>
+                                        </ul>
+                                      </li>
+                                      <li class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400"><strong>Reminder:</strong><br> 
+                                        You don't need to re-enter possible scores or weighted scores. The system will update them automatically when you input a value and click the "Save" button.</li>
+                                    </ol>
+                                  </div>
+
+                                  <br>
+                                  <li class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    <strong>Posting your grades:</strong>
+                                    <ul>
+                                      <li>After the quarter ends, you can make the grades visible to students by clicking or pressing the "Post Quarterly Grade" button.</li>
+                                      <li><strong>Note:</strong> Once you click the yes button inside the post quarterly grade modal, you cannot undo or revert your action. Be cautious before confirming.</li>
+                                    </ul>
+                                  </li>
+                                  
+                                  <br>
+                                  <!--Post Grading Sheet Button--> 
+                                  <div class="flex flex-col items-end">
+                                    <button id="openModal" 
+                                      class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
+                                      Post Quarterly Grade
+                                    </button>
+                                  </div>
+                                </div>
+
+                                  <br>
                                 <!--Grading Sheet Table-->
                                 <tbody class="grading-sheets-body">
                                     @if ($gradingSheets && count($gradingSheets) > 0)
@@ -1100,11 +1174,22 @@
                             <br>
                             <!-- Faculty grading sheet for students table for GWA REPORT -->
                             <h2 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">General Weighted Average</h2>
-                            <!-- Post GWA Button -->
-                            <button id="openModale" class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
-                              Post GWA
-                            </button>
-                                            
+                            <br>
+                            <li class="mt-1 lg:text-base text-sm font-normal text-gray-500 dark:text-gray-400">
+                              <strong>Posting  GWA:</strong>
+                              <ul>
+                                <li>Once all the quarterly grades are complete, you can make them visible to students by clicking or pressing the "Post Quarterly Grade" button.</li>
+                                <li><strong>Note:</strong> Once you click the yes button inside the Post GWA  modal, you cannot undo or revert your action. Be cautious before confirming.</li>
+                              </ul>
+                            </li>
+                            <br>
+                            <div class="flex justify-end">
+                              <!-- Post GWA Button -->
+                              <button id="openModale" class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4">
+                                Post GWA
+                              </button>
+                            </div>
+                                 
                             <table class="w-full lg:text-sm text-xs text-left text-black " 
                                     id="gSheetSummaryTable">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
