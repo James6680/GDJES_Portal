@@ -165,7 +165,35 @@
 
             <div class="grid w-full grid-cols-1 gap-2">
                 <div class="w-auto justify-self-end">
+            @php                
+                $checkStudentEnrollment = DB::table('enrollment')
+                                            ->join('school_years','school_years.id','enrollment.school_year_id')
+                                            ->where('enrollment.student_id',$student_id)
+                                            ->where('school_years.is_enrollment',1)
+                                            ->exists();
+                $checkAllSY = DB::table('school_years')
+                                    ->where('is_enrollment',1)
+                                    ->exists();
 
+                if($checkAllSY == false){
+                    $checkStudentEnrollment = true;
+                }
+
+                $checkGwa = DB::table('gwas')
+                                ->join('school_years','school_years.id','gwas.school_year_id')
+                                ->where('gwas.student_id',$student_id)
+                                ->where('school_years.active',1)
+                                ->select('gwas.status','gwas.posted')
+                                ->first();      
+                $checkEnrollment = false;
+                if(!$checkStudentEnrollment && (($checkGwa->status == "PROMOTED" || $checkGwa->status == "RETAIN") && $checkGwa->posted == 1)){
+                    $checkEnrollment = true;
+                }else{
+                    $checkEnrollment = false;
+                }                        
+            @endphp
+
+            @if($checkEnrollment)
                 <form id="enrollmentFormData"action="" method="post">
                     @csrf
                     @method('post')
@@ -175,6 +203,7 @@
                     </svg>
                     </button>
                 </form>
+            @endif    
                 </div>
 
                 <script>
