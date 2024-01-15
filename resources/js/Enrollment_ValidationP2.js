@@ -106,7 +106,7 @@ navigateButton.addEventListener("click", function(event) {
 
   event.preventDefault();
   // Set the new URL to navigate to for the "Back" button
-  var newURL = localStorage.getItem('appUrl') + "/student-registration-1"; // Replace with the desired URL
+  var newURL = "/public/student-registration-1"; // Replace with the desired URL
 
   // Navigate to the new URL
   window.location.href = newURL;

@@ -416,7 +416,7 @@ use Carbon\Carbon;
                                                     is_checked = 0;
                                                 }  
                                                 $.ajax({
-                                                  url: localStorage.getItem('appUrl') + "/faculty.updateDocumentRequirements",
+                                                  url: "/public/faculty.updateDocumentRequirements",
                                                   type: "POST",
                                                   data: {
                                                     index: value,
@@ -509,7 +509,7 @@ use Carbon\Carbon;
                                     button.textContent = status; // Update button text
 
                                     $.ajax({
-                                        url: localStorage.getItem('appUrl') + "/faculty.editEnrollmentStatus",
+                                        url: "/public/faculty.editEnrollmentStatus",
                                         type: "POST",
                                         data: {
                                             status: status,

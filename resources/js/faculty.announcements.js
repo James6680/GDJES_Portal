@@ -2,7 +2,7 @@ window.onload = function() {
     getTableData();
   };
 function getTableData(){
-    const url = localStorage.getItem('appUrl') + '/api/GetAnnouncements';
+    const url = '/public/api/GetAnnouncements';
     const announcementTable = document.getElementById('announcement-list');
     // Populate dropdown with list of regions
     $.getJSON(url, function(data) {

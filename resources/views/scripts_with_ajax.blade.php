@@ -157,7 +157,7 @@
                   distance_learning: mode_of_learning,
             };
             $.ajax({
-                url: localStorage.getItem('appUrl') + "/admin.student-management.add",
+                url: "/public/admin.student-management.add",
                 method: "POST",
                 data: dataObject,
                 success: function(result) {
@@ -346,7 +346,7 @@
                 //   distance_learning: mode_of_learning,
             }
             $.ajax({
-                url: localStorage.getItem('appUrl') + "/admin.student-management.edit",
+                url: "/public/admin.student-management.edit",
                 method: "POST",
                 data: dataObject,
                 success: function(result) {
@@ -394,7 +394,7 @@
             let facebook_link = $('#createTeacher #facebook_link').val();
 
             $.ajax({
-                url: localStorage.getItem('appUrl') + "/admin.teacher-management.add",
+                url: "/public/admin.teacher-management.add",
                 method: "POST",
                 data: {
                     last_name: last_name,
@@ -453,7 +453,7 @@
         confirm_student_archive.addEventListener('click', function(e){
             e.preventDefault();
             $.ajax({
-                    url: localStorage.getItem('appUrl') + "/admin.student-management.archive",
+                    url: "/public/admin.student-management.archive",
                     method: "POST",
                     data: {id:id},
                     success: function(result){
@@ -620,7 +620,7 @@
             let edit_facebook_link = $('#editTeacher #edit_facebook_link').val();
             
             $.ajax({
-                url: localStorage.getItem('appUrl') + "/admin.teacher-management.edit",
+                url: "/public/admin.teacher-management.edit",
                 method: "POST",
                 data: {
                     edit_id: edit_id,
@@ -1049,7 +1049,7 @@
     /// Make a fetch request to update the 'posted' column for each grading sheet
     gradingSheetIds.forEach((gradingSheetId) => {
 
-        fetch( localStorage.getItem('appUrl') + '/update-posted-status', {
+        fetch( '/public/update-posted-status', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

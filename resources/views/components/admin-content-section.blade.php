@@ -737,7 +737,7 @@ window.Alpine = Alpine;
 
           function changeStatus(status){
             $.ajax({
-              url: localStorage.getItem('appUrl') + "/admin.documentRequest",
+              url: "/public/admin.documentRequest",
               type: "POST",
               data: {
                 id: requestId,

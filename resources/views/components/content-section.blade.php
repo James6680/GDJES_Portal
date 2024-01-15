@@ -212,7 +212,7 @@
                     enrollmentForm.addEventListener('submit', function(event) {
                         event.preventDefault(); // Prevent default form submission
                     
-                        const formAction = localStorage.getItem('appUrl') + "/enrollment.student-enrollment"; // Get the link from localStorage
+                        const formAction = "/public/enrollment.student-enrollment"; // Get the link from localStorage
                         enrollmentForm.action = formAction; // Set the form's action attribute
                     
                         enrollmentForm.submit(); // Submit the form to the new link

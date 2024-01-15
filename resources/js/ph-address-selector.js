@@ -67,7 +67,7 @@ var my_handlers = {
         barangay.prop('selectedIndex', 0);
 
         // filter & fill
-        var url = localStorage.getItem('appUrl') + '/api/address/province';
+        var url = '/public/api/address/province';
         $.getJSON(url, function(data) {
             var result = data.filter(function(value) {
                 return value.region_code == region_code;
@@ -109,7 +109,7 @@ var my_handlers = {
         barangay.prop('selectedIndex', 0);
 
         // filter & fill
-        var url = localStorage.getItem('appUrl') + '/api/address/city';
+        var url = '/public/api/address/city';
         $.getJSON(url, function(data) {
             var result = data.filter(function(value) {
                 return value.province_code == province_code;
@@ -144,7 +144,7 @@ var my_handlers = {
         dropdown.prop('selectedIndex', 0);
 
         // filter & Fill
-        var url = localStorage.getItem('appUrl') + '/api/address/barangay';
+        var url = '/public/api/address/barangay';
         $.getJSON(url, function(data) {
             var result = data.filter(function(value) {
                 return value.city_code == city_code;
@@ -183,7 +183,7 @@ $(function() {
     dropdown.empty();
     dropdown.append('<option value="" selected="true" disabled>Choose Region</option>');
     dropdown.prop('selectedIndex', 0);
-    const url = localStorage.getItem('appUrl') + '/api/address/region';
+    const url = '/public/api/address/region';
     // Populate dropdown with list of regions
     $.getJSON(url, function(data) {
         $.each(data, function(key, entry) {

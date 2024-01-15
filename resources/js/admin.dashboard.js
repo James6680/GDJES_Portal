@@ -36,7 +36,7 @@ function setDropDowns() {
 }
 
 function getModeOfLearningStatistics(schoolYearId) {
-  const url = localStorage.getItem('appUrl') + '/api/modeOfLearningStatistics/' + schoolYearId;
+  const url = '/public/api/modeOfLearningStatistics/' + schoolYearId;
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
           currentModeOfLearning = data;
@@ -46,7 +46,7 @@ function getModeOfLearningStatistics(schoolYearId) {
 }
 
 function getLearningInfoStatistics(schoolYearId) {
-  const url = localStorage.getItem('appUrl') + '/api/learningInfoStatistics/' + schoolYearId;
+  const url = '/public/api/learningInfoStatistics/' + schoolYearId;
   return new Promise((resolve, reject) => {
       $.getJSON(url, function(data) {
           currentLearningInfo = data;
@@ -56,8 +56,8 @@ function getLearningInfoStatistics(schoolYearId) {
 }
 
 function getSchoolYear() {
-  const url = localStorage.getItem('appUrl') + '/api/schoolYears';
-  const url1 = localStorage.getItem('appUrl') + '/api/schoolYearsWGender';
+  const url = '/public/api/schoolYears';
+  const url1 = '/public/api/schoolYearsWGender';
   return new Promise((resolve, reject) => {
     $.getJSON(url, function(data) {
         schoolYearList = data;
@@ -84,7 +84,7 @@ function setCurrentSchoolYear(){
     const transferredIn = document.getElementById('current-school-year-transferred-in');
     const transferredOut = document.getElementById('current-school-year-transferred-out');
     const dropout = document.getElementById('current-school-year-dropout');
-    const url = localStorage.getItem('appUrl') + '/api/currentYearStats/' + currentSchoolYear.id;
+    const url = '/public/api/currentYearStats/' + currentSchoolYear.id;
     $.getJSON(url, function(data) {
       enrollees.innerHTML = data[0].enrollees;
       male.innerHTML = data[0].male;

@@ -29,7 +29,7 @@ submitDocumentRequest.addEventListener('click', function(e){
     if(passed1 == true && passed2 == true){
         console.log(formData);
         $.ajax({
-            url: localStorage.getItem('appUrl') + "/student.requestDocument",
+            url: "/public/student.requestDocument",
             type: "POST",
             data: formData,
             success: function (response) {
