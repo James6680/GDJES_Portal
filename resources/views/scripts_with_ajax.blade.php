@@ -965,7 +965,7 @@
             let class_id = row.find('[name="class_id"]').val();
 
             $.ajax({
-                url: "faculty.grades.edit_student_grading_sheet/" + id,
+                url: localStorage.getItem('appUrl') + "faculty.grades.edit_student_grading_sheet/" + id,
                 method: "POST",
                 data: {
                     id: id,
@@ -1049,7 +1049,7 @@
     /// Make a fetch request to update the 'posted' column for each grading sheet
     gradingSheetIds.forEach((gradingSheetId) => {
 
-        fetch('/update-posted-status', {
+        fetch( localStorage.getItem('appUrl') + '/update-posted-status', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -1111,7 +1111,7 @@
             const searchTerm = searchInput.value.toLowerCase();
 
             // Make an asynchronous request to fetch data from the server
-            fetch(`/search?term=${searchTerm}`, {
+            fetch(localStorage.getItem('appUrl') + `/search?term=${searchTerm}`, {
                 method: 'GET',
             })
             .then(response => response.json())
