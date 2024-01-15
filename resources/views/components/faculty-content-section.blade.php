@@ -1101,27 +1101,27 @@
                             <!-- Faculty grading sheet for students table for GWA REPORT -->
                             <h2 class="font-semibold pt-4 text-lg sm:text-xl lg:text-2xl text-black " id="gSheetHeader">General Weighted Average</h2>
                             <!-- Post GWA Button -->
-                            <button id="openModal" class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
-                              Display GWA
+                            <button id="openModale" class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
+                              Post GWA
                             </button>
                                                         
                             <!-- Modal Container Post GWA Button  -->
-                            <div id="myModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+                            <div id="myModale" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
                               <!-- Modal content -->
                               <div class="bg-white p-8 rounded-md shadow-md">
                                   <div class="flex items-center mb-4">
                                       <i class="fas fa-exclamation-triangle text-red-500 mr-4 text-3xl"></i>
-                                      <p class="text-lg font-bold">Are you sure you want to post the grade to the student portal?</p>
+                                      <p class="text-lg font-bold">Are you sure you want to post the General Weighted Average (GWA) to the student portal?</p>
                                   </div>
                                   <div class="flex center items-center">
                                       <p class="text-sm text-gray-600 mb-4">This action will make the general weighted average visible to the students on the portal and cannot be undone. <br>
-                                          Please review the grades carefully before proceeding.</p>
+                                          Please review the gwa carefully before proceeding.</p>
                                   </div>                                        
                                   <div class="flex justify-end">
                                       <!-- Yes button -->
                                       <button id="GWAconfirmYes" 
                                               class="mr-2 pt-2 pb-2 pl-10 pr-10 button bg-green-500 text-white"
-                                              data-quarter="{{ $quarterValue }}">
+                                            >
                                               Yes
                                       </button>
                                       <!-- No button -->
@@ -1135,17 +1135,17 @@
 
                           <!-- JavaScript to handle modal visibility -->
                               <script>
-                                document.getElementById('openModal').addEventListener('click', function() {
-                                    document.getElementById('myModal').classList.remove('hidden');
+                                document.getElementById('openModale').addEventListener('click', function() {
+                                    document.getElementById('myModale').classList.remove('hidden');
                                 });
 
                                 document.getElementById('GWAconfirmNo').addEventListener('click', function() {
-                                    document.getElementById('myModal').classList.add('hidden');
+                                    document.getElementById('myModale').classList.add('hidden');
                                 });
 
                                 document.getElementById('GWAconfirmYes').addEventListener('click', function() {
                                     // Add logic for what happens when 'Yes' is clicked
-                                    document.getElementById('myModal').classList.add('hidden');
+                                    document.getElementById('myModale').classList.add('hidden');
                                 });
                               </script>
 
@@ -1175,17 +1175,20 @@
                                         <th class="border-2 border-yellow-100 px-3">`No. of Final Grade Lower than 75</th>                            
                                     </tr>
                                 </thead>
+
+                                
                                 <tbody>
                                   @foreach ($studentData as $student)                                   
                                   <tr class="text-center bg-white">
                                         <td class="border-2 border-yellow-100 px-2 py-2 text-left">
-                                          {{ $student['student_name'] }}                                        
+                                          {{ $student['student_name'] }}  
                                         </td>
                                         <td class="border-2 border-yellow-100 px-2">{{ $student['gwa'] }}</td>
                                         <td class="border-2 border-yellow-100 px-2">{{ $student['descriptors'] }}</td>
                                         <td class="border-2 border-yellow-100 px-2">{{ $student['remarks'] }}</td>
                                         <td class="border-2 border-yellow-100 px-2">{{ $student['status'] }}</td>
                                         <td class="border-2 border-yellow-100 px-2">{{ $student['status_no'] }}</td>
+                                        
                                     </tr>
                                     @endforeach
                                 </tbody>

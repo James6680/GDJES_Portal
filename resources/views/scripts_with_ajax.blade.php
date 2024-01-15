@@ -679,8 +679,7 @@
         });
     });
 
-});
-
+    });
 
     document.getElementById('confirmNo').addEventListener('click', function () {
         // If the teacher chooses 'No', simply close the modal

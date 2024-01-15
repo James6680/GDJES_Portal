@@ -37,4 +37,15 @@ class GradeSum extends Model
     {
         return $this->belongsTo(SchoolYears::class, 'school_year_id');
     }
+
+    public function subject()
+    {
+        return $this->class->belongsTo(Subject::class, 'subject_id');
+    }
+
+    public function teacher()
+    {
+        return $this->class->belongsTo(Teacher::class, 'teacher_id');
+    }
+    
 }
