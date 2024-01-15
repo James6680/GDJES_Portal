@@ -16,18 +16,18 @@ class GradeSumSeeder extends Seeder
      */
     public function run(): void
     {
-        $students = Student::where('id', '>=', 1)->where('id', '<=', 150)->get();
+        $students = Student::all();
 
-        foreach ($students as $student) {
-            $class = Classes::where('id', $student->class_id)->first();
-            $schoolYear = SchoolYears::where('id', $class->school_year_id)->first();
-
-            // Create a new GradeSum record for each student, class, and school year
-            $gradeSum = new GradeSum();
-            $gradeSum->student_id = $student->id;
-            $gradeSum->class_id = $class->id;
-            $gradeSum->school_year_id = $schoolYear->id;
-            $gradeSum->save();
+        foreach($students as $student){
+            $enrollment = DB::table('enrollment')->where('student_id', $student->id)->first(); 
+            $subjects = DB::table('subjects')->where('grade_level_id', $enrollment->grade_level_id)->get();
+            // $subjects = Subject::where('grade_level_id', $enrollment->grade_level_id);
+            foreach($subjects as $subj){
+                    $GradeSum = new GradeSum();
+                    $GradeSum->student_id = $student->id;
+                    $GradeSum->school_year_id = $enrollment->school_year_id;
+                    $GradeSum->save();
+            }
         }
     }
 }

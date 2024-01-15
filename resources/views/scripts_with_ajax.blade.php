@@ -749,7 +749,7 @@
 
 
         $.ajax({
-            url: localStorage.getItem('appUrl') + "/faculty.grades.edit" + edit_id,
+            url: localStorage.getItem('appUrl') + "faculty.grades.edit/" + edit_id,
             method: "POST",
             data: {
                 edit_id: edit_id,
