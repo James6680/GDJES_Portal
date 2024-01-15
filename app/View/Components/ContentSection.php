@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Closure;
+use App\Models\Gwa;
 use App\Models\Classes;
 use App\Models\Subject;
 use App\Models\GradeSum;
@@ -43,9 +44,10 @@ class ContentSection extends Component
         $gradeSums = GradeSum::where('student_id', $studentId)
                                 ->with(['class.teacher', 'class.subject'])
                                 ->get();
+        $gwas = Gwa::where('student_id', $studentId)
+                    ->first();
 
 
-
-        return view('components.content-section',['gradeSums' => $gradeSums]);
+        return view('components.content-section',['gradeSums' => $gradeSums, 'gwas' => $gwas]);
     }
 }

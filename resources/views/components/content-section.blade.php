@@ -235,54 +235,6 @@
                             </tr>
                         </thead>
 
-                        <?php
-                        if (Auth::guard('students')->check()) {
-                            $studentId = Auth::guard('students')->id();
-
-                            // Subjects
-                            $classIds = DB::table('grading_sheet')
-                                ->where('student_id', $studentId)
-                                ->pluck('class_id');
-
-                                $classSubjects = DB::table('classes')
-                                ->whereIn('classes.id', $classIds)
-                                ->leftJoin('subjects', 'classes.subject_id', '=', 'subjects.id')
-                                ->leftJoin('teachers', 'classes.teacher_id', '=', 'teachers.id')
-                                ->leftJoin('grading_sheet', function ($join) use ($studentId) {
-                                    $join->on('classes.id', '=', 'grading_sheet.class_id')
-                                        ->where('grading_sheet.student_id', '=', $studentId);
-                                })
-                                ->select(
-                                    'classes.id as class_id',
-                                    'subjects.subject_name',
-                                    'teachers.first_name as teacher_first_name',
-                                    'teachers.last_name as teacher_last_name',
-                                    DB::raw('GROUP_CONCAT(grading_sheet.quarter) as quarters'),
-                                    DB::raw('GROUP_CONCAT(grading_sheet.quarterly_grade) as grades')
-                                )
-                                //EDIT THIS
-                                ->where('classes.school_year_id',1)
-                                ->groupBy('classes.id','subjects.subject_name', 'teachers.first_name', 'teachers.last_name')
-                                ->orderBy('subjects.subject_name')
-                                ->get();
-
-                        }
-
-
-                        
-                        ?>
-
-                        <p>Username: {{ $studentId ?? '' }}</p> 
-                        <ul>
-                            @foreach($classSubjects as $classSubject)
-                                <li>
-                                    Subject: {{ $classSubject->subject_name }},
-                                    Teacher: {{ $classSubject->teacher_first_name }} {{ $classSubject->teacher_last_name }}</li>
-                            @endforeach
-                        </ul>
-
-                        
-
                         <tbody>
 
                             <tr class="bg-white text-white border-b lg:text-sm text-[10px] leading-tight">
@@ -311,12 +263,7 @@
 
                                 </td>
                             </tr>
-
-
-
-
-                             this is
-                             <h1>Student ID: {{ $studentId }}</h1>
+                             
                              @foreach($gradeSums as $gradeSum)
                              <tr class="bg-white text-black border-b dark:bg-gray-800 dark:border-gray-700 lg:text-sm md:text-[10px] text-[10px] leading-tight">
                                 <th scope="row" class="font-normal font-mulish text-black whitespace-nowrap dark:text-white border-collapse border border-green-600 py-4 text-start pl-4">
@@ -387,10 +334,10 @@
                                     GWA
                                 </td>
                                 <td class=" border-collapse border border-green-600 bg-green-200/50">
-
+                                    {{ $gwas->gwa }}
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-
+                                    {{ $gwas->remarks }}
                                 </td>
                             </tr>
                         </tbody>
