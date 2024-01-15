@@ -641,7 +641,7 @@
     });
 
     document.getElementById('confirmYes').addEventListener('click', function () {
-
+    var quarter = document.getElementById('confirmYes').getAttribute('data-quarter');
     // Get all grading sheet IDs
     var gradingSheetIds = [];
     document.querySelectorAll('.editGradingSheetForm').forEach(function (form) {

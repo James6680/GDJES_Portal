@@ -1005,8 +1005,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            
-
                             <br>
                             <br>
                             <br>
@@ -1094,8 +1092,6 @@
                                   
                                 </tbody>
                             </table>
-                              
-
                             <br>
                             <br>
                             <!-- Faculty grading sheet for students table for GWA REPORT -->
@@ -1104,11 +1100,7 @@
                             <button id="openModale" class="button text-black focus:outline-none bg-green-100 rounded-md hover:shadow-lg hover:shadow-neutral-200 hover:outline hover:outline-1 hover:outline-brown-100 text-sm px-5 py-2.5 text-center inline-flex items-center mt-2 mb-4 ml-auto">
                               Post GWA
                             </button>
-                                                        
-                           
-
-                          
-
+                                            
                             <table class="w-full lg:text-sm text-xs text-left text-black " 
                                     id="gSheetSummaryTable">
                                 <thead class="lg:text-sm text-xs text-black uppercase border-2 border-yellow-100 rounded-t">
@@ -1181,10 +1173,6 @@
                                       </div>
                                   </div>
                                     @endforeach
-
-                                    
-
-
                                 </tbody>
                             </table>
                         </div>
