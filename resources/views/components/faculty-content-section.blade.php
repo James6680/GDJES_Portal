@@ -1105,49 +1105,9 @@
                               Post GWA
                             </button>
                                                         
-                            <!-- Modal Container Post GWA Button  -->
-                            <div id="myModale" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
-                              <!-- Modal content -->
-                              <div class="bg-white p-8 rounded-md shadow-md">
-                                  <div class="flex items-center mb-4">
-                                      <i class="fas fa-exclamation-triangle text-red-500 mr-4 text-3xl"></i>
-                                      <p class="text-lg font-bold">Are you sure you want to post the General Weighted Average (GWA) to the student portal?</p>
-                                  </div>
-                                  <div class="flex center items-center">
-                                      <p class="text-sm text-gray-600 mb-4">This action will make the general weighted average visible to the students on the portal and cannot be undone. <br>
-                                          Please review the gwa carefully before proceeding.</p>
-                                  </div>                                        
-                                  <div class="flex justify-end">
-                                      <!-- Yes button -->
-                                      <button id="GWAconfirmYes" 
-                                              class="mr-2 pt-2 pb-2 pl-10 pr-10 button bg-green-500 text-white"
-                                              >
-                                              Yes
-                                      </button>
-                                      <!-- No button -->
-                                      <button id="GWAconfirmNo" 
-                                              class="button pt-2 pb-2 pl-10 pr-10 bg-red-500 text-white">
-                                              No
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
+                           
 
-                          <!-- JavaScript to handle modal visibility -->
-                              <script>
-                                document.getElementById('openModale').addEventListener('click', function() {
-                                    document.getElementById('myModale').classList.remove('hidden');
-                                });
-
-                                document.getElementById('GWAconfirmNo').addEventListener('click', function() {
-                                    document.getElementById('myModale').classList.add('hidden');
-                                });
-
-                                document.getElementById('GWAconfirmYes').addEventListener('click', function() {
-                                    // Add logic for what happens when 'Yes' is clicked
-                                    document.getElementById('myModale').classList.add('hidden');
-                                });
-                              </script>
+                          
 
                             <table class="w-full lg:text-sm text-xs text-left text-black " 
                                     id="gSheetSummaryTable">
@@ -1188,9 +1148,76 @@
                                         <td class="border-2 border-yellow-100 px-2">{{ $student['remarks'] }}</td>
                                         <td class="border-2 border-yellow-100 px-2">{{ $student['status'] }}</td>
                                         <td class="border-2 border-yellow-100 px-2">{{ $student['status_no'] }}</td>
-                                        
+                                       
                                     </tr>
+
+                                     <!-- Modal Container Post GWA Button  -->
+                                    <div id="myModale" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+                                      <!-- Modal content -->
+                                      <div class="bg-white p-8 rounded-md shadow-md">
+                                          <div class="flex items-center mb-4">
+                                              <i class="fas fa-exclamation-triangle text-red-500 mr-4 text-3xl"></i>
+                                              <p class="text-lg font-bold">Are you sure you want to post the General Weighted Average (GWA) to the student portal?</p>
+                                          </div>
+                                          <div class="flex center items-center">
+                                              <p class="text-sm text-gray-600 mb-4">This action will make the general weighted average visible to the students on the portal and cannot be undone. <br>
+                                                  Please review the gwa carefully before proceeding.</p>
+                                          </div>                                        
+                                          <div class="flex justify-end">
+                                              <!-- Yes button -->
+                                              <button id="GWAconfirmYes" 
+                                                      class="mr-2 pt-2 pb-2 pl-10 pr-10 button bg-green-500 text-white"
+                                                      data-school-year-id="{{ $student['school_year_id']}}"
+                                                      data-section-id="{{ $student['section_id'] }}"
+                                                      data-grade-level-id="{{$student['grade_level_id']}}">
+                                                      Yes
+                                              </button>
+                                              <!-- No button -->
+                                              <button id="GWAconfirmNo" 
+                                                      class="button pt-2 pb-2 pl-10 pr-10 bg-red-500 text-white">
+                                                      No
+                                              </button>
+                                          </div>
+                                      </div>
+                                  </div>
                                     @endforeach
+
+                                    <!-- JavaScript to handle modal visibility -->
+                              <script>
+                                document.getElementById('openModale').addEventListener('click', function() {
+                                    document.getElementById('myModale').classList.remove('hidden');
+                                });
+
+                                document.getElementById('GWAconfirmNo').addEventListener('click', function() {
+                                    document.getElementById('myModale').classList.add('hidden');
+                                });
+
+                                document.getElementById('GWAconfirmYes').addEventListener('click', function() {
+                                  var schoolYearId = this.getAttribute('data-school-year-id');
+                                  var sectionId = this.getAttribute('data-section-id');
+                                  var gradeLevelId = this.getAttribute('data-grade-level-id');
+                                  
+                                  // Make an AJAX request to update the 'posted' column in the gwas table
+                                  fetch('/update-posted', {
+                                      method: 'POST',
+                                      headers: {
+                                          'Content-Type': 'application/json',
+                                          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                      },
+                                      body: JSON.stringify({
+                                          schoolYearId: schoolYearId,
+                                          sectionId: sectionId,
+                                          gradeLevelId: gradeLevelId
+                                      })
+                                    }).then(response => response.json())
+                                    .then(data => {
+                                    document.getElementById('myModale').classList.add('hidden');
+                                  });
+                                });
+                              </script>
+
+
+
                                 </tbody>
                             </table>
                         </div>

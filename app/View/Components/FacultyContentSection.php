@@ -160,6 +160,8 @@ class FacultyContentSection extends Component
             return [
                 'id' => $student->id,
                 'school_year_id' => $student->school_year_id,
+                'grade_level_id' => $student->gradeLevel->id,
+                'section_id' => $student->section->id,
                 'student_name' => $student->student->last_name . ', ' . $student->student->first_name . ' ' . $student->student->middle_name,
                 'gwa' => $student->gwa,
                 'remarks' => $student->remarks,
@@ -172,7 +174,7 @@ class FacultyContentSection extends Component
 
         
         // Pass data to the view
-        return view('components.faculty-content-section', compact('gradingSheets','quarterValue', 'class_idValue','dropdownOptions', 'classCombinations', 'quarters', 'highestPossibleScore', 'gradeSumData', 'studentData'));
+        return view('components.faculty-content-section', compact('gradingSheets','quarterValue', 'class_idValue','dropdownOptions', 'classCombinations', 'quarters', 'highestPossibleScore', 'gradeSumData', 'studentData',));
     }
      else {
         return view('components.faculty-content-section');

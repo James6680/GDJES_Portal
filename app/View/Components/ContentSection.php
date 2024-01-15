@@ -48,7 +48,7 @@ class ContentSection extends Component
         $gwas = Gwa::where('student_id', $studentId)
                     ->where('school_year_id', 1)
                     ->first();
-
+        
 
         return view('components.content-section',['gradeSums' => $gradeSums, 'gwas' => $gwas]);
     }

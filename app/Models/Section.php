@@ -23,5 +23,9 @@ class Section extends Model
     {
         return $this->belongsTo(Teacher::class);
     }
+    public function gwas()
+    {
+        return $this->hasMany(Gwa::class, 'section_id');
+    }
 
 }

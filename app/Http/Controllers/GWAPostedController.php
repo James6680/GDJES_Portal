@@ -8,44 +8,25 @@ use App\Models\Gwa;
 use App\Models\Classes;
 use App\Models\Teacher;
 
-class GwaController extends Controller
+class GWAPostedController extends Controller
 {
     // ... existing methods ...
 
     public function postGwa(Request $request)
     {
-        $teacher = Auth::guard('teacher')->user();
+        // Retrieve data from the request
+    $schoolYearId = $request->input('schoolYearId');
+    $sectionId = $request->input('sectionId');
+    $gradeLevelId = $request->input('gradeLevelId');
 
-    // Check if the user is a teacher
-    if ($teacher) {
-        $teacherId = $teacher->id; // Get the teacher's ID
-        $sectionId = $request->input('section_id');
-        $gradeLevelId = $request->input('grade_level_id');
-        $schoolYearId = $request->input('school_year_id');
+    // Update the 'posted' column in the gwas table
+    Gwa::where([
+        'school_year_id' => $schoolYearId,
+        'section_id' => $sectionId,
+        'grade_level_id' => $gradeLevelId,
+    ])->update(['posted' => 1]);
 
-        // Verify if the teacher is authorized for the specified class
-        $isAuthorized = $teacher->classes()->where([
-            'id' => $teacherId,
-            'grade_level_id' => $gradeLevelId,
-            'section_id' => $sectionId,
-            'school_year_id' => $schoolYearId,
-        ])->exists();
-
-        if ($isAuthorized) {
-            // Update 'posted' column in gwas table
-            Gwa::where([
-                'grade_level_id' => $gradeLevelId,
-                'section_id' => $sectionId,
-                'school_year_id' => $schoolYearId,
-            ])->update(['posted' => true]);
-
-            return response()->json(['success' => true]);
-        } else {
-            return response()->json(['error' => 'Unauthorized']);
-        }
-    }
-
-    return response()->json(['error' => 'Invalid user role']);
+    return response()->json(['message' => 'success']);
 }
 
 }
