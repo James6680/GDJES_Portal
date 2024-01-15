@@ -79,7 +79,7 @@ class Teacher extends Authenticatable
 
     public function classes()
     {
-        return $this->hasMany(Classes::class, 'teacher_id');
+        return $this->hasMany(\App\Models\Classes::class, 'teacher_id');
     }
 
 }

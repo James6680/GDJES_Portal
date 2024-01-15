@@ -7,10 +7,13 @@ use Illuminate\View\Component;
 use App\Http\Controllers\Student;
 use Illuminate\Contracts\View\View;
 use App\Models\GradingSheet;
+use App\Models\Gwa;
 use App\Models\Classes;
-use App\Models\GradeLevel;
 use App\Models\Subject;
+use App\Models\GradeSum;
+use App\Models\GradeLevel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ContentSection extends Component
 {
@@ -35,6 +38,22 @@ class ContentSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.content-section');
-    }   
+        
+
+        $studentId  = Auth::guard('students')->id();
+        
+        // Assuming you want the first GradeSum record, you might want to add a more specific condition
+        $gradeSums = GradeSum::where('student_id', $studentId)
+                                ->join('school_years','school_years.id','grade_sum.school_year_id')
+                                ->where('school_years.active',1)
+                                ->with(['class.teacher', 'class.subject'])
+                                ->get();
+        $gwas = Gwa::where('student_id', $studentId)
+                    ->join('school_years','school_years.id','gwas.school_year_id')
+                    ->where('school_years.active',1)
+                    ->first();
+
+
+        return view('components.content-section',['gradeSums' => $gradeSums, 'gwas' => $gwas]);
+    }
 }

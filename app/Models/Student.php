@@ -103,6 +103,10 @@ class Student extends Authenticatable
     {
         return $this->belongsTo('App\Models\Relatives', 'relatives_id');
     }
+    public function gradeSums()
+    {
+        return $this->hasMany(GradeSum::class, 'student_id');
+    }
 
     public function classes()
     {
