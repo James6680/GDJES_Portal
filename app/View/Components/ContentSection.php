@@ -52,7 +52,9 @@ class ContentSection extends Component
                     ->join('school_years','school_years.id','gwas.school_year_id')
                     ->where('school_years.active',1)
                     ->first();
-
+        if($gwas == null){
+            $gwas = new Gwa();
+        }
 
         return view('components.content-section',['gradeSums' => $gradeSums, 'gwas' => $gwas]);
     }
