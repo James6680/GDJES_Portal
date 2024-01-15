@@ -1038,7 +1038,7 @@
     });
 
     document.getElementById('confirmYes').addEventListener('click', function () {
-
+    var quarter = document.getElementById('confirmYes').getAttribute('data-quarter');
     // Get all grading sheet IDs
     var gradingSheetIds = [];
     document.querySelectorAll('.editGradingSheetForm').forEach(function (form) {
@@ -1109,10 +1109,11 @@
 
         searchButton.addEventListener('click', function () {
             const searchTerm = searchInput.value.toLowerCase();
+            const teacherId = searchButton.getAttribute('data-teacher-id');  // Get teacherId from the button
 
             // Make an asynchronous request to fetch data from the server
-            fetch(localStorage.getItem('appUrl') + `/search?term=${searchTerm}`, {
-                method: 'GET',
+            fetch(localStorage.getItem('appUrl') + `/search?term=${searchTerm}&teacherId=${teacherId}`, {
+                method: 'GET',  
             })
             .then(response => response.json())
             .then(data => {
@@ -1174,3 +1175,38 @@
         });
     });
 </script>
+
+
+<!-- JavaScript to handle modal visibility -->
+<script>
+    document.getElementById('openModale').addEventListener('click', function() {
+        document.getElementById('myModale').classList.remove('hidden');
+    });
+
+    document.getElementById('GWAconfirmNo').addEventListener('click', function() {
+        document.getElementById('myModale').classList.add('hidden');
+    });
+
+    document.getElementById('GWAconfirmYes').addEventListener('click', function() {
+      var schoolYearId = this.getAttribute('data-school-year-id');
+      var sectionId = this.getAttribute('data-section-id');
+      var gradeLevelId = this.getAttribute('data-grade-level-id');
+      
+      // Make an AJAX request to update the 'posted' column in the gwas table
+      fetch('/update-posted', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': '{{ csrf_token() }}'
+          },
+          body: JSON.stringify({
+              schoolYearId: schoolYearId,
+              sectionId: sectionId,
+              gradeLevelId: gradeLevelId
+          })
+        }).then(response => response.json())
+        .then(data => {
+        document.getElementById('myModale').classList.add('hidden');
+      });
+    });
+  </script>

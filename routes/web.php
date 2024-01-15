@@ -9,9 +9,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\GWAPostedController;
 use App\Http\Controllers\EnrollmentController;
-use App\Http\Controllers\SchoolYearController;
 
+use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\GradingSheetController;
 use App\Http\Controllers\HighestPossibleScoreController;
@@ -264,7 +265,11 @@ Route::post('/update-posted-status', [GradingSheetController::class, 'updatePost
     ->name('update-posted-status');
 
 Route::get('/search', [SearchStudent::class, 'search'])
-->middleware('teachers')->name('/search');
+->middleware('teachers')->name('search');
+
+Route::post('/update-posted', [GWAPostedController::class, 'postGwa'])
+    ->middleware('teachers')
+    ->name('update-posted');
 
 Route::get('faculty.Attendance', function () {
     return view('layouts.faculty');

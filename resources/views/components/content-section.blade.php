@@ -389,10 +389,18 @@
                                     GWA
                                 </td>
                                 <td class=" border-collapse border border-green-600 bg-green-200/50">
-                                    {{ $gwas->gwa }}
+                                    @if($gwas->posted == 1)
+                                        {{ $gwas->gwa }}
+                                    @else
+                                        
+                                    @endif
                                 </td>
                                 <td class=" border-collapse border border-green-600">
-                                    {{ $gwas->remarks }}
+                                    @if($gwas->posted == 1)
+                                        {{ $gwas->remarks }}
+                                    @else
+                                        
+                                    @endif
                                 </td>
                             </tr>
                         </tbody>

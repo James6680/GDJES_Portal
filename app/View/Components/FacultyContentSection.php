@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use App\Models\Gwa;
 use App\Models\Classes;
+use App\Models\Section;
 use App\Models\GradeSum;
 use App\Models\GradingSheet;
 use Illuminate\View\Component;
@@ -150,9 +151,13 @@ class FacultyContentSection extends Component
         $teacherId = Auth::guard('teachers')->user()->id;
 
         // Fetch all students from the gwa table with similar section_id and teacher_id
-        $students = Gwa::with('student', 'gradeLevel', 'section', 'schoolYears')->whereHas('section', function ($query) use ($teacherId) {
+        $students = Gwa::with('student', 'gradeLevel', 'section', 'schoolYears')
+        ->join('school_years', 'school_years.id', '=', 'gwas.school_year_id')
+        ->where('school_years.active', 1)
+        ->whereHas('section', function ($query) use ($teacherId) {
             $query->where('adviser_id', '=', $teacherId);
         })->get();
+    
         
 
         // Transform the $students for use in the view
@@ -160,6 +165,8 @@ class FacultyContentSection extends Component
             return [
                 'id' => $student->id,
                 'school_year_id' => $student->school_year_id,
+                'grade_level_id' => $student->gradeLevel->id,
+                'section_id' => $student->section->id,
                 'student_name' => $student->student->last_name . ', ' . $student->student->first_name . ' ' . $student->student->middle_name,
                 'gwa' => $student->gwa,
                 'remarks' => $student->remarks,
@@ -170,9 +177,25 @@ class FacultyContentSection extends Component
         });
 
 
-        
+        // Get the teacher ID of the currently logged-in teacher
+        $teacherId = Auth::guard('teachers')->user()->id;
+
+        // Fetch the required data from the Sections table
+        $sectionData = Section::with('gradeLevel')
+            ->where('adviser_id', $teacherId)
+            ->where('school_year_id', 1)
+            ->get();
+
+        // Transform the $sectionData for use in the view
+        $sectionOptions = $sectionData->map(function ($section) {
+            return [
+                'grade_level' => $section->gradeLevel->grade_level,
+                'section_name' => $section->section_name,
+            ];
+        });
+
         // Pass data to the view
-        return view('components.faculty-content-section', compact('gradingSheets','quarterValue', 'class_idValue','dropdownOptions', 'classCombinations', 'quarters', 'highestPossibleScore', 'gradeSumData', 'studentData'));
+        return view('components.faculty-content-section', compact('gradingSheets','quarterValue', 'class_idValue','dropdownOptions', 'classCombinations', 'quarters', 'highestPossibleScore', 'gradeSumData', 'studentData','sectionOptions'));
     }
     else if(request()->is('faculty.enrollments')){
         $advisoryStudents = new TeacherController;
