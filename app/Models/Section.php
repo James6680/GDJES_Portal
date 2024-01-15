@@ -27,5 +27,11 @@ class Section extends Model
     {
         return $this->hasMany(Gwa::class, 'section_id');
     }
+    public function gradeLevel()
+    {
+        return $this->belongsTo(GradeLevel::class);
+    }
+
+    
 
 }

@@ -1042,11 +1042,13 @@
                                 <i class="fas fa-cog text-gray-500 mr-2"></i>
                                 <span class="font-semibold text-sm sm:text-md lg:text-lg text-black" id="gSheetHeader">To view the final grade for each subject, simply enter the student's name and click the search button.</span>
                             </div>
-                          
+                            <?php $teacherId = Auth::guard('teachers')->id();
+                            
+                            ?>
                             <div class="flex items-center mb-4">
                                 <span class="font-semibold text-sm sm:text-md lg:text-lg text-black mr-2" id="gSheetHeader">Student Name:</span>
                                 <input type="text" id="searchInput" placeholder="Search by student name..." class="w-64 p-2 border border-gray-300 rounded-md">
-                                <button id="searchButton" class="ml-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700">Search</button>
+                                <button id="searchButton" data-teacher-id ="{{$teacherId}}" class="ml-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700">Search</button>
                             </div>
                             <table class="w-full lg:text-sm text-xs text-left text-black " 
                                     id="fnalGradeTable">
@@ -1067,7 +1069,9 @@
                                         <th class="border-2 py-1.5 border-yellow-100"></th>
                                         <th class="border-2 py-1.5 border-yellow-100">Grade & Section:</th>
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">
-                                          {{ $classCombinations[0]['grade_level'] }} - {{ $classCombinations[0]['section_name'] }}
+                                          @foreach($sectionOptions as $sectionOption)
+                                          <div>{{ $sectionOption['grade_level'] }} - {{ $sectionOption['section_name'] }}</div>
+                                          @endforeach                                        
                                         </th>                                  
                                         <th class="border-2 border-yellow-100">School year:</th>                                  
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">
@@ -1108,7 +1112,9 @@
                                         <th class="border-x-2 border-yellow-100 rounded-tl-md">Learner's Name</th>
                                         <th class="border-2 py-1.5 border-yellow-100">Grade & Section:</th>
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">
-                                          {{ $classCombinations[0]['grade_level'] }} - {{ $classCombinations[0]['section_name'] }}
+                                          @foreach($sectionOptions as $sectionOption)
+                                          <div>{{ $sectionOption['grade_level'] }} - {{ $sectionOption['section_name'] }}</div>
+                                          @endforeach  
                                         </th>                                  
                                         <th class="border-2 border-yellow-100">School year:</th>                                  
                                         <th colspan="2" class="border-2 border-yellow-100 font-normal">

@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use App\Models\Gwa;
 use App\Models\Classes;
+use App\Models\Section;
 use App\Models\GradeSum;
 use App\Models\GradingSheet;
 use Illuminate\View\Component;
@@ -172,9 +173,25 @@ class FacultyContentSection extends Component
         });
 
 
-        
+        // Get the teacher ID of the currently logged-in teacher
+        $teacherId = Auth::guard('teachers')->user()->id;
+
+        // Fetch the required data from the Sections table
+        $sectionData = Section::with('gradeLevel')
+            ->where('adviser_id', $teacherId)
+            ->where('school_year_id', 1)
+            ->get();
+
+        // Transform the $sectionData for use in the view
+        $sectionOptions = $sectionData->map(function ($section) {
+            return [
+                'grade_level' => $section->gradeLevel->grade_level,
+                'section_name' => $section->section_name,
+            ];
+        });
+
         // Pass data to the view
-        return view('components.faculty-content-section', compact('gradingSheets','quarterValue', 'class_idValue','dropdownOptions', 'classCombinations', 'quarters', 'highestPossibleScore', 'gradeSumData', 'studentData',));
+        return view('components.faculty-content-section', compact('gradingSheets','quarterValue', 'class_idValue','dropdownOptions', 'classCombinations', 'quarters', 'highestPossibleScore', 'gradeSumData', 'studentData','sectionOptions'));
     }
      else {
         return view('components.faculty-content-section');

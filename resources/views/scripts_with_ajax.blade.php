@@ -712,10 +712,11 @@
 
         searchButton.addEventListener('click', function () {
             const searchTerm = searchInput.value.toLowerCase();
+            const teacherId = searchButton.getAttribute('data-teacher-id');  // Get teacherId from the button
 
             // Make an asynchronous request to fetch data from the server
-            fetch(`/search?term=${searchTerm}`, {
-                method: 'GET',
+            fetch(`/search?term=${searchTerm}&teacherId=${teacherId}`, {
+                method: 'GET',  
             })
             .then(response => response.json())
             .then(data => {
